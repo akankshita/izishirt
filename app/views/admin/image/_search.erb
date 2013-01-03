@@ -1,0 +1,31 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr>
+    <th>Preview</th>
+        <th><%= link_to_with_sort 'ID', 'id' %></th>
+        <th><%= link_to_with_sort t(:admin_image_list_date), 'created_on' %></th>
+        <th><%= link_to_with_sort t(:admin_image_list_date_approved), 'date_approved' %></th>
+        <th><%= link_to_with_sort t(:admin_image_list_name), 'name' %></th>
+        <th><%= link_to_with_sort t(:admin_image_list_category), 'category_id' %></th>
+		<th><%= link_to_with_sort "City", 'city_id' %></th>
+    <th><%= link_to_with_sort "Staff Pick", 'staff_pick'  %></th>
+    <th><%= link_to_with_sort t(:admin_image_form_sorting_rate), 'sorting_rate'  %></th>
+        <th><%= link_to_with_sort t(:admin_image_list_active), 'active' %></th>
+        <th>&nbsp;</th>
+</tr>
+<tbody id='listing'>
+        <%= render :partial =>'listing' %>
+</tbody>
+</table>
+
+<br />
+
+<table cellspacing="0" cellpadding="0" width="100%">
+        <tr>
+                <td align="left" width="50%">
+                        <%= will_paginate(@images, :params => {:find_condition => @search_criteria}) %>
+                </td>
+                <td align="right" width="50%">
+                        <%= link_to t(:admin_add), {:action => 'new', :id => params[:id]}, {:class => 'textLink', :title => t(:admin_add) } %>
+                </td>
+        </tr>
+</table>

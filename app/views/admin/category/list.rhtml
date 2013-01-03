@@ -1,0 +1,43 @@
+<h1><%= t(:admin_category_list_toptitle) %></h1>
+
+<div class="listing-submenu">
+
+<% for type in @types %>
+	<%= link_to type.name, :id => type.id %>
+<% end %>
+</div>
+<br />
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="235"><%= t(:admin_category_list_name) %></th>
+	<th width="100"><%= t(:admin_category_list_active) %></th>
+  <% if @category_type_id and @category_type_id.to_i == 4 %>
+  <th width="100"><%= t(:admin_category_list_wholesale) %></th>  
+  <% end %>
+        <% if @category_type_id %>
+          <th width="100">Position</th>
+        <% end %>
+
+	<th>&nbsp;</th>
+  </tr>
+
+<tbody>
+<% for category in @categories %>
+  <%= display_categories(category) %>
+<% end %>
+
+</tbody>
+
+</table>
+<%= sortable_element 'categories', :url => { :action => 'sort', :id => params[:id] }, :complete => visual_effect(:highlight, 'categories') %>
+
+<br />
+<%= will_paginate @categories %>
+<table cellspacing="0" cellpading="0" width="100%">
+	<tr>
+		<td align="right" width="50%">
+			<%= link_to t(:admin_add), {:action => 'new', :id => params[:id] }, {:class => 'textLink', :title => t(:admin_add) } %>
+		</td>
+	</tr>
+</table>

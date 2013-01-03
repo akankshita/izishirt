@@ -1,0 +1,14 @@
+<% for user in @users %>
+  <tr class="<%= cycle('odd', '') %>">
+	<td><%=h user.id %></td>
+	<td><%=h user.username %></td>
+	<td><%= h(user.firstname.capitalize) + ' ' + h(user.lastname.capitalize) %></td>
+	<td><%= mail_to h(user.email), h(user.email) %></td>
+    <td width="80">
+		<%= link_to '&nbsp;', {:action => 'edit', :id => user}, {:class => 'icoEdit icopng', :title => t(:admin_edit) } %>
+		<%= link_to '&nbsp;', { :action => 'destroy', :id => user }, :confirm => t(:admin_confirm), :method => :post, :class => 'icoDelete icopng', :title => t(:admin_delete) %>
+		<!--= link_to image_tag('ico-edit.gif', :alt=>'Edit'), :action => 'edit', :id => user %>
+		<= link_to image_tag('ico-del.gif', :alt=>'Delete'), { :action => 'destroy', :id => user }, :confirm => 'Are you sure?', :method => :post -->
+	</td>
+  </tr>
+<% end %>

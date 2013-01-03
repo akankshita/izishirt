@@ -1,0 +1,31 @@
+<%= number_with_precision(image.rating, 1)  + t(:display_rating_5_stars) %><br>
+<ul class='star-rating'>
+    <li class='current-rating' style='width:<%= (image.rating * 30).to_i -%>px;'>
+          <%= t(:display_rating_currently)  + number_with_precision(image.rating, 1) + t(:display_rating_5_stars) %>.
+        </li>
+    <li>
+        <%= link_to_remote( "1", {:url => { :controller => "display", 
+		   :action => "rate", :id => image.id, :rating => 1}},
+		   :class => 'one-star', :name => t(:display_rating_1_5)) %>
+    </li>
+    <li>
+        <%= link_to_remote( "2", {:url => { :controller => "display", 
+            :action => "rate", :id => image.id, :rating => 2}},
+            :class => 'two-stars', :name => t(:display_rating_2_5)) %>    
+    </li>
+    <li>
+        <%= link_to_remote( "3", {:url => { :controller => "display", 
+            :action => "rate", :id => image.id, :rating => 3}},
+            :class => 'three-stars', :name => t(:display_rating_3_5)) %>
+    </li>
+    <li>
+        <%= link_to_remote( "4", {:url => { :controller => "display", 
+            :action => "rate", :id => image.id, :rating => 4}},
+            :class => 'four-stars', :name => t(:display_rating_4_5)) %>    
+    </li>
+    <li>
+        <%= link_to_remote( "5", {:url => { :controller => "display", 
+            :action => "rate", :id => image.id, :rating => 5}},
+            :class => 'five-stars', :name => t(:display_rating_5_5))  %>
+    </li>
+</ul>

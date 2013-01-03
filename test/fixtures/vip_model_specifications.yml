@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  minimum_sale_price: 1.5
+  izishirt_cost: 1.5
+  izishirt_print_cost: 1.5
+  designs_per_zone: 1
+
+two:
+  minimum_sale_price: 1.5
+  izishirt_cost: 1.5
+  izishirt_print_cost: 1.5
+  designs_per_zone: 1

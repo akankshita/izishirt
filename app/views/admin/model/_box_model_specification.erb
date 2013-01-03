@@ -1,0 +1,36 @@
+  <fieldset>
+    <legend><%= t(:admin_colors_list_model_specification) %></legend>
+<% form_tag({:action => action, :id => @mymodel}, {:multipart=>true }) do %>
+
+
+
+<table width="100%" border="0" cellspacing="3" cellpadding="0">
+	<% if @model_specification %>
+	  <tr>
+	    <td>Order garment comment (ex.: SKU #)</td>
+		<td><%= text_field_tag 'model_specification[order_garment_comment]', (@model_specification ? @model_specification.order_garment_comment : "") %></td>
+	  </tr>  
+	<% end %>
+
+  <tr>
+    <td><%= hidden_field_tag "model_specification[model_id]", @mymodel.id %><%= hidden_field_tag "model_specification[id]", id %> <%= select_tag 'model_specification[color_id]', options_for_select(@Colors, @selected_color.id) %> <%= link_to t(:admin_models_add_a_color), :controller => "color", :action => "new", :id => 3, :redirect => redirect %></td>
+	<td><%= t(:admin_colors_list_color) %></td>
+  </tr>
+ 
+  <tr>
+    <td><%= t(:admin_model_list_front) %></td>
+	<td><%= file_field 'model_specification', 'img_front_upload', :class=>'box'  %></td>
+  </tr>  
+  <tr>
+    <td><%= t(:admin_model_list_back) %></td>
+	<td><%= file_field 'model_specification', 'img_back_upload', :class=>'box'  %></td>
+  </tr>  
+    
+</table>
+<%= hidden_field 'model_specification', 'model_id', :value => @mymodel.id %>
+	<div class="titleForm">&nbsp;</div>
+	<div class="boxForm">
+		<input type="submit" value="<%= t(:admin_colors_list_validate_link) %>" />
+	</div>
+<% end %>
+</fieldset>

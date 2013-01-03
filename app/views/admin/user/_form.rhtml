@@ -1,0 +1,63 @@
+<%= error_messages_for 'user' %>
+
+<!--[form:user]-->
+<table border="0" cellspacing="0" cellpadding="5" class="addedituser">
+  <tr>
+    <td><label for="user_username"><%= t(:admin_user_form_username) %></label></td>
+    <td><%= form.text_field 'username'  %></td>
+  </tr>
+  <tr>
+    <td><label for="user_password"><%= t(:admin_user_form_password) %></label></td>
+    <td><%= form.password_field 'password' %></td>
+  </tr>
+  <tr>
+    <td><label for="user_level_id"><%= t(:admin_user_form_level) %></label></td>
+    <td class="ddbox"><%= form.select 'user_level_id', @levels,  {} %></td>
+  </tr>
+  <tr>
+    <td><label for="user_level_id"><%= t(:admin_user_form_language) %></label></td>
+    <td class="ddbox"><%= form.select 'language_id', @languages, {} %></td>
+  </tr>
+  <tr>
+    <td><label for="user_email"><%= t(:admin_user_form_email) %></label></td>
+    <td><%= form.text_field 'email'%></td>
+  </tr>
+  <tr>
+    <td><label for="user_firstname"><%= t(:admin_user_form_firstname) %></label></td>
+    <td><%= form.text_field 'firstname' %></td>
+  </tr>
+  <tr>
+    <td><label for="user_lastname"><%= t(:admin_user_form_lastname)%></label></td>
+    <td><%= form.text_field 'lastname' %></td>
+  </tr>
+  <tr>
+    <td><label for="user_acronym"><%= t(:admin_user_acronym)%></label></td>
+    <td><%= form.text_field 'acronym' %></td>
+  </tr>
+
+    <td><label for="user_first_visit"><%= t(:admin_user_form_birthday)%></label></td>
+    <td><%= form.date_select 'birthday', :class=>'box' %></td>
+  </tr>
+  <tr>
+    <td><label for="user_first_visit"><%= t(:admin_user_form_first_visit)%></label></td>
+    <td><%= form.datetime_select 'first_visit', :class=>'box' %></td>
+  </tr>
+    <tr>
+    <td><label for="user_last_visit"><%= t(:admin_user_form_last_visit)%></label></td>
+    <td><%= form.datetime_select 'last_visit', :class=>'box' %></td>
+  </tr>
+    <tr>
+    <td><label for="user_active"><%= t(:admin_user_form_active)%></label></td>
+    <td><%= form.check_box 'active', {}, 'true', 'false' %></td>
+  </tr>
+
+
+
+
+
+
+</table>
+
+
+<!--[eoform:user]-->
+

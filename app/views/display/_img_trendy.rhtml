@@ -1,0 +1,15 @@
+<% for img in @top_images 
+  id_img = img.id.to_s
+%>  
+  <div class="thumbsRate">
+    <span onmouseover="this.className='ovr'" onmouseout="this.className=''">
+      
+
+  <%= link_to "<i style=\"background-image: url(#{get_path_filename(img)});\">
+  <b class=\"crnBbTL\"></b> <b class=\"crnBbTR\"></b> <b class=\"crnBbBR\"></b> <b class=\"crnBbBL\"></b> </i>", {:controller=>"/display/shop1/"+id_img}, :title=>img.name + " T-shirt" %>
+    </span>
+    <strong><%=h truncate(img.name, 20) %></strong>
+  </div>
+<% end %>
+<div class="clearfix">
+</div>

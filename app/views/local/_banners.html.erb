@@ -1,0 +1,48 @@
+<%= stylesheet_link_tag "anythingslider.css" %>
+
+<%
+	#banner = WebsiteBanner.find_by_name("homepage_city_images", :conditions=>" city_id="+@city.id.to_s)
+ #if banner.count > 0
+  banner = WebsiteBanner.find_by_name("homepage_city_images")
+ 
+ banner_images = banner.banner_images(I18n.locale.to_s)
+ banner_images = banner.banner_images("en-CA") if banner_images.length == 0
+ @count_exist = banner_images.length
+#banner_images = []
+%>
+
+<%#
+@count_exist = 0
+
+if @banners_slider.size > 0
+        @banners_slider.map{|bs|
+                @count_exist = @count_exist + 1 if File.exist?("public/images/homepage/banners/#{path_lang(session[:language_id], session[:country])}/#{bs.position}_#{bs.index}.jpg") == true && File.size("public/images/homepage/banners/#{path_lang(session[:language_id], session[:country])}/#{bs.position}_#{bs.index}.jpg") > 0
+        }
+end
+%>
+
+<div id="page-wrap">
+	<div class="anythingSlider">
+      <div class="wrapper" style="<%= "overflow: hidden;" if @count_exist == 1 %>">
+        <ul style="margin: 0;padding: 0;">
+
+		<% banner_images.each do |banner_image| %>
+		<% if banner_image.city_id == @city.id.to_i %>
+			<li>
+				<%= link_to(image_tag(banner_image.image.url(), :width => 909, :height => 246, :alt => banner_image.alt), :controller => banner_image.link) %>
+
+				<% if banner_image.label != "" %>
+					<div id='banner_button'>
+						<%= link_to banner_image.label, :controller => banner_image.link %>
+					</div>
+				<% end %>
+			</li>
+		<% end %>
+		<% end %>
+
+		
+        </ul>        
+      </div>
+   </div> <!-- END AnythingSlider -->
+</div>
+<% #end %>

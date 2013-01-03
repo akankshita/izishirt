@@ -1,0 +1,111 @@
+<script type="text/javascript" charset="utf-8">
+function send_form(url) {
+  document.getElementById('submit_payment_link').href='javascript:void(0)';
+  document.getElementById('submit_payment_link').disabled = 1;
+  if (url != '') {
+    document.forms['payment_form'].action = url;
+  }
+  document.forms['payment_form'].submit();
+}
+</script>
+ <form id="paypal" name="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="contact@izishirt.com">
+    <input type="hidden" name="item_name" value="Izishirt">
+    <input type="hidden" name="amount" value="<%=number_with_precision(session[:gift][:amount], 2)%>">
+    <input type="hidden" name="shipping" value="0">
+    <input type="hidden" name="no_shipping" value="0">
+    <input type="hidden" name="no_note" value="1">
+    <input type="hidden" name="currency_code" value="<%=@currency%>">
+    <input type="hidden" name="tax" value="0">
+    <input type="hidden" name="lc" value="<%=t(:paypal_lang)%>">
+    <input type="hidden" name="bn" value="PP-BuyNowBF">
+    <input type="hidden" name="cancel_return" value="<%=@URL_ROOT%>">
+    <input type="hidden" name="cpp_header_image" value="<%=SECURE_URL_ROOT%>/images/izishirt_paypal_header.gif">
+    <input type="hidden" name="image_url" value="<%=SECURE_URL_ROOT%>/images/logo.gif">
+    <input type="hidden" name="no_shipping" value="1">
+    <input type="hidden" name="return" value="<%=SECURE_URL_ROOT%>/checkout/gifts_paypal_confirmation">
+    <input type="hidden" name="shopping_url" value="<%=@URL_ROOT%>">
+    <input type="hidden" name="cbt" value="<%=t(:finalize_purchase)%>">
+</form>
+
+<div id="checkout-container" > 
+  <!-- PAYMENT CONTENT -->
+  <div class="checkout-pay-spacer"></div>
+  <div  class="clearfix" >
+      <h3><%= t(:payment_header) %></h3>
+
+      <form name="payment_form" id="payment_form" action="gifts_confirmation" method="post">
+        <div class="checkout-pay-spacer"></div>
+        <br />
+        <b><%= t(:payment_order_summary) %></b>
+        <div class="order_summary clearfix">
+          <p><span><%= t(:gifts_from) %></span> <%=session[:gift][:from] %></p>
+          <p><span><%= t(:gifts_amount) %></span> <%=session[:gift][:amount] %></p>
+          <p><span><%= t(:gifts_to) %></span> <%=session[:gift][:to] %></p>
+          <p><span><%= t(:gifts_email) %></span> <%=session[:gift][:email] %></p>
+          <p><span><%= t(:gifts_confirm_email) %></span> <%=session[:gift][:confirm_email] %></p>
+          <% if session[:gift][:message] && session[:gift][:message] != "" %>
+            <p><span><%= t(:gifts_message) %></span> <br /> <%=session[:gift][:message] %></p>
+          <% end %>
+        </div>
+        <br />
+        <br />
+        <!--b><%= t(:payment_infoheader) %></b>
+        <br /-->
+
+        <%= flash[:error] %>
+
+        <!--table width="100%" border="0" cellspacing="0" cellpadding="0" class="ccinfo">
+          <tr>
+            <td>
+              <%= t(:payment_paymentype) %><br />
+              <select id="payment_type" name="payment[type]">
+                <option value='VISA' selected>Visa</option>
+                <option value='MASTERCARD'>Mastercard</option>
+                <option value='AMEX'>American Express</option>
+                <option value='DISC'>Discover</option>				
+                <option value='PAYPAL'>PayPal</option>				
+              </select>
+            </td>
+          </tr>
+          <tr>
+          <td>&nbsp;</td>
+          </tr>
+        </table-->
+
+		<div id="payment">
+			<%= render :partial => 'paypal' %>
+		</div>
+		
+        <br />
+        <br />		
+		<!--div class="checkout_terms" align="center">
+          <img src="/images/checkout/secure.gif" height="36" />
+          <img src="/images/checkout/logo_visa.gif" width="58" height="36"> 
+          <img src="/images/checkout/logo_mastercard.jpg" width="58" height="36"> 
+          <img src="/images/checkout/american_express_discover.gif" width="58" height="36"> 
+          <img src="/images/checkout/logo-american-express.jpg" width="58" height="36">
+          <!-- PayPal Logo -->
+          <a href="#" onclick="javascript:window.open('https://www.paypal.com/us/cgi-bin/webscr?cmd=xpt/cps/popup/OLCWhatIsPayPal-outside','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=400, height=350');">
+          <img  src="https://www.paypal.com/en_US/i/logo/PayPal_mark_60x38.gif" border="0" alt="Acceptance Mark"></a>
+          <!-- PayPal Logo -->		
+		</div-->		
+        <br />
+        <br />
+        <div class="checkout_terms" align="center"> 
+          <%= t(:payment_processor_link_label) %>
+          <%=  link_to t(:payment_processor_link_privacy), {:controller=>t(:payment_processor_link_privacy_url)}, :target=>"_blank", :class=>"checkout-type-2" %>
+          <%= t(:payment_processor_link_label2) %>
+          <%=  link_to t(:payment_processor_link_terms), {:controller=>t(:payment_processor_link_terms_url)}, :target=>"_blank", :class=>"checkout-type-2" %>
+        </div>
+        <br />
+        <br />
+        <div class="clearfix checkout_btn" align="center"> 
+        <a href="javascript:send_form('<%= url_for(:controller => 'checkout', :action=>'gifts') %>');" class="checkout-button-continue"><%= t(:payment_back) %></a> 
+        <a href="javascript:$('payment_form').submit()" id='submit_payment_link' class="checkout-button-validate-2"><%= t(:payment_next) %></a> </div>
+      </form>
+  </div>
+  <div class="checkout-pay-spacer clear"></div>
+  <!-- END OF PAYMENT CONTENT -->
+</div>

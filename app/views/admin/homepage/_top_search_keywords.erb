@@ -1,0 +1,18 @@
+<table border="1">
+	<tr>
+		<th>Type</th>
+		<th>Keyword</th>
+		<th>ACTION</th>
+	</tr>
+
+	<% TopSearch.of(country.id, language.id).each do |t_search| %>
+		<tr>
+			<td><%= t_search.search_type.local_name(session[:language_id]) %></td>
+			<td><%= t_search.keyword %></td>
+			<td>
+				<%= link_to_remote "[X]", :url => { :action => "remove_top_search", :id => t_search.id }, :update => "keywords_#{t_search.country.id}_#{t_search.language.id}"
+ %>
+			</td>
+		</tr>
+	<% end %>
+</table>

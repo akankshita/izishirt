@@ -1,0 +1,8 @@
+<% for column in User.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @user.send(column.name) %>
+</p>
+<% end %>
+
+<%= link_to t(:myizishirt_myshop_edit), :action => 'edit', :id => @user %> |
+<%= link_to t(:myizishirt_myshop_back), :action => 'list' %>

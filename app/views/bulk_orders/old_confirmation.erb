@@ -1,0 +1,52 @@
+<div class="append-3 prepend-3 span-23 breadcrumb last">
+  <%= link_to t(:menu_home), "/", :class => 'mediumGray noDecoration bold' %>
+  <%= image_tag "izishirt2009/blueArrows.png", {:class=> 'middle', :alt => ">>"} %>
+  <%= link_to t(:menu_quote), {:action => 'index'},
+    :class => 'mediumGray noDecoration bold' %>
+</div>
+
+<div class="prepend-3 span-7 last">
+  <%= render :partial => "bulk_left_menu" %>
+</div>
+
+<div class="append-3 span-15 last">
+
+  <div class="redBox prepend-12-px">
+    <div class="left redBoxLeft noPad noMarg noBord"></div>
+    <div class="left redBoxHeader noPad noMarg noBord boxContentBulkHeader">
+      <label><%=t(:quote_confirmation).upcase%></label>
+    </div>
+    <div class="left redBoxRight noPad noMarg noBord"></div>
+
+    <div class="clear noPad noMarg boxContent bulkWidth bulkContent">
+      <div class="bulkContentTitle" style="margin-top:0px;">
+          <div class="topTabs">
+            <div class="title red"><%=t(:your_request_has_been_sent).mb_chars.upcase%></div>
+          </div>
+          <div class="topContact">
+            <span class="red">Tel</span> <%=get_phone_number%> &nbsp;&nbsp;&nbsp;<span class="red">Email</span> <%= link_to t(:contact_us_email_quotes), t(:contact_us_email_quotes), :class=>"email_link" %>
+          </div>
+      </div>
+      <div class="bulkPad">
+        <div class="bulkContentSection">
+
+          <ul class="bulkList">
+            <li><%=t(:request_sent_explanation_1)%></li>
+          </ul>
+        </div>
+
+        <div class="longBlueButton centered"  style="margin-top:15px;">
+          <%= link_to t(:back_to_izishirt).mb_chars.upcase,{:controller=>"/"} %>
+        </div>
+        <div class="bulkSeparator clear  marginBottom10" style="margin-top:15px;"></div>
+
+        <%= image_tag "izishirt2009/#{session[:language]}/notSure.png", :alt=>t(:not_sure_banner_alt) %>
+
+      </div>
+    </div>
+
+    <div class="left boxBottomLeft"></div>
+    <div class="left boxBottomMiddle bulkBottomWidth"></div>
+    <div class="left boxBottomRight"></div>
+  </div>
+</div>

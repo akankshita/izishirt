@@ -1,0 +1,205 @@
+  <% if !session[:user_id]
+    @user_level = "NA"
+  else
+    @user_level = User.find(session[:user_id]).user_level.id
+  end 
+  
+    %>
+
+
+
+<div id="header_container" style="position:relative;">
+  <div id="logo_izishirt">
+  <% if session[:country] == "CA" && session[:language]=="fr"
+						@URL_ROOT= "http://fr.izishirt.ca"
+					else
+						if session[:country] == "CA"
+							@URL_ROOT= "http://www.izishirt.ca"
+						else
+							if  session[:country] == "FR"
+								@URL_ROOT= "http://frch.izishirt.ca"
+							else
+								@URL_ROOT= "http://www.izishirt.com"
+							end
+						end 
+					end %>
+   <% link_to("#{@URL_ROOT}#{print_force_lang}", :title=>"#{t(:title_logo)}" ) do %>
+            <% @langu = @canonical_begin_url
+			
+			if @langu == "http://fr.izishirt.ca" || @langu == "http://frch.izishirt.ca"  %>
+              <%= image_tag "izishirt2011/fr/logo.jpg", :width=>189, :height=>77, :alt=>"#{t(:alt_logo)}" %>
+            <%else%>
+              <%= image_tag "izishirt2011/#{session[:language]}/logo.jpg", :width=>408, :height=>120, :alt=>"#{t(:alt_logo)}" %>
+            <%end%>
+
+    <% end %>
+  </div>
+
+  <div style="position:absolute;right:277px;top:4px;"><a href="http://www.facebook.com/pages/IziShirt/223576667655075" target="_blank"><%= image_tag "izishirt2011/facebook_icon.jpg", :width=>17, :height=>16 %></a>
+  <a href="http://twitter.com/izishirt" target="_blank"><%= image_tag "izishirt2011/twitter_icon.jpg", :width=>17, :height=>17 %></a>
+    </div>
+
+
+  <div id="jquerytopmenu" class="jquerytopmenu">
+
+    
+    <ul>
+      <li style="float:right;">
+
+       
+          <a href="#" title="<%=t(:flag_alt, :country=>session[:country_long])%>" ><% #= session[:country]  %>
+            <%
+            country = @alt_country.downcase
+            file_exists = FileTest.exists?("./public/images/izishirt2011/flags/#{country}.png")
+            if file_exists
+            %>
+              <%= image_tag "izishirt2011/flags/#{@alt_country.downcase}.png", :alt=>t(:flag_alt, :country=>session[:country_long]), :width=>10, :height=>7, :hspace=>2, :align=>'absmiddle'%>
+            <% else %>
+              <%= image_tag "flags/#{@alt_country.downcase}.gif", :alt=>t(:flag_alt, :country=>session[:country_long]), :width=>10, :height=>7, :hspace=>2, :align=>'absmiddle'%>
+            <% end %>
+
+            <%= session[:country_long] %> <%= t(:lang) if !['us','fr', 'es'].include?(@alt_country.downcase) %>
+
+            <%= image_tag "izishirt2011/arrow-top-menu.gif", :width=>10, :height=>5 %>
+
+          </a>
+		  
+
+        <ul  style="z-index:2000;">
+		<% @lang_infos_for_layout.sort{ |x, y| x[1][:order] <=> y[1][:order] }.each do |lang, lang_infos| %>
+			<% #if @langs_available.include?(lang) %>
+                          <% height=12
+                             height=8 if lang_infos[:flag_file]=="ca.png" %>
+				  <li>
+				    <% link_to(country_home(lang, lang_infos[:country]), :title=>"#{lang_infos[:alt_name]} #{t(:flag_alt2)}") do %>
+				      <%= image_tag("izishirt2011/flags/#{lang_infos[:flag_file]}", :alt=>"#{lang_infos[:alt_name]} #{t(:flag_alt2)}") %> <%= lang_infos[:label_name] %>
+				    <% end %>
+				  </li>
+			<% #end %>
+		<% end %>
+        </ul>
+
+      </li>
+      </ul>
+      
+      <!-- Cart Links #{session[:language_id]}-->
+      <% if @controller.controller_name != 'checkout' %>
+        <div id="cart">
+				 
+          <% link_to(@URL_ROOT + "/checkout2/show_cart",:rel=>"no_follow") do %>
+
+          <%= image_tag "izishirt2011/shopping-cart-icon.gif", :width=>14, :height=>10, :align=>"absmiddle" %>
+
+            <span id="link_to_cart_text" style="display:inline;border:none;background:none;"><%= @human_cart %></span>
+          <% end %>
+
+        </div>
+
+
+        <% if session[:user_id] %>
+
+          <div style="text-align:right;margin-top:8px;">
+
+          <span>
+            <%= t(:menu_hello) +" #{truncate(@logged_in_username+"!", :length => 18)}"%>
+          </span>
+
+          <%= link_to t(:display_home_deconnexion),
+            {:controller => "myizishirt/login/logout"}, :class=>"lastone", :style=>"color:#444;"
+        %>
+            </div>
+
+      <% else %>
+            <div style="text-align:right;margin-top:8px;display:none;">
+
+
+          <%= link_to "Login",
+            {:controller => 'myizishirt/login', :action => 'lightbox'},
+            :class=>"login_modalbox", :id=>"modalbox_login", :style=>"color:#444;" %>
+
+          <%= link_to t(:forgot_password),
+            {:controller => 'myizishirt/login', :action => 'lightbox_lost'},
+            :class=>"password_modalbox", :id=>"link_forgot_password", :style=>"color:#444;" %>
+
+            </div>
+      <% end %>
+      
+       <div id="search_menu">
+
+            <% def_search = @search_type_id ? @search_type_id : "NA"
+               search_term = params[:search] ? Digest::SHA1.hexdigest(params[:search].parameterize) : "NA" %>
+
+
+              <% form_tag({:controller=>"/display", :action=>"search"}, :method=>:get, :id=>'search_form', :onsubmit=>"return true;") do %>
+   <div style="font-weight:bold;float:left;margin-top:7px;margin-left:10px;margin-right:5px;"><%= t(:search) %>: </div>
+                <%= text_field_tag "search", @search_keyword, :style=>"margin-top:2px;" %>
+
+                <div id="search_txt">
+                  <a class="search" href="#global_search"
+                     onclick="$('search_form').submit();"><%= image_tag "izishirt2011/#{session[:language]}/b_search.png",:alt=>"Rechercher", :style=>"margin-top:5px;" %></a>
+                  <!--[if lte IE 7]>
+                                        <style type="text/css">
+                                               #header_container #search_menu #search_txt{margin-top:-25px;}
+                                        </style>
+                                <![endif]-->
+                </div>
+              <% end %>
+      </div>
+
+              <% end %>
+    
+  </div>
+  <div id="phone_number">
+        <%= t(:tel_2)%>
+      </div>
+  <div id="main_menu">
+    <div id="jqueryslidemenu" class="jqueryslidemenu">
+      <ul>
+	  <%
+		if session[:country] && session[:country]=="FR"
+		@URL_ROOT="http://frch.izishirt.ca"
+		end
+	  
+	  %>
+        <li class="top_li"><%= link_to(t(:home), "#{@URL_ROOT}#{print_force_lang}")%></li>
+        <li class="top_li"><%= link_to(t(:create), create_tshirt_url())%>
+          <ul>
+            <li><%= link_to("T-shirts", create_tshirt_url()) %></li><!--model_url(69)-->
+            <li><%= link_to(t(:hoodies), model_url(100))%></li>
+            <li><%= link_to(t(:tank_tops), model_url(56))%></li>
+            <li><%= link_to(t(:sports_tees), model_url(45))%></li>
+            <li><%= link_to(t(:tote_bags), model_url(85))%></li>
+            <li><%= link_to(t(:aprons), model_url(108))%></li>
+            <li><%= link_to(t(:kids_apparel), model_url(35))%></li>
+          </ul>
+        </li>
+        
+           <li class="top_li"><%= link_to(t(:marketplace), "/" + t(:new_marketplace_main_url))%></li>
+      
+        <li class="top_li"><%= link_to(t(:wholesale_menu), "/" + t(:new_bulk_main_url))%>
+          <ul>
+
+            <li><%= link_to(t(:bulk_orders_menu_24h), "/" + t(:new_bulk_main_url))%></li>
+
+          </ul>
+        </li>
+
+        <li><%= link_to t(:menu_about), {:controller => '/display', :action => 'about_us'}%>
+          <ul><li><%= link_to t(:shipping_and_refunds), {:controller => '/display', :action => 'shipping_info'}%></li></ul>
+      </li>
+        <li><%= link_to("Contact", {:controller=>"/display", :action=>"contact"})%></li>
+
+
+
+      </ul>
+      <!--<div id="tel">
+          <%= image_tag "izishirt2011/#{session[:language]}/tel.jpg", :alt=>"Contact" %>
+        </div>-->
+    </div>
+
+  </div>
+  <div class="clear"></div>
+</div>
+
+
+

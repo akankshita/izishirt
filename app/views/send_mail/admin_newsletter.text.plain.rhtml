@@ -1,0 +1,6 @@
+<%= @newsletter.localized_newsletters.find_by_language_id_and_country_id(@language.id, @country.id).content %>
+contact@izishirt.com
+
+<div style="width:710px;">
+  <br><a style="font-size: 10px" href="<%= "#{URL_ROOT}/unsubscribe?e=#{@email}"%>"><%= @language.id == 1 ? "Se désabonner" : "unsubscribe" %></a>
+</div>

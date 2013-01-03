@@ -1,0 +1,45 @@
+/*JQUERY TOP MENU*/
+#jquerytopmenu {text-align:right; width:315px; margin:5px 0 0 0; padding:0px 0 0 0; font-size:10px;float:right;}
+#jquerytopmenu ul{text-align:right;margin: 0; padding: 0; font-size:10px; margin-bottom: 0em;height:15px; list-style:none; }
+#jquerytopmenu li{ position: relative; display: inline; float: left; text-align:right; z-index: 999;}
+#jquerytopmenu ul.boutique_menu li a {background:none;}
+#jquerytopmenu ul.boutique_menu li {text-align:center;}
+#jquerytopmenu ul.boutique_menu li ul li {padding:4px; background-color:#E4E3E3;border:1px solid #ccc;}
+#jquerytopmenu ul.boutique_menu li ul li a {font-size:12px;font-weight:bold; color: #333; background:#e4e3e3; width: 160px; margin: 0; border: 0;text-align:left;}
+#jquerytopmenu ul.boutique_menu li ul li a:hover {font-size:12px;font-weight:bold; color: #333; background:#e4e3e3; width: 160px; margin: 0; border: 0;text-align:left;}
+#jquerytopmenu ul li a{padding:0px;}
+#jquerytopmenu ul li a, #jquerytopmenu ul li span{display: block; color:#666; padding:0 0px; text-decoration: none; background: url(/images/wordans2010/menu_separator.jpg) center right no-repeat;}
+#jquerytopmenu ul li a.blue {color:#0066ff; text-decoration:underline !important;}
+#jquerytopmenu ul li a.lastone { background:none;}
+#jquerytopmenu ul li img{ border:0;}
+/*IE6 hack to get sub menu links to behave correctly*/
+* html #jquerytopmenu ul li a{ display: inline-block; z-index:1;}
+#jquerytopmenu ul li a:link, #jquerytopmenu ul li a:visited { padding:0 0px; text-decoration: none;}
+#jquerytopmenu ul li a:hover{color: #333;}
+#jquerytopmenu ul li ul{position: absolute; left:0; display:block; visibility: hidden; z-index:10;}
+#jquerytopmenu ul li ul li{ display:inline-table; background:#fff; height:15px; text-align:left; z-index:10; padding:5px; clear:both; overflow:visible;}
+#jquerytopmenu ul li ul li a{ font-size:10px; color: #333; background:#fff; width:120px; margin:0; z-index:10;}
+#jquerytopmenu ul li ul li a:hover{ background:#fff; color: #0066ff; background-image:none; z-index:10;}
+#jquerytopmenu ul li ul li img {padding: 0px 0 0 0; vertical-align:middle;}
+
+/*MAIN MENU*/
+#jqueryslidemenu{float:left; width:915px; height:24px;background-image: url(../images/izishirt_design/images_home_header/menu_background.jpg);background-repeat:repeat-x;margin-top: 5px;position: relative;z-index: 10;}
+#jqueryslidemenu .top_li{height:24px;}
+#jqueryslidemenu ul{float:left; margin: 0; padding: 0; font-size:12px; font-weight:bold; margin-bottom: 1em; list-style:none;}
+#jqueryslidemenu li{ position: relative; display: inline; float: left;}
+#jqueryslidemenu ul li a{display: block; color:#000000;  text-decoration: none;border: 0;}
+#jqueryslidemenu ul li a:hover{border-color: #000;}
+/*#jqueryslidemenu ul li a{display: block; color:#ffffff; padding:8px 13px; text-decoration: none; background: url(/images/izishirt2011/menu_separator.jpg) center right repeat-y;}background-color: #f37e1f*/
+
+/*IE6 hack to get sub menu links to behave correctly*/
+* html #jqueryslidemenu ul li a{ display: inline-block; border-color: #000;}
+#jqueryslidemenu ul li ul li a:link, #jqueryslidemenu ul li ul li a:visited, #jqueryslidemenu ul li ul li a:hover{ font-size:12px; color: #000000; background:#ffffff; width: 120px; margin: 0; border: 0; padding:8px 16px !important;}
+#jqueryslidemenu ul li a:link, #jqueryslidemenu ul li a:visited {display: inline-block; padding:4px 16px 8px 16px !important;text-decoration: none;border-color: #000;}
+#jqueryslidemenu ul li a:hover{ background-color: #000; color: #ffffff;border-color: #000;}
+#jqueryslidemenu ul li ul{ position: absolute; left:0; display:block; visibility: hidden;border-bottom:1px solid #ccc;}
+#jqueryslidemenu ul li ul li{ display: list-item; background:#ffffff; border:1px solid #000;color:#000}
+
+#jqueryslidemenu ul li ul li a:hover{  background:#f5f5f5; color: #ef1010; background-image:none;border: 0; }
+#jquerytopmenu .ssl_lock img {display:block;float:left;}
+#jquerytopmenu .ssl_lock{float:right;border:1px solid #ccc;background:white;line-height:25px;vertical-align:middle;height:25px;margin-bottom:5px;padding:3px;margin-top:-5px;width:77px;}
+#jquerytopmenu .ssl_lock .text{float:left;line-height:25px;}

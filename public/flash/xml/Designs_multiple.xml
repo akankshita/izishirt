@@ -1,0 +1,100 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+
+<data>
+
+<categories>
+
+	<category id='0'>Tous les designs</category>
+
+	<category id='1'>Animaux</category>
+
+	<category id='2'>Abstrait</category>
+
+	<category id='3'>Classique</category>
+
+</categories>
+
+
+
+<artworks>
+
+	<!--<artwork category='1' id='1' path='killer_kooler' lockcolor='false' printtype='1' imagetype='vecto' minzoom='50' maxzoom='150' defaultzoom='100' rotation='0'>
+
+		<name>Killer Cooler</name>
+
+		<layers>
+
+		<layer id='1' color='5'></layer>
+
+		<layer id='2' color='6'></layer>
+
+		<layer id='3' color='7'></layer>
+		
+		<layer id='4' color='8'></layer>
+
+		</layers>
+
+	</artwork>-->
+
+	<!--<artwork category='1|2' id='10' path='malibu' lockcolor='false' printtype='1' imagetype='vecto' minzoom='50' maxzoom='150' defaultzoom='100' rotation='0'>
+
+		<name>Malibu</name>
+
+		<layers>
+
+			<layer id='1' color='1'></layer>
+
+			<layer id='2' color='2'></layer>
+
+			<layer id='3' color='3'></layer>
+
+			<layer id='4' color='4'></layer>
+
+		</layers>
+
+	</artwork>-->
+
+<artwork category='1|2' id='2' lockcolor='false' printtype='1' imagetype='pixel' minzoom='50' maxzoom='150' defaultzoom='100' rotation='0'>
+
+<name>Floral</name>
+
+</artwork>
+
+<!--<artwork category='1|2' id='4'  path='i_like_pork' lockcolor='false' printtype='2' imagetype='pixel' minzoom='50' maxzoom='150' defaultzoom='100'>
+
+<name>Pork</name>
+
+</artwork>-->
+
+<artwork category='2' id='3' lockcolor='false' printtype='1' imagetype='pixel' minzoom='50' maxzoom='150' defaultzoom='100' rotation='0'>
+	
+<name>All City</name>
+
+</artwork>
+
+<artwork category='1' id='4' lockcolor='false' printtype='1' imagetype='pixel' minzoom='50' maxzoom='150' defaultzoom='100' rotation='0'>
+
+	
+<name>Hot Rod</name>
+
+</artwork>
+
+
+<artwork rotation="0" defaultzoom="100" lockcolor="false" printtype="1" category="4" imagetype="pixel" id="5" minzoom="50" path="1" maxzoom="150">
+<name>Pride</name>
+−
+	<layers>
+<layer color="1" id="1"/>
+<layer color="2" id="2"/>
+<layer color="3" id="3"/>
+<layer color="4" id="4"/>
+</layers>
+</artwork>
+
+
+
+</artworks>
+
+
+
+</data>

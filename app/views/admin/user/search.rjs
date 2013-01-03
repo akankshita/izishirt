@@ -1,0 +1,2 @@
+page[:listing].replace_html :partial => 'listing'
+page[:listing].visual_effect :highlight 

@@ -1,0 +1,24 @@
+<%= I18n.t(:send_mail_order_salutation, :locale => Language.find(@order.language_id).shortname) %> <%= @order.fullname %>,<br />
+<br />
+
+<%= I18n.t(:mail_custom_coupon_1, :locale => Language.find(@order.language_id).shortname, :order_id => @order.id) %>.<br />
+<%= I18n.t(:mail_custom_coupon_5, :locale => Language.find(@order.language_id).shortname) %> <%= @coupon.code %>.<br />
+
+
+<%= I18n.t(:mail_custom_coupon_3, :locale => Language.find(@order.language_id).shortname) %> <%= @value %>.<br /><br />
+
+<% if @coupon.standard_shipping_free %>
+	<strong><%= I18n.t(:mail_custom_coupon_4, :locale => Language.find(@order.language_id).shortname) %></strong>
+<% end %>
+
+<br /><br /><br />
+<%= I18n.t(:mail_custom_coupon_2, :locale => Language.find(@order.language_id).shortname) %>.<br />
+
+<p>
+
+<%= I18n.t(:sendmail_social_networks, :locale => Language.find(@order.language_id).shortname) %><br />
+Customer Support | Izishirt<br/>
+Twitter: <a href="http://twitter.com/izishirt">http://twitter.com/izishirt</a><br />
+Facebook: <a href="http://facebook.com/pages/IziShirt/223576667655075">http://facebook.com/pages/IziShirt/223576667655075</a><br />
+Blog: <a href="http://www.izishirtblog.com/">http://www.izishirtblog.com/</a>
+</p>

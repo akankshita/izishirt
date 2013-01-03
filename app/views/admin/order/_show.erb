@@ -1,0 +1,533 @@
+<%= dhtml_calendar_includes %>
+
+
+
+<h1>Order Details <%=link_to("(View History)", :controller => 'admin/order', :action => 'history', :id => @order.id)%></h1>
+<span style="color:green">
+  <% if flash[:info] %>
+    <p><%= flash[:info] %></p>
+  <% end %>
+</span>
+
+<span style="color:red">
+  <% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+  <% end %>
+</span>
+
+	<% if @order.extra_comment && @order.extra_comment != "" %>
+		<div class="titleForm"></div>
+		<div class="boxForm" style="width: 700px; color: #c3c100;">
+		<%= @order.extra_comment %>
+		</div>
+	<% end %>
+
+	  <div class="titleForm"><label><%= t(:admin_order_show_id) %>:</label></div>
+	  <div class="boxForm" style="width: 700px;">
+		<table style="width: 700px;">
+			<tr>
+				<td valign="top" style="width: 20%; text-align: left;"><%= @order.id %></td>
+				<td style="width: 80%; text-align: right">
+					<%= submit_tag t(:admin_order_save), :type => "button", :onclick => "$('order_form').submit();", :style => "background-color: green; color: white; font-size: 16px; width: 150px; height: 40px;" %></td>
+			</tr>
+		</table>
+	</div>
+
+	<%
+	begin
+		if ! @order.total_price || @order.total_price == 0.0
+			perc_to_affiliates = 0.0
+		else
+			perc_to_affiliates = (@order.amount_to_affiliates / @order.total_price) * 100.0
+		end
+	rescue
+		perc_to_affiliates = 0.0
+	end
+	%>
+
+
+		      <div class="titleForm">
+				<label><%= t(:admin_order_show_total_price) %>:</label>
+			</div>
+		      <div class="boxForm">
+			<%= number_to_currency_custom(@order.total_price, {:currency => @order.currency.label}) %> <%= ((!@order.paypal_transaction && !@order.payment_transaction) || (@order.paypal_transaction && !@order.payment_transaction && @order.paypal_transaction.length == 0)) ? "(AMEX)" : "" %>
+			</div>
+
+
+
+  <div class="titleForm"><label><%= t(:admin_order_statistics) %>:</label></div>
+  <div class="boxForm">
+  <p><%= t(:admin_order_nb_tshirts) %>: <%= @nb_tshirts %></p>
+  <p><%= t(:admin_order_nb_artworks) %>: <%= @nb_artworks %></p>
+	  
+	  <p></p>
+
+
+
+</div>
+
+	<% form_tag({:controller => "order", :action => 'send_again_confirmation_order_email', :id => params[:id]}, {:multipart=>true, :name => 'confirmation_email_form', :id => "confirmation_email_form" }) do %>
+
+		<div class="titleForm"></div>
+		<div class="boxForm">
+		  <%= submit_tag t(:admin_order_details_send_again_user_order_email), :confirm => "Are you sure ?" %><br />
+		  
+		</div>
+		
+	<% end %>
+
+
+
+  
+  <% form_tag({:controller => "order", :action => 'update', :id => params[:id], :page => params[:page]}, {:multipart=>true, :name => 'order_form', :id => "order_form" }) do %>
+
+
+
+
+	  <div class="titleForm"><label><%= t(:admin_order_show_created_on) %>:</label></div>
+	  <div class="boxForm">
+	  	
+		<%= calendar_box 'custom', 'new_created_on',
+          { :class => 'date',
+            :field_title => 'Created on',
+            :form_name => 'order_form',
+            :button_title => 'Show calendar' },
+            { :firstDay => 1,
+              :range => [2000, 2020],
+              :step => 1,
+              :showOthers => true,
+              :cache => true } %>
+		
+		<%= @order.created_at %>
+	   </div>
+
+	<% # if @user_is_artwork_member && @exists_artwork_assignment %>
+	<% if @user.can_do("admin_order_management_show_artwork_state") && @artwork_assignment %>
+		<div class="titleForm"><%= t(:admin_order_artwork_state) %></div>
+		<div class="boxForm"><%= select_tag "artwork_assignment[state]", options_for_select(@artwork_order_assignment_states, @artwork_assignment.artwork_order_assignment_state_id) %></div>
+	<% end %>
+
+
+
+
+      <div class="titleForm"><label><%= t(:admin_order_show_status) %>:</label></div>
+      <div class="boxForm">
+        <%= select 'order','status', Order.order_statuses_for_select(session[:language])%>
+      </div>
+
+
+	<div class="titleForm"><label>Tracking number:</label></div>
+      <div class="boxForm">
+        <%= text_field_tag 'order[tracking_number]', @order.tracking_number %>
+        <%= link_to_remote("Send", :url => { :controller=>"order",:action => "send_tracking_number",:id => params[:id]},:with =>'"tn="+$("order_tracking_number").value') %>
+        <span id='_feedback_mail_tracking_number' style="margin-left:5px;color:green;font-weight:bold;"></span><br/>
+      </div>
+
+
+	  <div class="titleForm"><label>Shipping Type:</label></div>
+	  
+	  <script language="javascript">
+	  	function checkForceRushOrders(shipping_type)
+		{
+			document.getElementById("order_rush_order").checked = shipping_type == <%= SHIPPING_EXPRESS %> || shipping_type == <%= SHIPPING_RUSH %> || shipping_type == <%= SHIPPING_RUSH_PICKUP %>;
+			
+		}
+	  </script>
+	  
+    <div class="boxForm">
+      <%= select("order", "shipping_type", @shipping_types, {}, {:onchange => "checkForceRushOrders(this.value);"} ) %>
+    </div>
+          
+	<div class="titleForm"><label>Rush Order:<br><font size='-2'>check to mark rush</font></label></div>
+	<div class="boxForm"><%=check_box "order", "rush_order", {}, true, false %></div>
+
+    
+	<div class="titleForm"><label>Artwork sent ?</label></div>
+	<div class="boxForm"><%=check_box "order", "artwork_sent", {}, true, false %></div>
+
+	<div class="titleForm"><label>Is reproduction ?</label></div>
+	<div class="boxForm"><%=check_box "order", "is_reproduction", {}, true, false %></div>
+
+
+		<div class="titleForm"><label><%= t(:admin_order_show_user) %>:</label></div>
+		<div class="boxForm"><%= @order.user.username %></div>
+      
+	<% # if ! @user_is_seller || @is_izishirt %>
+
+	<% if @user.can_do("admin_order_management_show_total_price") %>
+		      <div class="titleForm"><label><%= t(:admin_order_show_total_price) %>:</label></div>
+		      <div class="boxForm"><%= number_to_currency_custom(@order.total_price, {:currency => @order.currency.label}) %> <%= (!@order.paypal_transaction && !@order.payment_transaction) ? "(AMEX)" : "" %> <%= "PAID AMOUNT #{@order.true_amount_paid}" if @order.true_amount_paid %> </div>
+	<% end %>
+
+      
+
+
+            <div class="titleForm"><label><%= t(:checkout_address_custom_email_client_title) %>:</label></div>
+            <div class="boxForm"><input type="text" name='order[custom_client_email]' value="<%= @order.custom_client_email %>" /><br /></div>
+
+	<div class="titleForm">
+	</div>
+
+	<div class="boxForm">
+		<table>
+			<tr>
+				<td style="width: 50%; background-color: #ededed;">
+						  <div class="titleForm" style="width: 280px;"><label><%= t(:admin_order_show_shipping_address) %> (<strong style="color: blue;"><%= SHIPPING_FULL_NAMES[@order.shipping_type] %></strong>):</label></div>
+					      <% if @order.shipping %>
+					      <div class="boxForm" style="width: 300px; color:<%= Order.shipping_color(@order) %>">
+						<%= @order.shipping.name %> (<%= mail_to @order.email_client %>)<br/><br />
+						<span>Comp. name (for UPS): <%= @order.shipping.company_name %><br /></span>
+						<span><span class="editable_address" style="font-weight:bold;font-size: larger" id="<%=@order.id%>_shipping_name" ><%= @order.shipping.name%></span></span>
+						<br />
+						<span><span class="editable_address" id="<%=@order.id%>_shipping_address1"><%= @order.shipping.address1%></span></span>
+						<span><span class="editable_address" id="<%=@order.id%>_shipping_address2"><%= @order.shipping.address2 %></span></span>
+						<br />
+						<span><span class="editable_address" id="<%=@order.id%>_shipping_town"><%= @order.shipping.town %></span></span>, 
+						<span><span class="editable_address" id="<%=@order.id%>_shipping_province"><%= @order.shipping.province.nil? ? @order.shipping.province_name : @order.shipping.province.name %></span></span>
+						<br/>
+						<span><span class="editable_address" id="<%=@order.id%>_shipping_country"><%= @order.shipping.country.nil? ? @order.shipping.country_name : @order.shipping.country.name %></span></span>
+						<br/>
+						<span><span class="editable_address" style="font-weight:bold;font-size: larger" id="<%=@order.id%>_shipping_zip"><%= @order.shipping.zip%></span></span>
+						<br />
+							<span><span class="editable_address" style="font-weight:bold;font-size: larger" id="<%=@order.id%>_shipping_phone"><%= @order.shipping.phone %></span></span>
+						<br />
+					      </div>
+					      <% else %>
+						<div class="boxForm" style="width: 300px;"><%= @order.user.firstname + " " + @order.user.lastname%> (<%= mail_to @order.email_client %>)</div>
+						<div class="boxForm" style="width: 300px;">
+						<span style="color:red">Something went wrong! Address not found</span>
+						<br />
+						<span><span class="editable_address" style="font-weight:bold;font-size: larger" id="<%=@order.id%>_shipping_name" >Enter Shipping Name</span></span>
+						<br />
+						<span><span class="editable_address" id="<%=@order.id%>_shipping_address1">Enter Address</span></span>
+						<span><span class="editable_address" id="<%=@order.id%>_shipping_address2">Enter Appartment#</span></span>
+						<br />
+						<span><span class="editable_address" id="<%=@order.id%>_shipping_town">Enter City</span></span>, 
+						<span><span class="editable_address" id="<%=@order.id%>_shipping_province">Enter Province</span></span>
+						<br/>
+						<span><span class="editable_address" id="<%=@order.id%>_shipping_country">Enter Country</span></span>
+						<br/>
+						<span><span class="editable_address" style="font-weight:bold;font-size: larger" id="<%=@order.id%>_shipping_zip">Enter Zip</span></span>
+							<br />
+							<span><span class="editable_address" style="font-weight:bold;font-size: larger" id="<%=@order.id%>_shipping_phone"><%= @order.shipping.phone %></span></span>
+						<br />
+						</div>
+					      <% end %>
+				</td>
+
+				<td style="width: 50%; background-color: #e9f1fc;">
+
+					  <div class="titleForm"><label><%= t(:admin_order_show_billing_address) %>:</label></div>
+				      <% if @order.billing %>
+				      <div class="boxForm" style="width: 300px;">
+					<%= @order.billing.name %> (<%= mail_to @order.email_client %>)<br/><br />
+					<span><span class="editable_address" style="font-weight:bold;font-size: larger" id="<%=@order.id%>_billing_name" ><%= @order.billing.name%></span></span>
+					<br />
+					<span><span class="editable_address" id="<%=@order.id%>_billing_address1"><%= @order.billing.address1%></span></span>
+					<span><span class="editable_address" id="<%=@order.id%>_billing_address2"><%= @order.billing.address2 %></span></span>
+					<br />
+					<span><span class="editable_address" id="<%=@order.id%>_billing_town"><%= @order.billing.town %></span></span>, 
+					<span><span class="editable_address" id="<%=@order.id%>_billing_province"><%= @order.billing.province.nil? ? @order.billing.province_name : @order.billing.province.name %></span></span>
+					<br/>
+					<span><span class="editable_address" id="<%=@order.id%>_billing_country"><%= @order.billing.country.nil? ? @order.billing.country_name : @order.billing.country.name %></span></span>
+					<br/>
+					<span><span class="editable_address" style="font-weight:bold;font-size: larger" id="<%=@order.id%>_billing_zip"><%= @order.billing.zip%></span></span>
+					<br />
+						<span><span class="editable_address" style="font-weight:bold;font-size: larger" id="<%=@order.id%>_billing_phone"><%= @order.billing.phone%></span></span>
+					<br />
+					  </div>
+				      <% else %>
+					<div class="boxForm" style="width: 300px;"><%= @order.user.firstname + " " + @order.user.lastname%> (<%= mail_to @order.email_client %>)</div>
+					<div class="boxForm" style="width: 300px;">
+					<span style="color:red">Something went wrong! Address not found</span>
+					<br />
+					<span><span class="editable_address" style="font-weight:bold;font-size: larger" id="<%=@order.id%>_billing_name" >Enter Billing Name</span></span>
+					<br />
+					<span><span class="editable_address" id="<%=@order.id%>_billing_address1">Enter Address</span></span>
+					<span><span class="editable_address" id="<%=@order.id%>_billing_address2">Enter Appartment#</span></span>
+					<br />
+					<span><span class="editable_address" id="<%=@order.id%>_billing_town">Enter City</span></span>, 
+					<span><span class="editable_address" id="<%=@order.id%>_billing_province">Enter Province</span></span>
+					<br/>
+					<span><span class="editable_address" id="<%=@order.id%>_billing_country">Enter Country</span></span>
+					<br/>
+					<span><span class="editable_address" style="font-weight:bold;font-size: larger" id="<%=@order.id%>_billing_zip">Enter Zip</span></span>
+						<br />
+						<span><span class="editable_address" style="font-weight:bold;font-size: larger" id="<%=@order.id%>_billing_phone"><%= @order.billing.phone%></span></span>
+					<br />
+					</div>
+				      <% end %>
+
+				</td>
+			</tr>
+
+			<tr>
+				<td><%= t(:admin_order_show_language) %>: <%= @order.language.name if @order.language %></td>
+				<td></td>
+			</tr>
+
+		</table>
+	</div>
+
+	  
+
+	<br/>
+
+
+        <%= render :partial => "print_ordered_products_pagination" %>
+
+        <br />
+
+		<% for prod in @ordered_products %>
+
+                <% if prod.is_extra_garment
+                    next
+                   end
+                %>
+
+
+
+        <% begin %>
+        <% if @order.confirmed == true and prod.model && prod.model.custom_store_type == 'sunglasses' && prod.model.active == true %>
+            <% prod.model.active = false %>
+            <% prod.model.save %>
+        <% end %>
+        <% rescue %>
+        <% end %>
+
+		  <div class="titleForm"><label> </label></div>
+		  <div class="boxForm">
+                    <hr>
+                  </div>
+
+                  
+			<div class="titleForm"><label><%= t(:admin_orders_show_product_id) %>:</label></div>
+			<div class="boxForm">
+				<%= prod.id %>
+			</div>
+				  
+                  <% # if ! @user_is_seller || @is_izishirt %>
+		<% if @user.can_do("admin_order_management_show_view_product_price") %>
+			<div class="titleForm"><label><%= t(:admin_order_detail_product_price) %>:</label></div>
+			<div class="boxForm">
+			<%= number_to_currency_custom(prod.price) %> x <%= prod.quantity %> = <%= number_to_currency_custom((prod.price * prod.quantity)) %>
+			</div>
+		<% end %>
+				  
+                  <% # if ! @user_is_seller || @is_izishirt %>
+		<% if @user.can_do("admin_order_management_show_view_product_cost") %>
+			<div class="titleForm"><label><%= t(:admin_order_detail_product_cost) %>:</label></div>
+			<div class="boxForm">
+			<%= number_to_currency_custom(prod.cost_price) %> x <%= prod.quantity %> = <%= number_to_currency_custom((prod.cost_price * prod.quantity)) %>
+			</div>
+		<% end %>
+                <div class="titleForm"><label><% if prod.is_blank %>
+            <strong>BLANK PRODUCT</strong>
+            <% end %></label></div>
+				  
+                  <div class="titleForm"><label>Active:</label></div>
+		  <div class="boxForm">
+                    <%= check_box_tag "ordered_product_#{prod.id}_active", prod.active ? 'true' : "false", prod.active, {:onchange => "this.value = (this.checked) ? 'true' : 'false';"} %>
+                  </div>
+                  
+
+
+		  <div class="titleForm"><label>Description:</label></div>
+		  <div class="boxForm">
+			  <table cellspacing="0" cellpadding="3" border="0" width="100%">
+                <tr>
+                  <td>
+					  <%#= text_field_tag "ordered_product_#{prod.id}_quantity", prod.quantity, :size => 5 %>
+					<%= prod.quantity %>
+                  </td>
+                  <td>
+                  	
+					  <%#= select_tag "ordered_product_#{prod.id}_model_id", options_for_select(@models, prod.model_id), {:style => "swi; width: 300px;", :onchange => remote_function(:url => { :action => 'refresh_for_model', :id => prod.id, :model_modified => true }, :complete => "", :with => "Form.serialize(this.form)") + ";" } %>
+					<%= prod.model.local_name(session[:language_id]) if prod.model %>
+					<br />
+                  </td>
+                  <td>
+                  		<div id="<%= "product_#{prod.id}_color_block" %>">
+                  			<%#= render :partial => "/admin/order/select_color", :locals => {:prod => prod, :model_modified => false } %>
+					<%= prod.color.local_name(session[:language_id]) if prod.color %>
+				</div>
+                  </td>
+                  <td>
+                      <div id="<%= "product_#{prod.id}_size_block" %>">
+                        <%#= render :partial => "/admin/order/select_size", :locals => {:prod => prod, :model_modified => false, :new_model => nil } %>
+			<%= prod.model_size.local_name(session[:language_id]) if prod.model_size %>
+                      </div>
+                  </td>
+                  <td id="garments_ordered_qty_not_received_<%= prod.id %>">
+                      <% if false && @user_is_production_manager && ((prod.garments_ordered && ! prod.reordered?) || ! prod.back_order?) %>
+                        <%#= select_tag "ordered_product_#{prod.id}_qty_not_received", options_for_select([["# not received", 0]] | (1..prod.quantity).map{|q| [q, q]}) %><br />
+                      <% end %>
+                  </td>
+
+                  <td id="garments_ordered_modifier_<%= prod.id %>">
+                    <% if false && prod.garments_ordered && @user_is_production_manager && ! prod.reordered? && ! prod.back_order? %>
+                      <a href="javascript:reorder('<%= prod.id %>','<%= prod.garments_ordered %>','false', $('ordered_product_<%= prod.id %>_qty_not_received').value)">Set to unordered</a>
+                    <% end %>
+                  </td>
+
+                  <td id="garments_back_order_modifier_<%= prod.id %>">
+                    <% if false && prod.garments_ordered && @user_is_production_manager && ! prod.back_order? %>
+			<a href="javascript:back_order('<%= prod.id %>','false','true', $('ordered_product_<%= prod.id %>_qty_not_received').value)">Back order</a>
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="6">
+                  	Garment Expected: 
+					<% if ! prod.garment_in_stock_at_printer %>
+						<%= prod.expected_date %> <%= prod.supplier_name %>
+					<% else %>
+						<%= t(:admin_order_show_already_in_stock) %>
+					<% end %>
+
+                        <p style="background-color: <%= prod.garments_state_color %>;">
+                          <% if prod.garment_listing %>
+                            <%= link_to "Garment state: #{prod.garments_state_str}", :controller => "ordered_garments", :action => "print_order_garment_listing", :id => prod.garment_listing.id %>
+                          <% else %>
+                            Garment state: <%= prod.garments_state_str %>
+                          <% end %>
+                        </p>
+
+
+
+			
+			<% if prod.out_of_stock? %>
+				<p>
+					<h2 style="color: red;">* OUT OF STOCK *</h2>
+				</p>
+			<% end %>
+		</td>
+                </tr>
+              </table>
+
+              <% zones = ['front', 'back', 'left', 'right'] %>
+              <table cellspacing="0" cellpadding="3" border="0" width="75%">
+              <% zones.each_index do |zone_type| %>
+                <%= (@order.bulk_order? && @user.can_do("admin_order_management_show_product_print_infos")) || (zone_type == 0 || zone_type == 2) ? "<tr>" : ""%> 
+                  <% 
+                    basepath = 'public'
+                    webpath = "/izishirtfiles/#{path_ordered_product(prod.created_on)}/#{prod.checksum.to_s }/#{prod.checksum.to_s}-#{zones[zone_type]}.jpg"
+                  %>
+                  <% 
+						# if File.exist?(basepath+webpath) 
+					%>
+                    
+                    <%zone=prod.ordered_zones.find_by_zone_type(zone_type+1)%>
+                    <td style="text-align:center;" valign="top">
+                      <% if zone && zone.contains_artwork_or_text() %>
+                        
+                        <p><b><%= ordered_product_zone_id_from_products(@order.ordered_products, zone) %></b></p>
+
+                      <%
+                        else
+                          %>
+                        <p><b><font color="white">|</font></b></p>
+                          <%
+                        end
+                      %>
+
+						<% if File.exist?(basepath+webpath) %>
+	                      <%= image_tag(webpath, :size => '250x250') %><br />
+						  <label><%=zones[zone_type]%></label><br />
+						<% elsif zone %>
+							<label><%=zones[zone_type]%></label><br />
+						<% end %>
+
+
+                      <p>
+                      </p>
+
+                    </td>
+
+</tr>
+              <%end%>
+              </table>
+
+              
+		  </div> 
+		<% end %>
+
+          <%= render :partial => "print_ordered_products_pagination" %>
+
+	  <% if(@order.custom_order == true) %>	
+		   <% if(DoesCustomDirExist(@order.id.to_s) == true) %>
+			   <% 
+			  file1=CustomFilePath(@order.id.to_s,'1')
+			  if(file1 != '') 
+			  %>	
+			  <div class="titleForm"><label>file 1:</label></div>
+			  <div class="boxForm"><a href='<%=file1%>'>file 1</a></div>
+			  <% end %>
+			  
+			  <%
+			  file2=CustomFilePath(@order.id.to_s,'2')	  
+			  if(file2 != '') 
+			  %>	
+			  <div class="titleForm"><label>file 2:</label></div>
+			  <div class="boxForm"><a href='<%=file2%>'>file 2</a></div>
+			  <% end %>
+		  <% end %>
+	  <% end %>
+
+          
+	  
+		<div class="titleForm">&nbsp;</div>
+<div class="boxForm">
+		<a href="#izishirt" class="textLink" onclick="javascript:window.open('/admin/order/print/<%= params[:id]%>?page=<%= params[:page] %>'); void(0)">PRINT</a>
+		<a href="/admin/order/invoice/<%= params[:id]%>" class="textLink">INVOICE</a>
+		<%= submit_tag t(:admin_order_save), :style => "background-color: green; color: white; font-size: 16px; width: 150px; height: 40px;" %>
+</div>	
+
+	<% end %>
+
+<div id="comments">
+
+	<% 
+	cond_file_hist = (@user_is_artwork_member || @user_is_production_manager) ? "" : "str_id <> 'artwork'"
+	comment_types = CommentType.find(:all, :conditions => [cond_file_hist], :order => "my_order ASC")
+	%>
+
+  <%= render :partial => "/admin/order/order_comments", :locals => {:comment_types => comment_types} %>
+</div>
+
+<p><br /></p>
+<p><br /></p>
+<p><br /></p>
+<p><br /></p>
+<p><br /></p>
+<p><br /></p>
+<p><br /></p>
+<p><br /></p>
+
+<script language="JavaScript">
+  Event.observe(window,'load',function(){
+    initialize_inline_edit();
+  });
+  
+  <% 
+
+	# for prod in @ordered_products 
+
+%>
+
+        <% # if prod.is_extra_garment
+           # next
+           # end
+        %>
+
+          // if (document.getElementById("ordered_product_<%#= prod.id %>_model_id"))
+          // {
+          //  document.getElementById("ordered_product_<%#= prod.id %>_model_id").value = <%#= prod.model_id %>;
+          //  new Ajax.Request('<%#= Language.print_force_lang(params[:lang]) %>admin/order/refresh_for_model/<%#= prod.id %>?model_modified=true&init=true', {asynchronous:true, evalScripts:true, onComplete:function(request){}, parameters:Form.serialize($("order_form"))});
+          // }
+	<%
+	# end
+	%>
+</script>
+
+

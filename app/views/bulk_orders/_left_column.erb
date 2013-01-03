@@ -1,0 +1,8 @@
+<%= render :partial=>"/layouts/generic_boxes/info_assistance", :locals=>{:info_shipping=>false,:info_garment=>false} %>
+   
+<div id="btn_order_online">
+  <%= link_to((image_tag "izishirt2011/#{session[:language]}/less50.jpg") , {:controller=>'/display',:action=>"create_tshirt"}, :title=>t(:btn_order_online))%>
+</div>
+
+
+

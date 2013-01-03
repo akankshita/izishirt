@@ -1,0 +1,9 @@
+<h1><%= t(:myizishirt_profile_edit_toptitle) %></h1>
+
+<% form_tag :action => 'update', :id => @profile do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Edit' %>
+<% end %>
+
+<%= link_to t(:myizishirt_myshop_show), :action => 'show', :id => @profile %> |
+<%= link_to t(:myizishirt_myshop_back), :action => 'list' %>

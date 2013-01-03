@@ -1,0 +1,354 @@
+@import  url("./rc_admin.css");
+
+/*
+1. rc_admin.css - Rounded corners for admin part (rounded corners images are inside /images/crn/ )
+2. admin_color.css  - Custom stuff and colors for the admin part
+
+*/
+
+html {overflow-x: auto; overflow-y: scroll; height: 100%;  }
+body {	margin: 0;	padding: 0;	}
+form {	border: 0;	margin: 0;	padding: 0;}
+img { border: 0px;}
+input, select {font-size:11px; }
+.editable_color,.editable_model, .garment_table{
+}
+
+
+/* << SITE Sizes */
+
+	.pageholder {width:914px; padding:10px 35px 0 35px; }
+	.innerholder {width:1155px; padding-left:20px;  padding-top:10px; margin:0 auto;}
+	#left {width: 200px;	}
+	.innerContent { margin: 0 0px 0 35px; width:690px ; float:left ;}
+	.sidebar_admin { width: 200px;}
+	
+
+/*  SITE Sizes >> */
+
+/*  header */
+
+.top {	 margin:0; padding:0; }
+#header {	position: relative;	overflow: hidden;	width:1000px; margin:0 auto; }
+#skin {color:#999999; margin-bottom:5px}
+
+menu a { margin-left: 10px; color: #a2a2a2; }
+
+/* Left  */
+
+#left {float: left;}
+.leftbar {position:relative; height:100%;  padding-top:-1px; background:#fff;}
+.leftbar .rbtm { position:absolute; left:0; }
+.sidemodule { margin-bottom:10px }
+.sidemodule h1 {margin:0; line-height:30px; font-size:13px; padding:0 0 0 10px}
+.sidemodule a {display:block; font-size:11px; text-decoration:none; font-weight:bold; line-height:18px; padding:0 0 0 10px }
+html>body .sidemodule a:hover span { display:block; line-height:18px; padding-left:3px}
+
+.sidebar_admin {position:relative; height:100%;}
+.sidebar_admin .rbtm {position:relative;  }
+.sidebar_admin h2 {line-height:30px; padding:0; margin:5px  0 0 0; font-size:15px; padding-left:20px  }
+
+.sidebar_admin .adminmenu { margin:0 10px 0 10px}
+.sidebar_admin .adminmenu a {display:block;  line-height:25px;  padding-left:5px; text-decoration:none; font-size:11px; margin-bottom:1px}
+.sidebar_admin .adminmenu a:hover,
+.sidebar_admin .adminmenu .mactive { padding-left:7px;}
+.sidebar_admin .adminmenu .submenu a {padding-left:8px; line-height:22px;  font-weight:normal}
+.sidebar_admin .adminmenu .submenu a:hover { padding-left:11px}
+
+
+/* Center Part */
+
+.small_calendar {line-height: 50px;}
+
+.adminsearch {display:block; line-height:24px; width:170px; float:right}
+.adminsearch .input {font-size:11px; margin:4px 4px 0px 10px; width:115px; }
+.adminsearch .button  { margin-top:4px; margin-left:2px; width:18px; height:18px}
+.adminsearch input {float:left}
+
+.tableheader {position:relative; height:100%;  }
+.tableheader .rbtm {}
+
+.admintable {font-size:12px;}
+.admintable {width:850px;}
+#categories li,
+#faqs li{  line-height:25px; padding-top:3px; padding-left:5px}
+#evaluations li{  line-height:25px; padding-top:3px; padding-left:5px}
+.admintable a:hover {}
+.admintable td {padding-left:7px}
+.admintable .odd {}
+.admintable .odd td {}
+.admintable th {padding-left:7px; text-align:left; line-height:25px; }
+.admintable th a {text-decoration:none}
+.admintable img {vertical-align:middle; }
+.admintable img:hover {filter:alpha(opacity=70); -moz-opacity:.70; opacity:.70;}
+.admintable h1 {font-size:18px;  margin:10px 0 10px 0; padding:0 0 3px 0}
+.admintable h1 #info_clt{font-size: 12px;text-align: right;float: right;}
+.admintable .rush_order td{background: #FFA500}
+.admintable .vip td{background: #ff4f4f}
+.admintable .is_24_hours td{background: #a8ff90}
+.admintable .xmas td{background: #12b118; color:#fff}
+.admintable .reordered td{background: #999999; color:#fff}
+.admintable .critical td{background: #861713; color:#fff}
+.admintable .bulk td{background: #FFFF22; color:#000}
+.admintable .quote_th{border: 0px;background-color: #fff;color: #666;width: 300px;}
+.listing-submenu a{ }
+.editable_address {font-size:14px;}
+
+a.icoEdit {background: url(../images/admin/icoEdit.png) no-repeat center;}
+a.icoDelete {background: url(../images/admin/icoDelete.png) no-repeat center;}
+a.icoSearch {background: url(../images/admin/icoSearch.png) no-repeat center;}
+a.icoSend {background: url(../images/admin/icoSend.png) no-repeat center;}
+
+.icoEdit,
+.icoDelete,
+.icoSearch,
+.icoSend,
+.textLink { width:20px; height:20px; text-decoration:none; padding:2px 7px}
+
+.addedituser td {font-size:11px}
+.addedituser input[type="text"],
+.addedituser input[type="password"],
+.addedituser .ddbox select { width:200px; }
+.addedituser .ddbox select {padding:1px }
+
+.admintabs {padding: 3px 0; margin:15px 0 0 0; list-style-type: none; text-align: left; ; font-size:11px}
+.admintabs li{display: inline;margin: 0; }
+.admintabs li a{text-decoration: none; padding: 3px 10px;margin-right: 2px; }
+.admintabs li a:hover{}
+.admintabs li.tab_active{position: relative;top: 1px;}
+.admintabs li.tab_active a{}
+.admintabs li.tab_active a:hover{ }
+
+.admintabs li.tab_invisible{display: none; position: relative;top: 1px;}
+.admintabs li.tab_invisible a{}
+.admintabs li.tab_invisible a:hover{ }
+
+.localized_tab_content {  margin:0; padding:0}
+
+
+/*EDIT PAGE*/
+.listing-submenu a {	padding:  5px;}
+.titlePage{ }
+.topForms{float:left; margin-left:0px; width:100%;  margin-top:5px;}
+.sectionPage{ padding: 10px;}
+.adminform{  }
+.adminform h3 {padding:0 0 5px 130px;font-size:20px; line-height:30px;display:block; font-weight:normal; margin:0 }
+.titleForm{float:left; text-align:right; width: 130px; padding-right:8px; padding-top:11px; clear:both}
+.titleForm #line_product{float: left;border-top: solid 1px #999;width: 850px;}
+.titleForm h2{float: left;text-align: left;border-bottom: solid 1px #999;width: 850px;padding-bottom: 5px;}
+.marginForm{float: right;margin-right: 126px;border-bottom: 1px solid #ccc;width: 724px;}
+.marginForm form{float: right;}
+.marginForm .line_separation{float: right;border-top: 1px solid #ccc;margin-bottom: 4px;width: 850px;}
+.boxForm {float:left; width:500px; padding-left:5px; padding-top:10px;}
+.boxForm .link_order_now a{font-weight: bold;color: #0066cc;text-decoration: none;}
+.boxForm .box{ width:300px;   padding:2px; margin:0px 0px 3px 0px; }
+.boxForm .boxList{ padding:2px; margin:0px 0px 3px 0px;  width:150px;   }
+.box_product{float: left;margin-top: 10px;}
+.bottomForms{float:left; margin-left:0px; width:100%; margin-top:25px;}
+.btn{ margin-left:130px; }
+.buttonForm{ cursor:pointer;}
+.linesUnder{ }
+
+
+
+/* Fixed stuff */
+
+div.dist {  height: 2px;  font-size: 1px;  clear: both;  visibility: hidden;}
+.nohgh {height: 0;	font-size: 1px;	line-height: 0;	visibility: hidden;}
+.clear { clear: both }
+.rel {position:relative}
+.pad10 {padding:10px}
+.pad5 {padding:5px}
+.abs {position:absolute}
+.rel {position:relative}
+.fleft {float:left}
+.fright {float:right}
+.dnone {display:none}
+.mr10 {margin-right:10px}
+.ml10 {margin-left:5px}
+
+.error{ 
+	padding: 10px 0;
+    font-size:12px;
+    color:#ababab;
+    font-weight:bold;
+	text-align:center;
+}
+
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+.clearfix {height: 1%;}
+.clearfix {display: block;}
+
+
+/* Additions for Sub Categories */
+.sub_category {
+   height:22px;
+   width:300px;
+   position:relative;
+   padding-top:2px;
+}
+.sub_category_add_row{
+   height:28px;
+   width:300px;
+   position:relative;
+   padding-top:2px;
+}
+.sub_category_add_row a{
+   position:relative;
+   left:251px;
+}
+.sub_odd {
+   background-color:#ffffff;
+}
+.sub_category label {
+   height:22px;
+   float:left;
+   padding-left:4px;
+}
+.sub_name {width:200px;padding-top:1px;}
+.sub_active {padding-top:0px;}
+.sub_active img {padding-top:4px;}
+.sub_category a.sub_cat_link {
+   padding:0;
+   margin-left: 10px;  
+   float:right;
+}
+
+.keyword_img_wrapper{
+  border:1px solid black;
+  margin-top: 5px;
+  margin-right: 2px;
+  padding:4px;
+  width:200px;
+  float:left;
+}
+
+.keyword_checkbox_wrapper{
+  text-align:center;
+}
+
+.keyword_img{
+  width: 100px;
+  height: 100px;
+  float: left;
+}
+
+.keyword_img_desc{
+  float:right;
+  height:100px;
+}
+
+.keyword_img_wrapper p{
+  margin-top:2px;
+  margin-bottom:2px;
+}
+
+.keyword_img_desc p{ 
+  margin-top:2px;
+  margin-bottom:2px;
+}
+.red {color:#990000;}
+.bold{ font-weight:bold;}
+.smallTextArea{
+    height:200px;
+}
+
+.checkout_comment_box{
+    position:absolute;
+    left:950px;
+    width:200px;
+}
+.cancelled_shirt {
+  position:relative;
+  top:100px;
+  font-size:14px;
+  background-color:#666666;
+  color:#ffffff;
+}
+
+div.scrollable_comment {
+	height: 200px;
+	width: 600px;
+	overflow: auto;
+	border: 1px solid #666;
+	background-color: #ffffff;
+	padding: 8px;
+}
+
+/*Homepage*/
+.home_banner{float: left;text-align: left;width: 850px;}
+
+#banners_left form{float: left;width: 283px;}
+#banners_left .form2{float: left;width: 567px;}
+#banners_left .banner_img{float: left;width: 567px;}
+#banners_left h3{margin-bottom: 0;}
+
+#banner_right form{float: left;width: 283px;}
+#banner_right .form2{float: left;width: 567px;}
+#banner_right .banner_img{float: left;width: 567px;}
+#banner_right h2{margin-bottom: 0;}
+
+#banner_right{border: 0;}
+#banners_lang {text-align: right;}
+#banners_lang li{display: inline;float: left;position: relative;text-align: left;z-index: 999;}
+#banners_lang li a, #banners_lang li span{color: #666;display: block;}
+#banners_lang li a:link, #banners_lang li a:visited{padding: 0 5px;text-decoration: none;} 
+#banners_lang li ul{width: 116px;visibility: visible;left: 0px;width: 140px;display: none;margin-top: 0;padding-left: 10px;position: absolute;}
+#banners_lang li ul li{background: none repeat scroll 0 0 #FFFFFF;clear: both;display: inline-table;height: 15px;overflow: visible;padding: 5px;text-align: left;z-index: 10;}
+#banners_lang li ul li a:visited{padding: 0 5px;text-decoration: none;}
+#banners_lang li ul li img{padding: 2px 0 0;vertical-align: middle;}
+
+#banners_order #list1, #banners_order #list2 { width:350px; list-style-type:none; margin:0px; }
+#banners_order #list1 li, #banners_order #list2 li { float:left; padding:5px; width:100px; height:100px; }
+#banners_order #list1 div, #banners_order #list2 div { width:90px; height:50px; border:solid 1px black; background-color:#E0E0E0; text-align:center; padding-top:40px; }
+#banners_order #list2 { float:right; }
+#banners_order .placeHolder div { background-color:white !important; border:dashed 1px gray !important; }
+
+#banners_menu{float: left;width: 850px;margin-top: 10px;}
+#banners_menu ul{border: 0;margin: 0;padding: 0;}
+#banners_menu ul li{text-decoration: none;list-style: none;background-color: #74BBFD;color: #fff;padding: 5px 10px;float: left;cursor : pointer;width: auto;}
+
+.admin_model_sizes {clear:both;}
+.admin_delete_local_sizes {float:right;margin:20px 0;}
+.admin_add_model_size {margin-left:20px; margin-top:10px;}
+.admin_save_model_size {margin-left:20px; margin-top:40px;}
+.admin_model_sizes_wrapper {padding:20px;}
+.admin_model_size_form{ padding: 2px; float:left}
+.admin_model_size_form_label{ padding: 4px; float:left}
+.admin_size_type_wrapper label {float:left;}
+.admin_size_type_wrapper select {float:left;}
+.admin_size_type_wrapper input {float:left;}
+.admin_extra_cost_wrapper {padding-left:20px;width:750px;}
+
+
+#global_board{margin-top:150px;color:black;font-size:11px;position:relative;width:2000px;}
+#global_board tr{height:23px;}
+#global_board table{empty-cells: show}
+#global_board #sumitup{position:absolute;top:0;}
+#global_board #big_board{position:absolute;top:300px;margin-bottom:50px;}
+#global_board .sumup{margin-bottom:30px;float:left;margin-right:30px;}
+#global_board .sumup tr{background-color:#D4EDC9;color:black !important;font-weight:bold;}
+#global_board .sumup tr td{background-color:#D4EDC9;color:black !important;font-weight:bold;}
+#global_board .sumup tr .firstrow{background-color:#74BBFD;color:white;}
+#global_board .grey_back{background-color:#ccc;float:left;}
+#global_board .headers_board{font-weight:bold;text-align:center !important;}
+#global_board .headers_board .centered{background-color:#ccc;color:black;line-height:15px;border-bottom:0px !important;}
+#global_board .std_line{text-align:right;}
+#global_board .bordered{border:1px solid blue;font-weight:bold;}
+#global_board .std_line .value{background-color:white;}
+#global_board .first_col{text-align:left;width:200px;}
+#global_board .value{}
+#global_board .indent{text-align:center !important;font-style:italic;}
+#global_board .indent .first_col{text-align:center !important;}
+#global_board .top_line{background-color:rgb(0,204,255);font-weight:bold;border:2px solid black;}
+#global_board .top_line .value{}

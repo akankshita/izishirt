@@ -1,0 +1,19 @@
+<h1><%= t(:admin_image_edit_toptitle) %> <%= @image.name %> ID#<%= @image.id  %></h1>
+
+<%= render :partial => "image_preview" %>
+
+<% form_tag({:action => 'update', :id => @image.id, :redirect => 'edit' }, {:multipart=>true }) do %>
+
+
+
+	<%= render :partial => 'form', :locals => {:with_open_orig_image => false, :with_images => true, :with_state_selection => true, :with_decline_reason => true, :with_private_design => true, :with_always_private => true, :with_is_homepage => true, :with_username => true, :print_user_name => true, :with_tab_files => true, :with_swf => true, :with_jpg => true, :with_png => true, :with_staff_pick => false} %>
+
+<div id="action_buttons" style="display:block">
+	<div class="titleForm">&nbsp;</div>
+	<div class="boxForm">
+		<%= my_edit_form_buttons %>
+	</div>
+</div>
+<% end %>
+
+<%= render :partial => "tab_upload_files", :locals => {:with_delete => true, :upload_files_id => 0} %>

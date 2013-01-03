@@ -1,0 +1,1 @@
+page.replace_html 'shipping_type', :partial=>"shipping_options", :object=>{@country=>@country,@cart=>@cart, @province=>@province}

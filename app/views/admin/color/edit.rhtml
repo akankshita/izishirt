@@ -1,0 +1,11 @@
+<h1><%= t(:admin_color_list_toptitle)  + @color.localized_colors[0].name %></h1>
+
+<% form_tag({:action => 'update', :id => @color}, { :multipart=>true }) do %>
+	<div id="colorpicker301" class="colorpicker"></div>
+
+	<%= render :partial => 'form' %>
+	<div class="titleForm">&nbsp;</div>
+	<div class="boxForm">
+		<%= edit_form_buttons(@color.color_type_id) %>
+	</div>
+<% end %>

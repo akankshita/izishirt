@@ -1,0 +1,35 @@
+<%= I18n.t(:send_mail_order_salutation, :locale => Language.find(@order.language_id).shortname) %> <%= @order.fullname %>,<br />
+<br />
+
+<%= I18n.t(:sendmail_back_order_1, :locale => Language.find(@order.language_id).shortname) %><br /><br /><br />
+<%= I18n.t(:sendmail_back_order_2, :locale => Language.find(@order.language_id).shortname) %><br /><br />
+
+<ul>
+
+<% @order.products_in_back_order.each do |product| %>
+	<li><%= product[:model].local_name(@order.language_id) %>, <%= product[:color].local_name(@order.language_id) %>, <%= product[:model_size].local_name(@order.language.shortname) %></li>
+<% end %>
+
+</ul>
+
+<br /><br />
+<%= I18n.t(:sendmail_back_order_3, :locale => Language.find(@order.language_id).shortname) %><br /><br />
+
+<br />
+
+<%= I18n.t(:sendmail_back_order_4, :locale => Language.find(@order.language_id).shortname) %>
+
+<p>
+
+<%= I18n.t(:sendmail_social_networks, :locale => Language.find(@order.language_id).shortname) %><br />
+Production Department | Izishirt<br/>
+Twitter: <a href="http://twitter.com/izishirt">http://twitter.com/izishirt</a><br />
+Facebook: <a href="http://facebook.com/pages/IziShirt/223576667655075">http://facebook.com/pages/IziShirt/223576667655075</a><br />
+Blog: <a href="http://www.izishirtblog.com/">http://www.izishirtblog.com/</a>
+</p>
+
+www.izishirt.ca<br/>
+514 495 1771<br/>
+1625 Rue chabanel ouest, Montréal QC, H4N 2S7<br/>
+<br/>
+

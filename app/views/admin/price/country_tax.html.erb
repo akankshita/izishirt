@@ -1,0 +1,13 @@
+<h1>Select a Country to edit its tax rate</h1>
+<%= select "country", "id", Country.all.map{|c|[c.name, c.id]}%>
+
+<div id="details">
+  <%= render :partial => 'country_form'%>
+</div> 
+
+<%= observe_field 'country_id',
+  :url => { :action => :get_country },
+  :frequency => 0.5,
+  :update => :details,
+  :with => 'id'
+  %>

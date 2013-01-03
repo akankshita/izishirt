@@ -1,0 +1,72 @@
+<script language="JavaScript">
+function send_form() {
+        if ($('address').value == '') {
+          alert("<%= t(:validate_address) %>");
+        }
+        else if ($('phone').value == '') {
+          alert("<%= t(:validate_phone) %>");
+        }
+        else if ($('city').value == '') {
+          alert("<%= t(:validate_city) %>");
+        }
+        else if ($('zip').value == '') {
+          alert("<%= t(:validate_postal) %>");
+        }
+        else {
+         $('address_form').submit();
+        }
+}
+</script>
+<div class="pageholder">
+  <div id="checkout-container"> 
+    <div class="checkout-ship-spacer"></div>
+    <form action="<%= url_for(:controller => 'checkout', :action=>'gifts_payment') %>" method="post" name="address_form" id="address_form">
+      <h3><%= t(:address_header) %></h3>
+      <table border="0" cellspacing="0" cellpadding="0" align="center" class="cartaddress">
+        <tr>
+          <td valign="top"><%= t(:address_address) %> 
+            <span class="red">*</span><br />
+            <input type="text" name="address[address1]" id="address" value="" />
+          </td>
+          <td>
+              <%= t(:address_country) %> <span class="red">*</span>:<br />
+              <input type="text" name="address[country]" id="country" value="" />
+          </td>    
+        </tr>
+        <tr>
+          <td valign="top">
+            <%= t(:address_appt) %><br />
+            <input type="text" name="address[address2]" id="address2" value="" />
+          </td>
+          <td id='billing_province'>
+              <%= t(:address_province) %> <span class="red">*</span>:<br />
+              <input type="text" name="address[province]" id="province" value="" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= t(:address_phone) %> <span class="red">*</span><br />
+            <input type="text" name="address[phone]" id="phone" value=""/>
+          </td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <%= t(:address_city) %> <span class="red">*</span>:<br />
+            <input type="text" name="address[city]" id="city" value=""/></td>
+          <td>
+            <%= t(:address_postalcode) %> <span class="red">*</span>:<br />
+            <input type="text" name="address[zip]" id="zip" value=""/>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><span class="red">*</span> <%= t(:address_mandatoryfields) %></td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+      <div class="checkout_btn" align="center">
+        <a href="javascript:send_form();" class="checkout-button-validate-2"><%= t(:address_next) %></a> 
+      </div>
+    </form>
+  </div>
+</div>

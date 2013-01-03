@@ -1,0 +1,13 @@
+<h1>Blank model <strong>PROBLEMS</strong></h1>
+
+<table>
+	<tr>
+		<td>Model</td>
+	</tr>
+
+	<% @models.each do |model| %>
+		<tr>
+			<td><%= link_to model.local_name(session[:language_id]), :controller => "/admin/model", :action => "edit", :id => model.id %></td>
+		</tr>
+	<% end %>
+</table>

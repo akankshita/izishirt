@@ -1,0 +1,507 @@
+<style>
+      <style type="text/css">
+	  .selected {color:white; background-color:blue}
+	  .test1{border-style:dotted;height:50px;width:50px;color:black;position: relative;}
+	  .test2{border-style:dotted;height:100px;width:100px;color:black;position: relative;}
+	  .delete{left: -6px;position: absolute;top: 45px;cursor:pointer;}
+	  .resize{left: 44px;position: absolute;top: 44px;cursor:pointer;}
+	  .inner{border: 1px solid black; width:62%;height:90%;margin:auto;}
+	  .default { background-image: url("/../../images/izishirt2012/tshirt/white.png"); background-repeat: no-repeat;}
+	  .item { width: 346px; height: 356px; border: 1px solid #000; vertical-align: middle; margin: 20px; float:left ;}
+	  .red { background-image: url("/../../images/izishirt2012/tshirt/red.png");background-repeat: no-repeat;}
+	  .blue { background-image: url("/../../images/izishirt2012/tshirt/blue.png");background-repeat: no-repeat;}
+	  .orange { background-image: url("/../../images/izishirt2012/tshirt/orange.png");background-repeat: no-repeat;}
+	  .white { background-image: url("/../../images/izishirt2012/tshirt/white.png");background-repeat: no-repeat;}
+	  .green { background-image: url("/../../images/izishirt2012/tshirt/green.png");background-repeat: no-repeat;}
+	  .pink { background-image: url("/../../images/izishirt2012/tshirt/pink.png");background-repeat: no-repeat;}
+	  .yellow { background-image: url("/../../images/izishirt2012/tshirt/yellow.png");background-repeat: no-repeat;}
+	  .image { width: 100px;height: 100px; display:block; position: relative;}
+	 /* #text {width:500px;height:20px;display:block;color:white;font-weight:bolder;text-align:center}*/
+	  .form {margin-top:10px;float:left;}
+	  #container {width:960px;margin:0 auto;padding-top:25px;}	  
+	  body {
+	    background: url("images/color-bg.jpg") repeat-x left top;
+	  }
+      .canvas-container{ margin: 20px 21% !important; width: auto !important;  }
+      .well {
+min-height: 20px;
+padding: 19px;
+margin-bottom: 20px;
+background-color: whiteSmoke;
+border: 1px solid #E3E3E3;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.dropdown-menu {
+position: absolute;
+top: 100%;
+left: 0;
+z-index: 1000;
+display: none;
+float: left;
+min-width: 160px;
+padding: 5px 0;
+margin: 2px 0 0;
+list-style: none;
+background-color: white;
+border: 1px solid #CCC;
+border: 1px solid rgba(0, 0, 0, 0.2);
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+-webkit-background-clip: padding-box;
+-moz-background-clip: padding;
+background-clip: padding-box;
+}
+.canvas-container{ margin: 20px 15% !important; width: auto !important;  }
+</style>
+ <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<%#= javascript_include_tag "2012/bootstrap-colorpicker.js"%>
+
+<div class="innercontainer">
+	<div class="tshirtdesign">
+<div id="resizeimage">
+  <div id="canvas" class="item default">
+	  <canvas height="269" width="200" style="border:1px solid #000000;" id="myCanvas"></canvas>
+	    	<span><label>Tshirt Color</label>
+	  	  <select id="d_color" name="d_color" onchange="bchngimg();">
+			<option  value="red">Red</option>
+			<option value="blue">Blue</option>
+			<option value="orange">Orange</option>
+			<option value="white" selected="selected">White</option>
+			<option value="green">Green</option>
+			<option value="pink">Pink</option>
+			<option value="yellow">Yellow</option>
+		  </select>
+	</span>
+  <input type="button" name="delete" id="delete" value="Delete"/><input type="button" name="clear" id="clear" value="Clear All"/>
+  </div>
+  <!--img src="/../../images/izishirt2012/imgresize.png" width="377" height="375" alt=""-->
+</div>
+
+<div id="tabmenuright">
+ <div class="tab-box"> 
+    <a href="javascript:;" class="tabLink activeLink" id="cont-1">PRODUCTS</a> 
+    <a href="javascript:;" class="tabLink" id="cont-2">IMAGES</a> 
+    <a href="javascript:;" class="tabLink" id="cont-3">TEXT</a> 
+  </div>
+  
+  <div class="tabcontent paddingAll" id="cont-1-1"> 
+   <div class="scrollbg"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td><img src="/../../images/izishirt2012/tshirt_1.png" width="79" height="83"></td>
+		<td><img src="/../../images/izishirt2012/tshirt_2.png" width="83" height="83" alt=""></td>
+		<td><img src="/../../images/izishirt2012/tshirt_3.png" width="74" height="83" alt=""></td>
+		<td><img src="/../../images/izishirt2012/tshirt_4.png" width="82" height="83" alt=""></td>
+		<td><img src="/../../images/izishirt2012/tshirt_2.png" width="83" height="83"></td>
+		<td><img src="/../../images/izishirt2012/tshirt_1.png" width="79" height="83" alt=""></td>
+	</tr>
+	
+		<tr>
+			<td><img src="/../../images/izishirt2012/tshirt_1.png" width="79" height="83"></td>
+			<td><img src="/../../images/izishirt2012/tshirt_2.png" width="83" height="83" alt=""></td>
+			<td><img src="/../../images/izishirt2012/tshirt_3.png" width="74" height="83" alt=""></td>
+			<td><img src="/../../images/izishirt2012/tshirt_4.png" width="82" height="83" alt=""></td>
+			<td><img src="/../../images/izishirt2012/tshirt_2.png" width="83" height="83"></td>
+			<td><img src="/../../images/izishirt2012/tshirt_1.png" width="79" height="83" alt=""></td>
+		</tr>
+		
+		<tr>
+			<td><img src="/../../images/izishirt2012/tshirt_1.png" width="79" height="83"></td>
+			<td><img src="/../../images/izishirt2012/tshirt_2.png" width="83" height="83" alt=""></td>
+			<td><img src="/../../images/izishirt2012/tshirt_3.png" width="74" height="83" alt=""></td>
+			<td><img src="/../../images/izishirt2012/tshirt_4.png" width="82" height="83" alt=""></td>
+			<td><img src="/../../images/izishirt2012/tshirt_2.png" width="83" height="83"></td>
+			<td><img src="/../../images/izishirt2012/tshirt_1.png" width="79" height="83" alt=""></td>
+		</tr>
+	
+		</table>
+</div>
+
+  </div>
+  
+  <div class="tabcontent paddingAll hide" id="cont-2-1">
+	<div class="scrollbg">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td><img src="/../../images/izishirt2012/img/apple.png" width="79" height="83" class="myimg"></td>
+			<td><img src="/../../images/izishirt2012/img/pogo.png" width="83" height="83" alt="" class="myimg"></td>
+			<td><img src="/../../images/izishirt2012/img/smile.png" width="74" height="83" alt="" class="myimg"></td>
+			<td><img src="/../../images/izishirt2012/img/doll.png" width="79" height="83" class="myimg"></td>
+			<td><img src="/../../images/izishirt2012/img/emoji.png" width="83" height="83" alt="" class="myimg"></td>
+			<td><img src="/../../images/izishirt2012/img/toons.png" width="74" height="83" alt="" class="myimg"></td>			
+		</tr>
+	  </table>
+	</div>
+    
+  </div> 
+  
+<div class="tabcontent paddingAll hide" id="cont-3-1"> 
+  <div class="texttab">
+	<h3>Write and edit your text</h3>
+	<h3>Text : </h3>
+	<div class="formpadding"><label>Line1 : </label><input name="" type="text" class="inputtextbg" id="line1"></div>
+	<div class="formpadding">    <label>Line2 : </label><input name="" type="text" class="inputtextbg" id="line2"></div>
+	<!--div class="formpadding">    <label>Line3 : </label><input name="" type="text" class="inputtextbg" id="line3"></div>
+	<!--div class="formpadding" style="padding-left:190px;"><button class="searchbtn"> Select all text </button></div-->
+	<div class="formpadding">  </div>
+	<div class="fl_left"><h3>fonts</h3>
+	  <div class="formpadding">
+		<select name="font" class="selectbg" style="height:24px; line-height:20px;" id="font" >
+		  <option value="arial" style="font-family: arial">Arial</option>
+		  <option value="Times New Roman" style="font-family: Times New Roman">Times New Roman</option>
+		  <option value="Courier New" style="font-family: Courier New">Courier New</option>
+		  <option value="monospace" style="font-family: monospace">Monospace</option>
+		  <option value="fantasy" style="font-family: fantasy">Fantasy</option>
+		  <option value="Georgia" style="font-family: Georgia">Georgia</option>
+		  <option value="Serif" style="font-family: Serif">Serif</option>
+		  <option value="cursive" style="font-family: cursive">cursive</option>
+		</select>
+	</div>
+  </div>
+
+  <div class="fl_left" style="padding-left:15px;"><h3>Font Color</h3>
+	<div class="formpadding11"> <input type="text" value="#8fff00" id="font_color"  /> </div>
+  </div>
+    
+  <div class="clear"></div>
+  <div class="formpadding">
+	<div class="fl_left">
+	  <h3>Font Size</h3>
+	  <select name="fontsize" class="selectbg" style="height:20px; width:85px; line-height:16px;" id="fontsize" onchange="change_fontSize(this.value);">
+		 <option value="10" style="font-size: 10px">10px</option>
+		 <option value="12" style="font-size: 12px">12px</option>
+		 <option value="14" style="font-size: 14px">14px</option>
+		 <option value="16" style="font-size: 16px">16px</option>
+		 <option value="18" style="font-size: 18px">18px</option>
+		 <option value="20" style="font-size: 20px">20px</option>
+		 <option value="21" style="font-size: 21px">21px</option>
+		 <option value="22" style="font-size: 22px">22px</option>
+		 <option value="23" style="font-size: 23px">23px</option>
+		 <option value="24" style="font-size: 24px">24px</option>
+		 <option value="25" style="font-size: 25px">25px</option>
+		 <option value="26" style="font-size: 26px">26px</option>
+	  </select>
+	</div>
+	<div class="fl_left" style="padding:0px 29px;">
+	  <h3>Align</h3>
+	  <input type="hidden" name="textalign" id="textalign" value="bold" />
+	  <div class="fl_left"><a href="javascript: void(0)" class="active" onclick="text_style('left');"><img src="/../../images/izishirt2012/align_left.png" width="14" height="13" alt=""></a></div>
+	  <div class="fl_left" style="margin:0px 10px;"><a href="javascript: void(0)" class="active" onclick="text_style('center');"><img src="/../../images/izishirt2012/align_centere.png" width="14" height="13" alt=""></a></div>
+	  <div class="fl_left"><a href="javascript: void(0)" class="active" onclick="text_style('right');"><img src="/../../images/izishirt2012/align_righ.png" width="14" height="13" alt=""></a></div>
+	</div>
+	<div class="fl_left">
+	  <h3>Size</h3>
+	  <input type="hidden" name="tsize" id="tsize" />
+	  <div class="fl_left"><a href="javascript: void(0)" class="active" onclick="text_astyle('bold');"><img src="/../../images/izishirt2012/bold.png" width="12" height="12" alt=""></a></div>
+	  <div class="fl_left" style="margin:0px 10px;"><a href="javascript: void(0)" class="active" onclick="text_astyle('italic');"><img src="/../../images/izishirt2012/ittalic.png" width="12" height="12" alt=""></a></div>
+	  <div class="fl_left"><a href="javascript: void(0)" class="active" onclick="text_astyle('underline');"><img src="/../../images/izishirt2012/underline.png" alt=""></a></div><br />
+	  <button id="addtext" name="addtext" class="searchbtn">Add Text</button>
+	</div>
+  </div>
+</div>
+   
+</div> 
+ 
+  
+  <div class="searchbg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="realative" width="33%"><input name="" type="text" class="tabmenusearch" placeholder="Search for designs">
+			<div class="absulete"><a href="#"><img src="/../../images/izishirt2012/searchimg.png" width="27" height="28" alt=""></a></div></td>
+		<td width="33%" style="padding-left:28px;"><select name="" class="selectbg" style="height:28px; line-height:24px;" ><option>All Products</option><option>All Products</option></select></td>
+		<td width="33%" align="right"><a href="#"><img src="/../../images/izishirt2012/btn_upload.png" width="129" height="47" alt=""></a></td>
+	</tr>
+</table>
+</div>
+
+
+  
+  
+  
+</div>
+
+</div>
+
+
+<div class="innercontainermiddile">
+
+<div class="innerleftpart"><img src="/../../images/izishirt2012/img13.png" width="473" height="23" alt=""><br>
+<br>
+<table width="91%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td><img src="/../../images/izishirt2012/color.png" width="535" height="60" alt=""></td>
+		<td class="doller"><strong>$j99</strong></td>
+	</tr>
+	<tr>
+		<td>
+		<div class="tshirtsize">
+		<strong>Size :&nbsp;</strong>
+		<div class="sizebox"><input name="" type="text" class="sizediv">S</div>
+		<div class="sizebox"><input name="" type="text" class="sizediv">M</div>
+		<div class="sizebox"><input name="" type="text" class="sizediv">L</div>
+		<div class="sizebox"><input name="" type="text" class="sizediv">XL</div>
+		<div class="sizebox"><input name="" type="text" class="sizediv">XXL</div>
+		<strong>Quantity :&nbsp;</strong>
+		<div class="sizebox"><input name="" type="text" class="sizediv"></div>
+		</div>
+		
+		
+		
+		</td>
+		<td><a href="#"><img src="/../../images/izishirt2012/addtocart.png" width="94" height="35" alt=""></a></td>
+	</tr>
+</table>
+
+<div id="stepbg">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td width="22%"><a href="#" class="imageOverlayer2"><img src="/../../images/izishirt2012/step1.png" width="172" height="87" alt="" class="imageHover2"></a></td>
+		<td align="center"><img src="/../../images/izishirt2012/arrow.png" width="53" height="55" alt=""></td>
+		<td width="20%"><a href="#" class="imageOverlayer2"><img src="/../../images/izishirt2012/step2.png" width="176" height="87" alt="" class="imageHover2"></a></td>
+		<td align="center"><img src="/../../images/izishirt2012/arrow.png" width="53" height="55" alt=""></td>
+		<td width="22%"><a href="#" class="imageOverlayer2"><img src="/../../images/izishirt2012/step3.png" width="178" height="87" alt="" class="imageHover2"></a></td>
+	</tr>
+</table>
+
+
+</div>
+<br>
+
+<h4>POPULAR T-SHIRT DESIGNS</h4>
+<ul id="imglist">
+
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+<li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
+
+
+        
+<div class="clear"></div>
+</ul>
+</div>
+<div class="innerrightpart">
+<div class="bestpricebox">
+<h2>The Best Prices in Canada</h2>
+<h3><img src="/../../images/izishirt2012/phone.png" width="12" height="20" alt=""> &nbsp; 1 877 286 2440</h3>
+</div>
+<h4 style="text-align:center; padding:5px;">QUANTITY DISCOUNT</h4>
+<table width="45%" align="center" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td width="35%"><ul class="discount">
+			<li>15%</li>
+			<li>20%</li>
+			<li>25%</li>
+			<li>30%</li>
+			<li>35%</li>
+			<li>45%</li>
+			<li>60%</li>
+			<li>65%</li>
+			<li>75%</li>
+			<li>80%</li>
+			
+			</ul></td>
+		<td width="5%" valign="top" class="linebg"><img src="/../../images/izishirt2012/line.png" width="34" height="28" alt=""></td>
+		<td width="40%" align="center"><ul class="discount">
+			<li>15%</li>
+			<li>20%</li>
+			<li>25%</li>
+			<li>30%</li>
+			<li>35%</li>
+			<li>45%</li>
+			<li>60%</li>
+			<li>65%</li>
+			<li>75%</li>
+			<li>80%</li>
+			
+			</ul></td>
+	</tr>
+</table><br>
+
+<div class="redtext">The discount will apply on<br>
+ the
+ final quatity on your cart</div><br>
+
+ 
+ <div id="rightbg"><h4>NEED ASSISTANCE?</h4>
+ <div class="emaitxt">By Email  &nbsp;: <a href="#">&nbsp;xyz@ss.com</a><br>
+
+By Phone : 18 77 286 2440</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td width="50%" valign="top" class="text1"><a href="#">Sports Teams</a>
+<a href="#">Volunteer T-shirts</a>
+<a href="#">University T-shirts</a>
+<a href="#">Group/Club Tees</a>
+<a href="#">Band/Music Tees</a>
+<a href="#">Restaurant Uniforms</a></td>
+		<td width="50%" valign="top" class="text1"><a href="#">Special Events</a>
+<a href="#">Corporate T-shirts</a>
+<a href="#">Staff T-shirts</a>
+<a href="#">Blank T-shirts</a>
+<a href="#">Wholesale apparel</a>
+<a href="#">Birthdays</a></td>
+	</tr>
+</table>
+
+
+ </div>
+  <h6>T-Shirts Categories</h6>
+  <div style="padding-bottom:10px;"><input name="" type="text" class="searchinputbox"><button class="searchbtn">SEARCH</button>
+  </div>
+  <ul class="categories">
+  <li><a href="#">New Submissions</a></li>
+    <li><a href="#">Funny t-shirts</a></li>
+      <li><a href="#">Sports t-shirts</a></li>
+	   <li><a href="#">Love t-shirts</a></li>
+	     <li><a href="#">Black t-shirts</a></li>
+		  <li><a href="#">Holidays &amp; events t-shirts</a></li>
+		  <li><a href="#">Music t-shirts</a></li>
+		  <li><a href="#">Celebrity t-shirts</a></li>
+  </ul>
+</div>
+
+</div>
+
+
+
+<div class="clear"></div>
+</div>
+
+<script>
+  var canvas = new fabric.Canvas('myCanvas');
+  canvas.renderOnAddition = true;
+  var getRandomInt = fabric.util.getRandomInt;
+  $j(document).ready(function(e) {
+
+   $j('.myimg').on('click', function(e) {
+	
+	var src = $j(this).attr("src");
+      fabric.Image.fromURL(src, function(img) {
+        var imgX = img.set({
+          top: 100,
+          left: 100,
+        });
+
+        canvas.add(imgX);
+      });
+
+     canvas.renderAll();
+      canvas.calcOffset();
+   });
+   $j('#delete').on('click', function(e) {
+	var activeObject = canvas.getActiveObject();
+	canvas.remove(activeObject);
+   });
+    $j('#addtext').on('click', function(e) {
+	 // alert('kkk');
+	 var text ="";
+	  if ($j("#line1").val() != ""){
+		 line1 = $j("#line1").val();
+	  }
+	 if ($j("#line2").val() != ""){
+		 line2 = $j("#line2").val();
+	  }
+	//  if ($j("#line3").val() != ""){
+	//	 line3 = $j("#line3").val();
+	 // }
+	  var text = line1 +' \n'+line2+'\n';
+	  //var text = 'Lorem ipsum dolor sit amet,\nconsectetur adipisicing elit\n';
+	//alert(text);
+   // var text = "aka\nkkk";//$j("#line1").val();
+   var fsize = $j("#fontsize").val();
+  //   alert(fsize);
+ 
+   var font = $j("#font").val();
+  //alert (fontsize+'==='+font);
+  // var textalign = $j("#textalign").val();
+   
+    var color = $j("#font_color").val();
+     var text   = new fabric.Text(text, {
+        top        : 100,
+        left       : 100,
+        fontSize   : fsize,
+        fontFamily : font,
+        fill : color,
+		textAlign: 'right'
+		
+      });
+
+      canvas.add(text);
+
+      canvas.renderAll();
+      canvas.calcOffset();
+	});
+
+   
+  $j('#clear').on('click', function(e) {
+	canvas.clear();
+  });
+window.prettyPrint && prettyPrint()
+	$j('#font_color').colorpicker();
+   
+  });
+  
+  function bchngimg(){
+  var color   =	$j('#d_color').val();
+      if( color.length > 0 ){
+	//	alert(color);
+	    $j("#canvas").removeClass('default');
+	    $j("#canvas").addClass(color);
+    }
+}
+
+function text_style(txt){
+  $("#textalign").val(txt);
+  var activeObject = canvas.getActiveObject();
+  if (activeObject && activeObject.type === 'text') {
+	 activeObject.textAlign = txt;
+     canvas.renderAll();
+  }
+  
+}
+
+function text_astyle(txt){
+  $("#tsize").val(txt);
+  var activeObject = canvas.getActiveObject();
+  if (activeObject && activeObject.type === 'text') {
+	if (txt == 'underline'){
+	  activeObject.textDecoration = 'underline';
+	}else{
+	  activeObject.fontWeight = txt;
+	}
+	 
+     canvas.renderAll();
+  }
+  
+}
+
+function change_fontSize(txt){
+  var activeObject = canvas.getActiveObject();
+  if (activeObject && activeObject.type === 'text') {
+	 activeObject.fontSize = txt;
+     canvas.renderAll();
+  }
+  
+}
+
+</script>

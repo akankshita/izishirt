@@ -1,0 +1,31 @@
+<h1>Images Reported as copyright</h1>
+
+<div>
+	<%= will_paginate @images %>
+</div>
+
+<table border="1">
+	<tr>
+		<th>ID</th>
+		<th>Preview</th>
+		<th>Reason copyright</th>
+		<th>Actions</th>
+	</tr>
+
+	<% @images.each do |image| %>
+		<tr>
+			<td><%= link_to image.id, :action => "edit", :id => image.id %></td>
+			<td><%= image_tag image.orig_image.url("png") %></td>
+			<td><%= image.description_copyright %></td>
+			<td>
+				<%= link_to "Not copyright", {:action => "ignore_reported_copyright", :id => image.id}, {:confirm => "Are you sure ?"} %> <br />
+				<%= link_to "Remove from front office", {:action => "remove_front_office_reported_copyright", :id => image.id}, {:confirm => "Are you sure ?"} %> <br />
+				<%= link_to "Remove from front office + boutiques", {:action => "remove_front_boutique_reported_copyright", :id => image.id}, {:confirm => "Are you sure ?"} %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+
+<div>
+	<%= will_paginate @images %>
+</div>

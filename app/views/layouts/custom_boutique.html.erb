@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title><%= @meta_title %></title>
+    <meta name="description" content="<%= @meta_description -%>" />
+    <meta name="keywords" content="<%= @meta_keywords -%>" />
+
+	<%= canonical_link_tag %>
+
+
+	<%= javascript_include_tag "prototype.js","effects.js","dragdrop.js","controls.js", "jquery-1.3.2.min.js", "jquery.blockUI.js", "jquery.tools.min.js?select=full&debug=true",
+		"custom_boutique.js", "jquery.fancybox-1.3.1.pack.js", "preview2.js", "jqueryslidemenu.js", :cache => "cache_boutique_js" %>
+
+
+    <% if params[:controller] == "checkout2"%>
+		    <%= stylesheet_link_tag "jqueryslidemenu.css", 'shop_create_theme', "onsite_checkout2.css", "fancybox/jquery.fancybox-1.3.1.css", :cache => "cache_boutique_css_checkout" %>
+    <% else %>
+		    <%= stylesheet_link_tag "jqueryslidemenu.css", 'shop_create_theme', "fancybox/jquery.fancybox-1.3.1.css", :cache => "cache_boutique_css" %>
+    <% end %>
+
+    <style type="text/css">
+      .std_content a {<%=@shop_theme.main_body.currency.style%>;font-size:12px;font-family:Arial;}
+    </style>
+
+
+    <script type="text/javascript">
+      $j(document).ready(function() {
+
+        $j("a.modalbox").fancybox();
+
+      });
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" <%= "title='#{t(:shop_feed_description, :locale => @store.locale)}'" -%> <%= "href='#{url_for(:controller => 'my', :action => 'feed', :format => :rss)}'" -%>/>
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(
+  ['_setAccount', 'UA-1994599-4'],
+  ['_setDomainName', '.<%=@DOMAIN_NAME%>'],
+  ['_trackPageview']<% unless @store.analytics.blank?%>,
+  ['b._setDomainName', '<%=@store.user.username%>.<%=@DOMAIN_NAME%>'],
+  ['b._setAccount', '<%=@store.analytics%>'],
+  ['b._trackPageview']
+  <% end %>
+  );
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+    </script>
+  </head>
+  <body style="<%=@shop_theme.mainbg.background.style%>">
+
+
+    <div class="top_bar_wrapper">
+      <div class="top_bar">
+        <!-- Share This -->
+	<% if request.protocol == "http://" %>
+		<div class="share_this_wrapper">
+		  <script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=ae0aee44-5bef-4ff3-a5dc-796e017516d0&amp;type=website&amp;post_services=email%2Cfacebook%2Ctwitter%2Cgbuzz%2Cmyspace%2Cdigg%2Csms%2Cwindows_live%2Cdelicious%2Cstumbleupon%2Creddit%2Cgoogle_bmarks%2Clinkedin%2Cbebo%2Cybuzz%2Cblogger%2Cyahoo_bmarks%2Cmixx%2Ctechnorati%2Cfriendfeed%2Cpropeller%2Cwordpress%2Cnewsvine"></script>
+		</div>
+	<% end %>
+        <!-- EO Share This -->
+		<div class="right">
+
+		<%
+
+		host_izishirt_to_redirect = @store.locale == "fr" ? "fr.izishirt.ca" : "www.izishirt.ca"
+ 
+		%>
+
+		  <%= link_to(t(:open_your_own_shop, :locale => @store.locale), url_for(:host => host_izishirt_to_redirect, :controller=>:display, :action=>:open_shop), :target=>"_blank") %>
+		  <%= link_to(t(:help, :locale => @store.locale), {:protocol => "http", :host => @store.shop_domain(@DOMAIN_NAME), :controller => 'my', :action => 'help'}) %>
+		</div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="content_wrapper">
+
+      <div class="content" style="<%=@shop_theme.contentbg.bg_border_style%>;">
+
+
+        <div class="banner_wrapper">
+          <%= render :partial => 'my/custom_banner' %>
+        </div>
+
+        <div class="main">
+          <div class="big_col" style="<%=@shop_theme.big_col_style%>">
+            <%= render :partial => 'layouts/custom_menu'%>
+            <div class="col_header" style="<%=@shop_theme.header.bg_border_style%>">
+              <% if @shop_theme.header.shop_texts != [] %>
+                <h1 style="<%=@shop_theme.header.header.style(false)%>">
+                  <%=@header%>
+                </h1>
+              <%else%>
+                <h1><%=@header%></h1>
+              <%end%>
+              <%= render :partial => "layouts/share" %>
+            </div>
+
+            <div class="col_content" style="<%=@shop_theme.main_body.bg_border_style(params[:onsite]&&params[:onsite]=="true")%>">
+              <%= yield %>
+            </div>
+
+			<%if request.url.match("/my/product/")==nil%>
+            	<div class="pagination_container">
+            		<%= will_paginate(@products, :previous_label=>"<", :next_label=>">") if @products %>
+              		<%= will_paginate(@images, :previous_label=>"<", :next_label=>">") if @images %>
+            	</div>
+			<%end%>
+
+<script language="Javascript">
+	function displayAddComment(){
+		if($j("#list_shop").is(':visible')){
+	                window.location = '<%=url_for :controller => '/my', :action => 'boutique', :anchor => 'add_comment', :add_comment => true  %>';
+		}else if ($j("#list_product").is(':visible')){
+			$j('#add_shop_comment').hide();$j('#limit_shop_clear').hide();
+			$j('#add_product_comment').show();$j('#limit_product_clear').show();
+            $j(".zero_product").hide();
+		}
+        
+	}
+</script>			
+
+<% if @comments_enable %>
+  <%  if @controller.action_name == 'product' %>			
+    <%= render :partial=>"product_comments" %>
+  <% else %>
+    <%= render :partial=>"shop_comments" %>
+  <% end %>
+<% end %>
+</div>
+
+          <div class="small_col" style="<%=@shop_theme.small_col_style%>">
+            <% if !params[:onsite] %>
+              <div class="box">
+                <div class="box_header" style="<%=@shop_theme.cart_header.bg_border_style%>">
+                  <label style="<%=@shop_theme.cart_header.header.style%>" class="left"><%= t(:cart, :locale => @store.locale) %></label>
+                  <label id="cart_details" style="<%=@shop_theme.cart_header.header.style%>" class="right">
+                    <%="#{@cart.total_qty} items"%> | <%=number_to_currency_custom(@cart.subtotal)%>
+                  </label>
+                  <div class="clear"></div>
+                </div>
+
+                <div class="box_content cart_box" style="<%=@shop_theme.cart.bg_border_style%>">
+                  <%= image_tag "create_boutique/cart.png", :alt => "", :class => "left"%>
+
+                  <div class="cart_button cart_right_button left" style="<%=@shop_theme.cart.checkout_button.style%>">
+                    <%= link_to t(:checkout_right_boutique, :locale => @store.locale), 
+                      "#{@URL_ROOT}#{Language.print_force_lang(params[:lang])}checkout2/show_cart?onsite=true&store_id=#{@store.id}", 
+                      :onclick => "add_cookie_before_link();" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <%= render :partial => "my/custom_boxes" %>
+            <%= image_tag "izishirt2009/payment_method2.png", :style => "text-align:right;margin:10px 0 0 40px"%>
+            <div class="clear"></div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+      <div id="izishirt_footer">
+        <div id="footer_container">
+          <div id="links">
+            <%= link_to(t(:help, :locale => @store.locale), {:protocol => "http", :host => @store.shop_domain(@DOMAIN_NAME), :controller => 'my', :action => 'help'}) %> &nbsp;|&nbsp;
+            <%= link_to(t(:contact_us_boutique, :locale => @store.locale), {:protocol => "http", :host => @store.shop_domain(@DOMAIN_NAME), :controller => 'my', :action => 'contact2'}) %> &nbsp;|&nbsp;
+            <%= link_to(t(:shipping_refunds_boutique, :locale => @store.locale), {:protocol => "http", :host => @store.shop_domain(@DOMAIN_NAME), :controller => 'my', :action => 'shipping_refunds'}) %> &nbsp;|&nbsp;
+            <%= link_to(t(:affiliation_boutique, :locale => @store.locale), "http://izishirt.connexplace.com", :target=>"_blank") %> &nbsp;|&nbsp;
+            <%= link_to(t(:terms_conditions_boutique, :locale => @store.locale), {:protocol => "http", :host => @store.shop_domain(@DOMAIN_NAME), :controller => t(:footer_terms_url_my, :locale => @store.locale)}) %> &nbsp;|&nbsp;
+            <%= link_to(t(:privacy_policy_boutique, :locale => @store.locale), {:protocol => "http", :host => @store.shop_domain(@DOMAIN_NAME), :controller => t(:footer_privacy_url_my, :locale => @store.locale)}) %> &nbsp;|&nbsp;
+            <%= link_to(t(:intellectual_boutique, :locale => @store.locale), {:protocol => "http", :host => @store.shop_domain(@DOMAIN_NAME), :controller => t(:footer_intellectual_url_my, :locale => @store.locale)}) %>
+          </div>
+          <div id="text_logo_container">
+            <div id="text">
+              <%= t(:explanation_footer_boutique, :locale => @store.locale) %><br/>
+              <%= link_to(t(:link_open_footer_boutique, :locale => @store.locale), @URL_ROOT + url_for(:controller=>:display, :action=>:open_shop), :target=>"_blank") %>
+            </div>
+            <% link_to("http://" + host_izishirt_to_redirect, :title=>t(:custom_tshirts, :locale => @store.locale), :id=>"logo_link") do %>
+              <%= image_tag "izishirt2011/#{@store.locale}/powered-by-izishirt.gif", :width=>112, :height=>44, :id=>"powered_by", :alt=>t(:custom_tshirts) %>
+            <% end %>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div id="success" class="none">
+      <div class="text_wrapper">
+        <%= image_tag "create_boutique/big_cart.png", :class => "left" %>
+        <div class="left text">
+          <label class="block"><%=t :added_to_cart1, :locale => @store.locale %></label>
+          <label class="block"><%=t :added_to_cart2, :locale => @store.locale %></label>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="continue_button first left">
+        <%= link_to t(:continue_shopping), "javascript:$j.unblockUI();"%>
+      </div>
+      <div class="checkout_button left" >
+        <%= link_to t(:checkout_now, :locale => @store.locale), 
+            "#{@URL_ROOT}#{Language.print_force_lang(params[:lang])}checkout2/show_cart?onsite=true&store_id=#{@store.id}" %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div id="fail" class="none">
+      <div class="text_wrapper">
+        <%= image_tag "create_boutique/big_cart.png", :class => "left" %>
+        <div class="left text">
+          <label class="block"><%=t :out_of_stock1, :locale => @store.locale %></label>
+          <label class="block"><%=t :out_of_stock2, :locale => @store.locale %></label>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="continue_button first left">
+        <%= link_to t(:continue_shopping, :locale => @store.locale), "javascript:$j.unblockUI();"%>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div id="select_size" class="none">
+      <div class="text_wrapper">
+        <%= image_tag "create_boutique/big_cart.png", :class => "left" %>
+        <div class="left text">
+          <label class="block"><%=t :select_size, :locale => @store.locale %></label>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="continue_button first left">
+        <%= link_to t(:continue_shopping, :locale => @store.locale), "javascript:$j.unblockUI();"%>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+  </body>
+</html>

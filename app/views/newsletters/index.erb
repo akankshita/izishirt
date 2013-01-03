@@ -1,0 +1,21 @@
+<head>
+  <title>Izishirt Newsletter</title>
+</head>
+<body>
+<div style="margin:auto;width:710px;">
+
+	<%
+		begin
+			ln_newsletter = @newsletter.localized_newsletters.find_by_language_id_and_country_id(@language_id, @country_id)
+		rescue
+			ln_newsletter = nil
+		end
+
+		if ! ln_newsletter
+			ln_newsletter = @newsletter.localized_newsletters.find_by_language_id(@language_id)
+		end
+	%>
+
+  <%= ln_newsletter.content.sub("{{firstname}}", t(:izishirt_user)) %>
+</div>
+</body>

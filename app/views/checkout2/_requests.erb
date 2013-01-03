@@ -1,0 +1,6 @@
+<div class="requests addTop">
+  <%= image_tag "/images/izishirt2009/request.png", :alt => '' %>
+  <label><%= t(:payment_order_comment) %></label>
+
+  <textarea name="checkout_comment" id="checkout_comment" cols="70" rows="4" onclick="if ( document.payment_form.checkout_comment.value == '<%= t(:payment_order_comment_instructions) %>' ) {document.payment_form.checkout_comment.value='';}" ><%= t(:payment_order_comment_instructions) %></textarea>
+</div>

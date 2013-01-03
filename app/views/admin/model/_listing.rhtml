@@ -1,0 +1,20 @@
+<form action="update_order" id="model_form" method="POST">
+<% for mymodel in @models %>
+  <tr class="<%= cycle('odd', '') %>">
+	<td><%= image_tag '/izishirtfiles/models/' + mymodel.id.to_s + '/preview.jpg', :size => '45x45' %></td>
+	<td><%=h mymodel.name(session[:language_id]) %></td>
+	<td><%=h mymodel.category.local_name(session[:language_id]) if mymodel.category %></td>
+	<td>&nbsp;&nbsp;<%= display_active(mymodel) %></td>
+	<td>&nbsp;&nbsp;<%= display_nodiscount(mymodel) %></td>
+	
+  <td>
+  <input type="text" id="sort_<%=mymodel.id%>" name="model[<%=mymodel.id%>]" value="<%=mymodel.sort_order%>" style="width:30px;" size="5"/>
+  </td>
+    <td width="80">
+		<!--= link_to image_tag('ico-edit.gif', :alt=>'Edit'), :action => 'edit', :id => mymodel %>
+		<= link_to image_tag('ico-del.gif', :alt=>'Delete'), { :action => 'destroy', :id => mymodel }, :confirm => 'Are you sure?', :method => :post -->
+		<%= link_to '&nbsp;', {:action => 'edit', :id => mymodel }, {:class => 'icoEdit icopng', :title => t(:admin_edit) } %>
+	</td>
+  </tr>
+<% end %>
+</form>

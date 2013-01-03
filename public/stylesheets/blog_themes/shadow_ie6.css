@@ -1,0 +1,27 @@
+#holder .center,
+#holder .shadow-middle .sleft,
+#holder .shadow-middle .sright {
+	background: none !important; 
+}
+
+#holder .shadow-middle div {
+	height: expression(
+		x = this.parentNode.parentNode.offsetHeight,
+		y = parseInt(this.currentStyle.top),
+		(x - ((x % 2) ? 1 : 0) - (y * 2)) + 'px'
+	)
+}
+
+#holder .shadow-top .center,
+#holder .shadow-bottom .center {
+	width: expression(
+		x = this.parentNode.parentNode.offsetWidth,
+		y = parseInt(this.currentStyle.left),
+		(x - ((x % 2) ? 1 : 0) - (y * 2)) + 'px'
+	)
+}
+
+#holder .shadow-top .center { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/corpblog/shadow/t.png", sizingMethod="scale");  }
+#holder .shadow-bottom .center { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/corpblog/shadow/b.png", sizingMethod="scale"); }
+#holder .shadow-middle .sleft { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/corpblog/shadow/l.png", sizingMethod="scale"); }
+#holder .shadow-middle .sright { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/corpblog/shadow/r.png", sizingMethod="scale"); 

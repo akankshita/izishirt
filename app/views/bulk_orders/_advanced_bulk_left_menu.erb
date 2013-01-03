@@ -1,0 +1,37 @@
+<!-- Left Category List and Search -->
+<div class="redBox">
+  <div class="left redBoxLeft noPad noMarg noBord"></div>
+  <div class="left redBoxHeader noPad noMarg noBord leftBoxBulkHeader">
+      <label><%=t(:quality_guaranteed).mb_chars.upcase%></label>
+  </div>
+  <div class="left redBoxRight noPad noMarg noBord"></div>
+  
+  <div class="clear noPad noMarg boxContent leftBulkBox">
+    <div class="bulkContentTitle red"><h1><%=t(:be_your_brand).mb_chars.upcase%></h1></div>
+    <%=t(:be_your_brand_explanation)%>
+    <%=image_tag "izishirt2009/leftBulk1.jpg"%>
+
+    <% unless @confirmation %>
+      <div class="bulkContentTitle red marginTop28"><h1><%=t(:glitter_prints).mb_chars.upcase%></h1></div>
+      <%=t(:glitter_prints_explanation)%>
+      <%=image_tag "izishirt2009/leftBulkAdvanced1.jpg" %>
+      <%=image_tag "izishirt2009/leftBulkAdvanced2.jpg" %>
+      <div class="bulkContentTitle red marginTop28"><h1><%=t(:jumbo_prints).mb_chars.upcase%></h1></div>
+      <%=t(:jumbo_prints_explanation)%>
+      <%=image_tag "izishirt2009/leftBulkAdvanced3.jpg" %>
+      <div class="bulkContentTitle red marginTop28"><h1><%=t(:digital).mb_chars.upcase%></h1></div>
+      <%=t(:digital_explanation)%>
+      <%=image_tag "izishirt2009/leftBulkAdvanced4.jpg" %>
+      <div class="bulkContentTitle red marginTop28"><h1><%=t(:color_process).mb_chars.upcase%></h1></div>
+      <%=t(:color_process_explanation)%>
+      <%=image_tag "izishirt2009/leftBulkAdvanced5.jpg" %>
+    <% else %>
+
+    <% end %>
+  </div>
+  <div class="clear"></div>
+  <div class="left boxBottomLeft"></div>
+  <div class="left boxBottomMiddle leftBoxBottomBulk"></div>
+  <div class="left boxBottomRight"></div>
+</div>
+<!-- EO Category list and search -->

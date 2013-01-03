@@ -1,0 +1,58 @@
+<div class="bulkGeneralDiv">
+
+  <div id="new_bulk_order_page">
+
+    <div id="left_container">
+      <%= render :partial=>"left_column" %>
+    </div>
+    <div id="right_container" style="height: 1100px;">
+      <div id="prints_garments" style="height: 1000px; margin-top: 0px;">
+		<div id="prints_garments_title">
+			<h1 style="font-size: 12px; display: inline;"><%= t(:screenprint_h1) %></h1>
+		</div>
+		<div style="padding:7px;">
+		<p></p>
+
+		<table>
+			<tr>
+				<td>
+					<%= t(:screenprint_text, :country => session[:country_long]) %>
+				</td>
+
+				<td>
+					<%= image_tag "/images/izishirt2011/screenpreview.png", :style => "width: 350px;" %>
+				</td>
+		</table>
+
+		<h2><%= t(:screenprint_title1) %></h2>
+		<p>
+			<%= t(:screenprint_text1) %>
+		</p>
+
+		<h2><%= t(:screenprint_title2) %></h2>
+		<p>
+			<%= t(:screenprint_text2, :country => session[:country_long]) %>
+		</p>
+
+		<%
+        your_logo = session[:language_id] == 1 ? "tshirts_tonlogo.jpg" : "bulk_your_logo.jpg"
+      %>
+
+	<a href="/<%= t(:new_bulk_main_url) %>">
+		<p style="color: #333333; font-size: 12px; padding: 10px 10px 0 15px;"><img src="/images/<%= your_logo %>" class="img_bulk_your_logo" width="52" height="52" border="0" align="left" vspace="5"  />
+		  <span class="titlebulk" style="margin: 10px; font-size: 20px; color: #444444;"><%=t(:title_bulk_no_less_25)%></span>
+			  <br />
+			<div style="margin: 0px 10px 0px 80px; color: #444444;"><%= t(:front_office_bulk_order_16) %></div>
+		</p>
+	</a>
+
+	<div align="center">
+		<br />
+		<%= image_tag "/images/izishirt2011/screenpreview2.png", :style => "height: 300px;" %>
+	</div>
+	</div>	
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

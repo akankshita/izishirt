@@ -1,0 +1,45 @@
+<div class="nav jquerytopmenu" name="menu" id="jquerytopmenu" style="width:100%;float:none;">
+  <ul style="float:left;" class="boutique_menu">
+  
+    <% content_tag :li, { :class => "nav_button", :style => @shop_style} do -%>
+      <%= link_to @shop_link, "#{@store.user.create_my_url(@DOMAIN_NAME)}#{Language.print_force_lang(params[:lang])}my/iframe_boutique",
+        :style => @link_style %>
+      <% if @store && @store.show_marketplace %>
+        <ul>
+
+          <% content_tag :li do -%>
+            <%= link_to @store.user.shop_link_text(@store.locale), 
+              "#{@store.user.create_my_url(@DOMAIN_NAME)}#{Language.print_force_lang(params[:lang])}my/iframe_boutique" %>
+          <% end %>
+
+          <% content_tag :li do -%> 
+            <%= link_to t(:marketplace_products, :locale => @store.locale), "#{@store.user.create_my_url(@DOMAIN_NAME)}#{Language.print_force_lang(params[:lang])}my/iframe_marketplace" %>
+          <% end %>
+
+        </ul>
+      <% end %>
+    <% end %>
+
+    <% if @store.display_designs_tab == true %>
+      <% content_tag :li, { :class => "nav_button", :style => @design_style} do -%>
+        <%= link_to @design_link, "#{@store.user.create_my_url(@DOMAIN_NAME)}#{Language.print_force_lang(params[:lang])}my/iframe_designs",
+          :style => @link_style %>
+      <% end %>
+    <% end %>
+    
+    <% if @store.flash_active_in_my == true %>
+      <% content_tag :li, { :class => "nav_button", :style => @create_style} do -%>
+        <%= link_to @create_link, "#{@store.user.create_my_url(@DOMAIN_NAME)}#{Language.print_force_lang(params[:lang])}my/iframe_create",
+          :style => @link_style %>
+      <% end %>
+    <% end %>
+  
+  </ul>
+  <% if request.ssl? %>
+    <div class="ssl_lock" style="margin-right:16px;">
+      <%= image_tag "izishirt2011/ssl-logo.gif", :alt=>"" %> <span class="text">SSL secure</span>
+    </div>
+  <div class="clear"></div>
+  <% end %>
+</div>
+<div class="clear"></div>

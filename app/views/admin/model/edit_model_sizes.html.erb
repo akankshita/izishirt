@@ -1,0 +1,66 @@
+<% if @other_locales.size > 0%>
+  <div style="float:right;">
+    <% form_tag({:action => 'add_model_size_locale' , :id => @model}, {:multipart=>true,:id=>"add_locale" }) do %>
+      <%= select_tag "locale", options_for_select(@other_locales) %>
+      <%= link_to "Add Locale",
+                  "javascript:$('add_locale').submit();", 
+                  {:class => 'textLink', :title => t(:admin_save) }	%>
+    <%end%>
+  </div>
+<% end %>
+
+<h1>Edit Model Sizes</h1>
+
+<div class="admin_size_type_wrapper">
+  <label>Size Type: </label>
+  <% form_for :model, @model, :url => {:action => "update_model_size_type", :id => @model.id} do |f| %>
+    <%= f.select :size_type_id, 
+      @size_types.map{|size_type|[size_type.name, size_type.id]} %>
+    <%= submit_tag "Change Model Size Type" %>
+    <label>WARNING: This will reset model sizes to defaults for the selected size type</label>
+  <% end %>
+</div>
+<div style="clear:both"></div>
+<br />
+<br />
+
+<ul class="admintabs" style="display:block;">
+  <%= display_locale_tabs(@locales,@default_locale.id) %>
+</ul>
+
+<% form_tag({:action => 'update_model_sizes' , :id => @model}, 
+            {:multipart=>true, :id => "update_sizes" }) do %>
+
+  <% @locales.each do |locale|%>
+    <div id="div_localized_<%=locale.id%>" class="localized_tab_content clearfix" style="display:<%= (locale.id==@default_locale.id) ? 'block' : 'none' %>;">
+
+      <div class="admin_model_sizes_wrapper">
+        <%@model_sizes.each do |model_size|%>
+          <%= render :partial => 'edit_model_size', 
+                     :locals => {:locale => locale, :model_size => model_size, :delete => false}%>
+        <% end %>
+        <div class="admin_model_sizes" style="float:right;">
+          <% if locale != @default_locale %>
+            <%= link_to "Delete Local Sizes", 
+              {:action => 'destroy_localized_sizes', :id => @model.id, :locale_id => locale.id},
+              {:class => 'textLink'}	%>
+          <% end %>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+
+    </div>
+  <% end %>
+
+
+  <%= render :partial => "edit_extra_costs", :locals => {:model_sizes => @model_sizes}%>
+
+	<div class="titleForm">
+    <%= link_to t(:admin_back), 
+                {:action => 'edit', :id => @model.id }, 
+                {:class => 'textLink', :title => t(:admin_back) }  %>
+    <%= link_to t(:admin_save), 
+                "javascript:$('update_sizes').submit();", 
+                {:class => 'textLink', :title => t(:admin_save) }	%>
+	</div>
+<% end %>

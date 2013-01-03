@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+  <head>
+    <title>Brief checkout</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <%= javascript_include_tag "prototype.js" %>
+    <%= javascript_include_tag "effects.js" %>
+    <%= javascript_include_tag "lightbox.js" %>
+    <%= stylesheet_link_tag "checkout2.css" %>
+    <%= stylesheet_link_tag "lightbox.css" %>
+    <%= javascript_include_tag "jquery-1.3.2.min.js" %>
+    <%= javascript_include_tag "application2009.js" %>
+    <%= javascript_include_tag "jquery.scrollfollow.js" %>
+    <%= javascript_include_tag "preview2.js" %>
+
+    <script type="text/javascript">
+
+      $j = jQuery.noConflict();
+
+      function deletediv(number) {
+        $j("#detail_product_"+number).remove();
+      }
+
+    </script>
+  </head>
+  <body style="width: 800px">
+    <div id="checkout_container" style="width: 700px;">
+
+      <%= yield %>
+
+    </div>
+
+</html>

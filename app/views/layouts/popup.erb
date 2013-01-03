@@ -1,0 +1,13 @@
+<head>
+  <title><%=@title%> - <%=@DOMAIN_NAME%></title>
+<%= stylesheet_link_tag "popup.css" %>
+</head>
+<body>
+  <div id="popup_container">
+
+    <%= yield %>
+    <div id="close_link">
+      <%= link_to t(:close_window), "#", :onclick=>"window.close();" %>
+    </div>
+  </div>
+</body>

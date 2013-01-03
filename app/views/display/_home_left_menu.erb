@@ -1,0 +1,58 @@
+<!-- Left Category List and Search -->
+<div class="redBox">
+  <div class="left redBoxLeft noPad noMarg noBord"></div>
+  <div class="left redBoxHeader noPad noMarg noBord leftBoxHeader">
+    <% form_tag({:controller=>"/display/result_search"}, :id=>'side_search_form') do %>
+      <div class="titleSearchWrapper">
+        <input name="search" type="text" class="titleSearch" />
+        <a href="javascript:$('side_search_form').submit();" class="search"><%=t(:display_home_search)%></a>
+      </div>
+    <% end %>
+  </div>
+  <div class="left redBoxRight noPad noMarg noBord"></div>
+  <div class="clear leftBox noPad noMarg redBoxTitle">
+    <label><%=t(:display_shop_category)%></label>
+  </div>
+  <div class="noPad noMarg boxContent leftBox homeCategories">
+    <ul class="list">
+
+      <%
+      nb_categories = 3 # 3 customs
+      nb_max_categories = 25
+      %>
+
+      <%= render :partial => "custom_left_menu_links" %>
+
+      <% @categories.each do |category| %>
+        <li class="<%=cycle('odd','even')%>">
+          <%= link_to category.local_name(session[:language_id]).capitalize,
+            {:controller => 'display', :action => 'result', :id => category.id},
+            :class => 'category' %>
+        </li>
+
+        <%
+
+        if nb_categories >= nb_max_categories
+          break
+        end
+
+        nb_categories+= 1
+
+       end
+       %>
+      
+      <%( nb_max_categories - nb_categories).times do %>
+        <li class="<%=cycle('odd','even')%>">&nbsp;</li>
+      <% end %>
+    </ul>
+    <div class="center">
+      <%= link_to t(:display_shop_category_view),
+        {:controller => 'display', :action => 'shop'},
+        :class => 'red bold noDecoration' %>
+    </div>
+  </div>
+  <div class="left boxBottomLeft"></div>
+  <div class="left boxBottomMiddle leftBoxBottom"></div>
+  <div class="left boxBottomRight"></div>
+</div>
+<!-- EO Category list and search -->

@@ -1,0 +1,47 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+	<th width="150"><%= t(:admin_model_list_image)%></th>
+	<th><%=  t(:admin_model_list_name)%></th>
+	<th>&nbsp;</th>
+  </tr>
+  
+  <tbody id='listing'>
+  <% for color in @ModelSpecification %>  
+	  <tr class="<%= cycle('odd', '') %>">
+			<td width="150"><%= image_tag '/izishirtfiles/colors/' +Color.find(color.color_id).preview_image, :size => '25x25' %></td>
+			<td><%=h color.color.localized_colors[0].name %></td>
+			<td width="80">
+				<a href="#" onclick="javascript:window.open('/admin/model/preview_images/<%= color.id %>','','width=380, height=380'); void(0);">preview</a>			
+				<%= link_to image_tag('ico-del.gif', :alt=>'Delete'), { :action => 'destroy_model_specification', :id => color }, :confirm => 'Are you sure?', :method => :post %>
+			</td>
+	  </tr>
+  <% end %>
+  </tbody>
+</table>
+<br />
+<% form_tag({:action => 'create_model_specification' , :id => @mymodel}, {:multipart=>true }) do %>
+<table width="100%" border="0" cellspacing="3" cellpadding="0">
+  <tr>
+    <td><%= select 'model_specification', 'color_id', @Colors %></td>
+	<td><%= "couleur"%></td>
+  </tr>
+  <tr>
+    <td><%= t(:admin_model_list_front) %></td>
+	<td><%= file_field 'model_specification', 'img_front_upload', :class=>'box'  %></td>
+  </tr>  
+  <tr>
+    <td><%= t(:admin_model_list_back) %></td>
+	<td><%= file_field 'model_specification', 'img_back_upload', :class=>'box'  %></td>
+  </tr>  
+  <tr>
+    <td><%= t(:admin_model_list_left) %></td>
+	<td><%= file_field 'model_specification', 'img_left_upload', :class=>'box'  %></td>
+  </tr>  
+  <tr>
+    <td><%= t(:admin_model_list_right) %></td>
+	<td><%= file_field 'model_specification', 'img_right_upload', :class=>'box'  %></td>
+  </tr>    
+</table>
+<%= hidden_field 'model_specification', 'model_id', :value => @mymodel.id %>
+<input type="submit" name="Submit">
+<% end %>

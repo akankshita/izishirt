@@ -1,0 +1,97 @@
+<script type="text/javascript">
+  cbb.init();
+  Custom.init();
+</script>
+<div class="relative center">
+  <label class="title"><%=t(:apparel_details).mb_chars.upcase%></label>
+  <%= link_to image_tag("/images/izishirt2009/loginClose.png"),
+    "#", :class => 'lbAction loginClose', :rel => 'deactivate'%>
+  <div class="content">
+
+    <div class="modelPhoto">
+      <% if ! @model.apparel_photo.empty? && ! @model.apparel_photo.nil? %>
+        <%= image_tag("/izishirtfiles/models/#{@model.id}/#{@model.apparel_photo}", :width => 354, :height => 338) %>
+      <% else %>
+		<%= image_tag("/images/izishirt2009/#{session[:language]}/apparel_details_not_available.jpg") %>
+      <% end %>
+    </div>
+    <div class="description">
+      <div class="aparelTitle">
+        <span id="model_brand"><%=@model.brand_name(session[:language_id])%></span>
+        <label id="model_desc"><%=@model.local_nickname(session[:language_id])%></label>
+      </div>
+      <div class="clear"></div>
+      <p>
+        <b><%= "Info".upcase %></b><br />
+        <%= @model.description(session[:language_id])%>
+      </p>
+
+
+      <b style="text-transform:uppercase;margin-top:8px;"><%= t(:fabric_style) %></b>
+
+      <ul>
+        <% @model.fabric_styles.each do |fabric_style| %>
+          <li><%= fabric_style.local_name(session[:language_id])%></li>
+        <% end %>
+      </ul>
+
+
+      <b><%= t(:shop_1_popup_apparel_details_tailles).upcase %></b>:
+      <% @model.active_model_sizes.each do |model_size|%>
+        &nbsp;&nbsp;&nbsp;<%= model_size.local_name(I18n.locale) %>
+      <% end %>
+
+      <br /><br />
+
+      <b style="text-transform:uppercase"><%=t :tshirt_colors%>:</b> <br />
+      <%
+
+      color_images = @model.print_available_colors_html(session[:language_id])
+
+
+    %>
+
+      <% color_images.each do |color_image| %>
+
+        <%= color_image %>
+
+      <% end %>
+    </div>
+    <div class="clear"></div>
+    <!-- Size Chart-->
+    <div class="schart">
+      <strong class="chart_title"><%=t :size_chart%></strong>
+      <table class="size_chart" cellspacing="0" cellpadding="0">
+        <tr>
+          <th><%=t(:size)%></th>
+          <% @model.active_model_sizes.each do |model_size|%>
+            <th><%=model_size.local_name(I18n.locale)%></th>
+          <% end %>
+        </tr>
+        <tr>
+          <td>
+            <%= image_tag "izishirt2009/length.png", :alt => ''%>
+            <label class="blue bold lengthLabel"><%=t(:apparel_length)%></label>
+          </td>
+          <% @model.active_model_sizes.each do |model_size|%>
+            <td><%=model_size.local_length(I18n.locale)%></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>
+            <%= image_tag "izishirt2009/width.png", :alt => ''%>
+            <label class="blue bold"><%=t(:apparel_width)%></label>
+          </td>
+          <% @model.active_model_sizes.each do |model_size|%>
+            <td><%=model_size.local_width(I18n.locale)%></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+    <!-- EO Size Chart -->
+    <label class="block"></label>
+    <label class="block"></label>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="clear"></div>

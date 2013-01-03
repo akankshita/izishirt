@@ -1,0 +1,58 @@
+<%= stylesheet_link_tag "promotion", :media => "all" %>
+<%= javascript_include_tag "promotion" %>
+<div class="pageholder" >
+  <!--  BEGIN Flash -->
+  <div class="crnliteblue flashbgr"> <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+    <div class="flashcontent"> <a href="<%= t(:display_home_create_tshirts) %>"><img src="/images/flashcontent_<%=session[:language]%>.jpg" alt="" border="0" /></a> 
+    <a href="<%= t(:display_home_create_tshirts) %>" title="<%= t(:display_home_see_more1) %>" class="flashcontent-btn-<%=session[:language_id]%>" >&nbsp;</a>
+    </div>
+    <div class="clear nohgh">&nbsp;</div>
+  </div>
+  <!--  END Flash -->
+  <!--  BEGIN Version 2 -->
+  <div class="clearfix">
+    <div class="homeimg">
+    <a href="<%= t(:display_home_create_tshirts) %>"><img src="/images/img-fp-01-<%= session[:language] %>.jpg" alt="" border="0" class="frst" /></a>
+  	<div style="margin-top: 97px">
+    <a href="<%= t(:display_home_openshop_url) %>"><img src="/images/img-fp-02-<%= session[:language] %>.jpg" alt="" border="0" /></a>
+   </div>
+    </div>
+  
+	<script>
+		function click_color(color, sex) {
+			<%[:men, :women].each do |sex|%>
+				if (sex == '<%=sex.to_s%>') {
+				<%@colors.select{|c| c[sex]}.each do |color|%>
+					$('<%="color-#{color[:name]}-"%>'+sex).removeClassName('hilite');
+				<%end%>
+				}
+			<%end%>
+			Element.addClassName($('color-'+color+'-'+sex), 'hilite');
+			$(sex+'-shirts').src =  '/images/promotion/'+sex+'/'+color+'.jpg';
+			$(sex+'-shirts').old_src =  $(sex+'-shirts').src;
+			$(sex+'-color').value = color;
+		}
+	</script>
+	
+  	 <div id="promotion" class="<%=session[:language]%>">
+  	 	<%= render :partial => 'promotion_form', :locals => {:sex=> 'men'} %>
+  	 	<%= render :partial => 'promotion_form', :locals => {:sex=> 'women'} %>
+  	</div>
+
+  
+  </div>
+  <!--  END Version 2 -->
+  
+  <div class="crnliteblue tagzbgr"> <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+    <a href="<%=t(:menu_home_facebook_url)-%>"><img style="border-width: 0px" src="/images/<%=t(:display_home_facebookimg)-%>" alt="Izishirt facebook Application" /></a>
+    <!--  End Flash Content -->
+    <div class="clear nohgh">&nbsp;</div>
+  </div>
+  <div class="crnliteblue brix"> <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+    <div class="content">
+      <div class="brixcontent"> <%= t(:home_page_txt_content1) %><%= t(:home_page_txt_content2) %> </div>
+      <div class="brixbtn"> <a href="<%= t(:display_home_openshop_url) %>"><img src="/images/<%= t(:display_home_imgbrix1) %>"  border="0" alt=""/></a> <a href="<%= t(:display_home_create_tshirts) %>"><img src="/images/<%= t(:display_home_imgbrix2) %>"  border="0" alt=""/></a> </div>
+    </div>
+    <div class="clear nohgh">&nbsp;</div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="pageholder clearfix">
+  <div class="myaccount">
+    <div>
+      <p><b><%= t(:myizishirt_profile_home_welcome)%></b></p>
+      <p><%= t(:myizishirt_profile_home_text)  %></p>
+    </div>
+ 
+    <div class="boxx myblog">
+      <h4><%= t(:myizishirt_profile_home_design) %></h4>
+      <p><%= t(:myizishirt_profile_home_design_text) %></p>
+      <!--<a href="/myizishirt/design/"><span><%= t(:myizishirt_profile_home_design_button)  %></span></a><br />-->
+      <%= link_to "<span>#{t(:myizishirt_profile_home_design_button2)}</span>", :controller=>"/myizishirt/design/list" %>
+      <br />
+      <%= link_to "<span>#{t(:myizishirt_profile_home_design_button3)}</span>", :controller=>"/myizishirt/editstore/product" %>
+    </div>
+   
+    <div class="boxx gains">
+      <h4><%= t(:myizishirt_profile_home_blog) %></h4>
+      <p>
+			<%= t(:myizishirt_profile_home_blog_text) %>
+	  </p>
+    <%= link_to "<span>#{t(:myizishirt_profile_home_blog_button)}</span>", :controller=>"/myizishirt/blog" %>
+    <br/>
+    <%= link_to "<span>#{t(:myizishirt_profile_home_blog_button2)}</span>", :controller=>"/myizishirt/blog/new" %>
+	</div>
+  
+   <div class="boxx myacc">
+      <h4><%= t(:myizishirt_profile_home_my_account)  %></h4>
+      <p><%= t(:myizishirt_profile_home_my_account_text) %></p>
+      <%= link_to "<span>#{t(:myizishirt_profile_home_my_account_button)}</span>", :controller=>"/myizishirt/profile/profile" %>
+      <%= link_to "<span>#{t(:myizishirt_profile_home_my_account_button2)}</span>", :controller=>"/myizishirt/profile/profile" %>
+	</div>
+  
+   <div class="boxx myorders">
+      <h4><%= t(:myizishirt_profile_home_orders) %></h4>
+      <p>
+        <%= t(:myizishirt_profile_home_orders_text) %></p>
+      <%= link_to "<span>#{t(:myizishirt_profile_home_orders_button)}</span>", :controller=>"/myizishirt/orders" %>
+	</div>
+   
+    <div class="boxx mycommandes">
+      <h4><%= t(:myizishirt_profile_home_earnings) %></h4>
+      <p>
+        <%= t(:myizishirt_profile_home_earnings_text) %></p>
+      <%= link_to "<span>#{t(:myizishirt_profile_home_earnings_button)}</span>", :controller=>"/myizishirt/earning/" %>
+	</div>
+  
+   <div class="boxx myblog">
+      <h4><%= t(:myizishirt_profile_home_flash) %></h4>
+      <p>
+        <%= t(:myizishirt_profile_home_flash_text) %>
+      </p>
+      <%= link_to "<span>#{t(:myizishirt_profile_home_flash_button)}</span>", :controller=>"/myizishirt/editstore/edit_prod" %>
+      <br/>
+      <%= link_to "<span>#{t(:myizishirt_profile_home_flash_button2)}</span>", :controller=>"/myizishirt/editstore/edit_flash" %>
+	</div>
+      
+      <div class="dist"></div>
+  </div>
+</div>
+

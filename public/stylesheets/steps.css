@@ -1,0 +1,86 @@
+/* CSS Document */
+
+/* votre boutique*/
+
+.myacc_hdr {padding:20px 0 0 190px; background: url(../images/logo_gray.gif) no-repeat left top; min-height:170px}
+* html .myacc_hdr {height:170px}
+.myacc_hdr h5,
+.myacc_content .pad10 h5 {color:#41b7f0; font-size:15px; margin:0; padding:0; line-height:40px }
+.myacc_hdr .vb1 {width:400px; margin-right:20px}
+.myacc_hdr .vb2 {width:290px; }
+.myacc_hdr .vb1,
+.myacc_hdr .vb2 {float:left}
+.myacc_hdr p,
+.myacc_content .pad10 p {margin:0; padding:0; line-height:15px}
+
+.myacc_steps {margin-bottom:20px}
+.myacc_steps .step {float:left; width:293px; height:165px; filter:alpha(opacity=30); -moz-opacity:.30; opacity:.30; }
+.myacc_steps .active {height:165px; filter:alpha(opacity=100); -moz-opacity:1; opacity:.99; }
+.myacc_steps .active a {cursor:pointer !important}
+.myacc_steps .step a {color:#41b7f0; font-weight:bold; text-decoration:none; display:block; width:293px; height:165px; cursor:default}
+.myacc_steps .step a span {padding:130px 0 0 60px; display:block; font-size:11px}
+.myacc_steps .step a:hover {color:#008FD4}
+.myacc_steps .one {background: url(../images/myacc_step1.png) no-repeat left top;}
+.myacc_steps .two {background: url(../images/myacc_step2.png) no-repeat left top;}
+.myacc_steps .tri {background: url(../images/myacc_step3.png) no-repeat left top;}
+.myacc_steps .one,
+.myacc_steps .two {margin-right:14px}
+
+/* Step 3 of 3 */
+
+.myacc_content {margin-bottom:10px}
+.myacc_content .myacc_con_left {width:400px; float:left; margin-right:10px}
+.myacc_content .myacc_con_right { float:left; width:498px;}
+
+.myacc_content .my_content1,
+.myacc_content .my_content2,
+.myacc_content .my_content3 {padding:0 10px 10px 10px}
+
+.myacc_content .my_content1 table {border-collapse:collapse; border:1px solid #c3c4c5; border-width:0px 1px 1px 1px}
+.myacc_content .my_content1 .odd td {background:#e7f6fd; }
+.myacc_content .my_content1 td {padding:5px;border-top:1px solid #e9ebed}
+.myacc_content .my_content1 th {color:#008fd4;  border:1px solid #b3b3b3; border-width:1px 0px 1px 0px;  }
+.myacc_content .my_content1 td.special {background:#dfe8ec !important; border:1px solid #c8d1d5 !important; border-width:0 1px 1px 1px !important; text-align:center}
+.myacc_content .my_content1 th.special {background:#dfe8ec !important; border:1px solid #b3b3b3 !important; border-width:1px 1px 1px 1px !important;}
+.myacc_content .my_content1 .special span,
+.myacc_content .my_content3 .special span { background:white; color:#e33500; border:1px solid #b3b3b3; padding:2px 4px}
+
+
+.myacc_content .my_content3 table {border-collapse:collapse; border:1px solid #c3c4c5; border-width:0px 1px 1px 0px}
+.myacc_content .my_content3 .odd td {background:#e7f6fd; }
+.myacc_content .my_content3 td {padding:5px;border:1px solid #c3c4c5; border-width:1px 1px 0px 1px}
+.myacc_content .my_content3 th {color:#008fd4;  border:1px solid #b3b3b3; border-width:1px 0px 1px 0px; background: url(../images/my_acc_th_dsign.gif) no-repeat 2px; padding-left:20px; text-align:left; font-size:10px}
+.myacc_content .my_content3 td.special {background:#dfe8ec !important; border:1px solid #c8d1d5 !important; border-width:0 1px 1px 1px !important; text-align:center}
+.myacc_content .my_content3 th.special {background:#dfe8ec url(../images/my_acc_th_dsign.gif) no-repeat left !important; border:1px solid #b3b3b3 !important; border-width:1px 1px 1px 1px !important;}
+
+.myacc_content .my_content3 th.empty {border:1px solid #c3c4c5; border-width:0px 1px 0px 0px; background:none}
+
+.my_content3 .myacc_img,
+.my_content3 .myacc_img_fld {float:left; width:100px; font-weight:bold; font-size:10px;  }
+.my_content3 .myacc_img_fld p {margin:0; padding:0; }
+.my_content3 .myacc_img_fld {padding-top:10px}
+.my_content3 .myacc_img_fld input[type="text"],
+.my_content3 .myacc_img_fld option {border:1px solid #c4c8cc; color:#686868; width:90px}
+.my_content3 .myacc_img_fld select {margin:10px 0; width:90px; color:#686868;}
+* html .my_content3 .myacc_img_fld select {margin:8px 0}
+.my_content3 .myacc_img {margin-right:5px; }
+.my_content3 .myacc_img img {border:1px solid #ccc; padding:1px}
+
+.myacc_content .my_content2 td {font-weight:bold}
+
+/* ---------------  Step 2 of 3 ----------------- */
+
+.step2_container {}
+.step2_c {width:448px; }
+.step2_c .step2_content {padding:10px; height:150px}
+.step2_content select {width:120px; margin:5px 0; color:#686868 }
+.step2_content .code {padding:10px; border:1px solid #bfe3f5; background:#fafdff; color:#026a9c}
+
+/* ---------------  Step 1 of 3 ----------------- */
+
+.step1_c .step1_content,
+.step1_c .step1a_content {padding:10px; }
+.step1_c .step1_content select {width:150px; margin-bottom:5px; color:#686868; padding:0; clear:both; display:block}
+.step1_c .step1_content b {color:#008fd4; font-weight:bold; margin:0 0 10px 0; padding:0; }
+.step1_c .step1_content p {color:#686868;  margin:5px 0 5px 0; padding:0; }
+.step1_content td {text-align:left; padding-right:50px}

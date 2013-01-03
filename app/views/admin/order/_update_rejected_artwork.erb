@@ -1,0 +1,23 @@
+<label><%= t(:admin_order_artwork_rejected) %></label>
+<script language="javascript">
+   function image_rejected_checkbox_changed<%= ordered_zone.id %>()
+   {
+     pending_approval = document.getElementById("image_pending_approval<%= ordered_zone.id %>");
+     rejected_checkbox = document.getElementById("image_rejected<%= ordered_zone.id %>");
+     decline_box = document.getElementById("reason_image_declined<%= ordered_zone.id %>");
+
+     rejected_checkbox.value = (rejected_checkbox.value == "true") ? "false" : "true"
+
+     new_val_pending_approval = (rejected_checkbox.value == "true") ? <%= DESIGN_VALIDATION_STATE_DECLINED_ID %> : <%= DESIGN_VALIDATION_STATE_APPROVED_ID %>;
+
+     pending_approval.value = new_val_pending_approval;
+     decline_box.setAttribute("style", (rejected_checkbox.value == "true") ? "display:block" : "display:none");
+   }
+</script>
+
+    <%=  check_box_tag 'rejected', (ordered_zone.pending_approval == DESIGN_VALIDATION_STATE_DECLINED_ID) ? "true" : "false", (ordered_zone.pending_approval == DESIGN_VALIDATION_STATE_DECLINED_ID), :onchange => "image_rejected_checkbox_changed#{ordered_zone.id}();", :id => "image_rejected#{ordered_zone.id}" %>
+    <%= hidden_field "image", "pending_approval#{ordered_zone.id}", :value => ordered_zone.pending_approval, :id => "image_pending_approval#{ordered_zone.id}" %>
+    <% initial_display = (ordered_zone.pending_approval == DESIGN_VALIDATION_STATE_DECLINED_ID) ? "block" : "none" %>
+    <%= render :partial => "/admin/image/decline_reason_box", :locals => {:image => ordered_zone, :initial_display => initial_display, :box_id => ordered_zone.id, :no_field_class => true, :language_id => language_id} %>
+
+

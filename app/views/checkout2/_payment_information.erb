@@ -1,0 +1,102 @@
+<script type="text/javascript">
+
+
+  function change_payment_section(value){
+    if (value == 'PAYPAL') {
+<%=  update_page do |page|
+  page.replace_html 'payment', :partial => 'paypal'
+  page.hide 'submit_payment_link'
+  page.hide 'ccv'
+end %>
+    } else {
+<%=
+update_page do |page|
+  page.replace_html 'payment', :partial => 'credit_card'
+  page.show 'submit_payment_link'
+  page.show 'ccv'
+end %>
+    }
+  }
+  function switch_payment_type(type){
+
+    $j('#payment_type').val(type);
+    $j('#payment_type').change();
+    change_payment_section(type);
+    //    document.getElementById("payment_type").selectedIndex = 3;
+    //    document.getElementById("payment_type").value = "Discover";
+  }
+
+</script>
+
+<div class="cart_header addTop addBottom payment_header">
+  <div class="right" style="margin-top:-10px;height:32px;"><%#= render :partial=>"/display/mcafee_#{session[:language]}" %></div>
+  <%= image_tag("/images/izishirt2009/rightArrow.png") %>
+  <label class="items"><%= t(:payment_infoheader) %></label>
+  <div class="clearfix"></div>
+</div>
+
+
+<div class="payment">
+  <% if flash[:error] %>
+    <div>
+      <div class="horiz_space_12"></div>
+      <label class="red bigText"><%= flash[:error] %></label>
+    </div>
+  <% end %>
+
+  <div class="horiz_space_12"></div>
+  <div class="type">
+    <label><%= t(:payment_paymentype) %></label>
+    <select id="payment_type" name="payment[type]" class="styled" style="width:160px;">
+      <option value='VISA' selected>Visa</option>
+      <option value='MASTERCARD'>Mastercard</option>
+      <option value='AMEX'>American Express</option>
+      <option value='DISC'>Discover</option>
+      <option value='PAYPAL'>PayPal</option>
+    </select>
+  </div>
+
+  <div class="logos">
+    <label><%= t(:secure_payments) %></label>
+    <div class="logo_section">
+      <% link_to "javascript:switch_payment_type('VISA');"do %>
+        <%= image_tag("izishirt2009/visa.png") %>
+      <% end %>
+      <% link_to "javascript:switch_payment_type('MASTERCARD');"do %>
+        <%= image_tag("izishirt2009/mastercard.png") %>
+      <% end %>
+      <% link_to "javascript:switch_payment_type('AMEX');"do %>
+        <%= image_tag("izishirt2009/amex.png") %>
+      <% end %>
+      <% link_to "javascript:switch_payment_type('DISC');"do %>
+        <%= image_tag("izishirt2009/discover.jpg") %>
+      <% end %>
+      <% link_to "javascript:document.paypal.submit();"do %>
+        <%= image_tag("izishirt2009/paypal.png") %>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="clearfix"></div>
+
+  <div class="card_section">
+    <div id="payment">
+      <%= render :partial => 'credit_card' %>
+    </div>
+    <div id="ccv" class="verification left">
+    <label><%= t(:payment_ccv) %></label>
+    <input type="text" name="payment[ccv]" id="payment_ccv" maxlength="4" style="width:40px;" />
+    <% link_to({:action => 'verification_code'}, {:class => 'blue noDecoration lbOn', :name=>"light_verif", :style=>"display:inline;"}) do %>
+      <img src="/images/izishirt2009/grayInfo.png" alt="" />
+    <% end %>
+  </div>
+  </div>
+  
+  <div class="clearfix"></div>
+  <div class="horiz_space_12"></div>
+
+  <%= observe_field "payment_type", {:function => "change_payment_section(value)"
+  
+  } %>
+</div>
+

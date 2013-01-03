@@ -1,0 +1,33 @@
+<% for img in @img_result
+  id_img = img.id.to_s
+%>  
+  <div class="thumbsRate">
+  <span>
+    <%= link_to "<img src=\"#{@image.orig_image.url("100")}\" width=\"104\" height=\"104\">
+    <b class=\"crnBbTL\"></b> <b class=\"crnBbTR\"></b> <b class=\"crnBbBR\"></b> <b class=\"crnBbBL\"></b> </i>", {:controller=>"/display/shop1/"+id_img}, :width=>"104", :height=>"104" %>
+  </span>
+  <strong><%=h truncate(img.name, 20) %></strong>
+  <!--
+             <ul class='star-rating'>
+                <li class='current-rating'  style='width:105px;'> urrently 3.5/5 Stars.</li>
+                <li><a href='#' title='1 star out of 5' class='one-star'>1</a></li>
+                <li><a href='#' title='2 stars out of 5' class='two-stars'>2</a></li>
+                <li><a href='#' title='3 stars out of 5' class='three-stars'>3</a></li>
+                <li><a href='#' title='4 stars out of 5' class='four-stars'>4</a></li>
+                <li><a href='#' title='5 stars out of 5' class='five-stars'>5</a></li>
+              </ul>
+              -->
+  </div>
+<% end %>
+<div class="paging clearfix">
+  <div class="prev"><%= image_tag("working.gif",
+      :align => 'absmiddle',
+      :border=> 0,
+      :id => "spinner",
+      :style=>"display: none;" ) %></div>
+    <% if @img_result_pages.page_count > 1 %>
+    <div class="prev"><%#= link_to "<span>"+t(:admin_page_previous)+"</span>", { :page => @img_news_pages.current.previous } if @img_news_pages.current.previous %></div>
+    <div class="pagenumb"><%= pagination_links_remote @img_result_pages %></div>
+    <div class="next"><%#= link_to "<span>"+t(:admin_page_next)+"</span>", { :page => @img_news_pages.current.next }  if @img_news_pages.current.next  %> </div>
+  <% end %>
+</div>

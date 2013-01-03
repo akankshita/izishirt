@@ -1,0 +1,91 @@
+<script type="text/javascript">
+  function hideIcon(){
+    $j("#ajaxIcon").css("visibility", "hidden");
+  }
+
+  function showIcon(){
+    $j("#ajaxIcon").css("visibility", "visible");
+  }
+
+  $j(document).ready(function(){
+    $j("#dont_know_order_id").click(function(){
+      if(!$j(this).hasClass("active")){
+        $j(this).toggleClass("active");
+        $j("#order_id_container").slideToggle("slow");
+      }
+      $("order_id_container").scrollTo();
+      return false;
+    });
+
+    $j("#view_order_button").click(function(){
+      $j("#my_orders_form").submit();
+    });
+  });
+</script>
+
+<div id="orderPageTotal" class="prepend-3 append-3 span-23 flashPage last" >
+  <div id="left_container">
+    <%= render :partial=>"/layouts/generic_boxes/info_assistance", :locals=>{:info_shipping=>true,:info_garment=>false}%>
+
+  </div>
+
+
+
+
+  <div id="right_container" class="left">
+    <div id="my_orders">
+      <div id="my_orders_title"><%=t(:my_orders)%></div>
+      <div id="content_my_orders">
+        <div id="content_title"><%= t(:please_enter_order_id_sentence) %></div>
+        <div id="my_orders_form_container">
+          <% form_tag({:action=>:index}, :id=>"my_orders_form") do %>
+            <div class="form_row" style="height:40px;">
+              <div class="left form_label"><%= t(:order_id) %> <span class="red">*</span>&nbsp;</div>
+              <div id="order_id_div" class="left">
+                <%= text_field_tag "order_id" %>
+                <%= link_to t(:dont_know_order_id), "#current", :id=>"dont_know_order_id" %>
+              </div>
+            </div>
+            <div class="form_row">
+              <div class="left form_label">
+                <%= t(:email) %> <span class="red">*</span>&nbsp;
+              </div>
+              <div class="left">
+                <%= text_field_tag "email" %>
+              </div>
+            </div>
+            <div class="form_row">
+              <% if flash[:tracking_error] %>
+                <div class="errorMessage">
+                  <%= flash[:tracking_error] %>
+                </div>
+              <% end %>
+              <%= link_to t(:view_my_order), "#current", :id=>"view_order_button" %>
+            </div>
+          <% end %>
+        </div>
+        <div id="order_id_container">
+          <% form_remote_tag(:update => 'message',
+            :url => {:action => 'lost_id'},
+            :loading=>"showIcon();", :success=>"hideIcon();",
+            :html => {:id => 'lost_form'}) do %>
+            <p class="title14"><%=t(:dont_know_order_id)%></p>
+            <p class="title11"><%=t(:forgot_your_order_id_sentence)%></p>
+            <p class="title13">
+              <span class="left">
+                <%= t(:myizishirt_login_view_form_mail) %> <%= text_field_tag :email, "", :class=>"email_text_box" %>
+                <%= submit_tag t(:submit), :id => "btn_submit_lost_password" %>
+              </span>
+              <span id="ajaxIcon" style="visibility:hidden">
+                <%= image_tag "izishirt2009/loading.gif", :height=>16, :width=>16 %>
+              </span>
+              <div class="clear"></div>
+            </p>
+            <div id="message" style="padding-left:10px;padding-right:10px;visibility:visible;display:block;" class="title13">
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

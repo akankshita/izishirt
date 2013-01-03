@@ -1,0 +1,96 @@
+<div id="pp_request_payment" style="height: 300px; width:380px;">
+
+  <h1>
+
+	<% if @box_type == "general" %>	
+		<%= t(:auto_marketplace_5) %>
+	<% else %>
+		<%= t(:my_izishirt_products_product_cannot_be_published) %>
+	<% end %>
+
+  </h1>
+
+	<% if ! @product %>
+	  <p><%= t(:my_izishirt_products_product_cannot_be_published_2) %></p>
+
+	  <ul>
+	    <li style="list-style-image:url(/images/izishirt2011/services-li-style-type.gif);">
+	      <%= t(:my_izishirt_products_product_cannot_be_published_3) %>
+	      <br />
+	      <br />
+	    </li>
+
+	    <li style="list-style-image:url(/images/izishirt2011/services-li-style-type.gif);">
+	      <%= t(:my_izishirt_products_product_cannot_be_published_4) %>
+	      <br />
+	      <br />
+	    </li>
+
+	    <li style="list-style-image:url(/images/izishirt2011/services-li-style-type.gif);">
+	      <%= t(:my_izishirt_products_product_cannot_be_published_4_2) %>
+	      <br />
+	      <br />
+	    </li>
+
+
+	    <li style="list-style-image:url(/images/izishirt2011/services-li-style-type.gif);">
+	      <%= t(:my_izishirt_products_product_cannot_be_published_5) %>
+	      <br />
+	      <br />
+	    </li>
+	    
+	    <li style="list-style-image:url(/images/izishirt2011/services-li-style-type.gif);">
+	      <%= t(:my_izishirt_products_product_cannot_be_published_7) %>
+	    </li>
+	  </ul>
+	<% else %>
+		<p><%= t(:cannot_marketplace_1) %></p>
+	
+		<ul>
+			<% if @product_without_user_image %>
+			    <li style="list-style-image:url(/images/izishirt2011/services-li-style-type.gif);">
+			      <%= t(:cannot_marketplace_2) %>
+			      <br />
+			      <br />
+			    </li>
+			<% end %>
+
+			<% if @contains_text %>
+			    <li style="list-style-image:url(/images/izishirt2011/services-li-style-type.gif);">
+			      <%= t(:cannot_marketplace_3) %>
+			      <br />
+			      <br />
+			    </li>
+			<% end %>
+
+			<% if @product_blank %>
+			    <li style="list-style-image:url(/images/izishirt2011/services-li-style-type.gif);">
+			      <%= t(:cannot_marketplace_4) %>
+			      <br />
+			      <br />
+			    </li>
+			<% end %>
+
+			<% if @product_not_approved %>
+			    <li style="list-style-image:url(/images/izishirt2011/services-li-style-type.gif);">
+			      <%= t(:cannot_marketplace_5) %>
+			      <br />
+			      <br />
+			    </li>
+			<% end %>
+
+			<% if @contains_private %>
+			    <li style="list-style-image:url(/images/izishirt2011/services-li-style-type.gif);">
+			      <%= t(:cannot_marketplace_6) %>
+			      <br />
+			      <br />
+			    </li>
+			<% end %>
+		</ul>
+	<% end %>
+
+  <p>
+    <%= t(:my_izishirt_products_product_cannot_be_published_6) %> <%= link_to("contact@izishirt.com", "mailto:contact@izishirt.com") %>
+  </p>
+  
+</div>

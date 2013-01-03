@@ -1,0 +1,2 @@
+page.replace_html "newsletter_message", "<div class='successMessage'>#{@message}</div>"
+page.hide 'newsletter_spinner'

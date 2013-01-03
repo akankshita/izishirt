@@ -1,0 +1,296 @@
+<!--
+<script src="/bin/AC_OETags.js" language="javascript"></script>
+<script src="/javascripts/extMouseWheel.js" language="javascript"></script>
+-->
+
+<script language="JavaScript" type="text/javascript">
+<!--
+// -----------------------------------------------------------------------------
+// Globals
+// Major version of Flash required
+var requiredMajorVersion = 9;
+// Minor version of Flash required
+var requiredMinorVersion = 0;
+// Minor version of Flash required
+var requiredRevision = 28;
+// -----------------------------------------------------------------------------
+// -->
+</script>
+<script type="text/javascript">
+  function updateCartCounter(item_count){
+    if ($('link_to_cart_text')){
+      if ($('link_to_cart_text').innerHTML == "<%= t(:cart_display_no_product) %>" ){
+        var new_text = item_count;
+        if (item_count == "1")
+          new_text += " <%= t(:cart_display_product) %>";
+        else
+          new_text += " <%= t(:cart_display_product).pluralize %>";
+        $('link_to_cart_text').innerHTML = new_text;
+      }
+      else{
+        var current_count = $('link_to_cart_text').innerHTML.match(/\d{1,}/);
+        var new_count = parseInt(current_count) + parseInt(item_count);
+        $('link_to_cart_text').innerHTML = $('link_to_cart_text').innerHTML.replace(current_count,new_count);
+        if (new_count > 1)
+          $('link_to_cart_text').innerHTML = $('link_to_cart_text').innerHTML.replace(/<%=t(:cart_display_product)%>$/,'<%=t(:cart_display_product).pluralize%>');
+      }
+      new Effect.Highlight($('link_to_cart_text'), { startcolor: '#ffff99',endcolor: '#ffffff' });
+    }
+  }
+  function uploadImageRequest(url, sessionVar , sessionLan) {
+    window.open(url+'?sessionVar='+sessionVar+'&sessionLanguage='+sessionLan,'','height=400,width=520');
+    //if (window.focus) {newwindow.focus()}
+  }
+  function updateDiscounts(model_id){
+    $j.ajax({ url: "/display/bulk_discounts/"+model_id});
+  }
+</script>
+
+<%
+
+page_name = "T-Shirt"
+
+%>
+
+<div id="flash_application">
+  <!--<div id="seo_words_category">
+    <h4 style="display: inline;">
+      <% 
+		if @image 
+		page_name = "#{t(:name_tshirt, :name => @image.name, :type => "T-Shirt")}"
+	%>
+        <% user = @image.user ? @image.user.username : "izishirt" %>
+        <%= t(:flash_page_h1, :name=>@image.name, :user=>user) %>
+        <% length = t(:flash_page_h1, :name=>@image.name, :user=>user).length %>
+        <% user = @image.user ? @image.user.username : "izishirt" %>
+
+      <% elsif @category 
+		page_name = @category.local_name(session[:language_id])
+	%>
+          <%= t(:flash_page_h1_category, :name=>@category.local_name(session[:language_id])) %>
+          <% length = t(:flash_page_h1_category, :name=>@category.local_name(session[:language_id]).length) %>
+
+	  <%elsif @model_id 
+
+		begin
+			page_name = Category.find(Model.find(@model_id).garment_type_id).local_name(session[:language_id])
+		rescue
+			page_name = "T-Shirt"
+		end
+	%>
+		<%= Model.find(@model_id).local_name(session[:language_id]) %>
+        <% length = Model.find(@model_id).local_name(session[:language_id]).length %>
+      <% elsif @product 
+
+		page_name = @product.name
+
+	%>
+	  	<%= t(:flash_page_h1_category, :name=> @product.name) %>
+		<% length = @product.name.length %>
+      <% else %>
+        <%= t(:flash_page_h1_default) %>
+        <% length = t(:flash_page_h1_default).length %>
+      <% end %>
+    </h4>
+	<%if @image%>
+		<span class="text_gray_h1"><%= truncate(t(:flash_page_h2), :length=>120-length.to_i)%></span>
+	<%elsif @category %>
+		<span class="text_gray_h1"><%= truncate(t(:flash_page_h1_category2, :name=>@category.local_name(session[:language_id]), :length=>120-length.to_i)) %></span>
+	<%else%>
+		<span class="text_gray_h1"><%= truncate(t(:flash_page_h1_default2), :length=>120-length.to_i) %></span>
+	<%end%>	
+
+	<% if @image %>
+		<link rel="image_src" href="<%= @image.orig_image.url("340") %>"/>
+	<% elsif @product %>
+		<link rel="image_src" href="<%= @product.front %>"/>
+	<% end %>
+  </div>-->
+
+  <div class="clear"></div>
+ 
+     <div id="main_container_flash">
+
+       <div id="header_flash">
+         <h1><%=@flash_h1%></h1>
+         <div id="text_header">
+         <%=@flash_h1_text%>
+         </div>
+         
+    <div id="social_share">
+      <%= link_to image_tag("izishirt2011/facebook.png", :alt=>"Facebook"), "http://www.facebook.com/sharer.php?u=#{request.url}&t=#{@meta_title}", :target=>"_blank" %>
+      <%= link_to image_tag("izishirt2011/twitter.png", :alt=>"Twitter"), "http://twitter.com/home?status=#{request.url}", :target=>"_blank" %>
+      <%= link_to image_tag("izishirt2011/delicious.png", :alt=>"Delicious"), "http://del.icio.us/post?url=#{request.url}&title=#{@meta_title}", :target=>"_blank" %>
+      <%= link_to image_tag("izishirt2011/digg.png", :alt=>"Digg"), "http://digg.com/submit?phase=2&url=#{request.url}&title=#{@meta_title}", :target=>"_blank" %>
+      <%= link_to image_tag("izishirt2011/stumble.png", :alt=>"StumbleUpon"), "http://www.stumbleupon.com/submit?url=#{request.url}&title=#{@meta_title}", :target=>"_blank" %>
+      <%#= link_to image_tag("izishirt2009/reddit.png", :alt=>"Reddit"), "http://reddit.com/submit?url=#{request.url}&title=#{@meta_title}", :target=>"_blank" %>
+
+    </div>
+
+          <iframe id="facebook_ilike" src="http://www.facebook.com/plugins/like.php?href=<%=CGI.escape(request.url)%>&amp;layout=button_count&amp;show_faces=false&amp;width=110&amp;action=like&amp;font=arial&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:110px; height:25px"></iframe>
+    </div>
+    <div class="clear"></div>
+    
+
+    <div id="flashContent">
+	<div id="no_flash" style="display:none">
+		<%= render :partial => '/wordans_flash/no_flash' %>
+	</div>
+
+  <script language="JavaScript" type="text/javascript">
+  <!--
+  // Version check for the Flash Player that has the ability to start Player Product Install (6.0r65)
+  var hasProductInstall = DetectFlashVer(6, 0, 65);
+
+  // Version check based upon the values defined in globals
+  var hasRequestedVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+
+  if ( hasProductInstall && !hasRequestedVersion ) {
+    // DO NOT MODIFY THE FOLLOWING FOUR LINES
+    // Location visited after installation is complete if installation is required
+    var MMPlayerType = (isIE == true) ? "ActiveX" : "PlugIn";
+    var MMredirectURL = window.location;
+      document.title = document.title.slice(0, 47) + " - Flash Player Installation";
+      var MMdoctitle = document.title;
+
+    AC_FL_RunContent(
+      "src", "/bin/playerProductInstall",
+      "FlashVars", "<%="sessionVar=#{request.session_options[:id]}&sessionLanguage=#{session[:language]}"%>&MMredirectURL="+MMredirectURL+'&MMplayerType='+MMPlayerType+'&MMdoctitle='+MMdoctitle+"",
+      "width", "100%",
+      "height", "100%",
+      "align", "middle",
+      "id", "Izishirt",
+      "quality", "high",
+      "bgcolor", "#ffffff",
+      "name", "Izishirt",
+      "wmode","opaque",
+      "allowScriptAccess","sameDomain",
+      "type", "application/x-shockwave-flash",
+      "pluginspage", "http://www.adobe.com/go/getflashplayer"
+    );
+  } else if (hasRequestedVersion) {
+    // if we've detected an acceptable version
+    // embed the Flash Content SWF when all tests are passed
+    AC_FL_RunContent(
+        "src", "/bin/Izishirt7",
+        "width", "100%",
+        "height", "100%",
+        "align", "middle",
+        "id", "Izishirt",
+        "quality", "high",
+        "bgcolor", "#ffffff",
+        "name", "Izishirt",
+        "wmode","opaque",
+        "FlashVars","<%=@flash_vars%>", 
+        "allowScriptAccess","sameDomain",
+        "type", "application/x-shockwave-flash",
+        "pluginspage", "http://www.adobe.com/go/getflashplayer"
+    );
+    } else {  // flash is too old or we can't detect the plugin
+      $("no_flash").setStyle({display: 'block'});
+    }
+  // -->
+  </script>
+    <noscript>
+      <div style="width:657px;height:532px;" id="flashContainerDiv">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+          id="Izishirt" width="100%" height="100%"
+          codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+          <param name="movie" value="/bin/Izishirt7.swf?version=6.3.1"/>
+          <param name="quality" value="high" />
+          <param name="bgcolor" value="#ffffff" />
+          <param name="FlashVars" value="<%=@flash_vars%>" />
+          <param name="wmode" value="opaque" />
+          <param name="allowScriptAccess" value="sameDomain" />
+          <embed src="/bin/Izishirt7.swf?version=6.3.1" quality="high" bgcolor="#ffffff"
+            width="100%" height="100%" name="Izishirt" align="middle"
+            play="true"
+            loop="false"
+            quality="high"
+            allowScriptAccess="sameDomain"
+            type="application/x-shockwave-flash"
+            pluginspage="http://www.adobe.com/go/getflashplayer">
+          </embed>
+      </object>
+      </div>
+    </noscript>
+  </div>
+
+    <div id="quantity_discount_wrapper" style="background:url('/images/izishirt2011/<%=session[:language]%>/quantitydiscount_txt.png') no-repeat;">
+      <%= render :partial=>"/layouts/quantity_discounts" %>
+    </div>
+
+    </div>
+
+    <!-- Start Div Designs -->
+
+     <div id="flash_popular_designs">
+      <div id="flash_title">
+		<h2>
+			<% if ! @model_id %>
+				<%=t(:popular_designs)%>
+			<% else %>
+				<% 
+				begin
+					m_name = Model.find(@model_id).seo_model_name(session[:language_id])
+				rescue
+					m_name = "T-Shirt"
+				end
+
+				if m_name[m_name.length-1, 1] != "s"
+					m_name += "s"
+				end
+
+				m_name = m_name.gsub("ss", "s")
+
+				@model_name = m_name
+				%>
+				<%= t(:popular_designs_seo, :name => m_name) %>
+			<% end %>
+		</h2>
+
+	</div>
+      <div id="flash_designs_border">
+        <% @top_designs.each do |image| %>
+          <%= render :partial=>"/display/box_design_by_cat", :locals=>{:image=>image}  if image != nil %>
+        <% end %>
+        <% @top_designs2.each do |image| %>
+          <%= render :partial=>"/display/box_design_by_cat", :locals=>{:image=>image}  if image != nil %>
+        <% end %>
+      </div>
+    </div>
+    <%= render :partial => 'shop_left_menu', :locals=>{:no_link=>true} %>
+    <!--<div id="top_search_links">
+      <%#= render :partial=>"/layouts/generic_boxes/top_searches" %>
+      <%#if session[:language]== "fr" %>
+      <div class="top_search_title" style="font-size:10pt">
+      <%#else%>
+        <div class="top_search_title">
+      <%#end%>
+        <%#=t(:top_searches)%>
+      </div>
+      <ul>
+        <li>1.<a href="#"> test</a></li>
+        <li>2.<a href="#"> test</a></li>
+        <li>3.<a href="#"> test</a></li>
+        <li>4.<a href="#"> test</a></li>
+        <li>5.<a href="#"> test</a></li>
+        <li>6.<a href="#"> test</a></li>
+        <li>7.<a href="#"> test</a></li>
+        <li>8.<a href="#"> test</a></li>
+        <li>9.<a href="#"> test</a></li>
+        <li>10.<a href="#"> test</a></li>
+        <li>11.<a href="#"> test</a></li>
+        <li>12.<a href="#"> test</a></li>
+      </ul>
+    </div>-->
+    <!-- End Div Designs-->
+  </div>
+
+
+
+
+
+  <div class="clear"></div>
+
+<script type="text/javascript" src="http://www.myroitracking.com/newServing/roitrack.php?script=1&amp;type=Other&amp;value=-1&amp;seo=0&amp;adsid=46203&amp;nid=1&amp;para=clicksor_opt" ></script><noscript><img border="0" width="1" height="1" src="http://www.myroitracking.com/newServing/roitrack.php?type=Other&amp;value=-1&amp;seo=0&amp;adsid=46203&amp;nid=1&amp;para=clicksor_opt" /></noscript>

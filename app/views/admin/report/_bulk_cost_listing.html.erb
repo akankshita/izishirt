@@ -1,0 +1,14 @@
+<% for order in @orders %>
+  <tr class="<%= cycle('odd','') %>">
+    <td><%= link_to order.id, {:controller => 'admin/order', :action => :show, :id => order.id} %></td>
+    <td><%= order.created_on %></td>
+    <td><%=order.count_models%></td>
+    <td><%= number_to_currency(order.garment_cost.to_f) %></td>
+    <td><%=order.count_zones%></td>
+    <td><%= number_to_currency(order.print_cost.to_f) %></td>
+    <td><%= number_to_currency(order.shipping_cost.to_f) %></td>
+    <td><%= number_to_currency(order.production_cost.to_f)%></td>
+    <td><%= number_to_currency(order.total_price.to_f) %></td>
+    <td><%= number_to_currency(order.total_price.to_f-order.production_cost.to_f) %></td>
+  </tr>
+<% end %>

@@ -1,0 +1,13 @@
+<%= observe_field(:garment_stock_model_id,
+	      :url => { :action => :garment_stock_load_color_model },
+	      :frequency => 0.5,
+	      :update => :box_colors,
+	      :with => 'Form.serialize(document.getElementById("garment_stock_form"))')
+	      %>
+
+	<%= observe_field(:garment_stock_model_id,
+	      :url => { :action => :garment_stock_load_size_model },
+	      :frequency => 0.5,
+	      :update => :box_sizes,
+	      :with => 'Form.serialize(document.getElementById("garment_stock_form"))')
+	      %>

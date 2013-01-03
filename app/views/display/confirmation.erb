@@ -1,0 +1,25 @@
+<div id="left_container">
+  <%= render :partial => "/layouts/generic_boxes/left_column_infos", :locals=>{:version=>"long"} %>
+</div>
+
+<div id="right_container">
+  <div id="contactpage_container">
+    <div id="contact_container">
+      <div id="contactpage_header">
+        <%= t(:contact_us) %>
+
+      </div>
+      <p><%= t(:contact_text) %></p>
+      <div id="contactpage_header2">
+        <span style="background-color: #FFF;padding-right:5px;border-top:4px solid #FFF;border-bottom:3px solid #FFF;border-right:5px solid #FFF;"><%= get_phone_number %></span>
+    </div>
+      <div id="formError" style="color:red;padding-left:10px;"></div>
+      <div id="formError2" style="color:red;padding-left:10px;"></div>
+
+      <div id="body_container">
+        <%=t(:contact_us_email_confirmation_text)%>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,208 @@
+
+body {
+  background-color:#FFFFFF; 
+  width:auto;
+  text-align:center;
+}
+
+ul{
+  font-size:40px;
+  margin-top:10px;
+  padding:30px;
+  text-align:left;
+}
+
+li{
+  margin-left:20px;
+  font-family:arial;
+}
+
+#content-wrapper{width:100%;}
+
+
+.menu{
+  color:#333333;
+  font-size:12px;
+  font-weight:bolder;
+  padding-top:8px;
+  position:absolute;
+  height: 22px;
+  text-align:center;
+}
+
+a.menu {text-decoration:none;}
+
+#home.menu {right:695px;width:62px;}
+#create.menu{right:485px;width:208;}
+#shop.menu{right:415px;width:65px;}
+#open.menu{right:250px;width:160px;}
+#top.menu{right:115px;width:130px;}
+#faq.menu{right:53px;width:61px;}
+
+.sub_menu{
+  color:#ffffff;
+  font-size:10px;
+  font-weight:bolder;
+  padding:8px;
+  position:absolute;
+  height:10px;
+  text-align:center;
+}
+a.sub_menu {text-decoration:none;}
+
+#first.sub_menu{right:565px;width:120px;}
+#hot.sub_menu{right:460px;width:90px}
+#prod.sub_menu{right:372px;width:70px;}
+#screen.sub_menu{right:246px;width:110px;}
+#link.sub_menu{right:185px;width:42px;}
+#local.sub_menu{right:123px;width:45px;}
+
+
+#mainContent {
+	padding: auto
+	position:relative;
+	left:0px;
+	top:0px;
+	width:977px;
+	height:100%;
+	background-color: white;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+#models  {
+	background-repeat: no-repeat;
+	width: 190px;
+	left: 515px;
+	position: absolute;
+	height: 296px;
+	top: 31px;
+}
+
+#models_2  {
+	background-repeat: no-repeat;
+	width: 190px;
+	left: 190px;
+	position: absolute;
+	height: 296px;
+	top: 0px;
+}
+
+
+#button_2 {
+}
+
+#button {
+left: 43px;
+bottom: 2px;
+top: 16px;
+background-repeat: no-repeat;
+background-image: url(/images/landing/izishirt_homepage_landing_button_create.png);
+position: absolute;
+
+
+}
+
+#button img{ border:0;}
+#button_2 img{ border:0;}
+
+#izishirt-homepage-landing-pages--04 {
+	width:977px;
+	height:117px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+#element_navBar, #izishirt-homepage-landing-pages--08 {
+	background-repeat: repeat-x;
+	position:absolute;
+	background-image: url(/images/landing/izishirt_homepage_landing_pa.png);
+	left:210px;
+	top:147px;
+	width:977px;
+	height:56px;
+}
+
+
+
+#izishirt-homepage-mainNav-gradient {
+	 color: white;
+	font-size: 13px;
+	text-decoration:none;
+	font-family: Arial;
+	background-image: url(/images/landing/izishirt_homepage_mainNav_gr.png);
+	position:relative;
+    margin-left:50px;
+	width:919px;
+	height:32px;
+}
+
+#izishirt-homepage-subNav-gradient {
+	color: white;
+	font-size: 11px;
+	text-decoration: none;
+	font-family: Arial;
+	background-image: url(/images/landing/izishirt_homepage_subNav_gra.png);
+	position:relative;
+    margin-left:50px;
+	width:919px;
+	height:26px;
+}
+
+#izishirt-homepage-landing-pages--15 {
+	position:relative;
+    margin-left:50px;
+	width:919px;
+	height:217px;
+}
+
+#izishirt-homepage-landing-pages--17 {
+	position:relative;
+    margin-left:50px;
+	width:930px;
+	height:352px;
+	background-image: url(/images/landing/izishirt_homepage_landing-06.png)
+}
+
+#izishirt-homepage-landing-pages--20 {
+	position:absolute;
+	left:247px;
+	top:799px;
+	width:977px;
+	height:105px;
+}
+
+#izishirt-homepage-landing-pages--24 {
+	position:absolute;
+	left:247px;
+	top:904px;
+	width:213px;
+	height:39px;
+}
+
+#izishirt-homepage-landing-button-login {
+	position:absolute;
+	left:461px;
+	top:904px;
+	width:47px;
+	height:18px;
+}
+
+#izishirt-homepage-landing-pages--26 {
+	position:absolute;
+	left:507px;
+	top:904px;
+	width:788px;
+	height:39px;
+
+}
+
+#footer, #background {
+	background-image: url(/images/landing/izishirt_homepage_landing_gr.png);
+	background-repeat: repeat-x;
+	
+}
+	
+#background_element {
+	background-image: url(/images/landing/izishirt_homepage_landing_footer.png);
+} 

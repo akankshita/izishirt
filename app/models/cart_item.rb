@@ -1,0 +1,236 @@
+#Extends cartbase to get function defined in add_country_tax lib
+class CartItem < CartBase
+  attr_accessor :product, :quantity, :blank, :cart, :discount_value
+  
+  def initialize(cart, product, qty = 1, blank = 0, discount_value=20)
+    @cart = cart
+    @product = product
+    @quantity = qty
+    @blank = blank
+	@discount_value = discount_value
+  end
+  
+  def blank
+    begin
+      return @blank
+    rescue
+      return false
+    end
+  end
+
+  def set_quantity(quantity)
+    @quantity = quantity
+    @product.quantity = quantity
+  end
+  
+  def set_discount_value(discount_value)
+    @discount_value = discount_value
+    @product.discount_value = discount_value
+  end
+
+  def set_model_size(model_size)
+    @product.model_size = model_size
+  end
+
+  def set_price(price)
+	
+	if  session[:country]=="FR"
+		if model.pricefr.to_f>0
+			model.write_attribute('price',model.pricefr)
+		else
+			currencyinfo=Currency.find_by_label("EUR")
+			priceconvert=model.price.to_f*currencyinfo.ratio
+			@product.price = priceconvert
+		end
+	  else
+		if session[:country]=="US"
+			currencylabel="USD"
+		else 
+			currencylabel="CAD"
+		end
+		currencyinfo=Currency.find_by_label(currencylabel)
+		priceconvert=model.price.to_f*currencyinfo.ratio
+		@product.price = priceconvert
+	  end
+	
+	
+    #@product.price = price
+  end
+  
+  def increment_quantity
+    @quantity += 1
+    @product.quantity += 1
+	
+	######################
+	  @modelinfos  = Model.find(@product.model.id)
+	  
+	if @modelinfos.nodiscount== true
+		@product.discount_value = 0
+	else
+	
+		@bulk_discount_req = BulkDiscount.find(:last, :conditions => ["is_default = ? and start <= ?", true, @product.quantity], :order => :start)
+		
+		if @bulk_discount_req.nil?
+        @bulk_discount =0
+		else 
+		@bulk_discount =@bulk_discount_req.percentage / 100.0
+		end
+
+		@product.discount_value = @bulk_discount
+		
+	
+	end
+	######################
+	
+	
+	
+  end
+
+  def decrement_quantity
+    @quantity -= 1 if (@quantity > 0)
+    @product.quantity -= 1 if (@product.quantity > 0)
+	
+	######################
+	  @modelinfos  = Model.find(@product.model.id)
+	  
+	if @modelinfos.nodiscount== true
+		@product.discount_value = 0
+	else
+	
+		@bulk_discount_req = BulkDiscount.find(:last, :conditions => ["is_default = ? and start <= ?", true, @product.quantity], :order => :start)
+		
+		if @bulk_discount_req.nil?
+        @bulk_discount =0
+		else 
+		@bulk_discount =@bulk_discount_req.percentage / 100.0
+		end
+		
+		@product.discount_value = @bulk_discount
+		
+	
+	end
+	######################
+	
+  end
+
+  def preview
+    path_ordered_product = OrderedProduct.path_ordered_product(@product.created_on)
+
+    img="/izishirtfiles/#{path_ordered_product}/#{@product.checksum}/#{@product.checksum}-front.jpg"
+    img
+  end
+
+  def back_preview
+    path_ordered_product = OrderedProduct.path_ordered_product(@product.created_on)
+    img="/izishirtfiles/#{path_ordered_product}/#{@product.checksum}/#{@product.checksum}-back.jpg"
+    if File.exist?(RAILS_ROOT + "/public" + img)
+      return img
+    else
+      return nil
+    end
+  end
+  def left_preview
+    path_ordered_product = OrderedProduct.path_ordered_product(@product.created_on)
+    img="/izishirtfiles/#{path_ordered_product}/#{@product.checksum}/#{@product.checksum}-left.jpg"
+    if File.exist?(RAILS_ROOT + "/public" + img)
+      return img
+    else
+      return nil
+    end
+  end
+  def right_preview
+    path_ordered_product = OrderedProduct.path_ordered_product(@product.created_on)
+    img="/izishirtfiles/#{path_ordered_product}/#{@product.checksum}/#{@product.checksum}-right.jpg"
+    if File.exist?(RAILS_ROOT + "/public" + img)
+      return img
+    else
+      return nil
+    end
+  end
+
+  def image
+    image = ""
+    
+    @product.ordered_zones.each {|zone|
+
+      cur_art = 0
+
+      Rails.logger.error("zone.ordered_zone_artworks.length = #{zone.ordered_zone_artworks.length}")
+
+      zone.ordered_zone_artworks.each do |artwork|
+        cur_art += 1
+
+        cur_name = artwork.image.name if artwork.image
+        cur_name = "User Uploaded" if artwork.uploaded_image_id
+
+
+        image += cur_name
+
+        if cur_art < zone.ordered_zone_artworks.length
+          image += ", "
+        end
+      end
+    }
+
+    return image
+  end
+
+  def is_shop2_item?
+    return @product && @product.purchase_source && @product.purchase_source.str_id == "shop2"
+  end
+
+  def price(add_tax=true)
+    tmp_price = @product.price
+	#+@product.commission
+	#if add_tax
+    #  add_country_tax(tmp_price, @cart.get_country) 
+    #else
+    #  tmp_price
+    #end
+  end
+
+  def total_price(add_tax=true)
+  
+	######################
+	  @modelinfos  = Model.find(@product.model.id)
+	  
+	if @modelinfos.nodiscount== true
+		@discount_value=0
+	else
+	
+		@bulk_discount_req = BulkDiscount.find(:last, :conditions => ["is_default = ? and start <= ?", true, @quantity], :order => :start)
+	
+		if @bulk_discount_req.nil?
+        @bulk_discount =0
+		else 
+		@bulk_discount =@bulk_discount_req.percentage / 100.0
+		end
+		
+		@discount_value=@bulk_discount
+		
+	end
+	######################
+	thediscount = @discount_value.to_f*@product.price
+    tmp_price = (@product.price) * @quantity
+#	- thediscount
+	#+@product.commission
+    #if add_tax
+    #  add_country_tax(tmp_price, @cart.get_country)
+    #else
+    #  tmp_price
+    #end
+  end
+
+  def get_next_discount_info
+    return nil if cart.affiliate_without_discounts
+
+    model_quantity = cart.model_quantity_hash[product.model.id][:qty] 
+    @bulk_discount = BulkDiscount.next_discount_by_qty(model_quantity, product.model.id)
+    
+    if @bulk_discount
+      return @bulk_discount.percentage, @bulk_discount.start - model_quantity
+    else
+      return nil
+    end
+  end
+end

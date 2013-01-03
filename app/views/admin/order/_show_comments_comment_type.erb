@@ -1,0 +1,114 @@
+
+
+<% 
+current_line_white = false
+
+if comment_type.str_id == "printer"
+	if @order.is_vip && @order.affiliate_printer_comment != ""
+		c = Comment.new
+		c.user_id = 70
+		c.order_id = @order.id
+		c.comment = "** [Auto-Generated Comment] - #{@order.affiliate_printer_comment}. **"
+		c.date_time = DateTime.now
+		c.internal = false
+		c.comment_type_id = comment_type.id
+		c.deleted = false
+
+		comments << c
+	end
+
+	if @order.bulk_order?
+		c = Comment.new
+		c.user_id = 70
+		c.order_id = @order.id
+		c.comment = "** [Auto-Generated Comment] - Bulk Order - Mock up required. **"
+		c.date_time = DateTime.now
+		c.internal = false
+		c.comment_type_id = comment_type.id
+		c.deleted = false
+
+		comments << c
+	end
+end
+
+if comment_type.str_id == "artwork_comment"
+	if @order.is_vip && @order.affiliate_artwork_comment != ""
+		c = Comment.new
+		c.user_id = 70
+		c.order_id = @order.id
+		c.comment = "** [Auto-Generated Comment] - #{@order.affiliate_artwork_comment}. **"
+		c.date_time = DateTime.now
+		c.internal = false
+		c.comment_type_id = comment_type.id
+		c.deleted = false
+
+		comments << c
+	end
+
+	if @order.bulk_order?
+		c = Comment.new
+		c.user_id = 70
+		c.order_id = @order.id
+		c.comment = "** [Auto-Generated Comment] - Bulk Order - Mock up required. **"
+		c.date_time = DateTime.now
+		c.internal = false
+		c.comment_type_id = comment_type.id
+		c.deleted = false
+
+		comments << c
+	end
+end
+
+comments.each do |comment| 
+
+	current_line_white = ! current_line_white
+
+	current_backcolor = current_line_white ? "#FFFFFF" : "#cfcaca"
+
+	if comment.comment.index("[Auto-Generated Comment]")
+		current_backcolor = "#65c3d7"
+	end
+
+%>
+	<div id="comment_<%= comment.id %>_full" onclick="<%= "show_or_hide_comment(#{comment.id});" if comment.deleted %>" style="display: <%= comment.deleted ? "none" : "block" %>; background-color: <%= current_backcolor %>; margin-left: 15px; margin-top: 5px; margin-bottom: 5px;  margin-right: 15px;">
+		<table style="width: 670px">
+			<tr>
+				<td style="text-align: left;"><%= comment.username %>:</td>
+				<td style="text-align: right; color: #5e5c5c;"><%= comment.date_time %> 
+
+					<% if ! comment.deleted && comment.username == @user.username %>
+						<%= link_to_remote "[X]", :url => {:controller => "/admin/order", :action => "delete_comment", :comment_id => comment.id, :comment_type => comment_type.str_id, :order_id => @order.id}, :update => "comments_#{comment_type.str_id}", :complete => "" %>
+					<% end %>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2">
+					<br />
+					<%= comment.comment.gsub("\n", "<br />") %>
+					<br />
+					<br />
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="comment_<%= comment.id %>_min" style="display: <%= comment.deleted ? "block" : "none" %>; background-color: <%= current_backcolor %>; margin-left: 15px; margin-top: 5px; margin-bottom: 5px;  margin-right: 15px;">
+		<%= link_to "#{t(:admin_order_comments_comment_removed_by)} #{comment.username}", "javascript:show_or_hide_comment(#{comment.id});" %>
+	</div>
+
+<% end %>
+
+<div align="center">
+	<table style="width: 670px">
+		<tr>
+			<td style="text-align: center; width: 100%">
+				<%= will_paginate comments, :renderer => 'RemoteLinkRenderer', 
+					:params => {:order_id => @order.id, :controller => "/admin/order", :action => "list_comments", :comment_type => comment_type.str_id} %>
+			</td>
+			<td style="text-align: right; width: 0%">  
+			</td>
+		</tr>
+	</table>
+</div>
+

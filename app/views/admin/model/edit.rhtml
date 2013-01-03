@@ -1,0 +1,65 @@
+<div>
+
+  <h1 style="clear:both;"><%= t(:admin_model_edit_toptitle)%></h1>
+</div>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+  	<th><%#= t(:admin_model_list_image)%></th>
+  	<th><%=  t(:admin_model_list_name)%></th>
+	  <th width="50">&nbsp;</th>	
+	  <th width="50">&nbsp;</th>
+  </tr>
+  
+  <tbody id='listing'>
+    <%= render :partial => 'edit_model_specification', 
+        :collection => @model_specifications, 
+        :as => :model_specification %>
+  </tbody>
+</table>
+<br />
+
+<%= render :partial => "box_model_specification", :locals => { :id => nil, :action => "create_model_specification", :redirect => "/admin/model/edit/#{params[:id]}"} %>
+
+<br/><br/>
+
+<%= render :partial => "out_of_stock" %>
+
+<br/><br/>
+
+<%= render :partial => 'discounts' %>
+
+<br/><br/>
+
+<h1><%= t(:admin_model_edit_toptitle)%></h1>
+
+<% form_tag({:action => 'update' , :id => @mymodel}, {:multipart=>true }) do %>
+	<%= render :partial => 'baseform2' %>
+	<%= render :partial => 'size' %>		
+  <%= render :partial => 'fields_for_flash' if @model_specifications && @model_specifications.size > 0%>		
+
+	<div class="titleForm">&nbsp;</div>
+	<div class="boxForm">
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+		<%= link_to t(:admin_back), {:action => 'list' }, {:class => 'textLink', :title => t(:admin_back) }  %>
+		<%= submit_tag "SAVE" %>
+	</div>
+
+<% end %>
+

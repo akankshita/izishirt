@@ -1,0 +1,19 @@
+<p>Report of: <b><%= @shift.fullname %></b> (<%= @shift.username %>)</p>
+<p>Start time: <b><%= @shift.created_at %></b></p>
+<p>End time: <b><%= @shift.finished_at %></b></p>
+<p>Duration: <b><%= @shift.duration %> hours</b></p>
+<h2>Week: <%= @shift.user.shift_hours_done_week.round(2) %> hours</h2>
+
+<% if @shift.description && @shift.description != "" %>
+
+	<p><br /><b>Additional description: </b><br /><br />
+		<%= @shift.description.gsub("\n", "<br />") %>
+	<br /><br />
+	</p>
+<% end %>
+
+<p>
+<br />
+</p>
+
+Izishirt.com

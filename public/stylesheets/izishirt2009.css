@@ -1,0 +1,4975 @@
+body{
+  background-color: #cccccc;
+  background-image: url('../images/izishirt2009/bodyBg.png');
+  background-repeat: no-repeat;
+  font-size:12px;
+  font-family:Helvetica,Tahoma,Arial,sans-serif;
+  /*font-family:"Times New Roman",Georgia,Serif;*/
+}
+
+a.botLink:link { font-family:Helvetica, Arial, Verdana; font-size12px; color:#fff; text-decoration: none; background-color:#24ae1b; padding:5px 10px 5px 10px; -moz-border-radius: 10px;
+-webkit-border-radius: 10px; float:right; }
+a.botLink:hover { font-family:Helvetica, Arial, Verdana; font-size12px; color:#fff; text-decoration: none; background-color:#1ba212; padding:5px 10px 5px 10px; -moz-border-radius: 10px;
+-webkit-border-radius: 10px; float:right;}
+a.botLink:active { font-family:Helvetica, Arial, Verdana; font-size12px; color:#fff; text-decoration: none; background-color:#24ae1b; padding:5px 10px 5px 10px; -moz-border-radius: 10px;
+-webkit-border-radius: 10px; float:right; }
+a.botLink:visited { font-family:Helvetica, Arial, Verdana; font-size12px; color:#fff; text-decoration: none; background-color:#24ae1b; padding:5px 10px 5px 10px; -moz-border-radius: 10px;
+-webkit-border-radius: 10px; float:right; }
+
+.lbOn {display:none;}
+
+
+
+.localContent p { text-indent:0 }
+.localContent p p { text-indent:0 }
+.localContent {padding:20px 40px; color:#5B5B5B; font-size:12px;}
+.localContent ul {padding-top:0; padding-bottom:0; margin-top:0; margin-bottom:5px}
+.localContent li {line-height:22px; list-style-image:url(../images/arrow-dbpage.gif) ; vertical-align:middle}
+.localContent h2 { line-height:30px; font-size:15px  !important; font-weight:bold;color:#008FD4; margin:0; padding:5px 0}
+.localContent h3 { line-height:30px; font-size:13px  !important; font-weight:bold;color:#008FD4; background:none; margin:0;padding:5px 0}
+.localContent h4 {font-size:12px  !important; color:#565656; margin:0; padding:5px 0}
+.localContent a { color:#565656; text-decoration:none; background:#DCDCDC; font-weight:bold}
+.localContent a:hover {  text-decoration:none; background:#565656; color:white}
+.localContent p {margin:10px 0; padding:0; text-indent:0;margin-bottom:8px;}
+
+.customContent {padding:20px 40px; color:#5B5B5B; font-size:12px;}
+.customContent ul {padding-top:0; padding-bottom:0; margin-top:0; margin-bottom:5px}
+.customContent li {line-height:22px; list-style-image:url(../images/arrow-dbpage.gif) ; vertical-align:middle}
+.customContent h2 { line-height:30px; font-size:15px  !important; font-weight:bold;color:#008FD4; margin:0; padding:5px 0}
+.customContent h3 { line-height:30px; font-size:13px  !important; font-weight:bold;color:#008FD4; background:none; margin:0;padding:5px 0}
+.customContent h4 {font-size:12px  !important; color:#565656; margin:0; padding:5px 0}
+.customContent a { color:#565656; text-decoration:none; background:#DCDCDC; font-weight:bold}
+.customContent a:hover {  text-decoration:none; background:#565656; color:white}
+.customContent p {margin:10px 0; padding:0;margin-bottom:8px;text-indent:0 !important;}
+.custom_content_header {color:#BE0909; background: url(../images/ico_h3.gif) no-repeat left; padding-left:33px; line-height:30px; font-size:16px}
+.custom_content_header span  {padding-bottom:5px; display:block; font-weight:bold }
+
+
+/* DIV promotionnel */
+#promoContainer { width: 100%; padding: 5px 0 5px 0; background-color:#0066ff; font-size: 12px; font-family: Geneva, Arial, Verdana; color: #fff; margin: 0; }
+#promoContainer a { font-size: 12px; font-family: Geneva, Arial, Verdana; color: #fff; text-decoration: none; }
+#promoContainer a:hover { font-size: 12px; font-family: Geneva, Arial, Verdana; color: #fff; text-decoration:underline; }
+#promoContainer ul { margin: 0px; padding:0px; }
+#promoContainer li { display: inline; margin: 0 50px 0 0; padding: 0; list-style-position:outside; }
+#promoContainer .list_fr li {margin: 0 40px 0 0}
+/**************** Generic Boxes ****************/
+.boxContent {
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+}
+.boxContent ul { margin:0px; list-style:none;}
+.boxContent ul li {
+  padding:1px 8px;
+  font-size:14px;
+  line-height:21px;
+}
+.boxContent ul li.odd { background-color:#ffffff;}
+.boxContent ul li.even { background-color:#f0f0f0;}
+.boxContent ul li a.category {text-decoration:none; color:#414141;}
+.boxContent p { margin:0px;}
+.boxBottomLeft {
+  background-image: url('../images/izishirt2009/boxBottomLeft.png');
+  background-repeat: no-repeat;
+  height:15px;
+  width:15px;
+  z-index:99;
+}
+.boxBottomMiddle{
+  background-image: url('../images/izishirt2009/boxBottomMiddle.png');
+  width:100%;
+  height:15px;
+  z-index:99;
+}
+.boxBottomRight {
+  background-image: url('../images/izishirt2009/boxBottomRight.png');
+  background-repeat: no-repeat;
+  height:15px;
+  width:15px;
+  z-index:99;
+}
+.bottomTitleLeft {
+  background-image: url('../images/izishirt2009/bottomTitleLeft.png');
+  background-repeat: no-repeat;
+  height:24px;
+  width:20px;
+}
+.bottomTitleMiddle{
+  background-image: url('../images/izishirt2009/bottomTitleMiddle.png');
+  width:100%;
+  height:24px;
+}
+.bottomTitleRight {
+  background-image: url('../images/izishirt2009/bottomTitleRight.png');
+  background-repeat: no-repeat;
+  height:24px;
+  width:18px;
+}
+.bottomTitleDarkLeft {
+  background-image: url('../images/izishirt2009/bottomTitleDarkLeft.png');
+  background-repeat: no-repeat;
+  height:32px;
+  width:20px;
+}
+.bottomTitleDarkMiddle{
+  background-image: url('../images/izishirt2009/bottomTitleDarkMiddle.png');
+  width:100%;
+  height:32px;
+}
+.bottomTitleDarkRight {
+  background-image: url('../images/izishirt2009/bottomTitleDarkRight.png');
+  background-repeat: no-repeat;
+  height:32px;
+  width:18px;
+}
+.graniteTitle {
+  background-image:url(../images/izishirt2009/graniteTitle.png);
+  height:23px;
+  padding-left:8px;
+  padding-top:6px;
+}
+.graniteBottomLeft {
+  background-image: url('../images/izishirt2009/graniteBottomLeft.png');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  height:122px;
+  width:12px;
+}
+.graniteBottomMiddle{
+  background-image: url('../images/izishirt2009/graniteBottomMiddle.png');
+  background-repeat: repeat-x;
+  background-position: bottom;
+  height:122px;
+}
+.graniteBottomRight {
+  background-image: url('../images/izishirt2009/graniteBottomRight.png');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  height:122px;
+  width:12px;
+}
+.addGraniteDivider {
+  border-bottom:1px solid #666666;
+}
+/**************** EO Generic Boxes ****************/
+
+.container{
+  background-color: white;
+  overflow: hidden; /* stupid ie6 */
+}
+.hometext1 {
+  padding-right:40px;
+}
+.hometext1 p, .hometext2 p{
+  text-align:justify;
+  margin-bottom:4px;
+}
+
+/**************** Horizontal Spacing ****************/
+.horiz_space_7 { height:7px; width:100%; background-color:#ffffff; color:#ffffff;}
+.horiz_space_8 { height:8px; width:100%; background-color:#ffffff; color:#ffffff;}
+.horiz_space_10 { height:10px; width:100%; background-color:#ffffff; color:#ffffff;}
+.horiz_space_11 { height:11px; width:100%; background-color:#ffffff; color:#ffffff;}
+.horiz_space_12 { height:12px; width:100%; background-color:#ffffff; color:#ffffff;}
+.horiz_space_18 { height:18px; width:100%; background-color:#ffffff; color:#ffffff;}
+.horiz_space_19 { height:19px; width:100%; background-color:#ffffff; color:#ffffff;}
+.horiz_space_20 { height:20px; width:100%; background-color:#ffffff; color:#ffffff;}
+.horiz_space_26 { height:26px; width:100%; background-color:#ffffff; color:#ffffff;}
+.horiz_space_30 { height:30px; width:100%; background-color:#ffffff; color:#ffffff;}
+.horiz_space_40 { height:40px; width:100%; background-color:#ffffff; color:#ffffff;}
+.horiz_space_50 { height:50px; width:100%; background-color:#ffffff; color:#ffffff;}
+/**************** EO Horizontal Spacing ****************/
+
+
+
+
+/**************** Blue Boxes ****************/
+.blueBoxLeft {
+  background-image: url('../images/izishirt2009/blueBoxLeft.png');
+  width:44px;
+  height:31px;
+  background-repeat: no-repeat;
+  z-index:99;
+}
+
+.blueBoxLeftNoLogo {
+  background-image: url('../images/izishirt2009/blueBoxLeftNoLogo.png');
+  width:44px;
+  height:31px;
+  background-repeat: no-repeat;
+}
+
+.blueBoxRight {
+  background-image: url('../images/izishirt2009/blueBoxRight.png');
+  background-repeat: no-repeat;
+  height:31px;
+  width:20px;
+  z-index:99;
+}
+.blueBoxHeader {
+  background-image: url('../images/izishirt2009/blueBoxMiddle.png');
+  height:31px;
+  width:100%;
+}
+.blueBoxHeader label{
+  font-weight:bold;
+  font-size:15px;
+  color:#ffffff;
+  position:relative;
+  top: 4px;
+  left: 4px;
+}
+.noLogo label{left: -34px !important;}
+div.redBox .noLogo label{left: -24px !important;}
+div.redBox .noLogo img{position:relative;left: -24px !important;}
+.blueBoxHeader a{
+  font-weight:bold;
+  font-size:15px;
+  color:#ffffff;
+  position:relative;
+  top: 4px;
+  left: 4px;
+  text-decoration:none;
+}
+.blueBoxInnerTitle label{
+  font-size:13px;
+  font-weight:bold;
+  position:relative;
+  top: 3px;
+  left: 6px;
+}
+
+.blueBoxInnerTitle {
+  background-image: url('../images/izishirt2009/blueBoxInnerTitle.png');
+  height:28px;
+}
+/**************** EO Blue Boxes ****************/
+
+/* Blue Box that holds Flash App */
+.flashAppHeader {width:593px !important;width:592px;}
+.flashHeaderWrapper {z-index:2;position:absolute;}
+#flashcontent {position:relative;top:18px;z-index:1}
+.paymentlist {padding:4px;}
+#light_flashcontent{
+  border: solid 0px #000;
+  width: 700px;
+  height: 550px;
+  margin: 0px 0px;
+  text-align:center;
+  filter:alpha(opacity=0); 
+  -moz-opacity: 0; 
+  opacity: 0; 
+}
+.flashPromo {position:absolute;z-index:2;top:27px;left:313px;}
+.flashPage {position:relative;}
+
+/* Red Box that holds categories and search */
+.leftBoxHeader {width:160px;}
+.leftBox {width:206px;}
+.homeCategories {height:614px;}
+.leftBoxBottom {width:178px;}
+.titleSearch { width:70px; padding:0;margin-top:6px;}
+.titleSearchWrapper a { top:0; }
+
+
+/* Red Box that holds whats new */
+.whatsNewBoxHeader {width:645px;}
+.whatsNewBox { width:691px;overflow:hidden;}
+.whatsNewBoxBottom {width:663px;}
+.thumbWrapper {width:111px;height:122px;padding:12px;text-align:center}
+.landingThumbWrapper {width:135px;height:185px;padding-top:8px;text-align:center}
+.landingThumbWrapper span a.green {line-height: 14px;padding-top:6px;}
+.landingThumbWrapper span a.darkGray { font-size:11px; line-height:11px;font-weight:bold;}
+.landingThumbWrapper span a.purple { font-size:11px; line-height:11px;font-weight:bold;}
+.imageWrapper {line-height:110px;width:110px; height:110px;border:1px solid #999999;text-align:center;}
+.landingImageWrapper {line-height:135px;width:135px; height:135px;text-align:center;}
+.apparelWrapper {width:114px;height:215px;padding:12px;text-align:center}
+.apparelWrapper a img{position:relative;}
+.relatedApparelWrapper {width:111px;height:140px;padding:12px;text-align:center}
+.relatedApparelWrapper a img{position:relative;}
+.bottomDashed {margin-bottom: 20px; border-bottom:dashed 2px #BBBBBB;}
+.colors img {margin:0px 3px 0px 0;width:16px;height:16px; border:1px solid #ebebeb}
+.colors img:hover {border:1px solid #999}
+.imageWrapperSelected {line-height:110px;width:110px; height:110px;border:1px solid #0099cc;}
+.imageWrapper a {line-height:110px;width:110px;height:110px;vertical-align:middle;text-align:center;}
+.imageWrapperSelected a {line-height:110px;width:110px;height:110px;text-align:center;vertical-align:middle;}
+.thumb {width:auto;height:auto;vertical-align:middle;text-align:center;}
+.landingProdThumb {width:135px;height:135px;vertical-align:middle;text-align:center;}
+.topFive {position:absolute;left:-10px;top:-10px;}
+.prod_thumb {width:110px;height:110px;border:1px solid #999999;}
+.thumbSelected {width:110px;height:110px;border:1px solid #0099cc;}
+.redBoxTitle label.viewAll {position:absolute;left:630px;}
+.viewAll a {font-size:11px;font-weight:bold;color:#990000;}
+#topDesignScroller {position:relative;}
+
+/* Red Box that spans the whole page */
+.pageWideBox {width:907px;}
+.pageWideBoxHeader{width:861px;}
+.pageWideBoxBottom {width:879px;}
+
+
+/* Red Box that holds shop contents */
+.shopHeaderWidth {width:640px;}
+.shopWidth { width:686px;overflow:hidden;}
+.shopBottomWidth {width:658px;}
+.shopGraniteWidth {width:664px;}
+.shopTitleWidth {width:650px;}
+.pagenumb{text-align:center;padding-top:4px;}
+.promoBox {
+  background-image: url('../images/izishirt2009/promoBox.png');
+  background-repeat:no-repeat;
+  height:222px;
+  width:697px;
+}
+
+.smallShopHeaderWidth {width:590px;}
+.smallShopWidth { width:636px;overflow:hidden;}
+.smallShopBottomWidth {width:608px;}
+
+.apparelHeaderWidth {width:646px;}
+.apparelWidth { width:692px;overflow:hidden;}
+.localBottomWidth, .apparelBottomWidth {width:664px;}
+.apparelGraniteWidth {width:670px;}
+.apparelBottom {height:60px; border-top:1px solid #9b9b9b;}
+.apparelTitle {padding: 5px; vertical-align: ; border-width: 1px 0 1px 0; border-color: #9b9b9b; border-style:solid;}
+.noBorder {border-width:0 0 0 0}
+.size_chart{border-collapse:collapse; }
+.size_chart th,
+.size_chart td {
+  border:1px solid #ccc;
+  vertical-align:middle;
+  text-align:center;
+}
+.size_chart td { color: #666666;}
+.size_chart th { color: #515151;}
+
+
+/* Edit by Ven */
+.apparel div.top{ }
+.apparel div.top,
+.apparel div.bottom {  padding:10px;}
+/* Edit by Ven END */
+.apparel .apparelImages {  width:354px;}
+.apparel_color_filter {width: 200px; height:25px; margin: 0px 0px 0 0; float:right; color:#fff }
+.apparel .colors {margin-top:10px; margin-bottom:5px}
+.apparel .apparelImagesHeight {height:338px;}
+.apparel .apparelImages .secondImage{ margin-left:3px;}
+.apparel .apparelImages .thirdImage{ margin-left:3px;margin-top:3px;}
+.apparel .lengthLabel, .light_apparel_details .lengthLabel{
+  position:relative;
+  bottom:4px;
+}
+.apparel .apparelModel{
+  height: 280px;
+  width: 280px;
+  left:15px;top:20px;
+  position:absolute; border:none !important
+}
+
+.apparelLeft p + p {text-indent:0;}
+.apparelLeft p { margin-top:12px;margin-bottom:0;color:#404040; }
+.apparelLeft p.arrowed {
+  background: url('../images/izishirt2009/rightArrow.png') no-repeat 0px 2px;
+  padding-left:20px;
+}
+.apparelLeft span.arrowed {
+  color:#404040;
+  background: url('../images/izishirt2009/rightArrow.png') no-repeat 0px 2px;
+  padding-left:20px;
+}
+
+.localHeaderWidth {width:614px;}
+.localWrapper { width:662px;overflow:hidden;}
+.localWidth { width:660px;overflow:hidden;}
+.localBottomWidth {width:632px;}
+.localLeft {float:left;width: 246px;}
+.local, .localCanada {
+  background-image: url('../images/izishirt2009/printing.png');
+  background-repeat:no-repeat;
+  margin:20px;
+  padding-left:75px;
+}
+.localCanada .firstlist  {width:130px;}
+.localCanada .secondlist {width:125px;}
+.localCanada .thirdlist  {width:114px;}
+.localCanada .fourthlist {width:162px;}
+
+.localCanada ul li { list-style: disc;padding:0; list-style-position:inside}
+.localCanada ul li a { text-decoration:none; color: #333333;}
+
+.local a {color:#007acd;}
+.local ul li {
+  font-size: 13px;
+  list-style:none;
+  background: url('../images/izishirt2009/smallredArrows.png') no-repeat 0px 6px;
+  padding-left:10px;
+  color:#333333;
+}
+
+.local ul.left, .local ul.right {width:264px;}
+.local ul.indent {
+  position:relative;
+  left:10px;
+}
+.local p.arrowed, .localCanada p.arrowed {
+  background: url('../images/izishirt2009/rightArrow.png') no-repeat 0px 17px;
+}
+.local p, .localCanada p {padding-top:15px;padding-left:15px;text-align:justify;position:relative;left:-15px;}
+.local p + p, .localCanada p + p {text-indent:0;}
+.local .addTop, .localLeft .addTop{border-top:1px solid #999999;}
+.local .addBottom, .localLeft .addBottom {border-bottom:1px solid #999999;}
+.local .main_banner_button {bottom:0;left:30px;right:0;top:0;}
+.local .bulk_order_button {bottom:0;right:60px;top:7px;}
+.local .reduceWidth{width:400px;}
+.localLeft div {margin-right:10px;}
+
+
+
+
+/* Brand names box*/
+.brands div.brand {margin:0 10px;}
+.brands div.addBottom {border-bottom:1px solid #999999;}
+.brands label {display: block;font-size:12px;}
+.brands label.normal {font-size:11px;}
+.brands p {color:#515151; text-align:justify;line-height:12px;padding:4px 0;font-size:11px;}
+
+
+/* Red Box that holds the Blog */
+.blogBoxHeader {width:494px;}
+.blogBox { width:540px;border-right:0px;}
+.blogBox p {padding:8px; text-align:left;color:#555555;overflow:hidden;width:490px;}
+.blogBox p a.darkRed {color:#990000;}
+.blogBox span {padding:8px;}
+.blogBoxBottom {width:512px;}
+.blogBottomLeft {position:absolute;bottom:0px;left:0px;}
+.blogBottomMiddle {position:absolute;bottom:0px;right:29px;width:507px;}
+.blogTitle { width:521px;}
+.scrollWrapper {position:relative;}
+#blog { height:250px;}
+
+/* Red Box that holds the featured designer */
+.designerBoxHeader {width:312px;}
+.designerBox { width:358px;}
+.designerBoxBottom {width:322px;text-align:center;}
+#featuredDesigner {height:165px;padding:20px 16px 10px 16px;}
+#featuredDesigner img {border:1px solid #999999;}
+#featuredDesigner img#rank {border:none;}
+#featuredDesigner img.innerDesign {margin-top:4px;}
+#featuredDesigner img.lastInnerDesign {margin-top:4px;margin-left:10px;}
+#featuredDesigner label {font-weight:bold;color:#666666;}
+#featuredDesigner ul {line-height:1em;}
+#featuredDesigner.topShopDesigner {padding-bottom:0;height:auto;}
+
+/* helper styles */
+.noPad{padding:0px;}
+.noMarg{margin:0px;}
+.noBord{border:0px;}
+.block{display: block;}
+.left{float: left;}
+.right{float: right;position:relative;}
+.relative{position:relative;}
+.middle{vertical-align: middle;margin-top:auto;margin-bottom:auto;}
+.alignLeft {text-align:left;} 
+.shopHeaderWidth .middle{margin-top:8px;}
+.bottom{vertical-align: bottom;}
+.center{text-align:center;}
+.noDecoration {text-decoration:none;}
+.prepend-4-px {padding-left:4px;}
+.prepend-6-px {padding-left:6px;}
+.prepend-8-px {padding-left:8px;}
+.prepend-10-px {padding-left:10px;}
+.prepend-12-px {padding-left:12px;}
+.prepend-18-px {padding-left:18px;}
+.prepend-25-px {padding-left:25px;}
+.prepend-60-px {padding-left:60px;}
+.append-12-px {padding-right:12px;}
+.append-25-px {padding-right:25px;}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix_reg {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.transparent{
+  filter:alpha(opacity=0); 
+  -moz-opacity: 0; 
+  opacity: 0;
+}
+
+/**************** Navigation ****************/
+.countryWelcome {padding-top:2px;padding-bottom:2px;}
+.countryWelcome label.proud { padding-left:7px;color:#666666;font-weight:bold;}
+.countryWelcome label { position:relative;top:-4px;right:4px;}
+.bigFlag { height:18px; padding-top:-4px; z-index:99;}
+.headerMenu{
+  /*background-image: url('../images/izishirt2009/headerMenuSlice.png');
+  background-repeat: repeat-x;*/
+  background-color:#f0efef;
+  height: 40px;
+  overflow: visible;
+}
+.headerMenu span.addDivider {
+  background-image:url(../images/izishirt2009/headerDivider.png);
+  background-position:right center;
+  background-repeat:no-repeat;
+  padding-left:4px;
+  padding-right:4px;
+  position:relative;
+  top:2px;
+}
+.headerMenu span.noDivider {
+  padding-left:8px;
+  padding-right:8px;
+  position:relative;
+  top:2px;
+}
+.headerMenu .contact { }
+.headerMenu .headerItems { margin-top:8px; width:630px;text-align:right;z-index:100;}
+.headerMenu .flag {
+  border-bottom:2px solid #FF0000;
+  padding-bottom:2px;
+  margin-right:4px;
+  margin-top:2px;
+  width:16px;
+  height:11px;
+}
+.headerMenu .cart {
+  margin-top:2px;
+}
+
+.izishirtHeaderLogo img{
+    z-index:0;
+}
+
+.izishirtHeaderLogo{
+    height:120px;
+}
+
+.navMenu{
+  background-image: url('../images/izishirt2009/navMenu.png');
+  background-repeat: no-repeat;
+  width: 913px;
+  height: 57px;
+  text-align: center;
+}
+.navMenu a{
+  padding-left: 15px;
+  padding-right: 12px;
+  text-decoration: none;
+}
+
+.navMenu .top{
+  height: 29px;
+  line-height: 29px;
+  overflow: hidden;
+}
+.navMenu .top a{
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-right: 1px solid #790000;
+  color: #ffffff;
+  font-weight: bolder;
+  font-size: 13px;
+  margin-left:-3px;
+}
+.navMenu .top a.lastlink{ border-right:none;}
+.navMenu .top a.firstLink{
+  border-left: 1px solid #790000;
+}
+.navMenu .top a:hover,
+.navMenu .top a.active { 
+  background-image: url("../images/izishirt2009/topMenuOver.png");
+}
+
+.navMenu .bottom a:hover,
+.navMenu .bottom a.active { 
+  background-image: url("../images/izishirt2009/bottomMenuOver.png") ;
+}
+.navMenu .bottom{
+
+  position:relative;
+  left:50%;
+  height:26px;
+
+  float:left;
+  
+
+
+}
+.navMenu .bottom a{
+  border-right: 1px solid #999999;
+  font-weight: bolder;
+  color: #333333;
+  height:21px;
+  padding-top:5px;
+  display:block;
+  position:relative;
+  float:left;
+
+}
+.navMenu .bottom a.lastlink{ border-right:none;}
+
+.bottom_link_list{
+    position:relative;
+    float:left;
+    
+    
+    left:-50%;
+
+}
+
+.navMenu .bottom a.firstLink{
+  border-left: 1px solid #999999;
+}
+.streamer{
+  background-image: url('../images/izishirt2009/streamerSlice.png');
+  background-repeat: repeat-x;
+}
+/**************** EO Navigation ****************/
+
+
+/**************** Footer One ****************/
+.footerOne {
+  background-image: url('../images/izishirt2009/footerOne.png');
+  background-repeat: repeat-x;
+  height:140px;
+  padding-top:24px;
+  overflow:hidden;
+  
+}
+.footerList {
+  padding-right:30px;
+}
+
+.footerOne .one{width:143px;}
+.footerOne .two{width:135px;}
+.footerOne .three{width:110px;}
+.footerOne .four{width:120px;}
+
+.footerOne div ul {
+  list-style-type:none;
+  margin:0px;
+}
+.footerOne div ul li p {
+  color:#333333;
+  margin-top:5px;
+  margin-bottom:0px;
+}
+.footerOne div.footerList ul li a {
+  color:#000000;
+  text-decoration:none;
+}
+.footerSearch {
+  width:280px;
+}
+.footerSearch input {
+  vertical-align:middle; 
+}
+.footerSearch input#footer_search {
+  padding:0;
+  width:122px;
+}
+
+.currencies{
+    width:190px;
+}
+
+.footerSearch select {
+  vertical-align:middle; 
+}
+/**************** EO Footer One ****************/
+
+/**************** Footer Two ****************/
+.footerTwo {
+  background-image: url('../images/izishirt2009/footerTwo.png');
+  background-repeat: repeat-x;
+  height:124px;
+  padding-top:18px;
+}
+.footerTwo div ul {
+  list-style-type:none;
+  margin-left:0px;
+}
+.footerTwo div ul li{
+  padding-bottom:10px;
+}
+
+.footerTwo .share ul li{ padding-bottom:8px;}
+.footerTwo .share ul li.first{ padding-top:10px;}
+.share { width: 400px; padding-left:40px;}
+.share span{ position:relative;top:-2px;}
+.share div { width:400px;}
+/**************** EO Footer Two ****************/
+
+/**************** Footer Three ****************/
+.footerThree {
+  background-image: url('../images/izishirt2009/footerThree.png');
+  background-repeat: repeat-x;
+  height:113px;
+}
+.footerThree p {
+  text-indent:0;
+  color:#666666;
+  font-size:11px;
+  text-align:center;
+  margin:0px;
+}
+.footerThree a {
+  text-decoration:none;
+  color:#666666;
+  font-size:11px;
+  text-align:center;
+}
+.footerThree div ul{
+  margin-top:14px;
+  margin-bottom:14px;
+  text-align:center;
+}
+.footerThree div ul li{
+  display: inline;
+  list-style-type:none;
+  color: #666666;
+}
+/**************** EO Footer Three ****************/
+
+/**************** Footer Generic ****************/
+.footerEnd {
+  background-image: url('../images/izishirt2009/footerEnd.png');
+  background-repeat: repeat-x;
+  height:50px;
+}
+.divideTop { border-top:1px solid #cccccc;margin-top:3px;padding-top:3px;}
+.divideBottom { border-bottom:1px solid #cccccc;margin-bottom:3px;padding-bottom:3px;}
+.redLink {color: #990000;}
+.grayLink {color: #797979;}
+.smallRedLink {color:#990000; font-size:12px; font-weight:normal;}
+.smallBlueLink {color:#007BCD; font-size:12px; font-weight:normal;}
+.smallestRedLink {color:#990000; font-size:10px; font-weight:bold;}
+.smallestBlueLink {color:#007BCD; font-size:10px; font-weight:bold;}
+
+span.select {
+  position: absolute;
+  padding: 0 24px 0 8px;
+  height: 17px;
+  color: #000000;
+  font: 12px/21px arial,sans-serif;
+
+  background: url('../images/izishirt2009/selectBG.png') no-repeat right;
+  border: 1px solid #a9a9a9;
+}
+
+.bigText {font-size:14px;font-weight:bold;}
+.biggerText {font-size:16px;font-weight:bold;}
+.evenBiggerText {font-size:18px;font-weight:bold;}
+.hugeText {font-size:21px;font-weight:bold;}
+.blueText {color:#0066cc;}
+.blue {color:#007acd;}
+.red {color:#990000;}
+.brightRed {color:#FD2E2E;}
+.grayBack {background-color:#f0f0f0;}
+.gray {color:#7e7e7e;}
+.black {color:#000000;}
+.mediumGray {color:#515151;}
+.darkGray {color:#333333;}
+.green {color:#009900;}
+a.green:hover {color:#0066ff;}
+.purple {color:#9900cc;}
+.bold {  font-weight:bold;}
+.normal {font-weight:normal;}
+.white {color:#ffffff;}
+.width110 {display:block;width:110px;}
+.font-13 { font-size: 13px; }
+.none {display:none;}
+.block {display:block;}
+.blueTextBox {
+  border: 1px solid #007acd;
+  background-color:#d8eaff;
+  padding:10px;
+}
+.TextBox {
+  border: 1px solid #007acd;
+  padding:10px;
+}
+
+.status .blue_state {
+  background-color:#d8eaff;
+}
+
+.status .grey_state{
+  background-color:#bebebe;
+}
+
+.status .green_state {
+  background-color:#50FF50;
+}
+
+.status .orange_state {
+  background-color:#AAAADD;
+}
+
+
+.footerBlock{
+  height:20px;
+  width:190px;
+  vertical-align:middle;
+  padding-left:4px;
+}
+.footerText {
+  position:relative;
+  top:-2px;
+  padding-left:5px;
+  padding-right:5px;
+  height:20px;
+  vertical-align:middle;
+}
+.footerTextLast {
+  position:relative;
+  top:-2px;
+  padding-left:5px;
+}
+div.tabs { 
+  border-bottom:1px solid #999999;
+}
+div.tabs img {
+  float:left;
+}
+div.tabs span.active {
+  background-image: url('../images/izishirt2009/downArrow.png');
+}
+div.tabs span.inactive {
+  background-image: url('../images/izishirt2009/rightArrow.png');
+}
+div.tabs span span {
+  background-position: 0 5px;
+  background-repeat: no-repeat;
+  padding:4px;
+}
+div.tabs span.tab {
+  background-image: url('../images/izishirt2009/tabBg.png');
+  background-repeat: repeat-x;
+  text-align:center;
+  height:15px;
+  width:auto;
+  display:block;
+  float:left;
+  font-size: 13px;
+  font-weight:bold;
+  color:#333333;
+  padding:4px 10px;
+}
+.redButtonLong{
+  width:145px;
+  height:30px;
+  background-image: url('../images/izishirt2009/redButtonLong.png');
+  background-repeat: no-repeat;
+  text-align:center;
+}
+.redButtonLong a {
+  color:#FFFFFF;
+  font-size:11px;
+  font-weight:bold;
+  height:30px;
+  position:relative;
+  text-decoration:none;
+  display:block;
+  padding-top:6px;
+}
+
+.greenButtonLong{
+  width:146px;
+  height:35px;
+  background-image: url('../images/izishirt2009/greenButtonLong.jpg');
+  background-repeat: no-repeat;
+  text-align:center;
+}
+
+.greenButtonLong a {
+  color:#FFFFFF;
+  font-size:11px;
+  font-weight:bold;
+  height:30px;
+  position:relative;
+  text-decoration:none;
+  display:block;
+  padding-top:6px;
+}
+
+.greenButtonLong a:hover{
+  color:#FFFFFF;
+}
+
+.redButtonLong a:hover{
+  color:#FFFFFF;
+}
+
+.blueButtonLong a:hover{
+  color:#FFFFFF;
+}
+
+.longBlueButton a:hover{
+  color:#FFFFFF;
+}
+
+.blueButton a:hover{
+  color:#FFFFFF;
+}
+
+.blueButtonLarge a:hover{
+  color:#FFFFFF;
+}
+
+.narrowBlueButton a:hover{
+  color:#FFFFFF;
+}
+
+.longBlueButton {
+  width:190px;
+  height:27px;
+  background-image: url('../images/izishirt2009/longBlueButton.png');
+  background-repeat: no-repeat;
+  text-align:center;
+}
+.longBlueButton a {
+  color:#FFFFFF;
+  font-size:12px;
+  font-weight:bold;
+  height:27px;
+  position:relative;
+  text-decoration:none;
+  display:block;
+  padding-top:3px;
+}
+
+.longBlueButton .submit {
+
+  border:none;
+  color:#FFFFFF;
+  font-size:13px;
+  font-weight:bold;
+  height:27px;
+  position:relative;
+  text-decoration:none;
+  display:block;
+  padding-bottom:5px;
+  
+  background-color:transparent;
+  width:100%;
+  cursor:pointer;
+}
+
+
+.redButton{
+  background:url(/images/izishirt2009/redButton.png);
+  background-repeat:no-repeat;
+  width:119px;
+  height:27px;
+}
+.redButton a {
+  color:#FFFFFF;
+  font-size:12px;
+  font-weight:bold;
+  height:27px;
+  position:relative;
+  text-decoration:none;
+  display:block;
+  text-align:center;
+  padding-top:4px;
+}
+.blueButton{
+  background:url(/images/izishirt2009/blueButton.png);
+  background-repeat:no-repeat;
+  width:137px;
+  height:28px;
+  text-align:center;
+}
+.blueButton a {
+  color:#FFFFFF;
+  font-size:12px;
+  font-weight:bold;
+  height:27px;
+  text-decoration:none;
+  display:block;
+  padding-top:4px;
+}
+.blueButtonLarge{
+  background:url(/images/izishirt2009/blueButtonLarge.png);
+  background-repeat:no-repeat;
+  width:145px;
+  height:32px;
+}
+.blueButtonLarge a {
+  color:#FFFFFF;
+  font-size:12px;
+  font-weight:bold;
+  height:32px;
+  text-decoration:none;
+  display:block;
+  text-align:center;
+  padding-top:4px;
+}
+.greenButtonLarge{
+  background:url(/images/izishirt2009/greenButtonLarge.png);
+  background-repeat:no-repeat;
+  width:145px;
+  height:32px;
+}
+
+
+
+.greenButtonLarge a {
+  color:#FFFFFF;
+  font-size:12px;
+  font-weight:bold;
+  height:100%;
+  text-decoration:none;
+  display:block;
+  width:100%;
+  padding-top:4px;
+  display:block !important;
+  text-align:center;
+
+  top:4px;
+}
+.blueButtonSmall{
+  background:url(/images/izishirt2009/blueButtonSmall.png);
+  background-repeat:no-repeat;
+  width:85px;
+  height:16px;
+}
+
+.blueButtonSmall a {
+  color:#FFFFFF;
+  font-size:11px;
+  font-weight:bold;
+  height:16px;
+  position:relative;
+  text-decoration:none;
+  display:block;
+}
+.shortBlueButton{
+  background:url(/images/izishirt2009/blueButtonShort.png);
+  background-repeat:no-repeat;
+  width:63px;
+  height:26px;
+  
+
+}
+.shortBlueButton a {
+  color:#FFFFFF;
+  font-size:12px;
+  font-weight:bold;
+  height:26px;
+  position:relative;
+  text-decoration:none;
+  display:block;
+  padding-top:2px;
+  
+}
+.narrowBlueButton{
+  background:url(/images/izishirt2009/blueButtonNarrow.png);
+  background-repeat:no-repeat;
+  width:110px;
+  height:18px;
+  text-align:center
+}
+.narrowBlueButton a {
+  color:#FFFFFF;
+  font-size:12px;
+  font-weight:bold;
+  height:18px;
+  text-decoration:none;
+  display:block;
+  text-align:center;
+  vertical-align:middle;
+}
+/**************** EO Footer Generic ****************/
+
+
+
+
+
+
+
+
+
+/**************** Header Custom Dropdown ****************/
+.cssdropdown, .cssdropdown ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  clear:both;
+  overflow:hidden;
+}
+
+.cssdropdown a {
+  color: #333333;
+}
+
+.subuls{
+  display: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  left:4px;
+  top:11px;
+  text-align:left;
+  border: 1px solid #999999;
+  border-bottom:none;
+  background-color: #ffffff;
+  z-index:100;
+}
+.langdropdown{width:12.5em;}
+.currencydropdown{width:7em;}
+
+.cssdropdown .subuls li{
+  width: 100%;
+  border-bottom: 1px solid #999999;
+  padding:4px 0px 4px 4px;
+  color: #333333;
+}
+
+.subuls li a{
+  text-decoration: none;
+  color: #333333;
+}
+
+.subuls li a.country_lang {
+  background-image:url(../images/izishirt2009/blueArrows.png);
+  background-position:left center;
+  background-repeat:no-repeat;
+  padding-left:10px;
+}
+.subuls li a.fr {
+  padding-top:4px;
+}
+
+
+  /* to override top and left in browsers other than IE, which will 
+   * position to the top right of the containing li, rather than bottom left */
+.cssdropdown li>ul { 
+  top: auto;
+  left: auto;
+}
+
+.cssdropdown li {
+  padding:0px;
+  margin:0px;
+}
+
+.cssdropdown li:hover ul, span.over ul {
+  display: block;
+}
+/**************** EO Header Custom Dropdown ****************/
+
+
+
+/**************** Generic Page Content ****************/
+
+.breadcrumb {
+  height:25px;
+  margin-top:10px;
+}
+.breadcrumb .right{
+  position:relative;
+  top:-8px;
+  text-align:right;
+}
+.breadcrumb h1, .breadcrumb h2  { font-size:13px;font-weight:bold;}
+.breadcrumb .no_top{
+  top:0;
+}
+.leftFlashBanner {
+  width:233px;
+}
+.rightFlashContent {
+  width:656px;
+  height:521px;
+}
+
+.outerShirt {width:230px}
+.middleShirt {width:220px;}
+
+.weeklyShirt {height:221px; text-align:center;}
+.weeklyShirt img {margin-top:60px;}
+
+.weeklyVNeck {height:221px; text-align:center;}
+.weeklyVNeck img {margin-top:80px;}
+
+.buyNow1{position:absolute;bottom:5px;left:64px;}
+.buyNow2{position:absolute;bottom:5px;left:293px;}
+.buyNow3{position:absolute;bottom:5px;left:522px;}
+
+.divisionTitle {
+    background:url(/images/izishirt2009/divisionTitle.png) repeat-x;
+    width:100%;
+    height:30px;
+}
+.divisionTitle label{
+  font-size:13px;
+  font-weight:bold;
+  position:relative;
+  top: 5px;
+  left: 6px;
+}
+.divisionTitle img {
+  position:relative;
+  top: 5px;
+
+  left: 6px;
+}
+
+/**************** EO Generic Page Content ****************/
+
+/**************** Edit Store Menu ****************/
+.editstore {
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  border-top: none;
+}
+#edit_menu_bar{
+
+    height:31px;
+    margin-top:20px;
+
+}
+
+#edit_menu_bar .edit_menu {
+    position:relative;
+    float:left;
+}
+
+#edit_menu_bar .active_edit_menu {
+    position:relative;
+    float:left;
+    height:31px;
+    background:url(/images/customize_boutique/tab_blue_on_middle.png) repeat-x;
+    line-height:31px;
+}
+
+#edit_menu_bar .left_active_edit_menu {
+    position:relative;
+    float:left;
+    height:31px;
+    background:url(/images/customize_boutique/tab_blue_on_left.png) no-repeat;
+    width:12px;
+}
+
+#edit_menu_bar .right_active_edit_menu {
+    position:relative;
+    float:left;
+    height:31px;
+    width:12px;
+    background:url(/images/customize_boutique/tab_blue_on_right.png) no-repeat;
+}
+
+#edit_menu_bar .inactive_edit_menu {
+    position:relative;
+    float:left;
+    height:31px;
+    background:url(/images/customize_boutique/tab_blue_off_middle.png) repeat-x;
+
+    line-height:31px;
+}
+
+#edit_menu_bar .right_inactive_edit_menu {
+    position:relative;
+    float:left;
+    height:31px;
+    width:12px;
+    background:url(/images/customize_boutique/tab_blue_off_right.png) no-repeat;
+}
+
+#edit_menu_bar .left_inactive_edit_menu {
+    position:relative;
+    float:left;
+    height:31px;
+    background:url(/images/customize_boutique/tab_blue_off_left.png) no-repeat;
+    width:12px;
+}
+
+#edit_menu_bar a{
+    text-decoration:none;
+    color:#FFFFFF;
+    font-weight:bold;
+    height:31px;
+    display:block;
+    position:relative;
+    float:left;
+}
+
+.editArea {
+  padding:20px 68px;
+  background-color:#fafafa;
+}
+.dashed {
+  padding:10px 0; 
+  border-top: 1px dashed #999999;
+}
+.lastDashed {
+  padding:10px 0; 
+  border-top: 1px dashed #999999;
+  border-bottom: 1px dashed #999999;
+}
+
+.editAreaWide {
+  padding:20px 40px 20px 40px;
+  background-color:#fafafa;
+  border-bottom: 1px solid #cccccc;
+}
+.editAreaLine {
+  padding-bottom:20px;
+}
+.editAreaBubble {
+  width:400px;
+  height:60px;
+  padding-bottom:8px;
+  font-weight:bold;
+  font-size:10px;
+  color:#333333;
+}
+.editAreaBubbleLarge {
+  width:400px;
+  height:250px;
+  font-size:10px;
+}
+.editAreaBubbleLarge p {
+  padding-bottom:8px;
+  font-weight:bold;
+  color:#333333;
+}
+.editAreaBubbleText {
+  height:30px;
+  width: 370px;
+  padding:8px;
+  background-color:#ebebeb;
+}
+.editAreaBubbleTextLarge {
+  height:220px;
+  width: 370px;
+  padding:8px;
+  background-color:#ebebeb;
+}
+.grayArrowLeft {
+  padding-top:10px;
+}
+.grayArrowLeftLarge {
+  padding-top:100px;
+}
+.editAreaLine textarea{
+  height:70px;
+}
+.inputEditstore {
+  width:396px;
+}
+
+.editAreaSplit {
+  width:50%;
+}
+
+.themeWrapper {
+  width:193px;
+  height:200px;
+}
+
+.customThemeWrapper {
+  border-right:1px solid #CCCCCC;
+  margin-left:16px;
+  width:170px;
+}
+.lastThemeWrapper {
+  margin-left:16px;
+  width:170px;
+}
+
+.cstm_flsh_wrapper {padding-left:15px;}
+.cstm_flsh_row {padding-bottom:4px;position:relative;}
+.cstm_flsh_label {float:left;width:160px;}
+.cstm_flsh_color {
+  height:18px;
+  margin-top:5px;
+  position:absolute;
+  left:160px !important;
+  left:0px;
+  width:62px;
+  z-index:100;
+}
+#store_css {width:100%;}
+#store_footer_html {width:100%;}
+#store_header_html {width:100%;}
+.themeWrapper .selected img,
+.themeWrapper a:hover img {border:6px double #008fd4}
+.themeWrapper img {margin-bottom:5px; border:6px double #FAFAFA; margin:1px; display:block}
+
+.editstore .modes #tabbz {width:500px; height:24px; top:4px; right:10px; position:absolute; }
+* html .editstore .modes #tabbz {right:20px; top:17px}
+#tabbz a {	margin:0;	text-decoration:none;	display:block;	float:right;	text-align:center;	line-height:22px}
+#tabbz a {	padding:0 2px 0 8px; border-left:solid 1px; border-color:#5B5B5B;}
+#tabbz .last {border-right:none !important;}
+#tabbz a span{	float:left;	display:block; font-size:11px;	padding:0px 14px 0 8px;	color:#5B5B5B; font-weight:bold; }
+#tabbz {margin-top:3px;}
+#tabbz a span {	float:none;}
+#tabbz a:hover span {	color:#5B5B5B;}
+
+#tabbz a:hover, 
+#tabbz .tactive {	background-position:0% 0px;}
+#tabbz a:hover span, 
+#tabbz .tactive span {	background-position:100% 0px;}
+#tabbz .tactive span {	color:#5B5B5B}
+/**************** EO Edit Store Menu ****************/
+
+
+
+/**************** Lightbox Rounded Transparent Corners  ****************/
+.cb {margin:0.5em 0;}
+
+ /* Top corners and border */
+.light_login .bt, .light_lost .bt {
+ height:30px;
+ width:333px;
+ background:url(../images/izishirt2009/redPopupSmall.png) no-repeat 100% 0;
+}
+
+.light_apparel_details .bt {
+ height:30px;
+ width:720px;
+ background:url(../images/izishirt2009/redPopupApparelDetails.png) no-repeat 100% 0;
+}
+
+.light_contact .bt {
+ height:30px;
+ background:url(../images/izishirt2009/contactRight.png) no-repeat 100% 0;
+}
+
+.light_verif .bt {
+ height:30px;
+ background:url(../images/izishirt2009/verifRight.png) no-repeat 100% 0;
+ width:480px;
+}
+
+.light_verif .bb {
+ background:transparent url(../images/izishirt2009/verifBottomRight.png) no-repeat scroll 100% 100%;
+ height:16px;
+ width:480px;
+}
+
+.light_account .bt, .light_prod_info .bt, .light_upload .bt {
+ height:30px;
+ background:url(../images/izishirt2009/accountInfoRight.png) no-repeat 100% 0;
+ width:595px;
+}
+
+.light_payment .bt  {
+ height:30px;
+ background:url(../images/izishirt2009/bluePopUpSmall.png) no-repeat 100% 0;
+}
+
+
+.light_prod_detail .bt {
+ height:30px;
+ width:650px;
+ background:url(../images/izishirt2009/bigRedPopup.png) no-repeat 100% 0;
+}
+
+.light_prod_detail .bt div {
+ width:43px;
+ height:30px;
+ background:url(../images/izishirt2009/redPopupLeft.png) no-repeat 0 0;
+}
+.light_payment .bt div, .light_account .bt div, .light_prod_info .bt div, .light_upload .bt div {
+ width:46px;
+ height:30px;
+ background:url(../images/izishirt2009/accountInfoLeft.png) no-repeat 0 0;
+}
+.bt div {
+ width:35px;
+ height:30px;
+ background:url(../images/izishirt2009/redBoxLeft.png) no-repeat 0 0;
+}
+
+.bt div, .bb div {  
+ position:relative;
+ font-size:0;
+ line-height:0;
+}
+
+ /* Bottom corners and border */
+.light_login .bb, .light_lost .bb {
+ background:transparent url(../images/izishirt2009/loginBottomRight.png) no-repeat scroll 100% 100%;
+ height:16px;
+ width:333px;
+}
+
+.light_apparel_details .bb {
+ background:transparent url(../images/izishirt2009/lightApparelDetailsBottomRight.png) no-repeat scroll 100% 100%;
+ height:16px;
+ width:720px;
+}
+
+.light_contact .bb {
+ background:transparent url(../images/izishirt2009/contactBottomRight.png) no-repeat scroll 100% 100%;
+ height:16px;
+ width:396px;
+}
+
+
+.light_account .bb, .light_prod_info .bb, .light_upload .bb {
+ background:transparent url(../images/izishirt2009/accountInfoBottomRight.png) no-repeat scroll 100% 100%;
+ height:16px;
+ width:595px;
+}
+.light_prod_detail .bb {
+ background:transparent url(../images/izishirt2009/bigPopupBottomRight.png) no-repeat scroll 100% 100%;
+ height:16px;
+ width:650px;
+}
+
+.light_payment .bb {
+ background:transparent url(../images/izishirt2009/popUpSmallBottomRight.png) no-repeat scroll 100% 100%;
+ height:16px;
+ width:420px;
+}
+
+.bb div {
+ background:transparent url(../images/izishirt2009/loginBottomLeft.png) no-repeat scroll 0 100%;
+ height:16px;
+ width:13px;
+}
+
+
+ /* Right border */
+.i2 {
+ padding:0;
+ border-left: 1px solid #999999;
+ border-right: 1px solid #999999;
+}
+ /* Wrapper for the content. Use it to set the background colour and insert some padding between the borders and the content. */
+.i3 {
+ display:block;
+ margin:0;
+ background:#fff;
+}
+ /* Make the content wrapper auto clearing so it will contain floats (see http://positioniseverything.net/easyclearing.html). */
+.i3:after {
+ content:".";
+ display:block;
+ height:0;
+ clear:both;
+ visibility:hidden;
+}
+.i3 {display:inline-block;}
+.i3 {display:block;}
+/**************** EO Lightbox Rounded Transparent Corners  ****************/
+
+/**************** Lightbox Styles  ****************/
+.light_login, .light_lost, .light_prod_detail, .light_apparel_details, .light_payment, .light_apparel_details, .light_verif { position:fixed;}
+.light_login { width:333px;}
+.light_prod_detail {width:650px;}
+.light_payment { width:420px;}
+.light_account { width:595px;}
+.light_prod_info {width:595px;}
+.light_upload { width:595px;}
+.light_contact { width:396px;}
+.light_apparel_details { width:720px;}
+ 
+
+#lightbox{
+	display:none;
+	position: absolute;
+	top:50%;
+	z-index:9999;
+	text-align:left;
+}
+#lightbox[id]{
+	/*position:fixed;*/
+}
+
+#overlay{
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:5000;
+	background-color:#000;
+	-moz-opacity: 0.8;
+	opacity:.80;
+	filter: alpha(opacity=80);
+}
+#overlay[id]{
+	position:fixed;
+}
+
+#lightbox.done #lbLoadMessage{
+	display:none;
+}
+#lightbox.done #lbContent{
+	display:block;
+}
+#lightbox.loading #lbContent{
+	display:none;
+}
+
+#lightbox #lbContent #flashcontent{
+	top:30px;
+}
+
+#lightbox.loading #lbLoadMessage{
+	display:block;
+}
+/**************** EO Lightbox Styles  ****************/
+
+
+/**************** Shop1 Styles  ****************/
+.shop1Content {
+  margin-left:20px;
+  margin-right:20px;
+}
+.out_of_stock{
+  background-color:#666666;
+  border:1px solid black;
+  color:#FFFFFF;
+  left:20px;
+  padding:8px;
+  position:absolute;
+  top:130px;
+  width:214px;
+  z-index:100;
+}
+.shop1Colors { padding:15px 0;}
+.shop1Colors div { width:600px;padding-left:10px; }
+.shop1Form { padding:15px 0;}
+.shop2Form { padding:50px 0;}
+.shop2Form input[type=text], .shop1Form input[type=text] { width:30px;}
+.shop2Form label, .shop1Form label { position:relative; top:2px;}
+.shop1Size { 
+  border:1px solid #999;
+  margin:0 3px 2px 0;
+  float:left; padding:0 ; 
+}
+.shop1Size a {
+  text-decoration:none;
+  color:#000000; font-size:11px; display:block; text-align:center;
+  border:1px solid #fff; line-height:12px; padding:1px 3px
+}
+.shop1Size:hover { background:#ebebeb}
+.shop1Size a:hover {  border:1px solid #ebebeb; }
+
+.shop1Size.selected {  border:1px solid #0066cc;} 
+.shop1Size.selected a {
+  color:#0066cc;
+  font-weight:bold;
+   border:1px solid #0066cc;line-height:12px
+}
+.shop1SizeLabel { margin-right:4px;}
+.shop1Quant { margin-left:10px;margin-right:4px;}
+.shop1Price { margin-left:10px;margin-right:4px;}
+.shop1Buy { margin-left:10px;}
+.shop1Customize{
+  padding-right:55px;
+  padding-top:10px;
+}
+.shop1ShirtWrapper{
+  position:relative;
+}
+.shop1ImgWrapper {
+  border:1px solid #666666;
+  height:320px !important;
+  width:320px !important;
+  height:310px;
+  width:310px;
+  text-align:center;
+  vertical-align:middle;
+}
+.shop1ImgWrapper p{
+  line-height:320px;
+}
+.shop1ImgWrapper p img{
+  vertical-align:middle;
+}
+.shop1ImgWrapper a{
+  height:320px !important;
+  width:320px !important;
+  height:310px;
+  width:310px;
+  display:table-cell;
+  padding:0;
+  margin:0;
+  vertical-align:middle;
+  text-align:center;
+}
+.shop1Img {
+  max-height:300px;
+  max-width:300px;
+  height:auto !important;
+  width:auto !important;
+  height:300px;
+  width:300px;
+}
+
+.shop1Fader{
+  height: 320px;
+  width: 320px; 
+  left:0px;
+  margin-top:20px;
+  position:absolute;
+}
+.shop1Model{
+  height: 330px;
+  width: 330px; 
+  left:0px;
+  position:absolute;
+}
+.shop1ModelList{
+  margin:20px;
+}
+.shop1ModelList img.selected{
+  border: 1px solid #000000;
+}
+.shop1Design{
+  border: none;
+  border: medium none !important;
+  position:absolute;
+  z-index: 99;
+}
+div.shop1Share {
+  margin-top:8px;
+}
+img.shop1Share {
+  margin-top:8px;
+  margin-right:4px;
+}
+.shop1Tags {
+  padding: 10px 20px;
+}
+.shop1Tags a {
+  font-weight:bold;
+  color:#0066ff;
+  text-decoration:none;
+}
+/**************** EO Shop1 Styles ****************/
+
+
+/**************** Join Now Styles ****************/
+
+.joinNow input[type=text] { width:228px;}
+.joinNow input[type=password] { width:228px;}
+.joinNow label{ width:228px;}
+.whyJoinText label {
+  font-weight:normal;
+  font-size:13px;
+  color:#333333;
+}
+.whyJoinText div { margin-bottom:10px;}
+.whyJoinText .customerHeader label { font-weight:bold } 
+.whyJoinText .designerHeader label { font-weight:bold } 
+.whyJoinText .affiliateHeader label { font-weight:bold } 
+
+.customerHeader label, .designerHeader label, .affiliateHeader label{
+  position:relative;
+  top:4px;
+  color:#666666;
+}
+.customerHeader {
+  background-image: url('../images/izishirt2009/icoCustomers.png');
+  background-repeat: no-repeat;
+  height:22px;
+  border-bottom: 1px solid #cccccc;
+  padding-left:25px;
+  font-size:13px;
+}
+.designerHeader {
+  background-image: url('../images/izishirt2009/icoDesigners.png');
+  background-repeat: no-repeat;
+  height:22px;
+  border-bottom: 1px solid #cccccc;
+  padding-left:25px;
+  font-size:13px;
+}
+.affiliateHeader {
+  background-image: url('../images/izishirt2009/icoAffiliates.png');
+  background-repeat: no-repeat;
+  height:22px;
+  border-bottom: 1px solid #cccccc;
+  padding-left:25px;
+  font-size:13px;
+}
+
+/**************** EO Join Now Styles ****************/
+
+/**************** Error Messages ****************/
+.errorExplanation{
+  padding:20px;
+  color:#333333; 
+  font-weight:bold;
+}
+.errorExplanation h2 {
+  color:#DD0000;
+  font-size:16px;
+  font-weight:bold;
+}
+.errorExplanation ul {
+
+  list-style-type:none;
+}
+.errorExplanation ul li {
+  background: url('../images/izishirt2009/smallRedArrows.png') no-repeat 0px 9px;
+  padding-left:15px;
+}
+/*************** EO Error Messages ****************/
+
+
+
+/*************** LightBox Contact Popup ****************/
+.light_contact .phone label { padding: 0 15px; font-size:11px; font-weight:normal;}
+.light_contact .phone label.bold { font-weight:bold;}
+.light_contact .phone label.large { font-size: 16px;}
+.light_contact .phone select {margin: 0 15px; }
+.light_contact .phone span {margin: 0 15px; }
+.light_contact .phone label.open {font-size:12px;}
+.light_contact .phone label.country {width:100px;display:block;float:left;}
+
+.light_contact .email label { width: 100px; display:block; float:left; padding:8px 0 0 20px;}
+.light_contact .email label.newsletter { width: 300px; display:block; float:left; margin:0 0 0 0;}
+.light_contact .email textarea { width: 225px; height:70px;margin-top:8px;}
+.light_contact .email input[type=text] { width: 230px; float:left;margin-top:8px;}
+.light_contact .email div select { margin-top:8px;}
+.light_contact .email div span { margin-top:8px;}
+.light_contact .email .contact_check {padding: 0px 0px 0 20px;}
+.light_contact .email .contact_check .newsletter{padding: 0;padding-left:10px;}
+.light_contact .email .contact_check input{float:left;}
+.light_contact .buttons {border-top:1px solid #999999;margin:8px;}
+.light_contact .blueButtonSmall {margin: 8px 0 0 150px;}
+.light_contact .blueButtonSmall a {margin-left: 20px;}
+
+.light_contact .person { margin:4px 18px;}
+.light_contact .person label { display:block;font-weight:normal;font-size:12px;color:#404040;}
+.light_contact .person label.big { font-size:18px;font-weight:bold;}
+.light_contact .person img { margin: 0 15px;}
+.light_contact .person img.map { margin: 15px 50px;}
+.light_contact .person .view_map { text-align:right;}
+
+.light_contact .contactClose, .light_verif .boxClose{
+  z-index:999;
+  height:17px;
+  position:absolute;
+  right:10px;
+  top:-25px;
+  width:16px;
+}
+.light_contact .title {
+  position:absolute;
+  top:-25px;
+  color:#ffffff;
+  font-weight:bold;
+  font-size:16px;
+  left:40px;
+}
+
+.light_verif .title {
+  position:absolute;
+  top:-25px;
+  color:#ffffff;
+  font-weight:bold;
+  font-size:16px;
+  left:40px;
+}
+
+.light_verif{
+    
+}
+
+/*************** EO LightBox Contact Popup ****************/
+
+/*************** Edit Account Popup ****************/
+
+.light_account input[type=text] {width:163px}
+.light_account input[type=password] {width:163px}
+.light_account .leftForm { float:left;width:165px;padding-left:125px;padding-right:10px;}
+.light_account .leftForm label { display:block; margin-top:8px; }
+.light_account .rightForm { float:right;width:165px;padding-right:125px}
+.light_account .rightForm label { display:block; margin-top:8px; }
+.light_account .leftLabel {float:left;width:165px; display:block}
+.light_account .rightLabel {float:left;width:175px; display:block}
+.light_account .accountInfo {width:350px;margin-right:15px !important;margin-right:0;}
+.light_account div.padTop {margin-top:8px;}
+.light_account .shopInfo {padding-left:125px;}
+.light_account .profilePic {margin: 0 10px 10px 10px;}
+.light_account .profilePic img {border: 1px solid #666666;}
+.light_account .profilePic .blueButtonSmall {margin: 8px 0 0 60px;}
+.light_account .longBlueButton {margin-left:200px;}
+.light_account .accountClose {
+  height:17px;
+  position:absolute;
+  right:10px;
+  top:-25px;
+  width:16px;
+}
+.light_account .account_title {
+  position:absolute;
+  top:-25px;
+  color:#ffffff;
+  font-weight:bold;
+  font-size:16px;
+  left:40px;
+}
+
+/*************** EO Edit Account Popup ****************/
+
+/*************** LightBox Login Popup ****************/
+
+.light_login .loginBoxHeader {width:295px;}
+.light_login .loginBox {width:330px;height:250px;}
+.light_login .loginBoxBottom {width:313px;}
+.light_login .login {padding:0;margin:0;margin-bottom:15px;}
+.light_login label.login {width:115px;}
+.light_login input.login {width:180px;}
+.light_login .loginWrapper {padding:14px;}
+.light_login .forgotPass {text-align:center;position:relative;bottom:10px;font-size:11px;width:180px;float:right;}
+.light_login .loginbtn {text-align:right;padding-right:30px;padding-bottom:10px;}
+.light_login #remember {margin:0;padding:0;margin-top:0px;display:block;position:relative;float:left;}
+.light_login #rememberTagContainer {margin:0px;padding:0px;float:left;position:relative;height:29px;}
+.light_login #rememberText {margin:0px;padding:0px;margin-bottom:0px;height:29px;padding-top:4px;}
+.light_login #rememberContainer {height:29px;margin:0px;padding:0px;}
+.light_login #rememberCheckContainer {position:absolute;height:13px;right:-14px;bottom:10px;}
+.light_login #submit {display:block;float:right;padding-right:45px;vertical-align:top;}
+.light_login .forpass {margin:0px;padding:0px;text-align:left;margin-top:20px;}
+.light_login .forpass .blueButton{margin:0px;padding:0px;padding-right:23px;}
+.light_login .forpass label{margin:0px;padding:0px;margin-top:3px;display:block;float:left;}
+.light_login .explainText {padding-top:7px;color:#777777;}
+.light_login .title {
+  position:absolute;
+  top:-27px;
+  color:#ffffff;
+  font-weight:bold;
+  font-size:16px;
+  left:40px;
+}
+
+.light_apparel_details .title {
+  position:absolute;
+  top:-27px;
+  color:#ffffff;
+  font-weight:bold;
+  font-size:16px;
+  left:40px;
+}
+
+.light_login .loginClose {
+  height:17px;
+  position:absolute;
+  right:10px;
+  top:-22px;
+  width:16px;
+}
+
+.light_apparel_details .loginClose {
+  height:17px;
+  position:absolute;
+  right:10px;
+  top:-22px;
+  width:16px;
+}
+
+.light_login .lost {padding:25px;}
+.light_login .lost img {float:left}
+.light_login .lost p {width:215px;float:left;margin-left:8px;font-weight:bold;color:#515151;}
+.light_login .lost input[type=text] {width:215px;}
+.light_login .lost .redButton {margin:20px 0 0 75px;}
+
+/*************** EO LightBox Login Popup ****************/
+
+/*************** LightBox Product Popup ****************/
+.light_prod_info .prodInfoClose {
+  height:17px;
+  position:absolute;
+  right:10px;
+  top:-24px;
+  width:16px;
+}
+.light_prod_info .prodId { 
+  position:absolute;
+  top:-24px;
+  color:#ffffff;
+  font-weight:bold;
+  font-size:16px;
+  left:40px;
+}
+.light_prod_info .preview img { width:290px;height:290px;}
+.light_prod_info .status, .light_prod_info .info, .light_prod_info .questions{
+  padding:15px 45px;
+}
+.light_prod_info div.info div label { font-weight:normal;margin-right:8px;}
+.light_prod_info .title{
+  font-weight:bold;
+  font-size:13px;
+  margin-left:8px;
+  margin-right:8px;
+  border-bottom:1px solid #999999;
+}
+.light_prod_info .status label {
+  font-size: 16px;
+  font-weight:bold;
+  color: #007acd;
+}
+.light_prod_info .status .blueTextBox {width:480px;}
+.light_prod_info .status .blueTextBox p{margin:0; font-weight:bold}
+
+.light_prod_info .status .TextBox {width:480px;}
+.light_prod_info .status .TextBox p{margin:0; font-weight:bold}
+
+.light_prod_detail .preview img { width:300px; height:300px; }
+.light_prod_detail .preview { border-bottom:1px solid #999999;padding:20px 0;margin: 0 20px;}
+.light_prod_detail .detail { border-bottom:1px solid #999999;padding:20px 0;margin: 0 20px;padding-left:200px;}
+.light_prod_detail .detail label{font-weight:normal }
+.light_prod_detail .prodDetailClose {
+  height:17px;
+  position:absolute;
+  right:10px;
+  top:-24px;
+  width:16px;
+}
+.light_prod_detail .prodDetail { 
+  position:absolute;
+  top:-24px;
+  color:#ffffff;
+  font-weight:bold;
+  font-size:16px;
+  left:40px;
+}
+
+.light_payment .payment_form {padding:20px 45px;}
+.light_payment .payment_form img {vertical-align:bottom;}
+.light_payment .payment_form label{color:#515151;display:block;}
+.light_payment .payment_form textarea { width: 315px;height: 90px;}
+.light_payment .payment_form input[type=text] {width:160px;}
+.light_payment .payment_form .time { padding:12px 30px;}
+.light_payment .payment_form .time label{ margin:12px 0 0 12px;}
+.light_payment .payment_form .addTop {
+  border-top:1px solid #aaaaaa;
+  padding:30px 0 0 100px;
+}
+.light_payment .paymentClose {
+  height:17px;
+  position:absolute;
+  right:10px;
+  top:-24px;
+  width:16px;
+}
+.light_payment .payment { 
+  position:absolute;
+  top:-24px;
+  color:#ffffff;
+  font-weight:bold;
+  font-size:16px;
+  left:40px;
+}
+/*************** EO LightBox Product Popup ****************/
+
+
+/*************** My Promote Page ****************/
+div#mypromote.myizishirt-right .blueBoxInnerTitle label {float:left;top:3px;left:0px;}
+div#mypromote.myizishirt-right .blueBoxInnerTitle input[type=checkbox] {float:left;position:relative;top:2px;}
+div#mypromote.myizishirt-right .blueBoxInnerTitle img {float:left;position:relative;top:7px;margin:0 3px;}
+div#mypromote.myizishirt-right {width:625px;float:left;}
+div#mypromote.myizishirt-right .leftBoxHeader {width:560px;}
+div#mypromote.myizishirt-right .leftBoxHeader label.right{font-weight:normal;font-size:14px;}
+div#mypromote.myizishirt-right .leftBox {width:622px;}
+div#mypromote.myizishirt-right .leftBoxBottom {width:594px;}
+
+div#mypromote.myizishirt-right textarea {width:475px; height:70px;color:#515151;font-size:11px;}
+div#mypromote.myizishirt-right .flash,
+div#mypromote.myizishirt-right .product,
+div#mypromote.myizishirt-right .facebook,
+div#mypromote.myizishirt-right .links{padding:20px 30px;}
+div#mypromote.myizishirt-right .flash p+p,
+div#mypromote.myizishirt-right .product p+p,
+div#mypromote.myizishirt-right .facebook p+p,
+div#mypromote.myizishirt-right .links p+p {text-indent:0;margin-top:4px;}
+div#mypromote.myizishirt-right .flash label,
+div#mypromote.myizishirt-right .product label,
+div#mypromote.myizishirt-right .facebook label,
+div#mypromote.myizishirt-right .links label{display:block;}
+div#mypromote.myizishirt-right .flash div,
+div#mypromote.myizishirt-right .product div,
+div#mypromote.myizishirt-right .facebook div,
+div#mypromote.myizishirt-right .links div{padding:4px 30px;}
+
+div#mypromote.myizishirt-right .flash img.first {margin-right:47px;}
+div#mypromote.myizishirt-right .product img { margin-right:53px;}
+div#mypromote.myizishirt-right .product img.last {margin-right:0px;}
+div#mypromote.myizishirt-right .facebook p {float:left;width:350px;margin-right:8px;}
+
+
+div.promote-left { padding: 16px; color:#515151;}
+div.promote-left li{ font-size:10px; }
+div.promote-left .addBottom{ padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid #d6d6d6; }
+div.promote-left .item { padding-top:8px;} 
+div.promote-left .item img{ float:left;} 
+div.promote-left .item p{ float:right;width:215px;} 
+div.promote-left .item a{ color:#007acd;}
+/*************** EO MY Promote Page ****************/
+
+/*************** My Earnings Page ****************/
+div#myearnings.myizishirt-right .blueBoxInnerTitle label {float:left;top:3px;left:0px;}
+div#myearnings.myizishirt-right .blueBoxInnerTitle input[type=checkbox] {float:left;position:relative;top:2px;}
+div#myearnings.myizishirt-right .blueBoxInnerTitle img {float:left;position:relative;top:7px;margin:0 3px;}
+div#myearnings.myizishirt-right {width:625px;float:left;}
+div#myearnings.myizishirt-right .leftBoxHeader {width:560px;}
+div#myearnings.myizishirt-right .leftBoxHeader label.right{font-weight:normal;font-size:14px;}
+div#myearnings.myizishirt-right .leftBox {width:622px;}
+div#myearnings.myizishirt-right .leftBoxBottom {width:594px;}
+
+div#myearnings.myizishirt-right .commissions p,
+div#myearnings.myizishirt-right .commissions label { color:#515151;font-weight:normal;}
+div#myearnings.myizishirt-right .commissions label.bold {font-weight:bold;}
+div#myearnings.myizishirt-right .commissions label.red { color:#cc0000;}
+div#myearnings.myizishirt-right .commissions label.green { color:#009900;}
+div#myearnings.myizishirt-right .addBottom { border-bottom:1px solid #b0b0b0;}
+div#myearnings.myizishirt-right .commissions { padding:20px 28px;}
+div#myearnings.myizishirt-right .commissions .indent { margin-left:20px;padding:8px 0 0 4px;}
+div#myearnings.myizishirt-right .commissions .indent img { margin-right:6px;}
+
+div#myearnings.myizishirt-right .history { padding:20px 10px;}
+div#myearnings.myizishirt-right .history table tr.even {
+  background-color:#e9f0f7;
+}
+div#myearnings.myizishirt-right .history table th,
+div#myearnings.myizishirt-right .history table td {
+  border-bottom:1px solid #b0b0b0; 
+  padding-left:20px;
+  padding-right:20px;
+}
+div#myearnings.myizishirt-right .history table th.amount,
+div#myearnings.myizishirt-right .history table td.amount {
+  text-align:right;
+}
+div#myearnings.myizishirt-right .history table {color:#515151;}
+div#myearnings.myizishirt-right .history label { color:#515151;font-weight:normal;}
+div#myearnings.myizishirt-right .history label.bold {font-weight:bold;}
+div#myearnings.myizishirt-right .history label.red { color:#cc0000;}
+div#myearnings.myizishirt-right .history label.green { color:#009900;}
+div#myearnings.myizishirt-right .history .indent { margin:0 20px;}
+div#myearnings.myizishirt-right .history .indent img { margin-right:6px;}
+
+div#myproducts.myizishirt-left div.earn p {color:#515151;font-size:12px;}
+div#myproducts.myizishirt-left div.earn img {margin:20px 50px 0 50px;}
+div#myproducts.myizishirt-left div.earn .redButton {margin-left: 60px;}
+div#myproducts.myizishirt-left div.earn ul li{ color:#515151;font-size:12px;margin:10px 0;}
+div#myproducts.myizishirt-left div.earn ul {
+  list-style-type:none;
+}
+
+div#myproducts.myizishirt-left div.earn ul li{
+    padding-left:18px;
+    margin-top:0px;
+    padding-top:0px;
+    background: url('../images/izishirt2009/rightArrow.png') no-repeat 0px 6px;
+}
+
+    div#myproducts.myizishirt-left div.earn ul li span{
+    
+    margin-top:0px;
+    padding-top:0px;
+    }
+
+/*************** EO My Earnings Page ****************/
+
+/*************** My Designs Page ****************/
+div#mydesigns.myizishirt-right .blueBoxInnerTitle label {float:left;top:1px;left:0px;}
+div#mydesigns.myizishirt-right .blueBoxInnerTitle input[type=checkbox] {float:left;position:relative;top:2px;}
+div#mydesigns.myizishirt-right .blueBoxInnerTitle img {float:left;position:relative;top:7px;margin:0 3px;}
+div#mydesigns.myizishirt-right {width:625px;float:left;}
+div#mydesigns.myizishirt-right .leftBoxHeader {width:560px;}
+div#mydesigns.myizishirt-right .leftBoxHeader label.right{font-weight:normal;font-size:14px;}
+div#mydesigns.myizishirt-right .leftBox {width:624px;}
+div#mydesigns.myizishirt-right .leftBoxBottom {width:586px;}
+div#mydesigns.myizishirt-right .blueBoxHeader label { font-size:16px;top:4px;}
+div#mydesigns.myizishirt-right .blueBoxHeader label.small { font-size:12px;top:0px;margin-right:4px;}
+div#mydesigns.myizishirt-right .blueBoxHeader div.selectWrapper {padding-top:5px;}
+div#mydesigns .status {display:block; float:right; padding-left:20px;font-weight:bold;position:relative;top:3px;margin-right:4px;}
+div#mydesigns .aproved {color:#079700; background:url(../images/ico-maproove.gif) no-repeat left; }
+div#mydesigns .pending {color:#e2a000; background:url(../images/ico-mwaiting.gif) no-repeat left; }
+div#mydesigns .refused {color:#c10909; background:url(../images/ico-mrefuse.gif) no-repeat left; }
+
+div#mydesigns.myizishirt-right .mydesigns .first {
+  border-right: 1px solid #cccccc;
+  border-left: 1px solid #999999;
+} 
+div#mydesigns.myizishirt-right .mydesigns .last {
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #999999;
+} 
+div#mydesigns.myizishirt-right .mydesigns .mydesign {
+  float: left;
+  height:210px;
+  width: 310px; 
+}
+div#mydesigns.myizishirt-right .mydesigns .designContent {
+  padding:5px 15px 15px 15px;
+  width:280px;
+}
+div#mydesigns.myizishirt-right .mydesigns .designContent div.left label{
+  color: #666666;
+}
+div#mydesigns.myizishirt-right .mydesigns .designContent a{
+  vertical-align:middle;
+}
+
+div#mydesigns.myizishirt-right .mydesigns .designContent img.info{
+  margin-bottom:6px;
+}
+div#mydesigns.myizishirt-right .mydesign .image {
+  float:left;
+  width:100px;
+  height:100px;
+  line-height: 100px;
+  padding:9px;
+  border:1px solid #cccccc;
+  margin-right:10px;
+  position:relative;
+} 
+div#mydesigns.myizishirt-right .mydesign .sold {
+  clear: both; 
+  position: relative; 
+  top: 4px; 
+  margin-right:7px;
+  padding-right: 4px; 
+  color: #666666;
+} 
+
+div#mydesigns.myizishirt-right .mydesign .image a{
+  float:left;
+  width:100px;
+  height:100px;
+  display:block;
+} 
+
+div#mydesigns.myizishirt-right .mydesign .edit div{
+  margin-bottom:1px;
+}
+div#mydesigns.myizishirt-right .mydesign .edit {
+  float:left;
+  width:145px;
+}
+div#mydesigns.myizishirt-right .mydesign .edit label { font-weight:normal;}
+div#mydesigns.myizishirt-right .mydesign .edit label.blue { font-weight:normal; }
+/*************** EO My Designs Page ****************/
+
+div.myupload {padding:25px 15px;}
+div.mycopyright {padding:25px 5px;}
+div.myupload .upload-image {
+  width:205px;
+  float:left;
+  margin-right:20px;
+}
+div.myupload .upload-image img{
+  width:205px;
+  /* height:204px; */
+}
+div.myupload .upload-edit {
+  width: 335px;
+  float:left;
+}
+div.myupload .upload-edit #loading{ float:left;}
+div.myupload .upload-edit label{ display:block;margin-top:8px; }
+div.myupload .upload-edit label.first{ margin-top:0; }
+div.myupload .upload-edit .category{ width:165px;float:left;}
+div.myupload .upload-edit textarea {width:312px;height:90px;}
+div.myupload .upload-edit .tags {width:318px;}
+div.myupload .upload-edit div.blueButtonSmall a {padding-left:10px;} 
+div.myupload .upload-edit div.blueButtonSmall a {position:absolute;}
+
+div.myupload div.submit,div.mycopyright div.submit {
+  padding:20px 0 0 0;
+  border-top: 1px solid #aaaaaa;
+}
+div.myupload div.blueButton, div.mycopyright div.blueButton { 
+  margin-left:215px;
+}
+
+div.myupload .where, div.mycopyright .where {
+  position:absolute; 
+  top:-23px; 
+  left:45px;
+}
+
+div.myupload .uploadClose, div.mycopyright .uploadClose {
+  position:absolute; 
+  top:-23px; 
+  right:5px;
+}
+div.mycopyright label {display:block;}
+div.mycopyright ul { 
+  margin:0 5px;
+  list-style-type:none;
+  width:275px;
+}
+div.mycopyright label.addBottom { 
+  border-bottom:1px solid #aaaaaa; 
+  padding-bottom:8px;
+} 
+div.mycopyright ul li { margin:20px 0 0 0; padding-left:13px; background: url('../images/izishirt2009/smallRedArrows.png') no-repeat 0px 5px;}
+
+div.myupload ul {
+    list-style-type:none;
+}
+div.myupload ul li.first { margin-top:10px; } 
+div.myupload ul li {
+  margin-bottom:10px;
+  padding-left:25px;
+  background:url('../images/izishirt2009/smallRedArrows.png') no-repeat;
+  background-position:0px 5px;
+
+}
+#upload_success {margin-left:140px;}
+#upload_error {margin-left:140px;}
+
+
+/*************** My Edit Product Page ****************/
+.light_flash_app .flashClose { position:relative;top:5px; }
+div#myeditproduct.myizishirt-right {width:625px;float:left;}
+div#myeditproduct.myizishirt-right .leftBoxHeader {width:560px;}
+div#myeditproduct.myizishirt-right .leftBoxHeader label.right{font-weight:normal;font-size:14px;}
+div#myeditproduct.myizishirt-right .leftBox {width:622px;}
+div#myeditproduct.myizishirt-right .leftBoxBottom {width:594px;}
+div#myeditproduct.myizishirt-right .blueBoxHeader label { font-size:16px;top:4px;}
+div#myeditproduct.myizishirt-right .blueBoxInnerTitle img {
+  float:left;
+  margin:0 0 0 8px;
+  padding-top:8px;
+  width:10px;
+}
+div#myeditproduct .gray {color: #666666;}
+div#myeditproduct  div.addBottom {
+  border-bottom:1px solid #dedede;
+  padding-bottom:10px;
+}
+div#myeditproduct .info {  padding:10px 45px;}
+div#myeditproduct .info label{
+  display: block;
+  float:left;
+  width:70px;
+  margin-right:10px;
+  text-align:right;
+  color:#666666;
+}
+div#myeditproduct .info label#lock_label{width:auto;}
+div#myeditproduct .info input.lock_check{margin-left:53px;margin-right:10px;position:relative;bottom:4px;}
+div#myeditproduct .info .blueButtonSmall {margin-left:220px; }
+div#myeditproduct .info .basicMiddle {padding-top:10px;padding-bottom:10px;}
+div#myeditproduct .info .basicMiddle textarea { width:440px;height:100px;}
+div#myeditproduct .info .basicMiddle span.red{ margin-left:80px;}
+div#myeditproduct .info .basicRight { width:152px;}
+div#myeditproduct .info .basicRight a { display:block;width:152px;}
+div#myeditproduct .info .basicRight img {border:1px solid #dedede;}
+div#myeditproduct .info .basicLeft div.addBottom { padding-top:10px;}
+div#myeditproduct .info .basicLeft div.category { padding-top:10px;}
+div#myeditproduct .info .basicLeft span,
+div#myeditproduct .info .basicLeft input[type=text]{
+  display:block;
+  width:240px;
+  float:left;
+}
+
+
+div#myeditproduct .info .basicLeft input[type=text].cat_name {width:100px;}
+div#myeditproduct .price { padding:10px 125px;}
+div#myeditproduct .price input[type=text]{ width:25px;padding:0}
+div#myeditproduct .price input[type=image]{position:relative;top:3px;}
+div#myeditproduct .price input[type=checkbox]{margin-left:0;}
+div#myeditproduct .price label.dollarLabel{ color:#666666; } 
+div#myeditproduct .price label.label{ 
+  float:left;
+  display:block;
+  width:100px;
+  color:#666666;
+}
+div#myeditproduct .upload {padding:10px 10px;color:#666666;font-size:14px;font-weight:bold;}
+div#myeditproduct .image {  padding:10px 125px;}
+div#myeditproduct .image .buyInfo { position:relative;top:4px;} 
+div#myeditproduct .image #userpreview { width:205px; height:205px;}
+div#myeditproduct .image #awaiting_approval { margin-left:95px;}
+div#myeditproduct .image #rejected { margin-left:95px;}
+div#myeditproduct .image div.browseColumn {float:left;width:95px;}
+div#myeditproduct .image div.longBlueButton { margin-right:10px;float:left;} 
+div#myeditproduct .image div.longBlueButton a { padding-top:3px;} 
+div#myeditproduct .image div.blueButtonSmall a {text-align:center;}
+div#myeditproduct .image div.blueButtonSmall { margin-right:10px;float:left;} 
+
+
+div#myeditproduct .back { margin-left:230px;} 
+div#myeditproduct .back a { padding-top:3px;} 
+/*************** My Edit Product Page ****************/
+
+/*************** Myproducts Page ****************/
+div#myproducts.myizishirt-left {width:275px;padding-right:10px;float:left;}
+div#myproducts.myizishirt-left .leftBoxHeader {width:210px;}
+div#myproducts.myizishirt-left .leftBox {width:272px;}
+div#myproducts.myizishirt-left .leftBoxBottom {width:244px;}
+div#myproducts.myizishirt-left div.money { padding:9px 50px;}
+div#myproducts.myizishirt-left .blueBoxHeader label { font-size:16px;top:4px;}
+div#myproducts.myizishirt-left .myizishirtIcon {display:block;width:20px;float:left;margin-right:8px;}
+div#myproducts.myizishirt-left .help {padding:10px;}
+
+div#myproducts.myproducts-right {width:625px;float:left;}
+div#myproducts.myproducts-right .leftBoxHeader {width:560px;}
+div#myproducts.myproducts-right .leftBoxHeader label.right{font-weight:normal;font-size:14px;}
+div#myproducts.myproducts-right .blueBoxHeader label.small { font-size:12px;top:0px;margin-right:4px;}
+div#myproducts.myproducts-right .blueBoxHeader div.selectWrapper {padding-top:5px;}
+div#myproducts.myproducts-right .leftBox {width:624px;position:relative;float:left;}
+div#myproducts.myproducts-right .leftBoxBottom {width:586px;}
+div#myproducts.myproducts-right .blueBoxHeader label { font-size:16px;top:4px;}
+div#myproducts.myproducts-right .myproducts {width:624px;}
+div#myproducts.myproducts-right .myproducts .first { 
+  border-right: 2px solid #cccccc;
+  border-left: 1px solid #999999;
+  border-bottom: 1px solid #cccccc;
+} 
+div#myproducts.myproducts-right .myproducts .last { 
+
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+}
+
+div#myproducts.myproducts-right .myproducts .myproduct {
+  float: left;
+  width: 310px;
+  height:220px;
+}
+div#myproducts.myproducts-right .myproducts .productContent { 
+  padding:10px;
+  width:285px !important;
+  width:280px;
+}
+div#myproducts.myproducts-right .myproduct .image {
+  float:left;
+  width:100px;
+  height:100px;
+  padding:9px;
+  border:1px solid #cccccc;
+  margin-right:10px;
+  position:relative;
+} 
+div#myproducts.myproducts-right .myproduct .image img.star {
+  width:16px; 
+  height: 16px;
+  position:absolute;
+  top:0;
+  left:0;
+}
+div#myproducts.myproducts-right .myproduct .sold {
+  clear: both; 
+  text-align: right; 
+  position: relative; 
+  top: 4px; 
+  margin-right:12px;
+  padding-right: 4px; 
+  background-color:#d7d7d7;
+  color: #666666;
+} 
+
+div#myproducts.myproducts-right .myproduct .image a{
+  float:left;
+  width:100px;
+  height:100px;
+  display:block;
+} 
+div#myproducts.myproducts-right .myproduct .image img{
+  width:100px;
+  height:100px;
+  display:block;
+}
+div#myproducts.myproducts-right .myproduct .edit {
+  float:left;
+  width:155px !important;
+  width:150px;
+}
+div#myproducts.myproducts-right .myproduct .edit .commissionBox {
+  height:15px;
+  width:28px;
+  border: 1px solid #cccccc;
+}
+div#myproducts.myproducts-right .myproduct .edit label { font-weight:normal;}
+div#myproducts.myproducts-right .myproduct .edit label.priceLabel {width:95px !important;width:86px;display:block;float:left; }
+/*************** EO Myproducts Page ****************/
+
+/*************** MyOrders Page ****************/
+div.myOrders .Shipped {color:#009900;}
+div.myOrders .Processing {color:#ff00cc;}
+div.myOrders .pageWideBoxHeader {width:845px;}
+div.myOrders .blueBoxInnerTitle img {
+  float:left;
+  margin:0 0 0 8px;
+  padding-top:8px;
+  width:10px;
+}
+div.myOrders .orderDetails {padding:17px; width:878px;}
+div.myOrders .orderDetails div.detail {width:200px;}
+div.myOrders .orderDetails div label {display: block;font-weight:normal;}
+div.myOrders .orderDetails div label.status {display: inline;}
+div.myOrders .orderDetails div.divTitle label{ font-weight:bold;/*margin-right:30px;*/}
+div.myOrders .orderDetails div.divTitle div{ font-weight:bold;}
+div.myOrders .orderDetails div.divTitle .summary { width:80px;float:left;text-align:right;}
+div.myOrders .orderDetails div.divTitle .summary label{ margin-right:0;}
+div.myOrders .orderDetails div.divTitle div.redButtonLong{ margin-top:5px;}
+div.myOrders .orderDetails div.divTitle div.orig{ margin-right:10px;}
+div.myOrders .orderDetails div.divTitle div.new{ margin-right:5px;}
+div.myOrders .orderDetails div.divTitle div.balance{ margin-right:0;}
+div.myOrders .orderDetails div.nonEditable div {margin-right:0;text-align:right;}
+div.myOrders .orderDetails div.nonEditable label  {margin-right:0;}
+div.myOrders .orderDetails div label.first {margin-right:670px}
+div.myOrders .orderDetails div div.first {margin-right:446px}
+div.myOrders .orderDetails div label.last {margin-right:0px}
+div.myOrders .orderDetails div div.last {margin-right:0px}
+div.myOrders .orderDetails div.divTitle {
+  border-top:1px solid #999999;
+  border-bottom: 1px solid #999999;
+  margin:4px;
+  font-size:13px;
+  width:870px;
+}
+div.myOrders div.cost {float:left;text-align:right;}
+div.myOrders div.cost label{font-weight:bold;display:block;margin-left:210px;}
+div.myOrders div.orig{width:100px;}
+div.myOrders div.summary {padding-left:770px;}
+div.myOrders div.new{width:90px;}
+div.myOrders div.balance{width:60px;}
+div.myOrders div.balance label{margin-right:0;}
+div.myOrders span.bold {font-size:13px;}
+div.myOrders .garments .even { background-color: #f0f9ff;}
+div.myOrders .garments .garment .productDetails {
+  float:left;
+  margin:4px;
+  width:487px;
+}
+
+div.myOrders .garments .garment .productDetails label {
+  display:inline;
+  float:left;
+  margin-right:8px;
+}
+
+div.myOrders .garments .garment img {
+  border:1px solid #999999;
+  float:left;
+  margin:4px;
+}
+
+/*************** EO MyOrders Page ****************/
+
+/*************** Myizishirt Account Page ****************/
+.myizishirt-left {padding-right:10px;float:left;width:192px;}
+
+.myizishirt-left .profile_img {
+  width:174px;
+  height:174px;
+  border:1px solid #bbbbbb;
+  margin:6px;
+}
+
+.myizishirt-left .leftBoxHeader {width:128px;}
+.myizishirt-left .leftBox {width:190px;}
+.myizishirt-left .leftBoxBottom {width:162px;}
+.myizishirt-left .alignNumber {position:relative;top:8px;}
+.myizishirt-left .alignLink {position:relative;top:4px;}
+.myizishirt-left div.myizishirt img { position:relative;top:2px;}
+.myizishirt-left .blueBoxHeader label {font-size:13px;top:6px;}
+.myizishirt-left div.myizishirt {
+  margin: 0px 6px; 
+  padding: 4px 0px;
+  border-bottom:1px solid #bbbbbb;
+  font-weight:bold;
+}
+.myizishirt-left div.money { padding:9px 20px;}
+.myizishirt-left div.money img.dollar { margin-right:8px;}
+.myizishirt-left label.earning {
+  background-image: url('../images/izishirt2009/earnBG.png');
+  background-repeat: no-repeat;
+  width:15px;
+  height:30px;
+  display:block;
+  margin-top:2px;
+  font-size:18px;
+  font-weight:bold;
+  padding:4px 2px;
+  color:#b41111;
+}
+
+.myizishirt-middle {width:510px;padding-right:10px;float:left;}
+.myizishirt-middle .leftBoxHeader {width:446px;}
+.myizishirt-middle .leftBox {width:508px;}
+.myizishirt-middle .welcomeBox {
+  width:510px;
+  height:204px;
+  background-image: url('../images/izishirt2009/myizishirtBannerBG.png');
+  background-repeat: no-repeat;
+  border:none;
+}
+.myizishirt-middle .leftBoxBottom {width:480px;}
+.myizishirt-middle .redButtonLong { margin-left:20px !important; margin-left:10px;}
+.myizishirt-middle .longBlueButton { margin-left:150px !important; margin-left:75px;}
+.myizishirt-middle .welcome { margin-bottom: 10px;padding-top:10px;}
+.myizishirt-middle .welcome img { margin-left:22px;}
+
+.myizishirt-middle .tools label {
+  font-weight:bold;
+  font-size:14px;
+  color: #666666;
+}
+.myizishirt-middle .tools .flashShop {width:200px; padding-left:35px;}
+.myizishirt-middle .tools .checkout {width:200px;padding-left:35px;}
+.myizishirt-middle .tools .loading {width:200px;padding-left:35px;}
+.myizishirt-middle .tools .shops {width:200px;padding-left:35px;}
+
+
+.myizishirt-right {width:185px;float:left;}
+.myizishirt-right div.save {
+  margin: 8px 0;
+  padding: 8px 0;
+  border-top:1px solid #a2a2a2;
+  border-bottom:1px solid #a2a2a2;
+}
+
+
+
+
+.myizishirt-right div.save img.banner{ margin:8px 0;}
+.myizishirt-right div.save img.icon{ position:relative;top:2px;margin-right:4px;}
+.myizishirt-right div.news {
+  margin: 8px 0;
+  border-bottom:1px solid #a2a2a2;
+}
+.myizishirt-right div.myizishirtPromo {border-bottom:1px solid #a2a2a2;padding-bottom:8px;}
+.myizishirt-right div.myizishirtPromo img {margin:0 8px;}
+.myizishirt-right div.myizishirtPromo div { width:130px;}
+/*************** EO Myizishirt Account Page ****************/
+
+/*************** Open a Shop Page ****************/
+.openShop .leftBoxHeader {width:190px;}
+.openShop .leftBox {width:236px;}
+.openShop .leftBoxBottom {width:208px;}
+
+.openShop .headerWidth {width:612px;}
+.openShop .boxWidth {width:658px;}
+.openShop .bottomWidth {width:630px;}
+
+.openShop .leftForm { float:left;width:225px;padding-left:96px;padding-right:10px;}
+.openShop .leftForm label { display:block; margin-top:8px; }
+.openShop .rightForm { float:right;width:225px;padding-right:96px}
+.openShop .rightForm label { display:block; margin-top:8px; }
+.openShop .shopName { width:450px;padding:15px 96px 0 96px;}
+.openShop .shopName label.choose { width:450px;display:block; margin-bottom:8px;}
+.openShop .shortBlueButton {margin:15px 0 0 300px; text-align:center;}
+.openShop .address .shortBlueButton {margin:15px 0 0 300px;}
+.openShop .whyizishirt p { margin:12px;padding-top:8px;}
+.openShop .whyizishirt a { padding:8px 14px 0 14px;display:block}
+.openShop .whyizishirt img { margin:12px;}
+.openShop ul {
+    list-style-type:none;
+    margin-left:10px;
+}
+
+.openShop ul li{
+  background: url('../images/izishirt2009/smallRedArrows.png') no-repeat 0px 8px;
+  padding-left:15px;
+}
+
+.openShop .premium .header { color:#333333;font-size:18px; }
+.openShop .premium ul { margin-left:70px; }
+.openShop .header {
+  color: #a92a1e;
+  border-bottom:1px solid #a9a9a9;
+  font-weight:bold;
+  font-size: 16px;
+  display:block;
+  margin:12px;
+}
+.openShop .examples img {margin-left:20px;}
+.openShop .examples a {margin-left:490px;}
+.openShop .examples label { color:#666666;display:block;float:left;}
+.openShop .examples label.first { margin-left:20px;}
+.openShop .examples label.second {margin-left:50px;}
+.openShop .examples label.third {margin-left:85px;}
+.openShop .examples label.fourth {margin-left:85px;}
+/*************** EO Open a Shop Page ****************/
+
+/*************** Quality Guarantee Page ****************/
+.header {
+  color: #a92a1e;
+  border-bottom:1px solid #a9a9a9;
+  font-weight:bold;
+  font-size: 23px;
+}
+
+.header2 {
+  color: #404040;
+  border-bottom:1px solid #999999;
+  font-weight:bold;
+  font-size: 14px;
+  display:block;
+  background-image: url('../images/izishirt2009/rightArrow.png');
+  background-repeat: no-repeat;
+  background-position:0 6px;
+  padding-left:15px;
+}
+
+.header3 {
+  color: #404040;
+  border-bottom:1px solid #999999;
+  font-weight:bold;
+  font-size: 14px;
+  display:block;
+}
+
+.quality, .firstVisit, .contact_us {
+  background-repeat: no-repeat;
+  margin-left:20px;
+  padding-left:80px;
+  color:#333333;
+}
+.shipping_info .shipping_header,
+.faq .faq_header { 
+  font-size:14px; 
+  border-bottom:1px solid #999999;
+  margin-bottom:10px;
+}
+.faq .faq_header { margin-top:30px; }
+.faq .first_header { margin-top:0; }
+.shipping_info label,
+.faq label { 
+  display:block; 
+}
+.indent{ 
+  margin:0 33px;
+}
+.shipping_info,
+.faq {
+  padding:20px 30px; 
+  margin:0 20px;
+  color:#333333;
+}
+.printing{background-image: url('../images/izishirt2009/printing.png');background-repeat:no-repeat;}
+.products{background-image: url('../images/izishirt2009/products.png');background-repeat:no-repeat;}
+.optimize{background-image: url('../images/izishirt2009/yourDesign.png');background-repeat:no-repeat;}
+.service{background-image: url('../images/izishirt2009/service.png');background-repeat:no-repeat;}
+.shop{background-image: url('../images/izishirt2009/firstShop.png');background-repeat:no-repeat;}
+.create{background-image: url('../images/izishirt2009/firstCreate.png');background-repeat:no-repeat;}
+.sell{background-image: url('../images/izishirt2009/firstSell.png');background-repeat:no-repeat;}
+.affiliate{background-image: url('../images/izishirt2009/firstAffiliate.png');background-repeat:no-repeat;}
+.emails{background-image: url('../images/izishirt2009/email_icon.png');background-repeat:no-repeat;}
+.call{background-image: url('../images/izishirt2009/phone_icon.png');background-repeat:no-repeat;}
+.stop_by{background-image: url('../images/izishirt2009/shirt_icon.png');background-repeat:no-repeat;}
+
+
+.shipping_info ul, 
+.faq ul { margin:0 15px;}
+.faq ul.left { width:400px;}
+.faq img.right { margin-right:20px;}
+.quality ul li, 
+.firstVisit ul li, 
+.contact_us ul li, 
+.shipping_info ul li,
+.faq ul li {
+    background: url('../images/izishirt2009/smallRedArrows.png') no-repeat;
+    background-position:0px 8px;
+    padding-left:20px;
+}
+.faq ul.inner li, 
+.faq ul.inner2 li {
+    background: url('../images/izishirt2009/redCircle.png') no-repeat;
+    background-position:0px 8px;
+    padding-left:20px;
+    margin-left:20px;
+}
+.faq ul.inner2 li {margin-bottom:0}
+.shipping_info ul li,
+.faq ul li {
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.contact_us ul li{font-size:13px;}
+
+/*************** EO Quality Guarantee Page****************/
+
+
+/**************** Red Boxes ****************/
+.redBox {
+  overflow:hidden;
+}
+.redBoxLeft {
+  background-image: url('../images/izishirt2009/redBoxLeft.png');
+  width:35px;
+  height:31px;
+  background-repeat: no-repeat;
+}
+.redBoxLeftNoLogo {
+  background-image: url('../images/izishirt2009/redBoxLeftNoLogo.png');
+  width:35px;
+  height:31px;
+  background-repeat: no-repeat;
+}
+.redBoxHeader {
+  background-image: url('../images/izishirt2009/redBoxMiddle.png');
+  height:31px;
+}
+.redBoxHeader label{
+  font-weight:bold;
+  font-size:15px;
+  color:#ffffff;
+  position:relative;
+  top: 4px;
+  left: 4px;
+}
+.redBoxHeader a{
+  font-weight:bold;
+  font-size:15px;
+  color:#ffffff;
+  position:relative;
+  top: 4px;
+  left: 4px;
+  text-decoration:none;
+}
+.redBoxHeader a.search{
+  top:0;
+}
+.redBoxRight {
+  background-image: url('../images/izishirt2009/redBoxRight.png');
+  background-repeat: no-repeat;
+  height:31px;
+  width:13px;
+}
+
+.redBoxTitle {
+  background-image: url('../images/izishirt2009/redBoxTitle.png');
+  height:31px;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+  position:relative;
+}
+.redBoxTitle label{
+  font-size:13px;
+  font-weight:bold;
+  position:relative;
+  top: 7px;
+  left: 6px;
+}
+.redBoxTitle img {
+  position:relative;
+  top: 7px;
+  left: 6px;
+}
+.redBoxInnerTitle label{
+  font-size:13px;
+  font-weight:bold;
+  position:relative;
+  top: 5px;
+  left: 6px;
+}
+
+.redBoxInnerTitle {
+  background-image: url('../images/izishirt2009/redBoxTitle.png');
+  height:31px;
+}
+/**************** EO Red Boxes ****************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**************** Checkout ****************/
+
+
+/* CHECKOUT MENU */
+div#checkout-menu1 {   font-family:tahoma, Arial, Helvetica, sans-serif;}
+.four_step {margin-left:150px;}
+.five_step {margin:0 0 0 80px;}
+#checkout-menu1 span {background:url(/images/checkout/checkout-step-off.gif) no-repeat bottom; width:137px; margin:0 8px;display:block;float:left;text-align:center;}
+#checkout-menu1 a { line-height:31px; font-size:10px; color:#BDBABA;   text-decoration:none; cursor:default; }
+#checkout-menu1 .on {background:url(/images/checkout/checkout-step-on.gif) no-repeat bottom; color:#807B7B; cursor:pointer}
+#checkout-menu1 .on a {color:#807B7B;}
+
+
+div#checkout .empty {padding:50px;}
+div#checkout .cart { padding:12px 147px;color:#515151;}
+div#checkout .cart .addTop{ border-top:1px solid #999999 }
+div#checkout .cart .addBottom{ border-bottom:1px solid #999999 }
+div#checkout .cart .addLightBottom{ border-bottom:1px solid #CCCCCC }
+
+div#checkout .cart .request {padding:8px;}
+div#checkout .cart .cart_coupon {padding:8px;}
+div#checkout .cart .cart_coupon .narrowBlueButton{margin:10px 0 0 90px ;}
+div#checkout .cart .cart_header {padding:8px;}
+div#checkout .cart .cart_header img {display:block;float:left;margin-right:8px;position:relative;top:4px;}
+div#checkout .cart .cart_header .items{display:block;float:left;width:359px;}
+div#checkout .cart .cart_header .price   {margin:0 10px 0 0;}
+div#checkout .cart .cart_header .quantity{margin:0 10px 0 0;}
+div#checkout .cart .cart_header .price,
+div#checkout .cart .cart_header .quantity,
+div#checkout .cart .cart_header .total{
+  display:block;
+  float:left;
+  width:65px;
+  text-align:center;
+}
+div#checkout .cart .cart_item .enlarge a {display:block;position:relative;top:-4px;}
+div#checkout .cart .cart_item .image img { width:133px;height:133px;}
+div#checkout .cart .cart_item .image   {
+  width:133px;
+  border:1px solid #acacac;
+  margin:13px 15px 4px 0;
+}
+div#checkout .cart .cart_item .details {
+  width:244px;
+  margin:13px 0;
+  float:left;
+}
+div#checkout .cart .cart_item .details label {
+  display:block;
+}
+div#checkout .cart .cart_item .price   {margin:0 10px 0 0;}
+div#checkout .cart .cart_item .quantity{margin:0 10px 0 0;}
+div#checkout .cart .cart_item .total   {margin:0;}
+
+div#checkout .cart .cart_item .price,
+div#checkout .cart .cart_item .quantity,
+div#checkout .cart .cart_item .total   {
+  width:66px;
+  background-color:#f5f5f5;
+  float:left;
+  height:180px;
+  vertical-align:bottom;
+}
+div#checkout .cart .cart_item .price label,
+div#checkout .cart .cart_item .total label  {
+  display:block;
+  margin-top:155px;
+  text-align:center;
+}
+div#checkout .cart .cart_item .quantity div {
+  margin-top:152px;
+}
+div#checkout .cart .cart_item .quantity label {
+  display:block;
+  margin:152px 4px 0 10px;
+  text-align:center;
+  width:20px;
+  border: 1px solid #acacac;
+  background-color:#ffffff;
+  float:left;
+}
+div#checkout .cart .cart_total .coupon_form {
+  float:left;
+  padding-right:20px;
+  text-align:right;
+  width:200px;
+}
+div#checkout .cart .cart_total .savings{
+  float:left;
+  width:100%;
+  text-align:right;
+}
+div#checkout .cart .cart_total .total,
+div#checkout .cart .cart_total .subtotal{
+  background-color:#f5f5f5;
+  padding:8px;
+  text-align:right;
+}
+div#checkout .cart .buttons{
+  padding:30px 155px;
+}
+div#checkout .cart .blueButtonLarge{
+  margin:0 10px 0 0;
+}
+
+div#checkout .cart .cart_item .plus { 
+  display: block; 
+  width: 11px; 
+  height: 9px; 
+  margin-bottom:2px;
+  background-image:url(/images/checkout/checkout-plus.gif); 
+  background-repeat:no-repeat; 
+}
+div#checkout .cart .cart_item .minus { 
+  display: block;
+  width: 11px; 
+  height: 9px; 
+  background-image:url(/images/checkout/checkout-minus.gif); 
+  background-repeat:no-repeat; 
+}
+
+
+div#checkout .cart .shipping .left,
+div#checkout .cart .billing  .left {
+  width:165px;
+  padding-left:130px;
+}
+div#checkout .cart .shipping .right,
+div#checkout .cart .billing  .right {
+  width:165px;
+  padding-right:130px;
+}
+
+div#checkout .cart .shipping .left  label,
+div#checkout .cart .shipping .right label,
+div#checkout .cart .billing  .left  label,
+div#checkout .cart .billing  .right label{
+  font-weight:normal;
+  margin-top:8px;
+  display:block;
+}
+div#checkout .cart .same {margin: 10px 130px;}
+div#checkout .cart .radios {
+  margin:10px 250px;
+  width:100px;
+}
+div#checkout .cart .shipping .mandatory label, 
+div#checkout .cart .billing  .mandatory label {
+  color:#000000;
+  font-weight:normal;
+  margin-left:130px;
+  margin-top:8px;
+  display:block;
+}
+
+div#checkout .cart .shipping_options{
+  margin: 10px 0 0 0;
+}
+div#checkout .cart .payment,
+div#checkout .cart .summary {
+  margin: 0 20px;
+}
+div#checkout .cart .shipping_options .faster{
+  text-align:right;
+}
+div#checkout .cart .shipping_options .faster label{
+  font-weight:normal;
+}
+div#checkout .cart .shipping_option_detail {
+  display:block;
+  margin-left:24px;
+}
+div#checkout .cart .shipping_option label {
+  font-weight:normal;
+}
+div#checkout .cart .shipping_option input[type=radio] {
+  vertical-align:text-bottom;
+  margin-top:8px;
+}
+div#checkout .cart .holiday_shipping {
+  margin-left:24px;
+  margin-top:10px;
+}
+div#checkout .cart .holiday_shipping label {
+  font-weight:normal;
+}
+div#checkout .cart .holiday_shipping .ship_type_lbl {
+  font-weight:bold;
+  width:62px;
+  float:left;
+}
+
+div#checkout .cart .summary div.addLightBottom {
+  padding:8px 8px 2px 8px;
+}
+div#checkout .cart .summary .left { font-weight:normal;}
+div#checkout .cart .summary .first {
+  margin-left:4px;
+  margin-right:18px;
+  display:block;
+  width:120px;
+  font-weight:bold;
+}
+div#checkout .cart .requests {
+  padding:10px 20px;
+}
+div#checkout .cart .requests img {
+  vertical-align:text-bottom;
+}
+div#checkout .cart .requests textarea {
+  width:560px;
+  height:90px;
+}
+div#checkout .cart .payment div.left {
+  margin-right:10px;
+  padding-top:20px;
+}
+div#checkout .cart .payment div.month,
+div#checkout .cart .payment div.year {
+  padding-top:40px;
+}
+
+div#checkout .cart .payment div.verification {
+  margin-right:0px !important;
+}
+div#checkout .cart .payment{display:block;position:static;}
+div#checkout .cart .payment img{border:none;}
+div#checkout .cart .payment a {text-decoration:none;}
+div#checkout .cart .card_section{display:block;position:static;width:100%;}
+div#checkout .cart .payment .type {width:170px;float:left;}
+div#checkout .cart .payment .logos {float:right;}
+div#checkout .cart .payment .logos label{font-weight:bold;}
+div#checkout .cart .payment .name {width:160px;}
+div#checkout .cart .payment .number {width:160px;}
+div#checkout .cart .payment .month {width:50px;}
+div#checkout .cart .payment .year {width:60px;}
+div#checkout .cart .payment .verification {width:100px;}
+
+div#checkout .cart .payment .name input[type=text], 
+div#checkout .cart .payment .number input[type=text] {
+  width:150px;
+
+}
+div#checkout .cart .payment label {
+  display:block;
+  font-weight:normal;
+}
+div#checkout .cart .payment label.bigText {
+  font-weight:bold;
+}
+
+div#checkout .cart .pay .greenButtonLarge{
+  margin:0 0 0 87px;
+}
+div#checkout .cart .izishirt img {
+  float:left;
+}
+div#checkout .cart .izishirt div {
+  float:left;
+}
+div#checkout .cart .izishirt label {
+  display:block;
+  margin: 0 65px;
+}
+
+div#checkout .cart .thanks {
+  padding:18px;
+}
+
+.cart_banner img {
+  position:relative;
+  top:4px;
+}
+.cart_banner a {
+  color:#515151;
+  text-decoration:none;
+}
+.cart_banner .cart_banner_padding {
+  padding-left:10px;
+}
+.cart_banner .banner_title {
+  font-size:20px;
+  color: #515151;
+}
+.cart_banner .banner_title_blue {
+  font-size:20px;
+  color: #007acd;
+}
+.cart_banner .banner_text {
+  font-size:13px;
+  color: #515151;
+}
+
+
+.main_banner_button{
+    width:226px;
+    height:58px;
+    display:block;
+    position:absolute;
+    bottom:14px;
+    right:275px;
+
+}
+
+.main_banner_button_fr{
+    background: transparent url('../images/izishirt2009/fr/mainBannerButton.png') no-repeat;
+}
+.main_banner_button_fr:hover{
+    background: transparent url('../images/izishirt2009/fr/mainBannerButtonOver.png') no-repeat;
+}
+
+.main_banner_button_en{
+    background: transparent url('../images/izishirt2009/en/mainBannerButton.png') no-repeat;
+}
+.main_banner_button_en:hover{
+    background: transparent url('../images/izishirt2009/en/mainBannerButtonOver.png') no-repeat;
+}
+
+.main_halloween_banner_button_fr{
+    background: transparent url('../images/izishirt2009/fr/mainBannerButtonHalloween.png') no-repeat;
+}
+.main_halloween_banner_button_fr:hover{
+    background: transparent url('../images/izishirt2009/fr/mainBannerButtonHalloweenOver.png') no-repeat;
+}
+
+.main_halloween_banner_button_en{
+    background: transparent url('../images/izishirt2009/en/mainBannerButtonHalloween.png') no-repeat;
+}
+.main_halloween_banner_button_en:hover{
+    background: transparent url('../images/izishirt2009/en/mainBannerButtonHalloweenOver.png') no-repeat;
+}
+
+.main_xmas_banner_button_fr{
+    background: transparent url('../images/izishirt2009/fr/green_create_on.png') no-repeat;
+}
+.main_xmas_banner_button_fr:hover{
+    background: transparent url('../images/izishirt2009/fr/green_create_over.png') no-repeat;
+}
+
+.main_xmas_banner_button_en{
+    background: transparent url('../images/izishirt2009/en/green_create_on.png') no-repeat;
+}
+.main_xmas_banner_button_en:hover{
+    background: transparent url('../images/izishirt2009/en/green_create_over.png') no-repeat;
+}
+
+.green_design_button_fr{
+    background: transparent url('../images/izishirt2009/fr/green_design_on.jpg') no-repeat;
+    width:103px;
+    height:23px;
+}
+.green_design_button_fr:hover{
+    background: transparent url('../images/izishirt2009/fr/green_design_over.jpg') no-repeat;
+    width:103px;
+    height:23px;
+}
+
+.green_design_button_en{
+    background: transparent url('../images/izishirt2009/en/green_design_on.jpg') no-repeat;
+    width:103px;
+    height:23px;
+}
+.green_design_button_en:hover{
+    background: transparent url('../images/izishirt2009/en/green_design_over.jpg') no-repeat;
+    width:103px;
+    height:23px;
+}
+.green_design_button{
+  text-align:center;
+  margin:8px;
+  cursor:pointer;
+}
+.green_create_own_button_fr{background: transparent url('../images/izishirt2009/fr/green_create_own_on.jpg') no-repeat;}
+.green_create_own_button_fr:hover{ background: transparent url('../images/izishirt2009/fr/green_create_own_over.jpg') no-repeat;}
+.green_create_own_button_en{background: transparent url('../images/izishirt2009/en/green_create_own_on.jpg') no-repeat;}
+.green_create_own_button_en:hover{background: transparent url('../images/izishirt2009/en/green_create_own_over.jpg') no-repeat;}
+.green_create_own_button{
+  width:189px;
+  height:27px;
+  text-align:center;
+  margin:8px;
+  cursor:pointer;
+}
+.green_save_button_fr{
+    background: transparent url('../images/izishirt2009/fr/green_save_on.png') no-repeat;
+    width:143px;
+    height:23px;
+}
+.green_save_button_fr:hover{
+    background: transparent url('../images/izishirt2009/fr/green_save_over.png') no-repeat;
+    width:143px;
+    height:23px;
+}
+
+.green_save_button_en{
+    background: transparent url('../images/izishirt2009/en/green_save_on.png') no-repeat;
+    width:81px;
+    height:23px;
+}
+.green_save_button_en:hover{
+    background: transparent url('../images/izishirt2009/en/green_save_over.png') no-repeat;
+    width:81px;
+    height:23px;
+}
+.green_save_button{
+  text-align:center;
+  margin:8px;
+  cursor:pointer;
+}
+.green_theme_button_fr{
+    background: transparent url('../images/izishirt2009/fr/green_theme_on.png') no-repeat;
+    width:250px;
+    height:23px;
+}
+.green_theme_button_fr:hover{
+    background: transparent url('../images/izishirt2009/fr/green_theme_over.png') no-repeat;
+    width:250px;
+    height:23px;
+}
+
+.green_theme_button_en{
+    background: transparent url('../images/izishirt2009/en/green_theme_on.png') no-repeat;
+    width:250px;
+    height:23px;
+}
+.green_theme_button_en:hover{
+    background: transparent url('../images/izishirt2009/en/green_theme_over.png') no-repeat;
+    width:250px;
+    height:23px;
+}
+.green_theme_button{
+  text-align:center;
+  margin:8px 0;
+  cursor:pointer;
+}
+.shop_banner_button{
+  width:222px;
+  height:50px;
+  display:block;
+  position:absolute;
+  bottom:17px;
+  right:60px;
+}
+
+.shop_banner_button_fr{
+    background: transparent url('../images/izishirt2009/fr/shopBannerButton.png') no-repeat;
+}
+.shop_banner_button_fr:hover{
+    background: transparent url('../images/izishirt2009/fr/shopBannerButtonOver.png') no-repeat;
+}
+
+.shop_banner_button_en{
+    background: transparent url('../images/izishirt2009/en/shopBannerButton.png') no-repeat;
+}
+.shop_banner_button_en:hover{
+    background: transparent url('../images/izishirt2009/en/shopBannerButtonOver.png') no-repeat;
+}
+
+.bulk_order_button{
+    width:218px;
+    height:45px;
+    display:block;
+    position:absolute;
+    bottom:14px;
+    right:275px;
+
+}
+
+.bulk_order_button_fr{
+    background: transparent url('../images/izishirt2009/fr/bulkButton.png') no-repeat;
+}
+.bulk_order_button_fr:hover{
+    background: transparent url('../images/izishirt2009/fr/bulkButtonOver.png') no-repeat;
+}
+
+.bulk_order_button_en{
+    background: transparent url('../images/izishirt2009/en/bulkButton.png') no-repeat;
+}
+.bulk_order_button_en:hover{
+    background: transparent url('../images/izishirt2009/en/bulkButtonOver.png') no-repeat;
+}
+.relative{
+    position:relative;
+}
+
+.tools .longBlueButton a{
+    padding-top:3px;
+}
+
+.blueButton .submit{
+  border:none;
+  background-color:transparent;
+  display:block;
+  width:100%;
+  cursor:pointer;
+  color:#FFFFFF;
+  font-weight:bold;
+  font-size:13px;
+  height:27px;
+  text-decoration:none;
+  display:block;
+  padding-bottom:5px;
+}
+
+.centered_submit{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+}
+
+.centered{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.bigText a{
+    font-weight:bold !important;
+    font-size:13px !important;
+    display:block !important;
+    padding-top:4px !important;
+}
+
+.addBottom .arrowRed{
+    margin-top:5px;
+}
+
+.pad-right-110{
+
+    padding-right:110px;
+}
+
+.height-40{
+    height:40px;
+}
+
+.margin-left-8-px{
+    margin-left:8px;
+}
+
+#open_shop .mandatory{
+    position:absolute;
+    left:96px;
+    bottom:6px;
+}
+
+.new_user .mandatory{
+    position:absolute;
+    left:200px;
+    bottom:31px;
+}
+
+.no_orders_text{
+    font-weight:bold;
+    font-size:15px;
+}
+
+.no_orders{
+    display:block;
+    margin-bottom:20px;
+}
+.light_verif{width:480px;}
+.verifBox {width:478px;height:150px;padding-top:30px;}
+.cardTypes .visa{
+    float:left;
+    position:relative;
+    width:228px;
+    
+    padding-left:16px;
+}
+.cardTypes .american{
+    float:left;
+    position:relative;
+}
+
+.cardTypes{
+    padding-bottom:10px;
+    height:18px;
+}
+
+.cardImages{
+    position:relative;
+    text-align:center;
+}
+
+.cardImages .threeDigits{
+    position:absolute;
+    top:20px;
+    left:155px;
+}
+.cardImages .fourDigits{
+    position:absolute;
+    top:20px;
+    right:43px;
+}
+
+.thinGreyBorderTop{
+    border-top:1px solid #666666;
+    width:380px;
+    margin:0 auto;
+
+}
+
+.borderTopGrey{
+    border-top:1px solid #999999;
+
+}
+
+.izishirtPriceContent{
+    padding:20px;
+    color:#666666;
+}
+
+.productPopUp{
+    top:-28px !important;
+}
+
+.formError{
+    color:red;
+    font-weight:bold;
+    text-align:center;
+    padding-bottom:10px;
+    height:18px;
+}
+
+.shopName .fieldWithErrors{
+    display:inline;
+}
+
+.email .mandatory  {
+    margin-left:20px;
+}
+
+.bulkLeft{
+    width:275px;
+}
+
+.bulkContent{
+    width:624px;
+}
+
+.leftBoxBulkHeader{
+    width:222px;
+}
+
+.leftBoxBulk{
+    width:268px;
+}
+
+.leftBoxBottomBulk{
+    width:240px;
+}
+
+.boxContentBulkHeader{
+    width:578px;
+}
+
+.bulkPad{
+    
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:10px;
+}
+
+.bulkBottomWidth{
+    width:596px;
+}
+
+.bulkContentSection .bulkContentTitle{
+    border-top:1px solid #666666;
+    border-bottom:none;
+    color:rgb(160,0,0);
+    margin-bottom:0px;
+    margin-top:20px;
+}
+
+.bulkContentTitle h1{
+
+    color:rgb(160,0,0);
+    font-size:15px;
+    font-weight:bold;
+    margin-bottom: 3px;
+
+}
+
+.bulkContentSection .bulkMidPadContent{
+    padding-top: 10px;
+    padding-left:30px;
+    padding-right:30px;
+    padding-bottom:20px;
+}
+
+.bulkContentSection .bulkMidPadContent .bulkContentFormSection{
+    padding: 0 70px;
+}
+
+.bulkContentTitle{
+    font-size:15px;
+    font-weight:bold;
+    margin-bottom:10px;
+    margin-top:10px;
+    width:100%;
+    text-align:left;
+    border-bottom:1px solid #666666;
+}
+
+.bulkContentTitle .topContact{
+    font-size:12px;
+    text-align:right;
+    padding-right:10px;
+    padding-top:17px;
+    color:#222222;
+}
+
+.bulkSeparator{
+    border-bottom:1px solid #666666;
+    width:100%;
+    height:0px;
+
+}
+
+.marginTop28{
+    margin-top:28px !important;
+}
+
+.bulkContent{
+    color:rgb(81,81,81);
+    font-size:12px;
+    font-weight:bold;
+    /*background-color:#F0F0F0;*/
+}
+
+.bulkContent .imageLeft{
+    width:56px;
+    height:56px;
+    float:left;
+    position:relative;
+    background: url("../images/izishirt2009/firstCreate.png") no-repeat;
+    margin-right:10px;
+}
+
+.leftBulkBox{
+    width:258px;
+    padding:0 5px;
+
+    padding-top:13px;
+    padding-bottom:8px;
+}
+
+.leftBulkBox img{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:15px;
+}
+
+
+.leftBulkBox .bulkContentTitle{
+   margin-bottom:5px;
+   margin-top:0px;
+}
+.leftBulkBox{
+    line-height:1.4;
+}
+.bottomBulkLeftImg{
+    margin-bottom:12px;
+}
+
+
+
+
+.bulkFormPart .rightColumn{
+    width:176px;
+    float:right;
+    position:relative;
+  
+}
+
+.bulkFormPart .rightColumn .smallTextArea{
+    width:174px;
+}
+
+.bulkFormPart .leftColumn{
+    width:176px;
+    float:left;
+    position:relative;
+}
+
+.bulkContent .textRight{
+    font-size:11px;
+    vertical-align:top;
+    line-height:1.2 !important;
+    font-weight:bold;
+    color:#333333;
+    
+}
+.bulkContent .textRight .black{
+    color:#111111;
+    font-size:12px;
+}
+
+.bulkContent .bulkList ul{
+    list-style:none;
+}
+
+.bulkContent .bulkList{
+    margin-top:10px;
+}
+
+.bulkContent .bulkList li{
+    padding-left:18px;
+    font-size:12px;
+    margin-bottom:5px;
+    padding-top:0px;
+    font-weight:bold;
+    line-height:17px;
+    
+    background: url('../images/izishirt2009/rightArrow.png') no-repeat 0px 4px;
+}
+
+.bulkContent .bulkContentFormSection{
+    padding: 10px 100px;
+}
+.bulkContent .bulkContentFormSection input[type=file]{
+    width:auto;
+}
+
+.bulkContent .bulkContentFormSection input, .bulkContent .bulkContentFormSection select{
+    width:176px;
+    max-width:176px;
+    margin:0;
+    padding:0;
+    
+}
+.bulkContent .bulkContentFormSection .shortTextField{
+    width:40px;
+    clear:both;
+    display:block;
+    position:static;
+}
+
+.bulkContent .bulkFormPart{
+    border-bottom: 1px solid #AAAAAA;
+    margin-bottom:10px;
+    padding-bottom:10px;
+}
+
+.bulkContent .bulkContentFormSection .nbPrintsSelect{
+    width:35px;
+}
+.bulkContent .bulkContentFormSection .sizeInput{
+    width:20px;
+}
+
+.bulkContent .bulkContentFormSection .unitSelect{
+    width:106px;
+    margin-left:10px;
+}
+
+.bulkContent .bulkContentFormSection .browseFile{
+    width:auto;
+}
+
+.bulkContentFormSection .inputLabel{
+
+}
+
+
+.bulkContent .bulkContentFormSection .field{
+    width:180px;
+
+    height:40px;
+
+    padding:0 !important;
+    margin:0 !important;
+}
+.bulkContent .bulkContentFormSection .dateField{
+    width:200px;
+    margin-bottom:12px;
+    
+}
+
+.bulkContent .bulkContentFormSection .dateField input{
+    float:left;
+    
+}
+
+
+.bulkContent .bulkContentFormSection .dateField a{
+    display:block;
+    float:right;
+    }
+
+.bulkContent .bulkContentFormSection label {
+    color:rgb(100,100,100);
+}
+
+.bulkContent .bulkContentFormSection textarea{
+    width:382px;
+    padding: 0;
+    margin: 0;
+    height:100px;
+}
+*.bulkContent .bulkContentFormSection .mandatory{
+    font-weight:normal;
+    color:black;
+    width:100%;
+    text-align:right;
+}
+
+.bulkContent .bulkContentFormSection .left{
+    margin-right:22px;
+}
+
+.bulkContent .bulkContentFormSection .text{
+    display:block;
+    position:static;
+}
+
+.bulkContent .formError{
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+.bulkButton{
+    float:left;
+    margin-right:10px;
+}
+
+.bulkButtonSection{
+    width:355px;
+    height:32px;
+}
+
+.bigBlueText{
+    color : rgb(0,105,181);
+    font-size:15px;
+}
+
+.bulkContent .topTabs {
+    position:relative;
+    float:left;
+    padding-top:12px;
+    padding-left:5px;
+}
+
+.bulkContent .topTabs a {
+    position:relative;
+    display:block;
+    float:left;
+    background: url('../images/izishirt2009/tabQuote.png') no-repeat;
+    height:23px;
+    width:129px;
+    text-align:center;
+    text-decoration:none;
+    color:rgb(51,51,51);
+    font-size:13px;
+    font-weight:bold;
+}
+.bulkContent .topTabs a .selected{
+
+    background-image: url('../images/izishirt2009/downArrow.png');
+    
+}
+
+.garmentRoller{
+    background:url('../images/izishirt2009/gradientGarment.png') repeat-x;
+    border:1px solid #888888;
+    height:23px;
+    width:100%;
+}
+
+.garmentRoller a {
+    
+    display:block;
+    padding-left:27px;
+    
+    height:23px;
+    color:#555555;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:14px;
+    background-repeat: no-repeat;
+    background-position: 8px 6px;
+
+}
+
+#garmentSection .inactiveGarment{
+    display:none;
+}
+
+.garmentRoller .active{
+    background-image:url('../images/izishirt2009/downArrow.png');
+
+}
+
+.garmentContent{
+    padding-top:0px !important;
+    padding-bottom:0px !important;
+}
+
+.garmentRoller .inactive{
+    background-image:url(../images/izishirt2009/rightArrow.png);
+}
+
+.bulkContent .topTabs a div{
+    padding-top:3px;
+    padding-left:10px;
+    background-repeat:no-repeat;
+    background-position: 7px 7px;
+}
+
+.bulkContent .topTabs a .unselected{
+    background-image: url('../images/izishirt2009/rightArrow.png');
+}
+
+.garmentForm{
+    margin: 0 0;
+}
+.summaryFields{
+    padding:0 20px;
+    border-bottom:2px dotted #888888;
+    padding-bottom:15px;
+}
+
+.topTabs .title{
+    padding-left:20px;
+    color:#222222;
+}
+
+.stdField{
+    float:left;
+    position:relative;
+    text-align:left;
+    color:#222222;
+}
+
+.print .stdField{
+    text-align:center;
+    width:100%;
+}
+
+.stdField .name{
+    font-weight:bold;
+}
+
+.stdField .value{
+    font-weight:normal;
+}
+
+.summaryFields .half{
+    width:50%;
+}
+
+.summaryFields .full{
+    
+    width:100%;
+    
+}
+.summaryProducts .third{
+    width:33%;
+}
+.summaryProducts .half{
+    width:50%;
+    text-align:left;
+}
+
+.summaryProducts .prints{
+    margin: 5px 0;
+    padding: 5px 0;
+    float:left;
+    width:100%;
+    border-top:1px solid #BBBBBB;
+    border-bottom:1px solid #BBBBBB;
+}
+
+.summaryProducts .full{
+
+    width:100%;
+    text-align:left;
+
+}
+.summaryProducts{
+    border-bottom:2px dotted #888888;
+    padding-bottom:20px;
+}
+
+.topTabs img, .topTabs a,.topTabs div{
+    border:none;
+    text-decoration:none;
+}
+
+.summaryProducts .print{
+    float:left;
+    position:relative;
+    width:33%;
+}
+
+.summaryProducts .title{
+    font-weight:bold;
+    font-size:14px;
+
+}
+
+.summaryProducts .title{
+    margin-top:20px;
+}
+
+.summaryProducts .content{
+    background-color:rgb(247,247,247);
+    border:1px solid #AAAAAA;
+    padding:10px;
+    text-align:center;
+}
+
+/* NEW CSS */
+
+.socialshare {padding:5px 0 0 12px; margin-right:20px; width:342px; padding-top:12px}
+.socialshare label {font-size:10px; font-weight:bold; float:left; margin-right:5px; line-height:20px}
+
+.aparelTitle, .landingProductsTitle {background:#ccc; text-transform:uppercase; font-size:12px; float:left; width:305px; margin-top:5px; font-weight:bold; padding:1px 0 3px 5px; line-height:12px; overflow:hidden; }
+.aparelTitle div.left {width:280px;}
+.aparelTitle div.right {margin:6px 4px 0 0;}
+.aparelTitle span {color:#0066ff; font-size:14px; display:block; line-height:18px}
+.aparelTitleApparelDetails {background:#ccc; text-transform:uppercase; font-size:12px; float:left; width:375px; margin-top:5px; font-weight:bold; padding:3px 0 1px 5px; line-height:12px; overflow:hidden; }
+.aparelTitleApparelDetails span {color:#0066ff; font-size:14px; display:block; line-height:18px}
+
+.aparelColor { margin:0px 1px 0px 0px; border:0px #FFF solid }
+.aparelMoreColors { text-decoration:none; color:#444; font-size:20px }
+
+.aparelPrices {margin: 0 0 0 0; line-height: 100%}
+.aparelTable {margin-bottom:8px;}
+
+
+.usave, 
+.usave_price {position:absolute; width:300px; left:10px; padding:2px 5px 0 5px; z-index:1; text-transform:uppercase; font-weight:bold}
+.usave {top:0; color:#fff; background:#cc0000;  font-size:12px; }
+.usave_price {top:20px; color:#000; background:#ffff00;  font-size:14px;}
+.usave_price1 {position:absolute; left:10px; padding:2px 5px 0 5px; z-index:1; text-transform:uppercase; font-weight:bold; top:0px; color:#000; background:#ffff00;  font-size:14px;white-space:nowrap;}
+
+.top .left .shop1Form {padding:0; }
+.shop1Form input[type="text"] {border:1px solid #999}
+.shop1Form table img {width:11px; height:11px}
+.shop1Form table th {text-transform:uppercase; font-size:11px}
+.shop1Form table * {margin:0; padding:0}
+.shop1Form table input {text-align:center}
+.shop1Form table .bAdd {background:#00cc00; color:#fff; text-decoration:none; padding:4px 10px 4px 10px; line-height:18px;font-weight:bold;}
+
+.apparelBtns {text-align:center; line-height:20px; font-size:13px; text-transform:uppercase; width:305px; margin-left:10px; margin-top:8px; font-weight:bold}
+.apparelBtns a {color:#fff; text-decoration:none; padding:4px 10px 4px 10px; line-height:18px}
+.apparelBtns_wide a {padding: 2px 45px 7px 10px;  width:116px; color:#fff; text-decoration:none;}
+.apparelBtns .bCust {background:#0066cc;display:block; float: left;width:84px;margin-left:44px;}
+.apparelBtns .bAdd {background:#00cc00;display:block; float: left; width:84px;margin-left:10px;}
+
+.apparel h3 {text-transform:uppercase; margin:0px 0 0 0; padding:0;text-align:center; font-size:12px; font-weight:bold; }
+.apparel h3 a {text-decoration:none;  color:#0066cc; }
+.apparel a.vdetails {display:block; text-align:center; text-transform:none; font-size:10px; color:#0066cc; margin-top:3px; }
+.apparel h3 a:hover {text-decoration:none}
+.apparel .adinfo {font-size:11px; width:300px; margin:5px 0 0 15px; border-top:1px solid #999; padding-top:5px}
+.apparel .adinfo span {margin:0; padding:0; display:block; text-align:right; font-size:12px; }
+.apparel .adinfo .qty {float:left}
+.apparel .totalPrice { text-align:right; font-weight:bold; font-size:13px;  }
+.apparel .bulkdiscount {color:#009900; }
+
+.schart {width:530px; margin:0 auto; }
+.schart strong {background:#ccc; color:#0066cc; padding:0px 7px; text-transform:uppercase; display:block; float:left; line-height:25px}
+.schart table {margin:1px 0 0 1px; clear:left}
+.apparel .bottom .apparelInfo { margin:0 auto 10px auto; border-top:1px solid #000; padding:10px }
+.apparel .bottom .apparelInfo .head {width:390px; padding-right:10px; }
+.apparel .bottom .apparelInfo th {text-transform:uppercase; margin:0; padding:0; line-height:13px; line-height:20px}
+.apparel .bottom .apparelInfo td {vertical-align:top; padding:0}
+.apparel .bottom .apparelInfo li,
+.apparel .bottom .apparelInfo td{font-size:12px}
+.apparel .bottom .apparelInfo li {list-style:disc; margin-left:15px}
+
+.apparel .atabs {border-left:1px solid #ccc}
+.apparel .atabs a {display:block; float:left; border:1px solid #ccc; border-width:1px 1px 0px 0; color:#666; text-transform:uppercase; text-align:center; line-height:22px; font-weight:bold; padding:0 8px; text-decoration:none; font-size:11px}
+.apparel .atabs a:hover {color:#0066ff; }
+.apparel .atabs a.active {background:#ccc; color:#0066ff; font-size:12px}
+.apparel .atabs_content {border:3px solid #ccc; padding:10px}
+.apparel .atabs_content .tmodels {float:left; margin:0px 15px 0 0; width:70px}
+.apparel .atabs_content .tmodels h4 {margin:0 0 5px 0; padding:0; font-size:12px; text-transform:uppercase; font-weight:bold; color:#666 }
+.apparel .atabs_content .tborder {border-right:1px solid #999}
+.apparel .atabs_content .tmodels a {color:#ccc; font-size:10px; display:block; text-decoration:none}
+.apparel .atabs_content #active a {color:#666}
+.apparel .atabs_content #active a:hover {text-decoration:underline}
+.apparel .atabs_content #active h4 {color:#06c}
+.apparel .atabs_content .tmodels_items {float:left; width:648px}
+.apparel .atabs_content .tmodels_items img { margin:0 5px 10px 0; border:1px solid #fff;cursor:pointer;}
+.apparel .atabs_content .tmodels_items a:hover img {border:1px solid #999}
+.left_apparel_brands { 
+  font-size:12px;
+  margin: 10px 0 0 0;
+  padding: 8px 0px;
+}
+.left_create_own {
+  margin: 10px 0 0 0;
+  padding: 8px 0 0 0;
+}
+.left_create_own .find_header {line-height:19px;font-size: 19px; font-family: arial; font-weight:bold;color#333333;}
+.left_create_own .find_text {line-height:13px;font-size: 13px; font-family: arial; color:#333333;}
+.left_apparel_brands label.blue{ font-size:14px;font-weight:normal;display:block;margin:2px 0;}
+.left_apparel_brands div.left label.block {color:#666666;}
+.left_apparel_brands img {margin-top:20px;}
+.left_apparel_images {
+  padding: 0 20px;
+}
+.left_apparel_images img{ margin-top:10px;}
+.apparelAddedToCart {padding:20px;}
+.popupShop1ApparelDetails {padding:20px;}
+.closeAddedToCart {margin-left:auto;margin-right:auto;}
+.closePopupApparelDetails {margin-left:310px;}
+.color_block {cursor:pointer;}
+.cancelCategory {float:left;margin-top:20px;margin-left:10px;}
+.okCategory {float:left;margin-top:20px;margin-left:40px;}
+
+.topContact .email_link{
+    color: #222222;
+    text-decoration:none;
+}
+
+.titleHomeText{
+    padding-bottom:3px;
+    background-position: 0 2px;
+}
+
+.blogTitle h2{
+    font-size:13px;
+    padding-left:6px;
+    padding-top:5px;
+    font-weight:bold;
+}
+
+.free_shipping{
+    float:right;
+    color:#009900;
+    margin-top:3px;
+    font-size:15px;
+    font-weight:bold;
+    font-family:Arial,Helvetica,Tahoma,sans-serif;
+}
+
+.open_home_button_fr{
+    width:172px;
+    background: transparent url('../images/izishirt2009/fr/open_on.jpg') no-repeat;
+}
+.open_home_button_fr:hover{
+    background: transparent url('../images/izishirt2009/fr/open_active.jpg') no-repeat;
+}
+
+.open_home_button_en{
+    width:180px;
+    background: transparent url('../images/izishirt2009/en/open_on.jpg') no-repeat;
+}
+.open_home_button_en:hover{
+    background: transparent url('../images/izishirt2009/en/open_active.jpg') no-repeat;
+}
+
+.sell_home_button{
+    height:32px;
+    
+}
+
+.open_home_button{
+    height:32px;
+    
+}
+
+.sell_home_button_fr{
+    width:170px;
+    background: transparent url('../images/izishirt2009/fr/sell_on.jpg') no-repeat;
+}
+.sell_home_button_fr:hover{
+    background: transparent url('../images/izishirt2009/fr/sell_active.jpg') no-repeat;
+}
+
+.sell_home_button_en{
+    width:162px;
+    background: transparent url('../images/izishirt2009/en/sell_on.jpg') no-repeat;
+}
+.sell_home_button_en:hover{
+    background: transparent url('../images/izishirt2009/en/sell_active.jpg') no-repeat;
+}
+
+.left_banner_div{
+    float:left;
+    height:101px;
+    width:342px;
+}
+
+.bulk_banner{
+    border-top:dashed 2px #BBBBBB;
+    border-bottom:dashed 2px #BBBBBB;
+    padding-top:10px;
+    padding-bottom:10px;
+    height:116px;
+    width:910px;
+}
+
+.bulk_banner_content{
+    float:left;
+    padding-left:15px;
+    padding-top:3px;
+}
+
+.bulk_banner_bottom{
+    padding-top:0px;
+    width:696px;
+}
+
+.bulk_banner_button_fr{
+    display:block;
+    height:26px;
+    width:203px;
+    margin-bottom:3px;
+    margin-top:6px;
+    background: transparent url('../images/izishirt2009/fr/request.jpg') no-repeat;
+}
+.bulk_banner_button_fr:hover{
+    background: transparent url('../images/izishirt2009/fr/request_over.jpg') no-repeat;
+}
+
+.bulk_banner_button_en{
+    display:block;
+    height:26px;
+    width:141px;
+    margin-bottom:3px;
+    background: transparent url('../images/izishirt2009/en/request.jpg') no-repeat;
+}
+.bulk_banner_button_en:hover{
+    background: transparent url('../images/izishirt2009/en/request_over.jpg') no-repeat;
+}
+
+.bulk_request{
+    margin-top:8px;
+    text-align:right;
+}
+
+.bulk_banner_email{
+    color:black;
+    text-decoration:none;
+    font-family:Arial,Helvetica,Tahoma,sans-serif;
+    font-size:12px;
+}
+
+.bulk_text_explanation{
+    font-family:Arial,Helvetica,Tahoma,sans-serif;
+    font-size:13px;
+    line-height:18px;
+}
+
+.blueBoxHeader h1, .shopHeaderWidth h1, .pageWideBoxHeader h1{
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+    left:2px;
+    position:relative;
+    top:7px;
+}
+
+.flashAppHeader h1{
+    left:-34px;
+    top:8px;
+}
+
+.shopHeaderWidth .shop1Title{
+    top:3px;
+}
+
+.graniteTitle h2{
+    font-weight:bold;
+    font-size:12px;
+}
+
+.boldh2{
+    font-weight:bold;
+    font-size:12px;
+    margin:0;
+    padding:0;
+}
+
+.blueh2{
+    font-size:11px;
+    margin:0;
+    padding:0;
+    color:#007ACD;
+}
+
+.boldh1{
+    font-weight:bold;
+    font-size:12px;
+    margin:0;
+    padding:0;
+    height:18px;
+}
+.apparel .productDetailsLink{
+    text-align:center;
+    font-size:12px;
+    margin-top:4px;
+}
+.apparel .productDetailsLink a{
+    color:#0066CC;
+}
+
+.light_apparel_details .content{
+    padding:15px;
+}
+.light_apparel_details .content .modelPhoto{
+    width:354px;
+    height:338px;
+    float:left;
+    margin-right:10px;
+}
+.light_apparel_details .content .description{
+    float:left;
+    width:324px;
+    text-align:left;
+}
+.light_apparel_details .content .description .aparelTitle{
+    margin-top:0;
+}
+
+.light_apparel_details .content .schart{
+    margin-top:15px;
+}
+.light_apparel_details p{
+    margin-top:8px;
+    margin-bottom:8px;
+    text-indent:0;
+}
+.light_apparel_details ul{
+    margin-bottom:8px;
+}
+
+.visit_my_shop_button_fr{
+    display:block;
+    height:16px;
+    width:129px;
+    margin-top:6px;
+    position:relative;
+    float:right;
+
+
+    background: transparent url("../images/izishirt2009/fr/visitshop.jpg") no-repeat;
+}
+.visit_my_shop_button_fr:hover{
+    background: transparent url('../images/izishirt2009/fr/visitshop_over.jpg') no-repeat;
+}
+
+.visit_my_shop_button_en{
+    display:block;
+    height:16px;
+    width:102px;
+    margin-top:6px;
+    position:relative;
+    float:right;
+    background: transparent url('../images/izishirt2009/en/visitshop.jpg') no-repeat;
+}
+.visit_my_shop_button_en:hover{
+    background: transparent url('../images/izishirt2009/en/visitshop_over.jpg') no-repeat;
+}
+/* Site map page */
+.sitemap_left1 { float: left; margin: 20px 0 0 20px; }
+.sitemap_left1 h3 a { color: #000; font-size: 14px; font-weight: bold; text-decoration: none; }
+.sitemap_left1 h3 a:hover { color: #000; font-weight: bold; text-decoration: underline; }
+.sitemap_left1 ul li {margin: 0; padding: 0; }
+.sitemap_left1 li a { color: #666; text-decoration: none; }
+.sitemap_left1 li a:hover { color: #000; text-decoration: underline; }
+
+.sitemap_mid1 { float: left; margin: 20px 0 0 85px; }
+.sitemap_mid1 h3 a { color: #000; font-size: 14px; font-weight: bold; text-decoration: none; }
+.sitemap_mid1 h3 a:hover { color: #000; font-weight: bold; text-decoration: underline; }
+.sitemap_mid1 ul li {margin: 0; padding: 0; }
+.sitemap_mid1 li a { color: #666; text-decoration: none; }
+.sitemap_mid1 li a:hover { color: #000; text-decoration: underline; }
+
+.sitemap_right1 { float: right; margin: 20px 25px 0 0px; }
+.sitemap_right1 h3 a { color: #000; font-size: 14px; font-weight: bold; text-decoration: none; }
+.sitemap_right1 h3 a:hover { color: #000; font-weight: bold; text-decoration: underline; }
+.sitemap_right1 ul li {margin: 0; padding: 0; }
+.sitemap_right1 li a { color: #666; text-decoration: none; }
+.sitemap_right1 li a:hover { color: #000; text-decoration: underline; }
+
+.sitemap_left2 { float: left; margin: 80px 0 0 20px; }
+.sitemap_left2 h3 a { color: #000; font-size: 14px; font-weight: bold; text-decoration: none; }
+.sitemap_left2 h3 a:hover { color: #000; font-weight: bold; text-decoration: underline; }
+.sitemap_left2 ul li {margin: 0; padding: 0; }
+.sitemap_left2 li a { color: #666; text-decoration: none; }
+.sitemap_left2 li a:hover { color: #000; text-decoration: underline; }
+
+.sitemap_mid2 { float: left; margin: 80px 0 10px 85px; }
+.sitemap_mid2 h3 a { color: #000; font-size: 14px; font-weight: bold; text-decoration: none; }
+.sitemap_mid2 h3 a:hover { color: #000; font-weight: bold; text-decoration: underline; }
+.sitemap_mid2 ul li {margin: 0; padding: 0; }
+.sitemap_mid2 li a { color: #666; text-decoration: none; }
+.sitemap_mid2 li a:hover { color: #000; text-decoration: underline; }
+
+.sitemap_right2 { float: right; margin: 60px 49px 0 0px; }
+.sitemap_right2 h3 a { color: #000; font-size: 14px; font-weight: bold; text-decoration: none; }
+.sitemap_right2 h3 a:hover { color: #000; font-weight: bold; text-decoration: underline; }
+.sitemap_right2 ul li {margin: 0; padding: 0; }
+.sitemap_right2 li a { color: #666; text-decoration: none; }
+.sitemap_right2 li a:hover { color: #000; text-decoration: underline; }
+
+
+#flash_inner{
+    margin-top:70px;
+    border:1px solid;
+    padding:10px;
+    text-align:center;
+}
+
+.apparelImagesNoTop{
+
+    width:335px !important;
+}
+
+.apparelTitleMarginRight{
+    margin-right:10px;
+    float:right;
+    width:325px;
+}
+
+.qty_cart{
+    margin-top:3px;
+}
+
+.apparelImagesHeightMarginLeft{
+    margin-left:5px;
+}
+.landingPageContent{
+    margin-left:13px;
+    padding-right:0px !important;
+    height:850px;
+}
+.landingPageContent .top{
+    padding: 0 10px !important;
+}
+
+.shareShirt{
+    margin-top:15px;
+    font-size:11px;
+}
+
+.landingPageRightSection{
+    width:330px;
+}
+
+.apparelImagesHeightMarginLeft .apparelModel{
+    margin-left:20px;
+}
+
+.addLandingProductAction{
+    display:block;
+    float:right;
+    background-color:#0066cc;
+    color:white;
+    font-size:13px;
+    font-weight:bold;
+    text-decoration:none;
+
+}
+.checkoutLandingProductAction{
+    display:block;
+    float:right;
+    background-color:#009900;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    text-decoration:none;
+    padding:4px 17px !important;
+
+}
+
+
+.landingPageRightSection .shop1Form table a:hover{
+    background-color:#207cfb;
+    color:white;
+}
+.landingPageRightSection .shop1Form table a:visited,
+.landingPageRightSection .shop1Form table a:active,
+.landingPageRightSection .shop1Form table a:link{
+    color:white;
+}
+
+.apparelBtnsLanding a:hover{
+    background-color:#00cc00;
+}
+.apparelBtnsLanding{
+    width:auto !important;
+}
+
+.landingPageRightSection .shop1Form table a{
+    padding-left:7px;
+    padding-right:7px;
+    padding-top:0px;
+    padding-bottom:0px;
+}
+
+.landingPageRightSection .shop1Form table span{
+    display:inline;
+}
+
+#bulk_discount, .landingPrice{
+    color: #0066FF;
+    display:inline !important;
+}
+#bulk_discount{
+    text-decoration:underline;
+}
+
+#bulk_discount .greenLink{
+    color:#009900;
+    text-decoration:underline;
+}
+
+.totalPriceLanding{
+    font-size:19px !important;
+    font-weight:bold;
+    display:inline !important;
+}
+
+.adinfoLanding{
+    border-top:1px solid #999999;
+    font-size:11px;
+    margin:5px 0 0 15px;
+    padding-top:5px;
+    width:300px;
+}
+
+.landingPageRightSection #current_color_name{
+    font-size:12px;
+}
+
+.apparelImagesHeightMarginLeft .out_of_stock{
+    left:40px;
+}
+
+#popupquantity { width: 200px; border:3px solid #666; background-color:white;}
+#popupquantity .quantityClose { float:right;margin:3px 3px;}
+#popupquantity #name_box {width:190px; margin:0 auto; padding:10px;font-weight:bold; font-size:14px; text-align:center; color:#666;}
+#popupquantity #title_box {width:190px; height:20px; margin:0 auto; font-weight:bold;font-size:12px; color:#FFF; background-color:#666;}
+#popupquantity #title1 { float:left; width:90px; text-align:center;}
+#popupquantity #title2 { float:left; width:90px; text-align:center;}
+#popupquantity #content_box {width:190px; height:20px; margin:5px auto; font-family:"Arial Black", Gadget, sans-serif; font-size:12px; background-color:#CCC;}
+#popupquantity #gray{ float:left; color:#333; width:100px; text-align:center;}
+#popupquantity #blue{ float:left; color:#026AC9; width:90px; text-align:center;}
+
+.mcafee_landing{
+    text-align:center;
+    padding-top:30px;
+    height: 60px;
+}
+
+.payment_header{
+    height:21px;
+}
+
+#landingPageTotal{margin:10px auto;	padding:0; width:920px; }
+#landingPageTotal .clear_wh { clear:both;}
+#landingPageTotal .clear_woh { clear:both; height:0; }
+#landingPageTotal #left_container { float:left; width:200px; margin-right:5px;}
+
+#landingPageTotal #left_container p {text-indent: 0em !important; margin-top: 0 !important;line-height:130% !important;}
+#landingPageTotal .shop1ImgWrapper p { line-height:320px !important;}
+#landingPageTotal #info_assistance {width:190px; padding:10px; border:1px solid #999;}
+#landingPageTotal #info_assistance p { margin:0; padding:5px 0 2px 0;}
+#landingPageTotal #info_assistance img{ float:left; display:inline; margin-right:5px;}
+#landingPageTotal  .title13 { font-size:13px; font-weight:700; color: #333;}
+#landingPageTotal  .title12 { font-size:12px; font-weight:700; color: #333;}
+#landingPageTotal .textgreen14 {font-size:14px; color:#009900; font-weight:700; margin:3px 0 0 0;}
+#landingPageTotal .textgreen11 {font-size:11px; color:#009900; font-weight:700; margin:3px 0 0 0;}
+#landingPageTotal .text11 { font-size:11px; margin:3px 0 0 0; color:#666;}
+#landingPageTotal .text12 { font-size:12px; margin:3px 0 0 0; color:#666;}
+
+#landingPageTotal .title14 { font-size:14px; font-weight:700;display:block;position:relative;float:left;white-space:nowrap;}
+#landingPageTotal .textgreen {font-size:14px; color:#009900; font-weight:700; margin:3px 0 0 0;display:block;float:left;margin-top:-12px;margin-left:53px;}
+
+#landingPageTotal .textblue {font-size:10px; color:#0066CC; margin:3px 0 0 0; text-decoration:none;}
+#landingPageTotal .textblue a:link a:visited a:active a:focus {font-size:10px; color:#0066CC; text-decoration:none;}
+#landingPageTotal .textblue a:hover { color:#666;}
+/*Payment Methods Container*/
+#landingPageTotal #payment_methods {width:190px; margin:10px 0 0 0; padding:2px 10px; border:1px solid #999; background:url(/images/izishirt2009/bckg_secure_payment.jpg) repeat-x;}
+#landingPageTotal #payment_methods p {margin:0; padding:0 0 10px 0;}
+#landingPageTotal .titleCentered{margin-left:5px; margin-top:15px;}
+
+#landingPageTotal #cloud_tag { width:190px; margin:10px 0 0 0; padding:10px; border:1px solid #999; }
+#landingPageTotal #cloud_tag ul { margin: 0; padding:0; }
+#landingPageTotal #cloud_tag li { width:100%; display: inline; list-style:none; padding:0;}
+#landingPageTotal #cloud_tag a { text-decoration:none; color:#666; padding-left:10px }
+#landingPageTotal #cloud_tag a:hover {text-decoration:underline; color:#666; }
+#landingPageTotal #cloud_tag a.tag1 { font-size: 1.2em;font-weight: 200;}
+#landingPageTotal #cloud_tag a.tag2 { font-size: 0.9em; font-weight: 500;}
+#landingPageTotal #cloud_tag a.tag3 {	font-size: 0.8em; font-weight: 300;}
+#landingPageTotal #cloud_tag a.tag4 {	font-size: 1em;	font-weight: 500;}
+#landingPageTotal #cloud_tag a.tag5 {	font-size: 0.7em; font-weight: 500;}
+#landingPageTotal #cloud_tag a.tag6 {	font-size: 1em;	font-weight: 600;}
+#landingPageTotal #cloud_tag a.tag7 {	font-size: 1.2em; font-weight: 400;}
+#landingPageTotal #cloud_tag a.tag8 {	font-size: 0.8em; font-weight: 800;}
+#landingPageTotal #cloud_tag a.tag9 {	font-size: 1.4em; font-weight: 700;}
+#landingPageTotal #cloud_tag a.tag10 { font-size: 1.5em; font-weight: 900;}
+
+#landingPageTotal #right_container { float:right; width:710px;}
+
+#landingPageTotal #bottom { float:left; margin: 25px 0 0 0; background-color:#fff; width:100%; }
+#landingPageTotal #bottonContainer { margin-left:auto; margin-right:auto; }
+#landingPageTotal #BulkOrders { float: left; width:212px; height:180px; padding:20px 0 0 20px; margin-left: auto; margin-right: auto; }
+#landingPageTotal #BulkOrders p {margin:0; padding:0 0 0 20px;}
+#landingPageTotal .bulk_title {font-size:13px; color:#666;}
+#landingPageTotal .bulk_text {font-size:12px; color:#333;}
+#landingPageTotal .bulk_blue {font-size:12px; color:#118DB7; text-decoration:none;}
+#landingPageTotal .bulk_blue a:link a:visited a:active a:focus { text-decoration:none;}
+#landingPageTotal .bulk_blue a:hover {text-decoration:underline;}
+
+#landingPageTotal #YourDesign { float: left; width:212px; height:180px; padding:20px 0 0 20px; margin-left: auto; margin-right: auto; }
+#landingPageTotal #YourDesign p {	margin:0; padding:0 0 0 18px;}
+
+#landingPageTotal #Social{ float: left; width:212px; height:180px; padding:20px 0 0 20px; margin-left: auto; margin-right: auto; }
+#landingPageTotal #Social p { margin:0; padding:0 0 0 30px;}
+
+#landingPageTotal #Create{ float: left; width:212px; height:180px; padding:20px 0 0 10px; margin-left: auto; margin-right: auto; }
+#landingPageTotal #Create p { margin:0; padding:0 0 0 15px;}
+
+#landingPageTotal .img_footer { margin-bottom:5px;}
+
+/*Quality Print Text Container*/
+#landingPageTotal #quality_print_results {width:190px; margin:10px 0 0 0; padding:10px 10px 0px 10px;}
+#landingPageTotal #quality_print_results p {margin:0; padding:0 0 10px 0;}
+
+#landingPageTotal #image_list{
+    margin-top:20px;
+}
+
+.prepend-34-px{
+    padding-left:34px;
+}
+
+#flashPageTotal{min-height:1450px;}
+#flashPageTotal  p {text-indent: 0em !important; margin-top: 0 !important;line-height:130% !important;}
+#flashPageTotal .clear_woh { clear:both; height:0; }
+/*Left Container*/
+#flashPageTotal #left_container { float:left; width:210px; margin-right:10px;}
+#flashPageTotal #left_container .padLeft {padding-left:5px;}
+/*Info Container*/
+#flashPageTotal #left_container #info_assistance {width:190px; padding:10px; border:1px solid #ccc;}
+#flashPageTotal #left_container #info_assistance p { margin:0; padding:5px 0 2px 0;}
+#flashPageTotal #left_container #info_assistance img{ float:left; display:inline; margin-right:5px;}
+
+/*Text Classes*/
+#flashPageTotal #left_container  .title13 { font-size:13px; font-weight:700; color: #333;}
+#flashPageTotal #left_container  .title12 { font-size:12px; font-weight:700; color: #333;}
+#flashPageTotal #left_container .textgreen14 {font-size:14px; color:#009900; font-weight:700; margin:3px 0 0 0;}
+#flashPageTotal #left_container .textgreen11 {font-size:11px; color:#009900; font-weight:700; margin:3px 0 0 0;}
+#flashPageTotal #left_container .text11 { font-size:11px; margin:3px 0 0 0; color:#666;}
+#flashPageTotal #left_container .text12 { font-size:12px; margin:3px 0 0 0; color:#666;}
+
+#flashPageTotal #left_container .textblue {font-size:12px; color:#0066CC; margin:3px 0 0 0; text-decoration:none;}
+#flashPageTotal #left_container .textblue a:link a:visited a:active a:focus {font-size:12px; color:#0066CC; text-decoration:none;}
+#flashPageTotal #left_container .textblue a:hover { color:#666;}
+
+/*Payment Methods Container*/
+#flashPageTotal #left_container #payment_methods {width:190px; margin:10px 0 0 0; padding:2px 10px; border:1px solid #ccc; background:url(/images/izishirt2009/bckg_secure_payment.jpg) repeat-x;}
+#flashPageTotal #left_container #payment_methods p {margin:0; padding:0 0 10px 0;}
+
+/*Quality Print Text Container*/
+#flashPageTotal #left_container #quality_print_results {width:190px; margin:10px 0 0 0; padding:10px 10px 0px 10px;}
+#flashPageTotal #left_container #quality_print_results p {margin:0; padding:0 0 10px 0;}
+
+/*Large Order Container*/
+#flashPageTotal #left_container #large_orders { width: 210px; margin:10px 0 0 0; height: 250px;}
+#flashPageTotal #left_container #lager_orders a:hover {background-color:#000;}
+#flashPageTotal #left_container #name_box {	width:185px; margin:0; margin-left:8px; padding:0 5px 5px 5px; font-size:14px; font-weight:bold; text-align:center; color:#666;}
+#flashPageTotal #left_container #title_box {width:190px; height:20px; margin:0 auto; font-family:"Arial Black", Gadget, sans-serif; font-size:12px; color:#FFF; background-color:#666;}
+#flashPageTotal #left_container #title_qty { float:left; width:90px; text-align:center;}
+#flashPageTotal #left_container #title_discount { float:left; width:90px; text-align:center;}
+#flashPageTotal #left_container #quantity_box {width:190px; height:20px; margin:5px auto; font-family:"Arial Black", Gadget, sans-serif; font-size:12px; background-color:#CCC;}
+#flashPageTotal #left_container #box_gray{ float:left; color:#333; width:100px; text-align:center;}
+#flashPageTotal #left_container #box_blue{ float:left; color:#026AC9; width:90px; text-align:center;}
+#flashPageTotal #left_container #btn_free_quote a:hover{ background-color: #3b98f4;}
+#flashPageTotal #left_container #btn_free_quote .button_free_quote { float:right; margin:0 10px 0 0; padding:5px; background-color: #0066cc; border: 1px solid #ccc; color:#fff; text-decoration:none; font-family:"Arial", Gadget, sans-serif; font-size:13px; font-weight: bold; text-align:center;}
+
+/*YouTube Movie Container*/
+#flashPageTotal #left_container #YouTubeMovie {width:210px; margin:30px 0 10px 0;}
+
+/*Cloud Tag Container*/
+#flashPageTotal #left_container #cloud_tag { width:190px; margin:10px 1px 0 0; padding:10px; border:0px solid #ccc; }
+#flashPageTotal #left_container #cloud_tag ul { margin: 0; padding:0; }
+#flashPageTotal #cloud_tag li { width:100%; display: inline; list-style:none; padding:0;}
+#flashPageTotal #left_container #cloud_tag a { text-decoration:none; color:#0066cc; padding-left:10px }
+#flashPageTotal #left_container #cloud_tag a:hover {text-decoration:underline; color:#0066cc; }
+#flashPageTotal #left_container #cloud_tag a.tag0 { font-size: 1.2em;font-weight: 200;}
+#flashPageTotal #left_container #cloud_tag a.tag1 { font-size: 0.9em; font-weight: 500;}
+#flashPageTotal #left_container #cloud_tag a.tag2 {	font-size: 0.8em; font-weight: 300;}
+#flashPageTotal #left_container #cloud_tag a.tag3 {	font-size: 1em;	font-weight: 500;}
+#flashPageTotal #left_container #cloud_tag a.tag4 {	font-size: 0.7em; font-weight: 500;}
+#flashPageTotal #left_container #cloud_tag a.tag5 {	font-size: 1em;	font-weight: 600;}
+#flashPageTotal #left_container #cloud_tag a.tag6 {	font-size: 1.2em; font-weight: 400;}
+#flashPageTotal #left_container #cloud_tag a.tag7 {	font-size: 0.8em; font-weight: 800;}
+#flashPageTotal #left_container #cloud_tag a.tag8 {	font-size: 1.4em; font-weight: 700;}
+#flashPageTotal #left_container #cloud_tag a.tag9 { font-size: 1.5em; font-weight: 900;}
+
+/*Right Container*/
+#flashPageTotal #right_container { float:right; width:655px; margin-top:20px;}
+#flashPageTotal #right_container #popular_designs { position:absolute; width:655px; border:1px solid #ccc; margin:20px 0 0 0;}
+#flashPageTotal #right_container #popular_title, #flashPageTotal #flash_title { background:url(/images/izishirt2009/bckg_top_popular.jpg) repeat-x; width:650px; height:18px; padding:0 0 3px 5px; color:#333; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:700;}
+#flashPageTotal #flash_title h1 {margin:0;padding:0;display:inline;font-size:12px;font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:700; color:#333;vertical-align:top !important;line-height:23px !important;}
+#flashPageTotal #flash_title { border: 1px solid #999; padding:0px 0 5px 5px !important;vertical-align:top !important;line-height:23px !important;}
+#flashPageTotal #right_container #content_designs { width:625px; padding:15px;}
+
+#flashPageTotal #right_container #box_design{ float:left; width:155px; text-align:center;}
+#flashPageTotal #right_container #box_design .text14 { font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#333; text-decoration:none;}
+#flashPageTotal #right_container #box_design .text14 a:hover { font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#333; text-decoration:underline;}
+#flashPageTotal #right_container #box_design .text12 { font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333; text-decoration:none;}
+#flashPageTotal #right_container #box_design .text12 a {font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333; text-decoration:none;}
+#flashPageTotal #right_container #box_design .text12 a:hover {text-decoration:underline;}
+#flashPageTotal #right_container #box_design .text10 { font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#333; text-decoration:none;}
+#flashPageTotal #right_container #content_designs p { line-height:1.2 !important;margin-bottom:18px;}
+#flashPageTotal #right_container #box_design .text12 a:hover { font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333; text-decoration:underline;}
+#flashPageTotal #right_container #box_design .imageWrapper{margin-left:auto;margin-right:auto;}
+
+.pagination_links_category a{ font-weight:bold; color:#007ACD; }
+.pagination_links_category { white-space:nowrap; }
+
+#flashPageTotal div#corpoPromo { background-color: #8f8e8e; width: 212px; height: 166px; padding: 10px 0 0 0; }
+
+#flashPageTotal p#titlePromo { font-family: Arial, Geneva, Verdana; font-size: 13px; color: #fff; text-transform: uppercase; font-weight: bold; margin: 0 0 0 7px; }
+#flashPageTotal div#midPromo { position: relative; margin:10px auto; width: 200px; height: 43px; background-color: #fff; padding: 10px 0 0 10px; }
+#flashPageTotal p#greyPromo {color: #666; font-family: Arial, Geneva, verdana; font-size: 12px; }
+#flashPageTotal p#greyPromo a{text-decoration:none !important;}
+#flashPageTotal ul#promoLeftList { font-family: Arial, Geneva, Verdana; font-size: 10px; color: #fff; margin: 0px 0 0 10px; float: left; list-style-type:none; line-height:1.3;}
+#flashPageTotal ul#promoRightList { font-family: Arial, Geneva, Verdana; font-size: 10px; color: #fff; margin: 0px 10px 0 10px; float: right; list-style-type:none; line-height:1.3;}
+
+/* ****************************************************************************
+
+NEW BULK_ORDER PAGE
+
+*/
+
+#new_bulk_order_page #left_container { float:left; width:210px; margin-left:50px;}
+
+/*Info Container*/
+#new_bulk_order_page #left_container #info_assistance {width:190px; padding:10px; border:1px solid #ccc;}
+#new_bulk_order_page #left_container #info_assistance p { line-height:130% !important;margin-top:0 !important;text-indent:0 !important;margin:0; padding:5px 0 2px 0;}
+#new_bulk_order_page #left_container #info_assistance img{ float:left; display:inline; margin-right:5px;}
+
+/*Text Classes*/
+#new_bulk_order_page #left_container  .title13 { font-size:13px; font-weight:700; color: #333;}
+#new_bulk_order_page #left_container  .title12 { font-size:12px; font-weight:700; color: #333;}
+#new_bulk_order_page #left_container .textgreen14 {font-size:14px; color:#009900; font-weight:700; margin:3px 0 0 0;}
+#new_bulk_order_page #left_container .textgreen11 {font-size:11px; color:#009900; font-weight:700; margin:3px 0 0 0;}
+#new_bulk_order_page #left_container .text11 { font-size:11px; margin:3px 0 0 0; color:#666;}
+#new_bulk_order_page #left_container .text12 { font-size:12px; margin:3px 0 0 0; color:#666;}
+#new_bulk_order_page #left_container .textblue {font-size:12px; color:#0066CC; margin:3px 0 0 0; text-decoration:none;}
+#new_bulk_order_page #left_container .textblue a:link a:visited a:active a:focus {font-size:12px; color:#0066CC; text-decoration:none;}
+#new_bulk_order_page #left_container .textblue a:hover { color:#666;}
+
+/*Payment Methods Container*/
+#new_bulk_order_page #left_container #our_clients {width:210px; margin:10px 0 0 0; border:1px solid #D9D9D9; background:url(/images/bcgk_our_clients.jpg) repeat;}
+#new_bulk_order_page #left_container #clients_title { background:url(/images/bckg_top_popular.jpg) repeat-x; width:200px; height:18px; padding:1px 0 4px 10px; color:#333; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:700;}
+#new_bulk_order_page #left_container #bulk_tshirts { width:180px; height:127px; padding:15px;}
+#new_bulk_order_page #left_container #list_clients {margin:0; padding:0 0 0 5px;}
+#new_bulk_order_page #left_container #list_clients ul { margin:0; padding:0;}
+#new_bulk_order_page #left_container #list_clients li { padding:0 0 5px 15px; font-size:11px; color:#333; list-style-position:inside;}
+
+#new_bulk_order_page #left_container #quality_guaranteed {width:210px; height:160px; margin:10px 0 0 0; border:1px solid #D9D9D9; background:url(/images/izishirt_bulk_tshirts_brand_.jpg) repeat;}
+#new_bulk_order_page #left_container #quality_guaranteed p { margin:0; padding:5px 0 0 10px;}
+#new_bulk_order_page #left_container #quality_guaranteed ul { margin:5px 0 0 15px; padding:0; list-style:none;}
+#new_bulk_order_page #left_container #quality_guaranteed li { padding:0; margin:0; font-size:12px; color:#333;}
+
+/*Quality Print Text Container*/
+#new_bulk_order_page #left_container #brands_names {width:190px; margin:10px 0 0 0; padding:10px;}
+#new_bulk_order_page #left_container #brands_names p {margin:0; padding:0 0 10px 0;}
+
+/*YouTube Movie Container*/
+#new_bulk_order_page #left_container #YouTubeMovie {width:210px; margin:10px 0 10px 0;}
+
+/*Right Container*/
+#new_bulk_order_page #right_container { float:right; width:655px; height: 1700px; margin-right: 50px; }
+#new_bulk_order_page #right_container #Bulk_Form { width:655px; border:1px solid #D9D9D9; margin:0;}
+#new_bulk_order_page #right_container #Bulk_quote_title { background:url(/images/bckg_top_popular.jpg) repeat-x; width:650px; height:18px; padding:5px 0 0 5px; color:#333; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:700;}
+/*Form Bulk Orders*/
+#new_bulk_order_page #right_container #Bulk_Form p { padding:10px 10px 0 15px; font-size:12px; color:#333;}
+
+#new_bulk_order_page #right_container #Bulk_Form .img_bulk_your_logo { margin:5px 5px 20px 5px; vertical-align: text-top; float:left; display:inline;}
+
+#new_bulk_order_page #right_container #bulk_order_info {width:655px; margin:0;}
+#new_bulk_order_page #right_container #bulk_order_info table { font-size:12px; color:#333; margin-left: 10px; }
+#new_bulk_order_page #right_container #bulk_order_info table input[type=text] { font-size:12px; color:#333; width:120px; border:1px solid #999;}
+#new_bulk_order_page #right_container #bulk_order_info table TEXTAREA { font-size:12px; color:#333; width:450px; height: 125px; border:1px solid #999;}
+#new_bulk_order_page #right_container #bulk_order_info .tb_title13 { font-size:13px; font-weight:bold; color:#333;}
+#new_bulk_order_page #right_container #bulk_order_info .tb_redstart { font-size:12px; font-weight:bold; color:#cc0000;}
+#new_bulk_order_page #right_container #bulk_order_info .tb_text11 { font-size:11px; color:#333;}
+#new_bulk_order_page #right_container #btn_free_quote { margin:10px 0 0 0; padding:10px 0 10px 0; text-align:center; height:20px}
+#new_bulk_order_page #right_container #btn_free_quote a:hover{ background-color: #06c506;}
+#new_bulk_order_page #right_container #btn_free_quote .button_free_quote {padding:5px; background-color: #009900; border-top:1px ridge #7ad84b; border-left:1px ridge #7ad84b; border-bottom:1px ridge #017c01; border-right:1px ridge #017c01; color:#fff; font-size:13px; font-weight: bold; text-align:center; font-family:Arial, Helvetica, sans-serif; text-decoration:none;}
+
+/* Boxes Prints and Garments*/
+#new_bulk_order_page #right_container #prints_garments { position:absolute; width:655px; height: 650px; border:1px solid #D9D9D9; margin:20px 0 0 0;}
+#new_bulk_order_page #right_container #prints_garments_title { background:url(/images/bckg_top_popular.jpg) repeat-x; width:650px; height:18px; padding:5px 0 0 5px; color:#333; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:700;}
+#new_bulk_order_page #right_container #content_prints_garments { width:625px; padding:15px;}
+#new_bulk_order_page #right_container #box_prints{ float:left; width:200px; margin:0 0 10px 5px; height:270px;}
+#new_bulk_order_page #right_container #box_prints img { border:0; text-align:center;}
+#new_bulk_order_page #right_container #box_prints p { margin:0; padding:0;}
+#new_bulk_order_page #right_container #box_prints .text13 { font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#333; text-decoration:none; text-align:left;}
+#new_bulk_order_page #right_container #box_prints .text13 a:hover { text-decoration:underline;}
+#new_bulk_order_page #right_container #box_prints .text12 { font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#666; text-decoration:none;}
+#new_bulk_order_page #right_container #box_prints .text12 a:hover { font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#666; text-decoration:underline;}
+#new_bulk_order_page .mandatory_fields { align: right; text-align: right; margin-right: 10px; padding-right: 20px; }
+
+
+/** My Orders Page **/
+#orderPageTotal {margin-top:30px;}
+#orderPageTotal  p {text-indent: 0em !important; margin-top: 0 !important;line-height:130% !important;}
+#orderPageTotal .clear_woh { clear:both; height:0; }
+/*Left Container*/
+#orderPageTotal #left_container { float:left; width:210px; margin-right:10px;}
+#orderPageTotal #left_container .padLeft {padding-left:5px;}
+/*Info Container*/
+#orderPageTotal #left_container #info_assistance {width:190px; padding:10px; border:1px solid #ccc;}
+#orderPageTotal #left_container #info_assistance p { margin:0; padding:5px 0 2px 0;}
+#orderPageTotal #left_container #info_assistance img{ float:left; display:inline; margin-right:5px;}
+
+/*Text Classes*/
+#orderPageTotal #left_container  .title13 { font-size:13px; font-weight:700; color: #333;}
+#orderPageTotal #left_container  .title12 { font-size:12px; font-weight:700; color: #333;}
+#orderPageTotal #left_container .textgreen14 {font-size:14px; color:#009900; font-weight:700; margin:3px 0 0 0;}
+#orderPageTotal #left_container .textgreen11 {font-size:11px; color:#009900; font-weight:700; margin:3px 0 0 0;}
+#orderPageTotal #left_container .text11 { font-size:11px; margin:3px 0 0 0; color:#666;}
+#orderPageTotal #left_container .text12 { font-size:12px; margin:3px 0 0 0; color:#666;}
+
+#orderPageTotal #left_container .textblue {font-size:12px; color:#0066CC; margin:3px 0 0 0; text-decoration:none;}
+#orderPageTotal #left_container .textblue a:link a:visited a:active a:focus {font-size:12px; color:#0066CC; text-decoration:none;}
+#orderPageTotal #left_container .textblue a:hover { color:#666;}
+
+/*Right Container*/
+#orderPageTotal #right_container { float:right; width:655px;}
+#orderPageTotal #right_container #content_title {border-bottom:1px solid #CCCCCC;}
+#orderPageTotal #right_container #my_orders_form_container {margin-top:50px;margin-bottom:50px;}
+#orderPageTotal #right_container #my_orders_form_container input{width:230px;}
+
+#orderPageTotal #right_container #my_orders_form_container .form_label {width:92px;text-align:right;margin-top:2px;}
+#orderPageTotal #right_container #my_orders_form_container {width:400px;margin-left:auto;margin-right:auto;}
+#orderPageTotal #right_container #my_orders_form_container .form_row {clear:both;margin-bottom:25px;height:24px;}
+#orderPageTotal #right_container #my_orders_form_container #dont_know_order_id {text-align:right;font-size:11px; font-weight:bold; color:#3366cc; text-decoration:none;display:block;}
+#orderPageTotal #right_container #my_orders_form_container #dont_know_order_id:hover {text-decoration:underline;}
+#orderPageTotal #right_container #order_id_container {width:270px;margin-left:auto;margin-right:auto; display:none;}
+#orderPageTotal #right_container #my_orders_form_container #view_order_button { display:block; width:140px; height:22px; padding:0px 10px 0px 10px; background-color:#009900; border-top:1px ridge #7ad84b; border-left:1px ridge #7ad84b; border-bottom:1px ridge #017c01; border-right:1px ridge #017c01; color:#fff; font-size:15px; font-weight: bold; text-align:center; font-family:Arial, Helvetica, sans-serif; text-decoration:none;margin-left:130px;margin-right:auto;}
+#orderPageTotal #right_container #my_orders_form_container #view_order_button:hover {background-color: #06c506;}
+#orderPageTotal #right_container #my_orders_title { background:url(/images/izishirt2009/bckg_top_popular.jpg) repeat-x; width:650px; height:18px; padding:0 0 3px 5px; color:#333; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:700;}
+#orderPageTotal #my_orders_title { border: 1px solid #999; padding:0px 0 5px 5px !important;vertical-align:top !important;line-height:23px !important;}
+
+#orderPageTotal #order_id_container .title14 {font-size:14px; font-weight:bold; color:#333; padding:10px 0 5px 0px;margin:0;border-bottom:1px solid #CCCCCC;margin-bottom:10px;}
+#orderPageTotal #order_id_container #ajaxIcon img{display:block;float:right;margin-top:3px;margin-right:5px;}
+
+#orderPageTotal #right_container .errorMessage {font-weight:bold;color:#990000;margin-bottom:5px;}
+#orderPageTotal #right_container #content_my_orders { width:625px; padding:15px 15px 45px 15px;border:1px solid #ccc;}
+
+#orderPageTotal #right_container #order_id_container .successMessage {color:green;font-weight:bold;}
+
+
+/** NEW CITY PAGE **/
+
+#cities_container { padding:0; width:912px; clear:both;margin:20px auto;}
+/*Left Container*/
+#cities_container #left_container { float:left; width:210px; margin-right:10px;}
+
+/*Info Container*/
+#cities_container #left_container #info_assistance {width:190px; padding:10px; border:1px solid #D9D9D9;}
+#cities_container #left_container #info_assistance p { line-height:130% !important;margin-top:0 !important;text-indent:0 !important; margin:0; padding:5px 0 2px 0;}
+#cities_container #left_container #info_assistance img { float:left; display:inline; margin-right:5px;}
+
+/*Text Classes*/
+#cities_container #left_container  .title13 { font-size:13px; font-weight:700; color: #333;}
+#cities_container #left_container  .title12 { font-size:12px; font-weight:700; color: #333;}
+#cities_container #left_container .textgreen14 {font-size:14px; color:#009900; font-weight:700; margin:3px 0 0 0;}
+#cities_container #left_container .textgreen11 {font-size:11px; color:#009900; font-weight:700; margin:3px 0 0 0;}
+#cities_container #left_container .text11 { font-size:11px; margin:3px 0 0 0; color:#666;}
+#cities_container #left_container .text12 { font-size:12px; margin:3px 0 0 0; color:#666;}
+#cities_container #left_container .textblue {font-size:12px; color:#0066CC; margin:3px 0 0 0; text-decoration:none;}
+#cities_container #left_container .textblue a:link a:visited a:active a:focus {font-size:12px; color:#0066CC; text-decoration:none;}
+#cities_container #left_container .textblue a:hover { color:#666;}
+
+
+#cities_container #left_container #our_clients {width:210px; margin:10px 0 0 0;}
+#cities_container #left_container #clients_title { width:200px; height:18px; padding:5px 0 0 10px; color:#333; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:700;}
+#cities_container #left_container #list_clients {margin:0; padding:0 0 0 5px;}
+#cities_container #left_container #list_clients ul { margin:0; padding:0;}
+#cities_container #left_container #list_clients li { padding:0 0 5px 0px; margin-left:15px;font-size:10px; color:#333; list-style-position:inside;height:10px;}
+
+#cities_container #left_container #quality_guaranteed { width:210px; margin:10px 0 0 0; border:1px solid #D9D9D9; background:url(/images/izishirt2009/izishirt_bulk_tshirts_brand.jpg) no-repeat;}
+#cities_container #left_container #quality_guaranteed #quality_guaranteed_title { background:#408cff; padding:5px; color:#fff; text-align:center; font-weight:bold; font-size:13px;}
+#cities_container #left_container #quality_guaranteed p { margin:0; padding:5px 0 0 10px;}
+#cities_container #left_container #quality_guaranteed ul { margin:5px 0 0 15px; padding:0; list-style:none;}
+#cities_container #left_container #quality_guaranteed li { padding:0; margin:0; font-size:11px; color:#333;}
+#cities_container #left_container #quality_guaranteed img { margin:10px; border:0;}
+
+/*why izishirt*/
+#cities_container #left_container #why_izishirt { width:200px; margin:10px 0 0 0; border:1px solid #D9D9D9; background:url(/images/izishirt2009/bcgk_our_clients.jpg) repeat; padding: 10px 0 10px 10px;}
+#cities_container #left_container #why_izishirt p {margin:0; padding:0;}
+#cities_container #left_container #why_izishirt ul { margin:0; padding:0;}
+#cities_container #left_container #why_izishirt li { margin:5px 5px 5px 20px; list-style-image:url(/images/izishirt2009/green_arrow.png);}
+
+/*Right Container*/
+#cities_container #right_container { float:right; width:660px; }
+#cities_container #right_container #city_banner { width:660px; margin:0;height:204px;}
+#cities_container #right_container #city_banner #cities { float:left; width:414px; height:204px;}
+#cities_container #right_container #city_banner #cities #btn_make { width:200px; margin:150px 0 0 25px; height:30px; display: block; border:1px solid #66ff00; background-color:#009900;}
+#cities_container #right_container #city_banner #cities #btn_make .button_make { display:block; width:180px; height:20px; padding:5px 10px; background-color:#009900; color:#fff; font-size:15px; font-weight: bold; text-align:center; font-family:Arial, Helvetica, sans-serif; text-decoration:none;}
+#cities_container #right_container #city_banner #cities #btn_make a:hover{ background-color: #06c506;}
+
+#cities_container #right_container #city_banner #box_large_order { float:left; width:246px; background:url(/images/izishirt2009/bulk_tshirts_free_quotes.jpg) no-repeat; height:204px;}
+#cities_container #box_large_order #title_large_order { font-size:16px; font-weight:bold; padding: 5px 0px 5px 10px; color:#666666;}
+#cities_container #box_large_order #subtitle_large_order { font-size:11px; color:#666; padding: 5px 10px;}
+#cities_container #box_large_order #list_btn { margin-top:76px; width: 245px;}
+#cities_container #box_large_order #list_large_order { font-size:10px; color:#666; width:85px; padding: 0 0 5px 5px; float: left;}
+#cities_container #box_large_order #btn_large_order { float: left; margin: 22px 0 0 0px;text-align:center;width:155px;}
+#cities_container #box_large_order #btn_large_order a { font-size:13px; color:#3366cc; text-decoration:none; font-weight:600;}
+#cities_container #box_large_order #btn_large_order a:hover { text-decoration:underline;}
+
+/**/
+#cities_container #right_container #cities_custom_tshirt { float:left; width:660px; border:1px solid #D9D9D9; margin:20px 0 0 0;}
+#cities_container #right_container #cities_custom_tshirt #cities_custom_tshirt_title { background:url(/images/izishirt2009/bckg_top_popular2.jpg) repeat-x; width:655px; height:18px; padding:5px 0 3px 5px; color:#333; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:700;}
+#cities_container #right_container #cities_custom_tshirt #cities_custom_tshirt_title h1 {font-size:12px;font-weight:700;padding:0;margin:0; }
+
+#cities_container #cities_custom_tshirt #cities_custom_tshirt_left { float:left; width:245px; padding:0; margin:0;}
+#cities_container #cities_custom_tshirt #cities_custom_tshirt_left img { padding:20px;}
+
+#cities_container #cities_custom_tshirt #cities_custom_tshirt_right { float:left; width:400px; padding:0; margin:0 0 0 15px;}
+#cities_container #cities_custom_tshirt #cities_custom_tshirt_right .title16 { font-size:16px; color:#333; margin-top:20px; font-weight:bold;}
+#cities_container #cities_custom_tshirt #cities_custom_tshirt_right .text13 {font-size:13px; color:#666; padding-right:10px;}
+#cities_container #cities_custom_tshirt #cities_custom_tshirt_right .text13dark {font-size:13px; color:#333; padding-right:10px;}
+#cities_container #cities_custom_tshirt #cities_custom_tshirt_right ul { margin:0 0 0 10px; padding:0;}
+#cities_container #cities_custom_tshirt #cities_custom_tshirt_right li { height:15px;margin:10px 20px; list-style-image:url(/images/izishirt2009/green_arrow.png); font-size:12px; font-weight:bold;}
+#cities_container #cities_custom_tshirt #cities_custom_tshirt_right #btn_start { width:205px; margin:15px 70px 20px; height:30px; display: block;}
+#cities_container #cities_custom_tshirt #cities_custom_tshirt_right #btn_start .button_start { display:block; width:180px; height:20px; padding:2px 10px 7px; background-color:#009900; border-top:1px ridge #7ad84b; border-left:1px ridge #7ad84b; border-bottom:1px ridge #017c01; border-right:1px ridge #017c01; color:#fff; font-size:16px; font-weight: bold; text-align:center; font-family:Arial, Helvetica, sans-serif; text-decoration:none;}
+#cities_container #cities_custom_tshirt #cities_custom_tshirt_right #btn_start a:hover{ background-color: #06c506;}
+#cities_container #cities_custom_tshirt #cities_custom_tshirt_right p {line-height:130% !important;margin-top:0;text-indent:0 !important;margin-bottom:13px;}
+/* Boxes Prints and Garments*/
+#cities_container #right_container #prints_events_box { width:660px; margin:20px 0 0 0;}
+#cities_container #right_container #prints_events_box #prints_garments {position:relative; width:660px; border:1px solid #D9D9D9; margin:0;}
+#cities_container #right_container #prints_events_box #prints_garments_title { background:url(/images/izishirt2009/bckg_top_popular.jpg) repeat-x; width:655px; height:18px; padding:2px 0 3px 5px; color:#333; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:700;}
+#cities_container #right_container #content_prints_garments { width:630px; padding:15px; height: 260px;line-height:130% !important;}
+#cities_container #right_container #box_prints{ float:left; width:200px; margin:0 0 10px 5px; height:245px;}
+#cities_container #right_container #box_prints img { border:0; text-align:center;}
+#cities_container #right_container #box_prints p { margin:0; padding:0;}
+#cities_container #right_container #box_prints .text13 { font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#333; text-decoration:none; text-align:left;}
+#cities_container #right_container #box_prints .text13 a:hover { text-decoration:underline;}
+#cities_container #right_container #box_prints .text12 { font-family:Arial, Helvetica, sans-serif;font-size:11px; color:#666;text-decoration:none;}
+#cities_container #right_container #box_prints .text12 a:hover { font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#666;text-decoration:underline;}
+
+#cities_container #right_container #prints_events_box #city_events { position:relative; width:660px; margin:0;}
+#cities_container #right_container #prints_events_box #city_events #event { float:left; width:150px; margin:0 0 10px 15px; font-size: 11px;}
+#cities_container #right_container #prints_events_box #city_events #local_event { float:left; width:300px; margin:0 0 10px 15px; font-size: 11px;}
+#cities_container #right_container #prints_events_box #city_events p { margin:5px 0; padding:5px; font-size:12px; font-weight:bold;line-height:100%;}
+#cities_container #right_container #prints_events_box #city_events ul { margin:0; padding:0 0 0 10px;line-height:130%;float:left;}
+#cities_container #right_container #prints_events_box #city_events li { margin:0; list-style:none; color:#999;width:140px;clear:both;display:block;position:static;}
+
+
+/*Cloud Tag Container*/
+#cities_container #right_container #cloud_tag { margin:10px 1px 0 0; padding:10px; border-top:1px solid #ccc; }
+#cities_container #right_container #cloud_tag ul { margin: 0; padding:0; }
+#cities_container #cloud_tag li { width:100%; display: inline; list-style:none; padding:0;}
+#cities_container #right_container #cloud_tag a { text-decoration:none; color:#0066cc; padding-left:10px }
+#cities_container #right_container #cloud_tag a:hover {text-decoration:underline; color:#0066cc; }
+#cities_container #right_container #cloud_tag a.tag0 { font-size: 1.2em;font-weight: 200;}
+#cities_container #right_container #cloud_tag a.tag1 { font-size: 0.9em; font-weight: 500;}
+#cities_container #right_container #cloud_tag a.tag2 {	font-size: 0.8em; font-weight: 300;}
+#cities_container #right_container #cloud_tag a.tag3 {	font-size: 1em;	font-weight: 500;}
+#cities_container #right_container #cloud_tag a.tag4 {	font-size: 0.7em; font-weight: 500;}
+#cities_container #right_container #cloud_tag a.tag5 {	font-size: 1em;	font-weight: 600;}
+#cities_container #right_container #cloud_tag a.tag6 {	font-size: 1.2em; font-weight: 400;}
+#cities_container #right_container #cloud_tag a.tag7 {	font-size: 0.8em; font-weight: 800;}
+#cities_container #right_container #cloud_tag a.tag8 {	font-size: 1.4em; font-weight: 700;}
+#cities_container #right_container #cloud_tag a.tag9 { font-size: 1.5em; font-weight: 900;}

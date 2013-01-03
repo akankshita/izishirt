@@ -1,0 +1,62 @@
+<!-- CHECKOUT COMMENT -->
+
+<div class="titleForm">
+	  	<h3><%= t(:admin_order_details_checkout_comment) %></h3>
+</div>
+
+<div class="boxForm">
+	<div class="scrollable_comment">
+		<%= @order.checkout_comment %>
+	</div>
+</div>
+
+<!-- ADMINISTRATOR COMMENTS -->
+
+<% 
+
+	first_comment_type = (comment_types.length > 0) ? comment_types[0] : nil
+
+%>
+
+<div class="titleForm">
+	  	<h3><%= t(:admin_order_details_administrator_comments) %></h3>
+</div>
+
+<script language="javascript">
+    function toggle_comment_tab(tab_str_id)
+    {
+
+	<% comment_types.each do |comment_type| %>
+		if (tab_str_id == "tab_<%= comment_type.str_id %>")
+		{
+			tab = document.getElementById("tab_<%= comment_type.str_id %>");
+			tab.setAttribute("style", "display:block;");
+
+			link = document.getElementById("link_tab_<%= comment_type.str_id %>");
+			link.setAttribute("class", "tab_active");
+			link.setAttribute("className", "tab_active");
+		}
+		else
+		{
+			tab = document.getElementById("tab_<%= comment_type.str_id %>");
+			tab.setAttribute("style", "display:none;");
+
+			link = document.getElementById("link_tab_<%= comment_type.str_id %>");
+			link.setAttribute("class", "tab_inactive");
+			link.setAttribute("className", "tab_inactive");
+		}
+	<% end %>
+    }
+  </script>
+
+<div class="boxForm" style="width: 700px; ">
+
+	<div id="comments_box">
+
+		<%= render :partial => "/admin/order/sub_comments_box", :locals => {:comment_types => comment_types, :first_comment_type => first_comment_type} %>
+
+	</div>
+</div>
+
+<!-- ARTWORK DEPT COMMENTS -->
+<%#= render :partial => "/admin/order/show_artwork_department_comments" %>

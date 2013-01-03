@@ -1,0 +1,18 @@
+<h1><%= t(:back_office_menu_cache) %></h1>
+
+<table>
+	<tr>
+		<th>Description</th>
+		<th>Cmd</th>
+		<th>Action</th>
+	</tr>
+
+	<% @cache_actions.each do |action, description| %>
+		</tr>
+			<td><%= description %></td>
+			<td>rake cache:<%= action %></td>
+			<td><%= link_to "Clear !", {:action => "exec_cmd", :cmd => action}, {:confirm => "Are you... sure ?"} %></td>
+		</tr>
+	<% end %>
+</table>
+

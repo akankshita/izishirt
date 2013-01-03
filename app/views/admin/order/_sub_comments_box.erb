@@ -1,0 +1,174 @@
+<script language="javascript">
+	function show_or_hide_comment_field(id_box)
+	{
+		var obj_box = document.getElementById(id_box);
+
+		if (obj_box.class == "visible")
+		{
+			new Effect.Opacity(id_box, {duration:1, fps:25, from:1.0, to:0.0});
+			obj_box.class = "invisible";
+			obj_box.setAttribute("style", "display: none;");
+		}
+		else
+		{
+			new Effect.Opacity(id_box, {duration:1, fps:25, from:0.0, to:1.0});
+			obj_box.class = "visible";
+			obj_box.setAttribute("style", "display: block");
+		}
+	}
+
+
+	function show_or_hide_comment(comment_id)
+	{
+		var id_box_full = "comment_" + comment_id + "_full";
+		var id_box_min = "comment_" + comment_id + "_min";
+
+		var obj_box = document.getElementById(id_box_full);
+		var obj_box_min = document.getElementById(id_box_min);
+
+		if (obj_box.class == "visible")
+		{
+			new Effect.Opacity(id_box_full, {duration:1, fps:25, from:1.0, to:0.0});
+			obj_box.class = "invisible";
+			obj_box.style.display = "none";
+
+			new Effect.Opacity(id_box_min, {duration:1, fps:25, from:0.0, to:1.0});
+			obj_box_min.class = "visible";
+			obj_box_min.style.display = "block";
+		}
+		else
+		{
+			new Effect.Opacity(id_box_min, {duration:1, fps:25, from:1.0, to:0.0});
+			obj_box_min.class = "invisible";
+			obj_box_min.style.display = "none";
+
+			new Effect.Opacity(id_box_full, {duration:1, fps:25, from:0.0, to:1.0});
+			obj_box.class = "visible";
+			obj_box.style.display = "block";
+		}
+	}
+</script>
+
+<ul class="admintabs" style="display:block;">
+		<% 
+
+		ok_for_first_tab = false
+
+		comment_types.each do |comment_type| 
+			comments = @order.comments_per_comment_type(comment_type.str_id, 1, session[:order_comments_per_page], session[:order_comments_sort_by_user_id])
+			all_comments = @order.comments_per_comment_type(comment_type.str_id, 1, 101010101010, 0, false)
+
+			# select the first tab having comments
+			if comments.length > 0 && ! ok_for_first_tab
+				first_comment_type = comment_type
+				ok_for_first_tab = true
+			end
+
+			# Open the good tab for sellers
+			if @user_is_seller && comment_type.str_id == "sale"
+				first_comment_type = comment_type
+				ok_for_first_tab = true
+			end
+
+			# Open the good tab for artwork members
+			if @user_is_artwork_member && comment_type.str_id == "artwork_comment"
+				first_comment_type = comment_type
+				ok_for_first_tab = true
+			end
+		%>
+			<li id="link_tab_<%= comment_type.str_id %>" class="tab_active">
+				<a href="#ww" id="comment_title_<%= comment_type.str_id %>" onclick="toggle_comment_tab('tab_<%= comment_type.str_id %>'); return false;">
+
+					<% 
+					nb_comments = all_comments.length
+
+					if comment_type.str_id == "printer"
+						if @order.is_vip && @order.affiliate_printer_comment != ""
+							nb_comments += 1
+						end
+
+						if @order.bulk_order?
+							nb_comments += 1
+						end
+					end
+
+					if comment_type.str_id == "artwork_comment"
+						if @order.is_vip && @order.affiliate_artwork_comment != ""
+							nb_comments += 1
+						end
+
+						if @order.bulk_order?
+							nb_comments += 1
+						end
+					end
+					%>
+
+
+					<%= comment_type.local_name(session[:language_id]) %> (<%= nb_comments %>)
+				</a>
+			</li>
+		<% end %>
+	</ul>
+
+	<% comment_types.each do |comment_type| 
+	%>
+		<div id="tab_<%= comment_type.str_id %>" class="localized_tab_content clearfix" style="display:block; clear:both;">
+
+			<% form_remote_tag :url => {:controller => "/admin/order", :action => 'exec_comment', :order_id => @order.id, :comment_type => comment_type.str_id}, :update => "comments_#{comment_type.str_id}", :complete => "$('spinner_#{comment_type.str_id}').setAttribute('style', 'display: none;'); $('comment[#{comment_type.str_id}]').value = '';", :html => { :id => "exec_comment_#{comment_type.str_id}_form", :name => "exec_comment_#{comment_type.str_id}_form", :style => "margin-left: 0px; " } do %>
+
+
+				<div style="text-align: right;">
+					<%= image_tag("/images/pencil.gif", :width => "50px", :onclick => "show_or_hide_comment_field('comment_field_box_#{comment_type.id}');") %>
+				</div>
+
+				<table id="comment_field_box_<%= comment_type.id %>">
+					<tr>
+						<td style="color: #8f8f8f;"><%= t(:admin_order_comments_from) %></td> 
+						<td style="color: #8f8f8f;"><%= @user.username %></td>
+					</tr>
+
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
+
+					<tr>
+						<td valign="top" style="color: #8f8f8f;"><%= t(:admin_order_comments_your_message) %></td> 
+						<td><%= text_area_tag "comment[#{comment_type.str_id}]", "", :style => "width: 500px; height: 100px;" %></td>
+					</tr>
+
+					<tr>
+						<td>
+							<% if @order.users_with_comments.length > 1 %>
+								<%= select_tag "sort_comments_by_#{comment_type.str_id}", options_for_select([[t(:admin_order_comments_no_filter), 0]] | @order.users_with_comments.map{ |user| [user.username, user.id] }), :style => "width: 80px;"  %>
+								<%= submit_tag t(:admin_order_management_sort), :onclick => "" %>
+							<% end %>
+						</td> 
+
+						<td style="text-align: right;">
+							<%= image_tag("/images/spinner/pretty_spinner2.gif", :width => "20px", :id => "spinner_#{comment_type.str_id}", :style => "display: none;") %>	
+							<%= submit_tag t(:admin_order_management_add_comment), :onclick => "$('spinner_#{comment_type.str_id}').setAttribute('style', 'display: inline;'); " %>
+						</td>
+					</tr>
+				</table>
+			<% end %>
+
+			<div id="comments_<%= comment_type.str_id %>">
+				<%= render :partial => "/admin/order/show_comments_comment_type", 
+					:locals => {:comment_type => comment_type, :comments => @order.comments_per_comment_type(comment_type.str_id, 1, session[:order_comments_per_page], session[:order_comments_sort_by_user_id])} %>
+			</div>
+		</div>
+
+		<script language="javascript">
+			show_or_hide_comment_field("comment_field_box_<%= comment_type.id %>");
+			show_or_hide_comment_field("comment_field_box_<%= comment_type.id %>");
+		</script>
+	<% end %>
+
+	<a name="ww" />
+
+	<script language="javascript">
+		<% if first_comment_type %>
+			toggle_comment_tab('tab_<%= first_comment_type.str_id %>');
+		<% end %>
+	</script>

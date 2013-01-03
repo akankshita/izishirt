@@ -1,0 +1,23 @@
+<%= @user.firstname %> <%= @user.lastname %>,<br />
+<br />
+
+<%=I18n.t("sendmail.monthly_sales.body", :locale => @user.language.shortname)%><br />
+<br />
+<% if @user.language.shortname == "fr" %>
+  <%= link_to I18n.t("sendmail.monthly_sales.link", :locale => @user.language.shortname),
+    "#{URL_ROOT}/fr/myizishirt/report/get_pdf/#{@date}.pdf" %>
+<% else %>
+  <%= link_to I18n.t("sendmail.monthly_sales.link", :locale => @user.language.shortname),
+    "#{URL_ROOT}/myizishirt/report/get_pdf/#{@date}.pdf" %>
+<% end %>
+<br />
+<br />
+<br />
+<%= t(:sendmail_social_networks, :locale => @user.language.shortname) %><br />
+Twitter: <a href="http://twitter.com/izishirt">http://twitter.com/izishirt</a><br />
+Facebook: <a href="http://facebook.com/pages/IziShirt/223576667655075">http://facebook.com/pages/IziShirt/223576667655075</a><br />
+Blog: <a href="http://www.izishirtblog.com/">http://www.izishirtblog.com/</a>
+<br />
+<br />
+
+<img src="http://www.izishirt.ca/images/email_sig.jpeg" alt="izishirt.ca" />

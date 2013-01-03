@@ -1,0 +1,13 @@
+<h1><%= t(:admin_image_list_toptitle) %> <%= '(' + @status  + ')' if params[:id]%></h1>
+
+<%= render :partial => "/admin/image/image_search", :locals => {:id => @pending_approval_id, :action => 'search', :action_type => nil, :category_id => nil, :country_ids => nil, :language_ids => nil, :update => "search_screen", :with_design_category => true} %>
+
+
+<br />
+<br />
+<br />
+
+
+<div id="search_screen">
+  <%= render :partial => "search" %>
+</div>

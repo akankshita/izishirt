@@ -1,0 +1,64 @@
+<%= stylesheet_link_tag "anythingslider.css" %>
+
+<%
+ banner = WebsiteBanner.find_by_name("homepage_main_slider")
+ banner_images = banner.banner_images(I18n.locale.to_s)
+ banner_images = banner.banner_images("en-CA") if banner_images.length == 0
+ @count_exist = banner_images.length
+#banner_images = []
+%>
+
+<%#
+@count_exist = 0
+
+if @banners_slider.size > 0
+        @banners_slider.map{|bs|
+                @count_exist = @count_exist + 1 if File.exist?("public/images/homepage/banners/#{path_lang(session[:language_id], session[:country])}/#{bs.position}_#{bs.index}.jpg") == true && File.size("public/images/homepage/banners/#{path_lang(session[:language_id], session[:country])}/#{bs.position}_#{bs.index}.jpg") > 0
+        }
+end
+%>
+
+<div id="page-wrap">
+	<div class="anythingSlider">
+      <div class="wrapper" style="<%= "overflow: hidden;" if @count_exist == 1 %>">
+        <ul style="margin: 0;padding: 0;">
+
+		<% banner_images.each do |banner_image| %>
+			<li>
+				<%= link_to(image_tag(banner_image.image.url(), :width => 909, :height => 246, :alt => banner_image.alt), :controller => banner_image.link) %>
+
+				<% if banner_image.label != "" %>
+					<div id='banner_button'>
+						<%= link_to banner_image.label, :controller => banner_image.link %>
+					</div>
+				<% end %>
+			</li>
+		<% end %>
+
+		<%# slider = ""
+                        if @banners_slider.size > 0
+                                @banners_slider.map{|bs|
+                                        @test = bs.display.to_s
+                                        img_path = "/images/homepage/banners/#{path_lang(session[:language_id], session[:country])}/#{bs.position}_#{bs.index}.jpg"
+                                        if File.exist?("public"+img_path) == true && File.size("public"+img_path) > 0
+                                                txt_display = bs.get_text(session[:language],session[:country], params[:lang])
+                                                slider = slider+"<li>"+link_to(image_tag(img_path, :width=>567, :height=>204, :alt=>txt_display), {:controller=>bs.get_link(session[:country], session[:language], params[:lang])})
+                                                slider = slider + "<div id='banner_button'>"+link_to(txt_display, {:controller=>bs.get_link(session[:country], session[:language], params[:lang])})+"</div>" if txt_display != ""
+                                                slider = "#{slider}</li>"
+                                        end
+                                }
+                        end %>
+                        <%#= slider %>
+        </ul>        
+      </div>
+   </div> <!-- END AnythingSlider -->
+   
+  
+</div>
+<!--[if lte IE 7]> 
+	<style type="text/css">
+		#start-stop{background-color: none; background-image: url("/images/izishirt2011/play.png");position: relative; top: 182px; width: 10px;height: 16px;display: block;float: left;}
+		#start-stop.playing{background-color: none; background-image: url("/images/izishirt2011/pause.png");position: relative; top: 183px;width:8px;height: 13px;display: block;float: left;}
+		
+	</style>
+<![endif]-->

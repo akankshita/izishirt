@@ -1,0 +1,40 @@
+<!-- CHECKOUT MENU STEPS -->
+<div id="checkout-menu1" class="<%=!@user_is_logged_in ? "five_step" : "four_step"%>" >
+  <span <%= @step1_selected %>> 
+    <%= link_to t(:checkout_step1), {:controller=>@step1_url} %> 
+  </span>
+  
+  <% if CHECKOUT_REQUIRE_LOGIN && !@user_is_logged_in %>
+    <span>
+      <a href="#"><%= t(:checkout_step2) %></a>
+    </span>
+  <% end %>
+  <span <%= @step3_selected %>>
+    <%  if @step3_url != "#" %>
+      <%= link_to t(:checkout_step3), {:controller=>@step3_url} %>
+    <% else %>
+      <%= link_to t(:checkout_step3), @step3_url %>
+    <% end %>
+  </span>
+
+  <span <%= @step4_selected %>>
+    <%  if @step4_url != "#" %>
+      <%= link_to t(:checkout_step4), {:controller=>@step4_url} %>
+    <% else %>
+      <%= link_to t(:checkout_step4), @step4_url %>
+    <% end %>
+  </span>
+
+  <span <%= @step5_selected %>>
+     <%  if @step5_url != "#" %>
+      <%= link_to t(:checkout_step5), {:controller=>@step5_url} %>
+    <% else %>
+      <%= link_to t(:checkout_step5), @step5_url %>
+    <% end %>
+  </span>
+
+  <div class="clear"></div>
+</div>
+
+<div class="clear horiz_space_30"></div>
+<!-- END OF CHECKOUT MENU STEPS -->

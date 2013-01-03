@@ -1,0 +1,121 @@
+<%= javascript_include_tag "jquery-1.4.2.min.js" %>
+<script type="text/javascript">
+  var $j = jQuery.noConflict();
+  document.observe("dom:loaded", function() {
+  // the element in which we will observe all clicks and capture
+  // ones originating from pagination links
+  var container = $(document.body)
+
+  if (container) {
+    var img = new Image
+    img.src = '/images/spinner.gif'
+
+    container.observe('click', function(e) {
+      var el = e.element()
+      if (el.match('.pagination a')) {
+        new Ajax.Request(el.href, { method: 'get' })
+        e.stop()
+      }
+    })
+  }
+})
+</script>
+
+<!--
+	<% form_tag :action => "change_nb_lines" do %>
+	  Nb lines: <%= select_tag("nb_lines", options_for_select((1..10).map{ |nb| [nb, nb] }, @homepage_categories.length)) %>
+	  <%= submit_tag "Change" %>
+	<% end %>
+-->
+
+<p>
+</p>
+
+<% form_tag :action=>:categories do %>
+  <%= select_tag("country", options_for_select(get_options_for_country_select(), @country)) %>
+  <%= select_tag("language_id", options_for_select(Language.all.map{|l|[l.name, l.id]}, @language.to_i)) %>
+  <%= submit_tag "Find" %>
+<% end %>
+
+<% for hc in @homepage_categories %>
+  
+  <br/><br/>
+  <div style="border-top:1px solid #ccc">&nbsp;</div>
+  <% form_tag :action=>:apply_design_category do %>
+    Use design category <%= select_tag "category_id", %(<option value="">Choose Category</option>) + options_for_select(@categories.map{|c| [c.local_name(@language.to_i), c.id]}, :include_blank=>"Choose Category")%>
+	<br />
+
+	<br />
+
+    <%= hidden_field_tag "homepage_category_id", hc.id %>
+    <%= hidden_field_tag "language_id", @language %>
+    <%= hidden_field_tag "country", @country %>
+    <%= submit_tag "Apply Category" %>
+  <% end %>
+  <br/>
+  <% form_for hc, :url=>{ :action => "save_hp_category" }  do |hc_form| %>
+    <%= hidden_field_tag "homepage_category_id", hc.id %>
+    <%= hidden_field_tag "language_id", @language %>
+    <%= hidden_field_tag "country", @country %>
+    <div style="width:100%;background-color:yellow;">
+      <%= hc_form.label :name %>
+      <%= hc_form.text_field :name %>
+    </div>
+
+      Link informations
+      <% hc_form.fields_for :homepage_category_links do |hcl_form| %>
+        
+        <div class="one_link" style="margin-top:5px;">
+        
+        <%= hcl_form.label :text %>
+        <%= hcl_form.text_field :text %>
+        &nbsp;&nbsp;
+        <%= hcl_form.label :link %>
+        <%= hcl_form.text_field :link, :size=>95%>
+        <%= hcl_form.label :active %>
+        <%= hcl_form.check_box :active %>
+
+        </div>
+      <% end %>
+      <% hc_form.fields_for :homepage_category_images do |hci_form| %>
+        <%= hci_form.hidden_field :image_id, :class=>"image_field_#{hci_form.object.id}" %>
+      <% end %>
+
+      <br/>
+      Apply to all english <%= check_box_tag "apply_all_en" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Apply to all french <%= check_box_tag "apply_all_fr" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Apply to all spanish <%= check_box_tag "apply_all_es" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Apply to all deutsch <%= check_box_tag "apply_all_de" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Apply to all Portuguese<%= check_box_tag "apply_all_pt" %>
+	<br />
+	Order: <%= text_field_tag "homepage_category[order]", hc.order %>
+      <br/><br/>
+      <%= submit_tag "Save Category" %>
+      <br/><br/><br/>
+    <% end %>
+    <br/><br/>
+
+    <% for hci in hc.homepage_category_images do %>
+	<% if ! hci.orig_image 
+		next
+	%>
+		
+	<% end %>
+        <%= image_tag hci.image_url, :id=>"image_#{hci.id}" %>
+    <% end %>
+  <%= render :partial => "search", :locals=>{:hc_id=>hc.id} %>
+
+	<% form_tag({:action => 'add_store_product', :homepage_category_id => hc.id}, {:multipart=>true}) do %>
+		<div style="border: black 1px dashed;">
+			Model: <%= select_tag "model_id", options_for_select([["Choose", 0]] | Model.find_all_by_model_category("store").map{ |m| [m.local_name(session[:language_id]), m.id] }) %>
+			<br />
+			Custom URL: <%= text_field_tag "manual_url", nil, :style => "width: 300px;" %>
+			<br />
+			Image: <%= file_field_tag "orig_image" %>
+			<br />
+			Order: <%= select_tag "order", options_for_select((1..4).map{ |o| [o, o] }) %>
+			<br />
+			<%= submit_tag "Add" %>
+		</div>
+	<% end %>
+  <% end %>

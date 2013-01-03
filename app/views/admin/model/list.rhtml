@@ -1,0 +1,16 @@
+<h1><%= t(:admin_model_list_title) %></h1>
+
+<div class="adminsearch">
+<% form_tag({:action => 'search'}, :method => 'get') do %>
+	<%= text_field_tag('search', params[:search], :class => 'input') %>
+	<%= image_submit_tag 'ico-search.gif', :class => 'button' %>
+<% end %>
+</div>
+
+<div class="listing-submenu">
+<br /><br />
+</div>
+
+<div id="list_models">
+  <%= render :partial => 'list'%>
+</div>

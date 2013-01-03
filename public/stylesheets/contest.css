@@ -1,0 +1,43 @@
+#popup_opacity{background: none repeat scroll 0 0 #000000;bottom: 0;left: 0;position: fixed; right: 0; top: 0; z-index: 1100; background-color: #999;filter: alpha(opacity=50);opacity: 0.5;}
+
+#popup_vote{float: left;position: absolute;margin: 10px 30px;width: 834px;border: solid 5px #999; z-index: 1101;background-color: #fff;display: block;}
+#popup_vote_ie{float: left;position: absolute;margin: 140px 280px;width: 834px;top: 0;left: 0;right: 0;border: solid 5px #999; z-index: 1101;background-color: #fff;display: block;}
+#popup_vote .p_title{float: left;margin: 10px 14px 6px;font-size: 28px;font-weight: bold;}
+#popup_vote .p_close{float: right;color: #333;margin: 5px 10px;font-weight: bold;font-size: 14px;text-decoration: none;cursor: pointer;}
+#popup_vote .p_img{float: left;margin: 0 12px 10px;width: 807px; height: 400px;}
+#popup_vote .p_img .p_before{float: left;position: absolute;margin-top: 185px;width: 48px;height: 49px;cursor: pointer;}
+#popup_vote .p_img .p_after{float: left;position: absolute;margin: 185px 0 0 770px;width: 48px;height: 49px;cursor: pointer;}
+#popup_vote .p_description{float: left;width: 441px;margin-left: 10px;text-align: left;padding-bottom: 12px;}
+#popup_vote .p_description .p_created{float: left;width: 441px;font-size: 14px;font-weight: bold;margin-bottom: 5px;}
+#popup_vote .p_description .p_created a{border: 0;color: #0066ff;text-decoration: none;}
+#popup_vote .p_description .p_created a:hover{text-decoration: underline;}
+#popup_vote .p_description .p_nb_votes{float: left;width: 441px;font-size: 12px;color: #0066ff;font-weight: bold;}
+#popup_vote .p_vote{float: left;width: 365px;height: 24px;margin-right: 18px;cursor: pointer;}
+#popup_vote .p_vote a{float: right;display: block;width: 65px;height: 24px;}
+#popup_vote .return_msg{float: left;text-align: right;width: 365px;font-weight: bold;color: #0066FF;display: none;margin-top: 5px;padding-bottom: 12px;}
+
+#contest_header{float: left;width: 915px;color: #333;}
+#contest_header #c_left{float: left;width: 715px;margin-bottom: 16px;}
+#contest_header #c_left #c_title{float: left;width: 715px;}
+#contest_header #c_left #c_title_1{float: left;font-size: 35px;font-weight: bold;margin: 0;padding: 0;}
+#contest_header #c_left #c_limit{float: left;width: 3px;margin: 0 14px;}
+#contest_header #c_left #c_title_2{float: left;font-size: 26px;font-weight: bold;margin: 0;/*padding: 6px 0 0 0;*/line-height: 45px;}
+#contest_header #c_left #c_description{float: left;width: 715px;font-size: 13px;}
+#contest_header #c_right{float: left;width: 200px;padding-top: 20px;margin-bottom: 10px;}
+#contest_header #c_right #c_participants{float: left;width: 200px;font-size: 14px;font-weight: bold;margin-bottom: 13px;}
+#contest_header #c_right #c_list{float: left;width: 250px;padding-bottom: 5px;}
+#contest_header #c_right #c_list ul{float: left;margin: 0;padding: 0;border: 0;list-style-type: none;width: 125px;}
+#contest_header #c_right #c_list ul li{margin: 0;padding: 0;border: 0;}
+
+#contest_list{float: left;width: 915px;}
+#contest_list .c_box{float: left;width: 440px;/*height: 260px;*/margin-bottom: 18px;}
+#contest_list .c_box_first{margin-right: 32px;}
+#contest_list .c_box .c_img{float: left;width: 438px;height: 216px;border: solid 1px #999;margin-bottom: 8px;}
+#contest_list .c_box .c_img img{cursor: pointer;}
+#contest_list .c_box .c_description{float: left;width: 310px;}
+#contest_list .c_box .c_description .c_title{font-size: 16px;font-weight: bold;margin-bottom: 8px;}
+#contest_list .c_box .c_description .c_created{font-size: 11px;}
+#contest_list .c_box .c_vote{float: right;margin-right: 1px;width: 65px;height: 24px;}
+#contest_list .c_box .c_vote a{float: left;border: 0;cursor: pointer;width: 65px;height: 24px;display: block;}
+#contest_list .c_box .c_vote a img{border: 0;cursor: pointer;width: 65px;height: 24px;}
+#contest_list .c_box .c_nb_vote{float: left;text-align: right;width: 130px;margin-top: 5px;margin-top: 5px;color: #0066FF;font-weight: bold;}

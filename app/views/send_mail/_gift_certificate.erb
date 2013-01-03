@@ -1,0 +1,44 @@
+
+
+<div id="certificate_container" style="">
+
+  <div id="preview_zone" style="margin-top:15px;">
+
+    <div id="left_content" style="width:580px;margin-right:25px;float:left;">
+      <a name="preview"></a>
+      
+
+      <div id="email_content" style="">
+
+      <div id="w_logo" style="margin: 20px 0px 10px;">
+        <%= image_tag "http://www.izishirt.ca/images/izishirt2011/logo2010.jpg", :alt=>"Izishirt", :width=>107, :height=>90 %>
+      </div>
+
+      <div id="preview_title" style="font-weight:bold;">
+        <% lang = @ordered_product.order.language.shortname %>
+        <% if lang != "fr" %>
+          <% domain = "www.izishirt.ca" %>
+        <% else %>
+          <% domain = "fr.izishirt.ca" %>
+        <% end %>
+
+        <%= nl2br(@ordered_product.gift_message) %><br/><br/>
+        <%= t(:click_here_for_gift) %>: <a href="<%= url_for(:controller=>"/gift_certificates", :action=>:my_gift, :id=>@ordered_product.coupon.code, :host=>domain) %>"><%= url_for(:controller=>"/gift_certificates", :action=>:my_gift, :id=>@ordered_product.coupon.code, :host=>domain) %></a><br/><br/>
+        <%= t(:your_gift_certificate) %>: <%=  @ordered_product.coupon.code %>
+    </div>
+
+      <div id="explanation_zone" style="margin-top:20px;font-weight:bold;">
+        <div id="title_redeem" style="font-size:18px;color:#0066cc;font-weight:bold;margin-bottom:15px;"><%= t(:redeem_gift_title) %></div>
+        <div id="step1" class="steps" style="margin-bottom:15px;height:30px;padding-left:30px;padding-top:9px;position:relative;line-height:30px; ">1) <%= t(:redeem_gift_expl1, :domain => "www.izishirt.ca") %></div>
+        <div id="step2" class="steps" style="margin-bottom:15px;height:30px;padding-left:30px;padding-top:9px;position:relative;padding-top:3px !important;line-height:30px;">2) <%= t(:redeem_gift_expl2) %></div>
+        <div id="step3" class="steps" style="margin-bottom:15px;height:30px;padding-left:30px;padding-top:9px;position:relative;line-height:30px;">3) <%= t(:redeem_gift_expl3) %></div>
+        <div id="end_mail" style="margin-bottom:20px;font-weight:normal;">
+          <%= t(:redeem_end) %>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

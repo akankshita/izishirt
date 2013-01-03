@@ -1,0 +1,25 @@
+page.replace_html 'cart_total', :partial=>"cart_total", :object=>@cart
+page.replace_html "price_#{params[:id]}", number_to_currency_custom(@cart.items[@item_idx].quantity*@cart.items[@item_idx].price*currency_rate(session[:currency]))
+
+#@cart.similar_items(params[:id]).each do |item|
+#  page.replace_html(
+#    "discount_#{item.product.checksum}", 
+#    :partial => "cartitem_discount", 
+#    :locals => {:item => item}
+#  )
+#end
+
+page.visual_effect :highlight, "price_#{params[:id]}", :duration => 2
+page.visual_effect :highlight, "sub_total_price", :duration => 2
+
+if @quantity == 1
+  page.hide "minus_#{params[:id]}"
+else
+  page.show "minus_#{params[:id]}"
+end
+
+if params[:method]
+  page["quantity_#{params[:id]}"].value = @quantity
+end
+
+page.replace_html "discount_countdown", :partial=>"discount_countdown", :object=>@cart

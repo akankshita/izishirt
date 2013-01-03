@@ -1,0 +1,43 @@
+<br /><br />
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th>Model Count</th>
+    <th>Model Cost</th>
+    <th>Print Count</th>
+    <th>Print Cost</th>
+    <th>Total Cost</th>
+    <th>Order Revenue</th>
+    <th>Order Revenue - Total Cost</th>
+  </tr>
+  <tr>
+    <td><%= @model_count %></td>
+    <td><%= number_to_currency_custom(@model_cost) %></td>
+    <td><%= @print_count %></td>
+    <td><%= number_to_currency_custom(@print_cost) %></td>
+    <td><%= number_to_currency_custom(@total_cost) %></td>
+    <td><%= number_to_currency_custom(@revenue) %></td>
+    <td><%= number_to_currency_custom(@revenue-@total_cost) %></td>
+  </tr>
+</table>
+<br /><br />
+<a href="#" onclick="javascript:$('details').style.display='block';">Details</a>
+<br /><br />
+<div id="details" style="display:none" >
+  <table width='100%' border="0" cellpadding="3">
+    <tr>
+      <th>Order</th>
+      <th>Created On</th>
+      <th>Model Count</th>
+      <th>Model Cost</th>
+      <th>Print Count</th>
+      <th>Print Cost</th>
+      <th>Total Cost</th>
+      <th>Order Revenue</th>
+      <th>Order Revenue - Total Cost</th>
+    </tr>
+    
+    <tbody id='listing'>
+      <%= render :partial => 'cost_listing' %>
+    </tbody>
+  </table>
+</div> 

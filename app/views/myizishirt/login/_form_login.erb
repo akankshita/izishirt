@@ -1,0 +1,31 @@
+<%= form_tag({:controller=>'/myizishirt/login'}) %>
+<% if params[:validate].to_i == 1 %>
+  <input type="hidden" name="validate" value="1"/>
+<% end %>
+<div class="loginWrapper">
+  <div class="clear">
+    <label class="login left" for="name"><%= t(:myizishirt_login_view_login_username) %></label>
+    <%= text_field_tag :username, params[:username], :class => 'left login' %>
+  </div>
+  <div class="clear">
+    <label class="login left" for="password"><%= t(:myizishirt_login_view_login_password) %></label>
+    <%= password_field_tag :password, params[:password], :class => 'left login', :autocomplete=>"on" %>
+  </div>
+  <div class="clear forgotPass">
+    <label>
+      <%= link_to t(:forgot_password),
+        {:action => 'lightbox_lost'},
+        :class => 'lbAction grayLink',
+        :rel => 'insert',
+        :name => 'light_lost' %>
+    </label>
+  </div>
+  <div class="clear loginbtn">
+    <input type="image" src="/images/izishirt2009/login_en.png">
+  </div>
+  <div class="forpass">
+    <label><%=t(:not_member_yet)%></label>
+    <%= link_to t(:display_home_connexion), {:action => 'new'}, :class => 'redLink bold' %><br />
+  </div>
+</div>
+</form>

@@ -1,0 +1,228 @@
+<script type="text/javascript">
+
+    function formatText(index, panel) {
+	  return index + "";
+    }
+
+    $j(function () {
+
+        $j('.anythingSlider').anythingSlider({
+            easing: "easeInOutExpo",        	// Anything other than \"linear\" or \"swing\" requires the easing plugin
+            autoPlay: true,                 	// This turns off the entire FUNCTIONALY, not just if it starts running or not.
+            delay: 3000,                    	// How long between slide transitions in AutoPlay mode
+            startStopped: false,            	// If autoPlay is on, this can force it to start stopped
+            animationTime: 800,             	// How long the slide transition takes
+            hashTags: true,                 	// Should links change the hashtag in the URL?
+            buildNavigation: false,          	// If true, builds and list of anchor links to link to each slide
+    		pauseOnHover: true,             	// If true, and autoPlay is enabled, the show will pause on hover
+    		startText: "",             		// Start text
+	        stopText: "",               		// Stop text
+	        navigationFormatter: formatText     // Details at the top of the file on this use (advanced use)
+        });
+
+        $j("#slide-jump").click(function(){
+            $j('.anythingSlider').anythingSlider(6);
+        });
+
+        $j("#button_left").click(function(){
+            $j('.anythingSlider').data('AnythingSlider').goBack();
+        });
+
+        $j("#button_right").click(function(){
+            $j('.anythingSlider').data('AnythingSlider').goForward();
+        });
+
+    });
+</script>
+<div id="homepage_container">
+  <div id="main_banner">
+  <%img_banner = "/images/izishirt2011/#{session[:language]}/ban_home1.jpg"%>
+        <div id="banner">
+		<% if @city.to_s != "no" %>
+		<%= render :partial => 'banners' %>
+		
+		<%  else  %>
+			<%= render :partial => 'banners_slide' %>
+			
+		<%  end  %>
+     <div id="button_left"><%= image_tag "izishirt2011/b_left.png", :alt=>"left", :style=>"" %></div>
+       <div id="button_right" onclick="javascript:onRight();"><%= image_tag "izishirt2011/b_right.png", :alt=>"right", :style=>"" %></div>
+
+    </div>
+    <br/>
+    <div id="create_tshirts">
+
+      <div id="create_tshirts_content_right">
+        <%
+		 if @city.to_s != "no"
+         banner = WebsiteBanner.find_by_name("homepage_city_top_right")
+		 else 
+		 banner = WebsiteBanner.find_by_name("yourtext_your_image")
+		 end
+         banner_images = banner.banner_images(I18n.locale.to_s)
+         banner_images = banner.banner_images("en-CA") if banner_images.length == 0
+        
+        %>
+        <% banner_images.each do |banner_image| %>
+		
+		 <a href="<%= banner_image.link %>"><%= image_tag banner_image.image.url(), :alt=>banner_image.alt, :style=>"" %></a>
+        
+		<%end%>
+       <!-- <img alt="Création t-shirts"  src="izishirt_design/images_home_header/francais/tshirtperso.jpg" >-->
+	   <br/><br/>
+	   
+	   
+      </div>
+    </div>
+  </div>
+  <div id="left_container">
+    <!--<h2 style="color:#a6a6a6;font-size:12pt;font-weight: bold;text-decoration:underline;margin-top:10px">%#=t(:homepage_h2)%></h2>-->
+    <%= render :partial => 'shop_left_menu', :locals=>{:no_link=>true} %>
+    <%
+         banner = WebsiteBanner.find_by_name("banner_left_col")
+         banner_images = banner.banner_images(I18n.locale.to_s)
+         #banner_images = banner.banner_images("en-CA") if banner_images.length == 0
+        #banner_images = []
+        %>
+        <% banner_images.each do |banner_image| %>
+         <div id="box_categories"><a href="<%= banner_image.link %>"><%= image_tag banner_image.image.url(), :alt=>banner_image.alt, :style=>"" %></a></div>
+        <%end%>
+<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/pages/IziShirt/223576667655075" width="199" show_faces="true" stream="false" header="true"></fb:like-box>
+  <!-- <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FIziShirt%2F223576667655075%3Fsk%3Dwall&amp;width=199&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=true&amp;height=62" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:211px; height:330px;margin-top:20px;" allowTransparency="true"></iframe>-->
+
+
+  </div>
+   
+  <div id="right_container">
+    <div id="container_all_category">
+     	
+		
+		<div id="container_category_img" style="width:673px; min-height:400px;">
+		<%
+		if @city.to_s != "no"
+		
+		@list_design = @all_design_cities.map { |rd|
+        image_current_url = rd.orig_image.url("100")
+        "<div class=\"related_img\"><a href=\"#{rd.info_url(params[:lang], session[:language_id])}\"><img style=\"background-color: #{rd.jpg_background_color};\" title=\"#{rd.name}\" alt=\"#{rd.name}\" src=\"#{image_current_url}\" /></a></div>"
+		}
+	  
+	  %><%= @list_design  %>
+		<%  else 
+			provinceidlist=City.find_by_sql("select distinct(province_id) from cities")
+			countryidlist=Province.find_by_sql("select distinct(country_id) from provinces where id in (select distinct(province_id) from cities)")
+			countrylist=Country.find_by_sql("select * from countries where id in (select distinct(country_id) from provinces where id in (select distinct(province_id) from cities))")
+			
+			for country in countrylist
+			
+			
+		%>
+		<h2><%= country.name %></h2>
+		
+		
+		<% provincelist= Province.find_by_sql("select * from provinces where id in (select distinct(province_id) from cities) and country_id="+country.id.to_s+" order by provinces.name")
+			for province in provincelist
+			
+		%>
+			<div style="clear:both;"></div>
+			<h2 style="width:200px;"><%= province.name %></h2>
+		
+		<% citylist= City.find_by_sql("select * from cities where province_id="+province.id.to_s+" order by cities.name")
+			nbcities=citylist.count
+			nblg=nbcities.to_i / 4  %>
+			<div class="cities_container">
+			
+			<% cpt=1
+			for city in citylist
+			
+			if @langu == "http://fr.izishirt.ca"
+				city_name = city.name
+			else 
+				city_name = city.name_en
+			end
+			
+			if cpt==1
+			%>  
+				<div class="column"> <ul>
+			<% end %>
+				<li><a href="<%= @langu %>/local/<%= city.url %>" title="<%= city_name %> custom t-shirt shop"><%= city_name %></a></li>
+			<% 
+				cpt=cpt+1
+				if cpt > nblg+1
+			%> 
+				</ul></div>
+			<% cpt=1
+				end %>
+			
+			<%  end %>
+				</div>
+			<%	end
+				end
+				end
+				%>
+        </div>
+    
+		
+    
+	
+      
+  </div>
+  
+  <div style="clear:both;"></div>
+    
+  <div class='clear'></div>
+   <%
+	homepagetexts = Homepagetext.find(:all)
+	for homepagetext in homepagetexts
+  %>
+	  <% 	@langu = @canonical_begin_url
+			
+				if @langu == "http://fr.izishirt.ca"
+					home_title = homepagetext.title_fr.to_s
+					home_content = homepagetext.content_fr.to_s
+				end
+				if @langu == "http://www.izishirt.ca" 
+					home_title = homepagetext.title_en.to_s
+					home_content = homepagetext.content_en.to_s
+				end 			
+				if @langu == "http://www.izishirt.com" 
+					home_title = homepagetext.title_us.to_s
+					home_content = homepagetext.content_us.to_s
+				end 
+			
+			
+				%>
+				<p>&nbsp;</p>
+  <p><font style="font-size: 14px;font-weight: bold;text-align: center;color: black; ">
+  <% if @city.to_s != "no" %>
+	  <% 
+		if @langu == "http://fr.izishirt.ca"
+				city_name = @city.name
+			else 
+				city_name = @city.name_en
+			end
+			%> 
+        <%= city_name %> 
+		<% end %> 
+		<%=  home_title %></font></p>
+  
+  <%=  home_content %>
+  
+  <% end  %>
+  
+  
+  <div class='clear'></div>
+ <!-- <div id="studioizishirt">
+    <%= link_to(image_tag("izishirt2011/logo-small-footer.jpg", :alt=>"Studio Izishirt"), t(:studioizishirt_url), :target=>"_blank") %><br/>
+    <%=t(:studioizishirt_text)%>
+
+  </div>-->
+
+  </div>
+      <div class="clear"></div>
+    <!--<div class="descriptive_text">
+      <%= t(:seo_text_homepage,
+		:country_long => session[:country_long],
+            :link1=>link_to(t(:seo_link_1_text_homepage), create_tshirt_url(), :title=>t(:seo_link_1_text_homepage)),
+            :link2=>link_to(t(:seo_link_2_text_homepage), {:controller=>:display, :action=>:shop}, :title=>t(:seo_link_2_text_homepage)))%>
+    </div>-->
+</div>

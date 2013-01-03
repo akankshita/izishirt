@@ -1,0 +1,118 @@
+/* This file contains the CSS data for all popups in TinyMCE */
+
+body {
+	background-color: #fff;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	margin: 8px;
+
+}
+
+td {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+input {
+	background: #FFFFFF;
+	#7C8943: 1px solid #cccccc;
+}
+
+td, input, select, textarea {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+}
+
+input, select, textarea {
+	border: 1px solid #808080;
+}
+
+
+
+a.textLink { width:20px; height:20px; text-decoration:none; padding:2px 7px; }
+a.textLink,
+a.textLink:hover { font:bold 10px/26px Tahoma, Arial, Helvetica, sans-serif  ; color:#000 !important; padding-top:4px; padding-bottom:4px }
+a.textLink {background-color:#7C8943 ;border:3px double white;  text-transform:uppercase; color:white !important }
+a.textLink:hover {background-color:#ACBB6B;}
+
+
+.panel_wrapper div.panel {
+	display: none;
+}
+
+.panel_wrapper div.current {
+	display: block;
+	width: 100%;
+	height: 300px;
+	overflow: visible; /* Should be auto but that breaks Safari */
+}
+
+.panel_wrapper {
+	border-top: 0px;
+	padding: 10px;
+	padding-top: 15px;
+	clear: both;
+	background-color: white;
+}
+
+fieldset {
+	border: 1px solid #919B9C;
+	font-family: Verdana, Arial;
+	font-size: 10px; 
+	padding: 0;
+	margin: 0 0 10px 0;
+	padding: 4px;
+}
+
+legend {
+	color: #7C8943;
+	font-weight: bold;text-transform:uppercase;
+}
+
+.file_field {border:1px solid #ccc}
+
+.properties {
+	width: 100%;
+}
+
+
+.properties .column2 {
+	text-align: left;
+}
+
+a:link, a:visited {
+	color: black;
+}
+
+a:hover {
+	color: #7C8943;
+}
+
+
+/* MSIE Specific styles */
+
+* html .panel_wrapper {
+	width: 100%;
+}
+
+.column {
+	float: left;
+}
+
+
+#link .panel_wrapper, #link div.current {
+	height: 125px;
+}
+
+#image .panel_wrapper, #image div.current {
+	height: 190px;
+}
+
+
+/* CSS file for advimage plugin popup */
+
+#imgpreview {min-height:200px}
+#imgpreview .imagez {float:left; margin:5px; text-align:center}
+#imgpreview .imagez img {border:1px solid #ccc; padding:1px}
+#imgpreview .imagez p {margin:0; padding:0 0 0 5px; line-height:15px}
+#imgpreview .imagez a {color:red;text-decoration:none; font-size:9px}
+

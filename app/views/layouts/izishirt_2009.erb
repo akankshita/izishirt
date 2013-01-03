@@ -1,0 +1,692 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <title><%=get_page_title(@image) if @meta_title.nil?-%><%= @meta_title if !@meta_title.nil? -%></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="verify-v1" content="74XVS9wjAO3w3haVIXvRKVLzNN3poCrRAxyw/qdQc8k=" />
+    <meta name="y_key" content="a379e60556b396f8" />
+    <meta http-equiv="Content-Language" content="<%= session[:language] %>" />
+    <% if !@meta_description.nil? %>
+    <meta name="description" content="<%= @meta_description%>" />
+    <%else%>
+      <% if (params[:action] == "create_tshirt" && @image && @image.category|| params[:action] == "t-shirt-personalise" && @image.category) %>
+        <meta name="description" content="<%= "Design: "+@image.name+", Category:  "+@image.category.localized_categories[0].name.to_s+",  Designer: "+@image.user.username if @image -%>. <%= t(:display_home_meta_description_flash_app) %>" />
+      <% else %>
+        <meta name="description" content="<%= t(:display_home_meta_description) %>" />
+      <% end %>
+    <%end%>
+    <% if !@meta_keywords.nil? %>
+      <meta name="keywords" content="<%= @meta_keywords %>" />
+    <% else %>
+      <meta name="keywords" content="<%= t(:display_home_meta_keywords) %>" />
+    <% end %>
+    <meta name="copyright" content="Copyright Izishirt - <%= Time.now.year %>" />
+	<meta name="author" content="www.izishirt.ca" />
+	<meta name="Distribution" content="Global" />
+	<meta name="Rating" content="General" />
+	<meta name="Robots" content="INDEX,FOLLOW, ALL" />
+	<meta name="Revisit-after" content="1 Day" />
+	<meta http-equiv="pragma" content="no-cache" />
+    <!--[if lt IE 7]>
+    <style type="text/css">
+    img, .png { behavior: url('/stylesheets/iepngfix_v2/iepngfix.htc'); }
+    </style>
+    <script type="text/javascript" src="/javascripts/iepngfix_tilebg.js"></script>
+    <![endif]-->
+
+    <!--[if IE]>
+    <link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection" />
+    <![endif]-->
+
+    <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print" />
+
+    <%= stylesheet_link_tag "izishirt2009.css" %>
+    <%= stylesheet_link_tag "jScrollPane.css" %>
+    <%= stylesheet_link_tag "flick/jquery-ui-1.7.2.custom.css" %>
+    <!--[if lt IE 7]>
+    <%= stylesheet_link_tag "ie6_fix.css" %>
+    <![endif]-->
+
+    <%#*<script type="text/javascript" src="/javascripts/scriptalizer.js"></script>%>
+    <%= javascript_include_tag "prototype.js" %>
+    <%= javascript_include_tag "lightbox.js" %>
+    <%= javascript_include_tag "cb.js" %>
+    <%= javascript_include_tag "effects.js" %>
+    <%= javascript_include_tag "jquery-1.3.2.min.js" %>
+    <%= javascript_include_tag "jquery-ui-1.7.2.custom.min.js" %>
+    <% if session[:language] != 'en' %>
+      <!---  datepicker/ui.datepicker-fr.js does not exist, I don't know why so I 'm commenting it out becuase every page requests asks for it.  -->
+      <%#= javascript_include_tag "datepicker/ui.datepicker-#{session[:language]}.js" %>
+    <% end %>
+    <%= javascript_include_tag "jquery.mousewheel.js" %>
+    <%= javascript_include_tag "jquery.em.js" %>
+    <%= javascript_include_tag "jScrollPane-1.2.3.min.js" %>
+    <%= javascript_include_tag "application2009.js" %>
+    <%= javascript_include_tag "izishirt_2011.js" %>
+    
+    <%=render :partial => "/display/check_contact_form"%>
+
+    <% if @in_checkout_confirmation %>
+      <SCRIPT language="JavaScript" type="text/javascript">
+      <!-- Yahoo! Inc.
+      window.ysm_customData = new Object();
+      window.ysm_customData.
+      conversion = "transId=,currency=,amount=";
+      var ysm_accountid = "14NQJ01AAUDVSRI9MM8PI735EGS";
+      document.write("<SCR" + "IPT language='JavaScript' type='text/javascript' "
+      + "SRC=//" + "srv3.wa.marketingsolutions.yahoo.com" + "/script/ScriptServlet" + "?aid=" + ysm_accountid
+      + "></SCR" + "IPT>");
+      // -->
+      </SCRIPT>
+    <% end %>
+  </head>
+  <body class="png">
+  <!-- DIV promotionnel -->
+  <div id="promoContainer" align="center">
+    <ul class="list_<%= session[:language] %>">
+      <li><%= link_to t(:promo_key1), {:controller=>:display, :action=>:shop}%></li>
+      <li><%= link_to t(:promo_key3), {:controller=>t(:display_home_create_tshirts)}%></li>
+      <li><strong><%= link_to(t(:promo_key4), {:controller=>t(:display_home_create_tshirts)}) if session[:country] == "CA" %></strong></li>
+      <li><%= "<strong>" if session[:country] != "CA" %><%= link_to t(:promo_key2), {:controller=>t(:display_home_create_tshirts)}%><%= "</strong>" if session[:country] != "CA" %></li>
+      <%= "<li>" + t(:promo_key5) + "</li>" if session[:language]=='fr' %>
+    </ul>
+  </div>
+    <!-- Container Div -->
+    <div class="container">
+      <div class="prepend-3 append-3 span-23 last headerMenu">
+        <div class="left contact">
+          <%# link_to(
+              params_hash(session[:language],@alt_country).merge!(:controller=>'/display', :action=>:contact),
+              {:name=>"light_contact", :class=>"lbOn darkGray noDecoration"}) do %>
+            <span class="gray bold"><%= t(:menu_call_us) %>,</span>
+
+            <span class="blue bold"><%= t(:menu_we_are_human) %> !</span><br/>
+            <img src="/images/izishirt2009/headerRightArrow.png" alt=">>" />
+            <span><%= t(:menu_number) %><%= get_country_human_name %></span><span class="green bold">&nbsp;&nbsp; <%=get_phone_number%></span>
+          <%# end %>
+        </div>
+        <div class="right headerItems">
+          <span class="cssdropdown addDivider" onmouseover="this.className+=' over';" onmouseout="this.className = this.className.replace(' over','');" >
+            <a href="#" class="noDecoration">
+              <%
+              country = @alt_country.downcase
+              file_exists = FileTest.exists?("./public/images/izishirt2009/#{country}.png")
+              if file_exists
+              %>
+              <img class="middle flag" src="/images/izishirt2009/<%= @alt_country.downcase %>.png" alt="" />
+              <% else %>
+              <img class="middle flag" src="/images/flags/<%= @alt_country.downcase %>.gif" alt="" />
+              <% end %>
+              <%= session[:country_long] %> <%= t(:lang) if !['us','fr'].include?(@alt_country.downcase) %>
+              <img class="middle downArrow noBord" src="/images/izishirt2009/arrowDown.png" alt="" />
+            </a>
+            <ul class="subuls langdropdown">
+              <li>
+                <%= link_to image_tag('/images/izishirt2009/ca.png', :alt=>''), params_hash("fr","CA") %>
+                <%= link_to "Canada Français", params_hash("fr","CA"), :class => 'country_lang' %>
+              </li>
+              <li>
+                <%= link_to image_tag('/images/izishirt2009/ca.png', :alt=>''), params_hash("en","CA")%>
+                <%= link_to "Canada English", params_hash("en","CA"), :class => 'country_lang' %>
+              </li>
+              <li>
+                <%= link_to image_tag('/images/izishirt2009/us.png', :alt=>''), params_hash("en","US") %>
+                <%= link_to "United States", params_hash("en","US"), :class => 'country_lang' %>
+              </li>
+              <li>
+                <%= link_to image_tag('/images/izishirt2009/fr.png', :alt=>''), params_hash("fr","FR") %>
+                <%= link_to "France", params_hash("fr", "FR"), :class => 'country_lang fr' %>
+              </li>
+              <!-- new -->
+              <li>
+                <%= link_to image_tag('/images/flags/gb.gif', :alt=>''), params_hash("en", "GB") %>
+                <%= link_to "United Kingdom", params_hash("en", "GB"), :class => 'country_lang' %>
+              </li>
+              <li>
+                <%= link_to image_tag('/images/flags/au.gif', :alt=>''), params_hash("en", "AU") %>
+                <%= link_to "Australia", params_hash("en", "AU"), :class => 'country_lang' %>
+              </li>
+              <li>
+                <%= link_to image_tag('/images/flags/it.gif', :alt=>''), params_hash("en", "IT") %>
+                <%= link_to "Italy English", params_hash("en", "IT"), :class => 'country_lang' %>
+              </li>
+              <li>
+                <%= link_to image_tag('/images/flags/es.gif', :alt=>''), params_hash("en", "ES") %>
+                <%= link_to "Spain English", params_hash("en", "ES"), :class => 'country_lang' %>
+              </li>
+              <li>
+                <%= link_to image_tag('/images/flags/de.gif', :alt=>''), params_hash("en", "DE") %>
+                <%= link_to "Germany English", params_hash("en", "DE"), :class => 'country_lang' %>
+              </li>
+              <!-- new -->
+              <li>
+                <%= link_to image_tag('/images/izishirt2009/eu.png', :alt=>''), params_hash("fr", "EU") %>
+                <%= link_to "Europe Français", params_hash("fr","EU"), :class => 'country_lang' %>
+              </li>
+              <li>
+                <%= link_to image_tag('/images/izishirt2009/eu.png', :alt=>''), params_hash("en", "EU") %>
+                <%= link_to "Europe English", params_hash("en", "EU"), :class => 'country_lang' %>
+              </li>
+              <li>
+                <%= link_to image_tag('/images/flags/geo_world.gif', :alt=>''), params_hash("fr", "IN") %>
+                <%= link_to "International Français", params_hash("fr","IN"), :class => 'country_lang' %>
+              </li>
+              <li>
+                <%= link_to image_tag('/images/flags/geo_world.gif', :alt=>''), params_hash("en", "IN") %>
+                <%= link_to "International English", params_hash("en", "IN"), :class => 'country_lang' %>
+              </li>
+            </ul>
+          </span>
+
+
+
+          <span class="cssdropdown addDivider" onmouseover="this.className+=' over';" onmouseout="this.className = this.className.replace(' over','');" >
+            <a href="#" class="noDecoration">
+              <%= session[:currency] %>
+              <img class="middle downArrow noBord" src="/images/izishirt2009/arrowDown.png" alt="" />
+            </a>
+            <ul class="subuls currencydropdown">
+              <li>
+                <%= link_to image_tag('/images/izishirt2009/ca.png', :alt=>''),
+                  {:forcecountry => 'CA'} %>
+                <%= link_to "CAD",
+                  {:forcecountry => 'CA'},
+                  :class => 'country_lang' %>
+              </li>
+              <li>
+                <%= link_to image_tag('/images/izishirt2009/us.png', :alt=>''),
+                  {:forcecountry => 'US'} %>
+                <%= link_to "USD",
+                  {:forcecountry => 'US'},
+                  :class => 'country_lang' %>
+              </li>
+              <li>
+                <%= link_to image_tag('/images/izishirt2009/eu.png', :alt=>''),
+                  {:forcecountry => 'EU'} %>
+                <%= link_to "EUR",
+                  {:forcecountry => 'EU'},
+                  :class => 'country_lang' %>
+              </li>
+            </ul>
+          </span>
+
+          <!-- User Name -->
+          <% if session[:user_id] %>
+            <span class="addDivider">
+              <label class="darkGray normal"><%= t(:menu_hello) +" #{truncate(@logged_in_username+"!", :length => 18)}"%></label>
+            </span>
+          <% end %>
+          <!-- EO User Profile Link -->
+
+          <!-- Cart Links -->
+          <% if @controller.controller_name != 'checkout' %>
+            <span class="addDivider">
+              <% link_to SECURE_URL_ROOT + get_lang_url() + "/checkout2/show_cart",
+                :id=>"link_to_cart",
+                :rel=>"no_follow",
+                :class=>"darkGray noDecoration" do %>
+                <img class="middle cart" src="/images/izishirt2009/cartIcon.png" alt="" />
+                <span id="link_to_cart_text"><%=  @human_cart %></span>
+              <% end %>
+            </span>
+            <% if @item_count > 0 %>
+              <span class="addDivider">
+                <%= link_to t(:menu_checkout), SECURE_URL_ROOT + get_lang_url() + "/checkout2/show_cart",
+                  :rel=>"no_follow",
+                  :class=>"blue" %>
+              </span>
+            <% end %>
+          <% end %>
+          <!-- EO Cart Links -->
+
+          <% if session[:user_id] %>
+            <span class="noDivider">
+              <%= link_to t(:display_home_deconnexion),
+                {:controller => "myizishirt/login/logout"},
+                :class => 'darkGray noDecoration' %>
+            </span>
+          <% end %>
+
+          <!-- Login + Join Links -->
+          <% if !session[:user_id] %>
+            <span class="addDivider">
+              <%= link_to "Login",
+                {:controller => 'myizishirt/login', :action => 'lightbox'},
+                :class => 'lbOn darkGray noDecoration', :name => 'light_login' %>
+            </span>
+            <span class="addDivider">
+              <%= link_to t(:forgot_password),
+                {:controller => 'myizishirt/login', :action => 'lightbox_lost'},
+                :class => 'lbOn darkGray noDecoration', :name => 'light_login' %>
+            </span>
+            <span class="noDivider">
+              <%= link_to t(:display_home_connexion),
+                {:controller => 'myizishirt/login', :action => 'new'},
+                :class => 'darkGray noDecoration' %>
+            </span>
+          <% end %>
+          <!-- EO Login + Join Links -->
+        </div>
+      </div>
+
+      <div class="clear horiz_space_12 noPad noMarg noBord"></div>
+
+      <div class="span-25 last izishirtHeaderLogo">
+        <%#= link_to image_tag('/images/izishirt2009/izishirtHeader_st_patties.jpg', :title =>t(:header_top_title), :id=>"izishirtTag"), @URL_ROOT %>
+        <%#= link_to image_tag('/images/izishirt2009/izishirtHeader_vday.jpg', :title =>t(:header_top_title), :id=>"izishirtTag"), @URL_ROOT %>
+        <%= link_to image_tag('/images/izishirt2009/izishirtHeader.png', :title =>t(:header_top_title), :id=>"izishirtTag"), @URL_ROOT %>
+      </div>
+
+      <% unless request.protocol == 'https://' %>
+        <div class="countryWelcome append-3 prepend-3" style="z-index:99;">
+          <% if flash[:success] %>
+            <div><label class="blue bigText left"><%=flash[:success]%></label></div>
+          <% else %>
+            <div class="left" style="margin-bottom:5px;z-index:99;">
+              <% if @alt_country.downcase == 'ca' && session[:language] == 'fr' %>
+                <%= image_tag "izishirt2009/qc_36x24.jpg", :class=> 'bigFlag', :alt=>"", :height=>15, :width=>30 %>
+              <% elsif !request.ssl? %>
+                <%#= image_tag "http://api.hostip.info/flag.php", :class=> 'bigFlag', :alt=>"" %>
+              <% end %>
+              <% session[:error] = flash[:error] if flash[:error] %>
+              <% if @alt_country.downcase == 'ca' && session[:language] == 'en' %>
+                <%= image_tag "izishirt2009/ca_36x24.gif", :class=> 'bigFlag', :alt=>"", :height=>15, :width=>30 %>
+                <label class="proud">Proudly Canadian</label>
+              <% elsif @alt_country.downcase == 'ca' && session[:language] == 'fr' %>
+                <label class="proud">Fait au Québec</label>
+              <% end %>
+              
+
+            </div>
+          <% end %>
+          <label class="free_shipping"><%=t(:free_shipping_3items)%></label>
+        </div>
+      <% end %>
+      <!-- Navigation Menu -->
+      <div class="prepend-3 append-3 span-23 last">
+        <div class="span-23 last navMenu">
+          <div class="top">
+            <% @top_menu.each do |item| %>
+              <% if !item[:url].match("izishirtblog") %>
+                <%=  link_to item[:text], {:controller=>item[:url]},
+                  :class=>display_active_top_menu(item) %>
+              <% else %>
+                <!-- Special case, link to the blog -->
+                <a href="<%= item[:url] %>" class="<%= display_active_top_menu(item) %>" target="_blank"><%= item[:text] %></a>
+    
+  <% end %>
+<% end %>
+          </div>
+          <div class="clear bottom last">
+            <div class="bottom_link_list">
+              <% @bottom_menu.each do |item| %>
+                <% if item[:url].include?('http') %>
+                  <%= link_to item[:text], item[:url],
+                    :class => display_active_bottom_menu(item), :target=>"_blank" %>
+                <% elsif item[:url] == "#" %>
+                  <%= link_to_function item[:text], "return false;",
+                    :class => display_active_bottom_menu(item),
+                    :onmouseover => "this.innerHTML=\"#{t(:menu_coming_soon)}\";",
+                    :onmouseout => "this.innerHTML=\"#{item[:text]}\";" %>
+                <% else %>
+                  <%=  link_to item[:text], {:controller=>item[:url]},
+                    :class=>display_active_bottom_menu(item) %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- EO Navigation Menu -->
+
+<%= yield %>
+
+      <div class="clear horiz_space_50"></div>
+
+      <!-- Monster Footer -->
+      <div class="append-3 prepend-3 span-23 footerOne">
+        <!-- Shop Footer List -->
+        <div class="left footerList one">
+          <ul>
+            <li><label><%=t(:shop).upcase%></label></li>
+            <li><%= link_to t(:menu_create_your_own_fem), {:controller => t(:menu_create_shirt_url)}, :TITLE=>t(:menu_create_title)%></li>
+            <li><%= link_to t(:menu_top_25), {:controller => '/display', :action => 'shop'}, :TITLE=>t(:menu_top25_title)%></li>
+            <li><%= link_to t(:menu_staff), {:controller => '/display', :action => 'staff_pick'}, :TITLE=>t(:menu_staff_title)%></li>
+            <li><%= link_to t(:menu_funny_t_shirts), {:controller => '/display', :action => 'result', :id => 4}, :TITLE=>t(:menu_funny_title)%></li>
+            <li><%= link_to t(:menu_sexy_t_shirts), {:controller => '/display', :action => 'result', :id => 42}, :TITLE=>t(:menu_sexy_title)%></li>
+            <li><%= link_to t(:menu_bulk_orders), {:controller => '/bulk_orders'}, :TITLE=>t(:menu_bulk_title)%></li>
+          </ul>
+        </div>
+        <!-- EO Shop Footer List -->
+          <!-- Sell Footer List -->
+        <div class="left footerList two">
+          <ul>
+            <li><label><%=t(:menu_sell_cat)%></label></li>
+            <% if @top_menu_type != 'shop_owner' %>
+              <li><%= link_to t(:menu_open), {:controller => '/display', :action => 'open_shop' }, :TITLE=>t(:menu_open_title)%></li>
+            <% else %>
+              <li><%= link_to t(:menu_managemyshop), {:controller => '/myizishirt/profile' }%></li>
+            <% end %>
+            <% if @top_menu_type ==  'shop_owner' %>
+              <li><%= link_to t(:menu_sell), {:controller => '/myizishirt/design' }%></li>
+            <% else %>
+              <li><%= link_to t(:menu_sell), {:controller => '/display', :action => 'open_shop' }, :TITLE=>t(:menu_sell_title)%></li>
+            <% end %>
+            <li>
+              <%= link_to t(:menu_help), "http://www.izishirt.ca/display/page/faq", :title=>t(:menu_help_title) %>
+            </li>
+            <li>
+              <%= link_to t(:menu_examples), "http://izishirt.izishirt.ca/my/boutique", :title=>t(:menu_exemples_title)%>
+            </li>
+            <li><%= link_to t(:menu_top_shops), {:controller => '/display', :action => 'designers'}, :title=>t(:menu_top_title)%></li>
+            <li><%= link_to t(:menu_affiliation), t(:menu_affiliation_url), :title=>t(:menu_affiliation_title)%></li>
+          </ul>
+        </div>
+        <!-- EO Sell Footer List  -->
+          <!-- Community Footer List -->
+        <div class="left footerList three">
+          <ul>
+            <li><label><%=t(:footer_community)%></label></li>
+            <% if @top_menu_type == 'shop_owner' %>
+              <li><%= link_to t(:menu_my_profile), {:controller => '/myizishirt/profile'}%></li>
+            <% elsif @top_menu_type == 'user' %>
+              <li><%= link_to t(:menu_my_profile), {:controller => '/myizishirt/orders'}%></li>
+            <% else %>
+              <li><%= link_to t(:display_home_connexion), {:controller => '/myizishirt/login', :action => 'new'}, :TITLE=>t(:menu_join_title)%></li>
+            <% end %>
+            <li><%= link_to t(:menu_blog), "#{t(:url_blog)}", :TITLE=>t(:menu_blog_title)%></li>
+            <li><%= link_to "Facebook", "http://www.facebook.com/pages/Izishirt-T-shirt-Lab/8141539334", :TITLE=>t(:menu_facebook_title)%></li>
+            <li><%= link_to "Twitter", "http://twitter.com/izishirt", :TITLE=>t(:menu_twitter_title)%></li>
+            <li>
+              <%= link_to t(:menu_izishirt_team), "#",
+                :onmouseover => "this.innerHTML='#{t(:menu_coming_soon)}';",
+                :onmouseout => "this.innerHTML=\"#{t(:menu_izishirt_team)}\";"%>
+            </li>
+            <li><%= link_to t(:menu_home_local), {:controller => '/local', :action => 'custom-t-shirt-printing'}, :TITLE=>t(:menu_local_title)%></li>
+          </ul>
+        </div>
+        <!-- EO Community Footer List -->
+          <!-- Info Footer List -->
+        <div class="left footerList four">
+          <ul>
+            <li><label>Info</label></li>
+            <% if @top_menu_type == 'guest' %>
+              <li><%= link_to t(:menu_home_first_time_visitors), {:controller => '/display', :action => 'first_time_visitors'}, :TITLE=>t(:menu_first_title)%></li>
+            <% else %>
+              <li><%= link_to t(:myizishirt_profile_home_orders), {:controller=>'/myizishirt/orders'}%></li>
+            <% end %>
+            <li>
+              <%= link_to t(:order_tracking), {:controller=>'/order'}, :title=>t(:order_tracking) %>
+            </li>
+            <li><%= link_to t(:menu_shipping),{:controller => '/display', :action => 'shipping_info'}, :TITLE=>t(:shipping_title)%></li>
+            <li><%= link_to t(:menu_quality), {:controller => '/display',:action =>  'quality'}, :TITLE=>t(:menu_quality_title)%></li>
+            <li><%= link_to t(:menu_boutique_apparel), {:controller => '/apparel'}, :TITLE=>t(:menu_apparel_title)%></li>
+            <li><%= link_to t(:menu_boutique_faqs), {:controller => '/display',:action =>  'page', :id => 'faq'}, :TITLE=>t(:menu_boutique_faq_title)%></li>
+          </ul>
+        </div>
+        <div class="right footerSearch">
+          <ul>
+            <li><label><%=t(:display_home_search)%></label></li>
+            <li>
+              <% form_tag({:controller=>"/display/result_search"}, :id=>'search_form') do %>
+                <div>
+                  <input type="text" id="footer_search" name="search" value="izishirt.ca"/>
+                  <select id="search_option" name="search_option">
+                    <option><%=t(:izishirt_flash_all_designs)%></option>
+                  </select>
+                  <input type="image" src="/images/izishirt2009/search.png" title="Gildan, Bella, Hanes, Coal, King, Oom"/>
+                </div>
+              <% end %>
+            </li>
+            <li class="divideBottom">
+              <label><%=t(:menu_cant_find)%></label>
+              <%= link_to t(:menu_create_your_own), {:controller => '/display', :action => 'create_tshirt'}, :class => "redLink bold"%>
+            </li>
+            <li class="divideTop">
+              <p><%=t(:menu_send_comments)%> <a href="mailto:<%=t(:contact_us_email_suggestions)%>" class="redLink"><%=t(:contact_us_email_suggestions)%></a></p>
+            </li>
+            <li>
+              <p><%= t(:menu_or_give_us_a_call) %> : <span class="blueText relative"><%=get_phone_number%></span></p>
+            </li>
+          </ul>
+        </div>
+        <!-- EO Info Footer List -->
+      </div>
+      <div class="append-3 prepend-3 span-23 footerTwo">
+        <div class="left">
+          <ul>
+            <li><label><%=t(:menu_currency)%></label></li>
+            <li>
+              <div class="footerBlock">
+                <img src="/images/izishirt2009/ca.png" alt="CA" />
+                <span class="footerText">CAD</span>
+                <img src="/images/izishirt2009/eu.png" alt="EU" />
+                <span class="footerText">EUR</span>
+                <img src="/images/izishirt2009/us.png" alt="US" />
+                <span class="footerText">USD</span>
+              </div>
+            </li>
+            <li><label>Newsletter</label></li>
+            <li>
+              <img src="/images/izishirt2009/rss.png" alt="Izishirt RSS Feed" />
+              <%= link_to t(:get_the_latest_news_from_izishirt_com),
+                "#{@URL_ROOT}/blog/index.php?feed=rss2",
+                :class => 'footerTextLast black noDecoration', :target=>"_blank"%>
+            </li>
+            <!--
+              <li><label><%=t(:menu_send_to_a_friend)%></label></li>
+              <li>
+                <div class="footerBlock">
+                  <img src="/images/izishirt2009/email.png" alt="Email" />
+                  <span class="footerText">Email</span>
+                  <img src="/images/izishirt2009/aim.png" alt="Aim" />
+                  <span class="footerText">Aim</span>
+                  <img src="/images/izishirt2009/text.png" alt="Text" />
+                  <span class="footerTextLast"><%=t(:menu_text)%></span>
+                </div>
+              </li>
+  -->
+          </ul>
+        </div>
+        <div class="left share">
+          <label><%=t(:menu_share)%></label>
+          <div>
+            <ul class="left">
+              <li class="first">
+                <img src="/images/izishirt2009/facebook.png" alt="Facebook" />
+                <%= link_to "Facebook",
+                  "http://www.facebook.com/sharer.php?u=#{request.url}&t=#{@meta_title.nil? ? get_page_title(@image) : @meta_title}",
+                  :class => 'black noDecoration' %>
+              </li>
+              <li>
+                <img src="/images/izishirt2009/buzz.png" alt="Buzz up!" />
+                <%= link_to "Buzz Up!",
+                  "http://buzz.yahoo.com/buzz?targetUrl=http%3A%2F%2Fwww.izishirt.ca%2F&headline=Custom%20T-shirts%2C%20T-shirt%20Printing%20%26%20Personalized%20T-shirts%20%7C%20Izishirt.com",
+                  :class => 'black noDecoration' %>
+              </li>
+              <li>
+                <img src="/images/izishirt2009/digg.png" alt="Digg" />
+                <%= link_to "Digg",
+                  "http://digg.com/submit?phase=2&url=http%3A%2F%2Fwww.izishirt.ca%2F&title=Custom%20T-shirts%2C%20T-shirt%20Printing%20%26%20Personalized%20T-shirts%20%7C%20Izishirt.com",
+                  :class => 'black noDecoration' %>
+              </li>
+            </ul>
+            <ul class="left">
+              <li class="first">
+                <img src="/images/izishirt2009/myspace.png" alt="Myspace" />
+                <%= link_to "Myspace",
+                  "http://www.myspace.com/izishirttshirtlab",
+                  :class => 'black noDecoration' %>
+              </li>
+              <li>
+                <img src="/images/izishirt2009/delicious.png" alt="Delicious" />
+                <%= link_to "Delicious",
+                  "http://del.icio.us/post?url=http%3A%2F%2Fwww.izishirt.ca%2F&title=Custom%20T-shirts%2C%20T-shirt%20Printing%20%26%20Personalized%20T-shirts%20%7C%20Izishirt.com",
+                  :class => 'black noDecoration' %>
+              </li>
+              <li>
+                <img src="/images/izishirt2009/reddit.png" alt="Reddit" />
+                <%= link_to "Reddit",
+                  "http://reddit.com/submit?url=http%3A%2F%2Fwww.izishirt.ca%2F&title=Custom%20T-shirts%2C%20T-shirt%20Printing%20%26%20Personalized%20T-shirts%20%7C%20Izishirt.com",
+                  :class => 'black noDecoration' %>
+              </li>
+            </ul>
+            <ul class="left">
+              <li class="first">
+                <img src="/images/izishirt2009/twitter.png" alt="Twitter" />
+                <%= link_to "Twitter",
+                  "http://twitter.com/izishirt",
+                  :class => 'black noDecoration' %>
+              </li>
+              <li>
+                <img src="/images/izishirt2009/live.png" alt="Live" />
+                <%= link_to "Live",
+                  "https://favorites.live.com/quickadd.aspx?marklet=1&mkt=en-us&url=http%3A%2F%2Fwww.izishirt.ca%2F&title=Custom%20T-shirts%2C%20T-shirt%20Printing%20%26%20Personalized%20T-shirts%20%7C%20Izishirt.com&top=1",
+                  :class => 'black noDecoration' %>
+              </li>
+              <li>
+                <img src="/images/izishirt2009/linkedin.png" alt="Linked In" />
+                <%= link_to "Linkedin",
+                  "http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.izishirt.ca%2F&title=Custom%20T-shirts%2C%20T-shirt%20Printing%20%26%20Personalized%20T-shirts%20%7C%20Izishirt.com&summary=&source=",
+                  :class => 'black noDecoration' %>
+              </li>
+            </ul>
+            <ul class="left">
+              <li class="first">
+                <img src="/images/izishirt2009/stumble.png" alt="Stumbleupon" />
+                <%= link_to "Stumbleupon",
+                  "http://www.stumbleupon.com/submit?url=http%3A%2F%2Fwww.izishirt.ca%2F&title=Custom%20T-shirts%2C%20T-shirt%20Printing%20%26%20Personalized%20T-shirts%20%7C%20Izishirt.com",
+                  :class => 'black noDecoration' %>
+              </li>
+              <li>
+                <img src="/images/izishirt2009/ybookmark.png" alt="YBookmarks" />
+                <%= link_to "! Bookmarks",
+                  "http://bookmarks.yahoo.com/toolbar/savebm?opener=tb&u=http%3A%2F%2Fwww.izishirt.ca%2F&t=Custom%20T-shirts%2C%20T-shirt%20Printing%20%26%20Personalized%20T-shirts%20%7C%20Izishirt.com",
+                  :class => 'black noDecoration' %>
+              </li>
+              <li>
+                <img src="/images/izishirt2009/gbookmark.png" alt="GBookmarks" />
+                <%= link_to "G Bookmarks",
+                  "http://www.google.com/bookmarks/mark?op=edit&bkmk=http%3A%2F%2Fwww.izishirt.ca%2F&title=Custom%20T-shirts%2C%20T-shirt%20Printing%20%26%20Personalized%20T-shirts%20%7C%20Izishirt.com",
+                  :class => 'black noDecoration' %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="right currencies">
+          <ul>
+            <li>
+              <div class="footerBlock">
+                <label><%=t(:menu_secure_payments)%></label>
+              </div>
+            </li>
+            <li>
+              <div class="footerBlock">
+                <img src="/images/izishirt2009/lock.png" alt="" />
+                <img src="/images/izishirt2009/visa.png" alt="Visa" />
+                <img src="/images/izishirt2009/mastercard.png" alt="Master Card" />
+                <img src="/images/izishirt2009/amex.png" alt="Americain Express" />
+                <img src="/images/izishirt2009/paypal.png" alt="Paypal" />
+              </div>
+            </li>
+            <li>
+              <div class="footerBlock">
+                <%= render :partial => "/display/mcafee_#{session[:language]}" %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="append-3 prepend-3 span-23 footerThree">
+        <div>
+          <ul>
+            <li>
+              <%= link_to t(:footer_faq_text),
+                {:controller=>t(:footer_faq_url)}, :title=>t(:footer_faqs_title),
+                :rel=>"nofollow" %>
+            </li>
+            <li><span> | </span></li>
+            <li>
+              <%= link_to t(:footer_contact_text),
+                {:controller=>t(:footer_contact_url)}, :title=>t(:footer_contact_title),
+                :rel=>"nofollow" %>
+            </li>
+            <li><span> | </span></li>
+            <li>
+              <%= link_to t(:footer_rss_feed_text),
+                t(:footer_rss_feed_url), :title=>t(:footer_rss_title), :target=>"_blank",
+                :rel=>"nofollow" %>
+            </li>
+            <li><span> | </span></li>
+            <li>
+              <%= link_to t(:footer_terms_text),
+                {:controller=>t(:footer_terms_url)}, :title=>t(:footer_terms_title),
+                :rel=>"nofollow" %>
+            </li>
+            <li><span> | </span></li>
+            <li>
+              <%= link_to t(:footer_privacy_text),
+                {:controller=>t(:footer_privacy_url)}, :title=>t(:footer_privacy_title),
+                :rel=>"nofollow" %>
+            </li>
+            <li><span> | </span></li>
+            <li>
+             <%= link_to t(:footer_sitemap_text), {:controller => '/display',:action =>  'sitemap_html'}, :title=>t(:footer_sitemap_title)%>
+            </li>
+			<li><span> | </span></li>
+            <li>
+             <%= link_to t(:front_office_hosted_by), "javascript:show_box_hosted_by();", :title=>t(:front_office_hosted_by)%>
+            </li>
+			<li><span> | </span></li>
+            <li>
+             <%= link_to "Tags", :controller => "tags" %>
+            </li>
+          </ul>
+        </div>
+        <p><%=t(:footer_copyright_text)%></p>
+        <p><%=t(:footer_use_text)%></p>
+        <p><%=t(:footer_create_t_shirt_text)%></p>
+      </div>
+      <div class="append-3 prepend-3 span-23 footerEnd"></div>
+      <!-- EO Monster Footer -->
+
+    </div>
+
+  <% unless request.protocol == 'https://' %>
+    <script type="text/javascript" src="http://j.clickdensity.com/cr.js"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+      var clickdensity_siteID = 14360;
+      var clickdensity_keyElement = 'izishirtTag';
+    //]]>
+    </script>
+  <% end %>
+
+    <!-- EO Container Div -->
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-1994599-4");
+        pageTracker._trackPageview();
+      } catch(err) {}</script>
+
+    <% if @in_checkout_confirmation %>
+      <SCRIPT>
+      microsoft_adcenterconversion_
+      domainid = 789310;
+      microsoft_adcenterconversion_cp = 5050;
+      microsoft_adcenterconversionparams = new Array();
+      microsoft_adcenterconversionparams0 = "dedup=1";
+      </SCRIPT>
+      <SCRIPT SRC="https://0.r.msn.com/scripts/microsoft_adcenterconversion.js"></SCRIPT>
+      <NOSCRIPT><IMG width=1 height=1 SRC="https://789310.r.msn.com/?type=1&cp=1&dedup=1"/></NOSCRIPT><a href="http://advertising.microsoft.com/MSNadCenter/LearningCenter/adtracker.asp" target="_blank">::adCenter::</a>
+    <% end %>
+  </body>
+</html>

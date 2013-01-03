@@ -1,0 +1,41 @@
+<p><%= @image.user.username %> has sent a new design on Izishirt.com</p>
+
+<% if @image.is_private %>
+  <p>
+    The user has requested this image be private
+  </p>
+<% end %>
+
+<p>
+  <a href="<%= "#{URL_ROOT}#{@image.orig_image.url()}" %>">Click here to see</a>
+</P>
+
+<p>
+  <a href="<%= "#{URL_ROOT}/display/idliketovalidatethisdesignwithoutusingthebackofficeabc654897poi/#{@image.id}" %>">
+    Do you want to approve it and put it public?
+  </a>
+</p>
+
+<p>
+  <a href="<%= "#{URL_ROOT}/display/idliketovalidatethisdesignwithoutusingthebackofficeabce5f897wrti/#{@image.id}" %>">
+    Do you want to approve it and put it private?
+  </a>
+</p>
+
+<p>
+  <a href="<%= "#{URL_ROOT}/display/idliketovalidatethisdesignwithoutusingthebackofficeabce9jd47halwpr/#{@image.id}" %>">
+    Do you want to approve it and make it always private?
+  </a> (This will prevent the user from making their design public)
+</p>
+
+<p>
+  <a href="<%= "#{URL_ROOT}/admin/image/decline/#{@image.id}" %>">
+    Do you want to send out the Artwork Declined email? 
+  </a>
+</p>
+
+<p>
+  <a href="<%= "#{URL_ROOT}/admin/image/edit/#{@image.id}" %>">
+    Do you want to edit it ?
+  </a>
+</p>

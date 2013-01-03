@@ -1,0 +1,26 @@
+<h1><%= t(:admin_images_check_design_process_title) %></h1>
+
+<ul class="admintabs" style="display:block;">
+	<li id="link_tab_" class="tab_active"><a href="#"><%= t(:admin_images_check_design_process_configurations) %></a></li>
+</ul>
+
+<% form_tag({:action => 'execute_check_design_process', :redirect => "execute_check_design_process" }, {:multipart=>true }) do %>
+
+	<div class="localized_tab_content clearfix" style="display:block; clear:both;">
+		<div class="titleForm"><label><%= t(:admin_images_check_design_process_category) %></label></div>
+	    <div class="boxForm">
+	    	<select id="image_category_id" name="search[category_id]">
+		      <% for category in @categories %>
+		        <%= display_category_select(category, -1) %>
+		      <% end %>
+		    </select>
+	    </div>
+		
+		<div class="titleForm"><label><%= t(:admin_images_check_design_process_verify_all) %></label></div>
+	    <div class="boxForm"><%= check_box 'search', 'verify_all', {}, 'true', 'false' %></div>
+		
+		<div class="titleForm"></div>
+	    <div class="boxForm"><%= submit_tag t(:admin_images_check_design_process_ok) %></div>
+	</div>
+	
+<% end %>

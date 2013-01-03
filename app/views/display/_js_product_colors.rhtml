@@ -1,0 +1,12 @@
+<script language="Javascript">
+	function change_color_img(product_id, color_id){
+		img_product = $j("#product_"+product_id).attr("src");
+		img_product = img_product.replace(/http.*izishirtfiles/, "/izishirtfiles");
+		if(img_product.match("front")){img_product = img_product.replace("/"+img_product.split("/")[7]+"/front/", "/"+color_id+"/front/");}
+		if(img_product.match("back")){img_product = img_product.replace("/"+img_product.split("/")[7]+"/back/", "/"+color_id+"/back/");}
+		if(img_product.match("left")){img_product = img_product.replace("/"+img_product.split("/")[7]+"/back/", "/"+color_id+"/left/");}
+        if(img_product.match("right")){img_product = img_product.replace("/"+img_product.split("/")[7]+"/back/", "/"+color_id+"/right/");}
+		$j("#product_"+product_id).attr("src", img_product);
+		/*alert($j("#product_"+product_id).attr("src"));*/
+	}
+</script>

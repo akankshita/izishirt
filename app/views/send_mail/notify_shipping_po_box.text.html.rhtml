@@ -1,0 +1,22 @@
+<p>
+	<%= I18n.t(:send_mail_notify_shipping_po_box_1, :locale => Language.find(@order.language_id).shortname)%> <%= @order.shipping.name %>,
+</p>
+
+<p></p>
+
+<p>
+	<%= I18n.t(:send_mail_notify_shipping_po_box_2, :locale => Language.find(@order.language_id).shortname) %>
+</p>
+
+<p>
+	<%=I18n.t(:send_mail_content_izishirt_team, :locale => Language.find(@order.language_id).shortname)%><br />
+	IZISHIRT.com<br />
+	contact@izishirt.com<br />
+</p>
+
+<p>
+<%= I18n.t(:sendmail_social_networks, :locale => Language.find(@order.language_id).shortname) %><br />
+Twitter: <a href="http://twitter.com/izishirt">http://twitter.com/izishirt</a><br />
+Facebook: <a href="http://facebook.com/pages/IziShirt/223576667655075">http://facebook.com/pages/IziShirt/223576667655075</a><br />
+Blog: <a href="http://www.izishirtblog.com/">http://www.izishirtblog.com/</a>
+</p>

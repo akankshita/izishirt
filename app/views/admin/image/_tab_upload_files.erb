@@ -1,0 +1,146 @@
+
+<div id="tab_files" class="localized_tab_content clearfix" style="display:block; clear:both;">
+
+
+    <%= stylesheet_link_tag "flick/jquery-ui-1.7.2.custom.css" %>
+    <script type="text/javascript" src="/javascripts/jquery-1.3.2.min.js"></script>
+    <%= javascript_include_tag "jquery-ui-1.7.2.custom.min.js" %>
+    <script type="text/javascript" src="/javascripts/jquery_form_js.js"></script>
+
+    <% limit_file_uploads = 10 %>
+
+    <script language="javascript">
+      $j = jQuery.noConflict();
+
+      var nb_upload_blocks_displayed<%= upload_files_id %> = 1;
+
+      function add_another_upload_block<%= upload_files_id %>()
+      {
+        nb_upload_blocks_displayed<%= upload_files_id %> = nb_upload_blocks_displayed<%= upload_files_id %> + 1;
+
+        div_block = document.getElementById("block_upload_" + nb_upload_blocks_displayed<%= upload_files_id %> + "_<%= upload_files_id %>");
+
+        if (div_block)
+          div_block.setAttribute("style", "display:block;");
+      }
+
+      function clearFileInput<%= upload_files_id %>( id )
+      {
+          var elem = document.getElementById( id );
+          elem.parentNode.innerHTML = elem.parentNode.innerHTML;
+
+          
+          //$('#'+id).html($('#'+id).html());
+
+      }
+
+      function reloadUploadAjaxFunctions<%= upload_files_id %>(only_id)
+      {
+        <% (1..limit_file_uploads).each do |i| %>
+
+          if (only_id == null || only_id == <%= i %>)
+          {
+            $j('#uploadForm<%= i %>_<%= upload_files_id %> input').change(function(){
+             $j(this).parent().ajaxSubmit({
+              beforeSubmit: function(a,f,o) {
+               o.dataType = 'json';
+
+               // Get spinner image:
+               spinner = document.getElementById("spinner<%= i %>_<%= upload_files_id %>");
+               spinner.setAttribute("style", "display:inline;");
+
+               state_field = document.getElementById("state_file_<%= i %>_<%= upload_files_id %>");
+               state_field.innerHTML = "";
+              },
+              complete: function(XMLHttpRequest, textStatus) {
+               // XMLHttpRequest.responseText will contain the URL of the uploaded image.
+               // Put it in an image element you create, or do with it what you will.
+               // For example, if you have an image elemtn with id "my_image", then
+               //  $('#my_image').attr('src', XMLHttpRequest.responseText);
+               // Will set that image tag to display the uploaded image.
+
+               // Remove spinner
+               spinner = document.getElementById("spinner<%= i %>_<%= upload_files_id %>");
+               spinner.setAttribute("style", "display:none;");
+
+               // Empty text in file field:
+               //clearFileInput("file_field_<%= i %>");
+               reloadUploadAjaxFunctions<%= upload_files_id %>(<%= i %>);
+
+               state_field = document.getElementById("state_file_<%= i %>_<%= upload_files_id %>");
+               state_field.innerHTML = "<%= t(:artwork_upload_files_uploaded) %>";
+
+               // Refresh files.
+               new Ajax.Updater('list_image_files<%= upload_files_id %>', '/admin/image/reload_files/<%= @image.id %>?list_id=<%= upload_files_id %>', {asynchronous:true, evalScripts:true});
+              }
+             });
+            });
+        }
+        <% end %>
+      }
+    </script>
+
+
+    <!-- -->
+    <% margin_left = "50px" %>
+    <div style="margin-left:<%= margin_left %>">
+      <input type="button" value="<%= t(:artwork_upload_files_upload_another_file) %>" onclick="add_another_upload_block<%= upload_files_id %>();" />
+
+      <p></p>
+      <p></p>
+      
+
+      <% (1..limit_file_uploads).each do |i| %>
+        <div id="block_upload_<%= i %>_<%= upload_files_id %>" style="display:<%= (i == 1) ? "block" : "none" %>">
+          
+          <% remote_form_for :image_file, :update => "list_image_files#{upload_files_id}", :url => {:controller => :image, :action => "create_file", :list_id => upload_files_id}, :html => { :method => :post, :id => "uploadForm#{i}_#{upload_files_id}", :multipart => true } do |f| %>
+
+          
+              <%= f.file_field :file, :id => "file_field_#{i}_#{upload_files_id}" %>
+              <%= image_tag "/images/spinner.gif", :id => "spinner#{i}_#{upload_files_id}", :style => "display:none;" %><span style="color:green" id="state_file_<%= i %>_<%= upload_files_id %>"></span>
+              <%= f.hidden_field :image_id, :value => @image.id %>
+              
+          <% end %>
+
+        </div>
+
+        <script language="javascript">
+          clearFileInput<%= upload_files_id %>("file_field_<%= i %>_<%= upload_files_id %>");
+        </script>
+      <% end %>
+      
+    </div>
+
+    <script language="javascript">
+
+      // Thx to http://www.williambharding.com/blog/rails/rails-ajax-image-uploading-made-simple-with-jquery/
+      $j(document).ready(function(){
+
+        reloadUploadAjaxFunctions<%= upload_files_id %>(null);
+        
+      });
+    </script>
+
+    <!-- List of files of the current image -->
+
+    <p>
+    </p>
+
+      <div id="list_image_files<%= upload_files_id %>" style="margin-left:<%= margin_left %>">
+        <%= render :partial => "/admin/image/list_image_files", :locals => {:with_delete => with_delete, :upload_files_id => upload_files_id}  %>
+      </div>
+    
+
+
+<script language="javascript">
+
+  <% if @tab_to_open %>
+    toggle_image_tab("<%= @tab_to_open %>");
+  <% end %>
+</script>
+
+</div>
+
+
+
+

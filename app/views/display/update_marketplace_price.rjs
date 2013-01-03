@@ -1,0 +1,18 @@
+if @price
+  page.replace_html "price", "#{number_to_currency_custom(@price)}"
+else
+  page.replace_html "price", "N/A"
+end
+
+if @percent_off && @percent_off > 0
+  page.replace_html "discount_off", "#{t(:shop_marketplace_discount)} #{@percent_off} %"
+else
+  page.replace_html "discount_off", ""
+end
+
+page.visual_effect :highlight, "price", :duration => 2
+#page.visual_effect :highlight, "discount_off", :duration => 2
+
+page["quantity"].value = @quantity
+page["model_size_id"].value = @selected_model_size_id
+

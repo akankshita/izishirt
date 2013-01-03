@@ -1,0 +1,21 @@
+<div id="stores_list_container">
+<h1><%= t(:izishirt_custom_shops_index)%></h1>
+<div id="desc">
+  <%= t(:izishirt_index_explanation) %>
+</div>
+<%= will_paginate @stores, :prev_label=>t(:prev_label), :next_label=>t(:next_label) %>
+<table style="border-collapse:collapse;">
+  <tr style="background-color:#999;color:#fff;font-weight:bold;">
+    <th><%= t :shop_name %> </th>
+    <th><%= t :shop_description %></th>
+  </tr>
+  <% for store in @stores %>
+    <tr style="background-color:#<%=cycle("fff","ddd")%>">
+      <td><%= link_to h(store.title.capitalize), store.shop_url(@DOMAIN_NAME), :title=>store.title.capitalize %></td>
+      <td><%= h(store.description) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @stores, :prev_label=>t(:prev_label), :next_label=>t(:next_label) %>
+</div>

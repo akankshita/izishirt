@@ -1,0 +1,52 @@
+<div class="clear"/></div>
+<script language="javascript">
+  function previewZone(zone){
+    var ruler_size=42;//must add with and height of ruler so that preview is acurate
+    element = $("model_zone_"+zone);
+    element.setStyle({width: $(zone+"_bottom_right_x").value -$(zone+"_top_left_x").value+'px'});
+    element.setStyle({height:$(zone+"_bottom_right_y").value -$(zone+"_top_left_y").value+'px'});
+    element.setStyle({left: (parseInt($(zone+"_top_left_x").value)+ruler_size)+'px'});
+    element.setStyle({top: (parseInt($(zone+"_top_left_y").value)+ruler_size)+'px'});
+  }
+</script>
+<fieldset>
+  <legend>Fields for the flash app</legend>
+
+
+  <% @mymodel.model_zones.each do |model_zone| %>
+    <%
+      case model_zone.zone_type
+        when 1; img = "front";src=@model_specifications.first.front; 
+        when 2; img = "back" ;src=@model_specifications.first.back; 
+        when 3; img = "left" ;src=@model_specifications.first.left; 
+        when 4; img = "right" ;src=@model_specifications.first.right; 
+
+      end
+    %>
+    <div class="fleft">
+      <div style="position:relative;">
+        <%= image_tag "grid.png", :style => "position:absolute;" %>
+        <%= image_tag src, 
+            :style => "width:340px;height:340px;position:relative;left:42px;top:42px;z-index:99;" %>
+        <div id="<%="model_zone_#{img}"%>" style="<%=model_zone.style(42)%>" />
+        </div>
+      </div>
+      <h2 style="text-align:center;"><%=img.capitalize%></h2>
+      <div class="titleForm"><label>Zone Top Left X</label></div>
+      <div class="boxForm" style="width:250px;"><%= text_field img, 'top_left_x' %></div>
+
+      <div class="titleForm"><label>Zone Top Left Y</label></div>
+      <div class="boxForm" style="width:250px;"><%= text_field img, 'top_left_y' %></div>
+
+      <div class="titleForm"><label>Zone Bottom Right X</label></div>
+      <div class="boxForm" style="width:250px;"><%= text_field img, 'bottom_right_x' %></div>
+
+      <div class="titleForm"><label>Zone Bottom Right Y</label></div>
+      <div class="boxForm" style="width:250px;"><%= text_field img, 'bottom_right_y' %></div>
+
+      <div class="titleForm"><label></label></div>
+      <div class="boxForm" style="width:250px;"><%= link_to 'Preview', "javascript:previewZone('#{img}');", {:class => 'textLink', :title => 'Preview' }	%></div>
+    </div>
+  <% end %>
+
+</fieldset>

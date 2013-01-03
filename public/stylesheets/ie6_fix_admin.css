@@ -1,0 +1,27 @@
+/** IE6 is a hunk of crap!!! don't ask me why this is needed **/
+
+* html .sidemodule a:hover span{ background-color:#64b7e1; display:block; height:18px; cursor:pointer; color:white; padding-left:3px }
+
+.rtl,
+.rtr,
+.rbr,
+.rbl,
+a.icopng,
+.adminsearch .button { background-image: none !important }
+
+/* Large Corners */
+
+.rtl {	left: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn-tl-wbgr.png');}
+.rtr {	right: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn-tr-wbgr.png')}
+.rbr {	right: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn-br-wbgr.png')}
+.rbl {	left: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn-bl-wbgr.png')}
+
+
+.adminsearch .button,
+a.icopng {margin-left:5px; float:left}
+a.icoEdit { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/admin/icoEdit.png'); }
+a.icoDelete {filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/admin/icoDelete.png');}
+a.icoSearch {filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/admin/icoSearch.png');}
+a.icoSend {filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/admin/icoSend.png');}
+
+.adminsearch .button { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/admin/icoSearch.png');  }

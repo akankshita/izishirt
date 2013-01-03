@@ -1,0 +1,32 @@
+<p><%= I18n.t(:send_mail_contest_validation_1, :locale=>@language) %> <%= @image.user.firstname %> <%= @image.user.lastname %>,<p>
+
+<% if @is_approved %>
+	<p>
+		<%= I18n.t(:send_mail_contest_validation_2, :locale => @language, :amount => "#{Image.contest_amount_by_currency(@currency)} #{Currency.find_by_label(@currency).symbol}") %>
+		<br />
+	</p>
+
+	<p>
+		<%= I18n.t(:send_mail_contest_validation_3, :locale => @language) %>
+		<br />
+	</p>
+
+	<p>
+		<%= I18n.t(:send_mail_contest_validation_4, :locale => @language, :link => "http://www.izishirt.ca#{contest_vote_page_url(@image.id, nil, Language.find_by_shortname(@language).id)}") %>
+		<br />
+	</p>
+
+	<p>
+		<%= I18n.t(:send_mail_contest_validation_5, :locale => @language) %>
+	</p>
+
+<% else %>
+	<p>
+		<br />
+		<%= I18n.t(:send_mail_contest_validation_7, :locale => @language, :decline_reason => @image.decline_reason) %>
+	</p>
+<% end %>
+
+<p>
+	<%= I18n.t(:send_mail_contest_validation_6, :locale => @language) %>
+</p>

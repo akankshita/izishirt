@@ -1,0 +1,128 @@
+<%= error_messages_for 'mymodel' %>
+
+<!--[form:model]-->
+  <ul class="admintabs" style="display:block;">
+    <%= display_localization_tabs(@mymodel.localized_models) %>
+	
+    <li id="tabs_99" class="tab_inactive"><a href="#" onclick="toggle_localization_tabs(99); return false;"><%#=ADMIN_ESTABLISHMENT_FORM_FEATURE%></a></li>
+  </ul>
+  <% i=0; for l in @mymodel.localized_models %>
+  <% i += 1		%><% if i < 3 %>
+  <div id="div_localized_<%= l.language.id %>" class="localized_tab_content clearfix" style="display:<%= (i==1) ? 'block' : 'none' %>;">
+		<div class="titleForm"><label for="localized_<%= l.language.id%>"><%= t(:admin_model_baseform2_name) %><%#= ADMIN_ESTABLISHMENT_FORM_DESCRIPTION %></label></div>
+		<div class="boxForm"><input class="box" type="text" id="localized_name_<%= l.language.id%>" name="localized_name_<%= l.language.id%>" value="<%=l.name %>" /></div>		
+
+		<div class="titleForm"><label for="localized_<%= l.language.id%>"><%= t(:admin_colors_list_model_nickname) %></label></div>
+		<div class="boxForm"><input class="box" type="text" id="localized_nickname_<%= l.language.id%>" name="localized_nickname_<%= l.language.id%>" value="<%=l.nickname %>" /></div>		
+
+		<div class="titleForm"><label for="localized_<%= l.language.id%>">Seo name</label></div>
+		<div class="boxForm"><input class="box" type="text" id="localized_seo_name_<%= l.language.id%>" name="localized_seo_name_<%= l.language.id%>" value="<%= l.seo_name %>" /></div>		
+
+		<div class="titleForm"><label for="localized_warning_<%= l.language.id%>"><%= t(:admin_model_baseform2_warning_msg) %><%#= ADMIN_ESTABLISHMENT_FORM_NEAREST_ACTIVITIES %></label></div>	
+		<div class="boxForm"><input class="box" type="text" id="localized_warning<%= l.language.id%>" name="localized_warning_<%= l.language.id%>" value="<%=l.warning_text %>" /></div>
+		
+		<div class="titleForm"><label for="localized_<%= l.language.id%>"><%= t(:admin_model_baseform2_description) %><%#= ADMIN_ESTABLISHMENT_FORM_HOW_TO_GET_IN %></label></div>
+		<div class="boxForm"><textarea cols="<%= TEXTAREA_COLS_NUM %>"  rows="<%= TEXTAREA_ROWS_NUM %>" id="localized_description_<%= l.language.id%>" name="localized_description_<%= l.language.id%>" ><%=l.description %></textarea></div>
+
+    <div class="titleForm"><label for="localized_<%= l.language.id%>">Create: Meta title</label></div>
+    <div class="boxForm"><input class="box" type="text" id="localized_create_meta_title_<%= l.language.id%>" name="localized_create_meta_title_<%= l.language.id%>" value="<%= l.create_meta_title %>" /></div>
+
+    <div class="titleForm"><label for="localized_<%= l.language.id%>">Create: Meta description</label></div>
+    <div class="boxForm"><textarea cols="<%= TEXTAREA_COLS_NUM %>"  rows="<%= TEXTAREA_ROWS_NUM %>" id="localized_create_meta_description_<%= l.language.id%>" name="localized_create_meta_description_<%= l.language.id%>" ><%=l.create_meta_description %></textarea></div>
+
+    <div class="titleForm"><label for="localized_<%= l.language.id%>">Create: Meta keyword</label></div>
+    <div class="boxForm"><input class="box" type="text" id="localized_create_meta_keywords_<%= l.language.id%>" name="localized_create_meta_keywords_<%= l.language.id%>" value="<%= l.create_meta_keywords %>" /></div>
+
+    <div class="titleForm"><label for="localized_<%= l.language.id%>">Create section : h1</label></div>
+    <div class="boxForm"><input class="box" type="text" id="localized_create_h1_<%= l.language.id%>" name="localized_create_h1_<%= l.language.id%>" value="<%= l.create_h1 %>" /></div>
+
+    <div class="titleForm"><label for="localized_<%= l.language.id%>">Create section : description</label></div>
+    <div class="boxForm"><textarea cols="<%= TEXTAREA_COLS_NUM %>"  rows="<%= TEXTAREA_ROWS_NUM %>" id="localized_create_desc_<%= l.language.id%>" name="localized_create_desc_<%= l.language.id%>" ><%=l.create_desc %></textarea></div>
+
+
+	   <div class="titleForm">&nbsp;</div>
+	   <div class="boxForm">&nbsp;</div>
+  </div>
+  <% end %>
+  <% end %>
+
+
+<div class="titleForm"><label for="preview_image"><%= t(:admin_model_baseform2_preview_photo) %></label></div>
+<div class="boxForm">
+	<%= image_tag("/izishirtfiles/models/#{@mymodel.id}/preview.jpg", :width => 60) %>
+	<%#= unless @mymodel.preview_photo.empty? || @mymodel.preview_photo.nil? %><br />
+	<%= file_field 'mymodel', 'preview_photo_upload', :class=>'box'  %>
+</div>
+
+<div class="titleForm"><label>Apparel Page photo (w=354px h=338px)</label></div>
+<div class="boxForm">
+  <%= image_tag(@mymodel.apparel_preview.url("medium"), :width => 354, :height => 338) %><br />
+	<%= file_field 'mymodel', 'apparel_preview', :class=>'box'  %>
+	<hr>
+</div>
+
+
+<div class="titleForm"><label for="preview_image"><%= t(:admin_model_baseform2_default_color) %></label></div>
+<div class="boxForm"><%= select 'mymodel', 'default_color_id', @available_colors%>
+</div>
+
+
+<div class="titleForm"><label for="model_type_id"><%= t(:admin_model_baseform2_category) %></label></div>
+<div class="boxForm"><%= select 'mymodel', 'category_id', @categories, {}, :class=>'box'  %></div>
+
+<div class="titleForm"><label for="technology_id"><%= t(:admin_model_baseform2_brand) %></label></div>
+<div class="boxForm"><%= select 'mymodel', 'brand_id', @brand, {}, :class=>'box'  %></div>
+
+<div class="titleForm"><label>Garment Type</label></div>
+<div class="boxForm"><%= select 'mymodel', 'garment_type_id', @garment_types, {}, :class=>'box'  %></div>
+
+
+<% if @mymodel.new_record? %>
+<div class="titleForm"><label for="size_type_id">Size Type</label></div>
+<div class="boxForm"><%= select 'mymodel', 'size_type_id', @size_types, {}, :class=>'box'  %></div>
+<% end %>
+
+<div class="titleForm"><label for="technology_id"><%= t(:admin_model_baseform2_price) %></label></div>
+<div class="boxForm">
+	<%= text_field 'mymodel', 'price' %>
+		
+	<% if @mymodel && ! @mymodel.model_category == "custom" %>
+		<%= link_to "Edit blank prices", :controller => "/admin/price", :action => "blanks", :model_id => @mymodel.id %>
+	<% end %>
+	</div>
+
+	<div class="titleForm"><label for="technology_id">Price France</label></div>
+<div class="boxForm">
+	<%= text_field 'mymodel', 'pricefr' %>
+	
+	</div>
+
+<div class="titleForm"><label><%= t(:admin_models_cost_price) %></label></div>
+<div class="boxForm"><%= text_field 'mymodel', 'cost_price' %></div>
+
+<div class="titleForm"><label><%= t(:admin_model_weight) %></label></div>
+<div class="boxForm"><%= text_field 'mymodel', 'weight' %></div>
+
+<div class="titleForm"><label for="technology_id"><%= t(:admin_model_baseform2_offset_x) %></label></div>
+<div class="boxForm"><%= text_field 'mymodel', 'design_offset_x' %></div>
+
+<div class="titleForm"><label for="technology_id"><%= t(:admin_model_baseform2_offset_y) %></label></div>
+<div class="boxForm"><%= text_field 'mymodel', 'design_offset_y' %></div>
+
+<div class="titleForm"><label for="model_active">Show Sizes in Flash</label></div>
+<div class="boxForm"><%= check_box 'mymodel', 'show_sizes_in_flash', {}, 'true', 'false' %></div>
+
+<div class="titleForm"><label for="model_active"><%= t(:admin_model_baseform2_active) %></label></div>
+<div class="boxForm"><%= check_box 'mymodel', 'active', {}, 'true', 'false' %></div>
+
+<div class="titleForm">Model Category</div>
+<div class="boxForm">
+	<%= select 'mymodel', 'model_category', options_for_model_categories(), {}, :class=>'box' %>
+</div>
+
+<div class="titleForm"><%= t(:admin_model_baseform2_show_in_front_office) %></div>
+<div class="boxForm"><%= check_box 'mymodel', 'show_in_front_office', {}, 'true', 'false' %></div>
+
+<div class="titleForm">Is express shipping ?</div>
+<div class="boxForm"><%= check_box 'mymodel', 'is_express_shipping', {}, 'true', 'false' %></div>
+

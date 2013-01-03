@@ -1,0 +1,111 @@
+<script type="text/javascript"> 
+  $j(document).ready(function(){
+
+  //Larger thumbnail preview 
+
+  $j("ul.thumb li").hover(function() {
+  	$j(this).css({'z-index' : '10'});
+  	$j(this).find('img').addClass("hover").stop()
+  		.animate({
+  			marginTop: '-60px', 
+  			marginLeft: '-60px', 
+  			top: '50%', 
+  			left: '50%', 
+  			width: '100px', 
+  			height: '100px',
+  			padding: '20px' 
+  		}, 200);
+
+  	} , function() {
+  	$j(this).css({'z-index' : '0'});
+  	$j(this).find('img').removeClass("hover").stop()
+  		.animate({
+  			marginTop: '0', 
+  			marginLeft: '0',
+  			top: '0', 
+  			left: '0', 
+  			width: '60px', 
+  			height: '60px', 
+  			padding: '5px'
+  		}, 400);
+  });
+
+  //Swap Image on Click
+  	$j("ul.thumb li a").click(function() {
+
+  		var mainImage = $j(this).attr("href"); //Find Image Name
+  		$j("#main_view").attr('src', mainImage);
+  		return false;		
+  	});
+
+  });
+  </script>
+<div id="our_services">
+	
+        <div class="title"><%=t(:our_services) %> </div> <!-- .title -->
+        <div id="our_services_content">
+        	<div id="printing">
+                <div id="subtitle"> <%=t(:printing)%> </div> <!-- .subtitle -->                
+                <div id="printing_gallery">
+                    <img id="main_view" src="/images/izishirt2011/services/01-t-shirt.jpg" alt="" />
+                    <ul class="thumb">
+                        <li><a href="/images/izishirt2011/services/02-t-shirt.jpg"><img src="/images/izishirt2011/services/02-tshirt-thumb.jpg" alt="" /></a></li>
+                        <li><a href="/images/izishirt2011/services/03-t-shirt.jpg"><img src="/images/izishirt2011/services/03-tshirt-thumb.jpg" alt="" /></a></li>
+                        <li><a href="/images/izishirt2011/services/04-t-shirt.jpg"><img src="/images/izishirt2011/services/04-tshirt-thumb.jpg" alt="" /></a></li>
+                        <li><a href="/images/izishirt2011/services/05-t-shirt.jpg"><img src="/images/izishirt2011/services/05-tshirt-thumb.jpg" alt="" /></a></li>
+                        <li><a href="/images/izishirt2011/services/01-t-shirt.jpg"><img src="/images/izishirt2011/services/01-tshirt-thumb.jpg" alt="" /></a></li>
+                    </ul>
+                </div>
+                <strong><%=t(:printing_t1)%></strong>
+                <ul class="details">
+                    <li><%=t(:printing1)%></li>
+                    <li><%=t(:printing2)%></li>
+                    <li><%=t(:printing3)%></li>
+                    <li><%=t(:printing4)%></li>
+                </ul>
+                
+                <strong><%=t(:printing_t2)%></strong>
+                <ul  class="details">
+                    <li><%=t(:printing5)%></li>
+					<li><%=t(:printing6)%></li>
+					<li><%=t(:printing7)%></li>
+					<li><%=t(:printing8)%></li>
+                </ul>            
+            </div>
+            <div id="image_optimization">
+                <div id="subtitle"><%=t(:imgopt)%></div> <!-- .subtitle -->            
+                <img class="right_picture" src="/images/izishirt2011/image_optimization.jpg" alt="Image Optimizationl" />
+                <ul class="details">
+					<li><%=t(:imgopt1)%></li>
+					<li><%=t(:imgopt2)%></li>
+					<li><%=t(:imgopt3)%></li>
+					<li><%=t(:imgopt4)%></li>
+                </ul>                
+                <p id="image_optimization_tip">
+                    <%=t(:note_image_optimization)%><br />
+                    <%=t(:note_image_optimization_content)%>
+                </p>            
+            </div>
+            
+            <div id="our_products">
+                <div id="subtitle"><%= t(:our_products_title)%></div> <!-- .subtitle -->
+                <img class="right_picture" src="/images/izishirt2011/we_use_american_apparel.jpg" alt="We Use American Apparel" />
+                <ul class="details">
+					<li><%=t(:products1)%></li>
+					<li><%=t(:products2)%></li>
+					<li><%=t(:products3)%></li>
+					<li><%=t(:products4)%></li>
+                </ul>
+                
+                <div id="products_kinds"><strong><%=t(:lots_of_styles_to_choosee)%></strong><br />
+                    <div>
+                        <%=t(:lots_of_styles_list1)%>
+                    </div>
+                    <div>
+                        <%=t(:lots_of_styles_list2)%>
+                    </div>
+                </div>                
+            </div>
+    </div> 
+    <!-- END SERVICES MAIN -->
+    </div>

@@ -1,0 +1,44 @@
+<h1>Products Reported as copyright</h1>
+
+<div>
+	<%= will_paginate @products %>
+</div>
+
+<table border="1">
+	<tr>
+		<th>ID</th>
+		<th>Preview</th>
+		<th>Reason copyright</th>
+		<th>Images</th>
+		<th>Unmark as copyright</th>
+	</tr>
+
+	<% @products.each do |product| %>
+		<tr>
+			<td><%= link_to product.id %></td>
+			<td><%= image_tag product.front, :style => "width: 100px;" %></td>
+			<td><%= product.description_copyright %></td>
+			<td>
+				<table border="1">				
+
+					<tr>
+						<% product.images.each do |image| %>
+							<td>
+								<%= image_tag image.orig_image.url("png") %><br />
+								<%= link_to "Not copyright", {:action => "ignore_reported_copyright", :id => image.id}, {:confirm => "Really sure ?"} %> <br />
+								<%= link_to "Remove from front office", {:action => "remove_front_office_reported_copyright", :id => image.id}, {:confirm => "Very Sure ?"} %> <br />
+								<%= link_to "Remove from front office + boutiques", {:action => "remove_front_boutique_reported_copyright", :id => image.id}, {:confirm => "Entirely sure ?"} %>
+							</td>	
+						<% end %>
+					</tr>
+
+				</table>
+			</td>
+			<td><%= link_to "Unmark as Copyright", {:action => "unmark_product_as_copyright", :id => product.id}, {:confirm => "SURE, SURE ?"} %></td>
+		</tr>
+	<% end %>
+</table>
+
+<div>
+	<%= will_paginate @products %>
+</div>

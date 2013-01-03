@@ -1,0 +1,69 @@
+<div id="box_categories">
+  <%if no_link==false %>
+    <h3><%=t(:homepage_h3)%></h3>
+  <%else %>
+    <h2><%=t(:homepage_h3)%></h2>
+  <%end%>
+  <div id="list_categories">
+    <ul>
+
+      <%= render :partial => "custom_left_menu_links" %>
+
+      <% @categories.each do |category| %>
+      <%  isImage = false%>
+         <!--On teste si les sous-catégories ont au moins une image, sinon catégorie suivante -->
+        
+          <% category.sub_categories.each do |sub| %>
+         <%begin%>
+             <%  sub.images.find(:first,  :conditions=>"active=1").orig_image.url("100")%>
+             <%  isImage = true %>
+         <%rescue%>
+         <%end%>
+          <%end%>
+        
+       <% if isImage == false %>
+             <%next%>
+       <%end%>
+        <li>
+          <%= "<strong>" if @category && @category.id == category.id %>
+
+
+		  <%= link_to category.local_name(session[:language_id]).capitalize,
+		    category_url(category.id), :title=>get_title_link_adding(category.local_name(session[:language_id]), "T-Shirts")%>
+
+          <%= "</strong>" if  @category && @category.id == category.id %>
+        </li>
+        <% if open_category(category,@category) %>
+          <% category.sub_categories.each do |sub| %>
+          <!--On teste si les sous-catégories ont au moins une image, sinon sous-catégorie suivante -->
+            <%begin%>
+              <%  sub.images.find(:first, :conditions=>"active=1").orig_image.url("100")%>
+            <%rescue%>
+            <%next%>
+            <%end%>
+            <% if sub.active %>
+              
+              <li class="sub_category">
+                <%= "<strong>" if @category &&  @category.id == sub.id %>
+
+			<%= link_to sub.local_name(session[:language_id]).capitalize,
+			  category_url(sub.id), :title=>get_title_link_adding(sub.local_name(session[:language_id]), "T-Shirts")%>
+                <%= "</strong>" if  @category && @category.id == sub.id %>
+              </li>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    </ul>
+  </div>
+
+ <%if no_link==false %>
+  <div id="link">
+			<%= link_to t(:browse_lib_link_marketplace),
+          {:controller => 'display', :action => 'marketplace'}%>&nbsp;
+  </div>
+ <% end %>
+</div>
+
+

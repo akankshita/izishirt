@@ -1,0 +1,116 @@
+<div class="bulkGeneralDiv">
+  <div class="append-3 prepend-3 span-23 breadcrumb last">
+    <%= link_to t(:menu_home), "/", :class => 'mediumGray noDecoration bold' %>
+    <%= image_tag "izishirt2009/blueArrows.png", {:class=> 'middle', :alt => ">>"} %>
+    <%= link_to t(:menu_quote), {:action => 'index'},
+      :class => 'mediumGray noDecoration bold' %>
+  </div>
+
+  <div class="prepend-3 span-7 last bulkColumn">
+    <%= render :partial => "bulk_left_menu" %>
+  </div>
+
+  <div class="append-3 span-15 last bulkColumn">
+
+    <div class="redBox prepend-12-px">
+      <div class="left redBoxLeft noPad noMarg noBord"></div>
+      <div class="left redBoxHeader noPad noMarg noBord boxContentBulkHeader">
+        <label><%=t(:quote_summary).mb_chars.upcase%></label>
+      </div>
+      <div class="left redBoxRight noPad noMarg noBord"></div>
+
+      <div class="clear noPad noMarg boxContent  bulkContent">
+        <div class="clear"></div>
+        <div class="bulkContentTitle" style="margin-top:0px;">
+          <div class="topTabs">
+            <div class="title"><%=t(:quote_summary).mb_chars.upcase%></div>
+          </div>
+          <div class="topContact">
+            <span class="red">Tel</span> 1 514 286 2446 &nbsp;&nbsp;&nbsp;<span class="red">Email</span> <%= link_to t(:contact_us_email_quotes), t(:contact_us_email_quotes), :class=>"email_link" %>
+          </div>
+        </div>
+        <div class="bulkPad">
+          <div class="bulkContentSection">
+            <div class="summaryFields">
+              <%= print_bulk_order_value(@bulk_order.company_name, :COMPANY_NAME, "half") %>
+              <%= print_bulk_order_value(@bulk_order.first_name, :FIRST_NAME, "half") %>
+              <%= print_bulk_order_value(@bulk_order.last_name, :LAST_NAME, "half") %>
+              <%= print_bulk_order_value(@bulk_order.email, :EMAIL, "half") %>
+              <%= print_bulk_order_value(@bulk_order.phone, :PHONE, "half") %>
+              <%= print_bulk_order_value(@bulk_order.date_needed, :DATE_NEEDED, "half") %>
+              <%= print_bulk_order_value(@bulk_order.zip, :ZIP_CODE, "half") %>
+              <%= print_bulk_order_value(@bulk_order.comments, :COMMENTS, "full") %>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="summaryProducts">
+              <% i = 0 %>
+              <% for garment in @bulk_order.bulk_orders_garments %>
+                <% i = i+1 %>
+                <div class="title red">
+                  <%= t(:product).upcase + " " + i.to_s %>
+                </div>
+                <div class="content">
+                  <%= print_bulk_order_value(garment.quantity, :QUANTITY, "half") %>
+                  <%= print_bulk_order_value(garment.model.localized_models[session[:language_id].to_i-1].name, :GARMENT_MODEL, "half") unless garment.model_id.nil? %>
+                  <%= print_bulk_order_value(garment.category.localized_categories[session[:language_id].to_i-1].name, :GARMENT_BRAND, "half") unless garment.category_id.nil? %>
+                  <%= print_bulk_order_value(garment.model_type.localized_model_types[session[:language_id].to_i-1].name, :GARMENT_TYPE, "half") unless garment.model_type_id.nil? %>
+                  <%= print_bulk_order_value(garment.color.localized_colors[session[:language_id].to_i-1].name, :GARMENT_COLOR, "half") unless garment.color_id.nil? %>
+                  <div class="clear"></div>
+                  <%= print_bulk_order_value(garment.comments, :GARMENT_COMMENTS, "full") %>
+                  <% j = 0 %>
+                  <div class="prints">
+                    <% for print in garment.bulk_orders_garments_prints %>
+                      <% j = j+1 %>
+                      <% value = ""
+                      value += print.print_type.localized_print_types[session[:language_id].to_i-1].name unless print.print_type.nil?
+                      value += " " unless value.length == 0
+                      value += "("+print.width.to_s + " x " + print.height.to_s+")" unless print.height.nil? || print.width.nil?
+                    %>
+                      <% if value.length == 0
+                        value = t(:no_information)
+                      end
+                    %>
+                      <div class="print">
+                        <div class="clear"></div>
+                        <%= print_bulk_order_value(value, :PRINT, "", " " + j.to_s) %>
+                        <%= image_tag print.bulk_orders_garments_prints_image.image.url(:thumb) if print.bulk_orders_garments_prints_image %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="clear"></div>
+                  <%= print_bulk_order_value(garment.print_comments, :PRINT_COMMENTS, "full") %>
+                  <div class="clear"></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="bulkList">
+            <ul>
+              <li><%=t(:quote_summary_explanation)%></li>
+            </ul>
+          </div>
+          </div>
+
+          <div class="bulkSeparator clear" style="margin-top:15px;"></div>
+          <div id="formError" class="formError"></div>
+          <div class="centered bulkButtonSection">
+            <div class="longBlueButton bulkButton">
+              <%= link_to t(:edit_products).mb_chars.upcase, url_for({:action=>:advanced, :session=>true}) + "#products", :class=>"", :onclick=>"javascript:addGarment();" %>
+            </div>
+            <div class="greenButtonLarge bulkButton">
+              <%= link_to t(:confirm_and_send).mb_chars.upcase, {:action=>:create_advanced}, :class=>"" %>
+            </div>
+          </div>
+          <div style="margin-top: 25px;" class="bulkSeparator clear"></div>
+          <%= image_tag "izishirt2009/#{session[:language]}/notSure.png", :alt=>t(:not_sure_banner_alt) %>
+        </div>
+      </div>
+
+
+
+      <div class="left boxBottomLeft"></div>
+      <div class="left boxBottomMiddle bulkBottomWidth"></div>
+      <div class="left boxBottomRight"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div id="right_container" style="<%= "display: none;" if params[:action] == "show_brief_cart" %>">
+  <div id="right_box_info">
+    <div id="sub_total">
+
+      <div class="clear"></div>
+      <span id="cart_total">
+	<%= render :partial=>"cart_total" %>
+      </span>
+
+      <div class="clear"></div>
+
+
+        <%= link_to((image_tag "izishirt2011/#{session[:language]}/bt_continue.jpg", :alt=> t(:address_next), :style=>"padding:5px 0px 5px 0px; text-align:center; text-decoration:none;margin-top:10px;margin-left:12px;"),
+          "#current", :onclick=>"javascript:$j('#comments_form').submit();", :title=>t(:continue, :locale => @checkout_locale)) %>
+
+    </div>
+    <div id="payments_step1">
+      <%#= render :partial=>"/display/mcafee_footer_#{@checkout_locale}" %>
+      <%= image_tag "izishirt2009/payment_method.png", :width=>92, :height=>48 %>
+    </div>
+  </div>
+</div>

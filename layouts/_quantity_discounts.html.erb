@@ -1,0 +1,24 @@
+
+
+
+  <ul>
+
+      <% @bulk_discounts = BulkDiscount.find(:all, :order=>"start") 
+			for bulk_discount in @bulk_discounts %>
+      <li>
+
+    <label class="qty" style="margin-left:5px;"><strong><%= bulk_discount.start  %>+</strong></label>
+
+    <label class="percent"style="margin-right:5px;" ><strong><%= bulk_discount.percentage  %>%</strong></label>
+      </li>
+		<% end %>
+      </ul>
+    <div style="text-align:right">
+    <%= image_tag "izishirt2011/#{session[:language]}/applies_txt.png", :alt=>"Quantity discount", :style=>"" %>
+      </div>
+
+
+
+    <div class="clear" style="height: 0px;"></div>
+
+  <div class="clear" style="height: 0px;"></div>

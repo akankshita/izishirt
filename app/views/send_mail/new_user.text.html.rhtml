@@ -1,0 +1,29 @@
+<%= @user.firstname + " " + @user.lastname%>, <%= I18n.t(:send_mail_new_user_header, :locale => Language.find(@user.language_id).shortname) %>
+<br />
+<p><%= I18n.t(:send_mail_new_user_content1, :locale => Language.find(@user.language_id).shortname) %></p>
+<br />
+<p>
+	<%= I18n.t(:send_mail_new_user_content2, :locale => Language.find(@user.language_id).shortname) %><br />
+	<b><%= I18n.t(:send_mail_new_user_content3, :locale => Language.find(@user.language_id).shortname) %></b> <%= @user.username %>
+</p>
+<br />
+<p>
+<a href="http://www.izishirt.ca/display/create_tshirt" target="_blank"><%= I18n.t(:send_mail_new_user_link1, :locale => Language.find(@user.language_id).shortname) %></a><br />
+<a href="http://www.izishirt.ca/myizishirt/design/upload/" target="_blank"><%= I18n.t(:send_mail_new_user_link2, :locale => Language.find(@user.language_id).shortname) %></a><br />
+<a href="http://www.izishirt.ca/display/page/ouvre-ta-boutique" target="_blank"><%= I18n.t(:send_mail_new_user_link3, :locale => Language.find(@user.language_id).shortname) %></a><br />
+</p>
+<br />
+<p><%= I18n.t(:send_mail_new_user_content6, :locale => Language.find(@user.language_id).shortname) %></p>
+<br />
+<p>
+	<%=I18n.t(:send_mail_content_izishirt_team, :locale => Language.find(@user.language_id).shortname)%><br/>
+	<a href="http://www.izishirt.ca" target="_blank">IZISHIRT.com</a><br/>
+	<a href="mailto:<%=I18n.t(:contact_us_email_questions, :locale => Language.find(@user.language_id).shortname)%>"><%=I18n.t(:contact_us_email_questions, :locale => Language.find(@user.language_id).shortname)%></a><br/>
+</p>
+<br />
+<%= I18n.t(:sendmail_social_networks, :locale => Language.find(@user.language_id).shortname) %><br />
+Twitter: <a href="http://twitter.com/izishirt">http://twitter.com/izishirt</a><br />
+Facebook: <a href="http://facebook.com/pages/IziShirt/223576667655075">http://facebook.com/pages/IziShirt/223576667655075</a><br />
+Blog: <a href="http://www.izishirtblog.com/">http://www.izishirtblog.com/</a>
+<br />
+<img src="http://www.izishirt.ca/images/email_sig.jpeg" alt="izishirt.ca" />

@@ -1,0 +1,70 @@
+<script language="Javascript">
+function validate_gift(){
+  if ($('from').value == "")
+    alert('<%= t(:gifts_missing)%>');
+  else if ($('to').value == "")
+    alert('<%= t(:gifts_missing)%>');
+  else if ($('amount').value == "")
+    alert('<%= t(:gifts_missing)%>');
+  else if ($('email').value == "")
+    alert('<%= t(:gifts_missing)%>');
+  else if (!$('amount').value.match(/^\d+$/))
+    alert('<%= t(:gifts_amount_error) %>'); 
+  else if ($('amount').value < 10)
+    alert('<%= t(:gifts_amount_min_error) %>');
+  else if ($('email').value != $('confirm_email').value)
+    alert('<%= t(:gifts_email_error) %>');
+  else 
+    $('gifts_form').submit();
+}
+</script>
+
+<div class="pageholder">
+  <div id="checkout-container"> 
+    <div class="checkout-ship-spacer"></div>
+    <h3><%= t(:gifts_header) %></h3>
+    <form action="<%= "#{SECURE_URL_ROOT}/checkout/gifts_address" %>" method="post" id="gifts_form" name="gifts_form">
+      <div class="clearfix">
+        <div  style="border:0px solid">
+          <table border="0" cellspacing="0" cellpadding="0" class="cartaddress" align="center">
+            <tr>
+              <td colspan='2' valign="top"><%= t(:gifts_from) %> <span class="red">*</span><br />
+              <input type="text" name="gift[from]" id="from" value="" /></td>
+              <td />
+            </tr>
+            <tr>
+              <td colspan='2' valign="top">
+                <%= t(:gifts_amount) %> <span class="red">*</span><%= t(:gifts_amount_minimum) %><br />
+                <input type="text" name="gift[amount]" id="amount" value="" />
+              </td>
+              <td />
+            </tr>
+            <tr>
+              <td colspan='2' valign="top"><%= t(:gifts_to) %> <span class="red">*</span><br />
+              <input type="text" name="gift[to]" id="to" value="" /></td>
+              <td />
+            </tr>
+            <tr>
+              <td colspan='2' valign="top"><%= t(:gifts_email) %> <span class="red">*</span><br />
+              <input type="text" name="gift[email]" id="email" value="" /></td>
+              <td />
+            </tr>
+            <tr>
+              <td colspan='2' valign="top"><%= t(:gifts_confirm_email) %> <span class="red">*</span><br />
+              <input type="text" name="gift[confirm_email]" id="confirm_email" value="" /></td>
+              <td />
+            </tr>
+            <tr>
+              <td colspan='2' valign="top"><%= t(:gifts_message) %><br />
+              <textarea name="gift[message]" id="message" cols="71" rows="4"></textarea>
+              <td />
+            </tr>
+          </table>
+        </div>
+        <div class="checkout_btn" align="center">
+          <a href="javascript:validate_gift();" class="checkout-button-validate-2"><%= t(:gifts_buy) %></a> 
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

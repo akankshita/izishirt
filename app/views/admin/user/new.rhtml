@@ -1,0 +1,12 @@
+<h1><%= t(:admin_user_new_new_user) %></h1>
+
+<% form_for :user, @user, :url => {:action => 'create'} do |form| %>
+
+	<%= render :partial => 'form', :locals => {:form => form} %>
+
+	<div class="titleForm">&nbsp;</div>
+	<div class="boxForm">
+		<%= edit_form_buttons %>
+	</div>	
+
+<% end %>

@@ -1,0 +1,41 @@
+<script type="text/javascript">
+  $j(document).ready(function(){
+    cbb.init();
+  });
+</script>
+
+<div class="mycopyright relative">
+  <label class="where white bigText"><%=t(:design_copyright_info)%></label>
+  <%= link_to image_tag("/images/izishirt2009/lightBack.png"),
+      "#", :class => 'lbAction uploadClose', :rel => 'deactivate'%>
+
+  <label class="red biggerText"><%=t(:examples_of_designs_we_cant_accept)%></label>
+  <div class="horiz_space_8"></div>
+  <label class="addBottom normal bigText"><%=t(:blacklisted_design)%></label>
+
+  <ul class="left">
+    <li>
+      <span class="bold"><%=t(:copyright_infringement)%></span><br /><%=t(:copyright_infringement_explanation)%>
+    </li>
+  </ul>
+
+  <ul class="left">
+    <li>
+      <span class="bold"><%=t(:breach_of_personal_rights)%></span><br /><%=t(:breach_of_personal_rights_explanation)%>
+    </li>
+  </ul>
+
+  <div class="clear horiz_space_20"></div>
+  <%= image_tag "/images/izishirt2011/copyright.jpg" %>
+  <div class="clear horiz_space_20"></div>
+
+  <div class="submit center"> 
+    <div id='loading' style='display:none;'>
+      <%= image_tag 'ajax-loader.gif', :alt=>'Spinner' -%>
+    </div>
+    <div class="blueButton">
+      <%= link_to t(:back),"#",
+        :name => 'light_upload', :class => 'lbAction', :rel => 'deactivate'%>
+    </div>
+  </div>
+</div>

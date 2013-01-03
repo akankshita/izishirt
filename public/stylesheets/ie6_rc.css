@@ -1,0 +1,31 @@
+/** IE6 is a hunk of crap!!! don't ask me why this is needed **/
+
+/* Large Corners */
+
+.rtl {	left: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rc/rtl.png');}
+.rtr {	right: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rc/rtr.png')}
+.rbr {	right: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rc/rbr.png')}
+.rbl {	left: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rc/rbl.png')}
+
+/* Small Corners - light border*/
+.rcsbgrdark .rstl {	left: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rnds/sm_dark_gr_rtl.png')}
+.rcsbgrdark .rstr {	right: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rnds/sm_dark_gr_rtr.png')}
+.rcsbgrdark .rsbr {	right: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rnds/sm_dark_gr_rbr.png')}
+.rcsbgrdark .rsbl {	left: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rnds/sm_dark_gr_rbl.png')}
+
+.crnliteblue .rstl {	left: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rc/crn_tl_blue.png')}
+.crnliteblue .rstr {	right: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rc/crn_tr_blue.png')}
+.crnliteblue .rsbr {	right: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rc/crn_br_blue.png')}
+.crnliteblue .rsbl {	left: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rc/crn_bl_blue.png')}
+
+.crnTL, .crnTR, .crnBR, .crnBL,
+.rstl, .rstr, .rsbr, .rsbl{ background-image: none !important }
+
+/* rounded corners */
+.crnTL { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rc/crn_tl_gr.png') }
+.crnTR { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rc/crn_tr_gr.png') }
+.crnBR { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rc/crn_br_gr.png') }
+.crnBL { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/rc/crn_bl_gr.png') }
+
+
+

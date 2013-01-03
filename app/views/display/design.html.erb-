@@ -1,0 +1,191 @@
+<div id="design_page">
+  <div id="design_left_container">
+	<div id="design_name">
+		<h1><%= @h1_title %></h1>
+	</div>
+
+
+	<div id="design_desc">
+		<div id="desc_left">
+			<div id="desc_img" style="background-color: #fff;"><%= image_tag(@image_url, :width=>340, :height=>340) %></div>
+                        <div id="desc_button"> <%= link_to(( image_tag "izishirt2011/#{session[:language]}/bt_putit_purple.jpg", :alt=>"Imprimez sur T-Shirt"), design_url(@design.id))%></div>
+		</div>
+		<div id="desc_right">
+			<div class="part">
+				<div class="part_title"><%= t(:designed_by).capitalize %> <%= @design.user.username %></div>
+				<div class="part_desc">
+					<%= t(:design_right_desc, :name=>@design.name, :category=>@categ_parent.name)%>
+                                </div>
+                                <div id="print_on_tshirt">
+                               <%= link_to(( image_tag "izishirt2011/#{session[:language]}/bt_putit_green.jpg", :alt=>"Imprimez sur T-Shirt"), design_url(@design.id))%>
+                               
+                                </div>
+                        </div>
+                  <div class="part">
+                  <div class="part_title"><%=t(:design_find_other_category)%></div>
+                  <div id="list_categories">
+                    <ul>
+                    <%= render :partial => "custom_left_menu_links" %>
+                      </ul>
+                  </div>
+		</div>
+	</div>
+        </div>
+	<div id="box_left">
+		<% if @related_products.size!=0 %>
+		<div class="related">
+			<%= render :partial=>"js_product_colors" %>
+			<div class="related_title"><%=t(:related_products)%></div>
+			<div class="others_items"><%= link_to t(:see_more), marketplace_category_url(@category_design.category_id) %></div>
+			<div class="related_list">
+				<%
+					i=0
+					@related_products.map{|rp|
+						url_to_product = "#{marketplace_product_url(rp.id)}"
+		        		designer_product = User.find(rp.user.id).username
+						product_image_url = rp.zones[0].has_designs? ? rp.front : rp.back
+						zone = rp.zones[0].has_designs? ? rp.zones[0] : rp.zones[1]
+						
+
+	
+
+						@list_related_product = "#{@list_related_product}
+						<div class=\"related_product\">
+							<div class=\"related_img\">
+								<a id=\"link_#{rp.id}\" href=\"#{url_to_product}\"
+								onmouseover=\"$j('#product_#{rp.id}').attr('src', '#{zone.first_preview_image}');$j('#link_#{rp.id}').css('background-color', '#{rp.jpg_background_color}');\"
+								onmouseout=\"$j('#product_#{rp.id}').attr('src', '#{product_image_url}');$j('#link_#{rp.id}').css('background-color', '#fff');\">
+									<img id=\"product_#{rp.id}\" alt=\"#{rp.name}\" src=\"#{product_image_url}\" />
+								</a>
+							</div>
+							<div class=\"related_desc\">
+								<span class=\"title_product\">#{truncate(t(:seo_model_title, :name => rp.name, :model_name => rp.front_model_name(session[:language_id])), :length=>26)}</span><br/>
+								<span class=\"designer_product\">#{t(:designed_by)} <a href=\"http://#{designer_product}.izishirt.com\">#{designer_product}</a></span><br/>
+								<span class=\"price\">$#{rp.price}</span><br/>
+							</div>
+						</div>"
+					   	i = (i+1)%2
+					}
+				%>
+				<%= @list_related_product %>
+			</div>
+		</div>
+		<%end%>
+		<% if @related_designs.size!=0 %>
+		<div class="related">
+			<div class="related_title"><%=t(:related_designs)%></div>
+
+			<div class="related_design">
+				<%= @list_related_designs %>
+                                <%= @list_related_designs2 %>
+			</div>
+		</div>
+		<%end%>
+	</div>
+    </div>
+  <div id="design_right_container">
+        <div id="quantity_discounts">
+     <%= image_tag "izishirt2011/#{session[:language]}/quantitydiscount_txt_white.png", :alt=>"Quantity discount", :style=>"" %>
+      <ul>
+
+      <li>
+
+    <label class="qty" style="margin-left:5px;"><strong>3+</strong></label>
+
+    <label class="percent"style="margin-right:5px;" ><strong>5%</strong></label>
+      </li>
+
+
+      <li>
+
+    <label class="qty"><strong>10+</strong></label>
+    <label class="percent"><strong>10%</strong></label>
+      </li>
+
+
+      <li>
+
+    <label class="qty"><strong>20+</strong></label>
+    <label class="percent"><strong>15%</strong></label>
+      </li>
+
+
+      <li>
+
+    <label class="qty"><strong>30+</strong></label>
+
+    <label class="percent"><strong>20%</strong></label>
+      </li>
+
+
+      <li>
+
+    <label class="qty"><strong>35+</strong></label>
+    <label class="percent"><strong>22%</strong></label>
+      </li>
+
+
+      <li>
+
+    <label class="qty"><strong>40+</strong></label>
+    <label class="percent"><strong>25%</strong></label>
+      </li>
+
+
+      <li>
+
+    <label class="qty"><strong>50+</strong></label>
+
+    <label class="percent"><strong>30%</strong></label>
+      </li>
+
+
+      <li>
+
+    <label class="qty"><strong>60+</strong></label>
+    <label class="percent"><strong>35%</strong></label>
+      </li>
+
+
+      <li>
+
+    <label class="qty"><strong>80+</strong></label>
+    <label class="percent"><strong>45%</strong></label>
+      </li>
+
+
+      <li>
+
+    <label class="qty" style="margin-right:52px;"><strong>100+</strong></label>
+
+    <label class="percent"><strong>50%</strong></label>
+      </li>
+      </ul>
+      <%= image_tag "izishirt2011/#{session[:language]}/applies_txt_white.png", :alt=>"Quantity discount", :style=>"" %>
+    </div>
+
+  
+  <%= render :partial => 'shop_left_menu', :locals=>{:no_link=>true} %>
+	<div id="box_right">
+		<div id="why_izishirt">
+			<p><%= image_tag "izishirt2011/#{session[:language]}/whyizishirt.jpg", :alt=>"Why Izishirt", :style=>"" %></p>
+			<ul>
+				<li><%=t(:why_izishirt_1) %></li>
+				<li><%=t(:why_izishirt_2) %></li>
+				<li><%=t(:why_izishirt_3) %></li>
+				<li><%=t(:why_izishirt_4) %></li>
+				<li><%=t(:why_izishirt_5) %></li>
+			</ul>
+			<div id="link"><a  href="<%= design_url(@design.id) %>" class="button_make" title="<%=t(:create_your_own) %>"><%= image_tag "izishirt2011/#{session[:language]}/bt_createyourown_orange.jpg", :alt=>"Why Izishirt", :style=>"" %></a></div>
+		</div>
+	</div>
+   </div>
+  
+	<div id="design_footer">
+           <%= link_to((image_tag "izishirt2011/#{session[:language]}/createyourownnow_purple.jpg") , create_tshirt_url(), :title=>t(:create_yout_tshirt))%>
+		<div id="design_foo_txt">
+                 <%= t(:design_foo_desc, :name=>@design.name, :category=> @categ_parent.name) %>
+		</div>
+	</div>
+     
+</div>

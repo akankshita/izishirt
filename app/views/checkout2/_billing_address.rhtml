@@ -1,0 +1,52 @@
+
+<div class="cart_header addTop addBottom">
+  <%= image_tag("/images/izishirt2009/rightArrow.png") %>
+  <label class="items">
+    <%= t(:address_header, :locale => @checkout_locale) %>
+  </label>
+  <div class="clear"></div>
+</div>
+
+<div class="horiz_space_12"></div>
+
+<div class="left">
+  
+  <label><%= t(:address_name, :locale => @checkout_locale) %> <span class="red">*</span></label>
+  <input type="text" name="billing[name]" id="address_name" value="<%= @user.firstname+" "+@user.lastname %>" />
+  <%= hidden_field :billing, :user_id, {:value => @user.id} %>
+
+  <label><%= t(:address_address, :locale => @checkout_locale) %> <span class="red">*</span></label>
+  <input type="text" name="billing[address1]" id="address_address" value="<%= @billing.address1 %>" />
+
+  <label><%= t(:address_appt, :locale => @checkout_locale) %></label>
+  <input type="text" name="billing[address2]" id="address_appt" value="<%= @billing.address2 %>" />
+
+  <label><%= t(:address_phone, :locale => @checkout_locale) %> <span class="red">*</span></label>
+  <input type="text" name="billing[phone]" id="address_phone" value="<%= @billing.phone %>"/>
+
+  <label><%= t(:address_city, :locale => @checkout_locale) %> <span class="red">*</span></label>
+  <input type="text" name="billing[town]" id="address_city" value="<%= @billing.town %>"/>
+
+</div>
+
+<div class="right">
+    <label><%= t(:address_country, :locale => @checkout_locale) %> <span class="red">*</span></label>
+      <%= select_tag 'billing[country_id]', options_for_select(@countries, @country_id),
+        {:style => 'width:152px;margin:0px;',
+      :onchange => remote_function( :update => 'billing_province',
+          :url => { :action => 'load_billing_provinces_by_country'}, :with => "Form.Element.serialize(this)")} %>
+
+    <div id="billing_province">
+      <%= render :partial => "billing_province" %>
+    </div>
+
+  <label><%= t(:address_postalcode, :locale => @checkout_locale) %> <span class="red">*</span></label>
+  <input type="text" name="billing[zip]" id="address_zip" value="<%= @billing.zip %>"/>
+</div>
+
+<div class="clear"></div>
+
+<div class="mandatory">
+  <label><span class="red">*</span> <%= t(:address_mandatoryfields, :locale => @checkout_locale) %></label>
+</div>
+

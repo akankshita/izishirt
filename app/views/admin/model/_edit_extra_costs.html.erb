@@ -1,0 +1,19 @@
+<br />
+<fieldset>
+  <legend>Extra Costs</legend>
+  <div class="admin_extra_cost_wrapper">
+    <div style="clear:both;"></div>
+    <%model_sizes.each do |model_size|%>
+      <div>
+        <label class="admin_model_size_form_label">
+          <%=model_size.local_name%>
+        </label>
+        <%= text_field_tag "model_size[#{model_size.id}][extra_cost]",
+                            model_size.extra_cost,
+                            :class => "admin_model_size_form", :style=> 'width:30px' %>
+      </div>
+    <%end%>
+    <div style="clear:both;"></div>
+  </div>
+</fieldset>
+<br />

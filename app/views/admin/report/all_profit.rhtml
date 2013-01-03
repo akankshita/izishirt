@@ -1,0 +1,74 @@
+<h1>Izishirt All Profits Report</h1>
+<%= dhtml_calendar_includes %>
+<%= render :partial=>"javascript_check" %>
+<div class="profit_search">
+  <% form_remote_tag :update => "results",
+    :url => {:action => 'all_profit'},
+    :condition=>"checkStartDate()",
+    :success => "Element.hide('spinner')",
+    :html => {:name => 'search_form'} do %>
+    <div class="titleForm"><label>Start: </label></div>
+    <div class="boxForm">
+      <%= calendar_box 'profit', 'start',
+        { :class => 'date',
+          :field_title => 'Start',
+          :form_name => 'search_form',
+          :button_title => 'Show calendar' },
+          { :firstDay => 1,
+            :range => [2000, 2020],
+            :step => 1,
+            :showOthers => true,
+            :cache => true }
+      %>
+    </div>
+
+    <div class="titleForm"><label>End: </label></div>
+    <div class="boxForm">
+      <%= calendar_box 'profit', 'end',
+        { :class => 'date',
+          :field_title => 'End',
+          :form_name => 'search_form',
+          :button_title => 'Show calendar' },
+          { :firstDay => 1,
+            :range => [2000, 2020],
+            :step => 1,
+            :showOthers => true,
+            :cache => true }
+      %>
+    </div>
+
+    <div class="titleForm"><label>Printer: </label></div>
+    <div class="boxForm"><%= select (:profit, :printer, @printers) %></div>
+
+    <div class="titleForm"><label>Refering Site: </label></div>
+    <div class="boxForm"><%= select (:profit, :referer, @referers) %></div>
+
+    <div class="titleForm"><label>Purchase source: </label></div>
+    <div class="boxForm"><%= select (:profit, :purchase_source, @purchase_sources) %></div>
+
+    <div class="titleForm"><label>Province: </label></div>
+    <div class="boxForm"><%= select (:profit, :province, @provinces) %></div>
+
+    <div class="titleForm"><label>Province Name: </label></div>
+    <div class="boxForm"><%= text_field_tag 'profit[province_name]' %></div>
+
+    <div class="titleForm"><label>Country: </label></div>
+    <div class="boxForm"><%= select (:profit, :country, @countries) %></div>
+
+    <div class="titleForm"><label>Country Name: </label></div>
+    <div class="boxForm"><%= text_field_tag 'profit[country_name]' %></div>
+    <div class="titleForm"><label>Only Connexplace: </label></div>
+    <div class="boxForm"><%= check_box_tag 'profit[affiliate_id]' %></div>
+    <div class="titleForm">&nbsp;</div>
+    <div class="boxForm">
+      <%= submit_tag 'Search', :class => 'button' %>
+      <%= image_tag("working.gif",
+              :border=> 0,
+              :id => "spinner",
+              :style=>"display: none;" ) %>
+    </div>
+  <% end %>
+</div>
+<br /><br />
+<div id="results" style="clear:both">
+</div>

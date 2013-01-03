@@ -1,0 +1,60 @@
+<div id='colorpicker201' class='colorpicker201'></div>
+
+<% form_tag({:action => 'update_jpg_background_color', :id => @image.id }, {:multipart => true }) do %>
+
+  <table>
+    <tr>
+      <td>
+        <%= image_tag(@image.orig_image.url("340") + "&#{Time.current}", :class => 'shop1Img') %>
+      </td>
+
+
+      <td>
+        <table>
+          <%
+          id = 1
+
+          nb_shirts_per_line = 2
+
+          if @models_info
+
+            @models_info.each do |model_info|
+              color_code = "#" + model_info[1].color_code
+
+              if id == 1
+                color_code = @image.jpg_background_color
+              end
+
+            %>
+
+              <%= "<tr>" if id % nb_shirts_per_line == 1 %>
+
+              <td width="150px" height="150px" align="center" style="background-color:<%= color_code %>" id="preview_box_<%= id %>">
+                <%=  image_tag(@image.orig_image.url("png") + "&#{Time.current}") %>
+              </td>
+
+              <%= "</tr>" if id % nb_shirts_per_line == nb_shirts_per_line %>
+              <%id += 1%>
+            <% end %>
+          <% end %>
+
+        </table>
+      </td>
+
+    </tr>
+
+    <tr>
+    <td></td>
+    <td>
+      <%
+      default_color = ""
+    %>
+
+
+    </td>
+    <tr>
+
+  </table>
+
+
+<% end %>

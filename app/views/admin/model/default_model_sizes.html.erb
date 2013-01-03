@@ -1,0 +1,71 @@
+<h1>Default Model Sizes for </h1>
+
+<div class="admin_size_type_wrapper">
+  <label>Size Type: </label>
+  <%= select :size_type, :id, 
+    @size_types.map{|size_type|[size_type.name, size_type.id]},
+    {},
+    :onchange => "document.location.href='/admin/model/default_model_sizes?size_type_id='+$('size_type_id').value" 
+    %>
+  <% form_for :size_type, SizeType.new, :url => "add_size_type", :html => {:id => "add_size_type"} do |f| %>
+    <%= f.text_field :name, :class => "admin_model_size_form" %>
+    <%= submit_tag t(:admin_add) %>
+  <% end %>
+</div>
+<div style="clear:both"></div>
+<br />
+<br />
+
+<% if @other_locales.size > 0 && @model_sizes.size > 0%>
+  <div style="float:right;">
+    <% form_tag({:action => 'add_default_model_size_locale', :size_type_id => @size_type.id}, 
+                {:id=>"add_locale" }) do %>
+      <%= select_tag "locale", options_for_select(@other_locales) %>
+      <%= link_to "Add Locale",
+                  "javascript:$('add_locale').submit();", 
+                  {:class => 'textLink', :title => t(:admin_save) }	%>
+    <%end%>
+  </div>
+<% end %>
+
+<ul class="admintabs" style="display:block;">
+  <%= display_locale_tabs(@locales,@default_locale.id) %>
+</ul>
+
+<% form_tag({:action => 'update_model_sizes', :size_type_id => @size_type.id}, 
+            {:id => "update_model_sizes" }) do %>
+  <% @locales.each do |locale|%>
+    <div id="div_localized_<%=locale.id%>" class="localized_tab_content clearfix" style="display:<%= (locale.id==@default_locale.id) ? 'block' : 'none' %>;">
+
+      <div class="admin_model_sizes_wrapper">
+        <%@model_sizes.each do |model_size|%>
+          <%= render :partial => 'edit_model_size', 
+            :locals => {:locale => locale, :model_size => model_size, :delete => true}%>
+        <% end %>
+
+        <div class="admin_delete_local_sizes">
+          <% if locale != @default_locale %>
+            <%= link_to "Delete Local Sizes", 
+              {:action => 'destroy_localized_sizes', :size_type_id => @size_type.id, :locale_id => locale.id},
+              {:class => 'textLink'}	%>
+          <% end %>
+        </div>
+
+      </div>
+
+    </div>
+  <% end %>
+
+  <%= render :partial => "edit_extra_costs", :locals => {:model_sizes => @model_sizes}%>
+<% end %>
+
+<%= render :partial => 'add_model_size', :locals => {:size_type => @size_type} %>
+
+
+<% if @model_sizes.length > 0 %>
+  <div class="admin_save_model_size">
+    <%= link_to t(:admin_save), 
+                "javascript:$('update_model_sizes').submit();", 
+                {:class => 'textLink', :title => t(:admin_save) }	%>
+  </div>
+<% end %>

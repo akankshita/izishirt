@@ -1,0 +1,55 @@
+<script type="text/javascript">
+$j(document).ready( function () {
+    $j('.flashClose').click(function() {
+      location.reload();
+    });
+  } );
+</script>
+<div class="flashHeaderWrapper">
+  <div class="left blueBoxLeft noPad noMarg noBord"></div>
+  <div class="left blueBoxHeader noPad noMarg noBord flashAppHeader">
+    <label><%=t(:edit_this_product).mb_chars.upcase %>!</label>
+  </div>
+  <div class="left blueBoxRight noPad noMarg noBord">
+    <%= link_to image_tag("/images/izishirt2009/loginClose.png"),
+        "#", :class => 'lbAction flashClose', :rel => 'deactivate'%>
+  </div>
+</div>
+
+<div id="flashcontent" align="center"> 
+  <strong>You need to upgrade your Flash Player</strong> This is replaced by the Flash content. 
+  Place your alternate content here and users without the Flash plugin or with 
+  Javascript turned off will see this. Content here allows you to leave out <code>noscript</code> tags. Include a link to <a href="IEFixTemplateSwfObject.html?detectflash=false">bypass the detection</a> if you wish. 
+</div>
+
+<script type="text/javascript">
+  var so = new SWFObject("/flash/loader.swf?<%=FLASH_LAST_CHANGE%>", "izishirt", "657", "521", "6", "#FFFFFF");
+  so.addVariable("asset_path", "/flash/"); // used to locate the folder where all the assets are
+  //xml paths
+  so.addVariable("sessionVar", "<%= session.session_id %>"); //I'll need a session var so if the user uploads an image flash will be able to send it with the image as well as send it when it keeps asking if the image was uploaded
+  so.addVariable("sessionLanguage", "<%= session[:language] %>"); //Keeps track of the user language: (en = english) (fr = french) - I'll send this to the server on image upload as well as buy
+  //xml paths
+  so.addVariable("InterfaceXmlPath", "/izishirt_flash/<%=session[:language]%>/interface"); //Interface item that are based on array structures and lare linked to products/designs configuration
+  so.addVariable("InterfaceStaticXmlPath", "/izishirt_flash/<%=session[:language]%>/babel"); //Interface items for static content such as buttons based on linkage identifier
+  so.addVariable("ProductsXmlPath", "/checkout2/models_and_designs_without_products<%="/?product=#{@product}" if @product%>");
+  so.addVariable("DesignsXmlPath", "/checkout2/designs<%="/?product=#{@product}" if @product%>");
+  so.addVariable("config", "/checkout2/config_edit_product<%="/?product=#{@product}" if @product%>");
+  //themes
+  so.addVariable("themeColor", "<%= '1D91C7' %>"); 
+  so.addVariable("mouseOverColor", "<%= 'cfcfcf' %>"); //Mouse over color for combobox
+  so.addVariable("bgColor", "<%= 'f4f4f4' %>"); 
+  so.addVariable("bgCornerColor", "<%= 'ffffff' %>"); 
+  so.addVariable("altBtn_themeColor", "<%= '9E0221' %>"); //Alternative buttons color
+  so.addVariable("altBtn_mouseOverColor", "<%= '534C4C' %>"); //Alternative buttons mouse over color
+  so.addVariable("altBtn_textColor", "<%= 'ffffff' %>"); //Alternative buttons text color
+    so.addVariable("load_img_path","<%= 'http://www.izishirt.ca/images/Flash-loading-image.png' %>");
+  //Other vars
+  so.addVariable("currency", "currencyId"); //
+  so.addVariable("loadingText", 'Loading Izishirt Experience'); //Text that appears on preloader
+  so.addVariable("versionInfo", "Version 1"); //Version information
+  so.addVariable("inputParam", "param info"); //Param sent by server and returned as an attribute in the xml output
+  so.write("flashcontent");
+  centerLightbox();
+</script>
+
+

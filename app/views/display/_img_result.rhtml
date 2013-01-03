@@ -1,0 +1,49 @@
+<div id="tshirts_categories">
+  <div id="big_name_category">
+    <!-- style pour IE -->
+    <% if !@category || @category.local_name(session[:language_id]) == "custom_new_design_en" || @category.local_name(session[:language_id]) == "custom_new_design_fr" %>
+        <h1><%=t(:category_page_footer_h1, :category=>"")%></h1>
+        <%else%>
+        <h1><%=t(:category_page_footer_h1, :category=>@category.local_name(session[:language_id]))%></h1>
+        <%end%>
+    <!--<h1 style="margin-top: 20px;"><%#=t(:category_page_footer_h1)%></h1>-->
+  </div>
+  <%= link_to image_tag("izishirt2011/#{session[:language]}/pickorcreate.jpg", :alt=>t(:create_your_own_tshirt)), create_tshirt_url() %>
+
+  <a name="category"></a>
+  <div id="name_category">
+    <% i = 0 %>
+	<% params[:lang] != nil ? param_lang = "#{params[:lang]}/" : params_lang = "" %>
+    <% @img_result.each do |design| %>
+      
+      <div id="design_box">
+        <div id="designs" >
+	<%
+	image_name = t(:seo_tshirts, :name => design.name)
+	%>
+
+              <%= link_to image_tag(design.orig_image.url("100"), :alt => image_name), design.orig_image.url("340"), :onclick=>"return redirect_to('#{design_info_url(design.id)}')", :class => "preview", :title => image_name %>
+
+        </div>
+        <h4><%= link_to image_name, design_info_url(design.id), :title => image_name %></h4>
+      </div>
+      <% i = (i+1)%2 %>
+    <% end %>
+    <% if @img_result == [] %>
+      <div id="none_found"><%=t(:sorry_no_designs_found)%></div>
+    <% end %>
+
+    <div class="clear"></div>
+    <div id="pagination">
+      <% if !@no_pagination %>
+      <div id="pagination_numbers">
+        
+          <%= will_paginate @img_result, :class=>"pagination_links_category", :prev_label => t(:prev_label),
+            :next_label => t(:next_label), :outer_window=>3, :params => {:anchor => "category"} %>
+        
+      </div>
+     
+      <% end %>
+    </div>
+  </div>
+</div>

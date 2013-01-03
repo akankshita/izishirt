@@ -1,0 +1,23 @@
+<tr class="<%= cycle('odd', '') %>">
+	<td width="50">
+	  <%= image_tag "/izishirtfiles/colors/#{model_specification.color.preview_image}",
+	    :size => '15x15' %>
+	</td>
+	<td>
+	  <%=h model_specification.color.local_name(session[:language_id]) %>
+	</td>
+		
+	<td>
+	  <%= link_to_function t(:admin_colors_list_preview), 
+	      "window.open('/admin/model/preview_images/#{model_specification.id}','','width=380, height=380');" %>
+	</td>			
+	<td width="80">
+		<%= link_to image_tag('ico-del.gif', :alt=>'Delete'), 
+		    { :action => 'destroy_model_specification', :id => model_specification }, 
+		    :confirm => 'Are you sure?', :method => :post %>
+		<%= link_to "&nbsp;" , 
+		    { :action => 'edit_model_specification', :id => model_specification }, 
+		    :class => "icoEdit icopng", 
+		    :target => "_blank" %>
+	</td>
+</tr>

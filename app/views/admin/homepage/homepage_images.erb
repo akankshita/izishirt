@@ -1,0 +1,64 @@
+<h1>Homepage Images</h1>
+
+<% form_tag({:action => 'update_infos_homepage_images'}, {:multipart=>true}) do %>
+
+	<table>
+		<tr>
+			<th>Group name</th>
+			<th>Preview</th>
+                        <th>Order</th>
+			<th>Locale</th>
+                        <th>Alt</th>
+						<th>Link</th>
+
+
+		</tr>
+
+		<% @yourtext_yourimage.each do |banner_image| %>
+			<tr>
+				<td><%= banner_image.website_banner.name %></td>
+				<td>
+					<%= image_tag(banner_image.image.url, :style => "width: 250px;") %>
+					<br />
+					<%= file_field_tag "yourtext_yourimage[#{banner_image.id}][image]" %>
+				</td>
+                                <td><%= text_field_tag "yourtext_yourimage[#{banner_image.id}][the_order]", banner_image.the_order %></td>
+				<td><%= banner_image.locale.long_name %></td>
+
+                                <td><%= text_field_tag "yourtext_yourimage[#{banner_image.id}][alt]", banner_image.alt %></td>
+								<td><%= text_field_tag "yourtext_yourimage[#{banner_image.id}][link]", banner_image.link %></td>
+				
+			</tr>
+                        <tr style="background-color:#333;height:1px"><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+		<% end %>
+               <% @homepage_images.each do |banner_image| %>
+			<tr>
+				<td><%= banner_image.website_banner.name %></td>
+				<td>
+					<%= image_tag(banner_image.image.url, :style => "width: 100px;") %>
+					<br />
+					<%= file_field_tag "homepage_images[#{banner_image.id}][image]" %>
+				</td>
+                                <td><%= text_field_tag "homepage_images[#{banner_image.id}][the_order]", banner_image.the_order %></td>
+				<td><%= banner_image.locale.long_name %></td>
+
+                                <td><%= text_field_tag "homepage_images[#{banner_image.id}][alt]", banner_image.alt %></td>
+								<td><%= text_field_tag "homepage_images[#{banner_image.id}][link]", banner_image.link %></td>
+
+			</tr>
+                        <tr style="background-color:#333;height:1px"><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+		<% end %>
+
+	</table>
+
+<div>
+<br />
+<br />
+
+	<%= submit_tag "Update" %>
+</div>
+
+
+<% end %>

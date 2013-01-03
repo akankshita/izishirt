@@ -1,0 +1,24 @@
+.crndark {	border: 1px solid #d9d6d6;}
+.crndark .rbtm {	border-bottom: 1px solid #d9d6d6;}
+
+.rtl,
+.rtr,
+.rbr,
+.rbl {	position: absolute;	width: 10px;	height: 10px;	font-size: 1px;}
+
+/*-IE bug fix-*/
+
+.crndark .rbtm {bottom: -1px;	width: 100%;	height: 2px;	font-size: 1px;	line-height: 1px;}
+
+/* Large Corners */
+
+.rtl{left: -1px;	top: -1px;}
+.rtr {right: -1px;	top: -1px;}
+.rbr{right: -1px;	bottom: -1px;}
+.rbl {left: -1px;	bottom: -1px;}
+
+.rtl {	background: url(../images/crn/crn-tl-wbgr.png);	}
+.rtr {	background: url(../images/crn/crn-tr-wbgr.png);	}
+.rbr {	background: url(../images/crn/crn-br-wbgr.png);	}
+.rbl {	background: url(../images/crn/crn-bl-wbgr.png);	}
+

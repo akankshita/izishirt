@@ -1,0 +1,231 @@
+<script type="text/javascript">
+  function send_form() {
+    document.getElementById('submit_payment_link').href='javascript:void(0)';
+    document.getElementById('submit_payment_link').disabled = 1;
+
+    document.forms['payment_form'].submit();
+  }
+</script>
+
+
+<%= render :partial => 'checkout2/steps'%>
+
+<div id="header_legend">
+  <div id="title_step"><%= t(:payment_methods, :locale => @checkout_locale) %></div>
+  <% if params[:onsite] && params[:onsite] == "true" %>
+    <div id="return_step3">
+      <%= link_to("<&nbsp;" + t(:return_to_billing_shipping, :locale => @checkout_locale), 
+                  {:action=>:address, :onsite => params[:onsite], :flash_iframe => params[:flash_iframe], 
+                    :iframe => params[:iframe], :store_id => params[:store_id]}) %>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>
+<% if session[:user_id] != 70 %>
+<% @lcl = true  %>
+<% else %>
+<% @lcl = false %>
+<% end %>
+<% if !@lcl %>
+<form name="payment_form" action="<%= @confirmation %>" method="post">
+<% end %>
+  <div id="payment_container">
+    <div id="select_payment_methods">
+      <% if @lcl %>
+      <div id="cc_info_select">
+        <div id="cc_info_select_header">
+        <p class="title14">Paiement sécurisé via Paypal</p>
+          </div>
+        <img src="/images/izishirt2009/line.jpg" width="585" height="3" class="line" />
+        <ul>
+          <li>
+
+<!--		<input name="payment_type" type="radio" value="paypal" onclick="$('paypal_redirect').show();javascript:document.paypal.submit();"> -->
+<!--		<img src="/images/izishirt2009/cc_paypal.png" width="46" height="13" /> Paypal</li> -->
+
+		<a href="#izishirt" onclick="$('paypal_redirect').show();javascript:document.paypal.submit();">
+			<img src="/images/izishirt2011/<%=session[:language]%>/paypal.gif" value="Paypal" alt="Paiement sécurisé Paypal" />
+		</a>
+	 </li>
+        </ul>
+        <p id="paypal_redirect" style="display:none;">
+            <%= image_tag "izishirt2009/loading.gif", :height=>16, :width=>16 %>
+            <%= t(:paypal_redirect_text) %>
+        </p>
+      </div>
+      <%else%>
+      
+      <div id="cc_info_select">
+        <div id="cc_info_select_header">
+        <p class="title14"><%=t(:select_a_payment_method, :locale => @checkout_locale)%></p>
+        </div>
+        
+        <ul>
+          <li><input name="payment_type" type="radio" <%= "checked" if params[:payment_type] == "Visa" || params[:payment_type].nil? %> value="visa"/> <img src="/images/izishirt2009/visa.png" width="32" height="20" /> VISA</li>
+          <li><input name="payment_type" type="radio" <%= "checked" if params[:payment_type] == "Master" %> value="Master"/> <img src="/images/izishirt2009//mastercard.png" width="32" height="20" /> Mastercard</li>
+          <li><input name="payment_type" type="radio" <%= "checked" if params[:payment_type] == "Amex" %> value="Amex"/> <img src="/images/izishirt2009/amex.png" width="32" height="20" /> American Express</li>
+          <li><input name="payment_type" type="radio" value="paypal" onclick="$('paypal_redirect').show();javascript:document.paypal.submit();"/> <img src="/images/izishirt2009/cc_paypal.png" width="46" height="13" /> Paypal</li>
+        </ul>
+
+
+        <p id="paypal_redirect" style="display:none;">
+            <%= image_tag "izishirt2009/loading.gif", :height=>16, :width=>16 %>
+            <%= t(:paypal_redirect_text, :locale => @checkout_locale) %>
+        </p>
+      </div>
+      <div id="form_user_info_CC">
+        <div id="error" class="errorMessage">
+          <%= flash[:error] if flash[:error] %>
+        </div>
+        <table cellpadding="4" cellspacing="0" width="90%" border="0" id="cc_table">
+          <tr>
+            <td><%= t(:firstname_payment, :locale => @checkout_locale) %> <span class="red">*</span></td>
+            <td><input type="text" name="payment[firstname]" /></td>
+          </tr>
+          <tr>
+            <td><%= t(:lastname_payment, :locale => @checkout_locale) %> <span class="red">*</span></td>
+            <td><input type="text" name="payment[lastname]" /></td>
+          </tr>
+          <tr>
+            <td><%= t(:payment_cardnumber, :locale => @checkout_locale) %> <span class="red">*</span></td>
+            <td><input type="text" name="payment[cardnumber]" /></td>
+          </tr>
+          <tr>
+            <td><%= t(:payment_ccv, :locale => @checkout_locale) %> <span class="red">*</span> <a onclick="return false;" href="/images/izishirt2009/verificationcode.jpg?width=282&height=82" class="preview"><img src="/images/izishirt2009/question.gif" width="13" height="15" /></a></td>
+            <td><input type="text" name="payment[ccv]" /></td>
+          </tr>
+          <tr>
+            <td><%=t(:expiration_date, :locale => @checkout_locale)%> <span class="red">*</span></td>
+            <td>
+              <select name="payment[expiration_month]" id="payment_expiration_month">
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <select name="payment[expiration_year]"  id="payment_expiration_year">
+                <% Time.now.year.upto(Time.now.year+10) do |year| %>
+                  <option value="<%=year%>"><%=year%></option>
+                <% end %>
+              </select>
+            </td>
+          </tr>
+
+
+        </table>
+      </div>
+
+      <% end %>
+     
+      <% if !params[:onsite] %>
+        <div id="secure_payment_info">
+          <p class="title14"><%=t(:secure_payments_information, :locale => @checkout_locale)%></p>
+          <p><%=t(:secure_payments_explanation, :locale => @checkout_locale)%></p>
+         
+        </div>
+      <% end %>
+
+    </div>
+    <div id="total_price">
+      <div id="total_price_header">
+      <p class="title14" style="padding-left:10px;"><%=t(:your_order, :locale => @checkout_locale)%></p>
+      </div>
+
+      <span class="sp_subtotal"><%=t(:sub_total, :locale => @checkout_locale)%>:</span><span class="sp_price"><%= number_to_currency_custom(@cart.total+@cart.subtotal_rebate) %></span>
+      <span class="sp_subtotal"><%=get_shipping_name(@cart.shipping_type, @checkout_locale)%>:</span>
+		<span class="sp_price">
+			<%= number_to_currency_custom(@payment_shipping) %>
+		</span>
+
+      <% if @cart.total_rebate > 0 %>
+		<span class="sp_subtotal"><%=t(:discount, :locale => @checkout_locale)%>:</span><span class="sp_price orange">-<%= number_to_currency_custom(@cart.grand_total_rebate) %></span>
+      <% end %>
+
+      <% if @country_taxes > 0%>
+        <span class="sp_subtotal"><%= @tax_abreviation%>:</span>
+        <span class="sp_price"><%= number_to_currency_custom(@country_taxes) %></span><br /><br />
+      <% else %>
+        <span class="sp_subtotal"><%=t(:taxes, :locale => @checkout_locale)%>:</span><span class="sp_price"><%= number_to_currency_custom(@payment_taxes) %></span><br /><br />
+      <% end %>
+      <span class="finalprice"><%=t(:total_price, :locale => @checkout_locale)%>: <span class="finalprice_blue"><%= number_to_currency_custom(@payment_total, :precision => 2) %></span></span>
+      <% if !@lcl %>
+      <div id="btn_final_step">
+        <a id="submit_payment_link" href="#current" class="button_final_step" onclick="javascript:send_form()" title="<%=t(:final_pay_button, :locale => @checkout_locale)%>"><%= image_tag "izishirt2011/#{session[:language]}/bt_continue.jpg", :alt=>t(:address_next) %></a>
+      </div>
+      <% end %>
+    </div>
+    <% if !params[:onsite] %>
+      <div id="return_step3">
+        <%= link_to("<&nbsp;" + t(:return_to_billing_shipping, :locale => @checkout_locale), {:action=>:address}) %>
+      </div>
+    <% else %>
+      <div id="secure_payment_info">
+        <p class="title14"><%=t(:secure_payments_information, :locale => @checkout_locale)%></p>
+        <p><%=t(:secure_payments_explanation, :locale => @checkout_locale)%></p>
+        <p class="p_right"><%#= render :partial=>"/display/mcafee_footer_#{@checkout_locale}" %></p>
+      </div>
+    <% end %>
+  </div>
+  <% if !@lcl %>
+</form>
+<div class="clear"></div>
+<% end %>
+
+<!--
+<form id="paypalold" name="paypalold" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_parent">
+  <div class="clear">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="<%= @paypal_email %>">
+    <input type="hidden" name="item_name" value="Izishirt">
+    <input type="hidden" id="paypal_amount" name="amount" value="<%=number_with_precision(@payment_subtotal, {:precision => 2, :separator => '.', :delimeter => ' '}).gsub(' ','')%>">
+    <input type="hidden" id="paypal_shipping" name="shipping" value="<%=number_with_precision(@payment_shipping, {:precision => 2, :separator => '.', :delimeter => ' '}).gsub(' ','')%>">
+    <input type="hidden" name="no_shipping" value="0">
+    <input type="hidden" name="no_note" value="1">
+    <input type="hidden" name="currency_code" value="<%=session[:currency]%>">
+    <input type="hidden" id="paypal_tax" name="tax" value="<%=number_with_precision(@payment_taxes, {:precision => 2, :separator => '.', :delimeter => ' '}).gsub(' ','')%>">
+    <input type="hidden" name="lc" value="<%=t(:paypal_lang, :locale => @checkout_locale)%>">
+    <input type="hidden" name="bn" value="PP-BuyNowBF">
+    <input type="hidden" name="cancel_return" value="<%=@paypal_continue%>" />
+    <input type="hidden" name="cpp_header_image" value="<%=@SECURE_URL_ROOT%>/images/izishirt_paypal_header.gif">
+    <input type="hidden" name="image_url" value="<%=@SECURE_URL_ROOT%>/images/logo.gif">
+    <input type="hidden" name="no_shipping" value="1">
+    <input type="hidden" name="return" value="<%= @paypal_confirmation %>">
+    <input type="hidden" name="shopping_url" value="<%=@URL_ROOT%><%= "#{Language.print_force_lang(params[:lang])}" %>">
+    <input type="hidden" name="cbt" value="<%=t(:finalize_purchase, :locale => @checkout_locale)%>">
+  </div>
+</form>
+-->
+<div class="clear"></div>
+<% payment_service_for @order.id, @paypal_email,
+	:html => {:id => "paypal", :target => "_parent", :name => "paypal"},
+        :amount => number_with_precision(@payment_subtotal, {:precision => 2, :separator => '.', :delimeter => ' '}).gsub(' ',''), :currency => "#{session[:currency]}",
+        :service => :paypal do |service| 
+
+    service.customer :last_name => @order.billing.name,
+        :phone => @order.billing.phone,
+        :email => @order.email_client
+    service.billing_address :city => @order.billing.town,
+        :address1 => @order.billing.address1,
+        :address2 => @order.billing.address2,
+        :zip => @order.billing.zip
+    service.item_name "Izishirt Order #{@order.id}"
+    service.currency_code "#{session[:currency]}"
+    service.shipping number_with_precision(@payment_shipping.to_f, {:precision => 2, :separator => '.', :delimeter => ' '}).gsub(' ','')
+    service.tax number_with_precision(@payment_taxes, {:precision => 2, :separator => '.', :delimeter => ' '}).gsub(' ','')
+
+    service.notify_url url_for(:host => (RAILS_ENV == "production") ? @FULL_DOMAIN_NAME : "test3945.no-ip.org", :only_path => false, :action => 'auto_paypal_confirmation', :onsite => params[:onsite], :store_id => params[:store_id])
+    service.return_url url_for(:host => (RAILS_ENV == "production") ? @FULL_DOMAIN_NAME : "test3945.no-ip.org", :only_path => false, :action => 'paypal_confirmation', :onsite => params[:onsite], :store_id => params[:store_id])
+    service.cancel_return_url url_for(:host => (RAILS_ENV == "production") ? @FULL_DOMAIN_NAME : "test3945.no-ip.org", :only_path => false, :action => 'payment', :onsite => params[:onsite], :store_id => params[:store_id]) %>
+
+<%#= hidden_field_tag "rm", "0" %>
+
+<% end %>
+<div class="clear"></div>

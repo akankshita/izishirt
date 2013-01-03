@@ -1,0 +1,15 @@
+
+
+
+  <% form_for @bulk_order, :url=>{:controller=>:bulk_orders, :action=>:create}, :html => { :id=>"bulkForm", :multipart => true, :onsubmit=>"return checkBulkForm();" }  do |b| %>
+    <%= render :partial => "form", :locals=>{:b=>b} %>
+    <%= render :partial => "simple_end_form", :locals=>{:b=>b} %>
+    
+    
+
+
+
+
+
+  <% end %>
+

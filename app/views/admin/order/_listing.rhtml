@@ -1,0 +1,22 @@
+<% if @flagged_bulk %>
+  <% for order in @flagged_bulk%>
+    <%= render :partial => '/admin/order/listing_row', :locals => {:with_user_language => with_user_language, :order => order, :assignment_listing => assignment_listing, :with_assigned_to => with_assigned_to, :mark_problems => mark_problems}%>
+  <% end %>
+<% end %>
+<% for order in @orders %>
+  <%= render :partial => '/admin/order/listing_row', :locals => {:with_user_language => with_user_language, :order => order, :assignment_listing => assignment_listing, :with_assigned_to => with_assigned_to, :mark_problems => mark_problems}%>
+<% end %>
+<% if params[:action] == 'search' %>
+    <tr><td><br /></td></tr>
+    <tr>
+      <td align="left" colspan="6">
+        <%= will_paginate @orders %>
+      </td>
+    </tr>
+<% else %>
+    <tr>
+      <td align="left" colspan="6">
+        <%= will_paginate @orders %> 
+      </td>
+    </tr>
+<% end %>

@@ -1,0 +1,75 @@
+<p>Report of: <b><%= @printer_shift.printer_fullname %></b> (<%= @printer_shift.printer_username %>)<p>
+<p>Worked on: <b><%= @printer_shift.printing_machine_username %></b><p>
+<p>Start time: <b><%= @printer_shift.created_at %></b><p>
+<p>End time: <b><%= @printer_shift.finished_at %></b><p>
+<p>Duration: <b><%= @printer_shift.duration %> hours</b><p>
+<h2>Week: <%= @printer_shift.user.shift_hours_done_week.round(2) %> hours</h2>
+
+
+<% if @printer_shift.description && @printer_shift.description != "" %>
+
+	<p><br /><b>Additional description: </b><br /><br />
+
+		<%= @printer_shift.description.gsub("\n", "<br />") %>
+	<br /><br />
+	</p>
+<% end %>
+
+<% if @printer_shift.printer_statistics.length > 0 %>
+	<h3>Shirts printed/missed</h3>
+
+	<table border="1">
+		<tr>
+			<th>Time</th>
+			<th>Order</th>
+			<th>Product</th>
+			<th># Missed</th>
+			<th># Shirts</th>
+			<th># Prints</th>
+			<th># Pretreatments</th>
+		</tr>
+
+		<% @printer_shift.printer_statistics.find(:all, :order => "printer_statistics.id ASC").each do |stat| %>
+			<tr>
+				<td><%= stat.created_at %></td>
+				<td><%= link_to("#{stat.order.id}", :host => "www.izishirt.ca", :controller => "/admin/order", :action => "show", :id => stat.order.id) if stat.order %></td>
+				<td>
+					<% if stat.ordered_product %>
+						#<%= stat.ordered_product.id %>, <%= stat.ordered_product.to_pretty_string(2) %>
+					<% end %>
+				</td>
+				<td style="color: <%= "red" if stat.nb_missed > 0 %>;"><%= stat.nb_missed %></td>
+				<td style="color: <%= "green" if stat.nb_printed > 0 %>;"><b><%= stat.nb_printed %></b></td>
+				<td style="color: <%= "green" if stat.nb_prints > 0 %>;"><b><%= stat.nb_prints %></b></td>
+				<td style="color: <%= "green" if stat.pretreatment > 0 %>;"><b><%= stat.pretreatment %></b></td>
+			</tr>
+		<% end %>
+
+		<tr>
+			<td>---</td>
+			<td>---</td>
+			<td>---</td>
+			<td>------</td>
+			<td>------</td>
+			<td>------</td>
+			<td>------</td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td style="color: <%= "red" if @printer_shift.total_product_missed > 0 %>;"><b><%= @printer_shift.total_product_missed %></b></td>
+			<td style="color: <%= "green" if @printer_shift.total_product_printed > 0 %>;"><b><%= @printer_shift.total_product_printed %></b></td>
+			<td style="color: <%= "green" if @printer_shift.total_prints > 0 %>;"><b><%= @printer_shift.total_prints %></b></td>
+			<td style="color: <%= "green" if @printer_shift.total_pretreatments > 0 %>;"><b><%= @printer_shift.total_pretreatments %></b></td>
+		</tr>
+	</table>
+<% end %>
+
+
+<p>
+<br />
+</p>
+
+Izishirt.com

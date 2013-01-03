@@ -1,0 +1,27 @@
+<script type="text/javascript">
+  cbb.init();
+</script>
+<div class="relative">
+  <label class="title"><%=t(:verification_code).mb_chars.upcase%></label>
+  <%= link_to image_tag("/images/izishirt2009/loginClose.png"),
+    "#", :class => 'lbAction boxClose', :rel => 'deactivate'%>
+  <div class="noPad noMarg verifBox">
+    <div class="cardTypes">
+      <div class="visa">
+        <img alt=">>" src="/images/izishirt2009/rightArrow.png"/>
+        <label>Visa, Mastercard & Discover</label>
+      </div>
+      <div class="american">
+        <img alt=">>" src="/images/izishirt2009/rightArrow.png"/>
+        <label>American Express</label>
+      </div>
+    </div>
+    <div class="cardImages">
+      <label class="threeDigits">3 <%=t(:digits)%></label>
+      <label class="fourDigits">4 <%=t(:digits)%></label>
+
+      <img src="/images/izishirt2009/verification_code.jpg"/>
+    </div>
+
+  </div>
+</div>

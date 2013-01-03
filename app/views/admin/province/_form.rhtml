@@ -1,0 +1,34 @@
+<%= error_messages_for 'province' %>
+<!--[form:province]-->
+<div>
+	
+    <div class="titleForm"></div>
+	<div class="titleForm"><label for="name">Name</label></div>
+	<div class="boxForm">
+	  <input class="box" type="text" id="name" name="name" value="<%= @province.name %>" />
+	</div>
+							
+	<div style="clear:both;"></div>
+	<div class="boxForm" style="width:260px !important;"><label for="country_id">Country</label><br />
+		<select class="box" id="country_id" name="country_id">  
+			<% @countries = Country.find(:all, :order =>"name")
+			for country in @countries %>
+			<option value="<%= country.id %>" <% if country.id.to_i == @province.country_id.to_i %> SELECTED<% end %> ><%= country.name %></option>
+			<% end  %> 
+		</select>
+	</div>
+	<div style="clear:both;"></div>
+	<div class="boxForm" style="width:280px !important;"><label for="code">Code</label><br />
+		<input class="box" type="text" id="code" name="code" value="<%= @province.code %>" />
+	</div>
+	<div style="clear:both;"></div>
+	<div class="boxForm" style="width:280px !important;"><label for="taxe">Taxe</label><br />
+	  <input class="box" type="text" id="taxe" name="taxe" value="<%= @province.taxe %>" />
+	</div>
+	
+	<div style="clear:both;"></div>
+	
+							
+<!--[eoform:province]-->
+
+  </div>

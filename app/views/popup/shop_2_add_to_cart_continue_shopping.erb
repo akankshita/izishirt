@@ -1,0 +1,38 @@
+<div id="pp_request_payment" style="width:220px; height: 230px; padding:0px;overflow:hidden;margin-top:8px;">
+
+  <script language="text/javascript">
+    function requestAddCart()
+    {
+      new Ajax.Request("/checkout2/add_product_from_shop2?product_id=<%= @product.id %>&quantity=<%= params[:quantity] %>&model_size_id=<%= params[:model_size_id] %>&color_id=<%= params[:color_id] %>&marketplace_price=true",
+						{asynchronous:true, evalScripts:true, onComplete: function(request) {  }});
+    }
+
+    $j(document).ready(function() {
+            $j("a.modalbox").fancybox();
+            requestAddCart();
+      });
+  </script>
+
+  <form id="request_payment_form">
+
+    <h1 align="center"><%= t(:shop_marketplace_product_added, :locale => @store.locale) %></h1>
+    <p style="margin:12px 0px"></p>
+
+    <div align="center">
+      <%= image_tag("/images/marketplace/addtocart.jpg") %>
+    </div>
+
+    <div id="btn_request_payment">
+        <%= link_to "#{t(:shop_2_popup_go_to_cart, :locale => @store.locale)}", @SECURE_URL_ROOT + "#{print_old_lang}checkout2/show_cart", :class => "button_request_payment" %>
+        <br />
+        
+    </div>
+
+    <center>
+      <span align="center" style="text-align: center">
+        <b><%= link_to "#{t(:shop_2_popup_continue_shopping, :locale => @store.locale)}", "javascript:;", :onclick => "jQuery.fancybox.close();", :class => "modalbox", :style => "color: #3566CD; text-decoration:none; " %></b>
+      </span>
+    </center>
+  </form>
+</div>
+

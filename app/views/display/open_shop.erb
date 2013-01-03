@@ -1,0 +1,43 @@
+<%= render :partial=>"/myizishirt/login/check_subscription_form" %>
+<div id="open_shop_container">
+  <div id="subscribe_left">
+    <div id="title">
+      <%= t(:earn_money) %>!
+    </div>
+    <div id="caption"><%= t(:start_selling_products_online)%></div>
+    <%= image_tag "izishirt2011/#{session[:language]}/boutiques-icons.jpg", :id=>"icons" %>
+    <div id="member">
+      <% if session[:user_id] %>
+        <%= t(:make_money_with_izishirt) %>
+      <% else %>
+        <%= t(:already_a_member) %>?<br/>
+        <%= link_to "Log in", {:controller=>"/myizishirt/login", :action=>:lightbox}, :class=>"login_modalbox" %>
+      <% end %>
+    </div>
+    <ul>
+	<li><%= t(:benefits_shop_1, :amount => "#{number_to_currency_custom(Store.get_initial_earnings_per_image(session[:currency]))}")%></li>
+	<li><%= t(:benefits_shop_2, :amount => "#{number_to_currency_custom(Store.max_commission(session[:currency]))}") %></li>
+      <li><%= t(:benefits_shop_3)%></li>
+      <li><%= t(:benefits_shop_4)%></li>
+    </ul>
+    <div id="tell_link">
+      <%= link_to(t(:tell_me_more) + " >", {:controller=>'/display', :action=>:why_izishirt_shops}) %>
+    </div>
+  </div>
+
+  <div id="subscribe_right">
+    <h1><%=t(:open_your_free_online_shop)%></h1>
+    <div id="<%= session[:user_id] ? 'already_user':'account_box'%>">
+      <% form_tag({:action => 'create_shop'}, {:onsubmit=>"javascript:return checkSubscriptionForm();"}) do %>
+
+          <% if !session[:user_id] %>   
+            <%= render :partial => '/myizishirt/login/form', :locals => {:with_shop => true} %>
+            
+          <% else %>
+            <%= render :partial => 'open_user_shop' %>
+          <% end %>
+          <div id="btn_make"><%= submit_tag t(:start_selling_button), :class=>:button_make %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

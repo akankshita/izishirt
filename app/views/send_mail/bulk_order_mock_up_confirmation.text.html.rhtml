@@ -1,0 +1,19 @@
+<p><%=I18n.t(:sendmail_approve_mock_up_hi, :locale => Language.find(@bulk_order.language.id).shortname)%> <%="#{@bulk_order.name}"%>,</p>
+<p><%= I18n.t(:sendmail_approve_mock_up_1, :locale => Language.find(@bulk_order.language.id).shortname) %></p>
+
+<p></p>
+
+<p align="center"><a href="http://www.izishirt.ca/email_front_page/approve_mock_up/<%= @mock_up.id %>?checksum=<%= @revision.checksum %>">http://www.izishirt.ca/email_front_page/approve_mock_up/<%= @mock_up.id %>?checksum=<%= @revision.checksum %></a></p>
+
+<p></p>
+<p><%= I18n.t(:sendmail_approve_mock_up_2, :locale => Language.find(@bulk_order.language.id).shortname) %></p>
+<p><%= I18n.t(:sendmail_approve_mock_up_3, :locale => Language.find(@bulk_order.language.id).shortname) %></p>
+<p>
+
+<br/>
+<br/>
+http://www.izishirt.ca<br/>
+514 495 1771<br/>
+1625 Rue chabanel ouest, Montréal QC, H4N 2S7<br/>
+<br/>
+</p>

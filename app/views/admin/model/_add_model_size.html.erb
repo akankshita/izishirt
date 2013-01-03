@@ -1,0 +1,29 @@
+<br />
+<fieldset>
+  <legend>Add Model Size</legend>
+  <% form_tag({:action => 'add_default_model_size' }, {:id => "add_model_size" }) do %>
+    <%= hidden_field_tag "size_type_id", size_type.id%>
+    <div class="admin_add_model_size">
+      <label class="admin_model_size_form">Name</label>
+      <%= text_field_tag "localized_model_size[name]",
+                         "",
+                         :class => "admin_model_size_form" %>
+      <label class="admin_model_size_form">Width</label>
+      <%= text_field_tag "localized_model_size[width]",
+                         "",
+                         :class => "admin_model_size_form" %>
+      <label class="admin_model_size_form">Length</label>
+      <%= text_field_tag "localized_model_size[length]",
+                         "",
+                         :class => "admin_model_size_form" %>
+      <label class="admin_model_size_form">Unit</label>
+      <%= text_field_tag "localized_model_size[unit]",
+                         "",
+                          :class => "admin_model_size_form" %>
+      <%= link_to t(:admin_add), 
+                  "javascript:$('add_model_size').submit();", 
+                  {:class => 'textLink', :title => t(:admin_save) }	%>
+    </div>
+  <%end%>
+</fieldset>
+<br />

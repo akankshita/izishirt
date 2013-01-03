@@ -1,0 +1,14 @@
+<% if (@country_address_shipping && @country_address_shipping.shortname != 'FR' && @country_address_shipping.shortname != 'GB') %>
+<% if @shipping_provinces.length > 1  && @country_address_shipping && @country_address_shipping.shortname != 'GB' %>
+  <% if (@country_address_shipping && @country_address_shipping.shortname == 'US') || (@country_address_shipping && @country_address_shipping.shortname == 'AU') %>
+    <%= t(:state, :locale => @checkout_locale)%> <span class="red">*</span>
+  <% else %>
+    <%= t(:province, :locale => @checkout_locale)%> <span class="red">*</span>
+  <% end %>
+  <% selected_value = @shipping.province_id ? @shipping.province_id : @province_id %>
+  <%= select_tag "shipping[province_id]", options_for_select(@shipping_provinces,selected_value), {:id =>"shipping_province", :style => 'margin: 0px 0px 0px; width: 132px;',:onchange => "shippingCountryShipType();"} %>
+<% else %>
+    <%= t(:province, :locale => @checkout_locale)%>
+    <input type="text" name="shipping[province_name]" id="shipping_province" value="<%= @shipping.province_name %>" />
+<% end %>
+<% end %>

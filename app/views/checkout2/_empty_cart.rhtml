@@ -1,0 +1,17 @@
+<div id="products">
+  <div id="empty_shoppingcart">
+    <p><%= t(:cart_empty, :locale => @checkout_locale) %></p>
+    <div id="btn_emptycart">
+      <%= link_to((image_tag "izishirt2011/#{session[:language]}/bt_keepshopping.jpg"), @continue_link, :title=>t(:keep_shopping, :locale => @checkout_locale)) %>
+    </div>
+  </div>
+      <div id="comments_step1">
+            <p style="border-top: 10px solid #3b2053"><%= link_to("<&nbsp;" + t(:keep_shopping, :locale => @checkout_locale), @continue_link) %></p>
+        </div>
+
+</div>
+<div id="right_box_info">
+  <div id="payments_step1">
+    <%#= render :partial=>"/display/mcafee_footer_#{@checkout_locale}" %> <img src="/images/izishirt2009/payment_method.png" width="92" height="48" />
+  </div>
+</div>

@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <title><%=get_page_title(@image) if @meta_title.nil? %><%= h @meta_title if !@meta_title.nil? %> <%= "- Page " + params[:page] if params[:page] %></title>
+	<% if !@meta_description.nil? %><meta name="description" content="<%= h @meta_description%> <%= "Page " + params[:page] if params[:page] %> <%= "Page " + params[:page] if params[:page] %>" /><%else%><% if (params[:action] == "create_tshirt" && @image && @image.category|| params[:action] == "t-shirt-personalise" && @image.category) %><meta name="description" content="<%= "Design: "+@image.name+", Category:  "+@image.category.localized_categories[0].name.to_s+",  Designer: "+@image.user.username if @image -%>. <%= t(:display_home_meta_description_flash_app) %>" /><% else %><meta name="description" content="<%= t(:meta_description_homepage, :country=>session[:country_long].capitalize) %>  <%= "Page " + params[:page] if params[:page] %>" /><% end %><% end %>
+    <% if !@meta_keywords.nil? %><meta name="keywords" content="<%= h @meta_keywords %>" /><% else %><meta name="keywords" content="<%= t(:meta_keywords_homepage, :country=>'Canada') %>" /><% end %>
+    <meta name="Robots" content="INDEX,FOLLOW, ALL"/>
+	<meta name="google-site-verification" content="spLGRjTvxbqkKZcI06SsMUw39g60f7n6JVaevDS8qjM" />
+	<meta name="google-site-verification" content="JKBmMKTqISaTKbKGW3wJ08fTVx0BWveAVZOyDuVxHII" />
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <meta name="verify-v1" content="74XVS9wjAO3w3haVIXvRKVLzNN3poCrRAxyw/qdQc8k=" />
+    <meta name="MSSmartTagsPreventParsing" content="true"/>
+    <meta name="msvalidate.01" content="C1459B6832548867626F0D6B69D8EE72" />
+    <meta property="og:site_name" content="<%=@DOMAIN_NAME.capitalize%>"/>
+
+    <% if @contest_design_details %>
+      <meta property="og:image" content="http://www.izishirt.ca<%=@image.contest_preview.url("160")%>"/>
+    <% end %>
+
+    <meta http-equiv="Content-Language" content="<%= @meta_content_language %>" />
+    <meta name="copyright" content="Copyright Izishirt - <%= Time.now.year %>" />
+    <meta name="author" content="www.<%=@DOMAIN_NAME%>" />
+    <meta name="Distribution" content="Global" />
+    <meta name="Rating" content="General" />
+    <meta name="Revisit-after" content="1 Day" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="classification" content="T-Shirt" />
+	<meta name="y_key" content="4095216204aecd40"/>
+    <meta name="y_key" content="3d590d2eeab2aff4"/>
+
+    <%= canonical_link_tag %>
+
+    <!--[if lt IE 7]>
+    <style type="text/css">
+    img, .png { behavior: url('/stylesheets/iepngfix_v2/iepngfix.htc'); }
+    </style>
+    <script type="text/javascript" src="/javascripts/iepngfix_tilebg.js"></script>
+    <![endif]-->
+
+    <!--[if lte IE 7]>
+<style type="text/css">
+html .jqueryslidemenu{height: 1%;} /*Holly Hack for IE7 and below*/
+html .jquerytopmenu{height: 1%;} /*Holly Hack for IE7 and below*/
+</style>
+
+<![endif]-->
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/ven_ie6.css"/>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+    <style>
+    .wraptocenter span {
+        display: inline-block;
+        height: 100%;
+    }
+    </style><![endif]-->
+
+
+    <%= stylesheet_link_tag "layout2010.css", "jqueryslidemenu.css", "izishirt2011.css", "jScrollPane.css", "flick/jquery-ui-1.7.2.custom.css","anythingslider.css", "fancybox/jquery.fancybox-1.3.1.css" %>
+
+	<% if params[:action] == "create_tshirt" || params[:action] == "bulk_create_tshirts" || params[:action] == "custom_case" || params[:action] == "debug_me"  %>
+		<%= javascript_include_tag "prototype.js", "effects.js", "jquery-1.4.2.min.js", "noConflict.js" "jquery.fancybox-1.3.1.pack.js", "jquery-ui-1.7.2.custom.min.js", "jqueryslidemenu.js",
+			"application2009.js", "jquery.mousewheel.js", "jquery.em.js", "jScrollPane-1.2.3.min.js", "jquery.tools.min.js?select=full&debug=true", "izishirt_2011.js",
+			"jquery.accordion.js", "jquery.easing.1.2.js", "jquery.anythingslider.js", "facebook", "twitter", "/bin/AC_OETags.js", "extMouseWheel.js" %>
+	<% else %>
+		<%= javascript_include_tag "prototype.js", "effects.js", "jquery-1.4.2.min.js", "noConflict.js", "application2009.js", "jquery.countdown.js",  "jquery.fancybox-1.3.1.pack.js", "jquery-ui-1.7.2.custom.min.js", "jqueryslidemenu.js",
+			"application2009.js", "jquery.mousewheel.js", "jquery.em.js", "jScrollPane-1.2.3.min.js", "jquery.tools.min.js?select=full&debug=true", "izishirt_2011.js",
+			"jquery.accordion.js", "jquery.easing.1.2.js", "jquery.anythingslider.js", "facebook", "twitter" %>
+	<% end %>
+
+    
+
+    <link rel="alternate" type="application/rss+xml" <%= "title='#{t(:izishirt_2011_title_rss)}'" -%> <%= "href='#{t('feed.top_address')}'" -%>/>
+    <link rel="alternate" type="application/rss+xml" <%= "title='#{t(:recent_designs_title_rss)}'" -%> <%= "href='#{t('feed.recent_address')}'" -%>/>
+    <link rel="alternate" type="application/rss+xml" <%= "title='#{t(:marketplace_feed_title)}'" -%> <%= "href='#{t(:marketplace_feed_url)}'" -%>/>
+
+    <script src="javascript/jquery.anythingslider.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="javascript/jquery.easing.1.2.js"></script>
+
+
+    <script type="text/javascript">
+
+      <% if ['www','fr','eu','au'].include?(@SUBDOMAIN_NAME) && @controller.controller_name!= 'checkout2' && @connexplace_call %>
+        if(top.location!=self.location){
+          top.location = self.location.href;
+        }
+      <% end %>
+
+
+      $j(document).ready(function() {
+        $j("a.modalbox").fancybox();
+        $j("a.contest_image_modalbox").fancybox({ 'autoScale' : false, 'autoDimensions' : false, 'width' : 1000, 'height' : 1000,
+          'onStart' : function(){
+            $j('#fancybox-outer').toggleClass('picture_zoom_outer');
+            $j('#fancybox-inner').toggleClass('picture_zoom_inner');
+          },
+          'onClosed' : function(){
+            $j('#fancybox-outer').toggleClass('picture_zoom_outer');
+            $j('#fancybox-inner').toggleClass('picture_zoom_inner');
+          }
+        });
+        $j("a.modal_href").fancybox({'autoDimensions' : false,'autoScale' : true,
+          'onStart' : function(){
+            $j('#fancybox-outer').toggleClass('product_picture_zoom_outer');
+            $j('#fancybox-inner').toggleClass('product_picture_zoom_inner');
+          },
+          'onClosed' : function(){
+            $j('#fancybox-outer').toggleClass('product_picture_zoom_outer');
+            $j('#fancybox-inner').toggleClass('product_picture_zoom_inner');
+          }
+        });
+
+        $j("a.model_with_previews_box").fancybox({ 'autoScale' : false, 'autoDimensions' : false,
+          'onStart' : function(){
+            $j('#fancybox-outer').toggleClass('picture_zoom_outer');
+            $j('#fancybox-inner').toggleClass('picture_zoom_inner');
+          },
+          'onClosed' : function(){
+            $j('#fancybox-outer').toggleClass('picture_zoom_outer');
+            $j('#fancybox-inner').toggleClass('picture_zoom_inner');
+          }
+        });
+
+        $j("a.login_modalbox").fancybox(      { 'autoDimensions' : false, 'width' : 310, 'height' : 260});
+        $j("a.password_modalbox").fancybox(   { 'autoDimensions' : false, 'width' : 295, 'height' : 260});
+        $j("a.choose_size_modalbox").fancybox({ 'autoDimensions' : false, 'width' : 255, 'height' : 230});
+        $j("a.add_cart_modalbox").fancybox(   { 'autoDimensions' : false, 'width' : 220, 'height' : 238});
+        $j("a.comment_modalbox").fancybox(    { 'autoDimensions' : false, 'width' : 250, 'height' : 50});
+        $j("a.hosted_by_modalbox").fancybox(  { 'autoDimensions' : false, 'width' : 191, 'height' : 164});
+        $j("a.animation_modalbox").fancybox(  { 'autoDimensions' : false, 'width' : 622, 'height' : 311});
+        $j("a.payment_modalbox").fancybox(    { 'autoDimensions' : false, 'width' : 330, 'height' : 266});
+        $j("a.avatar_modalbox").fancybox(     { 'autoDimensions' : false, 'width' : 310, 'height' : 270});
+        $j("a.marketplace_modalbox").fancybox({ 'autoDimensions' : false, 'width' : 410, 'height' : 330});
+        $j("a.link_report_as_copyright_modalbox").fancybox({ 'autoDimensions' : false, 'width' : 410, 'height' : 250});
+        $j("a.delete_account_modalbox").fancybox({ 'autoDimensions' : false, 'width' : 300, 'height' : 270});
+        $j("a.contest_login_spammer").fancybox({ 'autoDimensions' : false, 'width' : 630, 'height' : 400});
+
+	function setCookie(c_name,value,expiredays)
+{
+var exdate=new Date();
+exdate.setDate(exdate.getDate()+expiredays);
+document.cookie=c_name+ "=" +escape(value)+
+((expiredays==null) ? "" : ";expires="+exdate.toUTCString());
+}
+
+	<% if params[:p] %>
+		setCookie("master_affiliate", "<%= params[:p] %>", 90);
+	<% end %>
+
+
+<% if params[:lightbox]  == "login"%>
+      $j('#modalbox_login').click();
+<% end %>
+
+<%#*$("a#inline").fancybox({%>
+<%#*'hideOnContentClick': true%>
+<%#*});%>
+
+  });
+    </script>
+
+    <%= render :partial=>"/layouts/common_header" %>
+
+
+
+
+    <% if @in_checkout_confirmation %>
+      <SCRIPT language="JavaScript" type="text/javascript">
+        <!-- Yahoo! Inc.
+        window.ysm_customData = new Object();
+        window.ysm_customData.conversion = "transId=<%=@order.id%>,currency=,amount=<%=@order.total_price%>";
+        var ysm_accountid  = "14NQJ01AAUDVSRI9MM8PI735EGS";
+        // -->
+      </SCRIPT>
+      <script language="javascript" type="text/javascript" src="https://srv3.wa.marketingsolutions.yahoo.com/script/ScriptServlet?aid=14NQJ01AAUDVSRI9MM8PI735EGS"></script>
+    <% end %>
+  </head>
+
+  <body>
+    <div id="container">
+        <%= render :partial=>"/layouts/header_2010" %>
+
+
+
+      <div class="clear"></div>
+
+      <div id="page_container">
+        <%= yield %>
+      </div>
+
+      <%= @js_homepage %>
+    </div>
+    <div  class="clear"></div>
+    <!-- FOOTER-->
+    <%= render :partial=> "/layouts/footer_2010" %>
+    <!-- FOOTER-->
+    <!-- EO Container Div -->
+
+    <% if RAILS_ENV=="production" %>
+      <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '<%=analytics_number%>']);
+        _gaq.push(['_setDomainName', '.<%=@DOMAIN_NAME%>']);
+  <% if params[:search] %>
+      _gaq.push(['_trackPageview','<%=url_for(params.merge(:search_ga=>params[:search]))%>']);
+  <% else %>
+      _gaq.push(['_trackPageview']);
+  <% end %>
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+      </script>
+    <% end %>
+
+    <% if @in_checkout_confirmation %>
+
+      <img src="https://shareasale.com/sale.cfm?amount=<%=@order.total_price%>&tracking=<%=@order.id%>&transtype=sale&merchantID=27683" width="1" height="1"/>
+
+      <SCRIPT>
+        microsoft_adcenterconversion_domainid = 789310;
+        microsoft_adcenterconversion_cp = 5050;
+        microsoft_adcenterconversionparams = new Array();
+        microsoft_adcenterconversionparams[0] = "dedup=1";
+      </SCRIPT>
+      <SCRIPT SRC="https://0.r.msn.com/scripts/microsoft_adcenterconversion.js"></SCRIPT>
+      <NOSCRIPT><IMG width=1 height=1 SRC="https://789310.r.msn.com/?type=1&cp=1&dedup=1"/></NOSCRIPT>
+
+      <script language="JavaScript">
+        var merchant_id = '484495'
+        var order_id = '<%=@order.id %>'
+        var order_amt = '<%=@order.total_price%>'
+        var category_id = 'PUT_YOUR_DATA_HERE'
+        var category_name = 'PUT_YOUR_DATA_HERE'
+        var product_id = 'PUT_YOUR_DATA_HERE'
+        var product_name = 'PUT_YOUR_DATA_HERE'
+      </script>
+      <script language="JavaScript" src="https://stat.DealTime.com/ROI/ROI.js?mid=484495"></script>
+
+      <script type="text/javascript">
+        <!--
+        /* NexTag ROI Optimizer Data */
+        var id = '4730905';
+        var rev = '<%=@order.total_price%>';
+        var order = '<%=@order.id %>';
+        //-->
+      </script>
+      <script type="text/javascript" src="https://imgsrv.nextag.com/imagefiles/includes/roitrack.js"></script>
+
+
+    <% end %>
+
+
+
+
+    <div id="fb-root"></div>
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+
+    <%#= javascript_include_tag "facebook"%>
+    <%#= javascript_include_tag "twitter"%>
+    <% if @facebook_app %>
+      <script language="javascript">
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId  : '<%=@facebook_app.api_key%>',
+            status : true, // check login status
+            cookie : true, // enable cookies to allow the server to access the session
+            xfbml  : true  // parse XFBML
+          });
+          fbShowConnectButton();
+        };
+      </script>
+    <% end %>
+  </body>
+</html>

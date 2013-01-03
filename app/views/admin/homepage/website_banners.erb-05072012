@@ -1,0 +1,53 @@
+<h1>Website banners.</h1>
+
+<div>
+
+	<%= link_to "Add a banner", :action => "add_image_banner" %>
+
+<br />
+<br />
+</div>
+
+<% form_tag({:action => 'update_infos_banners'}, {:multipart=>true}) do %>
+
+	<table>
+		<tr>
+			<th>Banner name</th>
+			<th>Preview</th>
+			<th>Locale</th>
+			<th>Order</th>
+			<th>Label</th>
+			<th>Link</th>
+            <th>Alt</th>
+			<th>Action</th>
+
+		</tr>
+
+		<% @website_banners.each do |banner_image| %>
+			<tr>
+				<td><%= banner_image.website_banner.name %></td>
+				<td>
+					<%= image_tag(banner_image.image.url, :style => "width: 250px;") %>
+					<br />
+					<%= file_field_tag "banner_image[#{banner_image.id}][image]" %>
+				</td>
+				<td><%= banner_image.locale.long_name %></td>
+				<td><%= text_field_tag "banner_image[#{banner_image.id}][the_order]", banner_image.the_order %></td>
+				<td><%= text_field_tag "banner_image[#{banner_image.id}][label]", banner_image.label %></td>
+				<td><%= text_field_tag "banner_image[#{banner_image.id}][link]", banner_image.link %></td>
+              <td><%= text_field_tag "banner_image[#{banner_image.id}][alt]", banner_image.alt %></td>
+				<td><%= link_to "Delete", {:action => "delete_website_banner_image", :id => banner_image.id}, { :confirm => "SURE ?" } %></td>
+			</tr>
+		<% end %>
+		
+	</table>
+
+<div>
+<br />
+<br />
+	
+	<%= submit_tag "Update" %>
+</div>
+
+
+<% end %>

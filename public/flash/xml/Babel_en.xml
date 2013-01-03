@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+
+<lans>
+
+
+	
+	
+<!-- TAB MENUS ON TOP RIGHT -->
+	
+<txt linkage_path="mainAppMC.TabBtnsMC.products.textOn.txt" linkage_path1="mainAppMC.TabBtnsMC.products.textOff.txt">
+  <info><![CDATA[Products]]></info>
+</txt>
+
+<txt linkage_path="mainAppMC.TabBtnsMC.designs.textOn.txt" linkage_path1="mainAppMC.TabBtnsMC.designs.textOff.txt">
+  <info><![CDATA[Designs]]></info>
+</txt>
+	
+<txt linkage_path="mainAppMC.TabBtnsMC.texts.textOn.txt" linkage_path1="mainAppMC.TabBtnsMC.texts.textOff.txt">
+  <info><![CDATA[Text]]></info>
+</txt>
+	
+
+
+
+<!-- SHOPPING CART -->
+
+	<!-- Size -->
+<txt linkage_path="mainAppMC.ShopCartMC.txtSize">
+  <info><![CDATA[Size]]></info>
+</txt>
+
+	<!-- Quantity -->
+<txt linkage_path="mainAppMC.ShopCartMC.txtQuantity">
+  <info><![CDATA[Quantity]]></info>
+</txt>
+
+	<!-- Price -->
+<txt linkage_path="mainAppMC.ShopCartMC.txtPrice">
+  <info><![CDATA[Price]]></info>
+</txt>
+	
+	<!-- Disclaimer -->
+<txt linkage_path="mainAppMC.ShopCartMC.txtDisclaimer">
+  <info><![CDATA[*Tarif hors promotion / offre special]]></info>
+</txt>
+
+	<!-- Order button -->
+<txt linkage_path="mainAppMC.ShopCartMC.btnShopCart.txt">
+  <info><![CDATA[Order]]></info>
+</txt>
+
+	<!-- Currency Character -->
+<txt linkage_path="mainAppMC.ShopCartMC.__currenyCharacter">
+  <info><![CDATA[$]]></info>
+</txt>
+
+<!-- Currency Character position - left or right-->
+<txt linkage_path="mainAppMC.ShopCartMC.__currenyCharacterPosition">
+  <info><![CDATA[left]]></info>
+</txt>
+
+
+<!-- popups for shopping Cart -->
+<!-- Size not avaliable -->
+<txt linkage_path="mainAppMC.ShopCartMC.__sizeNotAvaliable">
+  <info><![CDATA[Sorry your size is not avaliable in this color]]></info>
+</txt>
+
+	
+	
+	
+<!-- DESIGN TABLE -->
+
+	<!-- Color Model Select -->
+<txt linkage_path="mainAppMC.DesignTableMC.DT_SlideMenuMC.DT_ColourSelectMC.txt">
+  <info><![CDATA[Colours du produit]]></info>
+</txt>
+
+
+
+<!-- MODEL PRODUCT SELECT -->
+
+	<!-- Heading -->
+<txt linkage_path="mainAppMC.ModelProductSelectMC.txt">
+  <info><![CDATA[Collection]]></info>
+</txt>
+
+
+
+<!-- MODEL DESIGN SELECT -->
+
+	<!-- Heading -->
+<txt linkage_path="mainAppMC.DesignSelectMC.txtHeading">
+  <info><![CDATA[Collection]]></info>
+</txt>
+
+	<!-- Import design btn -->
+<txt linkage_path="mainAppMC.DesignSelectMC.btnImportImage.txt">
+  <info><![CDATA[Import your image]]></info>
+</txt>
+
+	<!-- Import design btn tooltip-->
+<txt linkage_path="mainAppMC.DesignSelectMC.__btnImportToolTip">
+  <info><![CDATA[Import your image]]></info>
+</txt>
+
+
+
+	<!-- Size -->
+<txt linkage_path="mainAppMC.DesignSelectMC.DS_EditorMC.txtSize">
+  <info><![CDATA[Size]]></info>
+</txt>
+
+	<!-- Rotation -->
+<txt linkage_path="mainAppMC.DesignSelectMC.DS_EditorMC.txtRotation">
+  <info><![CDATA[Rotation]]></info>
+</txt>
+
+	<!-- Reflection -->
+<txt linkage_path="mainAppMC.DesignSelectMC.DS_EditorMC.txtReflection">
+  <info><![CDATA[Reflection]]></info>
+</txt>
+
+
+	<!-- Choose colors -->
+<txt linkage_path="mainAppMC.DesignSelectMC.DS_EditorMC.PrintColourSelectMC.txtHeading">
+  <info><![CDATA[Choose Colors]]></info>
+</txt>
+
+<!-- Change color design btns tooltip-->
+<txt linkage_path="mainAppMC.DesignSelectMC.DS_EditorMC.DS_LayerColorChangerMC.__changeColorToolTip">
+  <info><![CDATA[Change color]]></info>
+</txt>
+
+
+
+
+<!-- MODEL TEXT SELECT -->
+
+	<!-- Texts heading -->
+<txt linkage_path="mainAppMC.TextSelectMC.txtTexts">
+  <info><![CDATA[Texts]]></info>
+</txt>
+
+	<!-- Texts select all -->
+<txt linkage_path="mainAppMC.TextSelectMC.txtSelectAll">
+  <info><![CDATA[Select All]]></info>
+</txt>
+
+	<!-- Reflection -->
+<txt linkage_path="mainAppMC.TextSelectMC.TS_EditorMC.txtReflection">
+  <info><![CDATA[Reflection]]></info>
+</txt>
+
+	<!-- Rotation -->
+<txt linkage_path="mainAppMC.TextSelectMC.TS_EditorMC.txtRotation">
+  <info><![CDATA[Rotation]]></info>
+</txt>
+
+	<!-- Font -->
+<txt linkage_path="mainAppMC.TextSelectMC.TS_EditorMC.txtFont">
+  <info><![CDATA[Font]]></info>
+</txt>
+
+	<!-- Size -->
+<txt linkage_path="mainAppMC.TextSelectMC.TS_EditorMC.txtSize">
+  <info><![CDATA[Size]]></info>
+</txt>
+
+	<!-- Style -->
+<txt linkage_path="mainAppMC.TextSelectMC.TS_EditorMC.txtStyle">
+  <info><![CDATA[Style]]></info>
+</txt>
+
+	<!-- Choose colors -->
+<txt linkage_path="mainAppMC.TextSelectMC.TS_EditorMC.PrintColourSelectMC.txtHeading">
+  <info><![CDATA[Choose Colors]]></info>
+</txt>
+	
+	
+	
+	
+
+
+<!-- HELP TEXT CONTENTS FOR HELP BUTTONS -->
+	
+<txt linkage_path="mainAppMC.ShopCartMC.__helpModelInformation">
+  <info><![CDATA[<b>Help Model information</b><br><br>Cras cursus quam ut purus. In lacinia tempor neque. Etiam laoreet. Fusce blandit. Aenean eu sapien. Phasellus lacus nisl, consectetuer sed, posuere non, porta non, turpis. Sed at metus. Vivamus facilisis nisi sed tellus. Nunc venenatis luctus leo. Quisque eleifend orci et eros blandit pharetra. Vivamus venenatis bibendum felis. Nulla libero purus, elementum eget, condimentum vel, tempus ut, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam id sapien. Nullam aliquam, mi id tincidunt volutpat, mauris nunc consequat lacus, sed commodo lectus est vitae quam.<br><br> In lacinia tempor neque. Etiam laoreet. Fusce blandit. Aenean eu sapien. Phasellus lacus nisl, consectetuer sed, posuere non, porta non, turpis. Sed at metus. Vivamus facilisis nisi sed tellus. Nunc venenatis luctus leo. Quisque eleifend orci et eros blandit pharetra. Vivamus venenatis bibendum felis. Nulla libero purus, elementum eget, condimentum vel, tempus ut, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam id sapien. Nullam aliquam, mi id tincidunt volutpat, mauris nunc consequat lacus, sed commodo lectus est vitae quam.]]></info>
+</txt>
+	
+
+<txt linkage_path="mainAppMC.ShopCartMC.__helpSizeInformation">
+  <info><![CDATA[<b>Help Size information</b><br><br>Cras cursus quam ut purus. In lacinia tempor neque. Etiam laoreet. lectus est vitae quam.<br><br> In lacinia tempor neque. Etiam laoreet. Fusce blandit. Aenean eu sapien. Phasellus lacus nisl, consectetuer sed, posuere non, porta non, turpis. Sed at metus. Vivamus facilisis nisi sed tellus. Nunc venenatis luctus leo. Quisque eleifend orci et eros blandit pharetra.]]></info>
+</txt>
+
+
+<txt linkage_path="mainAppMC.DesignSelectMC.DS_EditorMC.PrintColourSelectMC.__helpModelInformation" linkage_path1="mainAppMC.TextSelectMC.TS_EditorMC.PrintColourSelectMC.__helpModelInformation">
+  <info><![CDATA[<b>Help Color information</b><br><br>Cras cursus quam ut purus. In lacinia tempor neque. Etiam laoreet. lectus est vitae quam.<br><br> In lacinia tempor neque. Etiam laoreet. Fusce blandit. Aenean eu sapien. Phasellus lacus nisl, consectetuer sed, posuere non, porta non, turpis. Sed at metus. Vivamus facilisis nisi sed tellus. Nunc venenatis luctus leo. Quisque eleifend orci et eros blandit pharetra.]]></info>
+</txt>
+
+
+<txt linkage_path="mainAppMC.TextSelectMC.TS_EditorMC.__helpFontInformation">
+  <info><![CDATA[<b>Help Font information</b><br><br>Cras cursus quam ut purus. In lacinia tempor neque. Etiam laoreet. lectus est vitae quam.<br><br> In lacinia tempor neque. Etiam laoreet. Fusce blandit. Aenean eu sapien. Phasellus lacus nisl, consectetuer sed, posuere non, porta non, turpis. Sed at metus. Vivamus facilisis nisi sed tellus. Nunc venenatis luctus leo. Quisque eleifend orci et eros blandit pharetra.]]></info>
+</txt>
+
+
+<!-- popups for help buttons -->
+<txt linkage_path="mainAppMC.DesignSelectMC.DS_EditorMC.PrintColourSelectMC.__colorInfoToolTip" linkage_path1="mainAppMC.TextSelectMC.TS_EditorMC.PrintColourSelectMC.__colorInfoToolTip">
+  <info><![CDATA[Info colors]]></info>
+</txt>
+
+<txt linkage_path="mainAppMC.TextSelectMC.TS_EditorMC.__fontInfoToolTip">
+  <info><![CDATA[Info fonts]]></info>
+</txt>
+
+<txt linkage_path="mainAppMC.ShopCartMC.__helpSizeToolTip">
+  <info><![CDATA[Info size of model]]></info>
+</txt>
+
+<txt linkage_path="mainAppMC.ShopCartMC.__helpModelToolTip">
+  <info><![CDATA[Info of model]]></info>
+</txt>
+
+
+
+<!-- ZONES -->
+	
+<txt linkage_path="mainAppMC.DesignTableMC.DT_SlideMenuMC.DT_ZoneSelectMC.__zoneType1">
+  <info><![CDATA[Front]]></info>
+</txt>
+
+<txt linkage_path="mainAppMC.DesignTableMC.DT_SlideMenuMC.DT_ZoneSelectMC.__zoneType2">
+  <info><![CDATA[Back]]></info>
+</txt>
+
+<txt linkage_path="mainAppMC.DesignTableMC.DT_SlideMenuMC.DT_ZoneSelectMC.__zoneType3">
+  <info><![CDATA[Left]]></info>
+</txt>
+
+<txt linkage_path="mainAppMC.DesignTableMC.DT_SlideMenuMC.DT_ZoneSelectMC.__zoneType4">
+  <info><![CDATA[Right]]></info>
+</txt>
+
+
+<!-- Info Buttons -->
+	
+<!-- removed <txt linkage_path="mainAppMC.DesignTableMC.InfoTabMC.__infoBtn1">
+  <info><![CDATA[Info Button 1]]></info>
+</txt>-->
+
+<txt linkage_path="mainAppMC.DesignTableMC.InfoTabMC.__infoBtn2">
+  <info><![CDATA[Hide show bounding boxes]]></info>
+</txt>
+
+<txt linkage_path="mainAppMC.DesignTableMC.InfoTabMC.__infoBtn3">
+  <info><![CDATA[See other artworks]]></info>
+</txt>
+
+
+
+<!--GLOBAL TEXT-->
+<!--Global text is pushed into textfields by the babel system linkage_path is the textfield the .text is added by the Translator class-->
+<txt linkage_path="GamePlay1MC.myText">
+  <info>english bottom text</info>
+</txt>
+
+
+<!--Babel images, loads in a jpeg and places it where you specify-->
+<img linkage_path="GamePlay1MC">
+  <info xpos="20" ypos="210" lanRef="testLanText1">datastorage/babelfiles/textEnglish.jpg</info>
+</img>
+
+<img linkage_path="GamePlay1MC">
+  <info xpos="20" ypos="310" lanRef="testLanText2">datastorage/babelfiles/testEnglishSwf.swf</info>
+</img>
+
+
+<!--GamePiece Dynamic Strings Variables -->
+<!--When a string is required to receive a babel text then this link_path can be used-->
+<!-- setup the string like this in your class
+		//these vars are set by skeeka babel in the xml file
+		public var __myString:String = "";-->
+<txt linkage_path="_GamePlay2CMC.GamePlay2MC.__myString">
+  <info>RECIPES</info>
+</txt>
+
+
+</lans>

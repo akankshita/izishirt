@@ -1,0 +1,16 @@
+package wordans.assets.skins
+{
+  import mx.containers.Canvas;
+
+  public class CloseImage extends Canvas
+  {
+    public function CloseImage()
+    {
+      super();
+    }
+    override protected function updateDisplayList(w : Number, h : Number) : void {
+      this.styleName = "redButton";      
+      super.updateDisplayList (w, h);
+    }
+  }
+}

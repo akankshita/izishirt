@@ -1,0 +1,94 @@
+<% if !@model %>
+  <h1>Choose Model</h1>
+  <% @models.each do |model| %>
+    <% if model == @models.first || @models[@models.index(model)-1].brand_id != model.brand_id%>
+      <h2><%= model.brand.local_name(session[:language_id]) if model.brand %></h2>
+    <% end %>
+    <%= link_to image_tag('/izishirtfiles/models/' + model.id.to_s + '/preview.jpg', :size => '45x45', :title => model.local_name(session[:language_id])),
+      :controller => 'admin/price', 
+      :action => 'models', 
+      :id => model.id %>
+  <% end %>
+<% else %>
+
+	<script type="text/javascript">
+		function apply_all_spec(index_column, new_value)
+		{
+
+			var cur_index_column = 0;
+
+			<% @model.model_specifications.each do |model_spec| %>
+				cur_index_column = 0;
+
+				<% model_spec.model_prices.each do |model_price| %>
+				
+					if (cur_index_column == index_column)
+					{
+						document.getElementById("model_prices_<%= model_price.id %>_price").value = new_value;
+					}
+
+					++cur_index_column;
+				<% end %>
+			<% end %>
+		}
+	</script>
+
+
+  <h1>Set Prices</h1>
+  <br />
+  <%= image_tag(@model.thumb, :title => @model.local_name(session[:language_id])) %>
+  <label><%=@model.local_name(session[:language_id])%></label>
+  <br /><br />
+  <% form_tag "/admin/price/save_model" do -%>   
+    <%= hidden_field_tag "id", @model.id%>
+    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+      	<th><%=  t(:admin_model_list_name)%></th>
+      	<th>&nbsp;</th>    	
+      	<% @model.model_specifications.first.model_prices.each do |model_price| %>
+      	  <th><%= model_price.description%></th>
+      	<% end %>
+      	<th><%= link_to "RESET ALL", {:action => "reset_model_price", :id => @model.id}, :style => "text-decoration:underline;"%></th>    	
+      </tr>
+
+      <tbody id='listing'>
+        <%= render :partial => 'edit_model_specifications', 
+            :collection => @model.model_specifications, 
+            :as => :model_specification %>
+	
+	<tr>
+
+		<td width="50">
+		</td>
+		<td>
+			Apply to all
+		</td>
+
+		<% 
+
+		index_spec = 0
+
+		@model.model_specifications.first.model_prices.each do |model_price| 
+		%>
+			<td><%= text_field_tag "model_price_apply_all_#{model_price.id}[price]", nil, :style => "width:30px;", :onchange => "apply_all_spec(#{index_spec}, this.value);" %></td>
+		<% 
+
+			index_spec += 1
+
+		end 
+		%>
+
+		<td></td>
+	</tr>
+      </tbody>
+    </table>
+    <br /><br />
+		<%= link_to t(:admin_back), 
+		    {:controller => "admin/price", :action => 'models', :id => nil }, 
+		    {:class => 'textLink', :title => t(:admin_back) }  %>
+		<%= link_to t(:admin_save), 
+		    "javascript:document.forms[0].submit();", 
+		    {:class => 'textLink', :title => t(:admin_save) }	%>
+
+  <% end -%>
+<% end %>

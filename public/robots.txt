@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /store_comments/
+Disallow: /checkout/
+Disallow: /checkout2/
+Disallow: /display/update_marketplace_sizes
+Disallow: /bin/
+Disallow: /my/custom_update_price
+Disallow: /display/update_marketplace_price
+Disallow: /popup/
+Disallow: /fr/checkout2/

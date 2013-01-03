@@ -1,0 +1,127 @@
+<script language="Javascript">
+	$j.easing.custom = function (x, t, b, c, d) {
+		var s = 1.70158; 
+		if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
+		return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
+	}
+
+	function changeColor(num_color, src_img){
+
+		if (src_img == null)
+		{
+			return "";
+		}
+
+		src_img = src_img.replace(/http.*izishirtfiles/, "/izishirtfiles");
+
+		var new_num_color = "";
+
+		if(src_img.match("front")){new_num_color = src_img.replace("/"+src_img.split("/")[7]+"/front/", "/"+num_color+"/front/");}
+		if(src_img.match("back")){new_num_color = src_img.replace("/"+src_img.split("/")[7]+"/back/", "/"+num_color+"/back/");}
+		if(src_img.match("left")){new_num_color = src_img.replace("/"+src_img.split("/")[7]+"/left/", "/"+num_color+"/left/");}
+		if(src_img.match("right")){new_num_color = src_img.replace("/"+src_img.split("/")[7]+"/right/", "/"+num_color+"/right/");}
+
+		return new_num_color;
+	}
+	
+	function activateColors(obj){
+		$j(".items img").removeClass("active");
+		$j(obj).addClass("active");
+	}
+
+	function clickMiniImg(type){
+
+		if(type=="front"){product_preview='<%= @product.front %>';}
+		if(type=="back"){product_preview='<%= @product.back %>';}
+        if(type=="left"){product_preview='<%= @product.left %>';}
+        if(type=="right"){product_preview='<%= @product.right %>';}
+		
+		var new_color = "";
+		new_color = changeColor($j("#color_id").attr("value"), product_preview);
+
+		if (new_color != "")
+			$j('#product_preview').attr("src", new_color);
+		
+		if(type=="front"){show_product_images('front_images');}
+		if(type=="back"){show_product_images('back_images');}
+        if(type=="left"){show_product_images('left_images');}
+        if(type=="right"){show_product_images('right_images');}
+
+	}
+
+	function onChangeForm(type, obj){
+		quantity_val = $('quantity').value;
+    color_val = $('color_id').value;
+		if(type=="quantity"){quantity_val = obj.value;}
+		
+		$j.ajax({
+			type: "POST",
+			url: '/display/update_marketplace_price?product=<%= @product.id %>',
+			data: 'quantity='+quantity_val+'&model_size_id='+$('model_size_id').value+'&color_id='+color_val,
+			dataType: "script",
+			success: function(return_data) {
+	        	return_data;
+	      	}
+		});
+	}
+
+	function onChangeBoutique(type, obj){
+		quantity_val = $('quantity').value;
+    color_val = $('color_id').value;
+		if(type=="quantity"){quantity_val = obj.value;}
+		
+		$j.ajax({
+			type: "POST",
+			url: '/my/custom_update_price/<%= @product.id %>',
+			data: 'quantity='+quantity_val+'&model_size_id='+$('model_size_id').value+'&color_id='+color_val,
+			dataType: "script",
+			success: function(return_data) {
+	        	return_data;
+	      	}
+		});
+	}
+
+	$j(".items img").click(function() {
+
+		// see if same thumb is being clicked
+		if ($j(this).hasClass("active")) { return; }
+		
+		//change url of the big image
+		var num_color = $j(this).attr("src").split("/")[3].split(".")[0];
+		var src_img_big = $j("#product_preview").attr("src");
+		
+		if (src_img_big.search("/images/") == -1){
+			var new_src_img= changeColor(num_color, src_img_big);
+
+			if (new_src_img != "")
+				$j("#product_preview").attr("src", new_src_img);
+		}
+		
+		for(i=0;i<3;i++){
+			//modify the mini images
+			var src_img = $j("#view .box .image a img").eq(i).attr("src");
+			var new_src = changeColor(num_color, src_img);
+
+			if (new_src != "")
+				$j("#view .box .image a img").eq(i).attr("src", new_src);
+		}
+		
+		//modify the new color_id in the form
+		$j("#color .field .value input").attr("value", num_color);
+	
+		//disabled the sizes for the selected color if out of stock
+		$j.ajax({
+			type: "POST",
+			url: '/display/update_marketplace_sizes',
+			data: 'old_size='+$j("#model_size_id").attr("value")+'&color_id='+num_color+'&model_id='+<%= @product.model_id.to_s %>,
+      success: function(return_data) { 
+        $j('#model_size_id').change();
+        return_data;
+	      }
+		});
+	
+		// activate item
+		activateColors(this);
+	});
+
+</script>

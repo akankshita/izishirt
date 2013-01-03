@@ -1,0 +1,58 @@
+<div class="one_product">
+
+
+  <div class="photo">
+    <% link_to(product.preview + "?height=340&width=340", :class=>"preview",:onclick=>"return false;") do %>
+      <%= image_tag(product.preview, :alt => '', :width=>76, :height=>76) %>
+    <% end %>
+  </div>
+
+  <% if product.back_preview %>
+    <div class="photo">
+      <% link_to(product.back_preview + "?height=340&width=340", :class=>"preview",:onclick=>"return false;") do %>
+        <%= image_tag(product.back_preview, :alt => '', :width=>76, :height=>76) %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="photo" style="visibility:hidden;"></div>
+  <% end %>
+
+  <% if product.left_preview %>
+    <div class="photo">
+      <% link_to(product.left_preview + "?height=340&width=340", :class=>"preview",:onclick=>"return false;") do %>
+        <%= image_tag(product.left_preview, :alt => '', :width=>76, :height=>76) %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="photo" style="visibility:hidden;"></div>
+  <% end %>
+  <% if product.right_preview %>
+    <div class="photo">
+      <% link_to(product.right_preview + "?height=340&width=340", :class=>"preview",:onclick=>"return false;") do %>
+        <%= image_tag(product.right_preview, :alt => '', :width=>76, :height=>76) %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="photo" style="visibility:hidden;"></div>
+  <% end %>
+
+  <div class="product_desc">
+    <span class="one_line_desc">
+      <%= t(:quantity_my_orders) %>: <%=product.quantity%>&nbsp;&nbsp;&nbsp;&nbsp; <%= t(:size) %>: <%=product.model_size.local_name(I18n.locale)%>
+    </span>
+    <% if product.color %>
+      <span class="one_line_desc">
+        <%=t(:color)%>: <%=product.color.local_name(session[:language_id])%>
+      </span>
+    <% end %>
+    <span class="one_line_desc">
+      <%=t(:model)%>: <%=product.model.local_name(session[:language_id])%>
+    </span>
+    <span class="one_line_desc">
+      <strong><%=t(:price_my_orders)%> <span class="green"><%=number_to_currency_custom((product.price+product.commission)*currency_rate(product.order.currency.label), :currency => product.order.currency.label)%></span></strong>
+    </span>
+
+  </div>
+  <div class="clear"></div>
+
+</div>

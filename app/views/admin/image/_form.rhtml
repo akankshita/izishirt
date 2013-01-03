@@ -1,0 +1,149 @@
+<p><%= error_messages_for 'image' %></p>
+
+<!--[form:image]-->
+
+
+  <script language="javascript">
+    function toggle_image_tab(tab_str_id)
+    {
+      tab_image = document.getElementById("tab_image");
+      tab_files = document.getElementById("tab_files");
+      div_action_buttons = document.getElementById("action_buttons");
+
+
+      link_tab_image = document.getElementById("link_tab_image");
+      link_tab_files = document.getElementById("link_tab_files");
+
+      if (tab_str_id == "tab_image")
+      {
+        tab_image.setAttribute("style", "display:block;");
+        tab_files.setAttribute("style", "display:none;");
+        div_action_buttons.setAttribute("style", "display:block;")
+
+        link_tab_image.setAttribute("class", "tab_active");
+        link_tab_image.setAttribute("className", "tab_active");
+        link_tab_files.setAttribute("class", "tab_inactive");
+        link_tab_files.setAttribute("className", "tab_inactive");
+      }
+      else
+      {
+        tab_image.setAttribute("style", "display:none;");
+        tab_files.setAttribute("style", "display:block;");
+        link_tab_image.setAttribute("class", "tab_inactive");
+        link_tab_image.setAttribute("className", "tab_inactive");
+        link_tab_files.setAttribute("class", "tab_active");
+        link_tab_files.setAttribute("className", "tab_active");
+
+        div_action_buttons.setAttribute("style", "display:none;")
+      }
+    }
+  </script>
+
+
+  <div id="tab_image" class="localized_tab_content clearfix" style="display:block; clear:both;">
+
+	<% if with_open_orig_image %>
+		<div class="titleForm"></div>
+	    <div class="boxForm" align="right"><%= link_to "Open original image", @image.orig_image.url, :target => "_blank" %></div>
+	<% end %>
+    
+
+
+    <div class="titleForm"><label for="image_name"><%= t(:admin_image_form_date_created) %></label></div>
+    <div class="boxForm"><%= @image.created_on %></div>
+
+    <div class="titleForm"><label for="image_name"><%= t(:admin_image_form_name) %></label></div>
+    <div class="boxForm"><%= text_field 'image', 'name' %></div>
+
+    <div class="titleForm"><label for="image"><%= t(:admin_image_form_user_comment) %></label></div>
+    <div class="boxForm"><%= text_area 'image', 'coment_user', :cols => 50, :rows => 1%></div>
+
+
+
+    <div class="titleForm"><label for="image_category_id"><%= t(:admin_image_form_category) %></label></div>
+    <div class="boxForm">
+      <select id="image_category_id" name="image[category_id]">
+      <% for category in @catcol %>
+        <%= display_category_select(category,@image.category_id) %>
+      <% end %>
+      </select>
+    </div>
+	
+	<div class="titleForm"><label for="image_city_id">City</label></div>
+    <div class="boxForm">
+      <select id="image_city_id" name="image[city_id]">
+	  <option value="0" >All cities</option>
+      <% 
+		@cities = City.find(:all, :order => "name")
+		for city in @cities %>
+		
+		<option value="<%= city.id %>" <% if city.id.to_i == @image.city_id.to_i %> SELECTED<% end %> ><%= city.name %></option>
+        
+      <% end %>
+      </select>
+    </div>
+
+    <% if with_username %>
+      <div class="titleForm"><label for="image_category_id"><%= t(:admin_user_form_username) %></label></div>
+      <div class="boxForm">
+        <% if print_user_name %>
+          <%= @image.user.username + " (Language: #{@image.user.language.name})" %> 
+
+        <% else %>
+		  
+          <%= select 'image', 'user_id', User.find(:all).map{|u| [u.username + " (Language: #{u.language.name})", u.id]}, :class => 'box'  %>
+        <% end %>
+      </div>
+	<% else %>
+		<%= hidden_field_tag 'image[user_id]', @image.user_id %>
+    <% end %>
+
+
+    <%= hidden_field 'image', 'sorting_rate' %>
+
+
+    <!--
+    <div class="titleForm"><label for="image_is_popular"><%#= t(:admin_image_form_is_popular) %></label></div>
+    <div class="boxForm"><%#= check_box 'image', 'is_popular', {}, 'true', 'false' %></div>
+    <div class="titleForm"><label for="image_is_trendy"><%#= t(:admin_image_form_is_trendy) %></label></div>
+    <div class="boxForm"><%#= check_box 'image', 'is_trendy', {}, 'true', 'false' %></div>
+    -->
+
+    <%
+    if with_images
+    %>
+
+
+      <div class="titleForm"><label for="image"><%= t(:admin_image_form_image_design) %></label></div>
+      <div class="boxForm"><%= file_field 'uploaded_image', 'orig_image' %><%= link_to "Download original image", :action => "download_image", :id => @image.id, :type => "original" if @image.orig_image? %></div>
+
+    <% end %>
+
+   
+<div class="titleForm"><label for="image"> </label></div>
+    <div class="boxForm">
+
+
+
+      <label for="image_pending_approval">Active ?</label>
+      <%= check_box 'image', 'active', {}, 'true', 'false' %>
+	  
+
+    </div>
+
+    <a id="reason_image_declined_link"></a>
+
+
+    <div class="titleForm"><label for="image"><%= t(:admin_image_form_admin_comment) %></label></div>
+    <div class="boxForm"><%= text_area 'image', 'coment_admin', :cols => 50, :rows => 1 %></div>
+
+    <div class="titleForm"></div>
+    <div class="boxForm"><%= hidden_field 'image', 'user_id'%></div>
+
+    <script language="javascript">
+      pending_approval_changed();
+    </script>
+  </div>
+
+
+<!--[eoform:image]-->

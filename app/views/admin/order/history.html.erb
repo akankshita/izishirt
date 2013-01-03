@@ -1,0 +1,85 @@
+<h1>Order Change History for Order <%=params[:id]%></h1>
+<br />
+<br />
+<table width='100%' border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <th>User</th>
+    <th>Attribute</th>
+    <th>Original Value</th>
+    <th>New Value</th>
+    <th>Date of Change</th>
+  </tr>
+  
+  <tbody id='listing'>
+    <%@order_histories.each do |history| %>
+    <tr>
+      <td><%=history.user.username%></td>
+      <td><%=history.attribute.split('_').map{|h|h.capitalize}.join(' ')%></td>
+      <td>
+		<% if history.attribute == "status" %>
+			<%= get_order_status_label(history.from_value.to_i)%>
+		<% else %>
+			<%=from_value(history)%>
+		<% end %>
+	</td>
+      <td>
+		<% if history.attribute == "status" %>
+			<%= get_order_status_label(history.to_value.to_i)%>
+		<% else %>
+			<%=to_value(history)%>
+		<% end %>
+	</td>
+      <td><%="#{history.created_on.strftime('%m/%d/%Y')} at #{history.created_on.strftime('%H:%M')}"%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<br />
+
+<h1><%= t(:admin_order_history_email_title) %></h1>
+<br />
+<table>
+  <tr>
+    <th><%= t(:admin_order_history_email_sent_by) %></th>
+	<th><%= t(:admin_order_history_email_sent_to) %></th>
+    <th><%= t(:admin_order_history_email_subject) %></th>
+	<th><%= t(:admin_order_history_email_body) %></th>
+	<th><%= t(:admin_order_history_email_artwork_problem) %></th>
+	<th><%= t(:admin_order_history_sent_on) %></th>
+  </tr>
+  
+  <tbody id='listing'>
+    <% @email_histories.each do |history| %>
+    <tr>
+      <td><%= history.wrote_by %></td>
+      <td><%= history.sent_to %></td>
+      <td><%= history.subject %></td>
+      <td><%= history.body %></td>
+	  <td><%= history.passed_as_artwork_required_problem %></td>
+	  <td><%= history.created_at %></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<br />
+
+<h1><%= t(:order_history_artwork_assignments_1) %></h1>
+<br />
+
+<table>
+  <tr>
+    <th><%= t(:order_history_artwork_assignments_2) %></th>
+    <th><%= t(:order_history_artwork_assignments_3) %></th>
+    <th><%= t(:order_history_artwork_assignments_4) %></th>
+  </tr>
+
+  <% @assignments.each do |assignment| %>
+    <tr>
+      <td><%= assignment.created_at %></td>
+      <td><%= assignment.staff.username if assignment.staff %></td>
+      <td><%= assignment.artwork_order_assignment_files.length %></td>
+    </tr>
+  <% end %>
+</table>

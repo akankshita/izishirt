@@ -1,0 +1,51 @@
+<%= javascript_include_tag "preview2.js" %>
+<div id="category_page">
+  <div id="left_container">
+    <%= render :partial => 'shop_left_menu', :locals=>{:no_link=>true} %>
+    <div id="image_own_logo">
+      <%= link_to((image_tag "izishirt2011/#{session[:language]}/b_create.jpg") , create_tshirt_url(), :title=>t(:create_yout_tshirt))%>
+    </div>
+    <div id="quantity_discounts">
+     <%= image_tag "izishirt2011/#{session[:language]}/quantitydiscount_txt_white.png", :alt=>"Quantity discount", :style=>"" %>
+      <ul>
+
+      <% @bulk_discounts = BulkDiscount.find(:all, :order=>"start") 
+			for bulk_discount in @bulk_discounts %>
+      <li>
+
+    <label class="qty" style="margin-left:5px;"><strong><%= bulk_discount.start  %>+</strong></label>
+
+    <label class="percent"style="margin-right:5px;" ><strong><%= bulk_discount.percentage  %>%</strong></label>
+      </li>
+		<% end %>
+      </ul>
+      <%= image_tag "izishirt2011/#{session[:language]}/applies_txt_white.png", :alt=>"Quantity discount", :style=>"" %>
+    </div>
+  </div>
+
+  <div id="right_container">
+    <%= render :partial => "img_result" %>
+
+    <% if @new_submissions != [] %>
+    <%#= render :partial => 'image_list',
+      :locals => {:title => t(:this_weeks_top_designs).upcase,
+                  :images => @new_submissions} %>
+    <% end %>
+
+    <div id="category_page_footer">
+      <%= link_to((image_tag "izishirt2011/#{session[:language]}/createyourown_green.jpg") , create_tshirt_url(), :title=>t(:create_yout_tshirt))%>
+      <div id="footer_text">
+        <% if @category.local_name(session[:language_id]) == "custom_new_design_en" ||  @category.local_name(session[:language_id]) == "custom_new_design_fr"  %>
+        <h1><%=t(:category_page_footer_h1, :category=>"")%></h1>
+        <%else%>
+        <h1><%=t(:category_page_footer_h1, :category=>@category.local_name(session[:language_id]))%></h1>
+        <%end%>
+        <%=t(:category_page_footer_text)%>
+      </div>
+    </div>
+    <div class="clear"></div>
+    
+  
+
+  </div>
+</div>

@@ -1,0 +1,127 @@
+@charset "utf-8";
+/* CSS Document */
+body_old {
+margin:0; 
+padding:0; 
+font-family:"Trebuchet MS", Helvetica, sans-serif; 
+font-size:12px;
+color:#444; 
+background-color: #FEFEFE;
+background-position-x: center;
+/*background-image: url(../images/bggene.jpg);*/
+background-repeat: repeat-y;
+}
+img {border:0;}
+.clear {clear:both;}
+
+#top_promo_bar {background-color:#0066cc;width:100%;height:29px;text-align:center;color:#EEEEEE;font-size:18px;}
+#top_promo_bar #style_top_bar_text {color:#FF7900;font-weight:bold;}
+#top_promo_bar #text_promo_bar{padding-top:2px;}
+
+#container{}
+/* Start Menu We are Human, Call us, Currency, Language and Cart*/
+#header_container { padding:0; width:915px;height:119px; margin:0; z-index:1000  }
+
+/* Logo Izishirt for the Header*/
+#header_container  #logo_izishirt {float:left; padding:10px 0 0 0px; margin:0;}
+#header_container  #logo_izishirt h1 {float: left;padding:0; margin:0; display:inline;height: 90px;}
+#header_container  #logo_izishirt a{float: left;height: 90px;}
+
+/*Currency - Language - Cart - Login*/
+#header_container #lang_currency { float:left; width:788px; text-align:right; margin:0; padding:0; font-size:10px;}
+#header_container #lang_currency img { border:0; text-decoration:none;}
+#header_container #lang_currency a { text-decoration:none; color:#333;}
+#header_container #lang_currency .cssdropdown { list-style-type:none; list-style-image:none; padding:0; margin:0; clear:both; overflow:hidden;}
+#header_container #lang_currency .cssdropdown ul { padding:0; margin:0; list-style-type:none; list-style-image:none; clear:both; overflow:hidden;}
+#header_container #lang_currency .cssdropdown a { color:#333; text-decoration:none;}
+#header_container #lang_currency .addDivider { background:url(/images/izishirt2011/headerDivider.png) no-repeat; background-position:right center; padding:2px 4px 0 4px;}
+#header_container #lang_currency .noDivider { padding:2px 8px 0 8px;}
+#header_container #lang_currency .flag { border-bottom:#ff0000 2px solid; padding-bottom:2px; margin:2px 4px 0 0;}
+#header_container #lang_currency .cart { margin:0 2px 0 0; vertical-align:top;}
+
+
+/*Message Free Shippin +5*/
+#header_container #free_5_shipping { float:left; text-align:left; width:250px; color:#444; font-size:11px; font-weight:bold; padding-left:20px; margin: 5px 0 5px;}
+#header_container #free_5_shipping img {display:block;float:left;width:28px;height:28px;}
+#header_container #free_5_shipping strong {display:block;float:left;margin-left:5px;padding-top:3px;line-height:11px;}
+/*Message Call US - We are human*/
+#header_container #call_us_header { width:518px; margin:2px 0; padding:0; float:left; text-align:right;}
+#header_container #call_us_header img { border:0;}
+#header_container #call_us_header a { text-decoration:none; color:#333;}
+#header_container #call_us_header .span_gray { color:#444; font-size:11px; margin:0; padding:0; text-align:right}
+#header_container #call_us_header .span_green {color:#009900; text-align:right}
+/*End Menu We are Human, Call us, Currency, Language and Cart*/
+
+#header_container #phone_number{
+	width: 350px;
+	font-weight:bold;
+	color:#000;
+	float:right;
+	font-size:20px;
+	}
+#header_container #search_menu{-moz-border-radius: 5px;border-radius: 5px;background-color:#f2f2f2;border:1px solid;border-color:#e8e7e5;width:313px;height:25px;margin-top:15px}
+#header_container #search_menu #search_txt{float:right;}
+/*background-image:url('../images/izishirt_design/images_home_header/recherche_background.jpg');background-repeat:no-repeat;*/
+
+/*Proudly Flag and Search and Text*/
+#container #proudly {float:left; width:915px; height: 30px; text-align:right; font-size:11px; color:#333; margin:20px 0; background-color: #f6f6f6;}
+#container #proudly #text_search{float: left;text-align: left; color: #333;font-size: 11px;padding: 8px 10px;}
+#container #proudly #search_menu {float:left; width:500px; text-align:left; font-size:11px; color:#333; margin:1px 0;}
+#container #proudly #search_menu input {float: left;width: 201px; height: 15px; border: 1px solid #999999;margin: 5px 10px 0 0;}
+#container #proudly #search_menu select {float: left; height: 19px; border: 1px solid #999999;margin: 5px 10px 0 0;}
+#container #proudly #search_menu #search_txt{float: left;margin: 5px 0 0 0;padding: 0;width: 72px; height: 19px;background-color: #0066CC;text-align: center;}
+#container #proudly #search_menu #search_txt a{line-height: 13px; height: 18px; padding: 3px 0 0; display: block;color: #ffffff;text-decoration: none;font-weight: bold;font-size: 10px;width: 72px;}
+#container #proudly #content_proudly {float:right;font-weight:bold; padding: 8px 10px;font-size: 12px;}
+#container #proudly strong{vertical-align:top;display:block;float:left;margin-top:-1px;}
+#container #proudly img { vertical-align:top; margin:0 5px 0px 3px;display:block;float:left;}
+
+#container #no_search{float: right;height: 40px;width: 915px;}
+#container #no_search .btnGreen {text-align:right; margin: 8px 0; height: 22px; float: right; }
+#container #no_search .btnGreen a:hover{ background: #06c506;}
+#container #no_search .btnGreen a { padding:5px 10px; background: #009900;  color:#fff; font-size:11px; font-weight: bold;  text-align:center;  text-decoration:none; text-transform:uppercase; display:block; float:right }
+
+
+/*Footer*/
+#footer {width:100%;  background: url(/images/izishirt2011/bckg_footer.jpg) repeat-x; height:300px; margin-top: 0px;}
+#footer #footer_info {width:915px;margin:10px auto;padding-top:25px;}
+#footer #footer_info #services { float:left; width:180px; margin:0 5px; padding:15px 10px;}
+#footer #footer_info #services p { margin:0 0 0 5px; font-weight:bold; color:#333; font-size:12px;}
+#footer #footer_info #services ul {margin:10px 0 0 0; padding:0; list-style:none; color:#444;}
+#footer #footer_info #services li {margin:3px 8px; padding:0; list-style:none; color:#444;}
+#footer #footer_info #services li a {color:#444; text-decoration:none;}
+#footer #footer_info #services li a:hover {color:#444; text-decoration:underline;}
+
+#footer #footer_info #community { float:left; width:170px; margin:0 5px; padding: 15px 15px;}
+#footer #footer_info #community p { margin:0 0 0 5px; font-weight:bold; color:#333; font-size:12px;}
+#footer #footer_info #community ul {margin:10px 0 0 0; padding:0; list-style:none; color:#444;}
+#footer #footer_info #community li {margin:3px 8px; padding:0; list-style:none; color:#444;}
+#footer #footer_info #community li a {color:#444; text-decoration:none;}
+#footer #footer_info #community li a:hover {color:#444; text-decoration:underline;}
+
+
+#footer #footer_info #currencies { float:left; width:200px; margin:0 5px; padding:15px 0;}
+#footer #footer_info #currencies p { margin:0 0 0 5px; color:#333; font-size:12px;}
+#footer #footer_info #currencies .pgray {color:#444; margin:8px;}
+#footer #footer_info #newsletter { float:left; width:260px; margin:10px 10px 0 10px; background:url(/images/izishirt2011/bcgk_stripes.jpg) repeat-x; border:1px solid #D9D9D9; padding:0 0 10px 0;}
+#footer #footer_info #newsletter form * {float:left;display:block;}
+#footer #footer_info #newsletter p { padding: 0 5px; margin: 5px 0; color:#444; font-size:11px;}
+#footer #footer_info #newsletter #title_news { background:#3399ff; color:#fff; font-size:12px; font-weight:bold; padding:5px 10px;}
+#footer #footer_info #newsletter #newsletter_spinner {margin-left:5px;display:block;padding-top:1px;}
+#footer #footer_info #newsletter #newsletter_spinner img {display:inline;}
+#footer #footer_info #newsletter #newsletter_message {margin-left:5px;}
+#footer #footer_info #newsletter input[type=text] { width:130px; border:1px solid #D9D9D9; padding:0; margin:0 5px; font-size:12px; color:#333;}
+#footer #footer_info #newsletter input[type=submit] {cursor:pointer;background-color: #009900; border-top:1px ridge #7ad84b; border-left:1px ridge #7ad84b; border-bottom:1px ridge #017c01; border-right:1px ridge #017c01; color:#fff; font-size:12px; font-weight: bold;  text-align:center; font-family:Arial, Helvetica, sans-serif; text-decoration:none; margin: 0 0 0 5px;}
+#footer #footer_info #newsletter input[type=submit]:hover {background-color: #06c506;}
+#footer #footer_info #list_langs {float: left;width: 915px;margin: 0 10px;padding: 15px 10px;}
+#footer #footer_info #list_langs .country{float: left;margin-bottom: 6px;margin-left: 10px;}
+#footer #footer_info #list_langs .country a{text-decoration: none;cursor: pointer;color: #444;display: block;}
+#footer #footer_info #list_langs .country a:hover{color: #0066ff;}
+#footer #footer_info #bottom_menu { float:left; width:915px; margin:5px auto; text-align: center; color:#444; font-size:11px;}
+#footer #footer_info #bottom_menu a {text-align: center; color:#444; font-size:11px; text-decoration:none;}
+#footer #footer_info #bottom_menu a:hover {text-decoration:underline;}
+
+
+
+.errorMessage, .red{color:#cc0000;}
+.successMessage, .green{color:#009E00;}
+.izishirtBlue {color:#0066FF;}

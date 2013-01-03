@@ -1,0 +1,86 @@
+/** IE6 is a hunk of crap!!! don't ask me why this is needed **/
+
+.top #wlogo,
+.top .fright a,
+.mainmenu .rLeft,
+.mainmenu .rRight,
+.featprod .heading em,
+.otherprod .heading em,
+.myshop .heading em,
+.r4tl,
+.r4tr,
+.r4br,
+.r4bl,
+#left .userinfo .email,
+#left .userinfo .fav,
+.variation em,
+.shadowtop,
+.shadowtop .swtl,
+.shadowtop .swtr,
+.wlogo_big,
+.popup h5 span,
+.popup,
+.popup h5   { background-image: none !important }
+
+
+.shadowtop,
+.shadowbtm,
+.swmleft,
+.swmright {display:none !important}
+
+* html .small_designs a{padding:0}
+
+.top #wlogo { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/top-sign.png'); }
+.top .fright em { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/top-cart.png'); width:30px; height:29px; display:block; float:left; }
+
+.top #wlogo { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/top-sign.png'); }
+
+.featprod .heading em,
+.myshop .heading em { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/ico-star.png'); }
+.otherprod .heading em { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/ico-otherdesigns.png');  }
+
+#left .userinfo .fav,
+#left .userinfo .email {padding:0}
+#left .userinfo .fav em {filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/ico-fav.png'); width:20px; height:20px; float:left; }
+#left .userinfo .email em {filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/ico-mail.png'); width:20px; height:20px; float:left; }
+
+.variation em {filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/ico-zoom.png');  }
+.wlogo_big  {filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/wlogo-big.png');  }
+
+* html .popup h5 {height:23px }
+
+.theme1 .r4tl {	left: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/nobrd_wbgr_tl.png');}
+.theme1 .r4tr {	right: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/nobrd_wbgr_tr.png')}
+.theme1 .r4br {	right: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/nobrd_wbgr_br.png')}
+.theme1 .r4bl {	left: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/nobrd_wbgr_bl.png')}
+
+/*
+.theme2 .r4tl {	left: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme2-tl.png');}
+.theme2 .r4tr {	right: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme2-tr.png')}
+.theme2 .r4br {	right: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme2-br.png')}
+.theme2 .r4bl {	left: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme2-bl.png')}
+*/
+
+.theme3 .r4tl {	left: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme9-tl.png');}
+.theme3 .r4tr {	right: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme9-tr.png')}
+.theme3 .r4br {	right: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme9-br.png')}
+.theme3 .r4bl {	left: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme9-bl.png')}
+
+.theme4 .r4tl {	left: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme4-tl.png');}
+.theme4 .r4tr {	right: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme4-tr.png')}
+.theme4 .r4br {	right: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme4-br.png')}
+.theme4 .r4bl {	left: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme4-bl.png')}
+
+.theme9 .r4tl {	left: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme9-tl.png');}
+.theme9 .r4tr {	right: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme9-tr.png')}
+.theme9 .r4br {	right: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme9-br.png')}
+.theme9 .r4bl {	left: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/crn/theme9-bl.png')}
+
+
+* html .png{
+    behavior: expression((this.runtimeStyle.behavior="none")&&(this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none",
+        this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')",
+        this.src = "/images/blank.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''),
+        this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')",
+        this.runtimeStyle.backgroundImage = "none")),this.pngSet=true) );
+}

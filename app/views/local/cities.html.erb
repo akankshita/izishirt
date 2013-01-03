@@ -1,0 +1,153 @@
+<div id="homepage_container">
+  <div id="main_banner">
+  <%img_banner = "/images/izishirt2011/#{session[:language]}/ban_home1.jpg"%>
+        <div id="banner">
+		<%= render :partial => 'banners_slide' %>
+
+
+       <div id="button_left"><%= image_tag "izishirt2011/b_left.png", :alt=>"left", :style=>"" %></div>
+       <div id="button_right" onclick="javascript:onRight();"><%= image_tag "izishirt2011/b_right.png", :alt=>"right", :style=>"" %></div>
+
+
+     
+    </div>
+    <br/>
+    <div id="create_tshirts">
+
+      <div id="create_tshirts_content_left">
+        <h1>
+          <%=t(:homepage_h1)%>
+         
+       </h1>
+        <%=t(:homepage_description)%>
+      </div>
+      <div id="create_tshirts_content_right">
+        <%
+         banner = WebsiteBanner.find_by_name("yourtext_your_image")
+         banner_images = banner.banner_images(I18n.locale.to_s)
+         banner_images = banner.banner_images("en-CA") if banner_images.length == 0
+        #banner_images = []
+        %>
+        <% banner_images.each do |banner_image| %>
+         <%= image_tag banner_image.image.url(), :alt=>banner_image.alt, :style=>"" %>
+        <%end%>
+       <!-- <img alt="Création t-shirts"  src="izishirt_design/images_home_header/francais/tshirtperso.jpg" >-->
+      </div>
+    </div>
+  </div>
+  <div id="left_container">
+    <!--<h2 style="color:#a6a6a6;font-size:12pt;font-weight: bold;text-decoration:underline;margin-top:10px">%#=t(:homepage_h2)%></h2>-->
+    <%= render :partial => 'shop_left_menu', :locals=>{:no_link=>true} %>
+    
+<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/pages/IziShirt/223576667655075" width="199" show_faces="true" stream="false" header="true"></fb:like-box>
+  <!-- <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FIziShirt%2F223576667655075%3Fsk%3Dwall&amp;width=199&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=true&amp;height=62" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:211px; height:330px;margin-top:20px;" allowTransparency="true"></iframe>-->
+
+
+  </div>
+   <%
+         banner = WebsiteBanner.find_by_name("categories_images")
+         banner_images = banner.banner_images(I18n.locale.to_s)
+         banner_images = banner.banner_images("en-CA") if banner_images.length == 0
+        #banner_images = []
+        %>
+  <div id="right_container">
+    <div id="container_all_category">
+      <% i=0  %>
+      <%#for j in 0..2 do %>
+          <% @all_categories.each do |category| %>
+            <% isImage = false%>
+      <!--On teste si les sous-catégories ont au moins une image, sinon catégorie suivante -->
+            <%  @sub_cat = category.sub_categories[0..3]  %>
+
+             <% @sub_cat.each do |sub| %>
+              <%begin%>
+               <%  sub.images.find(:first, :conditions=>"active=1").orig_image.url("100")%>
+                <%  isImage = true%>
+                <%break%>
+              <%rescue%>
+               <%end%>
+              <%end%>
+       <%if isImage == false %>
+            <%next%>
+        <%end%>
+    <div id="container_category">
+
+
+        <div id="container_category_img">
+          <%
+          path_img = category.local_name(2).downcase
+          path_img = path_img.gsub(" ","")
+          %>
+          
+          <%= image_tag banner_images[i].image.url(), :width=>82, :height=>82, :alt=>banner_images[i].alt, :style=>"" rescue '' %>
+          
+          <%i = i + 1%>
+          <% @sub_cat.each do |sub| %>
+           <!--On affiche la premiere image d une sous-catégorie -->
+            <%#= @sub_cat[1].local_name(session[:language_id])%>
+            <%begin%>
+             <%#= image_tag sub.images.find(:first, :conditions=>"active=1").orig_image.url("100"), :width=>82, :height=>82, :alt=>"", :style=>"" %>
+            <%break%>
+            <%rescue%>
+            <%end%>
+          <%end%>
+        </div>
+
+        <div id="container_category_list">
+
+          <h4><%= link_to category.local_name(session[:language_id]).capitalize,
+		    category_url(category.id), :title=>get_title_link_adding(category.local_name(session[:language_id]), "T-Shirts")%></h4>
+          <ul>
+	    <%@sub_cat.each do |sub| %>
+             <!--On teste si les sous-catégories ont au moins une image, sinon sous-catégorie suivante -->
+            <%begin%>
+              <%  sub.images.find(:first, :conditions=>"active=1").orig_image.url("100")%>
+            <%rescue%>
+            <%next%>
+            <%end%>
+            <li><%= link_to sub.local_name(session[:language_id]).capitalize,
+			  category_url(sub.id), :title=>get_title_link_adding(sub.local_name(session[:language_id]), "T-Shirts")%></li>
+            <%end%>
+          </ul>
+        </div>
+        <%#end%>
+      </div>
+      
+<% end %>
+      
+  </div>
+    <div id="create_your_own_logo">
+        <%= link_to((image_tag "izishirt2011/#{session[:language]}/b_create.jpg") , create_tshirt_url(), :title=>t(:create_yout_tshirt))%>
+    </div>
+    <div style="float:left;margin-top:100px">
+      <div style="font-weight:bold;font-size:10pt; color:#0066CC;margin-left: 40px;">Nous acceptons</div>
+      <div id="paiement">
+
+        <%= image_tag "izishirt2011/paiement.jpg", :alt=>"payment", :style=>"" %>
+        <div style="border-bottom: 1px dashed #f2f2f2;padding-top:10px;"></div>
+      </div>
+    </div>
+    <div id="contact_us">
+      <%=t(:contact_homepage)%>
+    </div>
+    <div id="reseaux_sociaux">
+        <a href="http://www.facebook.com/pages/IziShirt/223576667655075"> <%= image_tag "izishirt_design/images_home_header/facebook.jpg", :alt=>"Facebook", :style=>"" %></a>
+        <a href="http://twitter.com/izishirt"> <%= image_tag "izishirt_design/images_home_header/twitter.jpg", :alt=>"Twitter", :style=>"" %></a>
+        <a href="http://www.flickr.com/photos/izishirt"> <%= image_tag "izishirt_design/images_home_header/flikr.jpg", :alt=>"Flikr", :style=>"" %></a>
+      </div>
+  <div class='clear'></div>
+ <!-- <div id="studioizishirt">
+    <%= link_to(image_tag("izishirt2011/logo-small-footer.jpg", :alt=>"Studio Izishirt"), t(:studioizishirt_url), :target=>"_blank") %><br/>
+    <%=t(:studioizishirt_text)%>
+
+  </div>-->
+
+  </div>
+      <div class="clear"></div>
+    <!--<div class="descriptive_text">
+      <%= t(:seo_text_homepage,
+		:country_long => session[:country_long],
+            :link1=>link_to(t(:seo_link_1_text_homepage), create_tshirt_url(), :title=>t(:seo_link_1_text_homepage)),
+            :link2=>link_to(t(:seo_link_2_text_homepage), {:controller=>:display, :action=>:shop}, :title=>t(:seo_link_2_text_homepage)))%>
+    </div>-->
+</div>

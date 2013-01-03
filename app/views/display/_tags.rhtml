@@ -1,0 +1,13 @@
+<div class="article_view rcsbgrdark ">
+  <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+  <h1>&raquo; <%= t(:display_shop1_tags) %></h1>
+  <div class="content clearfix">
+    <ul>
+    <% @search_tags.each { |t|%>
+      <li class="horizontal">
+        <%= link_to t.name.capitalize, {:controller=>"/display/result_search?search=#{t.name}"}, :class=>"tagzlink", :style=>"font-size: 16px" %>
+      </li>
+    <% }%>
+    </ul>
+  </div>
+</div>

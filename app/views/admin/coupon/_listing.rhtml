@@ -1,0 +1,14 @@
+<% for coupon in @coupons %>
+<tr class="<%= cycle('odd', '') %>">
+	<td><%= h coupon.code %></td>
+	<td><%= number_to_percentage(echo_not_zero(coupon.percent_off), :precision => 1)%></td>
+	<td><%= number_to_currency_custom(echo_not_zero(coupon.currency_off)) %></td>
+	<td>&nbsp;&nbsp;<%= display_active(coupon) %></td>
+	<td>
+		<%= link_to '&nbsp;', {:action => 'edit', :id => coupon}, {:class => 'icoEdit icopng', :title => t(:admin_edit) } %>
+		<%= link_to '&nbsp;', { :action => 'destroy', :id => coupon }, :confirm => t(:admin_confirm), :method => :post, :class => 'icoDelete icopng', :title => t(:admin_delete) %>
+		<!--= link_to image_tag('ico-edit.gif', :alt => 'Edit'), :action => 'edit', :id => coupon %>
+		<= link_to image_tag('ico-del.gif', :alt => 'Delete'), { :action => 'destroy', :id => coupon }, :confirm => 'Are you sure?', :method => :post %-->
+	</td>
+</tr>
+<% end %>

@@ -1,0 +1,27 @@
+<%= form_tag({:action => "bulk_set_stock", :id => params[:id]}, {:id => 'out_of_stock_form'}) %>
+  <% for out_of_stock in @out_of_stocks 
+		background_line = ""
+		cycle_background = ""
+
+		begin
+			if Date.today >= out_of_stock.expected_date
+				background_line = " style='background-color:#ff8585;'"
+			else
+				cycle_background = cycle('odd', '')
+			end
+		rescue
+			cycle_background = cycle('odd', '')
+		end
+	%>
+    <tr class="<%= cycle_background %>" <%= background_line %>>
+      <td><%= out_of_stock.model.local_name(session[:language_id])%></td>
+      <td><%= out_of_stock.color.local_name(session[:language_id])%></td>
+      <td><%= out_of_stock.model_size.local_name(I18n.locale) %></td>
+	  <td><%= out_of_stock.expected_date %></td>
+      <td> 
+        <%= link_to 'In Stock', {:action => 'destroy_out_of_stock', :id => out_of_stock.id }  %>
+      </td>
+      <td><%=check_box_tag "out_of_stock[#{out_of_stock.id}]", true, false, :id => "out_of_stock_#{out_of_stock.id}"%></td>
+    </tr>
+  <% end %>
+</form>

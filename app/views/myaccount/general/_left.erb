@@ -1,0 +1,76 @@
+<div id="left_container">
+  <div id="fb_connected">
+    <%=image_tag "blank.gif", :id => "fb_profile" %>
+    <label><%= t("myizishirt.share.connected") %></label>
+    <%= link_to t("myizishirt.share.edit_settings"),
+        {:controller => "myizishirt/share_settings"}%>
+
+    <div class="clear"></div>
+  </div>
+
+  <div id="fb_not_connected">
+    <label>
+      <%= t("myizishirt.share.not_connected",
+            :credit_link => link_to(t("myizishirt.credit.title"),
+                                    {:controller => "myizishirt/share_settings",
+                                      :action => "credit"})) %>
+    </label>
+    <fb:login-button onLogin="fbShowConnectButton()"></fb:login-button>
+
+    <div class="clear"></div>
+  </div>
+  <div id="uDash">
+    <div class="uProfile">
+      <h1><%= "#{@user.username}"%></h1>
+
+      <div class="uPic" onmouseover="$('editAvatar').show();" onmouseout="$('editAvatar').hide();">
+        <% if @profile_img == "noavatar.gif" %>
+          <%= link_to image_tag("/izishirtfiles/user_profile/#{@profile_img}", :width => "172", :height => "152", :alt => ''), {:controller => "profile", :action => "profile"}, {:style => "background:0;position:relative;padding:0;"} %>
+
+        <% else %>
+          <div id="editAvatar" style="display: none;"><a href='/popup/pp_edit_avatar' class='avatar_modalbox'><%= t("edit_image") %></a></div>
+          <a href='/popup/pp_edit_avatar' class='avatar_modalbox' id="imgAvatar"><%= image_tag("/izishirtfiles/user_profile/#{@profile_img}", :width => "172", :height => "152", :alt => '') %></a>
+        <% end %>
+      </div>
+    </div>
+    <div class="uMenu">
+      <h3><%= t(:my_izishirt_2011_dashboard) %></h3>
+
+<!--
+
+      <%= link_to t(:my_izishirt_2011_overview), {:controller => "profile"}, :class=>(@controller.controller_name=="profile" && (@controller.action_name=='index' || @controller.action_name=='control_panel')?"active":"") %>
+      <%= link_to t(:my_izishirt_2011_my_designs), {:controller => "design"}, :class=>(@controller.controller_name=="design"?"active":"") %>
+      <%= link_to t(:my_izishirt_2011_my_products), {:controller => "products"}, :class=>(@controller.controller_name=="products"?"active":"") %>
+      <%= link_to t(:store_comments_my_comments) + " (#{@comments_cpt})", {:controller => "store_comments"}, :class=>"#{(@controller.controller_name=="store_comments"?"active":"")}" %>
+      <%= link_to t(:my_izishirt_2011_promote_and_sell), {:controller => "promote"}, :class=>(@controller.controller_name=="promote"?"active":"") %>
+
+      <%= link_to t(:my_izishirt_2011_customize_my_shop), {:controller => "customize_boutique"}, :class=>(@controller.controller_name=="customize_boutique"?"active":"") %>
+
+-->
+
+      <%= link_to t(:edit_account_info),{:controller => 'myaccount/profile', :action => 'index'},:name => 'light_account', :class=>(@controller.controller_name=="profile" && @controller.action_name=='profile'?"active":"")%>
+      <%= link_to t("myizishirt.share.share_settings"), {:controller => "myizishirt/share_settings"}, :class=>(@controller.controller_name=="share_settings"&&@controller.action_name=="index"?"active":"") %>
+      <%= link_to t("myizishirt.credit.title"), {:controller => "myizishirt/share_settings", :action => 'credit'}, :class=>(@controller.controller_name=="share_settings"&&@controller.action_name=="credit"?"active":"") %>
+      <%= link_to t(:my_orders),{:controller => 'myizishirt/orders' },:name => 'light_account' %>
+
+
+
+<!--
+      <%= link_to t(:my_izishirt_2011_help_center), {:controller => "profile", :action => "help_center"}, :class=>(@controller.controller_name=="profile" && @controller.action_name=='help_center'?"active":"") %>
+-->
+
+<!--
+      <div class="btnGreen clearfix">
+        <%= link_to t(:my_izishirt_2011_visit_my_shop), @shop_url, :target => "_blank" %>
+      </div>
+-->
+
+    </div>
+    <hr noshade="noshade" size="1" />
+    <div class="uEarnings">
+      <h3 style="float:left;"><%= t(:my_izishirt_2011_my_online_credit) %></h3>
+      <%= link_to image_tag("izishirt2011/info.png"), {:controller => "myizishirt/share_settings", :action => "credit"}, :style => "float:right" %>
+      <p style="clear:both;"><%= number_to_currency_custom(@user.available_credit) %></p>
+    </div>
+  </div>
+</div>

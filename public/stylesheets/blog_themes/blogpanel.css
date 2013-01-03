@@ -1,0 +1,42 @@
+body {margin:0; padding:0; font-family:tahoma, Arial, Helvetica, sans-serif; font-size:11px}
+.panelholder {padding:10px 10px 0px 10px; width:158px; }
+.blogpanel {color:#5b5b5b; text-align:center  }
+.blogpanel img {border:1px solid #bcbcbc}
+.blogpanel p {margin:0 0 3px 0; padding:0; text-align:right;}
+.blogpanel b span {color:#c10909; text-align:right;}
+.wlogo {text-align:center}
+.wlogo a {background:url(/images/corpblog/wdans.gif) no-repeat; text-decoration:none; display:block; width:67px; margin:0 auto; height:20px; }
+.btn {width:158px; float:right; margin:3px 0 15px 0 }
+.btn a {position:relative; height:21px; cursor:pointer; display:block; text-decoration:none}
+.btn .rLeft,
+.btn .rRight {width:8px; height:21px; top:0; position:absolute}
+.btn .rLeft {background:url(/images/corpblog/theme5/btn-left.png); left:0}
+.btn .rRight {background:url(/images/corpblog/theme5/btn-right.png); right:0; position:absolute}
+.btn span {background:url(/images/corpblog/theme5/btn-bgr.gif); margin:0 8px; display:block; height:21px; line-height:21px; color:#737373; text-decoration:none; text-align:center; font-weight:bold}
+.btn .ovr .rLeft {background:url(/images/corpblog/theme5/btn-left-ovr.png); left:0}
+.btn .ovr .rRight {background:url(/images/corpblog/theme5/btn-right-ovr.png); right:0; position:absolute}
+.btn .ovr span {background:url(/images/corpblog/theme5/btn-bgr-ovr.gif); color:#fff}
+
+
+* html .btn .rLeft,
+* html .btn .rRight {background-image :none !important}
+* html .btn .rLeft { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/theme5/btn-left.png');   }
+* html .btn .rRight { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/theme5/btn-right.png'); }
+* html .btn .ovr .rLeft { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/theme5/btn-left-ovr.png');   }
+* html .btn .ovr .rRight { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/theme5/btn-right-ovr.png'); }
+
+
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+.clearfix {height: 1%;}
+.clearfix {display: block;}
+

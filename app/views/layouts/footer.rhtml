@@ -1,0 +1,124 @@
+<div class="dist"></div>
+<div class="floatserices">
+  <div class="rcsbgrdark services" style="height:121px; left: -20px">
+    <div class="fiba">&nbsp;</div>
+    <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+    <div class="servcontent clearfix">
+      <% if(session[:user_id]) %>
+      <div class="fplogin loginlinks">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>
+              <p><%= t(:display_home_logged_title) %> <span><%= User.find(session[:user_id]).firstname%></span></p>
+              <%= link_to t(:myizishirt_profile_home_my_account_button), {:controller=>"/myizishirt/profile/profile/"}, :class=>"fp_ico_profile" %>
+              <%= link_to t(:menu_myizishirt_design_upload), {:controller=>"/myizishirt/design/"}, :class=>"fp_ico_upload" %>
+              <%= link_to t(:menu_myizishirt_editstore), {:controller=>"/myizishirt/editstore"}, :class=>"fp_ico_editstore" %>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+      <% else %>
+      <div class="fplogin">
+        <% form_tag :controller=>"/myizishirt", :action=>"login" do %>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><p><%= t(:display_home_connexion1) %></p>
+                <input name="username" type="text" onfocus="this.value=(this.value=='username')?'':this.value" onblur="this.value=(this.value=='')?'username':this.value"  value="username" />
+                <p><%= t(:display_home_connexion2) %></p>
+                <input name="password" type="password"  onfocus="this.value=(this.value=='password')?'':this.value" onblur="this.value=(this.value=='')?'password':this.value" value="password" />
+              </td>
+            </tr>
+            <tr>
+              <td><table border="0" cellspacing="0" cellpadding="0" class="fplogin_links">
+                  <tr>
+                    <td valign="bottom"><input name="commit" type="submit" value="<%= t(:display_home_validate) %>" class="loginBtnFp" /></td>
+                    <td>
+                      <%= link_to t(:display_home_inscription), {:controller=>"/myizishirt/login/new"}, :rel=>"nofollow" %>
+                    </td>
+                    <td>
+                      <%= link_to t(:display_home_lost_pass), {:controller=>"/myizishirt/login/lostpass"}, :rel=>"nofollow" %>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>           
+          </table>
+         <% end %>
+      </div>
+      <% end %>
+      <div class="fpblog">
+      <%= link_to t(:display_home_rss), t(:display_home_rss_url), :rel=>"nofollow", :class=>"frss", :title=>t(:display_home_rss) %>
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><img src="/images/<%= t(:display_home_blogimg) %>" alt="" border="0" /></td>
+          <td valign="top">
+            <p><b><% #begin
+                     #  xmlfeed = SimpleRSS.parse open(t(:footer_what_s_up_on_blog_url))  
+                     #  entry1_link = xmlfeed.entries[0].link
+                     #  entry1_title = xmlfeed.entries[0].title
+                     #  entry2_link = xmlfeed.entries[1].link
+                     #  entry2_title = xmlfeed.entries[1].title
+                    #rescue
+                        entry1_link = ''
+                        entry1_title = ''
+                        entry2_link = ''
+                        entry2_title = ''
+                    #end
+                       %></b></p>
+
+                    <%= link_to entry1_title, entry1_link, :rel=>"" %>
+                    <%= link_to entry2_title, entry2_link, :rel=>"" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="fpforum" style="position:relative;background:none;width:240px;">
+      <strong style="margin-left: 25px"><%= t(:footer_buy) -%></strong>
+      <ul>
+        <li><%= link_to t(:footer_start_design), {:controller=>t(:display_home_create_tshirts)} %></li>
+        <li><%= link_to t(:footer_shop_designs), {:controller=>"/display/shop"} %></li>
+        <li><%= link_to t(:footer_bulk_quotes), {:controller=>t(:menu_bulk_orders_url)} %></li>
+      </ul>
+      <div style="margin-left:25px;">
+        <label style="padding-bottom:10px;vertical-align:middle;">Become a fan!</label>
+        <a href="http://www.facebook.com/pages/Izishirt-T-shirt-Lab/#/pages/Izishirt-T-shirt-Lab/8141539334">
+          <img src="/images/facebook_logo.png" alt="" border="0" style="padding:0;margin:0;"/>
+        </a>
+        <label style="padding-bottom:10px;vertical-align:middle;">Follow us on twitter</label>
+        <a href="http://twitter.com/izishirt">
+          <img src="/images/twitter_logo.png" alt="" border="0" style="padding:0;margin:0;"/>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="clear nohgh">&nbsp;</div>
+</div>
+</div>
+<div class="logogray"></div>
+<!--  End Home page Login -->
+<!--  Start Blog -->
+<!--  End Blog -->
+<!--  Start Forum -->
+<!--  End Forum -->
+<div id="the-footer">
+  <div class="footerwidth">
+    <div class="footermenu">
+      <%= link_to t(:footer_jobs_text), {:controller=>t(:footer_jobs_url)}, :rel=>"nofollow" %> |
+      <%= link_to t(:footer_faq_text), {:controller=>t(:footer_faq_url)}, :rel=>"nofollow" %> |
+      <%= link_to t(:footer_contact_text), {:controller=>t(:footer_contact_url)}, :rel=>"nofollow" %> |
+      <%= link_to t(:footer_rss_feed_text), t(:footer_rss_feed_url), :rel=>"nofollow" %> |
+      <%= link_to t(:footer_terms_text), {:controller=>t(:footer_terms_url)}, :rel=>"nofollow" %> |
+      <%= link_to t(:footer_privacy_text), {:controller=>t(:footer_privacy_url)}, :rel=>"nofollow" %>
+    </div>
+    <div class="fineprint"> 
+      <%= t(:display_home_title_1) %>
+      <%= t(:display_home_numero_tel) %><br />
+      <%= t(:footer_use_text) %> <br />
+      <%= t(:footer_copyright_text) %>
+	  <span><a href='mailto:contact@izishirt.com'>contact@izishirt.com</a></span>
+	  <br><%=t(:footer_copyright_text2)%>
+    </div>
+
+  </div>
+</div>

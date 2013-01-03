@@ -1,0 +1,26 @@
+<%= error_messages_for 'country' %>
+<!--[form:country]-->
+<div>
+	
+    <div class="titleForm"></div>
+	<div class="titleForm"><label for="name">Name</label></div>
+	<div class="boxForm">
+	  <input class="box" type="text" id="name" name="name" value="<%= @country.name %>" />
+	</div>
+							
+	
+	<div style="clear:both;"></div>
+	<div class="boxForm" style="width:280px !important;"><label for="shortname">Short Name</label><br />
+		<input class="box" type="text" id="shortname" name="shortname" value="<%= @country.shortname %>" />
+	</div>
+	<div style="clear:both;"></div>
+	<div class="boxForm" style="width:280px !important;"><label for="taxe">Taxe</label><br />
+	  <input class="box" type="text" id="tax" name="tax" value="<%= @country.tax %>" />
+	</div>
+	
+	<div style="clear:both;"></div>
+	
+							
+<!--[eoform:country]-->
+
+  </div>

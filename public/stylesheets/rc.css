@@ -1,0 +1,131 @@
+.rcsbgrdark {	border: 1px solid #cacdcf;}
+.crndark {	border: 1px solid #d9d6d6; position:relative}
+.crndark .rbtm {	border-bottom: 1px solid #d9d6d6;}
+.crnliteblue {border: 1px solid #ecf6fb; position:relative}
+.crnliteblue .rbtm {border-bottom: 1px solid #ecf6fb;}
+.rcsgbgr {border:1px solid #e4e8eb}
+.rcsgbgr .rbtm {border-bottom:1px solid #e4e8eb !important}
+
+.crnlite {border:1px solid #eaebec; position:relative}
+.crnlite .rbtm  {border-bottom:1px solid #eaebec; position:relative}
+
+.rtl, .rtr, .rbr, .rbl {	position: absolute;	width: 10px;	height: 10px;	font-size: 1px;}
+.rstl, .rstr, .rsbr, .rsbl {	position: absolute;	width: 5px;	height: 5px; font-size: 1px;}
+.r4tl, .r4tr, .r4br, .r4bl {	position: absolute;	width: 4px;	height: 4px; font-size: 1px;}
+
+/*-IE bug fix-*/
+.rbtm {	bottom: -1px;	width: 100%;	height: 2px;	font-size: 1px;	line-height: 1px;}
+.crndark .rbtm {bottom: -1px;	width: 100%;	height: 2px;	font-size: 1px;	line-height: 1px;}
+.rcsbgrdark .rbtm {	bottom: -2px;	border-bottom: 1px solid #cacdcf}
+
+/* Large Corners */
+.rtl {	background: url(../images/crn/rtl.png);	left: 0;	top: 0;}
+.rtr {	background: url(../images/crn/rtr.png);	right: 0;	top: 0;}
+.rbr {	background: url(../images/crn/rbr.png);	right: 0; bottom: 0;}
+.rbl {	background: url(../images/crn/rbl.png);	left: 0;	bottom: 0;}
+
+.crndark .rtl,
+.rcsbgrdark .rstl,
+.crnliteblue .rstl,
+.crnlite .rstl {left: -1px;	top: -1px;}
+
+.crndark .rtr,
+.rcsbgrdark .rstr, 
+.crnliteblue .rstr,
+.crnlite .rstr {right: -1px;	top: -1px;}
+
+.crndark .rbr,
+.rcsbgrdark .rsbr,
+.crnliteblue .rsbr,
+.crnlite .rsbr{right: -1px;	bottom: -1px;}
+
+.crndark .rbl,
+.rcsbgrdark .rsbl,
+.crnliteblue .rsbl,
+.crnlite .rsbl {left: -1px;	bottom: -1px;}
+
+
+.crndark .rtl {	background: url(../images/crn/crn-tl-wbgr.png);	}
+.crndark .rtr {	background: url(../images/crn/crn-tr-wbgr.png);	}
+.crndark .rbr {	background: url(../images/crn/crn-br-wbgr.png);	}
+.crndark .rbl {	background: url(../images/crn/crn-bl-wbgr.png);	}
+
+/* Small Corners - light border*/
+
+.crnlite .rstl {	background:  url(/images/crn/crns-tl-wbgr.png);	}
+.crnlite .rstr {	background: url(/images/crn/crns-tr-wbgr.png);	}
+.crnlite .rsbr {	background: url(/images/crn/crns-br-wbgr.png);	}
+.crnlite .rsbl {	background: url(/images/crn/crns-bl-wbgr.png);	}
+
+.rcsbgrdark .rstl {	background: url(../images/crn/sm_dark_wh_rtl.png) no-repeat;	}
+.rcsbgrdark .rstr {	background: url(../images/crn/sm_dark_wh_rtr.png) no-repeat;	}
+.rcsbgrdark .rsbr {	background: url(../images/crn/sm_dark_wh_rbr.png) no-repeat;}
+.rcsbgrdark .rsbl {	background: url(../images/crn/sm_dark_wh_rbl.png) no-repeat;	}
+
+.rcsgbgr .rstl {	background: url(../images/crn/sm_dark_gr_rtl.png) no-repeat;	}
+.rcsgbgr .rstr {	background: url(../images/crn/sm_dark_gr_rtr.png) no-repeat;	}
+.rcsgbgr .rsbr {	background: url(../images/crn/sm_dark_gr_rbr.png) no-repeat;}
+.rcsgbgr .rsbl {	background: url(../images/crn/sm_dark_gr_rbl.png) no-repeat;	}
+
+
+/* Small Corners - blue light border*/
+.crnliteblue .rstl {	background: transparent url(../images/crn/crn_tl_blue.png) no-repeat;	}
+.crnliteblue .rstr {	background: transparent url(../images/crn/crn_tr_blue.png) no-repeat;	}
+.crnliteblue .rsbr {	background:  url(../images/crn/crn_br_blue.png) no-repeat;}
+.crnliteblue .rsbl {	background: url(../images/crn/crn_bl_blue.png) no-repeat;	}
+
+/* new corners */
+.crnTL, .crnTR, .crnBR, .crnBL,
+.crnBTL, .crnBTR, .crnBBR, .crnBBL,
+.crnBbTL, .crnBbTR, .crnBbBR, .crnBbBL {	position: absolute;	width: 5px;	height: 5px;	overflow: hidden !important;}
+
+.crnWTL, .crnWTR, .crnWBR, .crnWBL,
+.crnGTL, .crnGTR, .crnGBR, .crnGBL  {	position: absolute;	width: 10px;	height: 10px;	overflow: hidden !important;}
+
+.crnTL, .crnBTL, .crnWTL, .crnGTL {	top: 0;	left: 0;}
+.crnTR, .crnBTR, .crnWTR, .crnGTR {	top: 0;	right: 0;}
+.crnBR, .crnBBR, .crnWBR, .crnGBR {	bottom: 0;	right: 0;}
+.crnBL, .crnBBL, .crnWBL, .crnGBL {	bottom: 0;	left: 0;}
+
+.crnTL {	top: 0;	left: 0;	background: url(../images/crn/crn_tl_gr.png);}
+.crnTR {	top: 0;	right: 0;	background: url(../images/crn/crn_tr_gr.png);}
+.crnBR {	bottom: 0;	right: 0;	background: url(../images/crn/crn_br_gr.png);}
+.crnBL {	bottom: 0;	left: 0;	background: url(../images/crn/crn_bl_gr.png);}
+
+/* Corners - for blue background 5px */
+.crnBTL {	top: 0;	left: 0;	background: url(../images/crn/crn_blue_tl_gr.png);}
+.crnBTR {	top: 0;	right: 0;	background: url(../images/crn/crn_blue_tr_gr.png);}
+.crnBBR {	bottom: 0;	right: 0;	background: url(../images/crn/crn_blue_br_gr.png);}
+.crnBBL {	bottom: 0;	left: 0;	background: url(../images/crn/crn_blue_bl_gr.png);}
+
+/* Corners - blue corners - blue background 5px */
+.crnBbTL {	background: url(../images/crn/crn_tl_blue-bbgr1.png) no-repeat;	top: -1px;	left: -1px;	}
+.crnBbTR {	background: url(../images/crn/crn_tr_blue-bbgr1.png) no-repeat;	top: -1px;	right: -1px;	}
+.crnBbBR {	background: url(../images/crn/crn_br_blue-bbgr1.png) no-repeat;	bottom: -1px;	right: -1px;	}
+.crnBbBL {	background: url(../images/crn/crn_bl_blue-bbgr1.png) no-repeat;	bottom: -1px;	left: -1px;}
+
+.thumbsFP .ovr .crnBbTL,
+.thumbsRate .ovr .crnBbTL,
+.thumbsUsr .ovr .crnBbTL {	background: url(../images/crn/crn_tl_blue-bbgr1ovr.png) no-repeat; top: -1px;	left: -1px;	}
+.thumbsFP .ovr .crnBbTR,
+.thumbsRate .ovr .crnBbTR,
+.thumbsUsr .ovr .crnBbTR  {	background: url(../images/crn/crn_tr_blue-bbgr1ovr.png) no-repeat;	top: -1px;	right: -1px;	}
+.thumbsFP .ovr .crnBbBR,
+.thumbsRate .ovr .crnBbBR,
+.thumbsUsr .ovr .crnBbBR {	background: url(../images/crn/crn_br_blue-bbgr1ovr.png) no-repeat;	bottom: -1px;	right: -1px;	}
+.thumbsFP .ovr .crnBbBL,
+.thumbsRate .ovr .crnBbBL,
+.thumbsUsr .ovr .crnBbBL {	background: url(../images/crn/crn_bl_blue-bbgr1ovr.png) no-repeat;	bottom: -1px;	left: -1px;}
+
+
+/* Corners - for white background 10px */
+.crnWTL {	top: 0;	left: 0;	background: url(../images/crn/rtl.png);}
+.crnWTR {	top: 0;	right: 0;	background: url(../images/crn/rtr.png);}
+.crnWBR {	bottom: 0;	right: 0;	background: url(../images/crn/rbr.png);}
+.crnWBL {	bottom: 0;	left: 0;	background: url(../images/crn/rbl.png);}
+
+/* Corners - for gray background 10px */
+.crnGTL {	top: 0;	left: 0;	background: url(../images/crn/crn_tl_gbgr.png);}
+.crnGTR {	top: 0;	right: 0;	background: url(../images/crn/crn_tr_gbgr.png);}
+.crnGBR {	bottom: 0;	right: 0;	background: url(../images/crn/crn_br_gbgr.png);}
+.crnGBL {	bottom: 0;	left: 0;	background: url(../images/crn/crn_bl_gbgr.png);}

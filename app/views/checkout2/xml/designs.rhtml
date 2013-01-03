@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+  <categories>
+    <category id="9999"><%=t(:myizishirt_profile_home_design)%></category>
+    <% for c in @categories %> 
+      <category id="<%=c.id%>"><%=c.local_name(session[:language_id])%></category>
+      <% c.sub_categories.each do |sub| %>
+        <category id="<%=sub.id%>"><%= "   #{sub.local_name(session[:language_id])}"%></category>
+      <% end %>
+    <% end %>
+  </categories>
+  <artworks>
+    <% for a in @myDesigns %>
+      <% (a[:image_swf] == true ) ? file_type = "swf" : file_type = "png" %>
+      <% if a.class == ::Image %>
+        <%= "<artwork filetype='#{file_type}' path='#{a.id}' category='9999' id='#{a.id}' year_created_on='#{a.year_created_on}' month_created_on='#{a.month_created_on}' day_created_on='#{a.day_created_on}' lockcolor='false' printtype='1' imagetype='pixel' minzoom='50' maxzoom='150' defaultzoom='100' rotation='0'>" %>
+      <% else %>
+        <%= "<artwork filetype='#{file_type}' path='#{a[:id]}' category='9999' id='#{a[:id]}' year_created_on='useruploadedimage/#{a[:year_created_on]}' month_created_on='#{a[:month_created_on]}' day_created_on='#{a[:day_created_on]}' lockcolor='false' printtype='1' imagetype='pixel' minzoom='50' maxzoom='150' defaultzoom='100' rotation='0'>" %>
+      <% end %>
+        <name><%=a[:name]%></name>
+        <layers>
+          <layer id="1" color="1" />
+          <layer id="2" color="2" />
+          <layer id="3" color="3" />
+          <layer id="4" color="4" />
+        </layers>
+      </artwork>
+    <% end %>
+    <% for c in @categories %>
+      <% images = Image.top_fifty_by_category(c.id) %>
+      <% c.sub_categories.each {|s| images = images | Image.top_fifty_by_category(s.id) } %>
+      <% for i in images %>
+        <% (i.image_swf?) ? file_type = "swf" : file_type = "png" %>
+        <%= "<artwork filetype='#{file_type}' path='#{i.id}' category='#{i.category_id}' id='#{i.id}' year_created_on='#{i.year_created_on}' month_created_on='#{i.month_created_on}' day_created_on='#{i.day_created_on}' lockcolor='false' printtype='1' imagetype='pixel' minzoom='50' maxzoom='170' defaultzoom='100' rotation='0'>" %>
+          <name><%=i.name%></name>
+          <layers>
+            <layer id="1" color="1" />
+            <layer id="2" color="2" />
+            <layer id="3" color="3" />
+            <layer id="4" color="4" />
+          </layers>
+        </artwork>
+      <% end %>
+    <% end %>
+  </artworks>
+</data>

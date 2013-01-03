@@ -1,0 +1,15 @@
+<%= I18n.t(:lost_orders_id_email_hello,:locale=>@language) %>,<br /><br />
+<%= I18n.t(:lost_orders_id_email_here_is_list,:locale=>@language) %><br /><br />
+
+<% @orders.each do |o| %>
+  - ID : <b><%= o.id %></b> (<%=I18n.t(:lost_orders_id_email_order_created_on,:locale=>@language)%> <%= o.created_on %>)<br/>
+<% end %>
+<br/>
+
+<%= I18n.t(:lost_orders_id_email_explanation,:locale=>@language) %><br/><br/>
+
+<%= I18n.t(:lost_orders_id_email_thanks,:locale=>@language) %><br/><br/>
+
+1-888-800-5787 | contact@izishirt.com | http://www.izishirt.ca<br/>
+Twitter: http://twitter.com/izishirt<br/>
+Facebook: http://www.facebook.com/pages/IziShirt/223576667655075<br/>

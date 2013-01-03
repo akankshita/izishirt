@@ -1,0 +1,234 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+
+<data defaultmodel='1'>
+
+
+	<categories>
+
+		<category id='0'>Tous les produits</category>
+
+		<category id='1'>Catégorie A</category>
+
+		<category id='2'>Catégorie B</category>
+
+		<category id='3'>Catégorie C</category>
+
+		<category id='4'>Catégorie D</category>
+
+		<category id='5'>Catégorie E</category>
+
+		<category id='6'>Catégorie F</category>
+
+		<category id='7'>Catégorie G</category>
+
+	</categories>
+		
+
+
+	<!-- need colors for models -->
+	<models>
+
+		<model category='1' id='1' warning='This is a warning' defaultcolor='2' defaultzone='1' price='18.00'>
+
+			<name>Polo Continental</name>
+			
+			<description><![CDATA[100% comfort tee shirt 222222222]]></description>
+
+			<zones>
+
+				<zone type='1' maxline='5' topleft='50,50' bottomright='290,290'/>
+				<zone type='2' maxline='5' topleft='100,150' bottomright='240,200'/>
+				<zone type='3' maxline='2' topleft='50,50' bottomright='290,290'/>
+				<zone type='4' maxline='2' topleft='100,100' bottomright='240,240'/>
+
+			</zones>
+
+		</model>
+
+		
+		<model category='1' id='2' warning='' defaultcolor='26' defaultzone='1'>
+
+			<name>Promodoro Raglan Long</name>
+			
+			<description><![CDATA[100% comfort tee shirt 11111111]]></description>
+
+			<zones>
+
+				<zone type='1' maxline='5' topleft='103,60' bottomright='240,290' />
+				<zone type='2' maxline='5' topleft='103,60' bottomright='240,290' />
+
+			</zones>
+
+		</model>
+		
+	</models>
+
+
+
+
+	<products>
+
+		<product category='2' model='1' id='21' warning='' defaultcolor='1' defaultzone='1' price='29.00' lockProduct='false'>
+
+			<name>Evan Product</name>
+
+			<zones>
+
+				<zone type='1' >
+
+					<!--<artwork  x='60' y='60' id='1' path='killer_kooler' lockcolor='false' printtype='1' vreflection='true' hreflection='true' imagetype='vecto' minzoom='50' maxzoom='150' defaultzoom='50' rotation='0'>
+
+						<name>Killer Cooler</name>
+
+						<layers>
+
+							<layer id='1' color='5'></layer>
+
+							<layer id='2' color='6'></layer>
+
+							<layer id='3' color='7'></layer>
+							
+							<layer id='4' color='8'></layer>
+
+						</layers>
+
+					</artwork>-->
+
+					<!--<lines x='150' y='190' rotation='45' vreflection='false' hreflection='true' printtype='1'>
+
+						<line id='1' font='1' size='14' align='center' bold='true' italic='false' color='19'><![CDATA[Text line 1]]></line>
+
+						<line id='2' font='2' size='10' align='center' bold='true' italic='true' color='15'><![CDATA[Text line 2]]></line>
+
+					</lines>-->
+					
+					<lines x="100" y="100" vreflection="false" rotation="0" hreflection="false" printtype="0">
+						
+						<line italic="false" color="13" size="7" font="1" id="1" bold="false" align="center">Content Content Content</line>
+					
+					</lines>
+
+				</zone>
+
+				<zone type='2'>
+
+					<artwork  x='190' y='50' id='4' printtype='2' imagetype='pixel' minzoom='50' maxzoom='150' defaultzoom='100' rotation='0'>
+
+						<name>Pork</name>
+
+					</artwork>
+
+					<lines x='10' y='0' rotation='0' vreflection='false' hreflection='false' printtype='1' lockcolor='false'>
+
+						<line id='1' font='1' size='14' align='center' bold='true' italic='false' color='3'></line>
+
+						<line id='2' font='2' size='10' align='center' bold='false' italic='false' color='6'><![CDATA[Text line 4]]></line>
+
+					</lines>
+
+				</zone>
+
+				<zone type='3'>
+
+					<artwork  x='160' y='200' id='6' printtype='2' imagetype='pixel' minzoom='50' maxzoom='150' defaultzoom='100' rotation='0'>
+
+						<name>Hot Rod</name>
+
+					</artwork>
+
+				</zone>
+
+				<zone type='4'>
+					
+					<lines x='150' y='150' rotation='180' vreflection='false' hreflection='true' printtype='1'>
+
+						<line id='1' font='1' size='14' align='center' bold='true' italic='false' color='10'><![CDATA[Text line 5]]></line>
+
+						<line id='2' font='2' size='10' align='center' bold='true' italic='true' color='15'><![CDATA[Text line 6]]></line>
+
+					</lines>
+
+				</zone>
+
+			</zones>
+
+		</product>
+		
+		
+		<product category='1' model='2' id='22' warning='' defaultcolor='26' defaultzone='2' price='39.00' lockProduct='true'>
+
+			<name>Evan Product 1</name>
+
+			<zones>
+
+				<zone type='1' zonePrice='16.95'>
+
+					<lines x='110' y='70' rotation='45' vreflection='false' hreflection='false' printtype='1'>
+
+						<line id='1' font='1' size='18' align='center' bold='true' italic='false' color='6'><![CDATA[Text line 1]]></line>
+
+						<line id='2' font='2' size='6' align='center' bold='true' italic='true' color='4'><![CDATA[Text line 2]]></line>
+
+					</lines>
+
+				</zone>
+
+				<zone type='2' zonePrice='16.95'>
+
+					<!--<artwork  x='103' y='60' id='1' printtype='1' imagetype='vecto' minzoom='50' maxzoom='150' defaultzoom='50' rotation='45' vreflection='true' hreflection='true'>
+
+						<name>Killer Cooler</name>
+
+						<layers>
+
+							<layer id='1' color='5'></layer>
+
+							<layer id='2' color='6'></layer>
+
+							<layer id='3' color='7'></layer>
+							
+							<layer id='4' color='8'></layer>
+
+						</layers>
+
+					</artwork>-->
+					<artwork  x='103' y='60' id='3' printtype='2' imagetype='pixel' minzoom='50' maxzoom='150' defaultzoom='100' rotation='0'>
+
+						<name>Hot Rod</name>
+
+					</artwork>
+
+				</zone>
+				
+			</zones>
+
+		</product>
+		
+		
+		<product lockProduct="false" defaultzone="1" model="2" category="7" price="20.5" id="30021" path="30021" warning="" defaultcolor="32">
+			<name/>
+			
+				<zones>
+			
+					<zone type="1">
+				
+					<artwork x="97" vreflection="false" minzoom="50" rotation="0" y="11" maxzoom="150" defaultzoom="50" lockcolor="false" id="16" printtype="1" path="16" hreflection="false" imagetype="vecto">
+				
+						<layers>
+						<layer color="1" id="1"/>
+						<layer color="2" id="2"/>
+						<layer color="3" id="3"/>
+						<layer color="4" id="4"/>
+						</layers>
+					</artwork>
+				
+					<lines x="109" vreflection="false" rotation="0" y="161" printtype="1" hreflection="false">
+						<line font="1" size="23" align="center" color="19" id="1" italic="false" bold="false">Hello Evan</line>
+					</lines>
+				</zone>
+			</zones>
+			</product>
+
+	</products>
+
+</data>

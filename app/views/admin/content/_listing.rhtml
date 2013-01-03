@@ -1,0 +1,12 @@
+<% for content in @contents %>
+<tr class="<%= cycle('odd', '') %>">
+<td><%= content.name %></td>
+	<td><%= format_date_and_time content.last_modified_on %></td>
+	<td><%= content.user_level.name %></td>
+
+	<td>
+		<%= link_to '&nbsp;', {:action => 'edit', :id => content}, {:class => 'icoEdit icopng', :title => t(:admin_edit) } %>
+		<%= link_to '&nbsp;', { :action => 'destroy', :id => content }, :confirm => t(:admin_confirm), :method => :post, :class => 'icoDelete icopng', :title => t(:admin_delete) %>
+	</td>
+</tr>
+<% end %>

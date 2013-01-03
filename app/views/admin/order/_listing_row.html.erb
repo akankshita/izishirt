@@ -1,0 +1,85 @@
+<%
+background_color_for_assignment = ""
+
+new_background_color = order.color
+style_tr = nil
+
+if assignment_listing
+	@myclass = ""
+	color_code = order.color_code_assigned_to(mark_problems)
+	style_tr = "background-color:#{color_code}" if color_code
+else
+	background_color_for_assignment = ""
+end
+
+arrow_artwork_not_received = ""
+
+if assignment_listing && order.artwork_not_received
+	arrow_artwork_not_received = image_tag("/images/artwork_department/arrow_artwork_not_received.gif")
+end
+
+%>
+
+<tr style="background-color: #<%= new_background_color %>; color: #000000;">
+
+	<% if style_tr && style_tr != "" %>
+		<td style="background-color: #ffffff;">
+			<div style="border: .1em solid #000000;  <%= style_tr %>; height: 20px; width: 20px;">
+				<%= arrow_artwork_not_received %>
+			</div>
+		</td>
+	<% else %>
+		<td></td>
+	<% end %>
+
+  <td><input type="checkbox" id="order_checks_<%= order.id%>" name="order_checks[<%= order.id %>]"/></td>
+<td<%= background_color_for_assignment %>><%= link_to order.id, {:action => 'show', :id => order} %></td>
+      <td width='300'><%= display_user_name(order, (with_user_language ? order.language_id : nil)) %></td>
+<td><%=h get_order_status_label(order.status.to_i) %></td>
+<td><%=h number_to_currency_custom(order.total_price, {:currency => order.currency.label}) %></td>
+<td><%= order.created_on %></td>
+<td><%= display_printer_name(order)%></td>
+
+<% if with_assigned_to %>
+	<td><%= order.assigned_to_artwork_member()%></td>
+<% end %>
+
+  <td width="80">
+  <%= link_to '&nbsp;', {:action => 'show', :id => order}, {:class => 'icoSearch icopng', :title => t(:admin_show) } %>
+  <%= link_to 'PRINT', {:action => 'print', :id => order } %>
+</td>
+<td align="LEFT"><%
+
+@status = ""
+order_state = order.user_comments_state(session[:user_id])
+
+# wtf is that random type 3 ???
+if(order.comment_type == 3)
+  @status= "<img style='padding-right:4px' src='/images/admin/flag_green.png' height='12'>"
+elsif(order_state == "unread")
+  @status= "<img style='padding-right:4px' src='/images/admin/flag_red.png' height='12'>"
+elsif(order_state == "read")
+  @status= "<img style='padding-right:4px' src='/images/admin/flag_white.png' height='12'>"
+end
+
+if order.was_artwork_required_problem()
+  @status += "<img style='padding-right:4px' src='/images/star.png' height='12'>"
+end
+
+%>
+<%=@status%>
+</td>
+<td><%= display_last_comment_posted_by_name(order) %></td> 
+<td><%= SHIPPING_NAMES[order.shipping_type.to_i] %></td>
+  <td>
+      <% if ! (session[:current_order_listing] == "artwork_required" || session[:current_order_listing] == "artwork_required_problem") %>
+        
+      <% else %>
+        <%= display_artwork_date_required(order) %>
+      <% end %>
+  </td>
+  <td><input type="checkbox" id="paid_<%= order.id %>" name="order[paid]" <%= "checked='checked'" if order.paid?  %> /></td>
+  <td>
+      <%= "<span style='font-weight:bold;color:#000;'> CP #{order.affiliate_id.to_s}</span>" if order.affiliate_id %>
+  </td>
+</tr>

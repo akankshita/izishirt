@@ -1,0 +1,5 @@
+<%#=h @res %>
+<%#= @res.elements[1]%>
+<%=  @res.each_element("//product"){ 
+|element| print element.text } 
+%>

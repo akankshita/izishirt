@@ -1,0 +1,30 @@
+<div class="clear"></div>
+
+<% 
+index = 0
+for image in images
+%>
+  <%= "<tr>" if index == 0 %>
+      <td style="border:1px solid black;width:90px">
+        <%= image.id %>
+        <%= image_tag(get_path_filename(image)) %>
+        <% for i in 1..4 %>
+          <%= link_to_remote i.to_s, :url =>
+          { :action => "define_image", :id => image.id, :order_param=>i.to_s, :category=>hc_id},
+          :onclick => "print_status_box('');",
+          :complete => "", :style=>"font-weight:bold;font-size:12px;"%>
+          &nbsp;&nbsp;
+        <% end %>
+        
+      </td>
+  <%= "</tr>" if index == 7 %>
+<%
+  
+  if index == 7
+    index = 0
+  else
+    index += 1
+  end
+  
+end
+%>

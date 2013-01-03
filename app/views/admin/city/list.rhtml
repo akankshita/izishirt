@@ -1,0 +1,27 @@
+<h1>Cities list</h1>
+
+<div>
+
+	<%= link_to "Add a city", :action => "new" %>
+
+<br />
+<br />
+</div>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="235">Name FR</th>
+	<th width="235">Name EN</th>
+	<th width="100">Provine</th>
+	<th width="100">URL</th>
+	<th>&nbsp;</th>
+  </tr>
+
+<tbody>
+<% for city in @cities %>
+  <%= display_cities(city) %>
+<% end %>
+
+</tbody>
+
+</table>

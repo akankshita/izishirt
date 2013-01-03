@@ -1,0 +1,318 @@
+<%#*<script language="JavaScript">%>
+  <%#*Event.observe(window, 'load', function() {%>
+    <%#*var fade=setInterval("rotate_left_banner()",6000);%>
+  <%#*});%>
+<%#*</script>%> 
+
+<div class="prepend-3 append-3 span-23 last streamer relative">
+  <% link_to({:controller=> t(:menu_create_shirt_url)}) do %>
+    <!-- STANDARD BANNER -->
+    <img src="/images/izishirt2009/<%=session[:language]%>/customizeYourShirt.jpg" alt="<%#=t(:customize_your_t_shirt)%>!" title="<%=t(:customize_your_t_shirt)%>!"/>
+
+    <!-- STANDARD BANNER -->
+    <!--<img src="/images/izishirt2009/<%=session[:language]%>/olympics_Home_Banner.jpg" alt="<%#=t(:customize_your_t_shirt)%>!" title="<%=t(:customize_your_t_shirt)%>!"/>-->
+    
+    <!-- Winter ! -->
+    <!--<img src="/images/izishirt2009/<%#=session[:language]%>/winter_banner.jpg" alt="<%#=t(:customize_your_t_shirt)%>!" title="<%#=t(:customize_your_t_shirt)%>!"/>-->
+
+    <!-- Valentine ! -->
+    <!--img src="/images/izishirt2009/<%=session[:language]%>/Vday_Home_Banner.jpg" alt="<%=t(:customize_your_t_shirt)%>!" title="<%=t(:customize_your_t_shirt)%>!"/-->
+
+    <!-- St Pats ! -->
+    <!--img src="/images/izishirt2009/<%=session[:language]%>/st_pats_Home_Banner.jpg" alt="<%=t(:customize_your_t_shirt)%>!" title="<%=t(:customize_your_t_shirt)%>!"/-->
+
+    <!-- HALLOWEEN ! -->
+    <!--<img src="/images/izishirt2009/<%#session[:language]%>/halloween_home_banner.jpg" alt="<%=t(:customize_your_t_shirt)%>!" title="<%=t(:customize_your_t_shirt)%>!"/>-->
+  <% end %>
+
+  <!-- STANDARD BUTTONS -->
+  <%# link_to({:controller=>t(:menu_create_shirt_url)}, :class=>"main_banner_button main_banner_button_#{session[:language]}") do %>
+  <%# end %>
+
+  <%# link_to(url_for(:controller=>'/display', :action=>:shop), {:class=>"shop_banner_button shop_banner_button_#{session[:language]}"}) do %>
+  <%# end%>
+
+  <!-- CHRISTMAS BUTTONS -->
+  <% link_to({:controller=>t(:menu_create_shirt_url)}, :class=>"main_banner_button main_xmas_banner_button_#{session[:language]}") do %>
+  <% end %>
+
+  <% link_to(url_for(:controller=>'/display', :action=>:shop), {:class=>"shop_banner_button shop_banner_button_#{session[:language]}"}) do %>
+  <% end%>
+
+
+</div>
+
+<div class="clear horiz_space_12 noPad noMarg noBord"></div>
+
+<div class="prepend-3 span-6 last">
+  <!-- Left Category List and Search -->
+  <%= render :partial => 'home_left_menu' %>
+  <!-- EO Category list and search -->
+
+  <!-- 3 Items or more promo 
+  <div>
+    <a href="#">
+      <img src="/images/izishirt2009/3items_plus_en.jpg" alt="Promo Banner" title="Promo Banner" />
+    </a>
+  </div>
+  EO 3 Items or more promo -->
+</div>
+
+<div class="append-custom span-custom last">
+  <!-- Promo Banners -->
+  <!--div class="prepend-12-px last">
+    <a href="#">
+      <img src="/images/izishirt2009/promoBanner.png" width="694" height="83" alt="Promo Banner" title="Promo Banner" />
+    </a>
+  </div-->
+  <div class="prepend-12-px last">
+    <div class="left_banner_div">
+      <% link_to({:controller=>:display, :action=>:open_shop}, :class=>"block left relative open_home_button open_home_button_#{session[:language]}") do %>
+      <% end %>
+      <% link_to({:controller=>:display, :action=>:open_shop}, :class=>"block left relative sell_home_button sell_home_button_#{session[:language]}") do %>
+      <% end %>
+      <div class="clear"></div>
+      <% link_to({:controller=>:display, :action=>:open_shop}, :class=>"block left relative") do %>
+      <%= image_tag "/images/izishirt2009/#{session[:language]}/icons_left_banner.jpg",
+        :alt => t(:home_link_3), :title => "", :width => "342", :height => "69",
+        :style => 'position:absolute;z-index:99;' %>
+      <% end %>
+    </div>
+
+    <% link_to({:controller=>:bulk_orders},
+               :class=>"block right", :name => 'light_contact') do %>
+      <%= image_tag "/images/izishirt2009/#{session[:language]}/bulk_right_on.jpg",
+        :mouseover => "/images/izishirt2009/#{session[:language]}/bulk_right_active.jpg",
+        :alt => t(:menu_sell), :title => "", :width => "341", :height => "101" %>
+    <%end%>
+  </div>
+  <!-- EO Promo Banners -->
+
+  <div class="clear horiz_space_7 noPad noMarg noBord"></div>
+  
+  <!-- Whats New Box -->
+  <div class="redBox prepend-12-px">
+    <div class="left redBoxLeft noPad noMarg noBord"></div>
+    <div class="left redBoxHeader noPad noMarg noBord whatsNewBoxHeader">
+      <label><%=t(:new_stuff).mb_chars.upcase%></label>
+    </div>
+    <div class="left redBoxRight noPad noMarg noBord"></div>
+    <!-- Top 25 Designs -->
+    <div class="clear whatsNewBox noPad noMarg redBoxTitle">
+
+
+      <label><%= link_to t(:shop).upcase, {:controller => 'display', :action => 'shop'}, :style => "color:black;text-decoration:none;" %> </label>
+      <%= link_to image_tag("/images/izishirt2009/rightArrow.png", :alt => ">>"), {:controller => 'display', :action => 'shop'}, :style => "color:black;text-decoration:none;" %>
+      <label> <%= link_to "TOP 25 DESIGNS", {:controller => 'display', :action => 'shop'}, :style => "color:black;text-decoration:none;" %></label>
+
+      <label class="viewAll">
+        <%= link_to t(:view_all),
+          {:controller => 'display', :action => 'shop'} %>
+      </label>
+    </div>
+    <div class="noPad noMarg boxContent whatsNewBox" style="position:relative;height: 150px;">
+      <div id="topDesignScroller" style="height: 150px;width:3500px;">
+      <% @top_designs.each_index do |index| %>
+      <div class="left thumbWrapper topDesign">
+        <div class="imageWrapper relative" id="imageWrapper_<%=@top_designs[index].id%>">
+          <%= image_tag("/images/izishirt2009/#{@numbers[index]}.png",
+            :class => 'topFive',
+            :alt => '') if index < 3 %>
+          <%= link_to image_tag(@top_designs[index].orig_image.url("100"), :class => 'thumb', :alt => "#{@top_designs[index].name} T-shirt", :title => "#{@top_designs[index].name} T-shirt"),
+            "#{t(:menu_create_shirt_url)}/#{@top_designs[index].id.to_s}",
+            {:onmouseover => "hover_over_design(#{@top_designs[index].id});",
+              :onmouseout => "hover_out_design(#{@top_designs[index].id});"} %>
+        </div>
+        <span>
+          <%= link_to truncate(@top_designs[index].name, :length =>20), 
+            "#{t(:menu_create_shirt_url)}/#{@top_designs[index].id.to_s}",
+            :class => 'noDecoration darkGray' %>
+        </span>
+      </div>
+      <% end %>
+      </div>
+    </div>
+    <!-- EO Top 25 Designs -->
+
+    <!-- Staff Picks -->
+    <div class="clear whatsNewBox noPad noMarg redBoxTitle">
+      <label><%= link_to t(:shop).upcase, {:controller => 'display', :action => 'staff_pick'}, :style => "color:black;text-decoration:none;" %></label>
+      <%= link_to image_tag("/images/izishirt2009/rightArrow.png", :alt => ">>"), {:controller => 'display', :action => 'staff_pick'}, :style => "color:black;text-decoration:none;" %>
+      <label><%= link_to t(:display_home_design_famous), {:controller => 'display', :action => 'staff_pick'}, :style => "color:black;text-decoration:none;" %></label>
+      <label class="viewAll">
+        <%= link_to t(:view_all),
+          {:controller => 'display', :action => 'staff_pick'} %>
+      </label>
+    </div>
+    <div class="clear noPad noMarg boxContent whatsNewBox">
+      <% @staff_picks.each do |design| %>
+      <div class="left thumbWrapper">
+        <div class="imageWrapper">
+          <%= link_to image_tag(design.orig_image.url("100"), :class => 'thumb', :alt => "#{design.name} T-shirt", :title => "#{design.name} T-shirt"),
+            "#{t(:menu_create_shirt_url)}/#{design.id.to_s}"%>
+        </div>
+        <span>
+          <%= link_to truncate(design.name, :length =>20), 
+            "#{t(:menu_create_shirt_url)}/#{design.id}",
+            :class => 'noDecoration darkGray' %>
+        </span>
+      </div>
+      <% end %>
+    </div>
+    <!-- EO Staff Picks -->
+
+    <!-- Top Products -->
+    <div class="clear whatsNewBox noPad noMarg redBoxTitle">
+      <label><%= link_to t(:shop).upcase, {:controller => 'display', :action => 'create_tshirt'}, :style => "color:black;text-decoration:none;" %></label>
+      <%= link_to image_tag("/images/izishirt2009/rightArrow.png", :alt => ">>"), {:controller => 'display', :action => 'create_tshirt'}, :style => "color:black;text-decoration:none;" %>
+      <label><%= link_to t(:buy_blank).mb_chars.upcase, {:controller => 'display', :action => 'create_tshirt'}, :style => "color:black;text-decoration:none;" %></label>
+      <label class="viewAll">
+        <%= link_to t(:view_all),
+          {:controller => 'display', :action => 'create_tshirt'} %>
+      </label>
+    </div>
+    <div class="noPad noMarg boxContent whatsNewBox">
+      <% @top_products.each do |product| %>
+      <div class="left thumbWrapper">
+        <%= link_to image_tag("/izishirtfiles/models/#{product.id}/#{product.default_color_id}-front.jpg", :class => 'prod_thumb', :alt => product.local_name(session[:language_id]), :title => product.local_name(session[:language_id])),
+        "#{t(:menu_create_shirt_url)}/?model=#{product.id}"%>
+        <span>
+          <%= link_to truncate(product.local_name(session[:language_id]), :length =>20), 
+            "#{t(:menu_create_shirt_url)}/?model=#{product.id}",
+            :class => 'noDecoration darkGray' %>
+        </span>
+      </div>
+      <% end %>
+    </div>
+    <!-- EO Top Products -->
+
+    <div class="left boxBottomLeft"></div>
+    <div class="left boxBottomMiddle whatsNewBoxBottom"></div>
+    <div class="left boxBottomRight"></div>
+  </div>
+  <!-- EO Whats New Box -->
+</div>
+
+<div class="clear horiz_space_18"></div>
+
+<div class="prepend-3 append-3 span-23 last">
+  <!-- Blog Box -->
+  <div class="last span-14 redBox scrollWrapper">
+    <div class="left redBoxLeft noPad noMarg noBord"></div>
+    <div class="left redBoxHeader noPad noMarg noBord blogBoxHeader">
+      <label>Blog</label>
+    </div>
+    <div class="left redBoxRight noPad noMarg noBord"></div>
+    <div class="clearfix"></div>
+    <div class="noMarg boxContent blogBox">
+      <div id="blog" class="scrollPane">
+      <% if @xmlfeed %>
+        <% @xmlfeed.each do |entry| %>
+          <div class="blogTitle noPad noMarg redBoxInnerTitle">
+            <h2><%= truncate entry.title, :length=>85 %></h2>
+          </div>
+          <span class="blue"><%= entry.pubDate %> | Posted by Izishirt </span>
+          <%= truncate strip_tags(entry.content_encoded), :length => 500, 
+            :omission => "...<br />" +link_to("(read more)", entry.link,
+                                  :class => 'red bold noDecoration right',
+                                  :target => '_blank')+"<br /><br />" %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+    <div class="boxBottomLeft blogBottomLeft"></div>
+    <div class="boxBottomMiddle blogBottomMiddle"></div>
+  </div>
+  <!-- EO Blog Box -->
+
+  <!-- Designer Box -->
+  <div class="span-9 last redBox">
+    <div class="left redBoxLeft noPad noMarg noBord"></div>
+    <div class="left redBoxHeader noPad noMarg noBord designerBoxHeader">
+      <label><%=t(:izishirt_new_home_title5)%></label>
+    </div>
+    <div class="left redBoxRight noPad noMarg noBord"></div>
+    <div class="clear designerBox noPad noMarg redBoxTitle">
+      <label><%=@featured_designer.username.capitalize%> Designs</label>
+    </div>
+    <div class="noPad noMarg boxContent designerBox">
+      <div id="featuredDesigner">
+        <%= link_to image_tag("/izishirtfiles/user_profile/#{@featured_profile}",
+                              :width => '143', :height => '143', 
+                              :alt => '', :class => 'left'),
+          @featured_site %> 
+        <ul class="right"> 
+          <li>
+            <img id="rank" src="/images/izishirt2009/goldStar.png" alt="" />
+            <label><%= @featured_designer.rank.rank if @featured_designer.rank %></label>
+          </li>
+          <li><label><%=@featured_count%> design(s)</label></li>
+          <li>
+            <a class="smallRedLink" href="<%=@featured_site%>">
+              <%=t(:view_designs)%>
+            </a>
+          </li>
+          <li>
+            <a class="smallRedLink" href="<%= @featured_site%>" >
+              <%=truncate(@featured_designer.username.capitalize,:length=>25)%>
+            </a>
+          </li>
+          <li>
+            <% if @featured_count > 0 %>
+            <%= link_to image_tag(@featured_designs[0][0],
+                        :width => '63', :height => '63',
+                        :alt => '', :class => 'innerDesign'),
+                "#{t(:menu_create_shirt_url)}/#{@featured_designs[0][1]}"%>
+            <%= link_to image_tag(@featured_designs[1][0],
+                        :width => '63', :height => '63',
+                        :alt => '', :class => 'lastInnerDesign'),
+                "#{t(:menu_create_shirt_url)}/#{@featured_designs[1][1]}"%>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="left bottomTitleLeft"></div>
+    <div class="left bottomTitleMiddle designerBoxBottom">
+      <%= link_to t(:become_next_featured_designer),
+        {:controller => 'display', :action => 'open_shop'},
+        :class => 'redLink bold middle' %>
+    </div>
+    <div class="left bottomTitleRight"></div>
+  </div>
+  <!-- EO Designer Box -->
+</div>
+
+<div class="clear horiz_space_30"></div>
+<div class="prepend-3 append-3 span-23 last">
+  <div class="last span-14">
+    <div class="hometext1">
+      <h1 class="header2 titleHomeText"><%=t(:home_header_1)%></h1>
+      <p><%=t(:home_text_1)%></p>
+      <%= link_to t(:home_link_1), 
+        {:controller=>t(:menu_create_shirt_url)}, :TITLE=>t(:home_link1_title),
+        :class => 'botLink' %>
+      <h1 class="clear header2 titleHomeText"><%=t(:home_header_3)%></h1>
+      <p><%=t(:home_text_3)%></p>
+      <%= link_to t(:home_link_3),
+        {:controller => 'display', :action => 'open_shop'}, :TITLE=>t(:home_link3_title),
+        :class => 'botLink' %>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+  <div class="span-9 last">
+    <div class="hometext2">
+      <h1 class="header2 titleHomeText"><%=t(:home_header_2)%></h1>
+      <p><%=t(:home_text_2)%></p>
+      <%= link_to t(:home_link_2),
+        {:controller => 'bulk_orders'}, :TITLE=>t(:home_link2_title),
+        :class => 'botLink' %>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
+
+
+

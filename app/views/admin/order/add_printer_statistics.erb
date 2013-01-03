@@ -1,0 +1,18 @@
+<%= render :partial => "/admin/order/printer_statistics_box", :locals => {:prod => @ordered_product} %>
+
+<script type="text/javascript">
+	if ($('spinner_printer_statistics_prod_<%= @ordered_product.id %>'))
+		$('spinner_printer_statistics_prod_<%= @ordered_product.id %>').setAttribute('style', 'display: none;'); 
+
+	if ($('print_stat_prod_<%= @ordered_product.id %>_nb_printed'))
+		$('print_stat_prod_<%= @ordered_product.id %>_nb_printed').value = ''; 
+
+	if ($('print_stat_prod_<%= @ordered_product.id %>_nb_prints'))
+		$('print_stat_prod_<%= @ordered_product.id %>_nb_prints').value = ''; 
+
+	if ($('print_stat_prod_<%= @ordered_product.id %>_nb_missed'))
+		$('print_stat_prod_<%= @ordered_product.id %>_nb_missed').value = '';
+
+	if ($('print_stat_prod_<%= @ordered_product.id %>_pretreatment'))
+		$('print_stat_prod_<%= @ordered_product.id %>_pretreatment').value = '';
+</script>

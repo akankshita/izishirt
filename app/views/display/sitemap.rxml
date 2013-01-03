@@ -1,0 +1,147 @@
+
+	xml.instruct! :xml, :version => '1.0'
+	xml.tag! 'urlset', 'xmlns' => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+"/display/about_us"
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+"/display/shipping_info"
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+"/order"
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+"/display/contact"
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+"/local/custom-tshirt-printing"
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+create_tshirt_url()
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+model_url(100)
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+model_url(56)
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+model_url(45)
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+model_url(85)
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+model_url(108)
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+model_url(35)
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+"/"+t(:new_marketplace_main_url)
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+"/"+t(:new_bulk_main_url)
+		  xml.tag! 'changefreq', "always"
+		end
+		xml.tag! 'url' do
+		  xml.tag! 'loc', @canonical_begin_url+"/new-t-shirt-design"
+		  xml.tag! 'changefreq', "always"
+		end
+		
+		third = @categories.length/3
+		first_categories = @categories[0..third]
+		second_categories = @categories[third+1..(third*2)+2]
+		third_categories = @categories[(third*2)+3..@categories.length-1]
+		
+		first_categories.each do |category|
+			xml.tag! 'url' do
+				xml.tag! 'loc', @canonical_begin_url+category_url(category.id)
+				xml.tag! 'changefreq', "always"
+			end  
+			  
+			category.sub_categories.each do |sub_cat|
+				xml.tag! 'url' do
+						xml.tag! 'loc', @canonical_begin_url+category_url(sub_cat.id)
+						xml.tag! 'changefreq', "always"
+				end 
+			end
+		end
+		
+		second_categories.each do |category|
+			xml.tag! 'url' do
+				xml.tag! 'loc', @canonical_begin_url+category_url(category.id)
+				xml.tag! 'changefreq', "always"
+			end  
+			  
+			category.sub_categories.each do |sub_cat|
+				xml.tag! 'url' do
+						xml.tag! 'loc', @canonical_begin_url+category_url(sub_cat.id)
+						xml.tag! 'changefreq', "always"
+				end 
+			end
+		end
+		
+		third_categories.each do |category|
+			xml.tag! 'url' do
+				xml.tag! 'loc', @canonical_begin_url+category_url(category.id)
+				xml.tag! 'changefreq', "always"
+			end  
+			  
+			category.sub_categories.each do |sub_cat|
+				xml.tag! 'url' do
+						xml.tag! 'loc', @canonical_begin_url+category_url(sub_cat.id)
+						xml.tag! 'changefreq', "always"
+				end 
+			end
+		end
+		
+		provinceidlist=City.find_by_sql("select distinct(province_id) from cities")
+		countryidlist=Province.find_by_sql("select distinct(country_id) from provinces where id in (select distinct(province_id) from cities)")
+		countrylist=Country.find_by_sql("select * from countries where id in (select distinct(country_id) from provinces where id in (select distinct(province_id) from cities))")
+		
+		for country in countrylist
+		
+			provincelist= Province.find_by_sql("select * from provinces where id in (select distinct(province_id) from cities) and country_id="+country.id.to_s+" order by provinces.name")
+			for province in provincelist
+		
+				citylist= City.find_by_sql("select * from cities where province_id="+province.id.to_s+" order by cities.name")
+				for city in citylist
+				
+					xml.tag! 'url' do
+						xml.tag! 'loc', @canonical_begin_url+"/local/"+city.url
+						xml.tag! 'changefreq', "always"
+					end 
+					
+				end
+				
+			end
+			
+		end
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	end

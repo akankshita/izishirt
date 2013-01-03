@@ -1,0 +1,215 @@
+<script type="text/javascript">
+  $j(function() {
+    $j("#datepicker").datepicker({regional: '<%= session[:language] %>', minDate: 1, dateFormat: '<%=t(:date_format)%>'});
+  });
+
+  function checkBulkForm()
+  {
+    var formValid = false;
+
+    $('formError').innerHTML = "";
+    $('formError2').innerHTML = "";
+
+    if ($('datepicker').value == '') {
+      $('formError').innerHTML = "<%= t(:front_office_bulk_order_fill_all_required_fields) %>";
+
+    }
+    else if ($('bulk_order_approx_qty').value == '') {
+      $('formError').innerHTML = "<%= t(:front_office_bulk_order_fill_all_required_fields) %>";
+
+    }
+    else if (parseInt($('bulk_order_approx_qty').value) < 50){
+      $('formError2').innerHTML = '<%= link_to(t(:validate_less25), {:controller=>:display, :action=>:create_tshirt}) %>';
+
+    }
+    else if ($('bulk_order_name').value == '') {
+      $('formError').innerHTML = "<%= t(:front_office_bulk_order_fill_all_required_fields) %>";
+
+    }
+    else if ( ! ($('bulk_order_phone').value.length >= 5 && $('bulk_order_phone').value.length <= 30) ) {
+      $('formError').innerHTML = "<%= t(:front_office_bulk_order_fill_all_required_fields) %>";
+
+    }
+    else if ($('bulk_order_email').value == '') {
+      $('formError').innerHTML = "<%= t(:front_office_bulk_order_fill_all_required_fields) %>";
+
+    }
+    else if (!validate_email($('bulk_order_email').value)) {
+      $('formError').innerHTML = "<%= t(:front_office_bulk_order_fill_all_required_fields) %>";
+
+    }
+    else if ($('bulk_order_province').value == '') {
+      $('formError').innerHTML = "<%= t(:front_office_bulk_order_fill_all_required_fields) %>";
+
+    }
+    else if ($('bulk_order_country_id').value == '') {
+      $('formError').innerHTML = "<%= t(:front_office_bulk_order_fill_all_required_fields) %>";
+
+    }
+    else if ($('bulk_order_postal_code').value == '') {
+      $('formError').innerHTML = "<%= t(:front_office_bulk_order_fill_all_required_fields) %>";
+
+    }
+    else{
+      formValid = true;
+    }
+
+    if ( ! formValid)
+    {
+	<%= visual_effect(:highlight, "formError", :duration => 1.0) %>
+	<%= visual_effect(:highlight, "formError2", :duration => 1.0) %>
+	
+    }
+
+    return formValid;
+  }
+
+</script>
+
+<div class="bulkGeneralDiv">
+
+  <div id="new_bulk_order_page">
+
+    <div id="left_container">
+      <%= render :partial=>"left_column" %>
+    </div>
+    <div id="right_container">
+      <div id="Bulk_Form">
+        <div id="Bulk_quote_title" style="line-height: 12px;"><%= t(:front_office_bulk_order_14) %></div>
+
+	<h1 style="font-size: 18px;color:#3b2053">
+		<%= t(:new_bulk_bulk_h1) %>
+	</h1>
+
+        <%
+        your_logo = session[:language_id] == 1 ? "tshirts_tonlogo.jpg" : "bulk_your_logo.jpg"
+      %>
+
+          <span class="titlebulk"><%=t(:title_bulk_no_less_25)%></span>
+		  <br />
+        <%= t(:front_office_bulk_order_16) %>
+        <p>
+          <hr style="border: 5px solid #3b2053;" />
+        </p>
+
+        <a name="error"></a>
+        <div id="formError" style="color:red;padding-left:10px;">
+
+        </div>
+
+        <div id="bulk_order_info">
+          <% form_tag({:action => 'create'}, :id => "form_bulk_order", :method => 'post') do %>
+            <table width="90%" border="0" cellspacing="0" cellpadding="3">
+              <tr>
+                <td colspan="2" class="tb_title13"><%= t(:front_office_bulk_order_17) %></td>
+                <td class="mandatory_fields" colspan="2" class="tb_text11" align="right"><span class="tb_redstart">*</span><%= t(:front_office_bulk_order_18) %></td>
+              </tr>
+              <tr>
+                <td width="30%"><%= t(:front_office_bulk_order_19) %> <span class="tb_redstart">*</span></td>
+                <td><%= t(:front_office_bulk_order_27) %> <span class="tb_redstart">*</span></td>
+				<td colspan="2"><%= t(:front_office_bulk_order_20) %></td>
+              </tr>
+              <tr>
+                <td><label>
+                    <input type="text" name="bulk_order[date_needed]" id="datepicker" />
+
+                    <a href="#current" onclick="javascript:$j('#datepicker').datepicker('show');">
+                      <%= image_tag "izishirt_design/images_bulk/calendar.jpg" %>
+                    </a>
+                </label></td>
+                <td><label><input type="text" name="bulk_order[approx_qty]" id="bulk_order_approx_qty" /></label></td>
+				<td><select name="bulk_order[garment_type]">
+                    <option value=""></option>
+                    <option value="<%= t(:front_office_bulk_order_21)%>"><%= t(:front_office_bulk_order_21)%></option>
+                    <option value="<%= t(:front_office_bulk_order_22)%>"><%= t(:front_office_bulk_order_22)%></option>
+					<option value="<%= t(:front_office_bulk_order_23)%>"><%= t(:front_office_bulk_order_23)%></option>
+					<option value="<%= t(:front_office_bulk_order_24)%>"><%= t(:front_office_bulk_order_24)%></option>
+					<option value="<%= t(:front_office_bulk_order_25)%>"><%= t(:front_office_bulk_order_25)%></option>
+					<option value="<%= t(:front_office_bulk_order_26)%>"><%= t(:front_office_bulk_order_26)%></option>
+					<option value="<%= t(:front_office_bulk_order_28)%>"><%= t(:front_office_bulk_order_28)%></option>
+					<option value="<%= t(:front_office_bulk_order_29)%>"><%= t(:front_office_bulk_order_29)%></option>
+					<option value="<%= t(:front_office_bulk_order_30)%>"><%= t(:front_office_bulk_order_30)%></option>
+                    </select></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+              	<td>&nbsp;</td>
+
+                <td colspan="3"><div id="formError2"></div></td>
+              </tr>
+              <tr>
+                <td colspan="4"><%= t(:front_office_bulk_order_32) %></td>
+              </tr>
+              <tr>
+                <td colspan="4"><label><textarea name="bulk_order[comments]" id="bulk_order_general_comments" cols="65" rows="3"></textarea></label></td>
+              </tr>
+            </table>
+            <p>
+              <hr style="border: 5px solid #3b2053;" />
+            </p>
+            <table width="90%" border="0" cellspacing="0" cellpadding="3">
+              <tr>
+                <td colspan="4" align="center">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" class="tb_title13"><%= t(:front_office_bulk_order_33) %></td>
+              </tr>
+              <tr>
+                <td width="18%"><%= t(:front_office_bulk_order_34) %> <span class="tb_redstart">*</span></td>
+                <td width="34%"><label><input type="text" name="bulk_order[name]" id="bulk_order_name" /></label></td>
+                <td width="15%"><%= t(:front_office_bulk_order_35) %> <span class="tb_redstart">*</span></td>
+                <td width="37%"><label><input type="text" name="bulk_order[phone]" id="bulk_order_phone" /></label></td>
+              </tr>
+              <tr>
+                <td><%= t(:front_office_bulk_order_36) %></td>
+                <td><label><input type="text" name="bulk_order[company_name]" id="bulk_order_company" /></label></td>
+                <td><%= t(:front_office_bulk_order_37) %> <span class="tb_redstart">*</span></td>
+                <td><label><input type="text" name="bulk_order[email]" id="bulk_order_email" /></label></td>
+              </tr>
+              <tr>
+                <td colspan="2">&nbsp;</td>
+                <td colspan="2"><label><input name="bulk_order[wants_newsletter]" type="checkbox" id="bulk_order_newsletter" checked="checked" />
+                <%= t(:front_office_bulk_order_38) %></label></td>
+              </tr>
+              <tr>
+                <td><%= t(:front_office_bulk_order_39) %> <span class="tb_redstart">*</span></td>
+                <td><label><input type="text" name="bulk_order[province]" id="bulk_order_province" /></label></td>
+                <td colspan="2">&nbsp;</td>
+              </tr>
+              <tr>
+                <td><%= t(:front_office_bulk_order_40) %> <span class="tb_redstart">*</span></td>
+                <td><label>
+			<%= select_tag("bulk_order[country_id]", options_for_select(Country.all.map{ |c| [c.name, c.id] }, Country.find_by_shortname(session[:country]).id), :style => "width: 122px;")%>
+		</label></td>
+                <td colspan="2"><%#= t(:front_office_bulk_order_41) %></td>
+              </tr>
+              <tr>
+                <td style="padding-right: 0px;"><%= t(:front_office_bulk_order_42) %> <span class="tb_redstart">*</span></td>
+                <td><label><input type="text" name="bulk_order[zip]" id="bulk_order_postal_code" /></label></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <div id="btn_free_quote">
+                    <a href="#error"  title="<%= t(:front_office_bulk_order_45) %>" onclick="if (checkBulkForm()) document.getElementById('form_bulk_order').submit();">
+                          <%= image_tag "izishirt2011/#{session[:language]}/bt_request.jpg" %>
+  <%#= t(:front_office_bulk_order_45) %>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

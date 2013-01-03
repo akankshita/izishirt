@@ -1,0 +1,30 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+	<th><%= t(:admin_model_list_image) %></th>
+	<th><%= t(:admin_model_list_name) %></th>
+	<th><%= link_to_with_sort t(:admin_model_list_category), 'category_id' %></th>
+	<th><%= link_to_with_sort t(:admin_model_list_active), 'active' %></th>
+	<th>No discount</th>
+	<th><%= link_to_with_sort t(:admin_models_list_sort_order), 'sort_order' %></th>
+	<th>&nbsp;</th>
+  </tr>
+  
+  <tbody id='listing'>
+	<%= render :partial => 'listing' %>
+  </tbody>
+</table>
+
+
+<br />
+
+<table cellspacing="0" cellpading="0" width="100%">
+	<tr>
+		<td align="left" width="50%">
+			<%= will_paginate @models %> 
+		</td>
+		<td align="right" width="50%">
+      <%= link_to t(:admin_models_list_update_sort_order), "javascript:$('model_form').submit();", {:class => 'textLink', :title => t(:admin_models_list_update_sort_order) } %>
+			<%= link_to t(:admin_add), {:action => 'new', :id => params[:id]}, {:class => 'textLink', :title => t(:admin_add) } %>
+		</td>
+	</tr>
+</table>

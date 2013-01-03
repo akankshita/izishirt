@@ -1,0 +1,17 @@
+
+
+<% if @cart.items.length > 0 %>
+  <div class="greenButtonLarge center middle right" style="margin-top: 20px;">
+    <%=  link_to t(:cart_submit),
+      @SECURE_URL_ROOT + get_lang_url() + @next_step_url,
+      :protocol => 'http://',
+      :class => @next_step_class,
+      :name => @next_step_name
+    %>
+    </div>
+<% end %>
+
+<div class="blueButtonLarge right" style="margin-top: 20px;">
+
+  <%= link_to t(:cart_continueshopping), @continue_link  %>
+</div>

@@ -1,0 +1,36 @@
+<%= I18n.t(:send_mail_upload_promote_1, :locale => Language.find(@user.language_id).shortname) %> <%= @user.firstname + " " + @user.lastname%>,<br /><br />
+
+<p><%= I18n.t(:send_mail_upload_promote_2, :locale => Language.find(@user.language_id).shortname) %></p>
+
+<p><%= I18n.t(:send_mail_upload_promote_3, :locale => Language.find(@user.language_id).shortname) %></p>
+
+<div><code style="padding:7px;border: 1px dotted blue">&lt;a href="http://<%= @user.username %>.izishirt.ca/"&gt;<%= @user.username.capitalize %> Custom t-shirts&lt;/a&gt;<code></div>
+<br /><br />
+
+<p><%= I18n.t(:send_mail_upload_promote_4, :locale => Language.find(@user.language_id).shortname) %></p>
+ 
+
+<p><%= I18n.t(:send_mail_upload_promote_7, :locale => Language.find(@user.language_id).shortname) %> </p>
+
+<code style="padding:7px;border: 1px dotted blue">&lt;script language="javascript" src="http://<%= @user.username %>.izishirt.ca/my/blog_panel?limit=3"&gt;&lt;/script&gt;</code><br /><br />
+
+<p><%= I18n.t(:send_mail_upload_promote_11, :locale => Language.find(@user.language_id).shortname) %></p>
+
+<code style="padding:7px;border: 1px dotted blue">&lt;iframe src='http://<%= @user.username %>.izishirt.ca/my/iframe_flash_shop' width='660' height='520' frameborder='0' scrolling='no'&gt;&lt;/iframe&gt;</code><br /><br />
+
+<p><%= I18n.t(:send_mail_upload_promote_12, :locale => Language.find(@user.language_id).shortname)  %></p>
+
+<code style="padding:7px;border: 1px dotted blue">&lt;a  href="http://www.izishirt.ca/display/shop1/<%= @image.id %>"&gt;<%= @image.name %> Custom T-shirt @ Izishirt&lt;/a&gt;</code><br /><br />
+
+<p><%= I18n.t(:send_mail_upload_promote_14, :locale => Language.find(@user.language_id).shortname) %></p>
+
+<a href='http://www.izishirt.ca/myizishirt/earning'>http://www.izishirt.ca/myizishirt/earning</a><br /><br />
+
+<p><%= I18n.t(:send_mail_upload_promote_15, :locale => Language.find(@user.language_id).shortname) %></p>
+
+<a href="http://www.izishirt.ca/myizishirt/promote">http://www.izishirt.ca/myizishirt/promote</a>
+
+<p><%= I18n.t(:send_mail_upload_promote_18, :locale => Language.find(@user.language_id).shortname) %></p>  <a href="mailto:<%=I18n.t(:contact_us_email_designs, :locale => Language.find(@user.language_id).shortname)%>"><%=I18n.t(:contact_us_email_designs, :locale => Language.find(@user.language_id).shortname)%></a>
+
+<p><%= I18n.t(:send_mail_upload_promote_19, :locale => Language.find(@user.language_id).shortname) %><br /><p><%= I18n.t(:send_mail_upload_promote_20, :locale => Language.find(@user.language_id).shortname) %></p>
+<img src="http://www.izishirt.ca/images/email_sig.jpeg" alt="izishirt.ca" />

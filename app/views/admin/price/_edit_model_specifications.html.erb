@@ -1,0 +1,18 @@
+<tr class="<%= cycle('odd', '') %>">
+	<td width="50">
+	  <%= image_tag "/izishirtfiles/colors/#{model_specification.color.preview_image}",
+	    :size => '15x15' %>
+	</td>
+	<td>
+	  <%=h model_specification.color.local_name(session[:language_id]) %>
+	</td>
+	
+  <% for model_price in model_specification.model_prices %>
+    <td>
+      <%= text_field_tag "model_prices[#{model_price.id}][price]", 
+          model_price.price,
+          :style => "width:30px;" %>
+    </td>
+  <% end %>
+  <td><%= link_to "reset", {:action => "reset_spec_price", :id => model_specification.id}%></td>	
+</tr>

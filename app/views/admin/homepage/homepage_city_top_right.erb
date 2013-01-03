@@ -1,0 +1,49 @@
+<h1>Homepage City Top Right Image</h1>
+
+<% form_tag({:action => 'update_infos_homepage_images'}, {:multipart=>true}) do %>
+
+	<table>
+		<tr>
+			<th>Group name<input id="pagename" name="pagename" type="hidden" value="homepage_city_top_right"></th>
+			<th>Preview</th>
+                        <th>Order</th>
+			<th>Locale</th>
+			<th>City</th>
+                        <th>Alt</th>
+						<th>Action</th>
+
+
+		</tr>
+
+		<% @yourtext_yourimage.each do |banner_image| %>
+			<tr>
+				<td><%= banner_image.website_banner.name %></td>
+				<td>
+					<%= image_tag(banner_image.image.url, :style => "width: 250px;") %>
+					<br />
+					<%= file_field_tag "yourtext_yourimage[#{banner_image.id}][image]" %>
+				</td>
+                                <td><%= text_field_tag "yourtext_yourimage[#{banner_image.id}][the_order]", banner_image.the_order %></td>
+				<td><%= banner_image.locale.long_name %></td>
+				<td><% if banner_image.city_id.to_i >0 %><%= banner_image.city.name %><% end %></td>
+
+                                <td><%= text_field_tag "yourtext_yourimage[#{banner_image.id}][alt]", banner_image.alt %></td>
+				<td><%= link_to "Delete", {:action => "delete_website_banner_image", :id => banner_image.id, :pagename => "homepage_city_top_right"}, { :confirm => "SURE ?" } %></td>
+				
+			</tr>
+                        <tr style="background-color:#333;height:1px"><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+		<% end %>
+              
+
+	</table>
+
+<div>
+<br />
+<br />
+
+	<%= submit_tag "Update" %>
+</div>
+
+
+<% end %>

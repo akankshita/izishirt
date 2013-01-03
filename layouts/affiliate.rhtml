@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="verify-v1" content="74XVS9wjAO3w3haVIXvRKVLzNN3poCrRAxyw/qdQc8k=" >
+
+    <title><%=get_page_title(@image) if @meta_title.nil?-%> <%= @meta_title if !@meta_title.nil? -%></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+    <meta http-equiv="Content-Language" content="<%= session[:language] %>"> 
+        
+    <% if !@meta_description.nil? %>
+      <meta name="description" content="<%= @meta_description%>" />
+    <%else%>
+      <% if (params[:action] == "create_tshirt" || params[:action] == "t-shirt-personalise" && @image.category) %>
+        <meta name="description" content="<%= "Design: "+@image.name+", Category:  "+@image.category.localized_categories[0].name.to_s+",  Designer: "+@image.user.username if @image -%>. <%= t(:display_home_meta_description_flash_app) %>" />
+      <% else %>
+        <meta name="description" content="<%= t(:display_home_meta_description) %>" />
+      <% end %>
+    <%end%>
+        
+    <% if !@meta_keywords.nil? %>
+      <meta name="keywords" content="<%= @meta_keywords %>" />
+    <% else %>  
+      <meta name="keywords" content="<%= t(:display_home_meta_keywords) %>" />
+    <% end %>
+
+    <meta name="robots" content="index, follow, all" />
+    <meta name="copyright" content="STUDIO CODENCY <%= Time.now.year %>" />
+
+    <!--[if lt IE 7]>
+    <style type="text/css">
+    img, .png { behavior: url('/stylesheets/iepngfix_v2/iepngfix.htc'); }
+    </style>
+    <script type="text/javascript" src="/javascripts/iepngfix_tilebg.js"></script>
+    <![endif]-->
+
+    <!--[if IE]>
+    <link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection" />
+    <![endif]-->
+
+    <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="stylesheets/blueprint/print.css" type="text/css" media="print" />
+    <link rel="stylesheet" href="/stylesheets/izishirt2009.css" type="text/css" />
+    <link rel="stylesheet" href="/stylesheets/affiliate_checkout.css" type="text/css" />
+    <link rel="stylesheet" href="/stylesheets/jScrollPane.css" type="text/css" />
+
+    <!--
+    <script type="text/javascript" src="/javascripts/scriptalizer.js"></script>
+    -->
+    <script type="text/javascript" src="/javascripts/prototype.js"></script>
+    <script type="text/javascript" src="/javascripts/lightbox.js"></script>
+    <script type="text/javascript" src="/javascripts/cb.js"></script>
+    <script type="text/javascript" src="/javascripts/effects.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.em.js"></script>
+    <script type="text/javascript" src="/javascripts/jScrollPane-1.2.3.min.js"></script>
+    <script type="text/javascript" src="/javascripts/application2009.js"></script>
+    <script type="text/javascript" src="/javascripts/izishirt_2011.js"></script>
+  </head>
+  <body>
+    <style type="text/css">
+      iframe {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        width: 660px;
+        height: 521px; 
+      }
+    </style> 
+  <!-- header -->
+  <div class="top_checkout clearfix">
+    <div class="fleft"><a href="http://www.izishirt.ca" id="wlogo">&nbsp;</a> <a href="javascript:parent.location='<%= @affiliate_store.checkout_header_link%>'"><%= @affiliate_store.checkout_header_text%></a></div>
+    <div class="fright">
+      <%= link_to_unless session[:user_id].nil?, t(:display_home_deconnexion), {:controller => "myizishirt/login/logout", :section => 'affiliate', :store => params[:store]}, :id=>'login_join', :class => "connexion" do end %>
+      <% if session[:country] != 'US' %>
+        <% if session[:language].nil? || session[:language].empty? || session[:language] == "fr" %>
+          <a href="/display/language?lang=en" rel="" class="dlang" >English</a>
+        <% elsif(session[:language] == "en") %>
+          <a href="/display/language?lang=fr" rel="" class="dlang">Fran&ccedil;ais</a>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <% if(flash[:notice]) %>
+  <div class="pageholder error"><span><%= flash[:notice] %></span></div>
+  <% end %>
+  <%= yield %> 
+
+  <%= javascript_include_tag "https://ssl.google-analytics.com/urchin.js"%>
+
+  <script type="text/javascript">
+  _uacct = "<%= URCHIN_TRACKER %>";
+  urchinTracker();
+  </script>
+
+  </body>
+</html>
+
+

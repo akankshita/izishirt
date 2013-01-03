@@ -1,0 +1,2 @@
+page.replace_html 'usave_price', "#{number_to_currency_custom(@price)} (#{@currency})"
+page.replace_html 'model_size_id', size_select_options(@model.id, c.id) 

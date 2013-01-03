@@ -1,0 +1,140 @@
+<section id="leftpart">
+	<!--h3>Top Searches</h3-->
+    <!--ul>
+        <li><a href="#">Funny T-Shirts</a></li>
+        <li><a href="#">Graphic T-Shirts</a></li>
+        <li><a href="#">Black T-Shirts </a></li>
+        <li><a href="#">White T-Shirts</a></li>
+        <li><a href="#">I love T-Shirts</a></li>
+        <li><a href="#">Rock T-Shirts</a></li>
+        <li><a href="#">Patrick T-Shirts</a></li>
+        <li><a href="#">Canada T-Shirts</a></li>
+	   <li><a href="#">Love T-Shirts</a></li>
+	   <li><a href="#">Cute T-Shirt</a></li>
+	   <li><a href="#">Cartoon T-Shirts</a></li>
+	   <li><a href="#">Music T-Shirts</a></li>
+	   <li><a href="#">Hockey T-Shirts</a></li>
+	   <li><a href="#">Sport T-Shirts</a></li>
+	   <li><a href="#">Logo T-Shirts</a></li>
+	   <li><a href="#">Sexy T-Shirts</a></li>
+	   <li><a href="#">Humor T-Shirts</a></li>
+	   <li><a href="#">Cool T-Shirts</a></li>
+    </ul-->
+		
+	<%= render :partial => 'shop_left_menu', :locals=>{:no_link=>true} %>
+	
+
+    
+    <h3>Facebook</h3>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-like" data-href="http://www.facebook.com/pages/IziShirt/223576667655075" data-send="false" data-width="150" data-show-faces="true"></div>
+    <!--img src="/../images/izishirt2012/facbook.png" width="199" height="128" alt=""-->
+    
+    <br>
+    <br>
+</section>
+   <%
+         banner = WebsiteBanner.find_by_name("categories_images")
+         banner_images = banner.banner_images(I18n.locale.to_s)
+         banner_images = banner.banner_images("en-CA") if banner_images.length == 0
+        
+        %>
+<article id="rightpart">
+	<%
+	cat_funny = Category.find_by_id(4)
+	name_fun= cat_funny.local_name(session[:language_id]).upcase
+	
+	%>
+	<!--<div class="rubtitle"><%=t("design_category")%> <%= name_fun %> </div>-->
+	<%@ct = t("custom_tshirt").split(' ')%>
+	<h2><%=@ct[0]%> <span><%=@ct[-1]%></span></h2>
+	
+	
+		<% begin %>
+            <%  cat_funny.images.find(:first, :conditions=>"active=1").orig_image.url("100")
+				subimage=cat_funny.images.find(:all, :conditions=>"active=1", :order=>"rand()", :limit=>"3")  
+				@list_design = subimage.map { |rd|
+					image_current_url = rd.orig_image.url()
+					image_current_url2 = rd.orig_image.url()
+					"<div class=\"divrubimg\"><a href=\"#{design_info_url(rd.id)}\"><img style=\"padding: 10px;max-height: 150px;max-width: 160px;\" title=\"#{rd.name}\" alt=\"#{rd.name}\" src=\"#{image_current_url}\" /></a></div>"
+				}
+			%>
+			
+            <%rescue%>
+				<% next %>
+            <%end%>
+		
+		<%= @list_design  %>
+		<div class="clear"><br/><br/></div>	
+	
+	<%
+	cat_celabrity = Category.find_by_id(39)
+	name_fun= cat_celabrity.local_name(session[:language_id]).upcase
+	
+	%>
+	<!--<div class="rubtitle"><%=t("design_category")%> <%= name_fun %> </div>-->
+	<%@tp = t("tshirt_printing").split(' ')%>
+	<h2><%=@tp[0]%> <span><%=@tp[-1]%></span></h2>
+
+	
+	
+		<% begin %>
+            <%  cat_celabrity.images.find(:first, :conditions=>"active=1").orig_image.url("100")
+				subimage=cat_celabrity.images.find(:all, :conditions=>"active=1", :order=>"rand()", :limit=>"3")  
+				@list_design = subimage.map { |rd|
+					image_current_url = rd.orig_image.url()
+					image_current_url2 = rd.orig_image.url()
+					"<div class=\"divrubimg\"><a href=\"#{design_info_url(rd.id)}\"><img style=\"padding: 10px;max-height: 150px;max-width: 160px;\" title=\"#{rd.name}\" alt=\"#{rd.name}\" src=\"#{image_current_url}\" /></a></div>"
+				}
+			%>
+			
+            <%rescue%>
+				<% next %>
+            <%end%>
+		
+		<%= @list_design  %>
+		<div class="clear"></div>
+	
+	
+      
+  </div>
+  <div style="clear:both;"></div>
+    
+  <div class='clear'></div>
+    <%
+	homepagetexts = Homepagetext.find(:all)
+	for homepagetext in homepagetexts
+  %>
+	  <% 	@langu = @canonical_begin_url
+			
+				if @langu == "http://fr.izishirt.ca"
+					home_title = homepagetext.title_fr.to_s
+					home_content = homepagetext.content_fr.to_s
+				end
+				if @langu == "http://www.izishirt.ca" 
+					home_title = homepagetext.title_en.to_s
+					home_content = homepagetext.content_en.to_s
+				end 			
+				if @langu == "http://www.izishirt.com" 
+					home_title = homepagetext.title_us.to_s
+					home_content = homepagetext.content_us.to_s
+				end 
+			
+			
+				%>
+				<p>&nbsp;</p>
+  <p><font style="font-size: 14px;font-weight: bold;text-align: center;color: black; "><%=  home_title %></font></p>
+  
+  <%=  home_content %>
+  
+  <% end  %>
+  
+</article>
+<div class="clear"></div>

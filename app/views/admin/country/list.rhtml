@@ -1,0 +1,30 @@
+<h1>Cities list</h1>
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    
+	<th width="170">Short Name</th>
+	<th width="170">Name</th>
+	<th width="170">Taxe</th>
+	<th>&nbsp;</th>
+  </tr>
+
+<tbody>
+<% for country in @countries %>
+	<tr>
+		
+		<td width="170" style="padding:5px;"><%= country.shortname  %></td>
+		<td width="170" style="padding:5px;"><%= country.name  %></td>
+		<td width="170" style="padding:5px;"><%= country.tax  %></td>
+		<td style="padding:5px;">
+			<%= link_to '&nbsp;', {:action => 'edit', :id => country.id}, {:class => 'icoEdit icopng', :title => t(:admin_edit) } %>
+			<%= link_to '&nbsp;', { :action => 'destroy', :id => country.id }, :confirm => t(:admin_confirm), :method => :post, :class => 'icoDelete icopng', :title => t(:admin_delete) %>
+		</td>
+	</tr>
+<% end %>
+
+</tbody>
+
+</table>

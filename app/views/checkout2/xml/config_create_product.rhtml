@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<config>
+    <value valType="Boolean" valName="saveProduct">0</value> 
+    <value valType="String" valName="initialScene">mainApplication</value>
+    <value valType="String" valName="initialTab">products</value>
+    <value valType="String" valName="izishirtfiles"><%= "#{@URL_ROOT}/izishirtfiles/"%></value>
+    <value valType="String" valName="artworksPath"><%= "#{@URL_ROOT}/izishirtfiles/images/"%></value>
+    <value valType="String" valName="newArtworksPath"><%= "#{@URL_ROOT}/izishirt_flash/#{session[:language]}/get_image/"%></value>
+    <value valType='String' valName="modelsPath"><%= "#{@URL_ROOT}/izishirtfiles/models/"%></value>
+    <value valType="String" valName="productsPath"><%= "#{@URL_ROOT}/izishirtfiles/ordered_products/"%></value>
+    <value valType="String" valName="userUploadDesignPath"><%= "#{@URL_ROOT}/izishirtfiles/images/useruploadedimage/"%></value>
+    <value valType="String" valName="modelsColorPath"><%= "#{@URL_ROOT}/izishirtfiles/colors/"%></value>
+    <value valType="String" valName="printColorPath"><%= "#{@URL_ROOT}/izishirtfiles/colors/"%></value>
+	<value valType="String" valName="initialDesignsCategory">9999</value>
+    <value valType="String" valName="checkoutPath"><%=@checkout_path%></value>
+    <value valType="String" valName="uploadImagePath">/izishirt_flash/<%=session[:language]%>/upload_your_image</value>
+    <value valType="String" valName="hide_upload">True</value>
+    <value valType="String" valName="checkForUploadedImage">/izishirt_flash/<%=session[:language]%>/uploaded_image_status</value>
+    <value valType="String" valName="UserUploadDesignCategory"><%= t(:izishirt_flash_config_new_upload_category) %></value>
+    <value valType="String" valName="infoButton1">http://www.izishirt.ca</value>
+    <value valType="String" valName="infoButton2">http://www.izishirt.ca</value>
+    <value valType="String" valName="infoButton3">http://www.izishirt.ca</value>
+    <value valType="String" valName="advertLink"><%=@banner_link%></value>
+    <value valType="String" valName="advertJpegLink"><%=@banner%></value>
+    <value valType="Number" valName="advertJpegLink_xPos">10</value>
+    <value valType="Number" valName="advertJpegLink_yPos">11</value>
+    <value valType="Boolean" valName="ShowModProdsProperties">0</value>
+    <value valType="Boolean" valName="ShowDesignsProperties">0</value>
+    <value valType="Boolean" valName="ShowInterfaceProperties">0</value>
+    <value valType="Number" valName="ThemeDelayTime">0</value>
+    <value valType="Number" valName="minimumFontSize">6</value>
+    <value valType="Number" valName="maximumFontSize">200</value>
+    <value valType="Number" valName="defaultFontSize">12</value>
+    <value valType="Number" valName="minimumDesignScale">25</value>
+    <value valType="Number" valName="maximumDesignScale">300</value>
+    <value valType="Number" valName="minimumQuantity">0</value>
+    <value valType="Number" valName="maximumQuantity">1000</value>
+
+    <value valType="Boolean" valName="setInitialTextOnModel">0</value>
+    <value valType="Number" valName="initialText_x">155</value>
+    <value valType="Number" valName="initialText_y">70</value>
+
+
+    <value valType="Boolean" valName="showTextLineBorder">0</value>
+</config>

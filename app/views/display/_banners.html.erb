@@ -1,0 +1,146 @@
+<%= javascript_include_tag "2012/modernizr.custom.46884.js","2012/jquery.slicebox.js"%>
+<div class="banner_new">
+
+		<ul id="sb-slider" class="sb-slider">
+				<li>
+				<a href="#" target="_blank"><img src="/../../images/izishirt2012/1.jpg" alt="image1"/></a>
+				<div class="sb-description">
+				
+				</div>
+				</li>
+				<li>
+				<a href="#" target="_blank"><img src="/../images/izishirt2012/2.jpg" alt="image2"/></a>
+				<div class="sb-description">
+				
+				</div>
+				</li>
+				<li>
+				<a href="#" target="_blank"><img src="/../images/izishirt2012/3.jpg" alt="image1"/></a>
+				<div class="sb-description">
+				
+				</div>
+				</li>
+		
+		
+		</ul>
+
+		<div id="shadow" class="shadow"></div>
+		
+				<div id="nav-arrows" class="nav-arrows">
+				<a href="#">Next</a>
+				<a href="#">Previous</a>
+				</div>
+		
+				<div id="nav-options" class="nav-options">
+				<span id="navPlay">Play</span>
+				<span id="navPause">Pause</span>
+				</div>
+		
+				<div id="nav-dots" class="nav-dots">
+				<span class="nav-dot-current"></span>
+				<span></span>
+				<span></span>
+				
+				</div>
+
+		</div>
+
+</div>
+
+<script type="text/javascript">
+
+
+	$j(function() {
+		
+		var Page = (function() {
+
+			var $navArrows = $j( '#nav-arrows' ).hide(),
+				$navOptions = $j( '#nav-options' ).hide(),
+				$navDots = $j( '#nav-dots' ).hide(),
+				$nav = $navDots.children( 'span' )
+				$shadow = $j( '#shadow' ).hide(),
+				slicebox = $j( '#sb-slider' ).slicebox( {
+					onReady : function() {
+
+						$navArrows.show();
+						$navOptions.show();
+						$navDots = $j( '#nav-dots' ).show();
+						$shadow.show();
+
+					},
+						onBeforeChange : function( pos ) {
+								$nav.removeClass( 'nav-dot-current' );
+								$nav.eq( pos ).addClass( 'nav-dot-current' );
+						},
+					orientation : 'h',
+					cuboidsCount : 3,
+					controls: "", 
+				} ),
+				
+				init = function() {
+
+					initEvents();
+					
+				},
+				 
+				initEvents = function() {
+
+					// add navigation events
+					$navArrows.children( ':first' ).on( 'click', function() {
+
+						slicebox.next();
+						return false;
+
+					} );
+
+					$navArrows.children( ':last' ).on( 'click', function() {
+						
+						slicebox.previous();
+						return false;
+
+					} );
+
+					$j( '#navPlay' ).on( 'click', function() {
+						
+						slicebox.play();
+						return false;
+
+					} );
+
+					$j( '#navPause' ).on( 'click', function() {
+						
+						slicebox.pause();
+						return false;
+
+					} );
+						$nav.each( function( i ) {
+							
+								$j( this ).on( 'click', function( event ) {
+									
+									var $dot = $j( this );
+									
+									if( !slicebox.isActive() ) {
+
+										$nav.removeClass( 'nav-dot-current' );
+										$dot.addClass( 'nav-dot-current' );
+									
+									}
+									
+									slicebox.jump( i + 1 );
+									return false;
+								
+								} );
+								
+							} );
+
+
+				};
+
+				return { init : init };
+
+		})();
+
+		Page.init();
+
+	});
+</script>

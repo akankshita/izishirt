@@ -1,0 +1,65 @@
+<div class="same">
+  <%= image_tag "/images/izishirt2009/rightArrow.png", :alt => '' %>
+  <label><%= t(:address_sameaddress, :locale => @checkout_locale) %></label>
+</div>
+
+<div class="radios">
+  <input name="sameaddress" id="sameaddress" onclick="hide_shipping();" type="radio" value="1" <%= @sameaddress_yes %> />
+  <label><%= t(:address_yes, :locale => @checkout_locale) %></label>
+  <input name="sameaddress" id="sameaddress" type="radio" value="0" class="checkout-ship-adjust-1" onclick="show_shipping();" <%= @sameaddress_no %>/>
+  <label><%= t(:address_no, :locale => @checkout_locale) %></label>
+</div>
+  
+<div id="shipping" style="display:<%= @sameaddress_display %>;">
+  <div class="cart_header addTop addBottom">
+    <%= image_tag("/images/izishirt2009/rightArrow.png") %>
+    <label class="items">
+      <%= t(:address_shippingheader, :locale => @checkout_locale) %>
+    </label>
+    <div class="clear"></div>
+  </div>
+
+  <div class="horiz_space_12"></div>
+
+  <div class="left">
+    
+    <label><%= t(:address_name, :locale => @checkout_locale) %> <span class="red">*</span></label>
+    <input type="text" name="shipping[name]" id="shipping_name" value="<%= @user.firstname+" "+@user.lastname %>" />
+    <%= hidden_field :shipping, :user_id, {:value => @user.id} %>
+
+    <label><%= t(:address_address, :locale => @checkout_locale) %> <span class="red">*</span></label>
+    <input type="text" name="shipping[address1]" id="shipping_address" value="<%= @shipping.address1 %>" />
+
+    <label><%= t(:address_appt, :locale => @checkout_locale) %></label>
+    <input type="text" name="shipping[address2]" id="shipping_appt" value="<%= @shipping.address2 %>" />
+
+    <label><%= t(:address_phone, :locale => @checkout_locale) %> <span class="red">*</span></label>
+    <input type="text" name="shipping[phone]" id="shipping_phone" value="<%= @shipping.phone %>"/>
+
+    <label><%= t(:address_city, :locale => @checkout_locale) %> <span class="red">*</span></label>
+    <input type="text" name="shipping[town]" id="shipping_city" value="<%= @shipping.town %>"/>
+
+  </div>
+
+  <div class="right">
+
+      <label><%= t(:address_country, :locale => @checkout_locale) %> <span class="red">*</span></label>
+      <%= select_tag 'shipping[country_id]', options_for_select(@countries, @country_id),
+        {:style => 'width:152px;margin:0px;',
+      :onchange => remote_function( :update => 'shipping_province',
+          :url => { :action => 'load_shipping_provinces_by_country', }, :with => "Form.Element.serialize(this)")} %>
+
+      <div id="shipping_province">
+        <%= render :partial => "shipping_province" %>
+      </div>
+
+    <label><%= t(:address_postalcode, :locale => @checkout_locale) %> <span class="red">*</span></label>
+    <input type="text" name="shipping[zip]" id="shipping_zip" value="<%= @shipping.zip %>"/>
+  </div>
+
+  <div class="clear"></div>
+
+  <div class="mandatory">
+    <label><span class="red">*</span> <%= t(:address_mandatoryfields, :locale => @checkout_locale) %></label>
+  </div>
+</div>

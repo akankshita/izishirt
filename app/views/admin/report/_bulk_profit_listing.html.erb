@@ -1,0 +1,35 @@
+<% for order in @orders %>
+  <tr class="<%= cycle('odd','') %>">
+    <td><%= link_to order.id, {:controller => 'admin/order', :action => :show, :id => order.id} %></td>
+    <td><%= order.created_on.strftime("%d/%m/%y") %></td>
+    <td><%= order.created_on.strftime("%B") %></td>
+    <td><%= number_to_currency_custom(order.total_price, {:currency=>order.currency.label}) %></td>
+    <td><%= number_to_currency_custom(order.shipping_cost, {:currency=>order.currency.label}) %></td>
+    <td><%= number_to_currency_custom(order.total_taxes, {:currency=>order.currency.label}) %></td>
+    <td><%= order.currency.label %></td>
+    <td />
+    <td><%= order.user.firstname + " " + order.user.lastname if order.user %></td>
+    <td>
+      <% if order.payment_transaction %> 
+        Credit Card 
+      <% elsif order.paypal_transaction %>
+        Paypal
+      <% end %>
+    </td>
+    <td>
+      <%= if order.payment_transaction 
+            order.payment_transaction
+          elsif order.paypal_transaction
+            order.paypal_transaction
+          end    
+      %>
+    </td>
+    <td><%= order.billing.province.code if order.billing && order.billing.province %></td>
+    <td><%= order.billing && order.billing.country ? order.billing.country.name : order.billing.country_name if order.billing %></td>
+    <td><%= order.billing.address1 if order.billing %></td>
+    <td><%= order.billing.town if order.billing %></td>
+    <td><%= order.billing.zip if order.billing %></td>
+    <td><%= order.user.firstname if order.user %></td>
+    <td><%= order.user.lastname if order.user %></td>
+  </tr>
+<% end %>

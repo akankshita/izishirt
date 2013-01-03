@@ -1,0 +1,96 @@
+<script type="text/javascript"> 
+  $j(document).ready(function(){
+
+  //Larger thumbnail preview 
+
+  $j("ul.thumb li").hover(function() {
+  	$j(this).css({'z-index' : '10'});
+  	$j(this).find('img').addClass("hover").stop()
+  		.animate({
+  			marginTop: '-60px', 
+  			marginLeft: '-60px', 
+  			top: '50%', 
+  			left: '50%', 
+  			width: '144px', 
+  			height: '72px',
+  			padding: '20px' 
+  		}, 200);
+
+  	} , function() {
+  	$j(this).css({'z-index' : '0'});
+  	$j(this).find('img').removeClass("hover").stop()
+  		.animate({
+  			marginTop: '0', 
+  			marginLeft: '0',
+  			top: '0', 
+  			left: '0', 
+  			width: '100px', 
+  			height: '50px', 
+  			padding: '5px'
+  		}, 400);
+  });
+
+  //Swap Image on Click
+  	$j("ul.thumb li a").click(function() {
+
+  		var mainImage = $j(this).attr("href"); //Find Image Name
+  		$j("#main_view").attr('src', mainImage);
+  		return false;		
+  	});
+
+  });
+  </script>
+<!------ ABOUT US-->
+    <div id="about_us">
+      <h1><%=t(:about_us)%></h1>
+      <div id="pictures_team">
+            <%= image_tag "izishirt_design/images_about_and_refound/pic_about.jpg" %>
+      </div>
+
+      <div id="about_us_header">
+        <span style="background-color: #FFF;padding-right:5px;text-transform: uppercase"><%=t(:about_izishirt)%></span>
+      </div>
+      <div id="about_us_content">
+        <p><%=t(:about_us_text)%></p>
+      </div>
+
+
+     <div id="about_us_header">
+        <span style="background-color: #FFF;padding-right:5px;text-transform: uppercase"><%=t(:our_designs)%></span>
+      </div>
+      <div id="about_us_content">
+        <p><%=t(:our_designs_text)%></p>
+      </div>
+
+      <div id="about_us_header">
+        <span style="background-color: #FFF;padding-right:5px;text-transform: uppercase"><%=t(:personalized_tshirts)%></span>
+      </div>
+      <div id="about_us_content">
+        <p><%=t(:personalized_tshirts_text)%></p>
+      </div>
+
+      <div id="about_us_header">
+        <span style="background-color: #FFF;padding-right:5px;text-transform: uppercase"><%=t(:history_of_custom_tshirts)%></span>
+      </div>
+      <div id="about_us_content">
+        <p><%=t(:history_of_custom_tshirts_text)%></p>
+      </div>
+
+      <div id="about_us_header">
+        <span style="background-color: #FFF;padding-right:5px;text-transform: uppercase"><%=t(:why_custom_tshirts)%></span>
+      </div>
+      <div id="about_us_content">
+        <p><%=t(:why_custom_tshirts_text)%></p>
+      </div>
+
+      <div id="about_us_header">
+        <span style="background-color: #FFF;padding-right:5px;text-transform: uppercase"><%=t(:our_goal)%></span>
+      </div>
+      <div id="about_us_content">
+        <p><%=t(:our_goal_text)%></p>
+      </div>
+
+      <div style="margin-bottom: 150px;"></div>
+
+    </div>
+    <!-- ABOUT US -->

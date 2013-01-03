@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  api_key: MyString
+  secret_key: MyString
+  canvas_page_name: MyString
+  callback_url: MyString
+  prety_errors: false
+  set_asset_host_to_callback_url: false
+
+two:
+  api_key: MyString
+  secret_key: MyString
+  canvas_page_name: MyString
+  callback_url: MyString
+  prety_errors: false
+  set_asset_host_to_callback_url: false

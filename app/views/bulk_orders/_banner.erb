@@ -1,0 +1,18 @@
+<div class="bulk_banner">
+  <div class="left">
+  <%= image_tag "izishirt2009/bulk_photo.jpg", :alt=>"Bulk Order Illustration", :width=>"199px", :height=>"116px" %>
+  </div>
+  <div class="bulk_banner_content">
+    <%= image_tag "izishirt2009/#{session[:language]}/bulk_banner_description.jpg", :alt=>t(:bulk_banner_description_alt) %>
+    <div class="clear"></div>
+    <div class="bulk_banner_bottom">
+      <div class="left bulk_text_explanation">
+        <%= t(:bulk_banner_explanation) %>
+      </div>
+      <div class="right bulk_request">
+        <%= link_to "", {:controller=>:bulk_orders}, :class=>"bulk_banner_button_#{session[:language]}" %>
+        <%= link_to t(:contact_us_email_quotes), "mailto:#{t(:contact_us_email_quotes)}", :class=>"bulk_banner_email" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data defaultmodel="<%=@default%>" defaultDesign="<%=@design%>">
+  <categories>
+		<category id='0'><%=t(:izishirt_flash_all_models)%></category>
+        <% for c in @categories %>
+            <category id="<%=c.id%>"><%=c.localized_categories[session[:language_id].to_i-1].name%></category>
+        <% end %>
+  </categories>
+  <models>
+    <% 
+    for m in  @models 
+	if m.model_specifications[0]
+          size = 1
+          size += 1 if !m.model_specifications[0].img_back.empty? 
+          size += 1 if !m.model_specifications[0].img_left.empty?
+          size += 1 if !m.model_specifications[0].img_right.empty?
+    %>  
+      <model category="<%=m.category_id%>" id="<%=m.id%>" warning="<%=m.localized_models.first.warning_text%>" defaultcolor="<%=m.default_color_id%>" defaultzone='1' price="<%=m.price%>">
+        <name><%=m.localized_models[0].name%></name>
+        <description><%=m.localized_models[0].name%></description>
+        <information><![CDATA[<%=m.localized_models[0].model_info%>]]></information>
+        <zones>
+		  		<% for i in 1..size %>
+			  		<zone type='<%=i%>' maxline='<%=MAX_LINES[i]%>' topleft='0,0' bottomright='335,355' />
+			  	<% end %>
+        </zones>
+      </model>
+	<% end %>
+    <% end %>
+  </models>
+  <% if @orderedProduct
+				
+        size = 1
+        size += 1 if !@orderedProduct.model.model_specifications[0].img_back.empty? 
+        size += 1 if !@orderedProduct.model.model_specifications[0].img_left.empty?
+        size += 1 if !@orderedProduct.model.model_specifications[0].img_right.empty? %>
+    <products>
+      <product category='<%=@orderedProduct.model.category.id%>'   model='<%=@orderedProduct.model.id%>' id='<%=@orderedProduct.checksum%>' path='<%=@orderedProduct.relative_product_folder%>' warning='<%=@orderedProduct.model.localized_models.first.warning_text%>' defaultcolor='<%=@orderedProduct.color_id%>' defaultzone='1' price='<%=@orderedProduct.model.price%>' lockProduct='false'>
+        <name><%=@orderedProduct.name(session[:language_id])%></name> 
+        
+          <zones>
+            <% for i in 1..size %>
+            <% if @orderedProduct.ordered_zones[i-1].nil? %>
+              <zone type='<%=i%>'></zone>
+            <% else %>
+              <% z = @orderedProduct.ordered_zones[i-1] %>
+              <zone type='<%=z.zone_type%>'>
+                <% if z.contains_artwork %>
+
+                  <% 
+                  
+                  i = 0
+                  
+                  z.ordered_zone_artworks.each do |artwork|
+                    i+= 1
+
+                    art_tag = (i == 1) ? "" : "_#{i}"
+
+                    image_id = artwork.image ? artwork.image_id : artwork.uploaded_image_id
+                  %>
+
+                    <artwork<%= art_tag %> x='<%=artwork.artwork_x%>' y='<%=artwork.artwork_y%>' id='<%=image_id%>' path='<%=image_id%>' lockcolor='false' printtype='<%=artwork.artwork_printtype%>' vreflection='<%=artwork.artwork_vreflection%>' hreflection='<%=artwork.artwork_hreflection%>' filetype='png' imagetype='pixel' minzoom='50' maxzoom='150' defaultzoom='<%=artwork.artwork_zoom%>' rotation='<%=artwork.artwork_rotation%>'>
+                      <layers>
+                        <layer id="1" color="1" />
+                        <layer id="2" color="2" />
+                        <layer id="3" color="3" />
+                        <layer id="4" color="4" />
+                      </layers<%= art_tag %>>
+                    </artwork>
+                  <% end %>
+                <% end %>
+                <%if !z.ordered_txt_lines.empty? %>
+                  <%= "<lines x='#{z.line_x}' y='#{z.line_y}' rotation='#{z.line_rotation}' vreflection='#{z.line_vreflection}' hreflection='#{z.line_hreflection}' printtype='#{z.line_printtype}'>" %>
+                  <% k=1 %>
+                  <% for l in z.ordered_txt_lines %>
+                  
+                    <%= "<line id='#{k}' font='#{l.font}' size='#{l.size}' align='#{l.align}' bold='#{l.bold}' italic='#{l.italic}' color='#{l.color_id}'>" %> 
+                    <![CDATA[<%=l.content%>]]>
+                    </line>
+                    <% k+=1 %>
+                  
+                  <% end %>
+                  </lines>
+                <% end %>
+              </zone>
+            <% end %>
+          
+        <% end %>
+        </zones>
+      </product>
+    </products>
+  <% end %>
+</data>

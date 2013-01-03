@@ -1,0 +1,35 @@
+<h1>Add image banner</h1>
+
+<% form_tag({:action => 'exec_add_image_banner'}, {:multipart=>true}) do %>
+	<div class="titleForm">Banner</div>
+	<div class="boxForm">
+		<%= select_tag "banner[website_banner_id]", options_for_select(WebsiteBanner.all.map{ |wb| [wb.name, wb.id] }) %>
+	</div>
+
+	<div class="titleForm">Locales</div>
+	<div class="boxForm">
+		<% Locale.all.each do |locale| %>
+			<p><%= locale.long_name %> <%= check_box_tag("banner_locale[#{locale.id}]", "1", false) %></p>
+		<% end %>
+	</div>
+
+	<div class="titleForm">Label</div>
+	<div class="boxForm">
+		<%= text_field_tag "banner[label]" %>
+	</div>
+
+	<div class="titleForm">Link</div>
+	<div class="boxForm">
+		<%= text_field_tag "banner[link]" %>
+	</div>
+
+	<div class="titleForm">IMAGE</div>
+	<div class="boxForm">
+		<%= file_field_tag "banner[image]" %>
+	</div>
+
+	<div class="titleForm"></div>
+	<div class="boxForm">
+		<%= submit_tag "OK" %>
+	</div>
+<% end %>

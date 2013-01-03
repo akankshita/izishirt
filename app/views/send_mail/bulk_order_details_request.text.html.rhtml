@@ -1,0 +1,39 @@
+<p>
+Date needed: <%= @bulk_order[:date_needed] %>
+</p>
+
+<p>
+Qty: <%= @bulk_order[:approx_qty] %>
+</p>
+
+<p>
+Garment type: <%= @bulk_order[:garment_type] %>
+</p>
+
+<p>
+Comments: <%= @bulk_order[:comments] %>
+</p>
+
+<p>
+Name: <%= @bulk_order[:name] %>
+</p>
+
+<p>
+Company: <%= @bulk_order[:company_name] %>
+</p>
+
+<p>
+Phone: <%= @bulk_order[:phone] %>
+</p>
+
+<p>
+Email: <%= @bulk_order[:email] %>
+</p>
+
+<p>
+  Address: <%=  Country.find(@bulk_order[:country_id]).name %>, <%= @bulk_order[:province] %>, <%= @bulk_order[:zip] %>
+</p>
+
+<p>
+izishirt.ca
+</p>

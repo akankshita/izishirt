@@ -1,0 +1,343 @@
+<script type="text/javascript">
+  // RESET FORM COUNTRIES
+  setTimeout(
+  function(){
+    document.getElementById("address_form").reset();
+  },
+  5);
+
+  function display_addresse(val)
+  {
+
+    $j('.addresses_js').hide();
+    $j('#address_'+val).show();
+  }
+
+  function validate_email(value)
+  {
+    apos=value.indexOf("@");
+    dotpos=value.lastIndexOf(".");
+    if (apos<1||dotpos-apos<2)
+    {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  function validateForm() {
+    if ($j('#billing_name').val() == '') {
+      $j('#formError').html("<%= t(:validate_name, :locale => @checkout_locale) %>");
+    }
+    else if ( ($j('#billing_country').val() == '1' || $j('#billing_country').val() == '2') &&   ! $j('#billing_province').val() && ! $j('#billing_province_name').val()) {
+      $j('#formError').html("<%= t(:validate_province, :locale => @checkout_locale) %>");
+    }
+    else if ($j('#billing_address1').val() == '') {
+      $j('#formError').html("<%= t(:validate_address, :locale => @checkout_locale) %>");
+    }
+    else if ($j('#billing_phone').val() == '') {
+      $j('#formError').html("<%= t(:validate_phone, :locale => @checkout_locale) %>");
+    }
+    else if ($j('#billing_town').val() == '') {
+      $j('#formError').html("<%= t(:validate_city, :locale => @checkout_locale) %>");
+    }
+    else if ($j('#billing_zip').val() == '') {
+      $j('#formError').html("<%= t(:validate_postal, :locale => @checkout_locale) %>");
+    }
+    else if ($j('#guest_email').length != 0 && !validate_email($j('#guest_email').val())) {
+      $j('#formError').html("<%= t(:validate_guest_email, :locale => @checkout_locale) %>");
+    }
+    else {
+      if ($j('#sameAddress').is(':checked')){
+        return true;
+      }
+      else{
+
+          return validateShipping();
+      }
+    }
+    return false;
+  }
+
+  function validateShipping() {
+    if ($j('#shipping_name').val() == '') {
+      $j('#formError').html("<%= t(:validate_name, :locale => @checkout_locale) %>");
+    }
+    else if ( ($j('#shipping_country').val() == '1' || $j('#shipping_country').val() == '2') && ! $j('#shipping_province').val() && ! $j('#shipping_province_name').val()) {
+      $j('#formError').html("<%= t(:validate_province, :locale => @checkout_locale) %>");
+    }
+    else if ($j('#shipping_address1').val() == '') {
+      $j('#formError').html("<%= t(:validate_address, :locale => @checkout_locale) %>");
+    }
+    else if ($j('#shipping_phone').val() == '') {
+      $j('#formError').html("<%= t(:validate_phone, :locale => @checkout_locale) %>");
+    }
+    else if ($j('#shipping_town').val() == '') {
+      $j('#formError').html("<%= t(:validate_city, :locale => @checkout_locale) %>");
+    }
+    else if ($j('#shipping_zip').val() == '') {
+      $j('#formError').html("<%= t(:validate_postal, :locale => @checkout_locale) %>");
+    }
+    else {
+      return true;
+    }
+    return false;
+  }
+
+  function toggleStatus() {
+    if ($j('#sameAddress').is(':checked')) {
+      $j('#shipping_fields :input').attr('disabled', 'disabled');
+      billingCountryShipType();
+    } else {
+      $j('#shipping_fields :input').removeAttr('disabled');
+      shippingCountryShipType();
+    }
+  }
+
+  function shippingCountryShipType(){
+    shipping_country = $j("#shipping_country").val();
+    shipping_province = $j("#shipping_province").val();
+
+    shipping_town = $j("#shipping_town").val();
+    shipping_zip = $j("#shipping_zip").val();
+    shipping_address1 = $j("#shipping_address1").val();
+    shipping_address2 = $j("#shipping_address2").val();
+
+    params_data = "country=" + shipping_country + "&province=" + shipping_province + "&town=" + shipping_town + "&zip=" + shipping_zip + "&address1=" + shipping_address1 + "&address2=" + shipping_address2;
+
+<%  if params[:onsite] %>
+      params_data += "&onsite=true&store_id=<%=params[:store_id]%>";
+<% end %>
+
+
+    $j.ajax({
+      url: '<%=url_for(:action=>:shipping_options)%>',
+      data: params_data,
+      success: function(data) {
+        $j('#shipping_type').html(data);
+      }
+    });
+  }
+
+  function billingCountryShipType(){
+    if ($j('#sameAddress').is(':checked')){
+      shipping_country = $j("#billing_country").val();
+      shipping_province = $j("#billing_province").val();
+
+      shipping_town = $j("#billing_town").val();
+      shipping_zip = $j("#billing_zip").val();
+      shipping_address1 = $j("#billing_address1").val();
+      shipping_address2 = $j("#billing_address2").val();
+    }
+
+	pick_up_addr = 0;
+
+	if ($j("#pickup_address") != null)
+	{
+	      pick_up_addr = $j("#pickup_address").val();
+	}
+	else
+	{
+		pick_up_addr = 0;
+	}
+
+      params_data = "country=" + shipping_country + "&province=" + shipping_province + "&town=" + shipping_town + "&zip=" + shipping_zip + "&address1=" + shipping_address1 + "&address2=" + shipping_address2 + "&pickup_address=" + pick_up_addr;
+<%  if params[:onsite] %>
+        params_data += "&onsite=true&store_id=<%=params[:store_id]%>"
+<% end %>
+/*green*/
+      $j.ajax({
+        url: '<%=url_for(:action=>:shipping_options)%>',
+        data: params_data,
+        success: function(data) {
+          $j('#shipping_type').html(data);
+        }
+      });
+  }
+
+  $j(document).ready(function(){
+    toggleStatus();
+
+  });
+</script>
+
+<%= render :partial => 'checkout2/steps'%>
+
+<div id="header_legend">
+  <div id="title_step"><%= t(:billing_and_shipping_information, :locale => @checkout_locale) %></div>
+  
+
+  <% if params[:onsite] && params[:onsite] == "true"%>
+    <div id="return_step2">
+      <%= link_to("<&nbsp;" + t(:return_to_shopping_cart, :locale => @checkout_locale),
+        {:action=>:show_cart, :onsite => params[:onsite], :flash_iframe => params[:flash_iframe],
+          :iframe => params[:iframe], :store_id => params[:store_id]}) %>
+    </div>
+    <div id="btn_free_quote" class="right" style="margin-top:0">
+      <%= link_to(t(:continue, :locale => @checkout_locale)+"&nbsp;"+image_tag("izishirt2009/tiny_arrow.png", :width=>5, :height=>10),
+        "#current",
+        :class=>"button_free_quote address_submit",
+        :title=>t(:continue, :locale => @checkout_locale)) %>
+    </div>
+  <% end %>
+</div>
+
+
+
+<div class="clear"></div>
+<div id="billing_shipping">
+  <% form_tag({:action=>:address,
+      :address_form=>true,
+      :onsite => params[:onsite],
+      :iframe => params[:iframe],
+      :flash_iframe => params[:flash_iframe],
+      :store_id => params[:store_id]},
+    :id=>"address_form",
+    :onsubmit=>"return validateForm();") do %>
+    <div id="billing_info">
+      <div id="billing_info_header">
+      <p><strong><%=t(:billing_information, :locale => @checkout_locale)%></strong></p>
+     </div>
+      <div id="billing_info_content">
+        <label><%= t(:address_name, :locale => @checkout_locale) %> <span class="red">*</span>
+          <%= text_field_tag 'billing[name]', @billing.name %>
+        </label>
+        <br />
+        <label class="selects"><%= t(:address_country, :locale => @checkout_locale) %> <span class="red">*</span>
+          <% selected_value = @billing.country_id ? @billing.country_id : @country_id %>
+          <%= select_tag 'billing[country_id]', options_for_select(@countries, selected_value),
+            {:style => 'width:132px;margin:0px;',
+            :id=>"billing_country",
+            :onchange => "billingCountryShipType();"+ remote_function(:update => 'billing_province_section',:url => {:action => 'load_billing_provinces_by_country'}, :with => 'Form.Element.serialize(this)')
+          }
+        %>
+        </label>
+        <br/>
+        <label id="billing_province_section" class="selects">
+          <%= render :partial => "billing_province" %>
+        </label>
+        <br/>
+        <label><%= t(:address_city, :locale => @checkout_locale) %>  <span class="red">*</span>
+          <%= text_field_tag 'billing[town]', @billing.town, :onchange => "billingCountryShipType();" %>
+        </label>
+        <br/>
+        <label><%= t(:address_postalcode, :locale => @checkout_locale) %> <span class="red">*</span>
+          <%= text_field_tag 'billing[zip]', @billing.zip, :onchange => "billingCountryShipType();" %>
+        </label>
+        <br/>
+        <label><%= t(:address_address, :locale => @checkout_locale) %> <span class="red">*</span>
+          <%= text_field_tag 'billing[address1]', @billing.address1 %>
+        </label>
+        <label>
+          <%= text_field_tag 'billing[address2]', @billing.address2 %>
+        </label>
+        <br />
+
+        <br />
+        <label><%= t(:address_phone, :locale => @checkout_locale) %> <span class="red">*</span>
+          <%= text_field_tag 'billing[phone]', @billing.phone %>
+        </label>
+        <br />
+        <% if is_guest? %>
+          <label><%= t(:email, :locale => @checkout_locale) %> <span class="red">*</span>
+            <%= text_field_tag 'guest_email', @cart.guest_email %>
+          </label>
+          <label><br /></label>
+          <label>
+            <%= check_box_tag 'wants_newsletter', true, true %>
+            <%=t(:i_want_to_receive_the_newsletter, :locale => @checkout_locale)%>
+          </label>
+        <% end %>
+        <% if @user.username == "izishirt" || @user.is_izishirt_seller %>
+          <%= render :partial => "custom_client_email" %>
+        <% end %>
+        </div>
+    </div>
+
+    <div id="shipping_info" style="display:block">
+      <div id="shipping_info_header">
+      <p><strong><%=t(:shipping_information, :locale => @checkout_locale)%></strong></p>
+    </div>
+      <div id="shipping_info_content">
+      <span style="margin-top:55px;">
+
+          <label>
+            <input name="sameaddress" type="checkbox" id="sameAddress" onchange="toggleStatus()" <%=@sameaddress_yes%> />
+            <strong><%= t(:same_as_billing_information, :locale => @checkout_locale) %></strong></label>
+          <div id="shipping_fields">
+            <label><%= t(:address_name, :locale => @checkout_locale) %> <span class="red">*</span>
+              <%= text_field_tag 'shipping[name]', @shipping.name %>
+            </label>
+            <br />
+
+            <br />
+            <label class="selects"><%= t(:address_country, :locale => @checkout_locale) %> <span class="red">*</span>
+              <% selected_value = @shipping.country_id ? @shipping.country_id : @country_id %>
+              <%= select_tag 'shipping[country_id]', options_for_select(@countries, selected_value),
+                {:style => 'width:132px;margin:0px;',
+                :id=>"shipping_country",
+                :onchange => "shippingCountryShipType();"+ remote_function(:update => 'shipping_province_section',:url => {:action => 'load_shipping_provinces_by_country'}, :with => 'Form.Element.serialize(this)')
+              }
+            %>
+            </label>
+            <label class="selects" id="shipping_province_section">
+              <%= render :partial => "shipping_province" %>
+            </label>
+            <label><%= t(:address_city, :locale => @checkout_locale) %>  <span class="red">*</span>
+              <%= text_field_tag 'shipping[town]', @shipping.town %>
+            </label>
+            <label><%= t(:address_postalcode, :locale => @checkout_locale) %> <span class="red">*</span>
+              <%= text_field_tag 'shipping[zip]', @shipping.zip, :onchange => "shippingCountryShipType();" %>
+            </label>
+            <br />
+            <label><%= t(:address_address, :locale => @checkout_locale) %> <span class="red">*</span>
+              <%= text_field_tag 'shipping[address1]', @shipping.address1 %>
+            </label>
+            <label>
+              <%= text_field_tag 'shipping[address2]', @shipping.address2 %>
+            </label>
+            <br />
+
+
+            <br />
+            <label><%= t(:address_phone, :locale => @checkout_locale) %> <span class="red">*</span>
+              <%= text_field_tag 'shipping[phone]', @shipping.phone %>
+            </label>
+          </div>
+      </span>
+     </div>
+    </div>
+
+    <div id="shipping_type" style="display:block <%#= (@cart.coupon_order? ? "none" : "block") %>;"></div>
+    <div class="clear"></div>
+
+
+    <div id="btn_step3">
+      <div id="formError" class="errorMessage">
+        <%= flash[:error] if flash[:error] %>
+      </div>
+      <%= link_to (image_tag "izishirt2011/#{session[:language]}/bt_continue.jpg", :alt=>t(:address_next)),
+
+        "#current",
+        :title => t(:continue, :locale => @checkout_locale),
+        :class => "button_continue address_submit"%>
+      <script type="text/javascript">
+        $j('.address_submit').click(function(){
+          if (validateForm())
+            $j("#address_form").submit();
+        });
+      </script>
+    </div>
+
+    <% if !params[:onsite] %>
+      <div id="return_step2">
+        <%= link_to("<&nbsp;" + t(:return_to_shopping_cart, :locale => @checkout_locale), {:action=>:show_cart}) %>
+      </div>
+    <% end %>
+  <% end %>
+
+
+
+  <div class="clear"></div>
+</div>

@@ -1,0 +1,5 @@
+<% if user && user.is_vip %>
+	<p style="color: red;">(VIP)
+		<a href="<%= user.create_my_url %>"><%= user.create_my_url %></a>
+	</p>
+<% end %>

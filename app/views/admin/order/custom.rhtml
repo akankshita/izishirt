@@ -1,0 +1,94 @@
+<h1>Custom Order</h1>
+
+<% form_tag ({:action => 'custom_save'}, {:multipart=>true }) do %>
+  <div class="titleForm"><label><%= t(:admin_order_show_status) %>:</label></div>
+  <div class="boxForm">
+    <%= select 'order','status', Order.order_statuses_for_select(session[:language])%>
+  </div>
+  
+  <div class="titleForm"><label>Tracking Number:</label></div>
+  <div class="boxForm"><%= text_field 'order', 'tracking_number' %></div>
+  
+  <div class="titleForm"><label>Upload file 1:</label></div>
+  <div class="boxForm">
+  <%= file_field 'image', 'uploaded_img_design1', {'size'=>'26'} %>
+  </div>
+  
+  <div class="titleForm"><label>Upload file 2:</label></div>
+  <div class="boxForm">
+  <%= file_field 'image', 'uploaded_img_design2', {'size'=>'26'} %>
+  </div>
+ 
+  <div class="titleForm"><label><%= t(:admin_order_show_printer) %>:</label></div>
+  <div class="boxForm"><%= select 'order','printer', @printers %></div>
+
+  <div class="titleForm"><label>Rush Order:<br><font size='-2'>check to mark rush</font></label></div>
+  <div class="boxForm"><%=check_box "order", "rush_order", {}, true, false %></div>
+    
+  <div class="titleForm"><label>Artwork Sent:<br><font size='-2'>check to mark rush</font></label></div>
+  <div class="boxForm"><%=check_box "order", "artwork_sent", {}, true, false %></div>
+    
+   <div class="titleForm"><label><%= t(:admin_order_show_language) %>:</label></div>
+   <div class="boxForm">
+   <select id="order_language_id" name="order[language_id]">
+   <option value="2" selected="selected">English</option>
+   <option value="1">French</option></select>
+   </div>
+
+
+  <div class="titleForm"><label><%= t(:admin_order_show_total_price) %>:</label></div>
+  <div class="boxForm"><%= text_field 'order', 'total_price' %></div>
+
+
+  <div class="titleForm"><label>Shipping Type:</label></div>
+  <div class="boxForm">
+  <select id="order_language" name="order[shipping_type]">
+  <option value="-1" selected="selected"><%=t(:admin_na)%></option>
+  <option value="0"><%=SHIPPING_FULL_NAMES[0]%></option>
+  <option value="1"><%=SHIPPING_FULL_NAMES[1]%></option>
+  <option value="2"><%=SHIPPING_FULL_NAMES[2]%></option>
+  <option value="3"><%=SHIPPING_FULL_NAMES[3]%></option></select>
+  </div></div>
+  
+  <div class="titleForm"><label>Signature Required:</label></div>
+  <div class="boxForm"><%=check_box "order", "signature_required", {}, true, false %></div>
+  
+  <div class="titleForm"></div><div class="boxForm"><b>Shipping Address</b></div>
+  <div class="titleForm"><label>Name:</label></div>
+  <div class="boxForm"><input type="text" name="shipping[name]" id="address" value="" size="30"/></div>
+  
+  <div class="titleForm"><label>Address:</label></div>
+  <div class="boxForm"><input type="text" name="shipping[address1]" id="address1" value="" size="30"/></div>
+
+  <div class="titleForm"><label>City:</label></div>
+  <div class="boxForm"><input type="text" name="shipping[town]" id="town" value="" size="30"/></div>
+  
+  <div class="titleForm"><label>Province / State:</label></div>
+  <div class="boxForm"><input type="text" name="shipping[province_name]" id="province_name" value="" size="30"/></div>
+
+  <div class="titleForm"><label>Country:</label></div>
+  <div class="boxForm"><input type="text" name="shipping[country_name]" id="country_name" value="" size="30"/></div>
+
+  <div class="titleForm"><label>Postal Code / Zip Code:</label></div>
+  <div class="boxForm"><input type="text" name="shipping[zip]" id="zip" value="" size="30"/></div>
+  
+  <div class="titleForm"><label>Phone:</label></div>
+  <div class="boxForm"><input type="text" name="shipping[phone]" id="phone" value="" size="30"/></div>
+  
+<br/>
+
+  <!-- add a comment -->
+  <div class="titleForm"><label>Add a comment</label></div>
+  <div class="boxForm"><%=text_area "new_comment", "comment", "cols" => 58, "rows" => 5 %></div>
+  <!-- end add a comment -->
+<% end %>
+  <div class="boxForm">
+<%= edit_form_buttons %></div>	
+
+ 
+
+
+
+
+
+

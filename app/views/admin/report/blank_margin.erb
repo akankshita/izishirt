@@ -1,0 +1,56 @@
+<h1>Blank Margin</h1>
+
+<%= form_tag( {:action => 'blank_margin'}, {:id=>'search_form', :method => "get"} ) %>
+	<div class="titleForm">Type</div>
+	<div class="boxForm">
+		<%= select_tag "type", options_for_select([["Current", "current"], ["Shipped", "shipped"]], @type) %>
+	</div>
+
+	<div class="titleForm"></div>
+	<div class="boxForm">
+		<%= submit_tag "OK" %>
+	</div>
+</form>
+
+	<div class="titleForm"></div>
+	<div class="boxForm">
+		<%= will_paginate @orders %>
+	</div>
+
+	<div class="titleForm"></div>
+	<div class="boxForm" style="width: 700px;">
+		<table>
+			<tr>
+				<th>Date</th>
+				<th>Order ID</th>
+				<th>Total Price</th>
+				<th>Shipping Price Paid</th>
+				<th>Garment Cost</th>
+				<th>UPS Shipping Cost</th>
+				<th>Margin</th>
+			</tr>
+
+			<% @orders.each do |order| 
+				ship_cost = order.calc_real_shipping_cost.round(2)
+				garment_cost = order.detailed_garments_cost_price.round(2)
+
+				margin = order.total_price - (ship_cost + garment_cost)
+			%>
+				<tr>
+					<td><%= order.created_on %></td>
+					<td><%= link_to order.id, :controller => "order", :action => "show", :id => order.id %></td>
+					<td><%= order.total_price.round(2) %> $</td>
+					<td><%= order.total_shipping.round(2) %> $</td>
+					<td><%= garment_cost %> $</td>
+					<td><%= ship_cost.round(2) %> $</td>
+					<td><%= margin.round(2) %> $</td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+
+	<div class="titleForm"></div>
+	<div class="boxForm">
+		<%= will_paginate @orders %>
+	</div>
+

@@ -1,0 +1,18 @@
+<h1>Default Flash Pricing</h1>
+	
+	<% form_tag :action => 'update_new_flash' do %>
+	  
+    <% @prices.each do |price|%>
+      <div class="titleForm" style="width:160px;">
+        <label for="price"><%= price.friendly_name %></label>
+      </div>
+      <div class="boxForm">
+        <input type="text" name="price[<%= price.id %>]" size="10" maxlength="10" value="<%= price.value %>"> 
+      </div>
+		<% end %>
+	
+	<div class="dist"></div><br><div class="dist"></div>
+	<div class="titleForm"></div>
+		<%= link_to  t(:admin_reset), "javascript:document.forms[0].reset();", {:class => 'textLink', :title =>  t(:admin_reset)}%>
+		<%= link_to t(:admin_save), "javascript:document.forms[0].submit();", {:class => 'textLink', :title =>t(:admin_save) }%>
+	<% end %>			

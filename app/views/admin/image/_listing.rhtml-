@@ -1,0 +1,28 @@
+<%
+for image in @images	
+
+  date_approved = ""
+  
+  begin
+    date_approved = image.date_approved.strftime("%m/%d/%Y")
+  rescue
+    
+  end
+
+%>
+  <tr class="<%= cycle('odd', '') %>">
+    <td><img width="40" height="40" src="<%= image.orig_image.url("100") %>" /></td>
+    <td valign="top"><%= image.id %></td>
+    <td valign="top"><%= image.created_on.strftime("%m/%d/%Y") %></td>
+    <td valign="top"><%= date_approved %></td>
+    <td valign="top"><%=h image.name %></td>
+    <td valign="top"><%=h image.category.local_name(session[:language_id]) if !image.category.nil? %></td>    
+    <td valign="top"><%= display_staff_pick(image) %></td>    	
+    <td valign="top" align="center"><%=h image.sorting_rate %></td>    
+    <td valign="top" align="center"><%= display_active(image) %></td>
+    <td valign="top">
+		<%= link_to '&nbsp;', {:action => 'edit', :id => image}, {:class => 'icoEdit icopng', :title => t(:admin_edit) } %>
+		<%#= link_to '&nbsp;', { :action => 'destroy', :id => image }, :confirm => t(:admin_confirm), :method => :post, :class => 'icoDelete icopng', :title => t(:admin_delete) %>
+	</td>
+  </tr>
+<% end %>

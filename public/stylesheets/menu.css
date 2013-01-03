@@ -1,0 +1,39 @@
+/*****************************
+ ****       mainmenu     ****
+ *****************************/
+#menubar {	height: 70px; background: url(../images/bgr-menubar.gif) repeat-x bottom; 	}
+#nav { margin:0 auto; font-size:13px; color:#008fd4; font-weight:normal;  padding:0;  }
+#nav .bgr-navmenu {background: url(../images/bgr-nav.gif) repeat-x;text-align:center; }
+.nav_corners {width:24px}
+#nav .bgr-navmenu td {background: url(../images/bgr-mainmenu-td.gif) repeat-y right; }
+#nav .bgr-navmenu .lastcell {background:none}
+
+#nav .nav_left,
+#nav .nav_right {display:block; width:24px; height:28px}
+#nav .nav_left { background: url(../images/mainmenu-left.gif) no-repeat; }
+#nav .nav_right { background: url(../images/mainmenu-right.gif) no-repeat; }
+
+#mainlevel {	padding: 0px;	font-size:13px; }
+#mainlevel a {	text-decoration:none;	color: #838484; font-size:13px; font-weight:bold; display:block; line-height:28px; padding:0 15px 0 15px}
+#mainlevel  a:hover,
+#mainlevel .active {background: url(../images/bgr-mainmenu-over1.gif) repeat-x ; color:white}
+#mainlevel .special {color:#900606}
+
+
+#subnav { margin:0 auto;  padding:0;  margin-top:1px;  }
+.subnav_corners { width:23px}
+#subnav .subnav_left,
+#subnav .subnav_right {display:block; float:left; width:23px; height:29px; }
+#subnav .subnav_left { background: url(../images/submenu-left1.png) no-repeat; }
+#subnav .subnav_right { background: url(../images/submenu-right1.png) no-repeat; }
+#subnav .subnav_content {background: url(../images/submenu-bgr1.gif) repeat-x; }
+
+
+.subnav_content td {background: url(../images/bgr-submenu-td2.gif) no-repeat ;}
+.subnav_content .lastcell,
+.subnav_content .lastcell a {background:none; }
+
+.submenu {	padding: 0px;	font-size:11px;}
+.submenu a {text-decoration:none;color: #fff; font-size:11px; font-weight:bold;  padding:0 15px; line-height:28px; display:block;  }
+.submenu a:hover,
+.submenu .active {	color: #fff;	text-decoration:none; background: url(../images/bgr-submenu-td2.gif) repeat-x;}

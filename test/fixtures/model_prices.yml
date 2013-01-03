@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  model_specification_id: 1
+  identifier: MyString
+  description: MyString
+  price: 1.5
+
+two:
+  model_specification_id: 1
+  identifier: MyString
+  description: MyString
+  price: 1.5

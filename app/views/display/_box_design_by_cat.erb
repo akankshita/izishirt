@@ -1,0 +1,39 @@
+<div id="flash_design_box">
+  <div id="flash_designs" class="wraptocenter">
+	<% 
+	if ! @model_name || @model_name == ""
+		@model_name = "T-Shirts"
+	end
+
+
+    if @custom_skin
+        @model_name = "Skins"
+    end
+       
+
+	product_name = t(:seo_model_title, :model_name => @model_name, :name => image.name)
+
+	model_url = ""
+
+	if @model_id
+		model_url = "?model=#{@model_id}"
+	end
+
+       if @custom_skin
+          url = "/" + t(:create_skin_url) + "/" + image.id.to_s
+       else
+          url = design_url(image.id) + model_url
+       end
+
+
+	%>
+
+
+    <%= link_to image_tag(image.orig_image.url("100"), :alt => product_name), url, :title => product_name %>
+  </div>
+  <p>
+
+
+    <span class="text11"><%= link_to product_name, design_url(image.id) + model_url, :class=>"text11", :title => product_name %></span><br />
+  </p>
+</div>

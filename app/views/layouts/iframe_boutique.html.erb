@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title><%= @meta_title %></title>
+    <meta name="descripton" content="<%= @meta_description -%>" />
+    <meta name="keywords" content="<%= @meta_keywords -%>" />
+
+
+		<%= stylesheet_link_tag 'shop_create_theme' %>
+		<%= javascript_include_tag "prototype.js","effects.js","dragdrop.js","controls.js" %>
+		<%= javascript_include_tag "jquery-1.3.2.min.js" %>
+		<%= javascript_include_tag "jquery.blockUI.js" %>
+		<%= javascript_include_tag "jquery.tools.min.js?select=full&debug=true" %>
+		<%= javascript_include_tag "custom_boutique.js" %>
+		<%= javascript_include_tag "jquery.fancybox-1.3.1.pack.js" %>
+    <%= javascript_include_tag "preview2.js" %>
+    <%= javascript_include_tag "jqueryslidemenu.js"%>
+    <%= stylesheet_link_tag "jqueryslidemenu.css"%>
+    <% if params[:controller] == "checkout2"%>
+      <%= stylesheet_link_tag "onsite_checkout2.css" %>
+    <% end %>
+		<%= stylesheet_link_tag "fancybox/jquery.fancybox-1.3.1.css" %>
+
+    <style type="text/css">
+      .std_content a {<%=@shop_theme.main_body.currency.style%>;font-size:12px;font-family:Arial;}
+      #fancybox-loading {top:350px !important;}
+      #fancybox-wrap {top:200px !important;}
+    </style>
+
+
+    <script type="text/javascript">
+      $j(document).ready(function() {
+          $j("a.modalbox").fancybox({overlayShow : false});
+      });
+    </script>
+    <script type="text/javascript">
+      function redirect_to_cart(){
+        parent.parent.location.href = "<%=@URL_ROOT%><%=url_for :controller => 'checkout2',:action => 'show_cart' %>";
+
+        return true;
+      }
+    </script>
+
+    <link rel="alternate" type="application/rss+xml" <%= "title='#{t(:shop_feed_description, :locale => @store.locale)}'" -%> <%= "href='#{url_for(:controller => 'my', :action => 'feed', :format => :rss)}'" -%>/>
+  </head>
+
+  <body style="<%=@shop_theme.main_body.background.style%>" onload="location.href='#shop_top'">
+    <a name="shop_top"></a>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(
+  ['_setAccount', 'UA-1994599-4'],
+  ['_setDomainName', '.<%=@DOMAIN_NAME%>'],
+  ['_trackPageview']<% unless @store.analytics.blank?%>,
+  ['b._setDomainName', '<%=@store.user.username%>.<%=@DOMAIN_NAME%>'],
+  ['b._setAccount', '<%=@store.analytics%>'],
+  ['b._trackPageview']
+  <% end %>
+  );
+
+
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+    </script>
+
+    <div class="content_wrapper" style="<%=@shop_theme.main_body.background.style%>">
+      <div class="content iframe_content" style="<%=@shop_theme.main_body.background.style%>">
+        <div class="main" style="padding:0;border:0">
+          <div class="big_col iframe_big_col" style="float:left;">
+            <% if !params[:flash_iframe]%>
+              <div class="left" style="width:517px;">
+                <%= render :partial => 'layouts/iframe_menu'%>
+                <div class="col_header iframe_col_header" style="<%=@shop_theme.header.bg_border_style%>">
+                  <% if !@store.categories.empty? && ["iframe_boutique","iframe_product"].include?(params[:action])%>
+                   <% @store.categories.sort!{|a,b|
+                     a.local_name(@store.language_id) <=> b.local_name(@store.language_id)} %>
+                   <%= select "category", "id",
+                      @store.categories.map {|c| [ c.local_name(@store.language_id), c.id]},
+                      {:include_blank => t(:all_products, :locale => @store.locale)},
+                      {:onchange => "javascript:document.location='#{Language.print_force_lang(params[:lang])}my/iframe_boutique?category='+this.value"}
+                   %>
+                  <% else %>
+                    <% if @shop_theme.header.shop_texts != [] %>
+                      <h1 style="<%=@shop_theme.header.header.style(false)%>">
+                        <%=@header%>
+                      </h1>
+                    <%else%>
+                      <h1><%=@header%></h1>
+                    <%end%>
+                    <%= render :partial => "layouts/share" %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+            <% if !params[:onsite] %>
+              <div class="box left">
+                <div class="box_header" style="<%=@shop_theme.cart_header.bg_border_style%>">
+                  <label style="<%=@shop_theme.cart_header.header.style %>" class="left"><%= t(:cart, :locale => @store.locale) %></label>
+                  <label id="cart_details" style="<%=@shop_theme.cart_header.header.style%>" class="right">
+                    <%="#{@cart.total_qty} items"%> | <%=number_to_currency_custom(@cart.subtotal)%>
+                  </label>
+                  <div class="clear"></div>
+                </div>
+
+                <div class="box_content cart_box" style="<%=@shop_theme.cart.bg_border_style%>">
+                  <%= image_tag "create_boutique/cart.png", :alt => "", :class => "left"%>
+
+                  <div class="cart_button cart_right_button left" style="<%=@shop_theme.cart.checkout_button.style%>">
+                    <%= link_to t(:checkout_right_boutique, :locale => @store.locale), 
+                      "#{@URL_ROOT}#{Language.print_force_lang(params[:lang])}checkout2/show_cart?onsite=true&iframe=true&store_id=#{@store.id}", 
+                      :onclick => "add_cookie_before_link();" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
+            <% content_tag :div, {:class => "col_content iframe_col_content", 
+              :style => @shop_theme.main_body.background.style(params[:onsite]&&params[:onsite]=="true")} do %>
+              <%= yield %>
+            <% end %>
+
+            <%if request.url.match("/my/product/")==nil%>
+            	<div class="pagination_container">
+            		<%= will_paginate(@products, :previous_label=>"<", :next_label=>">") if @products %>
+                <%= will_paginate(@images, :previous_label=>"<", :next_label=>">") if @images %>
+            	</div>
+            <%end%>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div id="success" class="none">
+      <div class="text_wrapper">
+        <%= image_tag "create_boutique/big_cart.png", :class => "left" %>
+        <div class="left text">
+          <label class="block"><%= t(:added_to_cart1, :locale => @store.locale) %></label>
+          <label class="block"><%= t(:added_to_cart2, :locale => @store.locale) %></label>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="continue_button first left">
+        <%= link_to t(:continue_shopping, :locale => @store.locale), "javascript:$j.unblockUI();"%>
+      </div>
+      <div class="checkout_button left" >
+        <%= link_to t(:checkout_now, :locale => @store.locale), "#{@URL_ROOT}/checkout2/show_cart" %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div id="fail" class="none">
+      <div class="text_wrapper">
+        <%= image_tag "create_boutique/big_cart.png", :class => "left" %>
+        <div class="left text">
+          <label class="block"><%= t(:out_of_stock1, :locale => @store.locale) %></label>
+          <label class="block"><%= t(:out_of_stock2, :locale => @store.locale) %></label>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="continue_button first left">
+        <%= link_to t(:continue_shopping, :locale => @store.locale), "javascript:$j.unblockUI();"%>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div id="select_size" class="none">
+      <div class="text_wrapper">
+        <%= image_tag "create_boutique/big_cart.png", :class => "left" %>
+        <div class="left text">
+          <label class="block"><%= t(:select_size, :locale => @store.locale) %></label>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="continue_button first left">
+        <%= link_to t(:continue_shopping, :locale => @store.locale), "javascript:$j.unblockUI();"%>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </body>
+</html>

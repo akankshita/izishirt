@@ -1,0 +1,17 @@
+<script src="/javascripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="/javascripts/homepage.js" type="text/javascript"></script>
+<%=@test%>
+<h1><%= t(:preview_banner)%> <%=params["banner"]["position"]%> <%= t(:preview_desc_2)%> <%=params["banner"]["index"]%></h1>
+<img src="<%=@preview_image%>" width="<%=@preview_width%>" height="<%=@preview_height%>">
+<br/><br/>
+<%form_tag({:controller=>"/admin/homepage", :action=>"save_banner"}, :multipart => true, :id=>"form_banner_1") do%>
+	<input id="file_src" type="hidden" name="banner[file]" value="<%=@preview_image%>">
+	<input id="banner_position" type="hidden" name="banner[position]" value="<%=params["banner"]["position"]%>">
+	<input id="banner_index" type="hidden" name="banner[index]" value="<%=params["banner"]["index"]%>">
+	<input id="banner_lang" type="hidden" name="banner[lang]" value="<%=params["banner"]["lang"]%>">
+	<input id="banner_country" type="hidden" name="banner[country]" value="<%=params["banner"]["country"]%>">
+	<input id="banner_all_en" type="hidden" name="banner[all_en]" value="<%=params["banner"]["all_en"]%>" />
+	<input id="banner_all_fr" type="hidden" name="banner[all_fr]" value="<%=params["banner"]["all_fr"]%>" />
+	<input type="submit" value="<%= t(:button_ok) %>">
+	<input type="button" value="<%= t(:button_cancel) %>" onclick="remoteTmp();">
+<%end%>

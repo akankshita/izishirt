@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<interface>
+  <pricingText>
+    <item divider="22" printType="1">1.45|2.95</item>
+    <item divider="22" printType="2">1.45|2.95</item>
+    <item divider="22" printType="3">1.95|3.45</item>
+    <item divider="22" printType="4">1.95|3.45</item>
+    <item divider="22" printType="5"></item>
+
+  </pricingText>
+  <pricingDesigns>
+    <item divider="100" printType="1">4.0|6.0</item>
+  </pricingDesigns>
+  <font>
+    <item font="1.swf" id="1">Arial</item>
+    <item font="2.swf" id="2">Times New Roman</item>
+
+    <item font="3.swf" id="3">Courier New</item>
+  </font>
+  <zone>
+    <item id="1">Front</item>
+    <item id="2">Back</item>
+    <item id="3">Left</item>
+    <item id="4">Right</item>
+
+  </zone>
+  <size>
+    <item id="1">S</item>
+    <item id="2">M</item>
+    <item id="3">L</item>
+    <item id="4">XL</item>
+    <item id="5">XXL</item>
+
+    <item id="6">XXXL</item>
+  </size>
+  <colorModel>
+    <item icon="2.jpg" id="20">Noir</item>
+    <item icon="10.jpg" id="21">Jaune</item>
+    <item icon="13.jpg" id="22">Vert</item>
+    <item icon="1.jpg" id="23">Blanc</item>
+
+    <item icon="47-olive.jpg" id="29">Olive</item>
+    <item icon="49-Dark-grey.jpg" id="31">Gris fonc&#233;</item>
+    <item icon="50-grey.jpg" id="32">Gris</item>
+    <item icon="51-dark-red.jpg" id="33">Rouge Bourgogne</item>
+    <item icon="53-light-pink.jpg" id="34">Rose clair</item>
+    <item icon="54-rouge.jpg" id="35">Rouge</item>
+
+    <item icon="52-blue-aa.jpg" id="36">Bleu ciel</item>
+    <item icon="63.jpg" id="86">Orange / Chocolat</item>
+    <item icon="64.jpg" id="87">Blanc / Bleu</item>
+    <item icon="65.jpg" id="88">Bleu Fonc&#233;</item>
+    <item icon="66.jpg" id="89">Rose Fonc&#233;</item>
+    <item icon="black-grey.jpg" id="91">Noir / Gris</item>
+
+    <item icon="chocolat-brown.jpg" id="92">Chocolat/Brun</item>
+    <item icon="pink-fushia.jpg" id="93">Fushia-Rose</item>
+    <item icon="blue-darkblue.jpg" id="94">Bleu/Bleu Fonce</item>
+    <item icon="white_black.jpg" id="95">Blanc/Noir</item>
+    <item icon="black_white.jpg" id="96">Noir/Blanc</item>
+  </colorModel>
+
+  <colorType>
+    <item id="1">Standard</item>
+    <item id="2">Velour</item>
+    <item id="3">Glitter</item>
+    <item id="4">Neon</item>
+    <item id="5">Vinyl</item>
+
+  </colorType>
+  <colorTypeSeperation>
+    <item id="design">1</item>
+    <item id="text">1|2|3|4</item>
+  </colorTypeSeperation>
+  <colorPalette>
+    <item hex="000000" icon="2.jpg" id="19" type="1">Noir</item>
+
+  </colorPalette>
+  <priceModel>
+    <item color="23" model="2">s|m|l|xl|xxl|xxxl</item>
+    <item color="31" model="2">s|m|l|xl|xxl|xxxl</item>
+    <item color="20" model="2">s|m|l|xl|xxl|xxxl</item>
+    <item color="29" model="2">s|m|l|xl|xxl|xxxl</item>
+    <item color="32" model="2">s|m|l|xl|xxl|xxxl</item>
+
+    <item color="36" model="3">s|m|l|xl|xxl|xxxl</item>
+    <item color="33" model="3">s|m|l|xl|xxl|xxxl</item>
+    <item color="87" model="4">s|m|l|xl|xxl|xxxl</item>
+    <item color="23" model="4">s|m|l|xl|xxl|xxxl</item>
+    <item color="86" model="4">s|m|l|xl|xxl|xxxl</item>
+    <item color="35" model="4">s|m|l|xl|xxl|xxxl</item>
+
+    <item color="36" model="5">s|m|l|xl|xxl|xxxl</item>
+    <item color="35" model="5">s|m|l|xl|xxl|xxxl</item>
+    <item color="23" model="6">s|m|l|xl|xxl|xxxl</item>
+    <item color="35" model="6">s|m|l|xl|xxl|xxxl</item>
+    <item color="36" model="7">s|m|l|xl|xxl|xxxl</item>
+    <item color="33" model="7">s|m|l|xl|xxl|xxxl</item>
+
+    <item color="23" model="8">s|m|l|xl|xxl|xxxl</item>
+    <item color="88" model="8">s|m|l|xl|xxl|xxxl</item>
+    <item color="34" model="9">s|m|l|xl|xxl|xxxl</item>
+    <item color="35" model="9">s|m|l|xl|xxl|xxxl</item>
+    <item color="23" model="10">s|m|l|xl|xxl|xxxl</item>
+    <item color="35" model="10">s|m|l|xl|xxl|xxxl</item>
+
+    <item color="23" model="11">s|m|l|xl|xxl|xxxl</item>
+    <item color="89" model="11">s|m|l|xl|xxl|xxxl</item>
+    <item color="23" model="12">s|m|l|xl|xxl|xxxl</item>
+    <item color="89" model="12">s|m|l|xl|xxl|xxxl</item>
+    <item color="36" model="13">s|m|l|xl|xxl|xxxl</item>
+    <item color="33" model="13">s|m|l|xl|xxl|xxxl</item>
+
+    <item color="91" model="14">s|m|l|xl|xxl|xxxl</item>
+    <item color="92" model="14">s|m|l|xl|xxl|xxxl</item>
+    <item color="93" model="14">s|m|l|xl|xxl|xxxl</item>
+    <item color="94" model="14">s|m|l|xl|xxl|xxxl</item>
+    <item color="96" model="15">s|m|l|xl|xxl|xxxl</item>
+    <item color="93" model="15">s|m|l|xl|xxl|xxxl</item>
+
+    <item color="95" model="15">s|m|l|xl|xxl|xxxl</item>
+    <item color="" model="20">s|m|l|xl|xxl|xxxl</item>
+  </priceModel>
+</interface>

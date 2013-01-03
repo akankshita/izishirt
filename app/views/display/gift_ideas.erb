@@ -1,0 +1,99 @@
+<!-- Gifts Ideas -->
+<div id="left_container">
+	<%= render :partial => "/layouts/generic_boxes/left_column_infos", :locals=>{:version=>"long"} %>
+	<div id="cloud_tag">
+	  <ul>
+	    <% links = links_for_cloud_tag(@tags) %>
+	    <% links.each do |link| %>
+	      <li><%= link %></li>
+	    <% end %>
+	  </ul>
+	</div>
+</div>
+<div id="right_container">
+	<div id="seo_create_tshirt_main">
+		<h1><%=t(:seo_gift_ideas_title)%></h1>
+		<span class="shop_tshirt"><%= link_to(t(:seo_create_link_shop_for_tshirts_designs), create_tshirt_url() , :class=>"shop_tshirt", :title=>t(:seo_create_link_shop_for_tshirts_designs))%></span>
+		<div id="seo_create_tshirt_border">
+			<%= link_to image_tag('/images/izishirt2011/gift_ideas_banner.jpg', :alt=>t(:seo_gift_ideas_title)), create_tshirt_url(), :title=>t(:seo_gift_ideas_title)%>
+			<p class="title_14"><%=t(:seo_gift_title_1)%></p>
+			<p><%=t(:seo_gift_text_1)%></p>
+			<p class="title_14"><%=t(:seo_gift_title_2)%></p>
+			<p><%=t(:seo_gift_text_2)%> <%= link_to(t(:seo_gift_text_link), create_tshirt_url(), :class=>"blue_apparel", :title=>t(:seo_gift_text_link))%> </p>
+			<p><%=t(:seo_gift_text_3)%></p>
+			<ul>
+				<li><%=t(:seo_gift_text_4)%></li>
+				<li><%=t(:seo_gift_text_5)%></li>				
+			</ul>
+			
+			<p class="green_16_title"><%= link_to(t(:seo_gift_title_3), create_tshirt_url(), :class=>"green_16_title", :title=>t(:seo_gift_title_3))%></p>
+			
+			<p class="title_14"><%=t(:seo_gift_title_4)%></p>
+			<ul>
+				<li><%=t(:seo_gift_text_6)%></li>
+				<li><%=t(:seo_gift_text_7)%></li>
+				<li><%=t(:seo_gift_text_8)%></li>
+				<li><%=t(:seo_gift_text_9)%></li>
+				<li><%=t(:seo_gift_text_10)%></li>
+				<li><%=t(:seo_gift_text_11)%></li>
+				<li><%=t(:seo_gift_text_12)%></li>
+			</ul>
+			<p><%= link_to(t(:seo_gift_text_link_2), create_tshirt_url(), :class=>"blue_apparel", :title=>t(:seo_gift_text_link_2))%></p>
+			
+			<div id="gift_idea_bottom">
+				<h1><%=t(:seo_gift_title_5)%></h1>
+				<div id="gift_design_box">
+                	<div id="gift_box" class="wraptocenter">
+                    <span></span><%= link_to image_tag('/images/izishirt2011/gift_ideas-sport.jpg', :alt=>t(:seo_gift_text_link_3)), design_url(14933) , :title=>t(:seo_gift_text_link_3)%></div>
+                    <p>
+                    	<strong><%= link_to(t(:seo_gift_text_link_3), create_tshirt_url(), :title=>t(:seo_gift_text_link_3))%></strong><br/>
+						<%= link_to(t(:seo_gift_text_link_4), create_tshirt_url(), :title=>t(:seo_gift_text_link_4))%><br/>
+						<%= link_to(t(:seo_gift_text_link_5), create_tshirt_url(), :title=>t(:seo_gift_text_link_5))%><br/>
+						<%= link_to(t(:seo_gift_text_link_6), create_tshirt_url(), :title=>t(:seo_gift_text_link_6))%>
+					</p>
+                </div>
+				<div id="gift_design_box">
+                	<div id="gift_box" class="wraptocenter">
+                    <span></span><%= link_to image_tag('/images/izishirt2011/gift_ideas-events.jpg', :alt=>t(:seo_gift_text_link_7)), create_tshirt_url(), :title=>t(:seo_gift_text_link_7)%></div>
+                    <p>
+                    	<strong><%= link_to(t(:seo_gift_text_link_7), create_tshirt_url(), :title=>t(:seo_gift_text_link_7))%></strong><br/>
+						<%= link_to(t(:seo_gift_text_link_8), create_tshirt_url(), :title=>t(:seo_gift_text_link_8))%><br/>
+						<%= link_to(t(:seo_gift_text_link_9), create_tshirt_url(), :title=>t(:seo_gift_text_link_9))%><br/>
+						<%= link_to(t(:seo_gift_text_link_10), create_tshirt_url(), :title=>t(:seo_gift_text_link_10))%>
+					</p>
+                </div>
+				<div id="gift_design_box">
+                	<div id="gift_box" class="wraptocenter">
+                    <span></span><%= link_to image_tag('/images/izishirt2011/gift_ideas-geek.jpg', :alt=>t(:seo_gift_text_link_11)), create_tshirt_url(), :title=>t(:seo_gift_text_link_11)%></div>
+                    <p>
+                    	<strong><%= link_to(t(:seo_gift_text_link_11), create_tshirt_url(), :title=>t(:seo_gift_text_link_11))%></strong><br/>
+						<%= link_to(t(:seo_gift_text_link_12), create_tshirt_url(), :title=>t(:seo_gift_text_link_12))%><br/>
+						<%= link_to(t(:seo_gift_text_link_13), create_tshirt_url(), :title=>t(:seo_gift_text_link_13))%><br/>
+						<%= link_to(t(:seo_gift_text_link_14), create_tshirt_url(), :title=>t(:seo_gift_text_link_14))%>
+					</p>
+                </div>
+				<div id="gift_design_box">
+                	<div id="gift_box" class="wraptocenter">
+                    <span></span><%= link_to image_tag('/images/izishirt2011/gift_ideas-news.jpg', :alt=>t(:seo_gift_text_link_15)), create_tshirt_url(), :title=>t(:seo_gift_text_link_15)%></div>
+                    <p>
+                    	<strong><%= link_to(t(:seo_gift_text_link_15), create_tshirt_url(), :title=>t(:seo_gift_text_link_15))%></strong><br/>
+						<%= link_to(t(:seo_gift_text_link_16), create_tshirt_url(), :title=>t(:seo_gift_text_link_16))%><br/>
+						<%= link_to(t(:seo_gift_text_link_17), create_tshirt_url(), :title=>t(:seo_gift_text_link_17))%><br/>
+						<%= link_to(t(:seo_gift_text_link_18), create_tshirt_url(), :title=>t(:seo_gift_text_link_18))%>
+					</p>
+                </div>
+				<div id="gift_design_box">
+                	<div id="gift_box" class="wraptocenter">
+                    <span></span><%= link_to image_tag('/images/izishirt2011/gift_ideas-family.jpg', :alt=>t(:seo_gift_text_link_19)), create_tshirt_url(), :title=>t(:seo_gift_text_link_19)%></div>
+                    <p>
+                    	<strong><%= link_to(t(:seo_gift_text_link_19), create_tshirt_url(), :title=>t(:seo_gift_text_link_19))%></strong><br/>
+						<%= link_to(t(:seo_gift_text_link_20), create_tshirt_url(), :title=>t(:seo_gift_text_link_20))%><br/>
+						<%= link_to(t(:seo_gift_text_link_21), create_tshirt_url(), :title=>t(:seo_gift_text_link_21))%><br/>
+						<%= link_to(t(:seo_gift_text_link_22), create_tshirt_url(), :title=>t(:seo_gift_text_link_22))%>
+					</p>
+                </div>
+			</div>						
+		</div>
+	</div>
+</div>
+<!-- Gifts Ideas -->

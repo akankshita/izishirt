@@ -1,0 +1,133 @@
+<%= render :partial => "/myaccount/general/left" %>
+
+<div id="right_container" >
+<div id="editaccount">
+  <h1 class="titleText"><%=t(:edit_account_info)%></h1>
+  <div class="editaccount">
+
+    <p>
+      <br />
+          <span style="color:green">
+        <% if flash[:info] %>
+          <p><%= flash[:info] %></p>
+        <% end %>
+      </span>
+
+      <span style="color:red">
+        <% if flash[:error] %>
+          <p><%= flash[:error] %></p>
+        <% end %>
+      </span>
+      </p>
+
+
+    <% form_tag({:action => 'update'}, {:multipart=>true, :name => 'accountForm', :id => "accountForm" }) do %>
+
+    <h2><%= t(:my_izishirt_2011_edit_profile_4) %></h2>
+  <div class="personalInfo clearfix">
+    <div class="usrPic">
+     
+      <% if  !@profile.nil? && !@profile.picture.nil? %>
+        <%= image_tag(DIRECTORY_PROFILE_VIEW+"/"+@profile.picture, 
+                      :size => "185x185",
+                      :id => 'user_preview') %>
+      <% else %>
+        <%= image_tag("avatar.gif",
+                      :size => "185x185",
+                      :id => 'user_preview') %>
+      <% end %>
+
+    </div>
+    <div class="usrData">
+       <p> <label><strong><%= t(:myizishirt_profile_index_picture)%></strong></label>
+         <%= hidden_field_tag "user_preview_only", 0 %>
+         <%= image_tag("working.gif",
+                          :align => 'middle',
+                          :border=> 0,
+                          :id => "spinner_upload_image",
+                          :style=>"display: none;" ) %>
+
+         
+         <input id="user_preview_image" name="user_preview_image" type="file" onchange="Element.show('spinner_upload_image'); $('user_preview_only').value = 1; return $('accountForm').submit();" />
+       </p>
+     <div class="inline clearfix">
+            <p>
+              <label><%= t(:myizishirt_login_view_form_firstname) %></label>
+              <%= text_field 'user', 'firstname' %>
+            </p>
+
+        <p>
+          <label><%= t(:myizishirt_login_view_form_lastname) %></label>
+          <%= text_field 'user', 'lastname' %>
+        </p>
+     </div>
+     <p>
+       <label><%= t(:myizishirt_login_view_form_mail) %></label>
+       <%= text_field 'user', 'email' %>
+     </p>
+     <p> <label><%= t(:myizishirt_profile_index_language)%></label>
+       <%= select 'user', 'language_id', Language.find(:all).collect {|l| [l.name, l.id]}, {} %>
+     </p>
+    </div>
+
+  </div>
+
+
+
+    <h2><%= t(:my_izishirt_2011_edit_profile_3) %></h2>
+   <div class="usrPass formInfo clearfix">
+            <p>
+              <label><%= t(:myizishirt_login_view_form_password) %></label>
+              <%= password_field 'pass', 'pass'  %>
+            </p>
+        <p> 
+          <label><%= t(:myizishirt_login_view_form_confirm_pass) %></label>
+
+          <%= password_field 'pass','pass_conf' %>
+        </p>
+    </div>
+
+       <h2><%=t(:address)%></h2>
+   <div class="usrPass formInfo clearfix">
+            <p>
+              <label><%= t(:myizishirt_login_view_form_address) %></label>
+              <%= text_field 'address', 'address1' %>
+            </p>
+        <p> <label><%= t(:myizishirt_login_view_form_country) %></label>
+          <%= text_field 'address', 'country_name' %>
+        </p>
+         <p>
+           <label><%= t(:myizishirt_login_view_form_appartment) %></label>
+           <%= text_field 'address', 'address2' %>
+         </p>
+        <p> <label><%= t(:myizishirt_login_view_form_province) %></label>
+          <%= text_field 'address', 'province_name' %>
+        </p>
+         <p> <label><%= t(:myizishirt_login_view_form_city) %></label>
+           <%= text_field 'address', 'town' %>
+         </p>
+        <p> <label><%= t(:myizishirt_login_view_form_phone) %></label>
+          <%= text_field 'address', 'phone' %>
+        </p>
+
+    </div>
+
+
+    <div class="btnGreen clearfix">
+      <a href="#" onclick="return $('accountForm').submit();"><%= t(:my_izishirt_2011_edit_profile_5) %></a>
+    </div>
+
+       <% end %>
+
+  </div>
+
+  <div id="deletemyaccount">
+		<h1><%= t(:my_izishirt_2011_edit_profile_6) %></h1>
+		<p><%= t(:my_izishirt_2011_edit_profile_7) %></p>
+		<p>
+           <%= link_to t(:my_izishirt_2011_edit_profile_6), {:controller => "/popup/pp_delete_izishirt_account"}, {:class => "delete delete_account_modalbox"} %>
+         </p>
+	</div>
+	
+ </div>
+</div>

@@ -1,0 +1,89 @@
+<h1>Liste Wall Decals</h1>
+<%= dhtml_calendar_includes %>
+
+<div class="profit_search">
+  <% form_tag({:action => "list_wall"}, {:name => 'search_form'}) do %>
+    <div class="titleForm"><label>Start: </label></div>
+    <div class="boxForm">
+      <%= calendar_box 'date', 'start',
+        { :class => 'date',
+          :field_title => 'Start',
+          :form_name => 'search_form',
+          :button_title => 'Show calendar' },
+          { :firstDay => 1,
+            :range => [2000, 2020],
+            :step => 1,
+            :showOthers => true,
+            :cache => true }
+      %>
+    </div>
+
+    <div class="titleForm"><label>End: </label></div>
+    <div class="boxForm">
+      <%= calendar_box 'date', 'end',
+        { :class => 'date',
+          :field_title => 'End',
+          :form_name => 'search_form',
+          :button_title => 'Show calendar' },
+          { :firstDay => 1,
+            :range => [2000, 2020],
+            :step => 1,
+            :showOthers => true,
+            :cache => true }
+      %>
+    </div>
+    <div class="titleForm"><label>&nbsp;</label></div>
+    <div class="boxForm">
+      <%= submit_tag "OK" %>
+    </div>
+    <% end %>
+</div>
+
+<br /><br />
+
+<div style="clear:both"></div>
+<table border="0" cellpadding="3" width="1800px">
+  <tr>
+    <th>Date commande</th>
+    <th>ID commande</th>
+    <th>Product ID</th>
+    <th>Nom produit</th>
+    <th width="400" style="width:400px;">Couleur</th>
+    <th>Qty</th>
+    <th>Nom du client</th>
+    <th>Adresse</th>
+    <th>Ville</th>
+    <th>Code postal</th>
+    <th>Province</th>
+    <th>Pays</th>
+    <th>Tel</th>
+    <th>Courriel</th>
+  </tr>
+
+  <% for o in @ordered_products %>
+    <tr>
+    <td><%= o.order.created_at %></td>
+    <td><%= link_to o.order.id, {:action=>:show, :id=>o.order.id} %></td>
+    <td><%= o.id %></td>
+    <td><%= o.model.local_name(session[:language_id])%></td>
+    <td><%= o.ordered_product_comment ? o.ordered_product_comment.comment : o.order.checkout_comment %></td>
+    <td><%= o.quantity %></td>
+    <td><%= o.order.shipping.name %></td>
+    <td><%= o.order.shipping.address1 %> <%= o.order.shipping.address2 %></td>
+    <td><%= o.order.shipping.town %></td>
+    <td><%= o.order.shipping.zip %></td>
+    <td><%= o.order.shipping.get_province %></td>
+    <td><%= o.order.shipping.get_country %></td>
+    <td><%= o.order.shipping.phone %></td>
+    <td><%= o.order.email_client %></td>
+  </tr>
+  <% end %>
+</table>
+
+  <%= will_paginate @ordered_products %>
+
+
+<script type="text/javascript">
+  $('date_start').value = '<%= @date_start %>';
+  $('date_end').value = '<%= @date_end %>';
+</script>

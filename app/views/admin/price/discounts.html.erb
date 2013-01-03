@@ -1,0 +1,46 @@
+<h1>Default Bulk Discounts</h1>
+<fieldset>
+  <legend>Bulk Discounts</legend>
+  <table width="100%" border="0" cellspacing="3" cellpadding="0">
+    <tr>
+      <th width="130">Quantity</th>
+      <th width="130">Percentage</th>
+      <th></th>
+    </tr>
+  </table>
+  <div style="height:150px;overflow-y:scroll;">
+    <table width="100%" border="0" cellspacing="3" cellpadding="0">
+      <% @bulk_discounts.each do |bulk_discount|%>
+        <tr>
+          <td width="130"><%= bulk_discount.start %></td>
+          <td width="130"><%= bulk_discount.percentage %></td>
+          <td>
+            <%=link_to "Delete discount", :action=>'destroy_bulk_discount', :id => bulk_discount.id%>
+          </td>
+        </tr>    
+      <% end %>
+    </table>
+  </div>
+  <table width="100%" border="0" cellspacing="3" cellpadding="0">
+    <% form_for :bulk_discount, @bulk_discount, 
+      :url => { :action => "create_bulk_discount" }, 
+      :html => {:id => "bulk_discount_form"} do |f| %>
+      <%= f.hidden_field "is_default", :value => true %>
+      <tr valign="top">
+        <td width="150">
+          <%= f.label :start %>
+          <%= f.text_field :start, :size => 10 %>
+        </td>
+        <td width="150">
+          <%= f.label :percentage %>
+          <%= f.text_field :percentage, :size => 10 %>
+        </td>
+        <td>
+          <input type="submit" value="Add Bulk Discount" />
+        </td>
+      </tr>    
+    <% end %>
+  </table>
+</fieldset>
+<br />
+<br />

@@ -1,0 +1,45 @@
+<h1>Image Profits</h1>
+
+<div class="adminsearch">
+<% form_tag :url => {:action => 'image'} do %>
+	<%= text_field_tag('search', params[:search], :class => 'input') %>
+	<%= image_submit_tag 'ico-search.gif', :class => 'button' %>
+<% end %>
+</div>
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr>	
+    <th>Image</th>
+    <th>Created</th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Active</th>
+    <th>Orders</th>
+    <th>Profits</th>
+</tr>
+<% for image in @images	%>
+  <tr class="<%= cycle('odd', '') %>">
+    <td valign="top"><%= link_to image_tag(image.orig_image.url("100")), {:controller => 'admin/image', :action => 'edit', :id => image.id} %></td>
+    <td valign="top"><%= image.created_on.strftime("%m/%d/%Y") %></td>
+    <td valign="top"><%=h image.name %></td>
+    <td valign="top"><%=h image.category.local_name(session[:language_id]) if !image.category.nil? %></td>    
+    <td valign="top"><%= image.active ? 'yes' : 'no' %></td>
+    <td valign="top">
+      <% image.orders.each do |order| %> 
+        <%= link_to order.order_id, {:controller => 'admin/order', :action => 'show', :id => order.order_id} %>
+      <% end %> 
+    </td>    
+    <td valign="top"><%=number_to_currency_custom(image.profits)%></td>
+  </tr>
+<% end %>
+</table>
+<table cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td align="left" width="50%">
+			<%= link_to ' &laquo; '+t(:admin_page_previous), { :page => @image_pages.current.previous }, {:class => 'textLink'} if @image_pages.current.previous %>
+  			<%= link_to t(:admin_page_next)+' &raquo; ', { :page => @image_pages.current.next }, {:class => 'textLink'} if @image_pages.current.next %> 
+		</td>
+	</tr>
+</table>

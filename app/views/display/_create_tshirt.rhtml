@@ -1,0 +1,78 @@
+<script type="text/javascript" src="/flash/swfobject.js"></script>
+<script type="text/javascript">
+function flashComplete(){
+  document.location.href = "/myizishirt/editstore/edit_prod";
+  return true;
+}
+function uploadImageRequest(url, sessionVar , sessionLan) {
+	window.open(url+'?sessionVar='+sessionVar+'&sessionLanguage='+sessionLan,'','height=400,width=520');
+	//if (window.focus) {newwindow.focus()}
+}
+</script>
+<style type="text/css">
+	body { 
+		background-color: #ffffff;
+		font: .8em/1.3em verdana,arial,helvetica,sans-serif;
+	}
+
+	#info {
+		width: 300px;
+		overflow: auto;
+	}
+
+	#flashcontent { 
+	border: solid 0px #000;
+	width: 100%;
+	height: 100%;
+	float: left;
+	margin: 0px 0px;
+	text-align:center;
+	}
+</style>
+
+<br /><br />
+
+<%= render :partial=>"/izishirt_flash/no_flash" %>
+	
+		<script type="text/javascript">
+		// <![CDATA[
+		
+		var so = new SWFObject("/flash/loader.swf?<%=FLASH_LAST_CHANGE%>", "izishirt", "657", "521", "6", "#FFFFFF");
+		so.addVariable("asset_path", "/flash/"); // used to locate the folder where all the assets are
+		
+		//xml paths
+		so.addVariable("sessionVar", "j64rhfuriok78436iashfm"); //I'll need a session var so if the user uploads an image flash will be able to send it with the image as well as send it when it keeps asking if the image was uploaded
+		so.addVariable("sessionLanguage", "en"); //Keeps track of the user language: (en = english) (fr = french) - I'll send this to the server on image upload as well as buy
+		
+		//xml paths
+		so.addVariable("InterfaceXmlPath", "/flash/xml/Interface_en.xml"); //Interface item that are based on array structures and lare linked to products/designs configuration
+		so.addVariable("InterfaceStaticXmlPath", "/flash/xml/Babel_en.xml"); //Interface items for static content such as buttons based on linkage identifier
+		so.addVariable("ProductsXmlPath", "/flash/xml/ModelsAndProducts.xml"); //Full list of products and models to be processed by flash
+		so.addVariable("DesignsXmlPath", "/flash/xml/Designs_multiple.xml"); //Full list of designs to be processed by flash
+		so.addVariable("config", "/flash/xml/config.xml"); //Full list of designs to be processed by flash
+		
+		//themes
+		so.addVariable("themeColor", "1D91C7"); //Full list of designs to be processed by flash
+		so.addVariable("mouseOverColor", "cfcfcf"); //Mouse over color for combobox
+		so.addVariable("bgColor", "f4f4f4"); //Full list of designs to be processed by flash
+		so.addVariable("bgCornerColor", "ffffff"); //Full list of designs to be processed by flash
+		so.addVariable("altBtn_themeColor", "9E0221"); //Alternative buttons color
+    so.addVariable("altBtn_mouseOverColor", "534C4C"); //Alternative buttons mouse over color
+    so.addVariable("altBtn_textColor", "FFFFFF"); //Alternative buttons text color
+		
+		//Other vars
+		so.addVariable("shop", "shopId"); //
+		so.addVariable("currency", "currencyId"); //
+		so.addVariable("loadingText", "Loading Application"); //Text that appears on preloader
+		so.addVariable("versionInfo", "version RC1"); //Version information
+		
+		
+		so.addVariable("inputParam", "param info"); //Param sent by server and returned as an attribute in the xml output
+		
+		
+		so.write("flashcontent");
+		
+		// ]]>
+	</script>
+	
+	

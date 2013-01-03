@@ -1,0 +1,112 @@
+<%  @alt_country = session[:country]  %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+  <head>
+    <title><%=t(:checkout_title, :domain=>@DOMAIN_NAME.capitalize)%></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <%= javascript_include_tag "prototype.js" %>
+    <%= javascript_include_tag "effects.js" %>
+    <%= javascript_include_tag "lightbox.js" %>
+    <%= stylesheet_link_tag "checkout2.css" %>
+    <%= stylesheet_link_tag "lightbox.css" %>
+    <%= javascript_include_tag "jquery-1.4.2.min.js" %>
+    <%= javascript_include_tag "application2009.js" %>
+    <%= javascript_include_tag "jquery.scrollfollow.js" %>
+    <%= javascript_include_tag "preview2.js" %>
+
+    <script type="text/javascript">
+
+      $j = jQuery.noConflict();
+
+      function deletediv(number) {
+        $j("#detail_product_"+number).remove();
+      }
+
+    </script>
+  </head>
+  <body>
+    <div id="checkout_container">
+
+      <!-- header Container -->
+      <div id="header">
+        <div id="logo">
+          <%# if (cookies["last_banner"] || @continue_link) %>
+            <%#= link_to image_tag(@lub), @continue_link ? @continue_link : "http://#{@url_lub}"%>
+          <% #else %>
+            <%#= link_to image_tag("izishirt2011/logo2010.jpg"), {:controller=>:display, :action=>:izishirt_2011, :protocol=>"http://",:only_path=>false}%>
+          <%# end %>
+	 <% link_to("#{@URL_ROOT}#{print_force_lang}", :title=>"#{t(:title_logo)}" ) do %>
+      <%#= image_tag "izishirt2011/izishirt_logo_halloween.jpg", :width=>107, :height=>90, :alt=>"#{t(:alt_logo)}" %>
+      <%#= image_tag "izishirt2011/logo-st-valentin.jpg", :width=>107, :height=>90, :alt=>"#{t(:alt_logo)}", :style=>"margin-top:5px;" %>
+
+
+           <% if @alt_country.downcase == "ca" && session[:language] == "en"  %>
+              <%= image_tag "izishirt2011/fr/logo.jpg", :width=>189, :height=>77, :alt=>"#{t(:alt_logo)}" %>
+            <%else%>
+              <%= image_tag "izishirt2011/#{session[:language]}/logo.jpg", :width=>189, :height=>77, :alt=>"#{t(:alt_logo)}" %>
+            <%end%>
+
+    <% end %>
+        </div>
+        <div id="right_header">
+          <div id="need_assistance">
+            <span class="text12"><%=t(:need_assistance, :locale => @checkout_locale)%></span><br />
+            <span class="text11"><%=t(:give_us_a_call, :locale => @checkout_locale)%></span>
+            <span class="text13green"><%= t(:tel_1) %></span>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div id="stepxofy">
+        <%= t(:step_checkout) %> <%= @step %> <%= t(:of_step_checkout) %> 3
+      </div>
+      <div class="clear"></div>
+
+      <!-- Body Container -->
+
+      <%= yield %>
+      <div id="footer_checkout">
+        <ul>
+          <li class="first"><%= link_to t(:menu_home), {:controller=>:display, :action=>:izishirt_2011, :protocol=>"http://",:only_path=>false}, :title=>t(:menu_home)%></li>
+          <li><%= link_to t(:footer_contact_text),
+              {:controller=>t(:footer_contact_url),:protocol=>"http://",:only_path=>false}, :title=>t(:footer_contact_title),
+              :rel=>"nofollow" %></li>
+          <!--<li><%= link_to t(:menu_shipping),{:controller => 'display', :action => 'shipping_info', :protocol=>"http://",:only_path=>false}, :TITLE=>t(:shipping_title)%></li>-->
+          <li><%= link_to t(:footer_shipping_text),
+              {:controller=>t(:footer_shipping_url),:protocol=>"http://",:only_path=>false}, :title=>t(:footer_shipping_title),
+              :rel=>"nofollow" %></li>
+          <li><%= link_to t(:footer_terms_text),
+              {:controller=>t(:footer_terms_url),:protocol=>"http://",:only_path=>false}, :title=>t(:footer_terms_title),
+              :rel=>"nofollow" %></li>
+          <li><%= link_to t(:footer_privacy_text),
+              {:controller=>t(:footer_privacy_url), :protocol=>"http://",:only_path=>false}, :title=>t(:footer_privacy_title),
+              :rel=>"nofollow" %></li>
+          <li><%= link_to t(:footer_refund_text),
+              {:controller=>t(:footer_refund_url), :protocol=>"http://",:only_path=>false}, :title=>t(:footer_refund_title),
+              :rel=>"nofollow" %></li>
+
+        </ul>
+        <p><%=t(:footer_copyright_text)%><br />
+          <%=t(:footer_use_text)%><br />
+          <%=t(:footer_create_t_shirt_text)%>
+        </p>
+      </div>
+    </div>
+    <% if RAILS_ENV=="production" %>
+      <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '<%=analytics_number%>']);
+  _gaq.push(['_setDomainName', '.<%=@DOMAIN_NAME%>']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    <% end %>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+/* CSS Document */
+
+/* INPUT Buttons */
+
+.buton { height: 21px; float:left ; }
+.buton * {		 float:left; height:21px	}
+.buton input,
+.buton a {overflow:visible;	width:auto; line-height:19px; }
+
+.buton input,
+.buton a {
+	font-family:Tahoma, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size:11px;
+	color: #fff;
+	border: 0;
+	margin: 0;
+	padding: 0px 2px 3px 2px;
+	float:left; 
+	height:21px
+}
+
+.buton .rLeft,
+.buton .rRight { width: 5px;   }
+
+/* Button Price*/
+
+.btnReg {}
+.btnReg * {cursor:pointer}
+.btnReg input,
+.btnReg a  {background: url(../images/btn/bgr_reg_btn.png) repeat-x; }
+.btnReg a {text-decoration:none}
+.btnReg a:hover {color:#686868}
+.btnReg .rLeft  { background: url(../images/btn/bgr_reg_left.png) }
+.btnReg .rRight { background: url(../images/btn/bgr_reg_right.png) }
+
+.btnReg:hover input,
+.btnReg.ovr input { background:  url(../images/btn/bgr_reg_btn_ovr.png) repeat-x }
+
+.btnReg.ovr .rLeft { background: url(../images/btn/bgr_reg_left_ovr.png) }
+.btnReg.ovr .rRight { background: url(../images/btn/bgr_reg_right_ovr.png) }
+
+
+/* LINK Default Buttons */
+.boxx a {  padding:0 0px 0 15px; float:left; margin:5px 0 0 10px }
+.myacc_hdr a {  padding:0 0px 0 15px; float:left; margin:5px 0 0 0px }
+.step2_btn a {  padding:0 0px 0 15px; float:right; margin:0px 0 0 10px }
+
+* html .boxx a {margin:5px 0 0 5px }
+.myacc_con_left a,
+.step2_btn a {margin:5px 0 0 5px }
+
+.boxx a span,
+.myacc_hdr a span,
+.step2_btn span  { padding:0px 13px 0px 0px; margin-left:10px}
+* html .step2_btn span  { margin-left:5px}
+
+.boxx a,
+.myacc_hdr a,
+.step2_btn a { background:url(../images/btn-myacc-l.gif) no-repeat left top;  text-decoration:none; display:block; color:white ;  
+					font-size:11px;	  font-weight:bold;	    line-height:19px; cursor:pointer;  	 padding-bottom:2px}
+.boxx a span,
+.myacc_hdr a span,
+.step2_btn a span  {float:left;display:block; background:url(../images/btn-myacc-r.gif) no-repeat right top; color:#FFFFFF; padding-bottom:2px }
+
+.boxx a:hover {}
+.boxx a:hover span,
+.myacc_hdr a:hover span,
+.myacc_con_left a:hover span,
+.myacc_img_fld a:hover span,
+.myacc_img a:hover span,
+.myacc3_save:hover span,
+.step2_btn a:hover span,
+.co_valide:hover span {color:#ebebeb}
+
+/* End Default Button */
+
+.addtocart_r {float:left; padding:0 0px 0 15px; background:url(../images/btn_buy_left.gif) no-repeat left top;  text-decoration:none; display:block; color:white ;  
+					font-size:12px;	  font-weight:bold;	    line-height:38px; cursor:pointer;  margin:10px 0 0 30px 	 }
+.addtocart_r span {float:left;display:block; background:url(../images/btn_buy_right.gif) no-repeat right top; color:#FFFFFF;  padding-right:15px}	
+.addtocart_r:hover span {color:#ebebeb}				
+
+.whatshot_links a {float:left; padding:0 0px 0 14px; background:url(../images/btn/btn_wh_left.gif) no-repeat left top !important;  text-decoration:none; display:block; color:white ;  
+					font-size:11px;	  font-weight:bold;	    line-height:21px; cursor:pointer;  margin:0px 10px 0px 0px 	 }
+.whatshot_links span {float:left;display:block; background:url(../images/btn/btn_wh_right.gif) no-repeat right top; color:#FFFFFF;  padding-right:14px; padding-left:5px}	
+.whatshot_links a:hover span {color:#FFFFFF}	
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+.whatshot_links a span {float:none;}
+/* End IE5-Mac hack */
+.whatshot_links a:hover span {     text-decoration:none ; color:#fff !important }
+.whatshot_links a:hover {    text-decoration:none ;  background-position:0% -21px !important;  }
+.whatshot_links a:hover span { text-decoration:none; background-position:100% -21px;}
+
+
+
+		/* Default Button Blue */
+		
+		.step1a_content a {  padding:0 0px 0 15px; float:left; }
+		.step1a_content span {padding:0px 13px 0px 0px; margin-left:5px }
+		* html .step1a_content span {margin-left:2px }
+		.step1a_content a { background:url(../images/btn-myacc-l-blue.gif) no-repeat left top;  text-decoration:none; display:block; color:white ;  
+							font-size:11px;	  font-weight:bold;	    line-height:19px; cursor:pointer;  	 padding-bottom:2px}
+		.step1a_content a span {float:left;display:block; background:url(../images/btn-myacc-r-blue.gif) no-repeat right top; color:#FFFFFF; padding-bottom:2px }
+		.step1a_content a:hover span {color:#ebebeb}					
+
+
+			/* Default Button - small */
+			.myacc_con_left a,
+			.myacc3_save,
+			.visitmyshop {  padding:0 0px 0 6px; float:right; margin:5px 0 0 0px }
+			.co_content .visitmyshop {float:left; margin:0}
+			.myacc_img_fld a,
+			.myacc_img a  { padding:0 0px 0 6px; float:left; margin:5px 0 0 5px !important }
+		
+			.myacc_img_fld a,
+			.myacc_img a,
+			.myacc3_save,
+			.visitmyshop {margin:5px 0 0 0px }
+		
+			.myacc_con_left a span,
+			.myacc_img_fld a span,
+			.myacc_img a span,
+			.myacc3_save span,
+			a.visitmyshop span { padding:0px 6px 0px 0px; margin-left:10px}
+		
+			.myacc_con_left a,
+			.myacc_img_fld a,
+			.myacc_img a,
+			.myacc3_save,
+			.visitmyshop { background:url(../images/btn-myacc-l-a.gif) no-repeat left top;  text-decoration:none; display:block; color:white ;  
+								font-size:10px;	  font-weight:bold;	  line-height:20px; cursor:pointer;  	 padding-bottom:1px; }	
+		
+			.myacc_con_left a span,
+			.myacc_img_fld a span,
+			.myacc_img a span,
+			a.myacc3_save span,
+			a.visitmyshop span {float:left;display:block; background:url(../images/btn-myacc-r.gif) no-repeat right top; color:#FFFFFF; padding-bottom:1px; }						
+
+						

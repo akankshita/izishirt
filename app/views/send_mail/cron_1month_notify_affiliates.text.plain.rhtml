@@ -1,0 +1,31 @@
+<%= I18n.t(:send_mail_affiliate_money_1, :locale => Language.find(@user.language_id).shortname) %> <%= @user.firstname + " " + @user.lastname%>,
+
+<%= I18n.t(:send_mail_affiliate_money_2, :locale => Language.find(@user.language_id).shortname) %> <%= number_to_currency_custom(@amount_owed) %>
+<%= I18n.t(:send_mail_affiliate_money_3, :locale => Language.find(@user.language_id).shortname) %> http://www.izishirt.ca/myizishirt/earning <%= I18n.t(:send_mail_affiliate_money_4, :locale => Language.find(@user.language_id).shortname) %>
+
+<%= I18n.t(:send_mail_affiliate_money_5, :locale => Language.find(@user.language_id).shortname) %>
+<%= I18n.t(:send_mail_affiliate_money_paypal_signup, :locale => Language.find(@user.language_id).shortname) %> https://www.paypal.com/cgi-bin/webscr?cmd=_registration-run
+
+<%= I18n.t(:send_mail_affiliate_money_6, :locale => Language.find(@user.language_id).shortname) %>
+
+<%= I18n.t(:send_mail_affiliate_money_7, :locale => Language.find(@user.language_id).shortname) %>
+<a href="http://<%= @user.username %>.izishirt.ca/"><%= @user.username.capitalize %> Custom T-shirts</a>
+
+
+<%= I18n.t(:send_mail_affiliate_money_8, :locale => Language.find(@user.language_id).shortname) %>
+
+<%= I18n.t(:send_mail_affiliate_money_9, :locale => Language.find(@user.language_id).shortname) %>
+
+<%= I18n.t(:send_mail_affiliate_money_10, :locale => Language.find(@user.language_id).shortname) %>
+<script language="javascript" src="http://<%= @user.username %>izishirt.izishirt.ca/my/blog_panel?limit=3"></script>
+
+<%= I18n.t(:send_mail_affiliate_money_11, :locale => Language.find(@user.language_id).shortname) %>
+<iframe src='http://izishirt.izishirt.ca/my/iframe_flash_shop' width='660' height='520' frameborder='0' scrolling='no'></iframe>
+
+<%= I18n.t(:send_mail_affiliate_money_12, :locale => Language.find(@user.language_id).shortname) %>
+http://www.izishirt.ca/myizishirt/promote
+
+<%= I18n.t(:send_mail_affiliate_money_13, :locale => Language.find(@user.language_id).shortname) %>  <%= I18n.t(:contact_us_email_boutiques, :locale => Language.find(@user.language_id).shortname) %>
+
+<%= I18n.t(:send_mail_affiliate_money_14, :locale => Language.find(@user.language_id).shortname) %>
+<%= I18n.t(:send_mail_affiliate_money_15, :locale => Language.find(@user.language_id).shortname) %>

@@ -1,0 +1,49 @@
+fr-CA:
+  mail_tracking_number_subject: "Numéro de suivi pour votre commande #%{order_id}"
+  mail_tracking_number1_html: "Bonjour,<br/><br/>Votre commande #%{order_id} a été envoyée.<br/>Voici votre numéro de suivi: %{tn}<br/><br/>Vous pouvez aller sur canadaposte.ca pour suivre votre commande.<br/><br/>Merci pour votre commande<br/>L’équipe d’Izishirt"
+
+  see_map: "Voir sur la carte"
+  ref_text_blank_page: "
+
+"
+  seo_text_marketplace: "
+Izishirt Canada est la destination #1 pour les cadeaux de dernière minute au Canada et au Québec. En une visite, vous trouverez une sélection incroyable de <strong>t-shirts personnalisé {{filter_by}}</strong> et même des vêtements {{name}} pour toute la famille. Le catalogue de Izishirt Canada comprend des t-shirts personnalisés {{name}} et plus de 35 000 designs de t-shirts personnalisés pas chers <strong>pour hommes, femmes et enfants</strong>. Créez vos propre designs, comme des t-shirts {{name}} et imprimez les sur de la marchandise haute gamme.  Des t-shirts drôles, des t-shirts originaux et des t-shirts {{name}} sont disponibles chez Izishirt Canada. Izishirt imprime des <strong>t-shirts personnalisés</strong> et offre la livraison partout au Canada et dans le monde. Laissez aller votre créativité et offrez vous un t-shirt personnalisé {{name}} de chez Izishirt Canada à <a href='http://fr.izishirt.ca/'>fr.izishirt.ca</a>.
+"
+  wholesale_menu: "Achat en gros"
+  shipping_info_item_2: "Nous utilisons les services de Poste Canada."
+  shipping_info_item_12: "Nous remboursons votre commande si vous recevez une commande incomplète, ou si le vêtement livré ne correspond pas à celui que vous avez commandé. Prenez note que nous n’effectuons pas de remboursement si votre commande comporte des problèmes de copyright. Sachez que nous faisons de notre mieux pour satisfaire vos besoins, mais nous ne sommes pas responsables si un problème de qualité d’impression est due à l’envoi d’une image de mauvaise qualité."
+  shipping_info_item_13: "Si vous souhaitez annuler une commande, il est préférable de le faire avant 9h du matin, le jour suivant votre commande. Ceci parce que nous commençons à travailler sur les commandes dès que possible. Pour toute annulation, vous recevrez un coupon de réduction utilisable pendant 1 an sur Izishirt. Les commandes Express ne peuvent pas être annulées."
+  shipping_info_item_14: "Nous créons tous les produits en nous basant sur ce que vous avez commandés. Puisqu’il s’agit de produits personnalisés, chaque retour ne peut pas être revendu. Chez Izishirt, nous nous assurons que votre produit réponde à vos attentes et les dépasse. Si vous souhaitez retourner un produit, nous ferons ce que nous pourrons vous vous satisfaire."
+  shipping_info_item_15: "Si vous souhaitez nous contacter, vous pouvez le faire facilement: <br/><br/>
+  Appelez-nous au <span style='color:#666666'>1-888-800-5787</span><br/><br/>
+  Notre adresse: 1625 Chabanel Ouest, Suite 410, Montreal, Quebec, H4N 257<br/><br/>"
+  shipping_info_item_16: "Notre email:"
+  shipping_info_item_17: "Ontario et Québec:"
+  shipping_info_item_18: "2-4 jours"
+  shipping_info_item_19: "Autres provinces:"
+  shipping_info_item_20: "4-6 jours"
+  shipping_info_item_21: "Ontario et Québec:"
+  shipping_info_item_22: "1-3 jours"
+  shipping_info_item_23: "Autres provinces:"
+  shipping_info_item_24: "2-4 jours"
+  blank_explanation_1_homepage: "Prix les plus bas au Canada!"
+  homepage_h1: "Impression de t-shirts personnalisés au Canada!"
+  homepage_h1_text: "BIENTOT"
+  home: "Accueil"
+  marketplace: "Magasiner"
+  shop_menu: "Magasiner"
+  shop_by_brand: "Magasiner par marque"
+  
+  shipping_info_item_11: "Profitez d’une expédition gratuite à partir de 75$ d’achat en Amérique du Nord.<br/><br/>
+
+Pour recevoir votre commande dans les meilleurs délais, assurez-vous :<br/>
+<ul>
+<li style='list-style-type:none'>-D’éviter de faire des changements une fois la commande passée</li>
+<li style='list-style-type:none'>-Que votre commande ne comporte pas de violation de copyright</li>
+<li style='list-style-type:none'>-Que votre paiement est accepté en totalité</li>
+<li style='list-style-type:none'>-Que l’adresse de facturation et de livraison ne comporte pas d’erreur</li>
+<li style='list-style-type:none'>-Que le design respecte la qualité nécessaire pour l’impression sur vêtement</li>
+</ul>"
+  
+  my_pretty_country: "au %{country}"
+  

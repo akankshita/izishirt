@@ -1,0 +1,63 @@
+<%= @msg %>
+
+<div class="pageholder">
+  <div class="checkout_confirmation" id="checkout-container">
+    <h3><%= t(:confirmation_title) %></h3>
+    <p class="confirm_address"><b>Izishirt &bull; Custom design apparel &bull; cr&eacute;ateur de tendances</b><br />
+      1002 Sherbrooke O/W, Suite 2020<br />
+      Montr&eacute;al QC, H3A 3L6<br />
+      CANADA</p>
+    <div class="table_confirm">
+      <h5> <%= t(:confirmation_purchase_statement) %>
+        <p><%= t(:confirmation_billing_info) %></p>
+      </h5>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th><%= t(:paypal_email) %></th>
+          <td><%= @paypal_email %></td>
+        </tr>
+        <tr>
+          <th><%= t(:confirmation_address) %></th>
+          <td><%= @cart.billingaddress.to_s %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="table_confirm">
+      <h5><%= t(:payment_infoheader) %></h5>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th><%= t(:payment_total) %></th>
+          <td><%= number_to_currency_custom(@total) %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="table_confirm">
+      <h5><%= t(:confirmation_order_info) %></h5>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th><%= t(:confirmation_date) %>:</th>
+          <td> <%= Time.now.to_s %></td>
+        </tr>
+      </table>
+    </div>
+<!--
+    <div class="confirm_bottom">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th align="left"><%= t(:cart_header_desc) %></th>
+          <th><%= t(:cart_header_qty) %></th>
+          <th><%= t(:cart_header_price) %></th>
+          <th><%= t(:cart_header_total) %></th>
+        </tr>
+        <tr>
+          <td>1 - red T-shirt</td>
+          <td align="center">3</td>
+          <td align="center"><b>$14.95</b></td>
+          <td align="center">$14.95</td>
+        </tr>
+      </table>
+    </div>
+-->
+  </div>
+</div>
+

@@ -1,0 +1,17 @@
+<div class="titleForm">
+  <label for="model_active">
+    <%= t(:admin_model_size_toptitle)%>
+    <%= link_to "(edit sizes)", 
+      {:action => "edit_model_sizes", :id => @mymodel.id} %>
+  </label>
+</div>
+<div class="boxForm">
+<ul>
+<% @mymodel.model_sizes.each do |model_size|%>
+<li>
+  <%= check_box_tag "model_size[active][]", model_size.id, model_size.active %>
+  <%= model_size.local_name(I18n.locale) %>
+</li>
+<% end %>
+</ul>
+</div>

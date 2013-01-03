@@ -1,0 +1,50 @@
+<div class="pageholder" >
+  <!--  BEGIN Flash -->
+  <div class="crnliteblue flashbgr"> <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+    <div class="flashcontent"> <a href="<%= t(:display_home_create_tshirts) %>"><img src="/images/flashcontent_<%=session[:language]%>.jpg" alt="" border="0" /></a> 
+    <a href="<%= t(:display_home_create_tshirts) %>" title="<%= t(:display_home_see_more1) %>" class="flashcontent-btn-<%=session[:language_id]%>" >&nbsp;</a>
+    </div>
+    <div class="clear nohgh">&nbsp;</div>
+  </div>
+  <!--  END Flash -->
+  <!--  BEGIN Version 2 -->
+  <div class="clearfix">
+    <div class="homeimg">
+    <a href="<%= t(:display_home_create_tshirts) %>"><img src="/images/img-fp-01-<%= session[:language] %>.jpg" alt="" border="0" class="frst" /></a>
+    <a href="<%= t(:display_home_openshop_url) %>"><img src="/images/img-fp-02-<%= session[:language] %>.jpg" alt="" border="0" /></a>
+    </div>
+  
+  <div class="crnliteblue whatshot"> <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+    <h3><img src="/images/<%= t(:display_home_whatshot) %>" border="0" alt="" /></h3>
+    <div class="content clearfix">
+      <div class="thumbs clearfix">
+          <% for img in @content_img_bestseller%>
+            <% if img.products.first.nil? %>
+               <div class="thumbsFP" ><span > <a href="<%= t(:display_home_create_tshirts) %>/<%=img.id%>" title="<%= img.name %> T-shirt" > <i id="bs_<%=img.id%>" style="background-image: url('<%= img.orig_image.url("100") %>');"> <b class="crnBbTL"></b> <b class="crnBbTR"></b><b class="crnBbBR"></b> <b class="crnBbBL"></b> </i></a></span></div>
+            <% else %>
+              <div class="thumbsFP" ><span onmouseover="$('bs_<%=img.id%>').style.backgroundImage='url(\'<%= img.orig_image.url("100") %>\')'" onmouseout="$('bs_<%=img.id%>').style.backgroundImage='url(\'/izishirtfiles/products/<%= img.products.first.id %>/preview_100.jpg\')'"> <a href="<%= t(:display_home_create_tshirts) %>/<%=img.id%>" title="<%= img.name %> T-shirt" > <i id="bs_<%=img.id%>" style="background-image: url('/izishirtfiles/products/<%= img.products.first.id %>/preview_100.jpg');"> <b class="crnBbTL"></b> <b class="crnBbTR"></b><b class="crnBbBR"></b> <b class="crnBbBL"></b> </i></a></span></div>
+            <% end %>
+          <% end %>
+          <div class="clear nohgh">&nbsp;</div>  
+        </div>
+      <div class="whatshot_links"><a href="<%= t(:display_home_create_tshirts) %>" title="<%= t(:display_home_see_more1) %>"><span><%= t(:display_home_see_more1) %></span></a><a href="/display/shop/" title="<%= t(:display_home_see_more) %>"><span><%= t(:display_home_see_more) %></span></a></div>
+    </div>
+    <div class="clear nohgh">&nbsp;</div>
+  </div>
+  
+  </div>
+  <!--  END Version 2 -->
+  
+  <div class="crnliteblue tagzbgr"> <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+    <a href="<%=t(:menu_home_facebook_url)-%>"><img style="border-width: 0px" src="/images/<%=t(:display_home_facebookimg)-%>" alt="Izishirt facebook Application" /></a>
+    <!--  End Flash Content -->
+    <div class="clear nohgh">&nbsp;</div>
+  </div>
+  <div class="crnliteblue brix"> <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+    <div class="content">
+      <div class="brixcontent"> <%= t(:home_page_txt_content1) %><%= t(:home_page_txt_content2) %> </div>
+      <div class="brixbtn"> <a href="<%= t(:display_home_openshop_url) %>"><img src="/images/<%= t(:display_home_imgbrix1) %>"  border="0" alt=""/></a> <a href="<%= t(:display_home_create_tshirts) %>"><img src="/images/<%= t(:display_home_imgbrix2) %>"  border="0" alt=""/></a> </div>
+    </div>
+    <div class="clear nohgh">&nbsp;</div>
+  </div>
+</div>

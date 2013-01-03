@@ -1,0 +1,20 @@
+<%= I18n.t(:send_mail_gift_salutation, :locale => Language.find(@user.language_id).shortname) %><br />
+<br />
+<%= "#{I18n.t(:send_mail_gift_content_1, :locale => Language.find(@user.language_id).shortname)}#{@gift.sender}" %><br />
+<br />
+<font style="color:font-weight:bold;">
+<%= "#{I18n.t(:send_mail_gift_code, :locale => Language.find(@user.language_id).shortname)} #{@coupon.code}" %><br />
+<%= "#{I18n.t(:send_mail_gift_amount, :locale => Language.find(@user.language_id).shortname)} #{number_to_currency_custom(@gift.amount)}" %><br />
+</font>
+<br />
+<%= I18n.t(:send_mail_gift_content_2, :locale => Language.find(@user.language_id).shortname) %><br />
+<br />
+<% if @gift.message != nil && @gift.message != "" %>
+  <%= "#{I18n.t(:send_mail_gift_message, :locale => Language.find(@user.language_id).shortname)}#{@gift.sender}" %><br />
+  <%= @gift.message %><br />
+  <br />
+<% end %>
+<%= I18n.t(:send_mail_gift_signature_1, :locale => Language.find(@user.language_id).shortname) %><br />
+<%= I18n.t(:send_mail_gift_signature_2, :locale => Language.find(@user.language_id).shortname) %><br />
+<br />
+<img src="<%= "http://www.izishirt.ca/images/izishirt.jpg" %>" alt="" /><br />

@@ -1,0 +1,88 @@
+<div class="append-3 prepend-3 span-23 breadcrumb last">
+  <%= link_to t(:menu_home), "/", :class => 'mediumGray noDecoration bold' %>
+  <%= image_tag "izishirt2009/blueArrows.png", {:class=> 'middle', :alt => ">>"} %>
+  <%= link_to t(:menu_open_free_shop), {:controller => 'display', :action => 'open_shop'},
+    :class => 'mediumGray noDecoration bold' %>
+  <%= image_tag "izishirt2009/blueArrows.png", {:class=> 'middle', :alt => ">>"} %>
+  <%= link_to t(:menu_step_two), '',
+    :class => 'mediumGray noDecoration bold' %>
+</div>
+
+<div class="append-3 prepend-3 span-23">
+  <%= image_tag("/images/izishirt2009/#{session[:language]}/limitedOffer.png") %>
+</div>
+
+<div class="clear horiz_space_20"></div>
+
+<div class="append-3 prepend-3 span-23 openShop">
+
+  <%= render :partial => 'why_izishirt' %>
+
+  <div class="prepend-12-px left span-16 last">
+    <!-- Open Shop form -->
+    <div class="redBox">
+      <div class="left redBoxLeftNoLogo noPad noMarg noBord"></div>
+      <div class="left redBoxHeader noLogo noPad noMarg noBord headerWidth">
+        <label><%=t(:menu_open_free_shop)%></label>
+      </div>
+      <div class="left redBoxRight noPad noMarg noBord"></div>
+      <div class="clear noBord noPad noMarg redBoxTitle">
+        <img src="/images/izishirt2009/rightArrow.png" alt=">>" />
+        <label><%= t(:myizishirt_login_view_form_address) %></label>
+      </div>
+
+      <div class="clear noPad noMarg boxContent boxWidth address">
+        <%= form_tag({:controller=>"display", :action => "save_open_shop"}, :name=>"form_create_shop", :id => "open_shop") %>
+          <%= error_messages_for 'user', 'address' %>
+          <div class="leftForm">
+            <label>
+              <%= t(:myizishirt_login_view_form_address) %>
+            </label>
+            <%= text_field 'address', 'address1'%>
+            <label>
+              <%= t(:myizishirt_login_view_form_appartment) %>
+            </label>
+            <%= text_field 'address', 'address2'%>
+            <label>
+              <%= t(:myizishirt_login_view_form_city) %>
+            </label>
+            <%= text_field 'address', 'town'%>
+            <label>
+              <%= t(:myizishirt_login_view_form_phone) %>
+            </label>
+            <%= text_field 'address', 'phone'%>
+          </div>
+          <div class="rightForm">
+            <label>
+              <%= t(:myizishirt_login_view_form_country) %>
+            </label>
+            <%= text_field 'address', 'country_name'%>
+            <label>
+              <%= t(:myizishirt_login_view_form_province) %>
+            </label>
+            <%= text_field 'address', 'province_name'%>
+            <label>
+              <%= t(:myizishirt_login_view_form_zip) %>
+            </label>
+            <%= text_field 'address', 'zip'%>
+          </div>
+          <div class="clear center">
+            <%= check_box 'user', 'wants_newsletter', :checked  => "checked" %> <%= t(:myizishirt_login_view_form_wants_newsletter) %>
+          </div>
+          <div class="shortBlueButton">
+            <%= link_to "DONE", "javascript:$('open_shop').submit();" %>
+          </div>
+        </form>
+      </div>
+      <div class="left boxBottomLeft"></div>
+      <div class="left boxBottomMiddle bottomWidth"></div>
+      <div class="left boxBottomRight"></div>
+    </div>
+    <!-- EO Open Shop form -->
+
+    <div class="horiz_space_20"></div>
+
+    <%= render :partial => 'premium_features' %>
+
+  </div>
+</div>

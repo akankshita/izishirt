@@ -1,0 +1,10 @@
+<span id="fabric_style_<%=style.id%>">
+  <% style.lc.each do |loc_style|%>
+    <label><%= loc_style.language.shortname.upcase%>: </label>
+    <%= text_field_tag "style_#{loc_style.id}", loc_style.style %>
+  <% end %>
+  <%= submit_to_remote 'update_btn', 'Update', :url => {:controller => '/admin/model', :action => 'update_fabric_style', :id => style.id}, 
+    :with => "'style[#{style.lc.first.id}]='+$('style_#{style.lc.first.id}').value+'&style[#{style.lc.last.id}]='+$('style_#{style.lc.last.id}').value" %>
+  <%= submit_to_remote 'delete_btn', 'Delete', :url => {:controller => '/admin/model', :action => 'delete_fabric_style', :id => style.id} %>
+  <br />
+</span>

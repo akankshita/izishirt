@@ -1,0 +1,104 @@
+<div style="position:relative;">
+  <h1><%= title_page %></h1>
+
+<%= render :partial => "/admin/order/table_order_colors" %>
+
+
+	<% if with_search_bar %>
+	  <div style="position:absolute;top:0;right:0;">
+	  <% form_tag({:action => 'search'}, :method => 'get') do %>
+	  <%= hidden_field_tag "assignment_listing", assignment_listing %>
+	    <%= text_field_tag('search', params[:search], :class => 'input fleft') %>
+	    <select id="search_field" name="search_field" class="fleft" style="margin:0 8px;">
+	      <option value="id">Order ID</option>
+	      <option value="name">Name</option>
+	      <option value="payment_transaction">Payment Transaction</option>
+	      <option value="email">Email</option>
+	      <option value="province">Shipping Address Province</option>
+	      <option value="country">Shipping Address Country</option>
+	      <option value="printer">Printer</option>
+	      <option value="comment">Comments</option>
+	      <option value="created">Created On Date(yyyy-mm-dd)</option>
+	      <option value="shipped">Shipped On Date(yyyy-mm-dd)</option>
+	      <option value="assigned">Assigned On Date(yyyy-mm-dd)</option>
+	    </select>
+	    <select id="search_status" name="search_status" class="fleft" style="margin-right:8px;">
+	      <option value="all">All Statuses</option>
+	      <option value="0">Pending</option>
+	      <option value="4">Awaiting Stock</option>
+	      <option value="3">Batching</option>
+	      <option value="1">Processing</option>
+	      <option value="2">Shipped</option>
+	      <option value="5">Canceled</option>
+	    </select>
+	    <%= image_submit_tag 'ico-search.gif', :class => 'button fleft' %>
+	  <% end %>
+	  </div>
+	<% end %>
+
+
+
+  <br />
+  
+  <form id="orders_form" action="/admin/order/bulk_update" method="post">
+    <table width='100%' border="0" cellspacing="0" cellpadding="3">
+      <tr>
+	<th></th>
+        <th>
+          <input type="checkbox" id="all" onclick="javascript:toggle_all()"/>
+        </th>
+        <th width="30"><%= link_to "ID", {:action => params[:action], :id => params[:id], :search_order => "orders.id" + " " + get_sort_way("orders.id"), :search => params[:search], :search_field => params[:search_field]}  %></th>
+		
+        <th width="135"><%= link_to t(:admin_order_show_name), {:action => params[:action], :id => params[:id], :search_order => "orders.user_id" + " " + get_sort_way("orders.user_id"), :search => params[:search], :search_field => params[:search_field]} %></th>
+        <th width="50"><%= link_to "Status", {:action => params[:action], :id => params[:id], :search_order => "orders.status" + " " + get_sort_way("orders.status"), :search => params[:search], :search_field => params[:search_field]} %></th>
+        <th width="40"><%= link_to "Total", {:action => params[:action], :id => params[:id], :search_order => "total_price" + " " + get_sort_way("total_price"), :search => params[:search], :search_field => params[:search_field]} %></th>
+        <th width='200'><%= link_to "Date", {:action => params[:action], :id => params[:id], :search_order => "orders.created_on" + " " + get_sort_way("orders.created_on"), :search => params[:search], :search_field => params[:search_field]} %></th>
+        <th><%= link_to "Printer", {:action => params[:action], :id => params[:id], :search_order => "printer" + " " + get_sort_way("printer"), :search => params[:search], :search_field => params[:search_field]} %></th>
+		
+		<% if with_assigned_to %>
+			<th><%= t(:admin_artwork_dept_order_assigned_to) %></th>
+		<% end %>
+		
+        <th width="205"><font size='-2'>View-Print</font></th>
+        <th><%= link_to "F", {:action => params[:action], :id => params[:id], :search_order => "orders.comment_type" + " " + get_sort_way("orders.comment_type"), :search => params[:search], :search_field => params[:search_field]} %></th>
+        <th width="140"><font size='-2'>Last Post</font></th>
+        <th>Shipping</th>
+        <% if ! (session[:current_order_listing] == "artwork_required" || session[:current_order_listing] == "artwork_required_problem") %>
+          
+        <% else %>
+          <th><%= link_to "Date required", {:action => params[:action], :id => params[:id], :search_order => "artwork_required_on" + " " + get_sort_way("artwork_required_on"), :search => params[:search], :search_field => params[:search_field]} %></th>
+        <% end %>
+        <th />
+        <th />
+        <th />
+      </tr>
+      
+      <tbody id='listing'>
+      	
+		<% 
+
+		begin
+			if with_user_language.nil?
+				with_user_language = false
+			end
+		rescue
+			with_user_language = false
+		end
+
+		begin
+			if mark_problems.nil?
+				mark_problems = false
+			end
+		rescue
+			mark_problems = false
+		end  
+
+		%>
+		
+        <%= render :partial => '/admin/order/listing', :locals => {:with_user_language => with_user_language, :assignment_listing => assignment_listing, :with_assigned_to => with_assigned_to, :mark_problems => mark_problems} %>
+      </tbody>
+    </table>
+  </form>
+  <br />
+
+</div>

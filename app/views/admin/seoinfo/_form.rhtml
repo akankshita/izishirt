@@ -1,0 +1,65 @@
+<%= error_messages_for 'seoinfo' %>
+<!--[form:seoinfo]-->
+<div>
+	
+    <div class="titleForm"></div>
+	<div class="titleForm"><label for="url">URL</label></div>
+	<div class="boxForm">
+	  <input class="box" type="text" id="url" name="url" value="<%= @seoinfo.url %>" />
+	</div>
+							
+	<div style="clear:both;"></div>
+	<div class="boxForm" style="width:260px !important;"><label for="title_fr">Page title Canada FR</label><br />
+	  <input class="box" style="width:250px !important;" type="text" id="title_fr" name="title_fr" value="<%= @seoinfo.title_fr %>" />
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="keywords_fr">Page keywords Canada FR</label><br />
+		<textarea cols="30" rows="8" id="keywords_fr" name="keywords_fr"><%= @seoinfo.keywords_fr %></textarea>
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="metadesc_fr">Page meta description Canada FR</label><br />
+	  <textarea cols="30" rows="8" id="metadesc_fr" name="metadesc_fr"><%= @seoinfo.metadesc_fr %></textarea>
+	</div>
+							
+	<div style="clear:both;"></div>
+	<div class="boxForm" style="width:260px !important;"><label for="title_frch">Page title France</label><br />
+	  <input class="box" style="width:250px !important;" type="text" id="title_frch" name="title_frch" value="<%= @seoinfo.title_frch %>" />
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="keywords_frch">Page keywords France</label><br />
+		<textarea cols="30" rows="8" id="keywords_frch" name="keywords_frch"><%= @seoinfo.keywords_frch %></textarea>
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="metadesc_frch">Page meta description France</label><br />
+	  <textarea cols="30" rows="8" id="metadesc_frch" name="metadesc_frch"><%= @seoinfo.metadesc_frch %></textarea>
+	</div>
+	
+	<div style="clear:both;"></div>
+	<div class="boxForm" style="width:260px !important;"><label for="title_en">Page title Canada EN</label><br />
+	  <input class="box" style="width:250px !important;" type="text" id="title_en" name="title_en" value="<%= @seoinfo.title_en %>" />
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="keywords_en">Page keywords Canada EN</label><br />
+		<textarea cols="30" rows="8" id="keywords_en" name="keywords_en"><%= @seoinfo.keywords_en %></textarea>
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="metadesc_en">Page meta description Canada EN</label><br />
+	  <textarea cols="30" rows="8" id="metadesc_en" name="metadesc_en"><%= @seoinfo.metadesc_en %></textarea>
+	</div>
+	
+	<div style="clear:both;"></div>
+	<div class="boxForm" style="width:260px !important;"><label for="title_us">Page title USA</label><br />
+	  <input class="box" style="width:250px !important;" type="text" id="title_us" name="title_us" value="<%= @seoinfo.title_us %>" />
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="keywords_us">Page keywords USA</label><br />
+		<textarea cols="30" rows="8" id="keywords_us" name="keywords_us"><%= @seoinfo.keywords_us %></textarea>
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="metadesc_us">Page meta description USA</label><br />
+	  <textarea cols="30" rows="8" id="metadesc_us" name="metadesc_us"><%= @seoinfo.metadesc_us %></textarea>
+	</div>
+							
+<!--[eoform:seoinfo]-->
+
+  </div>

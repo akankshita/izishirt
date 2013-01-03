@@ -1,0 +1,32 @@
+<div class="left redBoxLeft noPad noMarg noBord"></div>
+<div class="left redBoxHeader noPad noMarg noBord shopHeaderWidth">
+  <label><%= title %></label>
+  <a name="new_sub"></a>
+</div>
+
+<div class="left redBoxRight noPad noMarg noBord"></div>
+
+
+<div class="noPad noMarg boxContent shopWidth">
+  <% products.each do |product| %>
+    <div class="left thumbWrapper topDesign">
+      <div class="imageWrapper">
+        <%= link_to image_tag("/izishirtfiles/#{product.relative_product_folder_without_id}/#{product.id}/preview1.jpg", :class => 'thumb', :alt => ''),
+          {:controller => 'display', :action => 'shop2', :id => product.id} %>
+      </div>
+      <span>
+        <%= link_to truncate(product.name, :length =>20),
+          {:controller => 'display', :action => 'shop2', :id => product.id},
+          :class => 'noDecoration darkGray' %>
+      </span>
+    </div>
+  <% end %>
+</div>
+<div class="left bottomTitleDarkLeft"></div>
+<div class="left bottomTitleDarkMiddle shopTitleWidth">
+  <div class="pagenumb">
+    <%= will_paginate products, :class=>"pagination_links_category", :prev_label => t(:prev_label),
+      :next_label => t(:next_label), :outer_window=>4, :params => {:anchor => "new_sub"} %>
+  </div>
+</div>
+<div class="left bottomTitleDarkRight"></div>

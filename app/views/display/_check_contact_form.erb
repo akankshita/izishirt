@@ -1,0 +1,21 @@
+<script type="text/javascript">
+  function checkContactForm(){
+  	if ($('contact_request_department').value == '') {
+      $('formErrorPopUp').innerHTML = "<%= t(:empty_topic) %>";
+    }
+	else
+    if ($('contact_request_email').value == '') {
+      $('formErrorPopUp').innerHTML = "<%= t(:empty_email) %>";
+    }
+    else if (!validate_email($('contact_request_email').value)) {
+      $('formErrorPopUp').innerHTML = "<%= t(:wrong_email) %>";
+    }
+    else if ($('contact_request_question').value == '') {
+      $('formErrorPopUp').innerHTML = "<%= t(:empty_question) %>";
+    }
+    else{
+      return true;
+    }
+    return false;
+  }
+</script>

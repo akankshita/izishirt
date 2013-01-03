@@ -1,0 +1,48 @@
+<!-- Make_your_tshirts -->
+<div id="left_container">
+	<%= render :partial => "/layouts/generic_boxes/left_column_infos", :locals=>{:version=>"long"} %>
+	<div id="cloud_tag">
+	  <ul>
+	    <% links = links_for_cloud_tag(@tags) %>
+	    <% links.each do |link| %>
+	      <li><%= link %></li>
+	    <% end %>
+	  </ul>
+	</div>
+</div>
+<div id="right_container">
+	<div id="seo_create_tshirt_main">
+		<h1><%=t(:seo_make_tshirts_title)%></h1>
+		<span class="shop_tshirt"><%= link_to(t(:seo_create_link_shop_for_tshirts_designs), create_tshirt_url(), :class=>"shop_tshirt", :title=>t(:seo_create_link_shop_for_tshirts_designs))%></span>
+		<div id="seo_create_tshirt_border">
+			<%= link_to image_tag("izishirt2011/#{session[:language]}/banner-make.jpg", :alt=>t(:seo_make_tshirts_title)), create_tshirt_url(), :title=>t(:seo_make_tshirts_title)%>
+			<p class="title_14"><%=t(:seo_make_title_1)%></p>
+			<p><%=t(:seo_make_text_1)%></p>
+			<p class="title_14"><%=t(:seo_make_title_2)%></p>
+			<ul>
+				<li><%=t(:seo_make_text_2)%><%= link_to(t(:seo_make_text_link), create_tshirt_url(), :title=>t(:seo_make_text_link))%></li>
+				<li><%=t(:seo_make_text_3)%><%= link_to(t(:seo_make_text_link), create_tshirt_url(), :title=>t(:seo_make_text_link))%></li>
+				<li><%=t(:seo_make_text_4)%><%= link_to(t(:seo_make_text_link), create_tshirt_url(), :title=>t(:seo_make_text_link))%></li>
+				<li><%=t(:seo_make_text_5)%><%= link_to(t(:seo_make_text_link), create_tshirt_url(), :title=>t(:seo_make_text_link))%></li>				
+			</ul>
+						
+			<p class="green_16_title"><%= link_to(t(:seo_create_title_3), create_tshirt_url(), :class=>"green_16_title", :title=>t(:seo_create_title_3))%></p>
+			
+			<p class="title_14"><%=t(:seo_make_title_3)%></p>
+			<p><%=t(:seo_make_text_6)%></p>
+			<p><%= link_to(t(:seo_make_text_link_2), {:controller=>'/display',:action=>"open_shop"}, :class=>"blue_apparel", :title=>t(:seo_make_text_link_2))%></p>
+			
+			<p class="title_14"><%=t(:seo_make_title_4)%></p>
+			<ul>
+				<li><%=t(:seo_make_text_7)%></li>
+				<li><%=t(:seo_make_text_8)%></li>
+			</ul>
+			<p><%=t(:seo_make_text_9)%></p>
+			
+			<p class="title_14"><%=t(:seo_make_title_5)%></p>
+			<p><%=t(:seo_make_text_10)%></p>
+			<p><%=t(:seo_make_text_11, :phone=>get_phone_number)%></p>
+		</div>
+	</div>
+</div>
+<!-- Make_your_tshirts -->

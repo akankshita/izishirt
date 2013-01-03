@@ -1,0 +1,74 @@
+.crn {position:relative}
+
+.r4tl, .r4tr, .r4br, .r4bl {	position: absolute;	width: 4px;	height: 4px; font-size: 1px;}
+
+.r4tl {		left: 0;	top: 0;}
+.r4tr {		right: 0;	top: 0;}
+.r4br {		right: 0; bottom: 0;}
+.r4bl {	left: 0;	bottom: 0;}
+
+.theme1 .r4tl,
+.theme8 .r4tl {	background: url(/images/corpblog/crn/nobrd_wbgr_tl.png);	}
+.theme1 .r4tr,
+.theme8 .r4tr {	background: url(/images/corpblog/crn/nobrd_wbgr_tr.png);	}
+.theme1 .r4br,
+.theme8 .r4br {	background: url(/images/corpblog/crn/nobrd_wbgr_br.png);	}
+.theme1 .r4bl,
+.theme8 .r4bl {	background: url(/images/corpblog/crn/nobrd_wbgr_bl.png);	}
+
+.theme2 .userinfo .r4tl,
+.theme5 .userinfo .r4tl,
+.theme6 .userinfo .r4tl,
+#footer.theme5 .r4tl,
+#footer.theme6 .r4tl { left: -1px;	top: -1px;}
+.theme2 .userinfo .r4tr,
+.theme5 .userinfo .r4tr,
+.theme6 .userinfo .r4tr,
+#footer.theme5 .r4tr,
+#footer.theme6 .r4tr { right: -1px;	top: -1px;}
+.theme2 .userinfo .r4br,
+.theme5 .userinfo .r4br,
+.theme6 .userinfo .r4br,
+#footer.theme5 .r4br,
+#footer.theme6 .r4br { right: -1px; bottom: -1px;}
+.theme2 .userinfo .r4bl,
+.theme5 .userinfo .r4bl,
+.theme6 .userinfo .r4bl,
+#footer.theme5 .r4bl,
+#footer.theme6 .r4bl { left: -1px;	bottom: -1px;}
+
+#footer.theme5 .r4tl {background: url(/images/corpblog/crn/theme5a-tl.png);}
+#footer.theme5 .r4tr {background: url(/images/corpblog/crn/theme5a-tr.png);}
+#footer.theme5 .r4br {background: url(/images/corpblog/crn/theme5a-br.png);}
+#footer.theme5 .r4bl {background: url(/images/corpblog/crn/theme5a-bl.png);}
+
+.theme2 .r4tl {	background: url(/images/corpblog/crn/theme2-tl.png);	}
+.theme2 .r4tr {	background: url(/images/corpblog/crn/theme2-tr.png);	}
+.theme2 .r4br {	background: url(/images/corpblog/crn/theme2-br.png); }
+.theme2 .r4bl {	background: url(/images/corpblog/crn/theme2-bl.png);	}
+
+/*
+.theme3 .r4tl {	background: url(/images/corpblog/crn/theme3-tl.png);	}
+.theme3 .r4tr {	background: url(/images/corpblog/crn/theme3-tr.png);	}
+.theme3 .r4br {	background: url(/images/corpblog/crn/theme3-br.png); }
+.theme3 .r4bl {	background: url(/images/corpblog/crn/theme3-bl.png);	}
+*/
+
+.theme4 .r4tl {	background: url(/images/corpblog/crn/theme4-tl.png);	}
+.theme4 .r4tr {	background: url(/images/corpblog/crn/theme4-tr.png);	}
+.theme4 .r4br {	background: url(/images/corpblog/crn/theme4-br.png); }
+.theme4 .r4bl {	background: url(/images/corpblog/crn/theme4-bl.png);	}
+
+.theme5 .r4tl,
+.theme6 .r4tl {	background: url(/images/corpblog/crn/theme5-tl.png);	}
+.theme5 .r4tr,
+.theme6 .r4tr {	background: url(/images/corpblog/crn/theme5-tr.png);	}
+.theme5 .r4br,
+.theme6 .r4br {	background: url(/images/corpblog/crn/theme5-br.png); }
+.theme5 .r4bl,
+.theme6 .r4bl {	background: url(/images/corpblog/crn/theme5-bl.png);	}
+
+.theme3 .r4tl {	background: url(/images/corpblog/crn/theme9-tl.png);	}
+.theme3 .r4tr {	background: url(/images/corpblog/crn/theme9-tr.png);	}
+.theme3 .r4br {	background: url(/images/corpblog/crn/theme9-br.png); }
+.theme3 .r4bl {	background: url(/images/corpblog/crn/theme9-bl.png);	}

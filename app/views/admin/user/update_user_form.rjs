@@ -1,0 +1,5 @@
+if params[:level].to_i == 5
+  page.show "printer_address"
+else
+  page.hide "printer_address"
+end

@@ -1,0 +1,157 @@
+@charset "utf-8";
+
+/* CSS Document */
+body {font-family:Arial, Helvetica, Sans-Serif;}
+#main { width:970px; margin: 0px auto; padding:10px; } 
+.clear {clear:both;}
+hr { border: solid 1px #ccc; width:600px; float:left; margin:0 0 0 0; }
+
+/*Header*/
+#header { float:left; width:971px;}
+#banner { width:971px; height:120px; margin:0; padding:0;background-repeat:no-repeat; }
+#banner img {border:none;text-decoration:none;}
+#freeShipping { font-size:12px; font-family:Arial, Helvetica, sans-serif; color:#009e00; margin:10px 10px 0 0; text-align:right; font-weight: bold; }
+
+/*Steps Shopping Cart*/
+fieldset { border:none; width:100%;}
+legend { font-size:18px; margin:0px; padding:10px 0px; color:#0066ff; font-weight:bold;}
+#steps { width:519px;list-style:none; overflow:hidden; margin-top:0px; margin-bottom:0px; margin-left: auto;margin-right:auto; padding:0px; display:block;position:static;}
+#steps li {font-size:24px; float:left; padding:10px; color:#b0b1b3;}
+#steps li.current a {color:#000;text-decoration:none;}
+#steps li a {color:#b0b1b3;text-decoration:none;}
+#steps li#stepDesc1 {}
+#steps li span {font-size:11px; display:block;}
+#steps li.current { color:#000; }
+
+/*Next and Previus Button*/
+.prev, .next { background-color:#009900; padding:5px 10px; color:#fff; text-decoration:none;font-weight:bold;}
+.prev:hover, .next:hover { background-color:#00cc00; text-decoration:none;}
+.prev { float:left; margin-top:65px;}
+.next {margin:0px;}
+
+/*Input and Labels
+label { display:block; margin:15px 0 5px;}
+input[type=text], input[type=password] { border:solid 1px #ccc;}*/
+
+/*Shopping Cart*/
+#shopping_cart {float:left; width:950px;}
+#products { float:left; width:705px; }
+#products .box_product { float:left; width:690px; margin:5px; border:1px solid #999;}
+#products .btnimgprd { float:right; margin:36px 10px 0 0;}
+#photo {float:left; width:76px; height:76px; border:1px solid #333; margin:5px; }
+#photo img { border:0;}
+#description { float:left; width:220px; font-size:11px; color:#333; margin:12px 5px 0 0;}
+#description a {display:block;padding-top:5px;}
+#size_quantity { float:left;  font-size:11px; margin:33px 0 0 0;}
+#size_quantity select { font-size:12px; margin-left:5px;}
+#size_quantity input[type=text] { text-align:center; width:25px; margin-left:5px; font-size:12px; border:1px solid #999;}
+.box_product .price {float:left; font-size:12px; margin:35px 0 0 15px; font-weight:700;}
+#commentsContainer { float: left; margin:20px 0 0 0; }
+
+/*Right Box SubTotal and Assistance*/
+#right_box_info { float:right; width:240px; }
+#sub_total span#bulkOffer { font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#666; display:block;margin-bottom:10px;}
+#sub_total { float:right; width:180px; border:1px solid #999; margin:5px 0 0 5px;padding:5px 10px;}
+#sub_total form{}
+#sub_total #cart_total strong{font-size:12px;}
+#sub_total #cart_total{font-size:12px;}
+#sub_total #cart_total #total{margin-top:5px;float:left;}
+#sub_total #cart_total .price{float:right;}
+#sub_total p { margin:0 0 0px 0px; font-size:12px; padding:0px;}
+#sub_total span#bulkOffer a { font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#2e70be; text-decoration:none; }
+#sub_total .sub_total_price { font-size:22px; color:#323232; }
+#sub_total .no_bottom {padding-bottom:0px;margin-bottom:0px;}
+#sub_total input[type=text] { width:80px; font-size:12px; border:1px solid #999; }
+#sub_total #button {margin-left:auto;margin-right:auto;padding:10px 0px;max-width:110px;}
+#need_assistance { float:right; width:200px; border:1px solid #999; margin:10px 0 0 5px}
+#need_assistance img { float:left; margin:10px 0 0 10px; padding:0px; }
+#secure_payments { float:right; width:190px; border:1px solid #999; margin:5px 0 0 5px;padding:5px 5px 5px 5px;font-size:12px;}
+
+
+p#assistance { float:left; margin:16px 5px 0 10px; padding: 0px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333; font-weight: bold; }
+p#phoneNumber { float:left; margin:20px 0 0 15px; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#009e00; clear:both; font-weight: bold; }
+p#care { float:left; margin:10px 10px 10px 10px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#666; }
+
+
+#billing_shipping {float:left; width:971px; margin-top:20px;}
+
+#user_info_loging { float:left; width:250px; padding:25px; border:1px solid #ccc; margin:0 0 0 100px; background-color: #efeeee; }
+#user_info_loging p { margin:0 0 20px 0; font-size:14px;} 
+#user_info_loging label { width:200px; float:left; padding:0; margin-bottom:5px;text-align:right; font-size:14px;}
+#user_info_loging input[type=text]  { width:120px; font-size:12px; border:1px ridge #999;}
+#user_info_loging input[type=password]  { width:120px; font-size:12px; border:1px ridge #999;}
+#user_info_loging input[type=button]  { width:80px; font-size:14px; border:1px outset #999; padding:5px; margin:5px 5px 5px 70px; font-weight:700;}
+
+#continue_guest {float:left; width:250px; padding:25px; border:1px solid #ccc; margin:0 0 0 100px; background-color: #efeeee;}
+#continue_guest p { margin:0 0 20px 0; font-size:14px; text-align:center;} 
+#continue_guest input[type=button]  { width:80px; font-size:12px; border:1px outset #999; padding:5px; font-weight:700;}
+
+
+#shipping { float:left; margin:0 auto; width:971px;}
+
+#billing_info { float:left; width:210px; padding:15px; border:1px solid #999; margin:0 0 0 3px;}
+#billing_info p { margin:0 0 20px 0; font-size:14px;} 
+#billing_info label { display: block; float:left; width:205px;padding:0;margin-bottom:2px;text-align:right; font-size:11px;}
+#billing_info input[type=text]  { width:130px; font-size:12px; border:1px ridge #999;}
+#billing_info input[type=checkox]  { border:1px ridge #999;}
+
+#shipping_info { float:left; width:210px; padding:15px; border:1px solid #999; margin:0 0 0 45px; }
+#shipping_info p { margin:0 0 20px 0; font-size:14px;} 
+#shipping_info label { display: block; float: left; width:205px; padding:0; margin-bottom:3px; text-align: right; font-size:11px;}
+#shipping_info input[type=text]  { width:130px; font-size:12px; border:1px ridge #999;}
+#shipping_info input[type=checkox]  { border:1px ridge #999;}
+
+#shipping_type { float:left; width:170px; margin:65px 0 0 45px; border:1px dashed #ccc; padding:30px; }
+#shipping_type p {font-size:11px; margin:0 0 10px 0;}
+#shipping_type label { font-size:11px;}
+
+/*Payment Methods*/
+#payment_container {float:left; width:971px; margin-top:20px;}
+#payment_methods {float:left; width:650px; border:1px solid #999; padding:15px; height:230px;}
+#paypal {float:left; width:310px;}
+#paypal p {margin:5px 0 5px 0; font-size:12px;}
+#paypal label { display: block; float:left; width:240px; padding:0; margin-bottom:2px; text-align:right; font-size:11px;}
+#paypal input[type=text]  { width:140px; font-size:12px; border:1px ridge #999;}
+#paypal input[type=password]  { width:140px; font-size:12px; border:1px ridge #999; margin-bottom:10px;}
+
+
+#credit_card {float:left; width:310px; margin-left:20px;}
+#credit_card p {margin:5px 0 15px 0; font-size:12px;}
+#credit_card label { display: block;float:left; width:240px; padding:0; margin-bottom:10px; text-align:right; font-size:11px;}
+#credit_card input[type=text]  { width:120px; font-size:12px; border:1px ridge #999;}
+
+#total_price {float:left; width:235px; margin-left:20px; border:1px solid #999; padding:15px; height:230px;}
+#total_price p { margin:5px 0 0 0; font-size:14px; text-align:center;}
+#total_price ul {list-style: none; text-align:right; margin-right: 70px;}
+#total_price li { list-style-type:none; padding:0 0 5px 0; font-size:12px;}
+#total_price .finalprice { text-align:center; font-size:16px; font-weight:700;}
+#total_price input[type=button]  { width:120px; font-size:14px; padding:5px; margin:10px 0 0 0; font-weight:700;}
+
+#footerContainer { width:100%; height:200px; background-color:#efeeee; border-top: #cccccc solid 1px; }
+#footerContainer a { font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666; text-decoration:none; }
+#footerContainer a:hover { font-family:Arial, Helvetica, sans-serif; font-size:12px; color: #333; text-decoration: underline;} 
+#colCOntainer { position:relative; margin:0 auto; width:953px; }
+#colBuy { float:left; margin:20px 0 0 0; width:150px; height:150px; }
+#colBuy ul { float:left; margin:0; padding:0; } 
+#colBuy h3 { font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; text-align:left; color:#666; }
+#colBuy li { list-style-type:none; list-style-position:inside; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666; text-align:left; }
+#colSell { float:left; margin:20px 0 0 40px; width:130px; height:150px; }
+#colSell ul { float:left; margin:0; padding:0; } 
+#colSell h3 { font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; text-align: left; color:#666; }
+#colSell li { list-style-type:none; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666; text-align:left; }
+#colSocial { float:left; margin:20px 0 0 60px; width:130px; height:150px; }
+#colSocial ul { float:left; margin:0; padding:0; } 
+#colSocial h3 { font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; text-align: left; color:#666; }
+#colSocial li { list-style-type:none; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666; text-align:left; }
+#colSecure { float:right; margin:20px 0 0 0; width:300px; height:150px; }
+#colSecure { font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#666; text-align: left; }
+#colSecure h3 { font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; text-align: left; color:#666; }
+
+#creditTxt { position:relative; margin:0 auto; width:600px; }
+#creditTxt p { font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#666; }
+
+#lightbox {top:50% !important;left:50% !important; position:absolute; width:661px !important;height:560px !important;margin-top:-280px!important;margin-left:-330px!important;}
+#lightbox .flashClose img {border:none;}
+#lightbox .flashClose{ text-align:right;float:right; }
+
+.errorMessage, .red{color:#cc0000;}

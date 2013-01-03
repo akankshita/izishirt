@@ -1,0 +1,34 @@
+if ! @cart.empty?
+	page.replace_html 'cart_total', :partial=>"cart_total", :object=>@cart
+	page.remove "detail_product_#{params[:id]}"
+
+	page.visual_effect :highlight, "sub_total_price", :duration => 2
+
+	contains_non_promo_items = true
+
+	   begin
+	     if @cart.has_regular_items
+	       contains_non_promo_items = true
+	     else
+	       contains_non_promo_items = false
+	     end
+	   rescue
+	     if @cart.items.length > 0
+	       contains_non_promo_items = true
+	     end
+	   end
+
+
+	if contains_non_promo_items == false
+	  page.remove "sub_total"
+	  page.replace_html "shopping_cart", :partial=>"empty_cart", :object=>@continue_link
+	end
+
+#	if ! params[:store] && ! params[:store_id]
+#		page.replace_html "promo_stuff_box", :partial => "promo_stuff"
+#	end
+else
+	  page.remove "discount_countdown"
+	  page.remove "sub_total"
+	  page.replace_html "shopping_cart", :partial=>"empty_cart", :object=>@continue_link
+end

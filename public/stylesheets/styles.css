@@ -1,0 +1,260 @@
+
+html {overflow-x: auto; overflow-y: scroll; height: 100%;  }
+body {  background: #48413b url(../images/bgr.gif) repeat-y center; margin:0; padding:0}
+body, td, input, select, textarea {
+	color: #5f5e5e;
+	font: 11px Tahoma, Arial, Helvetica, sans-serif;
+}
+form { margin:0; padding:0; }
+
+
+
+
+/* layout */
+
+#holder {width:980px; margin:0 auto;  background:#f2efde; }
+#header {height:77px; background:url(../images/bgr_header.gif) repeat-y center;  margin-bottom:10px; }
+#header .top{width:980px; margin:0 auto;position:relative; }
+#header .logo {background:url(../images/logo.gif) no-repeat; width:210px; height:72px; display:block; margin-left:10px; text-decoration:none; position:absolute; top:0; left:0}
+
+#header .top .lang_and_currency {position:absolute; right:0px; top:0px; float:left; padding:0px;  width:120px; z-index:500; text-align:center}
+
+#header .top .lang_text {position:absolute; right:110px; top:48px; }
+#header .top .lang {position:absolute; right:70px; top:58px; float:left; padding:0px 0;  width:40px; padding-left:0px; z-index:500; text-align:center}
+
+#header .top .lang img {margin:3px 0 3px 0px}
+
+/* << Language Area */
+
+
+#languagebarcurrent {border:1px solid #DEDDDD; background:#F0F0F0 }
+#languagebarcurrent languagebarcurrentblock { display:block; line-height:15px; text-decoration:none; color:#616161;    }
+#languagebarcurrent  languagebarcurrentblock img  {vertical-align:middle; margin-top:2px; margin-left:6px }
+
+#languagebar {position:absolute; background:#EBF6EC; border:1px solid #DEDDDD;  width:40px; top:18px;}
+#languagebar languagebarblock { display:block; float:right; text-align:left; line-height:15 px; text-decoration:none; color:#616161; border:0px solid #EBF6EC; border-width:0 0 1px 0;  width:40px}
+#languagebar languagebarblock img  {vertical-align:middle; margin-top:2px; margin-left:6px }
+
+#languagebarblock:hover {border:1px solid #ccc; border-width:0 0 1px 0;  background:#D3EBD4 ; color:black }
+#languagebar languagebarblock img {vertical-align:middle; margin:3px 0 3px 0px }
+
+#header .top .currency {position:absolute; right:0px; top:58px; float:left; padding:0px 0;  width:80px; padding-left:0px; z-index:500; text-align:center}
+
+.crnbrown,
+.scrnbrown {position:relative; height:100% }
+
+/* Left part */
+.loginarea {margin-bottom:6px }
+.loginarea,
+.pagecontent {background:#e2ddca;  	}
+
+.leftcontact {background:#fff;  }
+
+
+/* Rounded corners sizes*/
+#container {width:797px; margin:0 auto}
+#left {width:208px; float:left; margin-right:6px}
+#pagecontent {width:756px; float:left }
+
+#pagecontent {float:left; width:766px; }
+
+
+.mainimg {position:relative; margin-bottom:6px; height:244px}
+.mainmenu { margin-bottom:10px}
+
+.mainmenu {margin-bottom:6px; background:white}
+
+.hsearch {background: #fff url(../images/bgr_search.gif) no-repeat right; margin-bottom:8px; min-height:100px}
+
+.spoffers,
+.fphotel,
+.fphouses { background:white}
+
+.fphotel {margin-right:8px}
+.fphotel,
+.fphouses {float:left; width:240px; }
+
+.lefthp {width:492px; float:left; margin-right:11px}
+.righthp {width:238px; float:left}
+
+/* END Rounded corners sizes*/
+
+
+/* Main Menu BEGIN */
+.mmenu {	font-weight:bold;	border-bottom:1px solid white; padding-top:2px; padding-bottom:1px}
+.mmenu a {	text-decoration:none;	text-align:center;	line-height:28px; color:#826541; font-size:12px; font-weight:bold}
+.mmenu a:hover {color:#FF9C30}
+.mmenu td {text-align:center; padding:0 14px; border-right:1px dotted #c1c19b}
+.mmenu .active a {background:url(../images/mmenu_left.gif) no-repeat left; height:26px;  line-height:26px;  padding:6px 0 6px 9px; cursor:pointer;}
+.mmenu .active a span{	color:#FFFFFF; background:url(../images/mmenu_right.gif) no-repeat right top;  padding:6px 9px 6px 0 ; height:26px; }
+
+/* Main Menu END */
+
+#left .roundcontent {padding:8px}
+#left .roundcontent h1,
+#left .roundcontent h1 a,
+.pagecontent .roundcontent2 h1,
+.pagecontent .roundcontent2 h1 a {font-size:13px; color:#5f5148; margin:0 0 0px 0; padding:0; text-decoration:none; }
+#left .roundcontent h1 a:hover,
+#left .roundcontent h2 a:hover {color:#FF9C30}
+#left .roundcontent p {color:#5f5e5e; margin:0px 0 5px 0; padding:0; line-height:15px}
+#left .roundcontent hr { height:1px; border:0px; margin:6px 0; background:#d7d6d1; color:#d7d6d1; padding:0; clear:left}
+#left .roundcontent .csimg {margin:0 6px 4px 0}
+#left .roundcontent .cstell {padding-left:15px; line-height:20px; color:#838282;background:url(../images/ico-phone.gif) no-repeat left;}
+#left .roundcontent .newslsend {background:url(../images/bgr-newsletter.gif) no-repeat; padding:4px 10px}
+#left .roundcontent .newslsend .inpFld {font-size:10px; width:120px}
+.newzletter {padding-top:5px !important;}
+#left .roundcontent .btnOK {background:url(../images/btn-ok.gif) no-repeat; height:20px; width:40px}
+#infos {   font-size:11px; margin: 0 0 0 10px !important; padding:0 !important;  }
+#infos img {vertical-align:middle; padding:0; margin:0; height:16px !important  }
+
+.loginarea .inpfld {width:85px; font-size:10px}
+.loginarea a{font-size:10px; color:#006bbf}
+.loginarea a:hover {text-decoration:none}
+.loginarea h1 {padding-bottom:10px }
+.loginarea .btnSubmitLeft {background:url(../images/btn-submit.gif) no-repeat 3px ; border:0; width:80px; height:19px; margin:3px 0 3px -3px; font-weight:bold; color:white;   }
+
+.pagecontent .roundcontent {padding:10px;}
+
+
+.fpcalenar {background:url(../images/bgr-cal.gif) no-repeat; width:300px; height:28px; margin:2px 0; padding:6px 10px 5px 10px; float:left}
+.fpcalenar * {float:left}
+.fpcalenar .inpfld {font-size:10px; width:90px}
+.fpcalenar  img {margin:0 3px}
+.fpcalenar span{line-height:16px; padding:0 0 0 3px ; font-weight:bold; font-size:10px; margin:0}
+
+.btnSearch {background:url(../images/btn-search.gif) no-repeat; height:22px; width:72px; color:white; font-size:10px; font-weight:bold; border:0; float:left; margin-top:5px; cursor:pointer}
+
+.pagecontent .roundcontent2 {padding:8px}
+.pagecontent .roundcontent2 h1 {border-bottom:1px dotted #c4c3c8; padding-bottom:3px; color:#826541}
+.hsearch .roundcontent2 {width:400px}
+.hsearch .roundcontent2 p,
+.listing_heading p {margin:0; padding:0}
+.viewall {color:#0286ce; text-decoration:underline; padding-left:16px; background:url(../images/ico-arrow.gif) no-repeat 0px 3px }
+.viewall:hover {text-decoration:none}
+
+/* Special Offers Front page BEGIN */
+.spoffers .offerz {background:#f3f3f3; padding:5px 7px;}
+.spoffers .offerz strong {color:#db1703}
+
+.offerz { padding:5px 0px; margin-bottom:5px}
+.offerz img,
+.listing_hotel img {float:left; margin-right:10px; background:white; border:1px solid #ccc; padding:1px }
+.offerz img:hover,
+.listing_hotel img:hover,
+.detail_pix .more_pix a:hover img  {border:1px solid #999999;}
+.offerz a {color:#0286ce; font-weight:bold; text-decoration:none}
+.offerz a:hover {text-decoration:underline}
+.offerz p {margin:0; padding:0 0 2px 0; font-size:10px;}
+.offerz strong {color:#5f5148}
+.offerz strong span {font-weight:normal; font-size:10px }
+
+/* END of home page stuff */
+
+/* INNER CONTENTS */
+
+.innercontent { background:white; padding:10px 7px}
+
+/* Breadcrumps - path */
+.pathz {color:#058af3; border-bottom:1px dotted #d2d1d1;  font-weight:bold; padding-bottom:4px }
+.pathz a {font-weight:normal;color:#058af3; text-decoration:none}
+.pathz a:hover {text-decoration:underline}
+
+.listing_heading {margin:5px 0 10px 0}
+.listing_heading h3 {font-size:16px; color:#5f5e5e; margin:0; padding:0}
+.listing_hotel {border-top:1px dotted #48413b; padding:12px 0 20px 0; }
+.listing_hotel img {margin-bottom:10px}
+.listing_hotel .name {color:#5f5148}
+.listing_hotel .name a {color:#058af3;}
+.listing_hotel .name,
+.listing_hotel .name a  { font-size:13px; text-decoration:none; font-weight:bold; margin:0 0 4px 0; padding:0}
+.listing_hotel .name a:hover {text-decoration:underline}
+.listing_hotel ul {margin:4px 155px 4px 145px; padding:4px; border:1px solid #e5e4d9;}
+.details_heading ul { padding:4px; border:1px solid #e5e4d9; float:left; margin:0 0 10px 0; }
+.listing_hotel li,
+.details_heading li {display:inline; padding-right:10px;  }
+.listing_hotel .desc {margin:0 0 4px 0; padding:0; line-height:14px; }
+
+.listing_price {float:right; width:145px; border-left:1px dotted #d2d1d1; text-align:center; min-height:100px; margin-left:10px; color:#919292}
+.listing_price b {font-size:16px; color:#5f5148}
+
+
+
+.btnResList {background:url(../images/btn_reserve_listing.gif) no-repeat 3px ; border:0; width:127px; height:27px; margin:3px 0 3px 0px; font-weight:bold; color:white; cursor:pointer }
+
+
+.details_heading {margin-bottom:7px}
+.details_heading h3 {margin:0; padding:0; line-height:30px; font-size:16px}
+.details_heading h3 span {font-size:11px; font-weight:normal; }
+.detail_pix {padding-bottom:10px}
+.detail_pix img,
+.detail_pix .more_pix img {background:white; border:1px solid #ccc; padding:1px}
+.detail_pix .more_pix a {display:block; float:left; margin-left:3px}
+.pix_paging {border:1px solid #e7e6db; padding:2px; text-align:center; color:#949493; margin:10px 0 0 3px; float: left; width:97%}
+.pix_paging a {color:#949493; text-decoration:none; font-weight:bold; padding:0 4px}
+.pix_paging a:hover {color:#FF9C30}
+
+.details_desc,
+.details_desc1  {border:1px solid #e8e7dd; margin-bottom:7px}
+.details_desc h5,
+.details_desc1 h5,
+.other_hotels h1 {color:#5f5148; background:#e8e7dd; line-height:27px; border-bottom:1px solid #e8e7dd; margin:0; padding:0 0 0 7px; font-size:13px }
+.details_desc .att,
+.details_desc1 .att {font-size:11px; color:#de0303; font-weight:normal; padding-left:10px}
+.details_desc p,
+.details_desc1 p {margin:7px; padding:0; line-height:15px}
+.details_desc ul  {margin:5px 0 5px 15px; padding:5px}
+.details_desc li {list-style-type:square; line-height:15px }
+
+.details_desc1 .rated td{padding:0 !important; margin:0 !important; font-size:11px}
+.details_desc1 .borderbottom {border-bottom:1px dotted #d2d1d1}
+.details_desc1 .borderright {border-right:1px dotted #d2d1d1}
+.details_desc1 .desc1_link {font-size:11px; color:#0286CE }
+.details_desc1 .desc1_link:hover {text-decoration:none}
+
+.heading_oh {margin:7px 0}
+
+.other_hotels {border:1px solid #e8e7dd; margin-bottom:7px}
+.other_hotels .listing_hotel {margin:0 20px !important}
+
+.starz td {text-align:center; padding:7px 0;  font-size:12px;}
+.starz p { }
+
+
+/* BOTTOM PART */
+.bottommenu {background:url(../images/bgr-bottommenu.gif) repeat-x top;text-align:center; padding-top:7px; margin-top:5px}
+.bottommenu a {color:#5f5148; text-decoration:none; padding:0 5px  }
+.bottommenu a:hover {text-decoration:underline}
+
+.metatagz {width:756px; float:right; color:#dcd7c4; margin-top:5px; text-align:justify}
+
+
+div.dist {  height: 2px;  font-size: 1px;  clear: both;  visibility: hidden;}
+.nohgh {height: 0;	font-size: 1px;	line-height: 0;	visibility: hidden;}
+.clear { clear: both }
+.rel {position:relative}
+.pad10 {padding:10px}
+.pad3 {padding:5px}
+.abs {position:absolute}
+.rel {position:relative}
+.fleft {float:left}
+.fright {float:right}
+.dnone {display:none}
+.mr10 {margin-right:10px}
+.ml10 {margin-left:5px}
+.error {color:red !important; }
+.halfp {width:49%}
+
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+.clearfix {height: 1%;}
+.clearfix {display: block;}

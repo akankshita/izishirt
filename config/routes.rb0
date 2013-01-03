@@ -1,0 +1,359 @@
+require 'lib/domain_routes.rb'
+ActionController::Routing::Routes.draw do |map|
+
+  #Routes for flex application
+  map.namespace(:create) do |create|
+    create.resources :designs
+    create.resources :models
+    create.resources :fonts
+    create.resources :flash_texts
+    create.resources :flash_configs
+    create.resources :categories
+  end
+  
+
+  map.feed "feed.:format", :controller => 'display', :action => 'rss_feeds'
+
+  #route for the contest
+
+#  map.connect "/contest", :controller=>"contest", :action=>"index", :lang=>lang_regexp
+
+  #map.connect "/contest", :controller=>"contest", :action=>"index", :lang=>lang_regexp
+
+
+#  map.connect 'contest/:controller/:action', :controller=>"contest/:controller"
+#  map.connect 'contest/:controller/:action/:id', :controller=>"contest/:controller"
+
+	############################################################################
+	# IZISHIRT STORE
+	#
+
+	# Main, french
+  map.connect "store", :controller=>"store"
+	map.connect "magasin", :controller=>"store"
+
+	# category
+	# en
+
+	map.connect ":category_id", :category_id => /store-([^\+\/])+/, :controller=>"store"
+
+	# fr
+
+	map.connect ":category_id", :category_id => /magasin-([^\+\/])+/, :controller=>"store"
+
+
+	# model
+	# http://www.izishirtdev.com/store-pinte/gildan-2200-tank-top-358
+
+	map.connect ":cat_name/:id", :cat_name => /store-([^\+\/])+/, :controller=>"store", :action => "details"
+
+	map.connect ":cat_name/:id", :cat_name => /magasin-([^\+\/])+/, :controller=>"store", :action => "details"
+
+
+	#
+	# IZISHIRT STORE 
+	############################################################################
+
+  #Design Description
+
+  map.connect '/display/design/:id', :controller => 'display', :action => 'design'
+
+
+  map.connect "/create/products/:id.:format", :controller => 'create/products', :action => 'show'
+  map.connect "/create/ordered_products/:id.:format", :controller => 'create/ordered_products', :action => 'show'
+
+
+  map.connect "blank-apparel/:id", :controller => "apparel", :action => "buy_blank", :id => /.+/
+  map.connect "vetements-unis/:id", :controller => "apparel", :action => "buy_blank", :id => /.+/
+
+
+  #promo
+  map.connect "/hec", :controller => "promo", :action => "hec"
+
+
+
+  map.connect "/blank-apparel", :controller => "apparel", :action => "new_blank"
+  map.connect "/vetements-unis", :controller => "apparel", :action => "new_blank"
+
+  map.connect "/t-shirt-serigraphie", :controller => "bulk_orders", :action => "index"
+  map.connect "/large-t-shirt-order", :controller => "bulk_orders", :action => "index"
+
+  map.connect "/impression-serigraphie", :controller => "bulk_orders", :action => "screen_printing"
+  map.connect "/t-shirt-screen-printing", :controller => "bulk_orders", :action => "screen_printing"
+
+  map.connect ":blank:search", :blank=>/blank\+/, :search=>/.+/, :controller=>:apparel, :action=>:new_blank
+  map.connect ":blank:search", :blank=>/apparel\+/, :search => /.+/, :controller=>:apparel, :action=>:new_search
+
+  map.connect ":blank:search", :blank=>/vetements\+/, :search=>/.+/, :controller=>:apparel, :action=>:new_blank
+  map.connect ":blank:search", :blank=>/habits\+/, :search => /.+/, :controller=>:apparel, :action=>:new_search
+
+  
+
+  
+  map.connect "/bulk-create-t-shirts", :controller=>:display, :action=>:bulk_create_tshirts
+  map.connect "/t-shirts-personnalises-en-gros", :controller=>:display, :action=>:bulk_create_tshirts
+
+  map.connect "/create-custom-skins", :controller => "display", :action=>"custom_case"
+  map.connect "/creer-skins-personnalises", :controller => "display", :action=>"custom_case"
+
+  map.connect "/create-custom-skins/:image", :controller => 'display', :action => 'custom_case'
+  map.connect "/creer-skins-personnalises/:image", :controller => 'display', :action => 'custom_case'
+
+  ['display/create_tshirt', 'create-custom-t-shirt', 'create-custom-t-shirt', 't-shirt-personalise', 'impression-t-shirt-personnalise'].each do |create_link|
+    map.connect "#{create_link}/:image", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/image/:image", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/model/:model", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/model_category/:model_category", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/model/:model/model_category/:model_category", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/model/:model/model_category/:model_category/color/:color", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/model/:model/model_category/:model_category/color/:color/category/:category", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/model/:model/color/:color", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/model/:model/color/:color/category/:category", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/color/:color", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/tab/:tab", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/category/:category", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/ordered_product/:ordered_product", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/product/:product", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/produit/:product", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/image/:image/model/:model/color/:color", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/image/:image/model/:model/color/:color/tab/:tab", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/image/:image/model/:model/color/:color/category/:category", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/image/:image/model/:model/color/:color/category/:category/tab/:tab", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/image/:image/model/:model/model_category/:model_category/color/:color", :controller => 'display', :action => 'create_tshirt'
+    map.connect "#{create_link}/image/:image/model/:model/model_category/:model_category/color/:color/category/:category", :controller => 'display', :action => 'create_tshirt'
+  end
+
+
+  map.connect "display/flash_test/:image", :controller => 'display', :action => 'flash_test'
+  map.connect "display/flash_test/image/:image", :controller => 'display', :action => 'flash_test'
+    
+  # The priority is based upon order of creation: first created -> highest priority.
+  
+
+  
+  # Sample of regular route:
+  # map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+  # Keep in mind you can assign values other than :controller and :action
+
+  # Sample of named route:
+  # map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
+  # This route can be invoked with purchase_url(:id => product.id)
+
+  #map.boutique '', :controller => 'my', :action => 'index'
+  map.namespace(:admin) do |admin|
+    admin.resources :referers
+  end 
+
+  # NEW BOUTIQUE SEO
+  map.connect 't-shirt/:id', :controller => 'my', :action => 'product'
+
+  map.connect 't-shirt-category/:category', :controller => 'my', :action => 'boutique'
+
+  map.connect 'make-custom-t-shirt', :controller => 'my', :action => 'flash_shop'
+
+  map.connect 'impression-t-shirt-personnalise2', :controller => 'my', :action => 'flash_shop'
+
+  map.connect 'make-custom-t-shirt/:id', :controller => 'my', :action => 'flash_shop'
+
+  map.connect 'impression-t-shirt-personnalise2/:id', :controller => 'my', :action => 'flash_shop'
+
+  map.connect 'shop-t-shirt-tags/:id', :controller => 'my', :action => 'tshirt_tag'
+
+  map.connect 'shop-t-shirt-design-tags/:id', :controller => 'my', :action => 'designs_tag'
+
+
+  map.connect 'custom-t-shirt-design/:parent_category/:sub_category', :controller => 'display', :action => 'category'
+  map.connect 'custom-t-shirt-design/:parent_category', :controller => 'display', :action => 'category'
+
+  map.connect 't-shirt-design/:parent_category/:sub_category', :controller => 'display', :action => 'category'
+  map.connect 't-shirt-design/:parent_category', :controller => 'display', :action => 'category'
+
+
+  map.connect 't-shirt-design-tags/:id', :controller => 'display', :action => 'result_tag'
+
+  map.connect 'custom-t-shirt-design-tags/:id', :controller => 'display', :action => 'result_tag'
+
+  map.connect 't-shirt-design-tag/:id', :controller => 'display', :action => 'old_result_tag'
+
+  map.connect 'custom-t-shirt-design-tag/:id', :controller => 'display', :action => 'old_result_tag'
+
+  # END TAG FORMAT
+
+  # /Izishirt2.swf?version=6.5.3 -> /bin/...
+  # 
+  # map.connect ':lang/Izishirt2.swf?version=:flash_version', "/bin/Izishirt2.swf"
+
+  # NEW PRODUCT TAG FORMAT
+  # new
+
+  map.connect 't-shirt-tags/:filter_by/:tag', :controller => 'display', :action => 'marketplace'
+
+  map.connect 'custom-t-shirt-tags/:filter_by/:tag', :controller => 'display', :action => 'marketplace'
+
+  map.connect 't-shirt-tag/:filter_by/:tag', :controller => 'display', :action => 'old_marketplace'
+
+  map.connect 'custom-t-shirt-tag/:filter_by/:tag', :controller => 'display', :action => 'old_marketplace'
+
+  map.connect 't-shirt-tag/:tag', :controller => 'display', :action => 'old_marketplace'
+
+  map.connect 'custom-t-shirt-tag/:tag', :controller => 'display', :action => 'old_marketplace'
+  # END TAG FORMAT
+
+  # CMS LANDING PAGE
+  map.connect 't-shirts/:id', :controller => 'display', :action => 'cms_landing_page'
+  map.connect 't-shirts/:id', :controller => 'display', :action => 'cms_landing_page'
+  # END CMS LANDING PAGE
+
+  # marketplace
+
+  # /t-shirt-j-aime-quebec-marketplace-27886
+
+  map.connect 't-shirt-design-marketplace/:filter_by/:design_id', :controller => 'display', :action => 'marketplace'
+
+  map.connect 't-shirt-designer-marketplace/:filter_by/:designer_id', :controller => 'display', :action => 'marketplace'
+
+  map.connect 't-shirt-marketplace', :controller => 'display', :action => 'marketplace'
+
+  map.connect 't-shirt-marketplace/:filter_by', :controller => 'display', :action => 'marketplace'
+
+  map.connect 't-shirt-marketplace/:filter_by/:parent_category', :controller => 'display', :action => 'marketplace'
+
+  map.connect 't-shirt-marketplace/:filter_by/:parent_category/:sub_category', :controller => 'display', :action => 'marketplace'
+
+  map.connect 't-shirt-marketplace/:filter_by/:parent_category/:sub_category', :controller => 'display', :action => 'marketplace'
+
+  map.connect ':marketplace_category-marketplace/:product', :controller => 'display', :action => 'marketplace_shop'
+
+  map.connect 'myaccount', :controller => "/myaccount/profile", :action => 'index'
+  
+  map.connect 'staff-picks-designs', :controller => 'display', :action => "staff_pick"
+  map.connect 'designs-choix-de-lequipe', :controller => "display", :action  => 'staff_pick'
+
+  
+  map.connect 'new-t-shirt-design', :controller => 'display', :action => "new"
+  map.connect 'design-t-shirt', :controller => 'display', :action => "new"
+  map.connect 'nouveaux-designs', :controller => 'display', :action => "new"
+
+  map.connect 'custom-t-shirt-design-details/:id', :controller => '/display', :action => 'design'
+  map.connect 'design-t-shirt/:id', :controller => '/display', :action => 'design'
+
+  
+  
+  
+
+
+  #Other routes
+  
+
+  map.login 'login', :controller => 'myizishirt/login'
+  #sitemap
+  map.connect '/sitemap.xml', :controller=>'display', :action=>'sitemap'
+
+  # You can have the root of your site routed by hooking up '' 
+  # -- just remember to delete public/index.html.
+  map.connect '', :controller => 'display', :action => 'izishirt_2011'
+  map.connect 'admin', :controller => 'display', :action => 'izishirt_2011'
+  map.connect 'admin01', :controller => "Admin/Home"
+  map.connect 'production', :controller => '/production/home', :action => 'index'  
+  map.connect 'myizishirt', :controller => "/myizishirt/profile", :action => 'control_panel'
+  
+  map.connect 'admin/homepage', :controller=>'admin/homepage', :action=>'banners'
+  
+  map.connect 'create-custom-t-shirt/:id', :controller => '/display', :action => 'create_tshirt'
+  map.connect 'impression-t-shirt-personnalise/', :controller => '/display', :action => 'create_tshirt'
+  map.connect 'impression-t-shirt-personnalise/:id', :controller => '/display', :action => 'create_tshirt'
+  map.connect '/myizishirt/editstore', :controller => '/myizishirt/customize_boutique'
+  map.connect 'admin/category/new/:id/:parent_category', :controller => "admin/category", :action => 'new'
+  map.connect 'admin/category/edit/:id/:parent_category', :controller => "admin/category", :action => 'edit'
+  map.connect 'admin/category/create/:id/:parent_category', :controller => "admin/category", :action => 'create'
+  map.connect 'admin/order/update_tracking/:id/:track', :controller => "admin/order", :action => 'update_tracking'
+  map.connect 'admin/order/update_listing/:id/:track/:paid_amount/:paid', :controller => "admin/order", :action => 'update_listing'
+  map.connect 'admin/ordered_garments/list/:printer/:id', :controller => "admin/ordered_garments", :action => 'list'
+  map.connect 'admin/order/list/:id/:printer', :controller => "admin/order", :action => 'list'
+  map.connect 'production/order/update_tracking/:id/:track', :controller => "production/order", :action => 'update_tracking'
+  map.connect 'admin/top_design/edit/:country/:lang', :controller => 'admin/top_design', :action => 'edit'
+  map.connect 'admin/top_design/replace/:top_design/:image', :controller => 'admin/top_design', :action => 'replace'
+
+  map.connect 'admin/image_bank/banner', :controller => 'admin/banner_bank', :action => 'list'
+  map.connect 'admin/image_bank/frame', :controller => 'admin/frame_bank', :action => 'list'
+  map.connect 'admin/image_bank/pattern', :controller => 'admin/pattern_bank', :action => 'list'
+  map.connect 'admin/image_bank/menu', :controller => 'admin/menu_bank', :action => 'list'
+
+  map.resources :facebooks
+  map.connect 'facebook/callback/boutique', :controller => 'facebook', :action => 'boutique'
+  map.connect 'facebook/callback/create', :controller => 'facebook', :action => 'create'
+  map.connect 'facebook/callback/designs', :controller => 'facebook', :action => 'designs'
+  map.connect 'facebook/callback/profile', :controller => 'facebook', :action => 'profile'
+  map.connect 'facebook/callback/settings', :controller => 'facebook', :action => 'settings'
+  map.connect 'facebook/callback/settings/:id', :controller => 'facebook', :action => 'settings'
+  map.connect 'facebook/callback/save_settings', :controller => 'facebook', :action => 'save_settings'
+  map.connect 'facebook/callback/reset', :controller => 'facebook', :action => 'reset'
+  map.connect 'facebook/callback/reset/:id', :controller => 'facebook', :action => 'reset'
+  map.connect 'facebook/callback/help', :controller => 'facebook', :action => 'help'
+  map.connect 'facebook/callback/login', :controller => 'facebook', :action => 'login'
+  map.connect 'facebook/callback/invite', :controller => 'facebook', :action => 'invite'
+  
+  map.connect 'checkout/:action/:section/:store', :controller => 'checkout'
+  map.connect 'display/update_price/:model/:size', :controller => 'display', :action => 'update_price'
+  map.connect 'display/update_price_shop2/:product/:size', :controller => 'display', :action => 'update_price_shop2'
+
+  # OLD category version map.connect 'display/categorie/:id', :controller => 'display', :action => 'category'
+
+  # Allow parent and sub categories.
+  map.connect 'display/categorie/:parent_category/:sub_category', :controller => 'display', :action => 'category'
+  map.connect 'display/categorie/:parent_category', :controller => 'display', :action => 'category'
+  map.connect 'display/category/:parent_category/:sub_category', :controller => 'display', :action => 'category'
+  map.connect 'display/category/:parent_category', :controller => 'display', :action => 'category'
+
+  map.connect 'my/update_price/:product/:size', :controller => 'my', :action => 'update_price'
+  map.connect 'unsubscribe', :controller => '/myizishirt/profile', :action => 'unsubscribe'
+  map.connect 'apparel/:section/list/:id', :controller => 'apparel', :action => 'list'
+  map.connect 'apparel/:section/show/:id', :controller => 'apparel', :action => 'show'
+  map.connect 'apparel/:section/search', :controller => 'apparel', :action => 'search'
+  
+  map.connect 'local/custom-t-shirt-printing', :controller => 'local', :action => 'canada_custom_t_shirt_printing'
+  map.connect 'local/custom-t-shirt-printing/all_cities', :controller => 'local', :action => 'all_cities'
+
+  map.connect 'izishirt_flash/:lang/:action/:id', :controller => 'izishirt_flash'
+    
+  map.connect '/local/:city_url', :controller => 'local', :action => 'index', :city_url => ':city_url'
+  
+  # Allow downloading Web Service WSDL as a file with an extension
+  # instead of a file named 'wsdl'
+  map.connect ':controller/service.wsdl', :action => 'wsdl'
+
+  #map.connect 'robots.txt', :controller => "display", :action => 'robots', :force_lang => "en"
+
+  # Blog
+  #map.connect 'myizishirt/blog/_actions/:action/:id', :controller => 'myizishirt/blog'
+  #map.connect 'myizishirt/blog/:id', :controller => 'myizishirt/blog', :action => 'list'
+  
+  # Search
+  map.connect 'display/search', :controller => 'display', :action => 'search'
+  
+  # Misc URLs
+  #map.connect 'boutique', :controller => 'display', :action => 'shop'
+
+  # Install the default route as the lowest priority.
+  map.connect ':controller/:action/:id/:order/:way'
+  map.connect ':controller/:action/:id/:order'
+  map.connect ':controller/:action/:id.:format'
+  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action.:format'
+
+  # Install the default route as the lowest priority.
+  map.connect 'fr/:controller/:action/:id/:order/:way'
+  map.connect 'fr/:controller/:action/:id/:order'
+  map.connect 'fr/:controller/:action/:id.:format'
+  map.connect 'fr/:controller/:action/:id'
+  map.connect 'fr/:controller/:action.:format'
+
+  map.connect 'myaccount/:controller/:action'
+  
+  #erreur(s)
+  map.connect '*erreur', :controller=>"erreur404", :action=>'index'
+
+
+
+
+end

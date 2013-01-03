@@ -1,0 +1,108 @@
+<p><%= error_messages_for 'content' %></p>
+<%= stylesheet_link_tag 'ckeditor_sample' %>
+
+<div id="alerts">
+        <noscript>
+                <p>
+                        <strong>CKEditor requires JavaScript to run</strong>. In a browser with no JavaScript
+                        support, like yours, you should still see the contents (HTML data) and you should
+                        be able to edit it normally, without a rich editor interface.
+                </p>
+        </noscript>
+</div>
+
+
+
+<!--[form:content]-->
+<div class="titleForm"><label for="content_name"><%= t(:admin_content_edit_contentname) %></label></div>
+<div class="boxForm"><%= text_field 'content', 'name', :class=>'box' %></div>
+
+<div class="titleForm"><label for="content_name">Redirect To</label></div>
+<div class="boxForm"><%= text_field 'content', 'redirect_to', :class=>'box' %></div>
+
+<div class="titleForm"><label for="user_level_id"><%= t(:admin_content_edit_contentlevel) %></label></div>
+<div class="boxForm"><%= select 'content', 'user_level_id', @levels, {}, :class=>'box'  %></div>
+
+<div class="titleForm"><label for="content_created_on"><%= t(:admin_content_edit_contentcreatedon) %></label></div>
+<div class="boxForm"><%= datetime_select 'content', 'created_on' %></div>
+
+<div class="titleForm"><label for="content_last_modified_on"><%= t(:admin_content_edit_contentlastmodif) %></label></div>
+<div class="boxForm"><%= datetime_select 'content', 'last_modified_on'  %></div>
+
+<div class="titleForm"><label for="content_last_modified_on"><%= t(:admin_content_is_landing_page) %></label></div>
+<div class="boxForm"><%=check_box "content", "is_landing_page", {}, true, false %></div>
+
+<div class="dist"></div>
+<div>
+<ul class="admintabs" style="display:block;"><%= display_localization_tabs(@content.localized_contents) %></ul>
+<% i=0; for lc in @content.localized_contents %>
+<% i += 1 %>
+  <div id="div_localized_<%= lc.language.id %>" class="localized_tab_content clearfix" style="display:<%= (i==1) ? 'block' : 'none' %>;">
+    <div class="titleForm"><label for="localized_title_<%= lc.language.id%>"><%= t(:admin_content_edit_contenttitle) %></label></div>
+    <div class="boxForm"><input class="box" type="text" id="localized_title_<%= lc.language.id%>" name="localized_title_<%= lc.language.id%>" value="<%=lc.title %>" /></div>
+
+    <div class="titleForm"><label for="localized_url_<%= lc.language.id%>"><%= t(:admin_content_edit_contenturl) %></label></div>
+    <div class="boxForm"><input class="box" type="text" id="localized_url_<%= lc.language.id%>" name="localized_url_<%= lc.language.id%>" value="<%=lc.url %>" /></div>
+
+    <div class="titleForm"><label for="meta_keywords_<%= lc.language.id%>"><%= t(:admin_content_edit_contentmetakeywords) %></label></div>
+    <div class="boxForm"><input class="box" type="text" id="localized_meta_keywords_<%= lc.language.id%>" name="localized_meta_keywords_<%= lc.language.id%>" value="<%=lc.meta_keywords %>" /></div>
+
+    <div class="titleForm"><label for="meta_description_<%= lc.language.id%>"><%= t(:admin_content_edit_contentmetadescription) %></label></div>
+    <div class="boxForm"><input class="box" type="text" id="localized_meta_description_<%= lc.language.id%>" name="localized_meta_description_<%= lc.language.id%>" value="<%=lc.meta_description %>" /></div>
+
+    <div class="titleForm"><label for="meta_title_<%= lc.language.id%>"><%= t(:admin_content_edit_contentmetatitle) %></label></div>
+    <div class="boxForm"><input class="box" type="text" id="localized_meta_title_<%= lc.language.id%>" name="localized_meta_title_<%= lc.language.id%>" value="<%=lc.meta_title %>" /></div>
+
+    <div class="titleForm"><label for="localized_content_<%= lc.language.id%>"><%= t(:admin_content_edit_contentcontent) %></label></div>
+    <div class="boxForm">
+      <textarea style="width:500px;height:600px;" cols="150" rows="10" name="localized_content_<%= lc.language.id%>" id="localized_content_<%= lc.language.id%>">
+        <% if ! lc.value || lc.value == "" %>
+
+        <%
+        default_create_link = create_tshirt_url(lc.language.id == 1 ? "fr" : "us", lc.language.id)
+        %>
+
+          <p style="padding-left: 0px; padding-right: 0px; margin-top: 0px; margin-bottom: 0px;">
+	<a href="<%= default_create_link %>" title="Screen Printing"> <img alt="Screen Printing" src="/images/izishirt2011/en/banner-screen.jpg?1271941700" /> </a>
+        </p>
+<p class="title_14">
+	<b>PARAPGRAPH 1 TITLE</b></p>
+<p>
+	bla bla paragraph 1 content.</p>
+<p class="title_14">
+	<b>PARAGRAPH 2</b></p>
+<p>
+	bla bla bla bla paragraph 2 content...</p>
+<p class="green_16_title">
+	<a class="green_16_title" href="<%= default_create_link %>" title="Create your custom printed T-Shirt now! &gt;">LINK CREATE T-SHIRT &gt;</a></p>
+<ul>
+	<li>
+		item 1</li>
+	<li>
+		item 2</li>
+</ul>
+        <% else %>
+          <%= lc.value %>
+        <% end %>
+      </textarea>
+
+      <script type="text/javascript">
+      //<![CDATA[
+
+              CKEDITOR.replace( 'localized_content_<%= lc.language.id%>',
+                      {
+                              skin : 'office2003'
+                      });
+
+      //]]>
+      </script>
+    </div>
+
+    <div class="titleForm"><label for="localized_content_<%= lc.language.id%>"><%= t(:admin_content_edit_contentleftcol) %></label></div>
+    <div class="boxForm"><textarea style="width:500px;height:600px;"  name="localized_left_column_<%= lc.language.id%>" id="localized_left_column_<%= lc.language.id%>"><%= lc.left_column %></textarea></div>
+  
+  </div>
+<% end %>
+<!--[eoform:content]-->
+
+</div>

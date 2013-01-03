@@ -1,0 +1,142 @@
+body  {background: url(/images/corpblog/theme4/bgr.gif) ; }
+
+body {	font-size:11px; font-family:Tahoma, Arial, Helvetica, sans-serif; color:#686868; margin: 10px 0 0 0;}
+#holder {background: url(/images/corpblog/theme4/bgr-holder.gif) ;  }
+* html #holder {border:1px solid #4F5E31}
+
+.top {background: url(/images/corpblog/theme4/bgr-top.gif) repeat-x;}
+.header { height:102px; background: url(/images/corpblog/theme4/header.jpg) no-repeat; border:1px solid #666666 }
+.header span {position:absolute; top:10px; right:14px; font-size:14px;  color:#202020; width:400px; text-align:right; font-family:Georgia; font-weight:normal}
+.header span b {display:block; font-size:26px; font-weight:normal}
+
+.breadcrumb { color:#2b2b2b;  }
+.breadcrumb a {text-decoration:none; color:#5B5B5B;  }
+.breadcrumb a:hover {text-decoration:none; color:white; background:#5B5B5B}
+
+.lmodule .r4tl,
+.lmodule .r4tr,
+.cmodule .r4tl,
+.cmodule .r4tr {display:none}
+
+/*  Left part */
+
+#left .userinfo,
+.cmodule .content,
+.lmodule { }
+/* background:#eeebdc;  */
+#left .userinfo {}
+#left .userinfo a:hover {text-decoration:underline}
+
+
+#left .userinfo img,
+.featprod .bigimg,
+.content .oprod img {border:3px double #c7c6bd}
+
+.lmodule {  color:#2b2b2b}
+#left .userinfo .content,
+.lmodule .content {background: url(/images/corpblog/theme4/bgr-lm-content.gif); border:1px solid #a99976 }
+
+.lmodule h1 span{background: url(/images/corpblog/theme4/bgr-left-header.gif) repeat-x; font-size:10px; color:#2b2b2b; line-height:23px; margin:0 3px;  padding-left:6px; height:23px }
+.lmodule .rLeft,
+.lmodule .rRight { height:23px; width:5px} 
+.lmodule .rLeft {background: url(/images/corpblog/theme4/lm-h1-left.png) no-repeat; }
+.lmodule .rRight {background: url(/images/corpblog/theme4/lm-h1-right.png) no-repeat;}
+
+#left .userinfo .name,
+#left .userinfo a,
+#left .categories a, 
+.lmodule .myblog a,
+.lmodule .mylinks a,
+#footer a{ color:#2b2b2b;}
+
+.lmodule .flickr a {border:1px solid #7a7a7a; margin-right:4px; display:block; float:left}
+.lmodule .flickr a:hover {border:1px solid #000}
+
+.lmodule .stats .pageview {margin:0 0 10px 0; padding:0 0 8px 18px; background:url(/images/corpblog/ico-pageview.gif) no-repeat;  border-bottom:1px dotted #7e7460}
+.lmodule .stats strong {font-size:10px}
+.lmodule .stats .rank {margin:3px 0 0 0; padding:0 0 0 20px; background:url(/images/corpblog/ico-medal.png) no-repeat; line-height:20px; font-weight:bold }
+
+
+/*  Main menu */
+.mainmenu * {float:left; height:28px; display:block; }
+.mainmenu .rLeft,
+.mainmenu .rRight {width:6px; }
+.mainmenu .rLeft {background: url(/images/corpblog/theme4/mm_left.png) no-repeat; }
+.mainmenu .rRight {background: url(/images/corpblog/theme4/mm_right.png) no-repeat; }
+.mainmenu span {background: url(/images/corpblog/theme4/mm_bgr.gif) repeat-x; color:white;  cursor:pointer; width:203px }
+.mainmenu a:hover span {background: url(/images/corpblog/theme4/mm_bgr_ovr.gif) no-repeat }
+.mainmenu a {font-weight:bold; line-height:28px; text-decoration:none; font-size:12px; text-align:center;  }
+.mainmenu #middle {margin:0 6px}
+
+/*  CENTER part */
+
+/* center module header */
+.cmodule .heading {height:34px;}
+.cmodule .heading .rLeft,
+.cmodule .heading .rRight {width:5px; height:34px }
+.cmodule .rLeft {background: url(/images/corpblog/theme4/cm_left.png) no-repeat; }
+.cmodule .rRight {background: url(/images/corpblog/theme4/cm_right.png) no-repeat; }
+.cmodule .heading span {background: url(/images/corpblog/theme4/cm_bgr.gif) repeat-x; color:white;  line-height:34px; font-weight:bold; font-size:13px; margin:0 5px}
+
+
+.cmodule .content {background: transparent url(/images/corpblog/theme4/cm_content_bgr.gif); border:1px solid #9d8b64; color:#2B2B2B}
+
+/* center moduls CONTENT*/
+
+.featprod .content h1,
+.featprod .content h2 {font-family:Georgia; font-weight:normal; color:#5b5b5b }
+.featprod .content h1 {font-size:26px}
+.featprod .content h2 {font-size:14px}
+
+.variation a { color:#6b6b6b; }
+.variation a img { border:1px solid #c7c6bd; }
+.variation a:hover img{border:1px solid #999999}
+
+.sizez .even {background:#e0e0e0}
+.sizez .price b,
+.content .oprod b  {color:#c10909}
+
+.btn {width:164px; float:right; }
+.btn a {position:relative; height:21px; cursor:pointer; display:block; text-decoration:none}
+.btn .rLeft,
+.btn .rRight {width:4px; height:21px; top:0; position:absolute}
+.btn .rLeft {background:url(/images/corpblog/theme4/btn-left.png); left:0}
+.btn .rRight {background:url(/images/corpblog/theme4/btn-right.png); right:0; position:absolute}
+.btn span {background:url(/images/corpblog/theme4/btn-bgr.gif); margin:0 4px; display:block; height:21px; line-height:21px; color:white; text-decoration:none; text-align:center; font-weight:bold}
+
+.btn .ovr .rLeft {background:url(/images/corpblog/theme4/btn-left-ovr.png); left:0}
+.btn .ovr .rRight {background:url(/images/corpblog/theme4/btn-right-ovr.png); right:0; position:absolute}
+.btn .ovr span {background:url(/images/corpblog/theme4/btn-bgr-ovr.gif);}
+
+.paging {}
+.paging a {border:1px solid #D2BB87; background: url(/images/corpblog/theme4/mm_bgr.gif) repeat-x bottom; color:white;  }
+.paging a:hover {background:url(/images/corpblog/theme4/btn-bgr-ovr.gif) bottom;color:white}
+
+#footer {background: url(/images/corpblog/theme4/bgr-footer.gif) top repeat-x; } 
+#footer .content {border:1px solid #9d8b64  } 
+
+.popup h5 {padding:5px; color:#546434 }
+.popup a,
+.ok_button {color:white;border:1px double #ccc; background: url(/images/corpblog/theme4/mm_bgr.gif) repeat-x; }
+.popup a:hover,
+.ok_button:hover {background: url(/images/corpblog/theme4/mm_bgr_ovr.gif) repeat-x;}
+
+/* IE6 FIXEZZZZZ */
+
+* html .lmodule .rLeft{ left:-3px  }
+
+* html .btn .rLeft,
+* html .btn .rRight {background-image :none !important}
+* html .btn .rLeft { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/theme4/btn-left.png');   }
+* html .btn .rRight { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/theme4/btn-right.png'); }
+* html .btn .ovr .rLeft { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/theme4/btn-left-ovr.png');   }
+* html .btn .ovr .rRight { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/theme4/btn-right-ovr.png'); }
+
+* html .lmodule .stats .rank  {background-image: none !important; padding:0}
+* html .lmodule .stats .rank em {filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/ico-medal.png'); width:20px; height:20px; float:left; }
+
+* html .mainmenu .rLeft { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/theme4/mm_left.png'); }
+* html .mainmenu .rRight { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/theme4/mm_right.png'); }
+
+* html .heading .rLeft { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/theme4/cm_left.png'); }
+* html .heading .rRight { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/corpblog/theme4/cm_right.png'); }

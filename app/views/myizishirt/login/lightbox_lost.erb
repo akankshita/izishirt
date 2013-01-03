@@ -1,0 +1,41 @@
+<div id="lightbox_lostpass">
+  <% form_remote_tag :update => 'message',
+    :url => {:controller =>'/myizishirt/login', :action => 'lostpass_submit'}, :loading=>"$('lostpass_spinner').show()",:success=>"$('lostpass_spinner').hide()",
+    :html => {:id => 'lost_form'} do %>
+
+    <p class="title14"><%=t(:password_recovery)%></p>
+
+
+
+    <div>
+      <p><%= t(:display_home_login_text) %></p>
+      <div class="clearfix"></div>
+    </div>
+
+    <div id="message">
+
+    </div>
+    <div id="email_zone">
+      <label><%= t(:email) %>:</label>
+      <%= text_field_tag :email, params[:email] %>
+                    <span id="lostpass_spinner" style="display:none;">
+                <%= image_tag "izishirt2011/loading.gif", :height=>16, :width=>16 %>
+              </span>
+    </div>
+
+    <div>
+      <div id="lost_password_submit_box" class="relative redButton">
+        <%= link_to t(:submit).upcase, "#", :id => "btn_submit_lost_password", :onclick => "$('lost_form').onsubmit();" %>
+      </div>
+    </div>
+
+    <% if params[:section] == "affiliate" %>
+      <input type="hidden" name="section" value="affiliate" />
+      <input type="hidden" name="store" value="<%= params[:store] %>" />
+      <br /><br />
+
+      <%= link_to t(:myizishirt_myshop_back), :action => 'index', :section => 'affiliate', :store => params[:store] %>
+    <% end %>
+  
+  <% end %>
+</div>

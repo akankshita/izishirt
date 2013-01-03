@@ -1,0 +1,38 @@
+<script type="text/javascript">
+  cbb.init();
+</script>
+
+<div class="relative">
+  <%= link_to image_tag("/images/izishirt2009/loginClose.png"),
+      "#", :class => 'lbAction prodDetailClose', :rel => 'deactivate'%>
+  <label class="prodDetail"><%=t(:product_details).mb_chars.upcase%></label>
+
+  <div class="preview">
+    <%= image_tag "/izishirtfiles/#{path_ordered_product(@prod.created_on)}/#{@prod.checksum}/#{@prod.checksum}-front.jpg" %>
+    <%= image_tag "/izishirtfiles/#{path_ordered_product(@prod.created_on)}/#{@prod.checksum}/#{@prod.checksum}-back.jpg" %>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="detail">
+    <label class="block">
+      <span class="bold"><%= t(:model)%></span>
+      <%=@prod.model.local_name(session[:language_id])%>
+    </label>
+    <label class="block">
+      <span class="bold"><%= t(:size)%></span>
+      <%=@prod.size.name%>
+    </label>
+    <label class="block">
+      <span class="bold"><%= t(:checkout_popup_model_color)%></span>
+      <%=@prod.color.local_name(session[:language_id])%>
+    </label>
+    <label class="block">
+      <span class="bold"><%= t(:checkout_popup_quantity)%></span>
+      <%=@prod.quantity%>
+    </label>
+    <label class="block">
+      <span class="bold"><%= t(:checkout_popup_price)%></span>
+      <%=number_to_currency_custom((@prod.price+@prod.commission)*@prod.quantity*currency_rate(session[:currency]))%>
+    </label>
+  </div>
+</div>

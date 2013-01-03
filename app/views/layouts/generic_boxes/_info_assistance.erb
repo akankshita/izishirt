@@ -1,0 +1,65 @@
+<div id="info_assistance">
+  <p>
+    <span class="title13 padleft"><%=t(:need_assistance)%></span><br />
+    <span class="title12 padleft"><%=t(:give_us_a_call)%>:</span><br />
+  <span class="textgreen14 padleft"><%= get_phone_number%></span></p>
+
+  <p class="text11"><%= t(:customer_care_is_available) %><br/>
+  <%= t(:customer_care_hours) %> <br />
+  <!--<%= t(:saturday_hours) %><br/><%= t(:sunday_hours) %>-->
+  </p>
+  
+  <%if @province_name && @province_name.downcase == "ontario"%>
+  	<p><img src="/images/izishirt2011/truck_icon_small.jpg" hspace="2" vspace="0" border="0" />
+      <span class="title13 padLeft">
+        <%= t(:shipping_info) %>
+      </span><br/>
+      <%= t(:free_shipping_5, :money=>number_to_currency_custom(MIN_MONEY_FOR_FREE_SHIPPING)) if FREE_SHIPPING_DOMAINS.include?(@FULL_DOMAIN_NAME) %>
+    </p>
+	
+	<p class="text12">
+		<span class="textgreen13"><%= t(:new_shipping_address_toronto) %></span><br /><br />
+		<%=t(:new_shipping_address_toronto_1)%><br /><br />
+		<%=t(:new_shipping_address_toronto_2)%><br /><br />
+    </p>
+  <%end%>
+
+  <% if info_shipping %>
+
+    <p><img src="/images/izishirt2009/truck_icon.jpg" width="47" height="48" hspace="2" vspace="0" border="0" />
+      <span class="title13 padLeft">
+        <%= t(:shipping_info) %>
+      </span><br/>
+      <%= t(:free_shipping_5, :money=>number_to_currency_custom(MIN_MONEY_FOR_FREE_SHIPPING)) if FREE_SHIPPING_DOMAINS.include?(@FULL_DOMAIN_NAME) %>
+    </p>
+
+
+    <p class="text11"><span class="title12">
+        <%= t(:shipping_basic) %>:
+      </span><br />
+      <% if session[:country] == 'CA' %>
+        <%= t(:shipping_basic_detail_ca) %>
+      <% elsif session[:country] == 'US' %>
+        <%= t(:shipping_basic_detail_us) %>
+      <% else %>
+        <%= t(:shipping_basic_detail_intl) %>
+      <% end %>
+    </p>
+
+    <% if session[:country] == 'CA' %>
+      <p class="text11"><span class="title12"><%= t(:shipping_xpress) %>:
+
+        </span><br />
+        <%= t(:shipping_xpress_detail_ca) %>
+      </p>
+    <% end %>
+  <%end%>
+  <% if info_garment %>
+
+    <p><img src="/images/izishirt2009/size_icon.jpg" width="47" height="48" hspace="2" vspace="0" border="0" align="absmiddle" />
+    <span class="title14 titleCentered"><%=t(:size_chart)%></span></p>
+    <div class="clear_woh"></div>
+    <p style="line-height:90%;"><a href="javascript:popup_shop_1_apparel_details()" class="textblue"><span class="textblue"><%= t(:garment_specs_and_description) %></span></a></p>
+  <% end %>
+
+</div>

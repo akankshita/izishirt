@@ -1,0 +1,21 @@
+<%= render :partial=>"check_subscription_form" %>
+<div id="subscribe_container">
+  <div id="subscribe_left">
+    <%= render :partial=>"subscribe_left" %>
+  </div>
+  <div id="subscribe_right">
+    <h1><%=t(:join_us)%></h1>
+    <div id="account_box">
+      <p class="box_title">
+        <%= t(:account_information) %>
+      </p>
+      <% form_tag({:action => 'create'}, {:class=>"new_user", :onsubmit=>"javascript:return checkSubscriptionForm();"}) do %>
+      <% if params[:from] %>
+        <%= hidden_field_tag "from", params[:from] %>
+      <% end %>
+        <%= render :partial => 'form', :locals => {:with_shop => false} %>
+        <div style="width:84px;margin:0 auto;"><%= submit_tag t(:subscribe_submit_button), :class=>:button_make %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

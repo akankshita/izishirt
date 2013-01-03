@@ -1,0 +1,25 @@
+<%= I18n.t(:send_mail_order_salutation, :locale => Language.find(@user.language_id).shortname) %> <%= @user.firstname %> <%= @user.lastname %>,<br />
+<br />
+
+<%= I18n.t(:send_mail_product_removed_img_deleted_content_1, :locale => Language.find(@user.language_id).shortname) %> <%if @image%>(<%= @image.name %> <%= I18n.t(:send_mail_product_removed_by_designer, :locale => Language.find(@user.language_id).shortname) %> <%= @image.user.username %>)<%end%>.<br />
+<%= I18n.t(:send_mail_product_removed_img_deleted_content_2, :locale => Language.find(@user.language_id).shortname) %>
+
+<br />
+
+<% if @products %>
+	<%= I18n.t(:send_mail_product_deleted_model_products, :locale => Language.find(@user.language_id).shortname) %><br />
+	<ul>
+		<% @products.each do |product| %>
+			<li><%= product.name %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<br />
+<%= I18n.t(:send_mail_order_signature_1, :locale => Language.find(@user.language_id).shortname) %><br />
+<br />
+<%= I18n.t(:send_mail_order_signature_2, :locale => Language.find(@user.language_id).shortname) %><br />
+<br />
+<%= I18n.t(:send_mail_order_signature_3, :locale => Language.find(@user.language_id).shortname)%><br />
+<br />
+<img src="http://www.izishirt.ca/images/email_sig.jpeg" alt="izishirt.ca" />

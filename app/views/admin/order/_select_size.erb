@@ -1,0 +1,17 @@
+<% if new_model %>
+  <%if new_model == prod.model%>
+    <% sizes = [[prod.model_size.local_name(I18n.locale), prod.model_size_id]] %>
+  <% else %>
+    <% sizes = [] %>
+  <% end %>
+
+  <% sizes|= new_model.active_model_sizes.map{|model_size|[model_size.local_name(I18n.locale),model_size.id]}%>
+  <%= select_tag "ordered_product_#{prod.id}_model_size_id", 
+      options_for_select(sizes, prod.model_size_id) %>
+<%else%>
+  <% sizes = [[prod.model_size.local_name(I18n.locale), prod.model_size_id]] %>
+  <% sizes|= prod.model.active_model_sizes.map{|model_size|[model_size.local_name(I18n.locale),model_size.id]}%>
+
+  <%= select_tag "ordered_product_#{prod.id}_model_size_id", 
+      options_for_select(sizes, prod.model_size_id) %>
+<% end %>

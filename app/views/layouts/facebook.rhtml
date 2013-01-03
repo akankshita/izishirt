@@ -1,0 +1,145 @@
+<fb:fbml version="1.1">
+	<style>
+  .dh_titlebar { padding:0; }
+  .profileTabWrapper .uiButton {float: right; margin:4px 10px;}
+
+  .izishirt_fb_menu{	 background-color:#d8dfea; color: #3b5998;padding:5px 12px;font-size:12px; border-bottom:1px solid #d8dfea;}
+  .izishirt_fb_menu_wrapper { height:15px; padding:5px 0 6px;}
+  .izishirt_fb_menu_select {padding:0;}
+  .izishirt_fb_menu_select_wrapper {float:right;}
+  .izishirt_fb_menu:hover{ background-color:#3b5998; color: #d8dfea;padding:5px 12px;font-size:12px; border-bottom:1px solid #3b5998;}
+  .izishirt_fb_active_menu{ background-color:#3b5998; color: #d8dfea;padding:5px 12px;font-size:12px; border-bottom:1px solid #3b5998;}
+
+  <% if @flash_vars %> 
+    .izishirt_fb {padding:0px;clear:both;border:1px solid #3b5998;}
+  <% else %>
+    .izishirt_fb {padding:20px 45px;clear:both;border:1px solid #3b5998;}
+  <% end %>
+  .izishirt_fb .pagination {text-align:center;}
+  .izishirt_fb_settings {text-align:right; margin-bottom:8px;}
+  .izishirt_fb_design  {float:left;margin:3px;}
+  
+  .izishirt_fb_design a.img {display: table-cell; height: 200px; text-align: center; vertical-align: middle; width: 200px; padding:2px;border: 1px solid #ccc;}
+  .izishirt_fb_t_info {background-color:#d8dfea;color:#3b5998; width:190px;margin:15px 0;padding:5px;font-size:10px;}
+  .izishirt_fb_canvas .izishirt_fb_t_info {margin-top:0;}
+  .izishirt_fb_t_info .name {font-size:12px;}
+  .izishirt_fb_t_info .price {float:left;font-size:14px; font-weight:bold;}
+  .izishirt_fb_t_info .izishirt_fb_button {float:right;background-color:#3b5998;padding:2px 4px;color:#ffffff;}
+  .izishirt_fb_t_info .izishirt_fb_button a.buy_now{color:#ffffff;font-size:14px;font-weight:bold;}
+
+  .izishirt_fb_product  {float:left;margin:0 4px 10px 4px;}
+  .izishirt_fb_product img {width:200px;height:200px;}
+  .izishirt_fb_product img.canvas {width:200px;height:236px;}
+  .izishirt_fb_product_left {float: left; border: 1px solid #CCCCCC;}
+  .izishirt_fb_product_right {float: right; width:300px;}
+  .izishirt_fb_dotted {border-bottom:1px dotted #000000;padding-bottom:8px; margin-bottom:8px;}
+  .izishirt_fb_form_right {float:left; width:220px;padding-left:30px;}
+  .izishirt_fb_color_img {
+    background-color: white;
+    border: 1px solid #CCC;
+    cursor: pointer;
+    float: left;
+    height: 20px;
+    margin: 0px 2px 2px;
+    padding: 2px;
+    width: 20px;
+  }
+  .izishirt_fb_banner_wrapper {margin-bottom:10px;}
+  .izishirt_fb_banner_wrapper .banner_no_bord {position:relative;}
+  .izishirt_fb_banner_wrapper .banner_no_bord h1 {position:absolute;margin:0; display:block;}
+  .izishirt_fb_canvas {padding-top:10px;}
+  .izishirt_fb_canvas_title h1{font-size:20px; font-weight:bold;}
+  .izishirt_fb_canvas_title h2{font-size:12px; font-weight:bold;}
+  .izishirt_fb_blue_header{ background-color: #d8deec; margin:15px 0;padding:8px;clear:both;font-weight:bold;font-size:16px;}
+  .izishirt_fb_money { text-align:right; clear:both;font-size:12px;margin:10px 0;}
+  .izishirt_fb_canvas .flash_preview, .izishirt_fb_canvas .first_product{padding-left:30px;}
+  .izishirt_fb_canvas .flash_preview {margin:20px 0;}
+	</style>
+	
+	<script>
+		function load_designs_page(page) {
+			General_Refresh("<%=@URL_ROOT%>/facebook/callback/designs?js=true&user_id=<%=@user_id%>&page="+page,"izishirt_fb");
+		}			
+		function load_boutique_page(page) {
+			General_Refresh("<%=@URL_ROOT%>/facebook/callback/boutique?js=true&user_id=<%=@user_id%>&page="+page,"izishirt_fb");
+		}
+		function load_category(category) {
+			disable_menus();
+			document.getElementById('boutique_tab').addClassName("izishirt_fb_active_menu");
+			General_Refresh("<%=@URL_ROOT%>/facebook/callback/boutique?js=true&user_id=<%=@user_id%>&category_id="+category,"izishirt_fb");
+		}
+		function load_page(action,link,id) {	
+		  <% if @show_designs_tab || @show_boutique_tab %>
+			disable_menus();
+			link.addClassName("izishirt_fb_active_menu");
+			url="<%=@URL_ROOT%>/facebook/callback/"+action+"?js=true&user_id=<%=@user_id%>";
+			if (id!='') {url+="&image="+id;}
+			General_Refresh(url,"izishirt_fb");
+			<% end %>
+		}
+		function disable_menus(){
+      <% if @show_boutique_tab%>
+			document.getElementById('boutique_tab').removeClassName('izishirt_fb_active_menu');
+      <% end %>
+      
+      <% if @show_designs_tab %>
+      document.getElementById('designs_tab').removeClassName('izishirt_fb_active_menu');
+      <% end %>
+      
+      <% if @show_create_tab %>    			
+			document.getElementById('create_tab').removeClassName('izishirt_fb_active_menu');
+			<% end %>
+		}
+		function General_Refresh(url,div){		  
+		  document.getElementById(div).setInnerXHTML('<span id="caric"><center><%= image_tag "#{@URL_ROOT}/images/facebook_loader.gif"%></center></span>');	
+		  var ajax = new Ajax();
+		  ajax.responseType = Ajax.FBML;
+		  ajax.ondone = function(data) {
+		  	document.getElementById(div).setInnerFBML(data);
+		  }
+		  ajax.post(url);
+		}
+	</script>
+	
+	<fb:visible-to-owner>
+	  <div class="izishirt_fb_settings">
+	    <%=link_to t("facebook.configure"), "#{@facebook_app.facebook_url}/settings/#{Base64.encode64(@facebook_owner)}" %> | 
+	    <%=link_to t("facebook.help"), "#{@facebook_app.facebook_url}/help" %>
+	  </div>
+	</fb:visible-to-owner>
+
+	<div class="izishirt_fb_menu_wrapper">
+	  <% if @show_boutique_tab %>
+	    <%=link_to t(:shop), "#", :class => menu_class('boutique'),
+	  			   :onclick => "load_page('boutique',this,''); return false;", 
+				   :id => "boutique_tab" %>
+	  <% end %>				   
+    
+    <% if @show_designs_tab %>
+      <%=link_to t(:designs), "#", :class => menu_class('designs'),
+ 				 :onclick => "load_page('designs',this,''); return false;", 
+				 :id => "designs_tab" %>
+    <% end %>
+    
+    <% if @show_create_tab %>
+  	  <%=link_to t(:create), "#", :class => menu_class('create'), 
+  				 :onclick => "load_page('create',this,''); return false;", 
+  				 :id => "create_tab" %>
+	  <% end %>
+	  
+	  <% if @show_categories %>
+  		<div class="izishirt_fb_menu_select_wrapper">
+  			<%= select :category,
+  					   :id, 
+  					   @categories, 
+  					   {:include_blank => t(:all_products)},
+  					   :onchange => "load_category(this.getValue());",
+  				   	   :class => "izishirt_fb_menu_select"%>
+  		</div>
+	  <% end %>
+	</div>
+
+	<div id="izishirt_fb" class="izishirt_fb">
+		<%= yield %>
+	</div>
+</fb:fbml>

@@ -1,0 +1,22 @@
+<% cache("top_searches/#{I18n.locale}/#{TOP_SEARCHES_MODULE}") do %>
+    <%if session[:language]== "fr" %>
+      <div class="top_search_title" style="font-size:10pt">
+        <%=t(:top_searches)%>
+      </div>
+    <%else%>
+        <div class="top_search_title">
+          <%=t(:top_searches)%>
+      </div>
+    <%end%>
+
+  <ul>
+    <% links = top_search_cloud_urls(Country.find_by_shortname(session[:country]).id, nil, session[:language_id], 20) %>
+    <% i = 1 %>
+    <% links.each do |link| %>
+      <li>
+        <%=i%>. <%= link %>
+      </li>
+      <% i = i+1 %>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,13 @@
+<div id="cms_container">
+  <div id="left_container">
+    <%= render :partial=>"/layouts/generic_boxes/left_column_infos", :locals=>{:version=>"short"} %>
+  </div>
+
+  <div id="right_container">
+    <div id="title"><%=@lc.title%></div>
+    <div id="content">
+      <%= @lc.value %>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

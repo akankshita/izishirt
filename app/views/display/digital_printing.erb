@@ -1,0 +1,51 @@
+<!-- Digital Printing -->
+<div id="left_container">
+	<%= render :partial => "/layouts/generic_boxes/left_column_infos", :locals=>{:version=>"long"} %>
+	<div id="cloud_tag">
+	  <ul>
+	    <% links = links_for_cloud_tag(@tags) %>
+	    <% links.each do |link| %>
+	      <li><%= link %></li>
+	    <% end %>
+	  </ul>
+	</div>
+</div>
+<div id="right_container">
+	<div id="seo_create_tshirt_main">
+		<h1><%=t(:seo_digital_printing_title)%></h1>
+		<span class="shop_tshirt"><%= link_to(t(:seo_create_link_shop_for_tshirts_designs), create_tshirt_url(), :class=>"shop_tshirt", :title=>t(:seo_create_link_shop_for_tshirts_designs))%></span>
+		<div id="seo_create_tshirt_border">
+			<%= link_to image_tag("izishirt2011/#{session[:language]}/banner-digital.jpg", :alt=>t(:seo_digital_printing_title)), create_tshirt_url(), :title=>t(:seo_digital_printing_title)%>
+			<p class="title_14"><%=t(:seo_digital_title_1)%></p>
+			<p><%=t(:seo_digital_text_1)%></p>
+			<p class="title_14"><%=t(:seo_digital_title_2)%></p>
+			<p><%=t(:seo_digital_text_2)%></p>
+			<p class="title_14"><%=t(:seo_digital_title_3)%></p>
+			<p><%=t(:seo_digital_text_3)%></p>
+			<p><%=t(:seo_digital_text_4)%></p>
+			<ul>
+				<li><%=t(:seo_digital_text_5)%></li>
+				<li><%=t(:seo_digital_text_6)%></li>
+				<li><%=t(:seo_digital_text_7)%></li>				
+			</ul>
+			<p><%=t(:seo_digital_text_8)%></p>
+						
+			<p class="fuxia_16_title"><%= link_to(t(:seo_create_title_3), create_tshirt_url(), :class=>"green_16_title", :title=>t(:seo_create_title_3))%></p>
+			
+			<p class="title_14"><%=t(:seo_digital_title_4)%></p>
+			<p><%=t(:seo_digital_text_9)%></p>
+			<p><%=t(:seo_digital_text_10)%><%= link_to(t(:seo_digital_text_11), create_tshirt_url(), :class=>"blue_apparel", :title=>t(:seo_digital_text_11))%></p>
+			
+			<p class="title_14"><%=t(:seo_digital_title_5)%></p>
+			<p><%=t(:seo_digital_text_12)%></p>
+			
+			<p class="title_14"><%=t(:seo_digital_title_6)%></p>
+			<p><%=t(:seo_digital_text_13)%></p>
+			<ul>
+				<li><%=t(:seo_digital_text_14)%><%= link_to(t(:seo_screen_text_link_1), {:controller=>'/bulk_orders'}, :title=>t(:seo_screen_text_link_1))%></li>
+				<li><%=t(:seo_digital_text_15)%><%= link_to(t(:seo_screen_text_link_2), create_tshirt_url(), :title=>t(:seo_screen_text_link_2))%></li>
+			</ul>						
+		</div>
+	</div>
+</div>
+<!-- Digital Printing -->

@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  share_designs: false
+  share_products: false
+  share_votes: false
+  share_contest_designs: false
+  access_token: MyString
+  access_secret: MyString
+
+two:
+  user_id: 1
+  share_designs: false
+  share_products: false
+  share_votes: false
+  share_contest_designs: false
+  access_token: MyString
+  access_secret: MyString

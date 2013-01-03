@@ -1,0 +1,53 @@
+<div id="pp_request_payment" style="width:410px; height: 250px; ">
+
+  <script language="javascript">
+
+    
+
+    function reportAsCopyright()
+    {
+      var description = $("description").value;
+
+      if (description == "")
+      {
+        $("error_payment").innerHTML = "<%= t(:report_copyright_prob_report2) %>";
+
+        return false;
+      }
+
+      new Ajax.Request("/display/report_as_copyright",
+						{asynchronous:true, evalScripts:true, parameters:Form.serialize($("request_payment_form")), onComplete: function(request) {  }});
+
+      $j("#show_popup_step_2_report").click();
+
+      return true;
+    }
+
+    $j(document).ready(function() {
+        $j("a.modalbox").fancybox({'autoDimensions' : false, 'width' : 300, 'height' : 100});
+      });
+  </script>
+
+  <form id="request_payment_form">
+
+    <h1><%=t(:report_copyright_prob)%></h1>
+
+    <p style="color:red;" id="error_payment">
+      &nbsp;
+    </p>
+
+    <p><%=t(:report_copyright_prob_description)%> <br />
+
+	<textarea id="description" name="description" cols="50" rows="5"></textarea>
+
+	<%= hidden_field_tag "id", @object_id %>
+	<%= hidden_field_tag "type", @type %>
+
+    </p>
+    <div id="btn_request_payment">
+        <%= link_to "#{t(:report_copyright_prob_report)}", {:controller => "/popup/report_as_copyright_step_2"}, :style => "margin-left: -30px;", :class => "button_request_payment", :onclick => "reportAsCopyright(); return false;" %>
+      <%= link_to "#{t(:report_copyright_prob_report)}", {:controller => "/popup/report_as_copyright_step_2"}, :class => "modalbox", :style => "display:none;", :id => "show_popup_step_2_report" %>
+    </div>
+  </form>
+</div>
+

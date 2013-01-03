@@ -1,0 +1,26 @@
+<div id="lightbox_login">
+  <% form_tag({:controller=>'/myizishirt/login'}) do %>
+    <p class="title14"><%=t(:member_login)%></p>
+    <% if session[:error] %>
+      <span class="errorMessage" id="message"><%=session[:error]%></span>
+      <% session[:error] = nil %>
+    <% end %>
+    <p class="title13"><span class="label"><%=t(:email).capitalize%>:</span> <%= text_field_tag :username, @cookie_username, :class => 'left login' %></p>
+    <div class="clear"></div>
+    <p class="title13"><span class="label"><%=t(:myizishirt_login_view_login_password)%></span> <%= password_field_tag :password, @cookie_password, :class => 'left login' %></p>
+    <div class="clear"></div>
+    <div style="width:250px;height:65px;position:relative;">
+    <div id="rememberContainer">
+      <a href="#" class="lnk_forgot_pass" onclick="$j('#link_forgot_password').click();"><%=t(:forgot_your_password)%></a>
+      <div id="rememberTagContainer">
+        <label id="rememberText" class="left login" for="remember"><%= t(:myizishirt_login_view_login_remember) %></label>
+      <%= check_box_tag :remember, 1, true %></div>
+      <input type="submit" value="LOGIN" class="button_make" />
+    </div>
+    </div>
+    
+    <div class="clear"></div>
+
+
+  <% end %>
+</div>

@@ -1,0 +1,20 @@
+<%= I18n.t(:store_comments_email_hello,:locale=>@language) %><br /><br />
+<% if  @comment.product %>
+<%= I18n.t(:store_comments_email_new_comment_on_product,:locale=>@language,:name => @comment.product.name) %>
+<% else %>
+<%= I18n.t(:store_comments_email_new_comment_on_shop,:locale=>@language) %>
+<% end %><br /><br />
+
+<%= I18n.t(:from,:locale=>@language) %> : <%= @comment.name %><br /><br />
+
+<%= I18n.t(:store_comments_text,:locale=>@language) %> : <%= h @comment.text %><br /><br />
+
+<%= I18n.t(:store_comments_email_last,:locale=>@language) %><br /><br />
+
+<%= I18n.t(:store_comments_email_thanks,:locale=>@language) %><br /><br />
+
+
+Boutiques | Izishirt<br />
+1-888-800-5787 | contact@izishirt.com | http://www.izishirt.ca<br />
+Twitter: http://twitter.com/izishirt<br />
+Facebook: http://facebook.com/pages/IziShirt/223576667655075<br />

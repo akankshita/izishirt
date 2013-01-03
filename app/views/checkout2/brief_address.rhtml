@@ -1,0 +1,273 @@
+<script type="text/javascript">
+  // RESET FORM COUNTRIES
+  setTimeout(
+  function(){
+    document.getElementById("address_form").reset();
+  },
+  5);
+
+  function validate_email(value)
+  {
+    apos=value.indexOf("@");
+    dotpos=value.lastIndexOf(".");
+    if (apos<1||dotpos-apos<2)
+    {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  function validateForm() {
+    
+    if ($j('#billing_name').val() == '') {
+      $j('#formError').html("<%= t(:validate_name) %>");
+    }
+    else if ( ($j('#shipping_country').val() == '1' || $j('#shipping_country').val() == '2') &&   ! $j('#billing_province').val() && ! $j('#billing_province_name').val()) {
+      $j('#formError').html("<%= t(:validate_province) %>");
+    }
+    else if ($j('#billing_address1').val() == '') {
+      $j('#formError').html("<%= t(:validate_address) %>");
+    }
+    else if ($j('#billing_phone').val() == '') {
+      $j('#formError').html("<%= t(:validate_phone) %>");
+    }
+    else if ($j('#billing_town').val() == '') {
+      $j('#formError').html("<%= t(:validate_city) %>");
+    }
+    else if ($j('#billing_zip').val() == '') {
+      $j('#formError').html("<%= t(:validate_postal) %>");
+    }
+    else if ($j('#guest_email').length != 0 && !validate_email($j('#guest_email').val())) {
+      $j('#formError').html("<%= t(:validate_guest_email) %>");
+    }
+    else {
+      if ($j('#sameAddress').is(':checked')){
+        return true;
+      }
+      else{
+        return validateShipping();
+      }
+    }
+    return false;
+  }
+
+  function validateShipping() {
+    if ($j('#shipping_name').val() == '') {
+      $j('#formError').html("<%= t(:validate_name) %>");
+    }
+    else if ( ($j('#billing_country').val() == '1' || $j('#billing_country').val() == '2') && ! $j('#shipping_province').val() && ! $j('#shipping_province_name').val()) {
+      $j('#formError').html("<%= t(:validate_province) %>");
+    }
+    else if ($j('#shipping_address1').val() == '') {
+      $j('#formError').html("<%= t(:validate_address) %>");
+    }
+    else if ($j('#shipping_phone').val() == '') {
+      $j('#formError').html("<%= t(:validate_phone) %>");
+    }
+    else if ($j('#shipping_town').val() == '') {
+      $j('#formError').html("<%= t(:validate_city) %>");
+    }
+    else if ($j('#shipping_zip').val() == '') {
+      $j('#formError').html("<%= t(:validate_postal) %>");
+    }
+    else {
+      return true;
+    }
+    return false;
+  }
+
+  function toggleStatus() {
+    if ($j('#sameAddress').is(':checked')) {
+      $j('#shipping_fields :input').attr('disabled', 'disabled');
+      billingCountryShipType();
+    } else {
+      $j('#shipping_fields :input').removeAttr('disabled');
+      shippingCountryShipType();
+    }
+  }
+
+  function shippingCountryShipType(){
+
+    shipping_country = $j("#shipping_country").val();
+    shipping_province = $j("#shipping_province").val();
+
+    $j.ajax({
+      url: '<%=url_for(:action=>:shipping_options)%>',
+      data: "country=" + shipping_country + "&province=" + shipping_province,
+      success: function(data) {
+        $j('#shipping_type').html(data);
+      }
+    });
+  }
+
+  function billingCountryShipType(){
+    if ($j('#sameAddress').is(':checked')){
+      shipping_country = $j("#billing_country").val();
+      shipping_province = $j("#billing_province").val();
+      $j.ajax({
+        url: '<%=url_for(:action=>:shipping_options)%>',
+        data: "country=" + shipping_country + "&province=" + shipping_province,
+        success: function(data) {
+          $j('#shipping_type').html(data);
+        }
+      });
+    }
+  }
+
+  $j(document).ready(function(){
+    toggleStatus();
+
+  });
+</script>
+
+<!--
+<div id="header_legend">
+  <div id="title_step"><%= t(:billing_and_shipping_information) %></div>
+  <div id="need_assistance">
+    <span class="text12"><%=t(:need_assistance)%></span><br />
+    <span class="text11"><%=t(:give_us_a_call)%></span><br />
+    <span class="text13green"><%= get_phone_number %></span>
+  </div>
+</div>
+-->
+
+<!-- Client Container -->
+<div id="billing_shipping">
+  <% form_tag({:action=>:brief_address, :address_form=>true, :brief_format => true}, :id=>"address_form", :onsubmit=>"return validateForm();") do %>
+    <div id="billing_info">
+      <p><strong><%=t(:billing_information)%></strong></p>
+      <p><img src="/images/izishirt2009/line.jpg" width="210" height="3" /></p>
+      <label><%= t(:address_name) %> <span class="red">*</span>
+        <%= text_field_tag 'billing[name]', @billing.name %>
+      </label>
+      <br />
+      <label class="selects"><%= t(:address_country) %> <span class="red">*</span>
+        <% selected_value = @billing.country_id ? @billing.country_id : @country_id %>
+        <%= select_tag 'billing[country_id]', options_for_select(@countries, selected_value),
+          {:style => 'width:132px;margin:0px;',
+          :id=>"billing_country",
+          :onchange => "billingCountryShipType();"+ remote_function(:update => 'billing_province_section',:url => {:action => 'load_billing_provinces_by_country'}, :with => 'Form.Element.serialize(this)')
+        }
+      %>
+      </label>
+      <br/>
+      <label id="billing_province_section" class="selects">
+        <%= render :partial => "billing_province" %>
+      </label>
+      <br/>
+      <label><%= t(:address_city) %>  <span class="red">*</span>
+        <%= text_field_tag 'billing[town]', @billing.town %>
+      </label>
+      <br/>
+      <label><%= t(:address_postalcode) %> <span class="red">*</span>
+        <%= text_field_tag 'billing[zip]', @billing.zip %>
+      </label>
+      <br/>
+      <label><%= t(:address_address) %> <span class="red">*</span>
+        <%= text_field_tag 'billing[address1]', @billing.address1 %>
+      </label>
+      <label>
+        <%= text_field_tag 'billing[address2]', @billing.address2 %>
+      </label>
+      <br />
+
+      <br />
+      <label><%= t(:address_phone) %> <span class="red">*</span>
+        <%= text_field_tag 'billing[phone]', @billing.phone %>
+      </label>
+      <br />
+      <% if is_guest? %>
+        <label><%= t(:email) %> <span class="red">*</span>
+          <%= text_field_tag 'guest_email', @cart.guest_email %>
+        </label>
+        <label><br /></label>
+        <label>
+          <%= check_box_tag 'wants_newsletter', true, true %>
+          <%=t(:i_want_to_receive_the_newsletter)%>
+        </label>
+      <% end %>
+      <% if @user.username == "izishirt" || @user.is_izishirt_seller %>
+        <%= render :partial => "custom_client_email" %>
+      <% end %>
+    </div>
+    <div id="shipping_info">
+      <p><strong><%=t(:shipping_information)%></strong></p>
+      <p><img src="/images/izishirt2009/line.jpg" width="210" height="3" /></p>
+      <span style="margin-top:55px;">
+        <label>
+          <input name="sameaddress" type="checkbox" id="sameAddress" onchange="toggleStatus()" <%=@sameaddress_yes%> />
+        <strong><%= t(:same_as_billing_information) %></strong></label>
+        <div id="shipping_fields">
+          <label><%= t(:address_name) %> <span class="red">*</span>
+            <%= text_field_tag 'shipping[name]', @shipping.name %>
+          </label>
+          <br />
+
+          <br />
+          <label class="selects"><%= t(:address_country) %> <span class="red">*</span>
+            <% selected_value = @shipping.country_id ? @shipping.country_id : @country_id %>
+            <%= select_tag 'shipping[country_id]', options_for_select(@countries, selected_value),
+              {:style => 'width:132px;margin:0px;',
+              :id=>"shipping_country",
+              :onchange => "shippingCountryShipType();"+ remote_function(:update => 'shipping_province_section',:url => {:action => 'load_shipping_provinces_by_country'}, :with => 'Form.Element.serialize(this)')
+            }
+          %>
+          </label>
+          <label class="selects" id="shipping_province_section">
+            <%= render :partial => "shipping_province" %>
+          </label>
+          <label><%= t(:address_city) %>  <span class="red">*</span>
+            <%= text_field_tag 'shipping[town]', @shipping.town %>
+          </label>
+          <label><%= t(:address_postalcode) %> <span class="red">*</span>
+            <%= text_field_tag 'shipping[zip]', @shipping.zip %>
+          </label>
+          <br />
+          <label><%= t(:address_address) %> <span class="red">*</span>
+            <%= text_field_tag 'shipping[address1]', @shipping.address1 %>
+          </label>
+          <label>
+            <%= text_field_tag 'shipping[address2]', @shipping.address2 %>
+          </label>
+          <br />
+
+
+          <br />
+          <label><%= t(:address_phone) %> <span class="red">*</span>
+            <%= text_field_tag 'shipping[phone]', @shipping.phone %>
+          </label>
+        </div>
+      </span>
+    </div>
+
+    <div id="shipping_type">
+    </div>
+    <div class="clear"></div>
+
+
+    <div id="btn_step3">
+          <div id="formError" class="errorMessage">
+      <%= flash[:error] if flash[:error] %>
+    </div>
+      <%= link_to "Save" + "&nbsp;<img src='/images/izishirt2009/tiny_arrow.png' width='5' height='10' />", "#current", :title=>t(:continue), :id=>"proceed_button", :class=>"button_continue"%>
+      <script type="text/javascript">
+
+        $j('#proceed_button').click(
+        function()
+        {
+          if (validateForm()){
+            $j("#address_form").submit();
+          }
+        });
+      </script>
+
+
+    </div>
+  <% end %>
+
+
+
+  <div class="clear"></div>
+</div>

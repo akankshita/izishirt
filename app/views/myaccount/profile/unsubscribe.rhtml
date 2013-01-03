@@ -1,0 +1,26 @@
+<div class="pageholder">
+  <div class="breadcrumb">
+    <%= link_to "&raquo; " + t(:menu_home), {:controller=>"/"} %>
+    &#8250; <%= t(:display_home_unsubscribe) %></div>
+  <div class="logincontent lcfirst">
+    <div class="crnlite login" style="width:430px"> <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+      <div class="login_c">
+        <h3><%= "#{t(:display_home_unsubscribe)} (#{@email}) " %></h3>
+        <%= form_tag %>
+        <label for="name"><%= t(:myizishirt_login_view_login_username) %></label>
+        <%= text_field_tag :username, @user.username %>
+        <label for="password"><%= t(:myizishirt_login_view_login_password) %></label>
+        <%= password_field_tag :password, params[:password] %> <br />
+        <br />
+        <div class="buton btnReg" onmouseover="this.className='buton btnReg ovr'" onmouseout="this.className='buton btnReg'"><i class="rLeft"></i><%= submit_tag "Login" %><i class="rRight"></i></div>
+        <div class="forpass">
+          <%= link_to t(:myizishirt_login_view_login_lost_pass), :controller => 'myizishirt/profile',  :action => 'lostpass' %> </div>
+        <input type="hidden" name="email"  value="<%=@email%>"/>
+        </form>
+      </div>
+      <div class="clear nohgh">&nbsp;</div>
+    </div>
+  </div>
+</div>
+<br />
+<br />

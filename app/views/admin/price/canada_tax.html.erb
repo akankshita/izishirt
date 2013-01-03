@@ -1,0 +1,16 @@
+<h1>Canadian Tax Rates</h1>
+
+<% form_tag :action => "update_canada_tax" do |f| %>
+  <% @provinces.each do |province|%>
+    <div class="titleForm">
+      <label><%=province.name%></label>
+    </div>
+    <div class="boxForm">
+      <%= text_field_tag "province[#{province.id}]", province.taxe %>
+    </div>
+  <% end %>
+
+  <div class="titleForm">
+    <%= submit_tag 'Save' %>
+  </div>
+<%end%>

@@ -1,0 +1,82 @@
+<b>Return ID Number:</b> <%= @return.id %><br /><br /><br />
+<b>Responsibility:</b> <%= @return.responsibility %><br />
+<b>Remarks:</b> <%= @return.remarks %><br /><br /><br />
+<b>Items:</b> <br />
+
+<table border="1">
+	<tr>
+		<th>PO Number</th>
+		<th>Model</th>
+		<th>Color</th>
+		<th>Size</th>
+		<th>Qty</th>
+	</tr>
+
+	<% @return.order_garment_product_returns.each do |prod_return| 
+
+		prod = prod_return.order_garment_listing_product
+
+		if ! prod
+			next
+		end
+
+	%>
+		<tr>
+			<td>
+
+				<% 
+				begin
+					po_num = prod.order_garment_listing.po_number 
+				rescue
+					po_num = ""
+				end
+				%>
+
+				<%= po_num %>
+			</td>
+
+			<td>
+				<%= prod.model.local_name(2) %>
+			</td>
+
+			<td>
+				<%= prod.color.local_name(2) %>
+			</td>
+
+			<td>
+				<%= prod.model_size.local_name(2) %>
+			</td>
+
+			<td>
+				<%= prod_return.quantity %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+
+<h2>
+
+To process the return please access the following URL: <a href="http://www.izishirt.ca/apparel_supplier/return/<%= @return.id %>">http://www.izishirt.ca/apparel_supplier/return/<%= @return.id %></a>
+<br />
+Make sure to first login at http://www.izishirt.ca/.
+</h2>
+
+<p></p>
+<p></p>
+<p></p>
+    <table>
+      <tr><td><b>Name: </b></td><td>Izishirt</td></tr>
+      <tr><td><b>Address 1:</b> </td><td>Izishirt</td></tr>
+      <tr><td><b>Address 2:</b> </td><td>1625 Rue chabanel ouest</td></tr>
+      <tr><td><b>City:</b> </td><td>Montreal</td></tr>
+      <tr><td><b>Province:</b> </td><td>QC</td></tr>
+      <tr><td><b>Postal Code:</b> </td><td>H4N 2S7</td></tr>
+      <tr><td><b>Country:</b> </td><td>Canada</td></tr>
+    </table>
+
+<br /><br />
+
+<br />
+If Stock is missing please advise us by email (production.izishirt@gmail.com) or phone (1 514 286 2446)
+
+Thank you for confirming receipt.

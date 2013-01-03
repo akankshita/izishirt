@@ -1,0 +1,276 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+
+<interface>
+
+
+	
+<!-- the "divider" indicates that if all text is below this size then the first price value is used. Above then the second price value is used-->
+<pricingText>
+
+<item printType='1' divider='22'>1.50|2.50</item>
+
+<item printType='2' divider='22'>1.50|2.50</item>
+
+<item printType='3' textSizeDivider='22'>2.50|3.50</item>
+
+<item printType='4' textSizeDivider='22'>3.50|4.50</item>
+
+</pricingText>
+
+
+
+<pricingDesigns>
+
+<item printType='1' divider='100'>5.95|10.95</item>
+
+</pricingDesigns>
+
+
+
+<font>
+
+<item id='1' font='1.swf'>Arial</item>
+
+<item id='2' font='2.swf'>Times New Roman</item>
+
+<item id='3' font='3.swf'>Courier New</item>
+
+</font>
+
+
+
+<zone>
+
+<item id='1'>Front</item>
+
+<item id='2'>Back</item>
+
+<item id='3'>Left</item>
+
+<item id='4'>Right</item>
+
+</zone>
+
+
+
+<size>
+
+<item id='1'>S</item>
+
+<item id='2'>M</item>
+
+<item id='3'>L</item>
+
+<item id='4'>XL</item>
+
+<item id='5'>XXL</item>
+
+<item id='6'>XXXL</item>
+
+</size>
+
+
+<colorModel>
+
+<item id='1' icon='1.jpg'>White</item>
+
+<item id='2' icon='2.jpg'>Black</item>
+
+<item id='3' icon='3.jpg'>Light Purple</item>
+
+<item id='4' icon='4.jpg'>Light Pink</item>
+
+<item id='5' icon='5.jpg'>Light Green</item>
+
+<item id='6' icon='6.jpg'>Vintage Maroon</item>
+
+<item id='7' icon='7.jpg'>Light Blue</item>
+
+<item id='8' icon='8.jpg'>Light Orange</item>
+
+<item id='9' icon='9.jpg'>Light Red</item>
+
+<item id='10' icon='10.jpg'>Gold Yellow</item>
+
+<item id='11' icon='11.jpg'>Turquoise</item>
+
+<item id='12' icon='12.jpg'>Night Blue</item>
+
+<item id='13' icon='13.jpg'>Dark Green</item>
+
+<item id='14' icon='14.jpg'>Purple</item>
+
+<item id='15' icon='15.jpg'>White/Black</item>
+
+<item id='16' icon='16.jpg'>Grey/Black</item>
+
+<item id='17' icon='17.jpg'>Dark Orchid/Black</item>
+
+<item id='18' icon='18.jpg'>Pale Violet Red/Black</item>
+
+<item id='19' icon='19.jpg'>Aqua/Black</item>
+
+<item id='20' icon='20.jpg'>Burly Wood/Black</item>
+
+<item id='21' icon='21.jpg'>Sky Blue/Black</item>
+
+<item id='22' icon='22.jpg'>Gold/Black</item>
+
+<item id='23' icon='23.jpg'>Light Coral/Black</item>
+
+<item id='24' icon='24.jpg'>Yellow/Black</item>
+
+<item id='25' icon='25.jpg'>Teal/Black</item>
+
+<item id='26' icon='26.jpg'>White/Blue</item>
+
+<item id='27' icon='27.jpg'>White/Yellow Green</item>
+
+<item id='28' icon='28.jpg'>White/Medium Violet Red</item>
+
+</colorModel>
+
+
+
+<colorType>
+
+<item id='1' >Standard</item>
+
+<item id='2' >Velour</item>
+
+<item id='3' >Glitter</item>
+
+<item id='4' >Neon</item>
+
+</colorType>
+
+<!--Print types have now been seperated for text and graphics so I've added these tags to let flash know which categories to include for graphics or texts
+ Use the colorType id in array fashion-->
+<!-- note this means that pricing in <priceModel>, <priceVector>, <pricePixel>, <priceText>, <priceImport> is not used except for deciding what model sizes are available-->
+<colorTypeSeperation>
+	<item id='design'>1</item>
+	<item id='text'>1|2|3|4</item>
+</colorTypeSeperation>
+
+
+
+<colorPalette>
+
+<item type='1|2|3' id='1' hex='000000' icon='2.jpg'>Black</item>
+
+<item type='1|2|3' id='2' hex='FFFFFF' icon='1.jpg'>White</item>
+
+<item type='1|2|3' id='3' hex='9900FF' icon='14.jpg'>Gold</item>
+
+<item type='1|2|3' id='4' hex='FF66FF' icon='4.jpg'>Yellow</item>
+
+<item type='1|2|3' id='5' hex='EAFF00' icon='19.jpg'>Neon Yellow</item>
+
+<item type='1|2|3' id='6' hex='FF6347' icon='20.jpg'>Neon Orange</item>
+
+<item type='1|2|3' id='7' hex='FF9900' icon='21.jpg'>Orange</item>
+
+<item type='1|2|3' id='8' hex='C40202' icon='22.jpg'>Red</item>
+
+<item type='1|2|3' id='9' hex='FF00FF' icon='23.jpg'>Magenta</item>
+
+<item type='1|2|3' id='10' hex='800000' icon='24.jpg'>Maroon</item>
+
+<item type='1|2|3' id='11' hex='001856' icon='25.jpg'>Dark Blue</item>
+
+<item type='1|2|3' id='12' hex='024FFE' icon='26.jpg'>Blue</item>
+
+<item type='1|2|3' id='13' hex='00FFFF' icon='27.jpg'>Azur Blue</item>
+
+<item type='1|2|3' id='14' hex='7FFF00' icon='28.jpg'>Neon Green</item>
+
+<item type='1|2|3|4' id='15' hex='3CB371' icon='29.jpg'>Green</item>
+
+<item type='1|2|3|4' id='16' hex='F0E68C' icon='30.jpg'>Phosphore Scent</item>
+
+<item type='1|2|3|4' id='17' hex='CCCCCC' icon='31.jpg'>Silver</item>
+
+<item type='1|2|3|4' id='18' hex='708090' icon='32.jpg'>Matte Silver</item>
+
+<item type='1|2|3|4' id='19' hex='E3FE02' icon='33.jpg'>Matte Gold</item>
+
+<item type='1|2|3|4' id='20' hex='FFF799' icon='34.jpg'>Metallic Gold</item>
+
+<item type='1|2|3|4' id='21' hex='EBEBEB' icon='35.jpg'>Reflector</item>
+
+<item type='1|2|4' id='22' hex='D7D7D7' icon='36.jpg'>Power Reflex</item>
+
+<item type='1' id='23' hex='D7D7D7' icon='23.jpg'>Power Reflex</item>
+
+</colorPalette>
+
+
+
+<!-- Since the new pricing change, this is only necessary to let the application know what sizes are avaliable in eaxh model color. It's linked to the <size> tag -->
+<priceModel>
+
+	<item model='1' color='1'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='1' color='2'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='1' color='3'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='1' color='4'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='1' color='5'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='1' color='6'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='1' color='7'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='1' color='8'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='1' color='9'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='1' color='10'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='1' color='11'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='1' color='12'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='1' color='13'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='1' color='14'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='15'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='16'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='17'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='18'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='19'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='20'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='21'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='22'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='23'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='24'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='25'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='26'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='27'>s|m|l|xl|xxl|xxxl</item>
+
+	<item model='2' color='28'>s|m|l|xl|xxl|xxxl</item>
+
+</priceModel>
+
+
+
+
+
+
+
+</interface>

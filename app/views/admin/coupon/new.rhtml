@@ -1,0 +1,22 @@
+<h1><%= t(:admin_coupon_new_toptitle) %></h1>
+
+<span style="color:green">
+  <% if flash[:info] %>
+    <p><%= flash[:info] %></p>
+  <% end %>
+</span>
+
+<span style="color:red">
+  <% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+  <% end %>
+</span>
+
+<% form_tag :action => 'create', :order_id => params[:order_id] do %>
+	<%= render :partial => 'form' %>
+
+	<div class="titleForm">&nbsp;</div>
+	<div class="boxForm">
+		<%= edit_form_buttons %>
+	</div>
+<% end %>

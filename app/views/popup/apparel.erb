@@ -1,0 +1,70 @@
+<div id="apparel_popup">
+  <h1><%=@model.brand_name(session[:language_id]).mb_chars.upcase%></h1>
+
+  <div id="first_content">
+    <div id="left_column" style="border: 0 none;">
+      
+	<% if @model.apparel_preview.url("medium").length > 0 %>
+	<% #= FileTest.file?(RAILS_ROOT+"/izishirtfiles/models/2012/7/27/166/166_medium.jpg")  %>
+		<%= image_tag(@model.apparel_preview.url("medium"), :width => 280) %>
+	<% else %>
+		<%= image_tag("/izishirtfiles/models/#{@model.id}/apparel_photo.jpg",:style => "width: 280px;") %>
+	<% end %>
+    </div>
+
+    <div id="right_column">
+
+      <div id="column_title"><%=@model.local_name(session[:language_id]).mb_chars.upcase%></div>
+      <%=@model.local_nickname(session[:language_id])%>
+
+      <% if @model.description(session[:language_id]).length > 0 %>
+        <div class="text_block">
+          <div class="block_title">INFO:</div>
+          <p><%=@model.description(session[:language_id])%></p>
+        </div>
+      <% end %>
+
+
+
+        
+
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <% if !@model.size_type.shoes? %>
+  <div id="schart">
+    <div class="size_in"><%= t(:size_in, :unit=>@model.active_model_sizes[0].local_unit(I18n.locale))%></div>
+    <table id="size_chart" cellspacing="0" cellpadding="0">
+      <tr>
+        <th><%=t(:size).mb_chars.upcase%></th>
+        <% @model.active_model_sizes.each do |model_size|%>
+          <th><%=model_size.local_name(I18n.locale)%></th>
+        <% end %>
+      </tr>
+      <tr>
+        <td>
+          <%= image_tag "izishirt2011/length.png", :alt => ''%>
+          <label id="lengthLabel"><%=t(:apparel_length)%></label>
+        </td>
+          <% @model.active_model_sizes.each do |model_size|%>
+            <td><%=model_size.local_length(I18n.locale)%></td>
+          <% end %>
+      </tr>
+      <tr>
+        <td>
+          <%= image_tag "izishirt2011/width.png", :alt => ''%>
+          <label><%=t(:apparel_width)%></label>
+        </td>
+        <% @model.active_model_sizes.each do |model_size|%>
+          <td><%=model_size.local_width(I18n.locale)%></td>
+        <% end %>
+      </tr>
+    </table>
+    <div class="clear"></div>
+  </div>
+  <% end %>
+  <div class="clear"></div>
+
+
+</div>

@@ -1,0 +1,42 @@
+body,
+#left .categories,
+.blog h1 {background:#bbc8c8; }
+
+body {	font-size:11px; font-family:Tahoma, Arial, Helvetica, sans-serif; color:#686868}
+#holder {background:white; }
+
+#left .userinfo {background:#8da9a9; }
+#left .userinfo,
+#left .userinfo a,
+#left .categories a {color:white;}
+#left .categories {color:white; }
+#left .categories h1 {}
+#left .categories a:hover,
+#left .categories .active {}
+
+#mainlevel a {color: #fff; background:#6f6f6f; }
+#mainlevel  a:hover {background: #8cb211 ; color:white;}
+#mainlevel .active {background: #8cb211 ; color:white;}
+#mainlevel .lastcell a:hover {}
+#mainlevel .lastcell a {}
+
+.blog,
+.blog .rbtm,
+.topdesigns,
+.topdesigns .rbtm     {background:#fff; }
+
+.blog_content {border-top:1px solid #EAEBEC}
+.blog h1 span {color:#fff; }
+.blog_content h2 a {color:#7BABAB}
+.blog_content h2 {color:#7BABAB;}
+.blog_content .btn_blog_addcomment {color:#8e8a86; }
+
+.blog_content .heading p {color:#A4A4A4; }
+
+.topdesigns h1 { color:#fff;  background:#8cb211;  }
+.topdesigns .top_content a:hover span {color:#6F6F6F}
+.topdesigns .top_content a span {color:#8da931; }
+.topdesigns .top_content img {border:1px solid #ecf0f0; display:block}
+.topdesigns .top_content a:hover img {border:1px solid #dedede;}
+
+#footer a {color:#6f6f6f; }

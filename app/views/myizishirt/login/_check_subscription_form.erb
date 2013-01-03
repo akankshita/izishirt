@@ -1,0 +1,35 @@
+<script type="text/javascript">
+  function checkSubscriptionForm() {
+    if ($('user_firstname').value == '') {
+        $('formError').innerHTML = "<%= t(:empty_first_name) %>";
+    }
+    else if ($('user_lastname').value == '') {
+        $('formError').innerHTML = "<%= t(:empty_last_name) %>";
+    }
+    else if ($('user_email').value == '') {
+        $('formError').innerHTML = "<%= t(:empty_email) %>";
+    }
+    else if (!validate_email($('user_email').value)) {
+        $('formError').innerHTML = "<%= t(:wrong_email) %>";
+    }
+    else if ($('user_username').value == '') {
+        $('formError').innerHTML = "<%= t(:empty_username) %>";
+    }
+    else if ($('user_username').value.length < 4) {
+        $('formError').innerHTML = "<%= t(:short_username) %>";
+    }
+    else if ($('user_password').value == '') {
+        $('formError').innerHTML = "<%= t(:empty_password) %>";
+    }
+    else if ($('user_password').value.length < 6) {
+        $('formError').innerHTML = "<%= t(:short_password) %>";
+    }
+    else if ($('user_password').value != $('user_password_confirmation').value) {
+        $('formError').innerHTML = "<%= t(:no_matching_password) %>";
+    }
+    else {
+        return true;
+    }
+    return false;
+}
+</script>

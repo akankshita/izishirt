@@ -1,0 +1,18 @@
+<h1><%= t(:admin_currency_new_toptitle) %></h1>
+	
+	
+	<!-- Form Profile ----------->
+	<% form_tag :action => 'update_currency' do %>
+	  
+		<% for i in 1...@currency.size do %>
+			<div class="titleForm"><label for="currency"> $1 CAD = </label></div>
+			<div class="boxForm"><input type="texte" name="currency[label_<%=@currency[i].id%>]" size="10" maxlength="10" value="<%=@currency[i].ratio%>"> <%= @currency[i].symbol + " (" + @currency[i].label + ")" %></div>
+		<% end %>
+	
+	<div class="dist"></div><br><div class="dist"></div>
+	<div class="titleForm"></div>
+		<%= link_to  t(:admin_reset), "javascript:document.forms[0].reset();", {:class => 'textLink', :title =>  t(:admin_reset)}%>
+		<%= link_to  t(:admin_save), "javascript:document.forms[0].submit();", {:class => 'textLink', :title =>  t(:admin_save)}%>
+		
+	<% end %>			
+	<!-- End form profiel ------->

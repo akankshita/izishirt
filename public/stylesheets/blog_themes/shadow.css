@@ -1,0 +1,48 @@
+/*	=shadow
+---------------------------------------------------------------------------- */
+
+#holder .sleft,
+#holder .sright,
+#holder .center {
+	position: absolute;	
+}
+
+#holder .shadow-top .sleft,
+#holder .shadow-top .sright,
+#holder .shadow-bottom .sleft,
+#holder .shadow-bottom .sright {
+	width: 45px;
+	height: 45px;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+#holder .shadow-top .center,
+#holder .shadow-bottom .center {
+	height: 23px;
+	right: 22px;
+	left: 22px;
+	background-repeat: repeat-x;
+	}
+
+#holder .shadow-middle div {
+	width: 23px;
+	bottom: 22px;
+	top: 22px;
+	background-repeat: repeat-y;	
+}
+
+#holder .shadow-top div { top: -23px; }
+#holder .shadow-bottom div { bottom: -23px; }
+
+#holder .sleft { left: -23px; }
+#holder .sright { right: -23px; }
+
+#holder .shadow-top .sleft { background-image: url(/images/corpblog/shadow/tl.png); }
+#holder .shadow-top .sright { background-image: url(/images/corpblog/shadow/tr.png); }
+#holder .shadow-bottom .sleft { background-image: url(/images/corpblog/shadow/bl.png); }
+#holder .shadow-bottom .sright { background-image: url(/images/corpblog/shadow/br.png); }
+#holder .shadow-top .center { background-image: url(/images/corpblog/shadow/t.png); }
+#holder .shadow-bottom .center { background-image: url(/images/corpblog/shadow/b.png); }
+#holder .shadow-middle .sleft { background-image: url(/images/corpblog/shadow/l.png); }
+#holder .shadow-middle .sright { background-image: url(/images/corpblog/shadow/r.png); }

@@ -1,0 +1,43 @@
+<% if @model %>
+
+
+	<% @model.qty_intervals.each do |qty_interval| %>
+		<p>
+			<hr />
+			<strong><%= qty_interval.min %> - <%= qty_interval.max %></strong>
+		</p>
+
+		<% form_tag({:action => 'update_blank_prices', :model_id => @model.id, :qty_min => qty_interval.min, :qty_max => qty_interval.max}, :method => 'post') do %>
+			<table>
+				<tr>
+					<th>Color</th>
+
+					<% @model.model_sizes.find_all_by_active(true).each do |model_size| %>
+						<th><%= model_size.local_name(session[:language_id]) %></th>
+					<% end %>
+				</tr>
+
+				<% @model_specs.each do |model_spec| %>
+					<tr>
+						<td><%= model_spec.color.local_name(session[:language_id]) %></td>
+
+						<% @model.model_sizes.find_all_by_active(true).each do |model_size| %>
+							<td><%= text_field_tag "price[#{model_spec.id}_#{model_size.id}]", BlankPrice.price_of(model_spec, model_size, qty_interval.min, qty_interval.max), :style => "width: 40px;" %></td>
+						<% end %>
+					</tr>
+				<% end %>
+
+				<tr>
+					<td><strong>Apply to all</strong></td>
+					<% @model.model_sizes.find_all_by_active(true).each do |model_size| %>
+						<td><%= text_field_tag "apply_to_all[#{model_size.id}]", nil, :style => "width: 40px;" %></td>
+					<% end %>
+				</tr>
+			</table>
+
+			<p>
+				<%= submit_tag "Update" %>
+			</p>
+		<% end %>
+	<% end %>
+<% end %>

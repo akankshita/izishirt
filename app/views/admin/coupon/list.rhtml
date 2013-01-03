@@ -1,0 +1,49 @@
+<h1><%= t(:admin_coupon_list_toptitle) %></h1>
+
+<span style="color:green">
+  <% if flash[:info] %>
+    <p><%= flash[:info] %></p>
+  <% end %>
+</span>
+
+<span style="color:red">
+  <% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+  <% end %>
+</span>
+
+<div class="adminsearch">
+<% form_tag({:action => 'search'}, :method => 'get') do %>
+	<%= text_field_tag('search', params[:search], :class => 'input') %>
+	<%= image_submit_tag 'ico-search.gif', :class => 'button' %>
+<% end %>
+</div>
+
+<div class="listing-submenu">
+<%= link_to t(:admin_coupon_list_delete_all_inactive_coupons), {:action=> 'purge', :method => :post}, :confirm => t(:admin_coupon_list_delete_coupon_confirm) %>
+</div>
+<br />
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+	<th><%= link_to_with_sort t(:admin_coupon_list_code), 'code' %></th>
+	<th><%= link_to_with_sort t(:admin_coupon_list_percent_off), 'percent_off' %></th>
+	<th><%= link_to_with_sort t(:admin_coupon_list_currency_off), 'currency_off' %></th>
+	<th><%= link_to_with_sort t(:admin_coupon_list_active_status), 'active' %></th>
+	<th>&nbsp;</th>
+  </tr>
+
+  <tbody id="listing">
+	<%= render :partial => 'listing' %>
+  </tbody>
+</table>
+<br />
+<table cellspacing="0" cellpading="0" width="100%">
+	<tr>
+		<td align="left" width="50%">
+		<%= will_paginate @coupons %>
+		</td>
+		<td align="right" width="50%">
+			<%= link_to t(:admin_add), {:action => 'new'}, {:class => 'textLink', :title => t(:admin_add) } %>
+		</td>
+	</tr>
+</table>

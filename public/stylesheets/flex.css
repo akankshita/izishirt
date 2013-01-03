@@ -1,0 +1,726 @@
+@font-face{src:url("../../public/flash/datastorage/fonts/1.swf");fontFamily: "Arial";}
+@font-face{src:url("../../public/flash/datastorage/fonts/1_bold.swf");fontFamily: "Arial";fontWeight:"bold";}
+@font-face{src:url("../../public/flash/datastorage/fonts/1_italic.swf");fontFamily: "Arial";fontStyle:"italic";}
+@font-face{src:url("../../public/flash/datastorage/fonts/1_bold_italic.swf");fontFamily: "Arial";fontWeight:"bold";fontStyle:"italic";}
+@font-face{src:url("../../public/flash/datastorage/fonts/2.swf");fontFamily: "Times New Roman";}
+@font-face{src:url("../../public/flash/datastorage/fonts/2_bold.swf");fontFamily: "Times New Roman";fontWeight:"bold";}
+@font-face{src:url("../../public/flash/datastorage/fonts/2_italic.swf");fontFamily: "Times New Roman";fontStyle:"italic";}
+@font-face{src:url("../../public/flash/datastorage/fonts/2_bold_italic.swf");fontFamily: "Times New Roman";fontWeight:"bold";fontStyle:"italic";}
+
+/* CSS file */
+.plain {
+  paddingBottom:0; 
+  paddingRight:0;
+  paddingLeft:0;
+  paddingTop:0;
+  borderThickness:0;
+  borderStyle:"solid";
+  borderColor:#FFFFFF;
+  borderSides:"top right bottom left";
+  fontFamily:Arial;
+  fontSize:12;
+}
+.main {
+  paddingLeft:8; 
+  paddingRight:8; 
+}
+
+
+/***************************** Components ************************************/
+VScrollBar {
+  cornerRadius: 0;
+  highlightAlphas: 0, 0;
+  fillColors: #999999, #999999, #999999, #999999;
+  trackColors: #e2f7fd, #e2f7fd;
+  themeColor: #a5a5a5;
+  borderColor: #949495;
+}
+
+.track{
+  trackColors: #e2f7fd, #e2f7fd;
+}
+ComboBox {
+   cornerRadius: 0;
+   color: #666666;
+   borderColor: #666666; 
+   highlightAlphas: 0, 0;
+   fillAlphas: 1, 1, 1, 1;
+   fillColors: #ffffff, #ffffff, #ffffff, #eeeeee;
+}
+TextInput {
+   borderStyle: solid;
+   borderColor: #666666;
+   color: #666666;
+}
+ToolTip{
+  cornerRadius:0;
+}
+CursorManager {
+  busyCursor: Embed(source='/izishirt/assets/images/spinner.swf');
+}
+ModelList {backgroundColor:#ffffff;}
+DesignList {backgroundColor:#ffffff;}
+/***************************** EO Components ********************************/
+
+
+
+/****************************** Tab Nav *************************************/
+TabNavigator {
+   tabHeight: 30;
+   tabStyleName: "myTabs";
+   firstTabStyleName: "myTabs";
+   lastTabStyleName: "myTabs";
+   selectedTabTextStyleName: "mySelectedTabs";
+   horizontalGap:2;
+   paddingTop:0;
+   borderThickness:0;
+}
+.myTabs {
+  color:#666666;
+  textRollOverColor: #666666;
+  upSkin: ClassReference("izishirt.assets.skins.TabSkin");
+  downSkin: ClassReference("izishirt.assets.skins.TabSkin");
+  overSkin: ClassReference("izishirt.assets.skins.TabSkin");
+  selectedUpSkin: ClassReference("izishirt.assets.skins.SelectedTabSkin");
+  selectedDownSkin: ClassReference("izishirt.assets.skins.SelectedTabSkin");
+  selectedOverSkin: ClassReference("izishirt.assets.skins.SelectedTabSkin");
+}
+.mySelectedTabs { 
+  color:#FFFFFF; 
+  textRollOverColor:#FFFFFF;
+}
+.tab {
+  backgroundColor:#cccccc;
+  borderColor:#9d9d9d;
+  borderSides: 'top left right';
+  borderThickness: 1;
+  borderStyle:"solid";
+}
+.selectedTab {
+  backgroundColor:#0066ff;
+}
+/***************************** EO Tab Nav ************************************/
+
+
+
+/****************************** Buttons *************************************/
+.magnify {
+  cornerRadius:0;
+  borderColor:#666666;  
+}
+.smallButton {
+  cornerRadius:0;
+}
+.smallButtonWrapper {
+  borderColor:#cccccc;
+  borderThickness:1;
+  borderSides:"top bottom left right";
+  borderStyle:"solid";
+  backgroundColor:#e7e7e7;
+}
+.upButton {
+
+  backgroundColor:#ffffff;
+
+  borderColor:#cccccc;
+  borderThickness:1;
+  borderSides:"top bottom right";
+  borderStyle:"solid";
+}
+.downButton {
+
+  backgroundColor:#ffffff;
+
+  borderColor:#cccccc;
+  borderThickness:1;
+  borderSides:"bottom right";
+  borderStyle:"solid";
+}
+.upload{
+  color:#ffffff;
+  textRollOverColor:#ffffff;
+  textSelectedColor:#ffffff;
+  paddingLeft:2;
+  paddingRight:2;
+  upSkin: ClassReference("izishirt.assets.skins.UploadSkin");
+  downSkin: ClassReference("izishirt.assets.skins.UploadOverSkin");
+  overSkin: ClassReference("izishirt.assets.skins.UploadOverSkin");
+}
+.checkout{
+  color:#ffffff;
+  textRollOverColor:#ffffff;
+  textSelectedColor:#ffffff;
+  upSkin: ClassReference("izishirt.assets.skins.CheckoutSkin");
+  downSkin: ClassReference("izishirt.assets.skins.CheckoutSkin");
+  overSkin: ClassReference("izishirt.assets.skins.CheckoutSkin");
+}
+.ok{
+  color:#ffffff;
+  textRollOverColor:#ffffff;
+  textSelectedColor:#ffffff;
+  upSkin: ClassReference("izishirt.assets.skins.OkSkin");
+  downSkin: ClassReference("izishirt.assets.skins.OkSkin");
+  overSkin: ClassReference("izishirt.assets.skins.OkSkin");
+}
+.preview {
+  paddingTop:0;
+  paddingLeft:0;
+  paddingRight:0;
+  paddingBottom:0;
+  themeColor:#ffffff;
+}
+.addToCart{
+  fontSize: 12;
+  color:#ffffff;
+  textRollOverColor:#ffffff;
+  textSelectedColor:#ffffff;
+  
+  upSkin: ClassReference("izishirt.assets.skins.AddToCartSkin");
+  downSkin: ClassReference("izishirt.assets.skins.AddToCartOverSkin");
+  overSkin: ClassReference("izishirt.assets.skins.AddToCartOverSkin");
+}
+.positionButton {
+  cornerRadius:0;
+  height:20; 
+  paddingLeft:2;
+  paddingRight:2;
+  fontWeight:"normal";
+}
+.qtyDiscount {
+  fontStyle: Arial;
+  fontSize: 10;
+  fontWeight:"normal";
+  color:#0a62f8;
+  paddingTop:0;
+  paddingBottom:0;
+  paddingRight:0;
+  paddingLeft:0;
+}
+.blueButton {backgroundColor: #3a6dc9;}
+.greenButton {backgroundColor: #009900;}
+.greenButtonOver {backgroundColor: #33cc33;}
+.uploadButton {backgroundColor: #7fe77f;}
+.redButton {backgroundColor: #960000;}
+.darkGreenButton {backgroundColor: #009d06;}
+.darkGreenButtonOver {backgroundColor: #00CC00;}
+.grayButton {backgroundColor:#CCCCCC;}
+.grayButtonOver {backgroundColor:#999999;}
+.darkGrayButton {backgroundColor:#999999;}
+.darkGrayButtonOver {backgroundColor:#666666;}
+.disabledImageButton {backgroundColor:#ffffff;backgroundAlpha:0.5;}
+.closeImage { 
+  color:#ffffff;
+  textRollOverColor:#ffffff;
+  textSelectedColor:#ffffff;
+  paddingTop:0;
+  paddingBottom:0;
+  paddingRight:0;
+  paddingLeft:0;
+  fontWeight:normal;
+  icon:Embed(source='/izishirt/assets/images/close.png');
+  upSkin: ClassReference("izishirt.assets.skins.CloseImage");
+  downSkin: ClassReference("izishirt.assets.skins.CloseImage");
+  overSkin: ClassReference("izishirt.assets.skins.CloseImage");
+}
+.selectAllButton {
+  color:#333333;
+  textRollOverColor:#333333;
+  textSelectedColor:#333333;
+  paddingTop:4;
+  paddingBottom:4;
+  paddingRight:4;
+  paddingLeft:4;
+  upSkin: ClassReference("izishirt.assets.skins.SelectAllSkin");
+  downSkin: ClassReference("izishirt.assets.skins.SelectAllOverSkin");
+  overSkin: ClassReference("izishirt.assets.skins.SelectAllOverSkin");
+}
+.resizeImage { 
+  color:#ffffff;
+  textRollOverColor:#ffffff;
+  textSelectedColor:#ffffff;
+  paddingTop:0;
+  paddingBottom:0;
+  paddingRight:0;
+  paddingLeft:0;
+  icon:Embed(source='/izishirt/assets/images/resize.png');
+  upSkin: ClassReference("izishirt.assets.skins.ImageButton");
+  downSkin: ClassReference("izishirt.assets.skins.ImageButton");
+  overSkin: ClassReference("izishirt.assets.skins.ImageButton");
+}
+.magnifyImage { 
+  color:#ffffff;
+  textRollOverColor:#ffffff;
+  textSelectedColor:#ffffff;
+  paddingTop:0;
+  paddingBottom:0;
+  paddingRight:0;
+  paddingLeft:0;
+  icon:Embed(source='/izishirt/assets/images/magnifyImage.png');
+  upSkin: ClassReference("izishirt.assets.skins.ImageButton");
+  downSkin: ClassReference("izishirt.assets.skins.ImageButton");
+  overSkin: ClassReference("izishirt.assets.skins.ImageButton");
+}
+.rotateImage { 
+  color:#ffffff;
+  textRollOverColor:#ffffff;
+  textSelectedColor:#ffffff;
+  paddingTop:0;
+  paddingBottom:0;
+  paddingRight:0;
+  paddingLeft:0;
+  icon:Embed(source='/izishirt/assets/images/rotate.png');
+  upSkin: ClassReference("izishirt.assets.skins.ImageButton");
+  downSkin: ClassReference("izishirt.assets.skins.ImageButton");
+  overSkin: ClassReference("izishirt.assets.skins.ImageButton");
+}
+.textButton {
+  cornerRadius:0;
+  width:19;
+  height:19;
+  backgroundColor:#ffffff;
+}
+.popupClose {
+  cornerRadius:0;
+  backgroundColor:#ffffff;
+  color:#0493d7;
+  paddingTop:0;
+  paddingBottom:0;
+  paddingLeft:0;
+  paddingRight:0;
+  fontSize:14;
+  fontWeight:bold;
+}
+.buyBlank {
+  paddingLeft:0;
+  paddingRight:0;
+  paddingTop:0;
+  paddingBottom:0;
+  color:#377ff7;
+  rollOverColor:#ffffff;
+  selectionColor:#ffffff;
+  textRollOverColor:#377ff7;
+  textSelectedColor:#377ff7;
+  textAlign:right;
+  cornerRadius:0;
+}
+.blueLink {
+  paddingLeft:0;
+  paddingRight:0;
+  paddingTop:0;
+  paddingBottom:0;
+  color:#377ff7;
+  rollOverColor:#ffffff;
+  selectionColor:#ffffff;
+  textRollOverColor:#377ff7;
+  textSelectedColor:#377ff7;
+  textAlign:right;
+  cornerRadius:0;
+}
+.infoLink {
+  paddingLeft:0;
+  paddingRight:6;
+  paddingTop:0;
+  paddingBottom:0;
+  color:#377ff7;
+  textAlign:right;
+  textDecoration:"underline";
+  cornerRadius:0;
+}
+/**************************** EO Buttons *************************************/
+
+.productWrapper {
+  backgroundColor:#ffffff;
+  borderColor: #cccccc;
+  borderSides: "top right bottom left"; 
+  borderStyle: "solid"; 
+  borderThickness: 1;	
+}
+
+.product {
+  borderColor:#ffffff;
+  borderSides:"top bottom left right";
+  borderThickness: 1;
+  borderStyle:"solid";
+	verticalGap:2;
+}
+.selectedProduct {
+  borderColor:#0a62f8;
+  borderSides:"top bottom left right";
+  borderThickness: 1;
+  borderStyle:"solid";
+	verticalGap:2;
+	textAlign:center;
+}
+.modelPriceLabel{
+	fontSize: 10;
+	color:#0a62f8;
+	textAlign:center;
+}
+.price {
+  fontSize: 16;
+  fontWeight:"bold";
+
+  color: #009900;
+}
+.discountEach {
+	fontSize: 12;
+	fontWeight:"bold";
+	color: #009900;
+}
+.discount {
+  fontSize: 12;
+  color: #000000;
+  fontWeight:"bold";
+  paddingLeft: 0;
+}
+.designs {
+  paddingTop:8;
+  borderSides:"top";
+  borderStyle:"solid";
+  borderColor:#0066ff;
+  borderThickness:5;
+}
+
+.models {
+  paddingTop:8;
+  borderSides:"top";
+  borderStyle:"solid";
+  borderColor:#0066ff;
+  borderThickness:5;
+}
+
+.modelList{
+  verticalGap: 0;
+  horizontalGap:0;
+  borderSides:"top bottom left right";
+  borderStyle:"solid";
+  borderColor:#cccccc;
+  borderThickness:1;
+}
+
+.designList{
+  verticalGap: 0;
+  horizontalGap:0;	
+  borderSides:"top bottom left right";
+  borderStyle:"solid";
+  borderColor:#cccccc;
+  borderThickness:1;
+}
+
+.noGap {
+  verticalGap: 0;
+  horizontalGap:0; 
+}
+
+.lightBorder {
+  borderSides:"top bottom left right";
+  borderStyle:"solid";
+  borderColor:#cccccc;
+  borderThickness:1;
+}
+
+.text {
+  paddingTop:8;
+  borderSides:"top";
+  borderStyle:"solid";
+  borderColor:#0066ff;
+  borderThickness:5;
+}
+
+
+
+.search {
+  horizontalGap:0;
+}
+.searchBox {
+  borderSides:"top left bottom";
+  fontSize:11;
+}
+
+.size {
+  paddingLeft:0;
+  paddingRight:0;
+  textAlign:center;
+  verticalAlign:middle;
+  skin: ClassReference("izishirt.assets.skins.CustomComboBoxSkin");
+  color: #000000;
+  cornerRadius: 0;
+  borderColor:#cccccc;       
+  highlightAlphas: 0, 0;
+  fillAlphas: 1, 1, 1, 1;
+  fillColors: #ffffff, #ffffff, #ffffff, #eeeeee;
+  
+}
+.sizeQty {
+  backgroundColor: #d5eeff; 
+  paddingBottom: 7; 
+  paddingTop: 7; 
+  paddingLeft: 2; 
+  paddingRight: 2;
+}
+.prodName {
+  backgroundColor: #d5eeff; 
+  paddingTop: 7; 
+  paddingLeft: 2; 
+  paddingRight: 4;
+}
+.prodCommission {
+  backgroundColor: #d5eeff; 
+  paddingBottom: 7; 
+  paddingLeft: 2; 
+  paddingRight: 4;
+}
+
+.quantity {
+  borderColor:#cccccc;
+  backgroundDisabledColor:#ffffff;
+}
+.tools {
+  fontStyle: Arial;
+  fontSize: 10;
+  color:#666666;
+  paddingBottom:5;  
+  paddingLeft:8;
+  paddingRight:8;
+  borderColor:#cccccc;
+  borderSides:"bottom"; 
+  borderStyle:"solid";
+  borderThickness:1; 
+}
+.toolLabel {
+  paddingTop:3;
+}
+.boldText {
+  fontWeight:"bold";
+  color: #333333;
+}
+.colorSizeQty {
+  fontStyle: Arial;
+  fontSize: 10;
+  color:#666666;
+  horizontalGap:2;
+}
+.textQty {
+  fontStyle: Arial;
+  fontSize: 12;
+  color:#0066ff;
+  textAlign:center;
+}
+.labelQty {
+  fontStyle: Arial;
+  fontSize: 12;
+  color:#666666;
+}
+.prodDetailLabel{
+  fontSize:12;
+}
+
+.textLineWrapper { 
+  borderColor:#cccccc;
+  borderStyle:"solid";
+  borderThickness:1;
+  borderSides:"top bottom right left";
+  backgroundColor:#eaeaea; 
+  paddingTop:10;
+  paddingBottom:10;
+  paddingLeft:10;
+  paddingRight:10;
+}
+
+.zone {
+  borderColor:#666666;
+  borderStyle:"solid";
+  borderThickness:1;
+  borderSides:"top bottom right left";
+}
+.previewZone {
+  borderStyle:"none";
+}
+.editableText {
+  verticalAlign:middle;
+  textAlign:center;
+  borderColor:#666666;
+  borderStyle:"solid";
+  borderThickness:1;
+  borderSides:"top bottom right left";
+  borderSkin:ClassReference("izishirt.assets.skins.DashBorder");
+  backgroundAlpha:0;
+  dashlen: 6;
+  gaplen: 2;
+  paddingTop:0;
+  paddingBottom:0;
+  paddingLeft:0;
+  paddingRight:0;
+}
+.editableImage {
+  verticalAlign:middle;
+  textAlign:center;
+  borderColor:#666666;
+  borderStyle:"solid";
+  borderSkin:ClassReference("izishirt.assets.skins.DashBorder");
+  borderThickness:1;
+  borderSides:"top bottom right left";
+  backgroundAlpha:0;
+  dashlen: 6;
+  gaplen: 2;
+}
+
+.zoneLabel {
+ fontWeight:"bold";
+ fontSize:10; 
+}
+.textLineLabel {
+  color:#666666;
+}
+.onShirtText {
+  color:#000000;
+  borderStyle:none;
+  borderThickness:0;
+  /*
+  borderStyle:solid;
+  borderColor:#000000;
+  borderThickness:1;
+  borderSides:"top bottom right left";
+  */
+  paddingTop:0;
+  paddingBottom:0;
+  paddingLeft:0;
+  paddingRight:0;
+  backgroundAlpha:0;
+  verticalAlign:middle;
+  horizontalAlign:center;
+  textAlign:center;
+  fontFamily:"Arial";
+  fontSize:20;
+}
+.popup{
+  borderColor:#cecece;
+  borderStyle:"solid";
+  borderThickness:2;
+  borderSides:"top bottom right left";
+  backgroundColor:#ffffff;
+  paddingTop:15;
+  paddingBottom:15;
+  paddingLeft:15;
+  paddingRight:15;
+}
+.uploadDesign {
+  paddingLeft:25;
+  paddingRight:25;
+  paddingTop:10;
+  paddingBottom:0;
+  verticalGap:12;
+}
+.overlay {
+  backgroundColor:#000000;
+  backgroundAlpha:0.7;
+}
+.popupHeader{
+  fontSize:16;
+  fontWeight:bold;
+  color:#666666;
+}
+.bigGreenText {
+  color:#009900;
+  fontWeight:bold;
+}
+
+.atMax {
+  backgroundColor: #ffffcd;
+  paddingTop:8;
+  paddingBottom:8;
+  paddingLeft:2;
+  paddingRight:2;
+  borderColor: #9c9c84;
+  borderStyle: 'solid';
+  borderThickness: 2;
+}
+.atMaxLabel {
+  color: #383732;
+}
+.atMaxButton {
+  rollOverColor:#ffffcd;
+  selectionColor:#ffffcd; 
+}
+.modelPreview {
+  borderSides:"top bottom left right";
+  borderThickness:1;
+  borderColor:#cccccc; 
+  borderStyle:"solid";
+}
+.selectedModelPreview{
+  borderSides:"top bottom left right";
+  borderThickness:1;
+  borderColor:#377ff7; 
+  borderStyle:"solid";
+}
+/********************************** ColorList *************************************/
+.colorsList{
+  horizontalGap:0; 
+}
+.colorsThumb {
+  borderSides:"top bottom left right";
+  borderThickness:1;
+  borderColor:#666666; 
+  borderStyle:"solid";
+}
+.colorsRight{
+  cornerRadius:0;
+  icon:Embed(source='/izishirt/assets/images/colorsRight.png');
+}
+.colorsLeft{
+  cornerRadius:0;
+  icon:Embed(source='/izishirt/assets/images/colorsLeft.png');
+}
+.notLoaded {
+  backgroundColor:#aee1f6;
+}
+.loaded {
+  backgroundColor:#0893d6;
+}
+/******************************* EO ColorList *************************************/
+
+
+
+
+
+/******************************* Pagination *************************************/
+.pages {
+  backgroundColor:#cccccc;
+  backgroundAlpha:0.95;
+  horizontalGap:0;
+}
+.page {
+  paddingLeft:0;
+  paddingRight:0;
+  color:#377ff7;
+}
+.dots{
+  color:#377ff7; 
+}
+.currentPage {
+  paddingLeft:0;
+  paddingRight:0;
+  color:#666666;
+}
+.firstPage {
+  paddingLeft:8;
+  paddingRight:2;
+  icon:Embed(source='/izishirt/assets/images/first.png');
+}
+.lastPage {
+  paddingLeft:2;
+  paddingRight:8;
+  icon:Embed(source='/izishirt/assets/images/last.png');
+ }
+.prevPage {
+  paddingLeft:2;
+  paddingRight:2;
+  icon:Embed(source='/izishirt/assets/images/prev.png');
+}
+.nextPage {
+  paddingLeft:2;
+  paddingRight:2;
+  icon:Embed(source='/izishirt/assets/images/next.png');
+  }
+/**************************** EO Pagination *************************************/

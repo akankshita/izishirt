@@ -1,0 +1,14 @@
+<% if (@country_address_billing && @country_address_billing.shortname != 'FR' && @country_address_billing.shortname != 'GB') %>
+<% if @billing_provinces.length > 1 && @country_address_billing && @country_address_billing.shortname != 'GB' %>
+  <% if (@country_address_billing && @country_address_billing.shortname == 'US') || (@country_address_billing && @country_address_billing.shortname == 'AU') %>
+    <%= t(:state, :locale => @checkout_locale)%> <span class="red">*</span>
+  <% else %>
+    <%= t(:province, :locale => @checkout_locale)%> <span class="red">*</span>
+  <% end %>
+  <% selected_value = @shipping.province_id ? @shipping.province_id : @province_id %>
+  <%= select_tag "billing[province_id]", options_for_select(@billing_provinces,selected_value), {:id =>"billing_province", :style => 'margin: 0px 0px 0px; width: 132px;', :onchange => "billingCountryShipType();"} %>
+<% else %>
+    <%= t(:province, :locale => @checkout_locale)%>
+    <input type="text" name="billing[province_name]" id="billing_province" value="<%= @billing.province_name %>" />
+<% end %>
+<% end %>

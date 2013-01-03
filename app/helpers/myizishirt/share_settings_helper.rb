@@ -1,0 +1,2 @@
+module Myizishirt::ShareSettingsHelper
+end

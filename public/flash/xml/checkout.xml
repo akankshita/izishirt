@@ -1,0 +1,17 @@
+	<purchases total="NaN">
+<data currency="currencyId" lang="en" shop="shopId">
+		<purchase quantity="1" size="1">Promodoro Raglan Long</purchase>
+	</purchases>
+	<products>
+		<product color="26" model="2">
+			<zones>
+				<zone type="1">
+					<artwork printtype="1" rotation="357" y="107.2" x="103" zoom="129" id="3" />
+				</zone>
+				<zone type="2" />
+				<zone type="3" />
+				<zone type="4" />
+			</zones>
+		</product>
+	</products>
+</data>

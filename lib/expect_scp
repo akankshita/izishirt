@@ -1,0 +1,9 @@
+#!/usr/bin/expect -f
+set filename [lindex $argv 0]
+set timeout -1
+spawn scp $filename dbbackup@10.3.5.11:/home/dbbackup
+set pass "Gl4DpUt31dv"
+expect {
+    password: {send "$pass\r" ; exp_continue}
+    eof exit
+}

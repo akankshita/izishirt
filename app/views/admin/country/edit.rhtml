@@ -1,0 +1,9 @@
+<h1>Edit Informations for "<%= @country.name %>"</h1>
+
+<% form_tag({:action => 'update', :id => @country}, { :multipart => true }) do %>
+  <%= render :partial => 'form' %>
+  <div class="titleForm">&nbsp;</div>
+  <div class="boxForm">
+    <%= edit_form_buttons  %>
+  </div>
+<% end %>

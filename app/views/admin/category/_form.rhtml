@@ -1,0 +1,45 @@
+<%= error_messages_for 'category' %>
+<!--[form:category]-->
+<div>
+	<% @category.localized_categories.each do |loc_cat| %>
+    <div class="titleForm"></div>
+    <div class="boxForm">
+	<strong>
+		<%= loc_cat.language.name %>
+	</strong>
+	</div>
+    
+    <div class="titleForm"><label for="color_name"><%= t(:admin_category_form_color_name)%></label></div>
+    <div class="boxForm">
+      <input class="box" type="text" id="localized_name_<%= loc_cat.language.id%>" name="localized_name_<%= loc_cat.language.id%>" value="<%= loc_cat.name %>" />
+    </div>
+    <% i = loc_cat.language_id-1 %>
+
+    
+    
+<br /><br />
+<% end %>
+
+
+<div class="titleForm"><label><%= t(:admin_parent_category) %></label></div>
+<div class="boxForm">
+  <select class="box" id="parent_category_" name="parent_category[]"> 
+    <option value="None">None</option>
+  <% for category in @categories %>
+    <%= display_category_select(category,@parent) %> 
+  <% end %>
+  </select>
+</div>
+
+<div class="titleForm"><label for="category_type_id"><%= t(:admin_category_form_type) %></label></div>
+<div class="boxForm"><%= select 'category', 'category_type_id', @types, {}, :class=>'box'  %></div>
+
+<div class="titleForm"><label for="category_active"><%= t(:admin_category_form_active)%></label></div>
+<div class="boxForm"><%= check_box 'category', 'active', {}, 'true', 'false' %></div>
+
+
+
+
+<!--[eoform:category]-->
+
+  </div>

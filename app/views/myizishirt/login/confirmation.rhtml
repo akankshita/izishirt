@@ -1,0 +1,35 @@
+<%= render :partial=>"check_subscription_form" %>
+<div id="confirmation_container">
+  <div id="subscribe_left">
+    <%= render :partial=>"subscribe_left" %>
+
+  </div>
+  <div id="confirm_right">
+    <h1><%=t(:welcome_to_izishirt_com)%></h1>
+    <div id="confirm_box">
+      <%= image_tag "izishirt2011/#{session[:language]}/make_it_confirm.jpg", :class=>"make_it" %>
+      <div id="box">
+        <p id="box_title">
+          <%= t(:thank_you_for_subscribe) %>
+        </p>
+        <p id="box_content">
+          <div class="bold_text"><%=t(:you_can_now)%></div>
+
+          <ul>
+            <li><%=t(:receive_coupon_codes)%></li>
+            <li><%=t(:track_your_orders)%></li>
+            <li><%= link_to t(:open_an_online_store), {:controller => "/display", :action => "open_shop"} ,{ :class=>"blue_apparel" }%></li>
+          </ul>
+
+          <%= link_to t(:start_shopping_button), {:controller=>'/display', :action=>:create_tshirt}, :class=>"button_make" %>
+        </p>
+
+      </div>
+
+
+
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="clear"></div>
+</div>

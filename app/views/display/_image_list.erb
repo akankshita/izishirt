@@ -1,0 +1,27 @@
+<div id="new_favorite_tshirts">
+  <div id="new_favorite">
+    <div id="gray_box">
+      <div id="title"><%= title %></div>
+      <div id="view_all">
+        <%= link_to t(:view_all) + " >", {:controller=>:display, :action=>(@controller.action_name=="shop"?"staff_pick":"shop")} %>
+      </div>
+    </div>
+
+    <% i = 0 %>
+    <% #images.each do |design| %>
+      
+      <div id="design_box">
+        <div id="designs" class="wraptocenter">
+
+            <a href="<%#= design.orig_image.url('340') %>" title="<%#= get_title_link_adding(design.name, t("seo_word_"+i.to_s))%>" class="preview" onclick="return redirect_to('<%#=url_for(design_url(design.id))%>');">
+              <%#= image_tag(design.orig_image.url("100"), :alt=>get_title_link_adding(design.name, t("seo_word_"+i.to_s))) %>
+            </a>
+
+        </div>
+        <p><%#= link_to truncate(design.name, :length =>20),design_url(design.id), :title=>get_title_link_adding(design.name, t("seo_word_"+i.to_s)) %></p>
+      </div>
+      <%# i = (i+1)%2 %>
+    <%# end %>
+
+  </div>
+</div>

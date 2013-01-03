@@ -1,0 +1,33 @@
+<div class="left redBoxLeft noPad noMarg noBord"></div>
+<div class="left redBoxHeader noPad noMarg noBord shopHeaderWidth">
+  <label>NEW SUBMISSIONS</label>
+  <a name="new_sub"></a>
+</div>
+
+<div class="left redBoxRight noPad noMarg noBord"></div>
+
+
+<div class="noPad noMarg boxContent shopWidth">
+  <% @new_submissions.each do |design| %>
+  <div class="left thumbWrapper topDesign">
+    <div class="imageWrapper">
+      <%= link_to image_tag(design.orig_image.url("100"), 
+        :class => 'thumb', :alt => "#{design.name} T-shirt", :title => "#{design.name} T-shirt"),
+        {:controller => 'display', :action => 'shop1', :id => design.id} %>
+    </div>
+    <span>
+      <%= link_to truncate(design.name, :length =>20), 
+        "#{print_force_lang}#{t(:menu_create_shirt_url)}/#{design.id}",
+        :class => 'noDecoration darkGray' %>
+    </span>
+  </div>
+  <% end %>
+</div>
+<div class="left bottomTitleDarkLeft"></div>
+<div class="left bottomTitleDarkMiddle shopTitleWidth">
+    <div class="pagenumb">
+      <%= will_paginate @new_submissions, :class=>"pagination_links_category", :prev_label => t(:prev_label),
+:next_label => t(:next_label), :outer_window=>4, :params => {:anchor => "new_sub"} %>
+    </div>
+</div>
+<div class="left bottomTitleDarkRight"></div>

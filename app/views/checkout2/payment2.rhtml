@@ -1,0 +1,160 @@
+<script type="text/javascript" charset="utf-8">
+  function send_form(url) {
+    document.getElementById('submit_payment_link').href='javascript:void(0)';
+    document.getElementById('submit_payment_link').disabled = 1;
+    if (url != '') {
+      document.forms['payment_form'].action = url;
+    }
+    document.forms['payment_form'].submit();
+  }
+</script>
+<form id="paypal" name="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+  <input type="hidden" name="cmd" value="_xclick">
+  <input type="hidden" name="business" value="contact@izishirt.com">
+  <input type="hidden" name="item_name" value="Izishirt">
+  <input type="hidden" name="amount" value="<%=number_with_precision(@payment_subtotal, 2)%>">
+  <input type="hidden" name="shipping" value="<%=number_with_precision(@payment_shipping, 2)%>">
+  <input type="hidden" name="no_shipping" value="0">
+  <input type="hidden" name="no_note" value="1">
+  <input type="hidden" name="currency_code" value="<%=@currency%>">
+  <input type="hidden" name="tax" value="<%=number_with_precision(@payment_taxes, 2)%>">
+  <input type="hidden" name="lc" value="<%=t(:paypal_lang)%>">
+  <input type="hidden" name="bn" value="PP-BuyNowBF">
+  <input type="hidden" name="cancel_return" value="<%=SECURE_URL_ROOT%>/checkout/payment">
+  <input type="hidden" name="cpp_header_image" value="<%=SECURE_URL_ROOT%>/images/izishirt_paypal_header.gif">
+  <input type="hidden" name="image_url" value="<%=SECURE_URL_ROOT%>/images/logo.gif">
+  <input type="hidden" name="no_shipping" value="1">
+  <input type="hidden" name="return" value="<%=SECURE_URL_ROOT%>/checkout/paypal_confirmation">
+  <input type="hidden" name="shopping_url" value="<%=@URL_ROOT%>">
+  <input type="hidden" name="cbt" value="<%=t(:finalize_purchase)%>">
+</form>
+
+
+
+
+<div id="checkout-container" > <%= render :partial => 'steps' %>
+  <!-- PAYMENT CONTENT -->
+  <div class="checkout-pay-spacer"></div>
+  <div  class="clearfix" >
+    <h3><%= t(:payment_header) %></h3>
+    <form name="payment_form" action="<%= url_for(:controller=>'checkout', :action=>'confirmation')%>" method="post">
+      <% if SHIPPING_ALLOW_INSURANCE %>
+        <h4 class="checkout-type-2"><strong><%= t(:payment_shippinginsurance) %></strong></h4>
+        <input name="payment[shippinginsurance]" id="payment_shippinginsurance" type="radio" value="1" />
+        <span class="checkout-type-2">&nbsp;<%= t(:address_yes) %></span>
+        <input name="payment[shippinginsurance]" id="payment_shippinginsurance" type="radio" value="0" class="checkout-ship-adjust-1" />
+        <span class="checkout-type-2">&nbsp;<%= t(:address_no) %></span>
+      <% end %>
+      <div class="checkout-pay-spacer"></div>
+      <strong><%= t(:payment_shippingtype) %></strong>
+      <!--&nbsp;&nbsp;<img src="/images/payment-postal.gif" alt="" width="76" height="23" class="checkout-inline"/> -->
+      <div class="shipping_met">
+        <span><input name="standard" type="radio" value="standard" checked="checked" /><%= t(:payment_shipping_standard) %></span>
+        <%= number_to_currency_custom(@payment_shipping) %>
+      </div>
+
+      <b><%= t(:payment_order_summary) %></b>
+      <div class="order_summary clearfix">
+        <p><span><%= t(:payment_order_total) %></span> <%= number_to_currency_custom(@payment_subtotal) %></p>
+        <p><span><%= t(:payment_shipping_cost) %></span> <%= number_to_currency_custom(@payment_shipping) %></p>
+        <p><span><%= t(:payment_taxes) %></span><%= number_to_currency_custom(@payment_taxes) %></p>
+        <p class="nobrd"><span><strong><%= t(:payment_total) %></strong></span> <strong><%= number_to_currency_custom(@payment_total, :precision => 2) %> (<%= @currency %>)</strong></p>
+      </div>
+      <b><%= t(:payment_infoheader) %></b>
+      <br />
+      <br />
+
+      <%= flash[:error] %>
+
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ccinfo">
+        <tr>
+          <td><%= t(:payment_paymentype) %><br />
+            <select id="payment_type" name="payment[type]">
+              <option value='VISA' selected>Visa</option>
+              <option value='MASTERCARD'>Mastercard</option>
+              <option value='AMEX'>American Express</option>
+              <option value='DISC'>Discover</option>
+              <option value='PAYPAL'>PayPal</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+
+
+      <div id="payment">
+        <%= render :partial => 'credit_card' %>
+        
+      </div>
+      <div id="ccv" class="verification left">
+          <label><%= t(:payment_ccv) %></label>
+          <input type="text" name="payment[ccv]" id="payment_ccv" maxlength="4" style="width:40px;" />
+          <% link_to({:action => 'verification_code'}, {:class => 'blue noDecoration lbOn', :name=>"light_verif", :style=>"display:inline;"}) do %>
+            <img src="/images/izishirt2009/grayInfo.png" alt="" />
+          <% end %>
+        </div>
+
+        <div class="clearfix"></div>
+      <%= observe_field "payment_type", {:function =>
+          "if (value == 'PAYPAL') {\n" +
+          update_page do |page|
+          page.replace_html 'payment', :partial => 'paypal'
+          page.hide 'submit_payment_link'
+          page.hide 'ccv'
+        end +
+          "\n} else {\n" +
+          update_page do |page|
+          page.replace_html 'payment', :partial => 'credit_card'
+          page.show 'submit_payment_link'
+          page.show 'ccv'
+        end +
+          "\n} \n"
+
+      }
+    %>
+
+      <br />
+      <br />
+      <div class="checkout_terms" align="center"><img src="/images/checkout/logo_visa.gif" width="58" height="36"> <img src="/images/checkout/logo_mastercard.jpg" width="58" height="36"> <img src="/images/checkout/american_express_discover.gif" width="58" height="36"> <img src="/images/checkout/logo-american-express.jpg" width="58" height="36">
+        <!-- PayPal Logo --><a href="#" onclick="javascript:window.open('https://www.paypal.com/us/cgi-bin/webscr?cmd=xpt/cps/popup/OLCWhatIsPayPal-outside','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=400, height=350');"><img  src="https://www.paypal.com/en_US/i/logo/PayPal_mark_60x38.gif" border="0" alt="Acceptance Mark"></a><!-- PayPal Logo -->
+      </div>
+      <br />
+      <br />
+      <div class="checkout_terms" align="center"> <%= t(:payment_processor_link_label) %> <a target="_blank" href="<%= t(:payment_processor_link_privacy_url) %>" class="checkout-type-2"><%= t(:payment_processor_link_privacy) %></a> <%= t(:payment_processor_link_label2) %> <a target="_blank" href="<%= t(:payment_processor_link_terms_url) %>" class="checkout-type-2"><%= t(:payment_processor_link_terms) %></a>
+      </div>
+      <br />
+      <br />
+      <div class="clearfix checkout_btn" align="center">
+        <a href="javascript:send_form('<%= url_for(:controller => '/checkout/address') %>');" class="checkout-button-continue"><%= t(:payment_back) %></a>
+      <a href="javascript:send_form('')" id='submit_payment_link' class="checkout-button-validate-2"><%= t(:payment_next) %></a> </div>
+
+    </form>
+
+  </div>
+  <div class="checkout-pay-spacer clear"></div>
+  <!-- END OF PAYMENT CONTENT -->
+</div>
+
+
+<!-- Google Code for izishirt en  canada Conversion Page -->
+<script language="JavaScript" type="text/javascript">
+  <!--
+  var google_conversion_id = 1063203235;
+  var google_conversion_language = "en_US";
+  var google_conversion_format = "1";
+  var google_conversion_color = "99ccff";
+  if (3) {
+    var google_conversion_value = 3;
+  }
+  var google_conversion_label = "bjMHCP22QxCj4_z6Aw";
+  //-->
+</script>
+<script language="JavaScript" 
+        src="https://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+  <img height="1" width="1" border="0"
+       src="https://www.googleadservices.com/pagead/conversion/1063203235/?value=3&amp;label=bjMHCP22QxCj4_z6Aw&amp;script=0">
+</noscript>
+

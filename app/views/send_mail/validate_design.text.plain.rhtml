@@ -1,0 +1,34 @@
+<p>
+<%= I18n.t(:send_mail_design_validation_content1, :locale => Language.find(@user.language_id).shortname) %> <%= @user.firstname %>, <%= I18n.t(:send_mail_design_validation_content2, :locale => Language.find(@user.language_id).shortname) %> <%= @image_name %> <% if @image_id %> (ID <%=  @image_id %>) <% end %> <%= I18n.t(:send_mail_design_validation_content3, :locale => Language.find(@user.language_id).shortname) %>
+</p>
+
+  <% if @order_id %>
+  	<p>
+  		<%= I18n.t(:send_mail_decline_artwork_order_id, :locale => Language.find(@user.language_id).shortname) %><%= @order_id %><br />
+	</p>
+  <% end %>
+
+<% if @image_link %>
+    <a href="<%= (URL_ROOT + @image_link) %>"><img src="<%= (URL_ROOT + @image_link) %>" alt="" /></a><br />
+      <a href="<%= (URL_ROOT + @image_link) %>"><%= (URL_ROOT + @image_link) %></a>
+<% end %>
+
+<% if @comment_admin != "" %>
+  <p>
+  <%= I18n.t(:send_mail_design_validation_content4, :locale => Language.find(@user.language_id).shortname) %> <br />
+  <%= @comment_admin %>
+  </p>
+<% end %>
+
+<p>
+	<%=I18n.t(:send_mail_content_izishirt_team, :locale => Language.find(@user.language_id).shortname)%><br />
+	IZISHIRT.com<br />
+	<%=I18n.t(:contact_us_email_designs, :locale => Language.find(@user.language_id).shortname)%><br />
+</p>
+
+<p>
+<%= I18n.t(:sendmail_social_networks, :locale => Language.find(@user.language_id).shortname) %><br />
+Twitter: <a href="http://twitter.com/izishirt">http://twitter.com/izishirt</a><br />
+Facebook: <a href="http://facebook.com/pages/IziShirt/223576667655075">http://facebook.com/pages/IziShirt/223576667655075</a><br />
+Blog: <a href="http://www.izishirtblog.com/">http://www.izishirtblog.com/</a>
+</p>

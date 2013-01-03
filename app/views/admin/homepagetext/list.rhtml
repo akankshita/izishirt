@@ -1,0 +1,35 @@
+<h1>Homepage text list</h1>
+
+<div>
+
+
+<br />
+<br />
+</div>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="170">Title FR</th>
+	<th width="170">Title France</th>
+	<th width="170">Title EN</th>
+	<th width="170">Title USA</th>
+	<th>&nbsp;</th>
+  </tr>
+
+<tbody>
+<% for homepagetext in @homepagetexts %>
+	<tr>
+		<td width="170"><%= homepagetext.title_fr  %></td>
+		<td width="170"><%= homepagetext.title_frch  %></td>
+		<td width="170"><%= homepagetext.title_en  %></td>
+		<td width="170"><%= homepagetext.title_us  %></td>
+		<td>
+			<%= link_to '&nbsp;', {:action => 'edit', :id => homepagetext.id}, {:class => 'icoEdit icopng', :title => t(:admin_edit) } %>
+			<% #= link_to '&nbsp;', { :action => 'destroy', :id => homepagetext.id }, :confirm => t(:admin_confirm), :method => :post, :class => 'icoDelete icopng', :title => t(:admin_delete) %>
+		</td>
+	</tr>
+<% end %>
+
+</tbody>
+
+</table>

@@ -1,0 +1,46 @@
+<!-- Create your own T-Shirt! -->
+<div id="left_container">
+	<%= render :partial => "/layouts/generic_boxes/left_column_infos", :locals=>{:version=>"long"} %>
+	<div id="cloud_tag">
+		<ul>
+			<% links = links_for_cloud_tag(@tags) %>
+			<% links.each do |link| %>
+			  <li><%= link %></li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+<div id="right_container">
+	<div id="seo_create_tshirt_main">
+		<h1><%=t(:seo_create_title_Create_your_own_tshirt)%></h1>
+		<span class="shop_tshirt"><%= link_to(t(:seo_create_link_shop_for_tshirts_designs), create_tshirt_url(), :class=>"shop_tshirt", :title=>t(:seo_create_link_shop_for_tshirts_designs))%></span>
+		<div id="seo_create_tshirt_border">
+			<%= link_to image_tag("izishirt2011/#{session[:language]}/banner_create.jpg", :alt=>t(:seo_create_title_Create_your_own_tshirt)), create_tshirt_url(), :title=>t(:seo_create_title_Create_your_own_tshirt)%>
+			<p class="title_14"><%=t(:seo_create_title_1, :domain=>@DOMAIN_NAME.capitalize)%></p>
+			<p><%=t(:seo_create_text_1)%></p>
+			<p class="title_14"><%=t(:seo_create_title_2)%></p>
+			<p><%=t(:seo_create_text_2)%></p>
+			<ul>
+				<li><%=t(:seo_why_create_text_1)%><%= link_to(t(:seo_create_a_tshirt), create_tshirt_url(), :title=>t(:seo_create_a_tshirt))%></li>
+				<li><%=t(:seo_why_create_text_2)%><%= link_to(t(:seo_create_a_tshirt), create_tshirt_url(), :title=>t(:seo_create_a_tshirt))%></li>
+				<li><%=t(:seo_why_create_text_3)%><%= link_to(t(:seo_create_a_tshirt), create_tshirt_url(), :title=>t(:seo_create_a_tshirt))%></li>
+				<li><%=t(:seo_why_create_text_4)%><%= link_to(t(:seo_create_a_tshirt), create_tshirt_url(), :title=>t(:seo_create_a_tshirt))%></li>
+			</ul>
+			<p><%=t(:seo_create_text_3)%></p>
+			<p class="green_16_title"><%= link_to(t(:seo_create_title_3), create_tshirt_url(), :class=>"green_16_title", :title=>t(:seo_create_title_3))%></p>
+			<p class="title_14"><%=t(:seo_create_title_4)%></p>
+			<p><%=t(:seo_create_text_4)%></p>
+			<p><%= link_to(t(:seo_create_text_7), {:controller=>'/display',:action=>"open_shop"}, :class=>"blue_apparel", :title=>t(:seo_create_text_7))%></p>
+			<p class="title_14"><%=t(:seo_create_title_5)%></p>
+			<ul>
+				<li><%=t(:seo_create_text_5_1)%></li>
+				<li><%=t(:seo_create_text_5_2)%></li>
+			</ul>
+			<p><%=t(:seo_create_text_5)%></p>
+			<p class="title_14"><%=t(:seo_create_title_6)%></p>
+			<p><%=t(:seo_create_text_6)%></p>
+			<p><%=t(:seo_create_text_8, :phone=>get_phone_number)%></p>
+		</div>
+	</div>
+</div>
+<!-- Create your own T-Shirt! -->

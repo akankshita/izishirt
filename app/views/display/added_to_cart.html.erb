@@ -1,0 +1,26 @@
+<script type="text/javascript">
+  cbb.init();
+  Custom.init();
+  $("link_to_cart_text").innerHTML = "<%=@human_cart%>";
+  new Effect.Highlight($('link_to_cart_text'), { startcolor: '#ffff99',endcolor: '#ffffff' });
+</script>
+<div class="relative center">
+  <%= link_to image_tag("/images/izishirt2009/loginClose.png"),
+      "#", :class => 'lbAction loginClose', :rel => 'deactivate'%>
+  <div class="apparelAddedToCart">
+    <div>
+      <%= image_tag "create_boutique/big_cart.png" %>
+      <div>
+        <label class="block"><%=t :added_to_cart1%></label>
+        <label class="block"><%=t :added_to_cart2%></label>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="redButton closeAddedToCart">
+    <%= link_to t(:ok_btn), 
+      "#", :class => "lbAction", :rel => "deactivate" %>
+  </div>
+</div>

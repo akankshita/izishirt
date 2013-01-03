@@ -1,0 +1,3 @@
+page.insert_html :before, 'add_style', :partial => 'fabric_style', :locals => {:style => @fabric_style}
+page.visual_effect :highlight, "fabric_style_#{@fabric_style.id}", :duration => 2
+

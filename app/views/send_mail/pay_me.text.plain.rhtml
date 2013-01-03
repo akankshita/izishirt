@@ -1,0 +1,19 @@
+<%= @user.username %> wants a payment.
+<br />
+<br />
+Payment: <%= Earning.payment_methods(@user.language.shortname)[@payment_method.to_i] %>
+<br />
+<br />
+User's E-mail: <%= @user.email %><br />
+<%= "Paypal E-mail: "+ @email if @payment_method.to_i == 0 %>
+
+<%= '<br /><br />Address: '+@address if @payment_method.to_i == 1%>
+<br />
+<br />
+Comment: <%= @comment %>
+<br />
+<br />
+Amount: <%= @store_payment.amount.round(2) %>$
+<br />
+<br />
+<a href="<%= (URL_ROOT) %>/manage/edit_payment/<%= @store_payment.id %>">PAYER/PAY</a>

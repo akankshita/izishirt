@@ -1,0 +1,2 @@
+<%= select_tag "ordered_product_#{prod.id}_color_id", options_for_select(@colors, prod.color_id), {:onchange => "document.getElementById('ordered_product_#{prod.id}_color_other').value = ''"} %><br />
+<!--<%= text_field_tag "ordered_product_#{prod.id}_color_other", prod.color_other, :size => 15 %>-->

@@ -1,0 +1,59 @@
+<div class="bulkContentSection">
+  <div class="bulkContentTitle">
+    <%= t(:contact).mb_chars.upcase %>
+  </div>
+  <div class="bulkContentFormSection">
+    <div class="field left">
+      <label class="inputLabel"><%= t(:company_name) %></label>
+      <%= b.text_field :company_name %>
+    </div>
+    <div class="field right">
+      <div class="mandatory"><span class="red">*</span> <%=t(:mandatory_fields)%></div>
+    </div>
+    <div class="field left clear">
+      <label class="inputLabel"><%= t(:first_name) %></label>
+      <%= b.text_field :first_name %>
+    </div>
+    <div class="field right">
+      <label class="inputLabel"><%= t(:last_name) %></label>
+      <%= b.text_field :last_name %>
+    </div>
+    <div class="field left clear">
+      <label class="inputLabel"><%= t(:email) %> <span class="red">*</span></label>
+      <%= b.text_field :email %>
+    </div>
+    <div class="field right">
+      <label class="inputLabel"><%= t(:phone) %> <span class="red">*</span></label>
+      <%= b.text_field :phone %>
+    </div>
+    <label class="text clear">
+      <%= t(:comments) %>
+    </label>
+    <%= b.text_area :comments %>
+  </div>
+
+</div>
+
+<div class="bulkContentSection">
+  <div class="bulkContentTitle">
+    <%= t(:shipping).mb_chars.upcase %>
+  </div>
+  <div class="bulkContentFormSection">
+    <div class="dateField left">
+      <%=t(:date_needed)%>
+      <%= b.text_field :date_needed, {:id=>"datepicker"} %>
+      <a href="#current" onclick="javascript:$j('#datepicker').datepicker('show');">
+        <%= image_tag "izishirt2009/calendar.png" %>
+      </a>
+    </div>
+    <div class="field left clear">
+      <%=t(:zip_code)%>
+      <%= b.text_field :zip %>
+    </div>
+    <div class="clear" style="margin-bottom:10px;"></div>
+  </div>
+
+
+
+  <%= b.hidden_field :country, {:value=>session[:country]} %>
+</div>

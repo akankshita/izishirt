@@ -1,0 +1,154 @@
+<div id="detail_product_<%=item.product.checksum%>" class="box_product">
+  <div style="float:left;">
+    <div id="photo">
+      <% link_to(item.preview, :class=>"preview",:onclick=>"return false;") do %>
+        <%= image_tag(item.preview, :alt => '', :height=>76) %>
+      <% end %>
+    </div>
+
+    <% if item.back_preview %>
+      <div id="photo">
+        <% link_to(item.back_preview, :class=>"preview",:onclick=>"return false;") do %>
+          <%= image_tag(item.back_preview, :alt => '', :width=>76, :height=>76) %>
+        <% end %>
+      </div>
+    <% else %>
+      <div id="photo" style="visibility:hidden;"></div>
+    <% end %>
+    
+    <div style="float:left">
+    <% if item.left_preview %>
+      <div id="photo" style="width:40px;float:none;margin-bottom:2px;">
+        <% link_to(item.left_preview, :class=>"preview",:onclick=>"return false;") do %>
+          <%= image_tag(item.left_preview, :alt => '', :width=>36, :height=>36) %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if item.right_preview %>
+      <div id="photo" style="width:40px;float:none;">
+        <% link_to(item.right_preview, :class=>"preview",:onclick=>"return false;") do %>
+          <%= image_tag(item.right_preview, :alt => '', :width=>36, :height=>36) %>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+
+
+    <div id="description" style="">
+
+
+
+
+
+	      <strong><%=t(:design, :locale => @checkout_locale)%>: <%= item.image %></strong><br/>
+	      <%=t(:model, :locale => @checkout_locale)%>: <%=truncate item.product.model.local_name(session[:language_id]), :length => 35%><br/>
+	      <%=t(:color, :locale => @checkout_locale)%>: <%= item.product.color.local_name(session[:language_id]) if item.product.color %><br/>
+
+
+
+	      <% if (item.product.store_id.nil? or item.product.store_id == 64) && cookies[:iframe_continue_link].nil? %>
+		<% if item.product.affiliate_product? %>
+		  <%= link_to t(:edit_this_product, :locale => @checkout_locale),
+		    "#{boutique_create_tshirt_url(item.product.affiliate_user.store)}?ordered_product=#{item.product.checksum}",
+		    :class => 'blue noDecoration edit_link'
+		  %>
+		<% elsif item.product.model.model_category == 'custom_case' %>
+		  <%= link_to t(:edit_this_product, :locale => @checkout_locale),
+		    {:controller => t(:create_skin_url), :ordered_product => item.product.checksum, :only_path=>false, :protocol=>"http://"},
+		    :class => 'blue noDecoration edit_link'
+		  %>
+        <% else %>
+		  <%= link_to t(:edit_this_product, :locale => @checkout_locale),
+		    {:controller => 'display', :action => 'create_tshirt', :ordered_product => item.product.checksum, :only_path=>false, :protocol=>"http://"},
+		    :class => 'blue noDecoration edit_link'
+		  %>
+		<% end %>
+	      <% end %>
+    </div>
+  </div>
+  <div style="float:left;<%=params[:onsite] ? "width:250px;" : "width:275px" %>">
+    <div id="size_quantity">
+
+	      <%= size_select(item.product.model_id, 
+			      item.product.color_id, 
+			      item.product.model_size_id,
+			      nil, 
+			      "size[#{item.product.checksum}]",
+			      false)%>
+	      <%= observe_field "size_#{item.product.checksum}",
+				  :url => { :action => :update_cart_item, :onsite => params[:onsite], :store_id => params[:store_id], :id =>"#{item.product.checksum}" },
+				  :frequency => 0.5,
+				  :with => "'qty='+$('quantity_#{item.product.checksum}').value+'&model_size_id='+value" %>
+
+
+
+	      <%= text_field_tag "quantity[#{item.product.checksum}]", item.quantity, :size=>5, :maxlength=>3, :onchange => "this.value = toPositiveInteger(this.value);", :class=>"quantity_field" %>
+	      <%= observe_field "quantity_#{item.product.checksum}",
+				  :url => { :action => :update_cart_item, :onsite => params[:onsite], :store_id => params[:store_id], :id =>"#{item.product.checksum}"},
+				  :frequency => 0.5,
+				  :with => "'qty='+value+'&model_size_id='+$('size_#{item.product.checksum}').value" %>
+
+
+    </div>
+    <div class="plus_minus_container">
+
+	     <!-- Increment Cart -->
+		<%= link_to_remote '',
+		  { :url => {:action=>'update_cart_item', :onsite => params[:onsite], :store_id => params[:store_id], :method=>"add",
+		    :id =>item.product.checksum},
+		    :with=>"'qty='+$('quantity_#{item.product.checksum}').value+'&model_size_id='+$('size_#{item.product.checksum}').value"
+		    },
+		    {:class => 'plus', :id=>"plus_#{item.product.checksum}"} %>
+
+
+		  <!-- Decrement Cart -->
+		  <%= link_to_remote '',
+		    { :url => {:action=>'update_cart_item', :onsite => params[:onsite], :store_id => params[:store_id], :method=>"remove",
+		      :id =>item.product.checksum},
+		    :with=>"'qty='+$('quantity_#{item.product.checksum}').value+'&model_size_id='+$('size_#{item.product.checksum}').value"
+		      },
+		      {:class => 'minus', :id=>"minus_#{item.product.checksum}",:style=>(item.quantity == 1) ? "display:none;" : ""} %>
+
+
+    </div>
+
+	<%
+	
+	 @modelinfos  = Model.find(item.product.model.id.to_i)
+	  
+	if @modelinfos.nodiscount== true
+		@product_price = item.price
+	else
+	
+		if @modelinfos.id && BulkDiscount.exists?(:model_id => @modelinfos.id) 
+		@bulk_discount = BulkDiscount.find(:last, :conditions => ["is_default = ? and start <= ?", true, item.quantity], :order => :start)
+		end
+
+        if @bulk_discount 
+			@discount=@bulk_discount.percentage / 100.0 
+		else 		
+			@discount=0.0
+		end 
+		
+		@product_price = item.price -(item.price * @discount)
+		#if @discount==0
+		#  @product_price = item.price
+		#end
+	
+	end
+	
+	%>
+	
+	
+    
+    <div id="price_<%=item.product.checksum%>" class="price" style="<%= "display:none; " if params[:action] == "show_brief_cart" %>"><%=number_to_currency_custom(item.quantity*@product_price.to_f*currency_rate(session[:currency]))%></div>
+
+    <input id="delete_<%=item.product.checksum%>" type="image" src="/images/izishirt2009/close.gif" name="delete_product" width="16" value="1"height="16" class="btnimgprd" onclick="return deleteCartItem('<%=item.product.checksum%>')" />
+    <%= observe_field "delete_#{item.product.checksum}",
+                          :url => { :action => :delete_cart_item, :onsite => params[:onsite], :store_id => params[:store_id], :id =>"#{item.product.checksum}"},
+                          :frequency => 0.5 %>
+    <div class="clear"></div>
+  </div>
+  <div class="clear"></div>
+</div>

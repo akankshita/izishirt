@@ -1,0 +1,26 @@
+<script type="text/javascript">
+  cbb.init();
+  Custom.init()
+</script>
+<div class="relative">
+  <label class="account_title"><%=t(:delete_my_account_box_title).upcase%></label>
+
+  <%= form_tag({:action => 'confirm_delete'}, {:id => 'confirm_delete' }) %>
+
+  <p></p>
+  <p align="center" class="red bold"><%= t(:confirmation_question_delete_account) %></p>
+
+<div align="center" style="width:280px;margin-left:auto;margin-right:auto;">
+
+  <div class="redButton left">
+    
+    <%= link_to t(:ok_btn), "javascript:$('confirm_delete').submit();"%>
+  </div>
+
+  <div class="blueButton left center">
+    <%= link_to t(:myizishirt_myshop_flash_cancel), "#", :class=>"lbAction", :rel=>"deactivate" %>
+  </div>
+
+</div>
+  </form>
+</div>

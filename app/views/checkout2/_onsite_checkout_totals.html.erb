@@ -1,0 +1,53 @@
+<div id="onsite_checkout_totals">
+  <div id="left_box_info">
+    <% form_remote_tag(:url => {:action => 'validate_coupon', :onsite => true, :store_id => params[:store_id]}, 
+                       :update => 'cart_total', 
+                       :html => {:id => 'coupon_form'}) do %>
+      <div id="inputs">
+        <p><strong><%=t(:coupon_code, :locale => @checkout_locale)%></strong></p>
+        <input name="code" type="text" id="coupon" maxlength="40" />
+        <%= tag("input", {:type => "button", 
+                :name =>"Apply", 
+                :id => "apply_coupon",
+                :value => t(:apply, :locale => @checkout_locale), 
+                :onclick => "javascript:checkIfNeedSelectBulkOrder(); $('coupon_form').onsubmit(); return false;"
+               })%>
+      </div>
+    <% end %>
+
+    <div class="clear"></div>
+
+    <div id="payments_step1">
+      <%#= render :partial=>"/display/mcafee_footer_#{@checkout_locale}" %>
+      <%= image_tag "izishirt2009/payment_method2.png", :class => "payments" %>
+    </div>
+  </div>
+
+  <div id="right_box_info">
+    <div id="sub_total">
+      <div class="clear"></div>
+      <span id="cart_total">
+        <%= render :partial=>"cart_total" %>
+      </span>
+
+    </div>
+    <div id="discount_countdown">
+      <%= render :partial=>"discount_countdown" %>
+    </div>
+  </div>
+
+  <div id="continue_or_checkout">
+    <img src="/images/izishirt2009/line.jpg" height="3" />
+    <p class="left">
+      <%= link_to("<&nbsp;" + t(:keep_shopping, :locale => @checkout_locale), @continue_link) %>
+    </p>
+
+    <div id="btn_free_quote" class="right">
+      <%= link_to(t(:continue, :locale => @checkout_locale)+"&nbsp;"+image_tag("izishirt2009/tiny_arrow.png",:width=>5, :height=>10),
+                  "#current", 
+                  :onclick=>"javascript:$j('#comments_form').submit();", 
+                  :class=>"button_free_quote", 
+                  :title=>t(:continue, :locale => @checkout_locale)) %>
+    </div>
+  </div>
+</div>

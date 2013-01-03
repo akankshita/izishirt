@@ -1,0 +1,40 @@
+<h1>Model Previews of <%= link_to @model.local_name(session[:language_id]), :action => "edit", :id => @model.id %></h1>
+<% form_tag({:action => 'upload_model_preview' , :id => @model.id}, {:multipart=>true }) do %>
+
+	<div>
+		<%= file_field_tag "new_image" %>
+		<br />
+		<%= submit_tag "Upload" %>
+	</div>
+<% end %>
+
+<div>
+	<br />
+	<br />
+</div>
+
+<% if @model.model_previews.length > 0 %>
+	<% form_tag({:action => 'update_preview_positions' , :id => @model.id}, {:multipart=>true }) do %>
+		<table border="1">
+			<tr>
+				<th>Image</th>
+				<th>Position</th>
+				<th>Action</th>
+			</tr>
+
+			<% @model.model_previews.each do |model_preview| %>
+				<tr>
+					<td><%= image_tag(model_preview.image.url("300")) %></td>
+					<td><%= text_field_tag "position[#{model_preview.id}]", model_preview.the_order %></td>
+					<td><%= link_to "Remove", {:action => "remove_model_preview", :id => model_preview.id}, {:confirm => "Really ?"} %></td>
+				</tr>
+			<% end %>
+		</table>
+
+		<div>
+			<%= submit_tag "Update" %>
+		</div>
+	<% end %>
+<% end %>
+
+

@@ -1,0 +1,24 @@
+<% localized_model_size = model_size.localized_model_sizes.find_by_locale_id(locale.id)%>
+<div class="admin_model_sizes">
+  <label class="admin_model_size_form">Name</label>
+  <%= text_field_tag "localized_model_size[#{localized_model_size.id}][name]",
+                     model_size.local_name(locale.locale),
+                     :class => "admin_model_size_form" %>
+  <label class="admin_model_size_form">Width</label>
+  <%= text_field_tag "localized_model_size[#{localized_model_size.id}][width]",
+                     model_size.local_width(locale.locale),
+                     :class => "admin_model_size_form" %>
+  <label class="admin_model_size_form">Length</label>
+  <%= text_field_tag "localized_model_size[#{localized_model_size.id}][length]",
+                     model_size.local_length(locale.locale),
+                     :class => "admin_model_size_form" %>
+  <label class="admin_model_size_form">Unit</label>
+  <%= text_field_tag "localized_model_size[#{localized_model_size.id}][unit]",
+                      model_size.local_unit(locale.locale),
+                      :class => "admin_model_size_form" %>
+  <% if delete %>
+    <%= link_to "Delete", 
+      {:action => 'destroy_model_size', :id => model_size.id, :size_type_id => model_size.size_type_id},
+      {:class => 'textLink'}	%>
+  <% end %>
+</div>

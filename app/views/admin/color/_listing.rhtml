@@ -1,0 +1,11 @@
+<% for color in @colors %>
+  <tr class="<%= cycle('odd', '') %>">
+ 	<td width="75"><img src="/izishirtfiles/colors/<%=h color.preview_image %>" width="15" height="15"></td>
+ 	<td><%=h color.color_code %></td> 
+	<td><%=h color.local_name(session[:language_id]) %></td>
+    <td>&nbsp;&nbsp;<%= display_active(color) %></td>	
+	<td>
+		<%= link_to '&nbsp;', {:action => 'edit', :id => color}, {:class => 'icoEdit icopng', :title => t(:admin_edit) } %>
+		</td>
+  </tr>
+<% end %>

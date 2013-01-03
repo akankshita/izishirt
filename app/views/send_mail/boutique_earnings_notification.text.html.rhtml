@@ -1,0 +1,17 @@
+<%= I18n.t(:send_mail_order_salutation, :locale => Language.find(@user.language_id).shortname) %> <%= @user.firstname %> <%= @user.lastname %>,<br />
+<br />
+<%= I18n.t(:send_mail_boutique_earnings_notification_body1, :locale => Language.find(@user.language_id).shortname) %><%= number_to_currency_custom(@store.earnings_last_week, :currency => "#{Currency.find(Country.currency_of(@user.country)).label}") %>*.<br />
+<br />
+
+<%= I18n.t(:send_mail_boutique_earnings_notification_body2, :locale => Language.find(@user.language_id).shortname) %><br />
+<br />
+* <%= I18n.t(:send_mail_earnings_notification_please_not, :locale => Language.find(@user.language_id).shortname) %>
+<br />
+<br />
+<%= I18n.t(:send_mail_order_signature_1, :locale => Language.find(@user.language_id).shortname) %><br />
+<br />
+<%= I18n.t(:send_mail_order_signature_2, :locale => Language.find(@user.language_id).shortname) %><br />
+<br />
+<%= I18n.t(:send_mail_order_signature_3, :locale => Language.find(@user.language_id).shortname)%><br />
+<br />
+<img src="http://www.izishirt.ca/images/email_sig.jpeg" alt="izishirt.ca" />

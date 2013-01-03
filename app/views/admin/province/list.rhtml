@@ -1,0 +1,30 @@
+<h1>Provinces list</h1>
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="150">Country</th>
+	<th width="170">Code</th>
+	<th width="170">Name</th>
+	<th width="170">Taxe</th>
+	<th>&nbsp;</th>
+  </tr>
+
+<tbody>
+<% for province in @provinces %>
+	<tr>
+		<td width="150" style="padding:5px;"><%= province.country.name  %></td>
+		<td width="170" style="padding:5px;"><%= province.code  %></td>
+		<td width="170" style="padding:5px;"><%= province.name  %></td>
+		<td width="170" style="padding:5px;"><%= province.taxe  %></td>
+		<td style="padding:5px;">
+			<%= link_to '&nbsp;', {:action => 'edit', :id => province.id}, {:class => 'icoEdit icopng', :title => t(:admin_edit) } %>
+			<%= link_to '&nbsp;', { :action => 'destroy', :id => province.id }, :confirm => t(:admin_confirm), :method => :post, :class => 'icoDelete icopng', :title => t(:admin_delete) %>
+		</td>
+	</tr>
+<% end %>
+
+</tbody>
+
+</table>

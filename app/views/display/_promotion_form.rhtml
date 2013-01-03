@@ -1,0 +1,47 @@
+ <div class="<%=sex%>">
+	<%=image_tag "promotion/#{sex}/#{(@colors.select{|c| c[sex.intern]}.first)[:name]}.jpg", {:id=> "#{sex}-shirts", :class => 'shirts'}%>
+	
+  	<%form_tag({:controller => :checkout, :action => :add_promotion}, {:name => sex, :id => sex}) do%>
+	 	<input type="hidden" name="product" value="<%=@products[sex.intern].id%>">
+	 	<input type="hidden" name="color" value="" id="<%=sex%>-color">
+	 	<input type="hidden" name="sex" value="<%=sex%>">
+		<div class="colors">
+			<%@colors.each do |color|%>
+				<%if color[sex.intern] %>
+				<%=image_tag "promotion/colors/#{color[:name]}.png", {:class => 'color', :id => "color-#{color[:name]}-#{sex}" }%>
+				<script>
+					rollover($('<%="color-#{color[:name]}-#{sex}"%>'), $('<%=sex%>-shirts'),  '<%=image_path "promotion/#{sex}/#{color[:name]}.jpg"%>');
+					Event.observe($('<%="color-#{color[:name]}-#{sex}"%>'), 'click', function() {
+						click_color('<%=color[:name]%>', '<%=sex%>')		
+					});
+				</script>
+				<%end%>
+			<%end%>
+			<script>
+				click_color('<%=(@colors.select{|c| c[sex.intern]}.first)[:name]%>', '<%=sex%>')
+			</script>
+		</div>
+		<select name="size" class ="size" >
+			<%Size.find(:all).each do |size|%>
+			<option value="<%=size.id%>"><%=size.name%></option>
+			<%end%>
+		</select>
+		
+		<select class="quantity" name="quantity" id="<%=sex%>-quantity" >
+			<%(1..10).each do |quantity|%>
+			<option value="<%=quantity%>" <%if quantity == 3%>selected<%end%>><%=quantity%></option>
+			<%end%>
+		</select>
+		<a href="javascript:document.<%=sex%>.submit()">
+			<div style="position: absolute; top: 470px; left: 10px; width: 130px; height: 25px; border: none;">
+			</div>
+		</a>
+		<div class="price" id="<%=sex%>-price">$<%=@products[sex.intern].price%></div>
+		<script>
+			$('<%=sex%>-price').innerHTML = toMoney(  $('<%=sex%>-quantity').value * <%=@products[sex.intern].price%> );
+			Event.observe($('<%=sex%>-quantity'), 'change', function() {
+				$('<%=sex%>-price').innerHTML = toMoney(  $('<%=sex%>-quantity').value * <%=@products[sex.intern].price%> );
+			});	
+		</script>
+	<%end%>
+</div>

@@ -1,0 +1,57 @@
+<script type="text/javascript">
+
+  //Initializes the rounded corners
+  cbb.init();
+  //Initializes the styled dropdown
+  Custom.init();
+</script>
+<script type="text/javascript">
+
+</script>
+<div class="relative">
+  <label class="title"><%=t(:contact_us).upcase%></label>
+  <%= link_to image_tag("/images/izishirt2009/loginClose.png"),
+    "#", :class => 'lbAction contactClose', :rel => 'deactivate'%>
+
+  <div class="horiz_space_8"></div>
+  <div class="tabs">
+    <a href="javascript:tab_click('phone')" class="noDecoration">
+      <%= image_tag("/images/izishirt2009/tabLeft.png") %>
+      <span class="tab">
+        <span class="active" id="phone_tab">&nbsp;</span>
+        <%=t(:by_phone)%>
+      </span>
+      <%= image_tag("/images/izishirt2009/tabRight.png") %>
+    </a>
+    <a href="javascript:tab_click('email')" class="noDecoration">
+      <%= image_tag("/images/izishirt2009/tabLeft.png") %>
+      <span class="tab">
+        <span class="inactive" id="email_tab">&nbsp;</span>
+        <%=t(:by_email)%>
+      </span>
+      <%= image_tag("/images/izishirt2009/tabRight.png") %>
+    </a>
+    <% if session[:country] != "FR"%>
+    <a href="javascript:tab_click('person')" class="noDecoration">
+      <%= image_tag("/images/izishirt2009/tabLeft.png") %>
+      <span class="tab">
+        <span class="inactive" id="person_tab">&nbsp;</span>
+        <%=t(:in_person)%>
+      </span>
+      <%= image_tag("/images/izishirt2009/tabRight.png") %>
+    </a>
+    <%end%>
+    <div class="clear"></div>
+  </div>
+  <div class="horiz_space_8"></div>
+
+  <div class="tabContent" id="phone_content">
+    <%= render :partial => 'contact_phone', :locals => {:popup => true} %>
+  </div>
+  <div class="tabContent none" id="email_content">
+    <%= render :partial => 'contact_email' %>
+  </div>
+  <div class="tabContent none" id="person_content">
+    <%= render :partial => 'contact_person' %>
+  </div>
+</div>

@@ -1,0 +1,168 @@
+<div id="footer">
+  <div id="footer_info">
+    <div id="services">
+      <p><%= t(:services) %></p>
+      <ul>
+		<li><a href="<%= @canonical_begin_url %>/local/custom-tshirt-printing">Local</a></li>
+        <li><%= link_to(t(:order_tracking), {:controller=>"/order"})%></li>
+        <li><%= link_to t(:footer_shipping_text),{:controller=>t(:footer_shipping_url),:protocol=>"http://",:only_path=>false}, :title=>t(:footer_shipping_title) %></li>
+        <!--<li><%= link_to t(:shipping_and_refunds), {:controller => '/display', :action => 'shipping_info'}%>
+		</li>
+		<li><a href="http://www.embroyderypoint.com" target="_blank">Embroiderypoint</a></li>-->
+		 <li><%= link_to t(:footer_terms_text),
+              {:controller=>t(:footer_terms_url),:protocol=>"http://",:only_path=>false}, :title=>t(:footer_terms_title),
+              :rel=>"nofollow" %></li>
+          <li><%= link_to t(:footer_privacy_text),
+              {:controller=>t(:footer_privacy_url), :protocol=>"http://",:only_path=>false}, :title=>t(:footer_privacy_title),
+              :rel=>"nofollow" %></li>
+          <li><%= link_to t(:footer_refund_text),
+              {:controller=>t(:footer_refund_url), :protocol=>"http://",:only_path=>false}, :title=>t(:footer_refund_title),
+              :rel=>"nofollow" %></li>
+        <li><a href="http://www.annuaireduteeshirt.com" title="boutiques de t-shirt" target="_blank">Annuaire du tee shirt</a></li> 
+		<li><%= link_to t(:footer_sitemap_text), {:controller => '/display',:action =>  'sitemap_html'}, :title=>t(:footer_sitemap_title)%></li>		
+      </ul>
+    </div>
+    <div id="community">
+      <p><%= t(:community) %></p>
+      <ul>
+
+        <li><a href="http://www.facebook.com/pages/IziShirt/223576667655075" target="_blank"><%= image_tag "izishirt2011/facebook_icon.jpg", :width=>17, :height=>16 %></a> <a href="http://www.facebook.com/pages/IziShirt/223576667655075" target="_blank">Facebook</a></li>
+        <li><a href="http://twitter.com/izishirt" target="_blank"><%= image_tag "izishirt2011/twitter_icon.jpg", :width=>17, :height=>17 %></a> <a href="http://twitter.com/izishirt" target="_blank">Twitter</a></li>
+		<li><a href="http://www.flickr.com/photos/izishirt/" target="_blank"><%= image_tag "boutiques_2010/ven/social/flick16.gif", :width=>17, :height=>17 %></a> <a href="http://www.flickr.com/photos/izishirt/" target="_blank">Flickr</a></li>
+        <li><script src="//platform.linkedin.com/in.js" type="text/javascript"></script><script type="IN/Share"></script>
+		<!-- Disabled cuz it throws JS errors -->
+              <!--<script type="text/javascript" src="http://w.sharethis.com/widget/?tabs=web%2Cpost%2Cemail&amp;charset=utf-8&amp;style=rotate&amp;publisher=783f7760-58d6-4b42-b3d3-bf364711bd9c"></script>
+              -->
+        </li>
+      </ul>
+    </div>
+    <div id="currencies">
+      <p><strong><%=t(:menu_currency)%></strong></p>
+      <p class="pgray">
+
+        <%= image_tag "izishirt2011/flags/ca.png",:width=>16,:height=>11 %> CAD
+        <%= image_tag "izishirt2011/flags/us.png",:width=>16,:height=>11 %> USD<br/>
+      <!--  <%= image_tag "izishirt2011/flags/eu.png",:width=>16,:height=>11 %> EUR
+        
+        <%= image_tag "izishirt2011/flags/gb.gif",:width=>16,:height=>11 %> GBP
+        <%= image_tag "izishirt2011/flags/ch.png",:width=>16,:height=>11 %> CHF
+        <%= image_tag "izishirt2011/flags/au.gif",:width=>16,:height=>11 %> AUD<br/>
+        <%= image_tag "izishirt2011/flags/mx.gif",:width=>16,:height=>11 %> MXN
+        <%= image_tag "izishirt2011/flags/br.gif",:width=>16,:height=>11 %> BRL-->
+      </p>
+      <p><div id="contact_us">
+      <%=t(:contact_homepage)%>
+    </div>
+      </p>
+    </div>
+ <!--   <div id="newsletter">
+      <div id="title_news"><%=t(:discount_coupon_codes)%>!</div>
+      <p><%= t(:subscribe_newsletter_explanation) %></p>
+      <p>
+        <% form_remote_tag(:url=>{:controller=>:display, :action=>:subscribe_newsletter}, :condition=>"checkNewsletterForm()") do %>
+          <input type="text" name="email_newsletter" id="email_newsletter"/><input type="submit" value="<%=t(:sign_up)%> !" class="button_make" />
+          <span id="newsletter_spinner" style="display:none;">
+            <%= image_tag "izishirt2011/loading.gif", :height=>16, :width=>16 %>
+          </span>
+          <div id="newsletter_message"></div>
+        <% end %>
+      </p>
+    </div>
+
+	<div id="list_langs">
+		<% @lang_infos_for_layout.sort{ |x, y| x[1][:order] <=> y[1][:order] }.each do |lang, lang_infos| %>
+			<% if @langs_available.include?(lang) %>
+                                    <% height=12
+                             height=8 if lang_infos[:flag_file]=="ca.png" %>
+				<div class="country">
+					<% link_to(country_home(lang, "#{lang_infos[:country]}"), :title=>"#{lang_infos[:alt_name]} #{t(:flag_alt2)}") do %>
+						<%= image_tag "izishirt2011/flags/#{lang_infos[:flag_file]}", :alt=>"#{lang_infos[:alt_name]} #{t(:flag_alt2)}" %>
+						<%= lang_infos[:label_name] %>
+					<%end%>
+				</div>
+			<% end %>
+		<% end %>
+	</div>-->
+
+    <div id="currencies">
+      <iframe style="float:left;margin-left: 20px" width="200" height="200" frameborder="0" scrolling="no" marginheight="10" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;q=1625+Rue+chabanel+ouest+Montreal+QC+H4N+2S7,+Canada&amp;ie=UTF8&amp;hq=&amp;hnear=1625+Rue+Chabanel+Ouest,+Montr%C3%A9al,+Communaut%C3%A9-Urbaine-de-Montr%C3%A9al,+Qu%C3%A9bec+H4N+1M2,+Canada&amp;ll=45.530102,-73.659296&amp;spn=0.018038,0.025749&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
+    </div>
+
+   <!-- <div id="bottom_menu">
+      <p><%= link_to(t(:menu_home), {:controller=>"/display", :action=>:izishirt_2011}, :title=>t(:menu_home))%> |
+        <%= link_to t(:footer_faq_text),
+          {:controller=>t(:footer_faq_url)}, :title=>t(:footer_faqs_title),
+          :rel=>"nofollow" %> |
+        <%= link_to t(:footer_contact_text),
+          {:controller=>t(:footer_contact_url)}, :title=>t(:footer_contact_title),
+          :rel=>"nofollow" %> |
+        <%= link_to t(:footer_shipping_text),
+              {:controller=>t(:footer_shipping_url),:protocol=>"http://",:only_path=>false}, :title=>t(:footer_shipping_title),
+              :rel=>"nofollow" %><% #= link_to t(:menu_shipping),{:controller => '/display', :action => 'shipping_info'}, :TITLE=>t(:shipping_title)%> |
+        <%= link_to t(:footer_terms_text),
+          {:controller=>t(:footer_terms_url)}, :title=>t(:footer_terms_title),
+          :rel=>"nofollow" %> |
+        <%= link_to t(:footer_privacy_text),
+          {:controller=>t(:footer_privacy_url)}, :title=>t(:footer_privacy_title), :id=>"privacyLink_text",
+          :rel=>"nofollow" %> |
+          <%= link_to t(:footer_contest_rules), {:controller=>'/contest/tshirt_design', :action=> 'submit_your_design'}, :title=>t(:footer_contest_rules) %> |
+        <%= link_to t(:footer_sitemap_text), {:controller => '/display',:action =>  'sitemap_html'}, :title=>t(:footer_sitemap_title)%> |
+        <%#= link_to t(:front_office_hosted_by), {:controller=>'/display', :action=> 'hosted_by'}, :title=>t(:front_office_hosted_by), :class=>"hosted_by_modalbox"%>
+        <%#= link_to "Tags", :controller => "/tags" %> 
+        <%= link_to t(:tshirt_shops), {:controller=>'/display', :action=>'our_shops'}, :title=>t(:tshirt_shops) %>
+      </p>
+	  <p>
+	    <% if session[:country] == "FR" %>
+	      <% #cities = BIG_CITIES_FRANCE[0..9] %>
+	      <% #cities.each do |city_name| %>
+		<% #city = CityPage.find_by_name(city_name) %>
+		<% #= link_to(city_name, {:controller => 'local', :action => 'city_france', :city_url => city.name_url+"-t-shirt-personnalise", :city_id => city.id}) %>
+		<% #= " | " if cities[cities.length-1] != city_name %>
+	      <% #end %>
+            <% elsif session[:country] == "US" %>
+	      <% cities = ["New York","Los Angeles","Chicago","Houston","Phoenix","Philadelphia","San Antonio","Dallas","San Diego","San Jose"]%>
+	      <% cities.each do |city_name| %>
+		<%# city = CityPage.find_by_name(city_name) %>
+		<%#= link_to(city_name, {:controller => 'local', :action => 'us_city', :city_url => city.name_url+"-custom-t-shirt-printing", :city_id => city.id}) %>
+		<%#= " | " if cities[cities.length-1] != city_name %>
+	      <% end %>
+          <% elsif session[:country] == 'AU' %>
+	      <% cities = ["Sydney","Melbourne","Brisbane","Perth","Adelaide","Gold Coast-Tweed","Newcastle","Canberra","Wollongong","Sunshine Coast"]%>
+	      <% cities.each do |city_name| %>
+		<% city = CityPage.find_by_name(city_name) %>
+		<%= link_to(city_name, {:controller => 'local', :action => 'australia_city', :city_url => city.name_url+"-custom-t-shirt-printing", :city_id => city.id}) %>
+		<%= " | " if cities[cities.length-1] != city_name %>
+	      <% end %>
+          <% elsif session[:country] == "GB" %>
+	      <% cities = ["London","Birmingham","Glasgow","Liverpool","Leeds","Sheffield","Edinburgh","Bristol","Manchester","Leicester"]%>
+	      <% cities.each do |city_name| %>
+		<% city = CityPage.find_by_name(city_name) %>
+		<%= link_to(city_name, {:controller => 'local', :action => 'uk_city', :city_url => city.name_url+"-custom-t-shirt-printing", :city_id => city.id}) %>
+		<%= " | " if cities[cities.length-1] != city_name %>
+	      <% end %>
+	    <% elsif session[:country] == "CA" %>
+              <% @popularCities = ['Montréal', 'Vancouver', 'Toronto', 'Ottawa', 'Québec', 'Winnipeg', 'Halifax', 'Ontario', 'Edmonton', 'Calgary']
+		 @popularCities.each do |city|
+                   begin
+                     city_page = CityPage.find_by_name(city)
+                   rescue
+                     city_page = nil
+                   end
+                   if ! city_page
+                     next
+                   end
+                   %>
+              <%= link_to(city, "#{@URL_ROOT}#{print_force_lang}local/#{city_page.gen_url(session[:language])}", :title=>t(:meta_title_local_page, :ville=>city))%>
+              <% if @popularCities[@popularCities.length-1] != city %>
+		|
+              <% end %>
+              <% end %>
+          <% end %>
+          </p>
+      <p><%=t(:footer_copyright_text)%><br />
+        <%=t(:footer_use_text)%><br />
+        <%=t(:footer_create_t_shirt_text)%></p>
+    </div> -->
+  </div>
+</div>
+

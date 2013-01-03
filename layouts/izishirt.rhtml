@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title><%=get_page_title(@image) if @meta_title.nil?-%> <%= @meta_title if !@meta_title.nil? -%></title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+<meta http-equiv="Content-Language" content="<%= session[:language] %>"> 
+    
+<% if !@meta_description.nil? %>
+    <meta name="description" content="<%= @meta_description%>" />
+<%else%>
+    <% if (params[:action] == "create_tshirt" || params[:action] == "t-shirt-personalise" && @image.category) %>
+      <meta name="description" content="<%= "Design: "+@image.name+", Category:  "+@image.category.localized_categories[0].name.to_s+",  Designer: "+@image.user.username if @image -%>. <%= t(:display_home_meta_description_flash_app) %>" />
+    <% else %>
+      <meta name="description" content="<%= t(:display_home_meta_description) %>" />
+    <% end %>
+<%end%>
+    
+<% if !@meta_keywords.nil? %>
+  <meta name="keywords" content="<%= @meta_keywords %>" />
+<% else %>  
+  <meta name="keywords" content="<%= t(:display_home_meta_keywords) %>" />
+<% end %>
+
+<meta name="robots" content="index, follow, all" />
+<meta name="copyright" content="STUDIO CODENCY <%= Time.now.year %>" />
+<link rel="alternate" type="application/rss+xml" title="Izishirt T-shirt Blog" href="http://www.izishirt.ca/blog/index.php?feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="Blog T-shirts Izishirt" href="http://www.izishirt.ca/blog/fr/index.php?feed=rss2" />
+<script src="/javascripts/scriptalizer.js" type="text/javascript"></script>
+<script src="/javascripts/application.js" type="text/javascript"></script>
+<link href="/stylesheets/scriptalizer.css" media="screen" rel="Stylesheet" type="text/css" />
+<link href="/stylesheets/izishirt.css" media="screen" rel="Stylesheet" type="text/css" />
+<% if @in_checkout %>
+  <link href="/stylesheets/checkout.css" media="screen" rel="Stylesheet" type="text/css" />
+<% end %>
+
+<!--[if lt IE 7]>
+<link href="/stylesheets/ie6_fix.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+</head>
+<body>
+<!-- header -->
+<div class="top">
+  <div id="header">
+    <div class="fleft toptext">
+      <h1 style="font-size: 12px;">
+        <%= t(:display_home_meta_seo) %>
+              <script language="javascript" type="text/javascript">
+               <!--
+               document.write("<a href='mailto:contact@izishirt.com'>contact@izishirt.com</a>");
+               //-->
+               </script>
+        <%= t(:display_home_title_1) %>
+        <span style="background-color:#cccccc;padding-left:1px;margin-right:2px;">
+	    <%= t(:display_home_numero_tel) %>
+        </span>
+        <%= t(:display_home_title_2) %>
+      </h1>
+    
+    </div>
+    <div class="fright">
+      <div class="lang clearfix">
+        <%= link_to @human_cart, SECURE_URL_ROOT + get_lang_url() + "/checkout/show_cart", :id=>"link_to_cart", :rel=>"no_follow", :class=>"cart" %>
+	  <%= link_to_unless session[:user_id].nil?, t(:display_home_deconnexion), {:controller => "myizishirt/login/logout"}, :id=>'login_join', :class => "connexion" do end %>
+	  <%= link_to t(:display_home_connexion), {:controller => "myizishirt/login/new"}, :id=>'login_join', :class => "connexion", :rel=>"nofollow" if session[:user_id] == nil%>
+        
+	<% if session[:country] != 'US' %>
+          <% if session[:language].nil? || session[:language].empty? || session[:language] == "fr" %>
+            <%=  link_to "English", {:controller=>'/display', :action=>'language', :lang=>'en'}, :class=>'dlang' %>
+          <% elsif(session[:language] == "en") %>
+            <%=  link_to "Fran&ccedil;ais", {:lang=>'fr'}, :class=>'dlang', :rel=>'' %>
+          <% end %>
+        <% end %>
+        <%= link_to "<img alt='' border='0' src='/images/flags/geo_us.gif' />", {:forcecountry=>'US'}, :rel=>'', :class=>"flag " + (@alt_country == 'US' ? "active" : '') %>
+        <%= link_to "<img alt='' border='0' src='/images/flags/geo_ca.gif' />", {:forcecountry=>'CA'}, :rel=>'', :class=>"flag " + (@alt_country == 'CA' ? "active" : '') %>
+        <%= link_to "<img alt='' border='0' src='/images/flags/geo_eu.gif' />", {:forcecountry=>'EU'}, :rel=>'', :class=>"flag " + (@alt_country == 'EU' ? "active" : '') %>
+        <%= link_to "<img alt='' border='0' src='/images/flags/geo_world.gif' />", {:forcecountry=>'WORLD'}, :rel=>'', :class=>"flag " + (@alt_country == 'WORLD' ? "active" : '') %>
+
+        <%#= "("+session[:country]+")"+@alt_country %>
+        </div>
+      <% if !session[:user_id]%>
+      <div align="right" id="toplogin"> <%= form_tag :controller=>'/myizishirt/login', :action=>'index'%>
+        <table border="0" cellspacing="0" cellpadding="0" >
+          <tr>
+            <td align="left"><span><%= t(:display_home_validate) %> </span></td>
+            <td align="left"><span><%= t(:display_home_connexion2) %> </span></td>
+            <td>&nbsp;</td>
+            </td>
+          </tr>
+          <tr>
+            <td><input name="username" size="18" type="text" onfocus="this.value=(this.value=='<%= t(:display_home_username) %>')?'':this.value" onblur="this.value=(this.value=='')?'<%= t(:display_home_username) %>':this.value"  value="<%= t(:display_home_username) %>" /></td>
+            <td><input name="password"  size="10" type="password"  onfocus="this.value=(this.value=='password')?'':this.value" onblur="this.value=(this.value=='')?'password':this.value" value="password" /></td>
+            <td><input name="commit" type="submit" value="<%= t(:display_home_login_btn) %>" class="loginBtnFp" /></td>
+          </tr>
+          <tr>
+            <td colspan="3" align="right">
+              <%= link_to t(:display_home_lost_pass), {:controller=>'/myizishirt/login/lostpass'}, :rel=>'nofollow' %>
+            </td>
+          </tr>
+        </table>
+		</form>
+      </div>
+      <% end %>
+    </div>
+    <div class="topsearch">
+      <p><%= t(:display_home_search)  %></p>
+      <% form_tag({:controller=>"/display/result_search"}) do %>
+        <input name="search" type="text" size="22" class="input" onfocus="this.value=(this.value=='<%= t(:display_home_search_box) %>')?'':this.value" onblur="this.value=(this.value=='')?'<%= t(:display_home_search_box) %>':this.value"  value="<%= t(:display_home_search_box) %>" />
+        <input type="image" src="/images/ico-search1.gif" class="button" />
+      <% end %>
+    </div>
+    <%= link_to "<img src='/images/logo.gif' alt='' class='new_years' />", @URL_ROOT %>
+    <div id="top"> </div>
+  </div>
+</div>
+<!-- top menu -->
+<%
+	@menu = 1 if(@menu.nil?)
+	@menu_item = 0 if(@menu_item.nil?)
+%>
+<noscript><div style="color:red;font-weight:bold;text-align:center;" class="pageholder"><%=t(:javascript_disabled)%></div></noscript>
+
+<%= render :file => 'layouts/menu/menu.rhtml', :use_full_path => true%>
+<% if(flash[:notice]) %>
+<div class="pageholder error"><span><%= flash[:notice] %></span></div>
+<% end %>
+<%= yield %> 
+<%= render :file => 'layouts/footer.rhtml', :use_full_path => true%> 
+
+<!--[if lt IE 7]>
+<script defer type="text/javascript" src="/javascripts/pngfix.js"></script>
+<![endif]-->
+<% page = "/" + request.path_parameters['controller'] + "/" + request.path_parameters['action'] %>
+<% if page == '/checkout/confirmation' %>
+  <!-- Yahoo Ads conversion tracking code only for confirmation page -->
+  <SCRIPT language="JavaScript" type="text/javascript">
+    <!-- Yahoo! Inc.
+    window.ysm_customData = new Object();
+   window.ysm_customData.conversion = "transId=,currency=,amount=";
+   var ysm_accountid = "1C07IFHA086E3VH662MVGVT638S";
+   document.write("<SCR" + "IPT language='JavaScript' type='text/javascript' " + "SRC=//" + "srv1.wa.marketingsolutions.yahoo.com" + "/script/ScriptServlet" + "?aid=" + ysm_accountid + "></SCR" + "IPT>");
+  // -->
+  </SCRIPT> 
+<% end %>
+
+<%= javascript_include_tag "https://ssl.google-analytics.com/urchin.js"%>
+<script type="text/javascript">
+_uacct = "<%= URCHIN_TRACKER %>";
+urchinTracker();
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,20 @@
+pag["shipping_radio_"+@cart.shipping_type].checked = true
+page.replace_html 'checkout_page_total', "<span class='mediumGray'>(#{@currency})</span>  #{number_to_currency_custom(@cart.grandtotal)}"
+page.replace_html 'checkout_tax_field', "#{number_to_currency_custom(@cart.taxes)}"
+page.replace_html 'checkout_shipping_field', number_to_currency_custom(@cart.shipping)
+page["paypal_amount"].value = "#{number_with_precision(@cart.grandtotal - @cart.taxes - @cart.shipping, {:precision => 2, :separator => '.', :delimeter => ' '}).gsub(' ','')}";
+page["paypal_shipping"].value = "#{number_with_precision(@cart.shipping, {:precision => 2, :separator => '.', :delimeter => ' '}).gsub(' ','')}";
+page["paypal_tax"].value = "#{number_with_precision(@cart.taxes, {:precision => 2, :separator => '.', :delimeter => ' '}).gsub(' ','')}";
+
+page.visual_effect :highlight, 'checkout_page_total', :duration => 2
+page.visual_effect :highlight, 'checkout_tax_field', :duration => 2
+page.visual_effect :highlight, 'checkout_shipping_field', :duration => 2
+
+
+if(@cart.shipping_type.to_i > SHIPPING_XPRESS_POST)
+	page['cb_signature'].disabled = false
+else
+	page['cb_signature'].checked = false	
+	page['cb_signature'].disabled = true
+end
+	

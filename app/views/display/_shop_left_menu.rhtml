@@ -1,0 +1,92 @@
+<div id="box_categories">
+  <%if no_link==false %>
+    <h3><%=t(:homepage_h3)%></h3>
+  <%else %>
+    <h3 id="leftbox"><%=t(:homepage_h3)%></h3>
+  <%end%>
+  
+	<div id="search_menu" style="background:url(/images/bgsearch.jpg) repeat-x bottom left; padding: 7px;">
+
+            <% def_search = @search_type_id ? @search_type_id : "NA"
+               search_term = params[:search] ? Digest::SHA1.hexdigest(params[:search].parameterize) : "NA" %>
+
+
+              <% form_tag({:controller=>"/display", :action=>"search"}, :method=>:get, :id=>'search_form', :onsubmit=>"return true;") do %>
+			
+                <%= text_field_tag "search", @search_keyword, :style=>"margin-top:2px; width:138px;" %>
+
+                
+                  <a class="search" style="float:right;" href="#global_search"
+                     onclick="$('search_form').submit();"><%= image_tag "btsearch.png",:alt=>"Rechercher", :style=>"margin-top:5px;" %></a>
+                  <!--[if lte IE 7]>
+                                        <style type="text/css">
+                                               #header_container #search_menu #search_txt{margin-top:-25px;}
+                                        </style>
+                                <![endif]-->
+                
+              <% end %>
+	</div>
+  
+  <div id="list_categories">
+    <ul>
+
+      <%= render :partial => "custom_left_menu_links" %>
+
+      <% @categories.each do |category| %>
+      <%  isImage = false%>
+         <!--On teste si les sous-catégories ont au moins une image, sinon catégorie suivante -->
+        
+          <% category.sub_categories.each do |sub| %>
+         <%begin%>
+             <%  sub.images.find(:first,  :conditions=>"active=1").orig_image.url("100")%>
+             <%  isImage = true %>
+         <%rescue%>
+         <%end%>
+          <%end%>
+        
+       <% if isImage == false %>
+             <%next%>
+       <%end%>
+        <li>
+          <%= "<strong>" if @category && @category.id == category.id %>
+
+
+		  <%= link_to category.local_name(session[:language_id]).capitalize,
+		    category_url(category.id), :title=>get_title_link_adding(category.local_name(session[:language_id]), "T-Shirts")%>
+
+          <%= "</strong>" if  @category && @category.id == category.id %>
+        </li>
+        <% if open_category(category,@category) %>
+          <% category.sub_categories.each do |sub| %>
+          <!--On teste si les sous-catégories ont au moins une image, sinon sous-catégorie suivante -->
+            <%begin%>
+              <%  sub.images.find(:first, :conditions=>"active=1").orig_image.url("100")%>
+            <%rescue%>
+            <%next%>
+            <%end%>
+            <% if sub.active %>
+              
+              <li class="sub_category">
+                <%= "<strong>" if @category &&  @category.id == sub.id %>
+
+			<%= link_to sub.local_name(session[:language_id]).capitalize,
+			  category_url(sub.id), :title=>get_title_link_adding(sub.local_name(session[:language_id]), "T-Shirts")%>
+                <%= "</strong>" if  @category && @category.id == sub.id %>
+              </li>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    </ul>
+  </div>
+
+ <%if no_link==false %>
+  <div id="link">
+			<%= link_to t(:browse_lib_link_marketplace),
+          {:controller => 'display', :action => 'marketplace'}%>&nbsp;
+  </div>
+ <% end %>
+</div>
+
+

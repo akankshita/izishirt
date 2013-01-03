@@ -1,0 +1,1 @@
+page.replace_html "comments", :partial => "order_comments", :locals => {:comment_types => @comment_types}

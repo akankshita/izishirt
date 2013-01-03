@@ -1,0 +1,59 @@
+body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:12px;color:#444;}
+img {border:0;}
+.clear {clear:both;}
+
+
+#popup_container{padding:20px 15px;}
+#popup_container #close_link{text-align:right;}
+#popup_container #close_link a{text-decoration:none;color:#0066FF;}
+#popup_container #close_link a:hover{text-decoration:underline;}
+
+/* Terms popup */
+
+#terms_popup{padding:0px 10px 30px;}
+#terms_popup h1{font-size:16px;margin:0;padding:0;}
+#terms_popup p{text-align:justify;margin:20px 0px 0px;line-height:20px;}
+
+
+.small_blue_title{color:#5790cc;font-weight:bold;font-size:13px;display:block;}
+
+/* Copyright popup */
+
+#copyright_popup{padding:0px 10px 30px;}
+#copyright_popup h1{font-size:16px;margin:0 0 20px;padding:0;}
+#copyright_popup p{text-align:justify;margin:10px 0px 0px;line-height:20px;}
+#copyright_popup img {display:block;margin:0 auto;}
+#copyright_popup #left_column {float:left;width:275px;margin-right:15px;}
+#copyright_popup #right_column {float:left;width:275px;}
+#copyright_popup .column_title {font-weight:bold;color:#cc0000;font-size:13px;}
+#copyright_popup #bolded_sentence {text-align:center;font-weight:bold;font-size:13px;margin:30px 0px 15px;}
+
+
+/* Apparel POPUP */
+
+#apparel_popup{margin-bottom:30px;}
+#apparel_popup h1{font-size:16px;margin:0 0 20px;padding:0;}
+#apparel_popup p{text-align:justify;margin:10px 0px 0px;}
+#apparel_popup #first_content{margin-left:10px;margin-bottom:30px;}
+#apparel_popup #first_content #left_column{width:250px;border:1px solid #ccc;float:left;margin-right:35px;}
+#apparel_popup #first_content #right_column{width:260px;float:left;}
+#apparel_popup #first_content #right_column .text_block{margin-top:20px;}
+#apparel_popup #first_content #right_column #column_title{font-weight:bold;font-size:16px;}
+#apparel_popup #first_content #right_column #product_description {font-size:13px;}
+#apparel_popup #first_content #right_column .text_block .block_title{font-weight:bold;margin-bottom:5px;}
+#apparel_popup #first_content #right_column .text_block p{font-size:11px;margin:0;padding:0;}
+#apparel_popup #first_content #right_column .text_block ul{margin:0;padding:0;}
+#apparel_popup #first_content #right_column .text_block ul li{}
+
+#apparel_popup #schart {margin:0 0 0 30px; width:515px;}
+#apparel_popup #schart .size_in{margin-bottom:5px;font-weight:bold;}
+#apparel_popup #schart strong {text-transform:uppercase;display:block;}
+#apparel_popup #schart table {margin:1px 0 0 1px; clear:left}
+#apparel_popup #size_chart{border-collapse:collapse; }
+#apparel_popup #size_chart th,
+#apparel_popup #size_chart td {border:1px solid #ccc;vertical-align:middle;text-align:center;padding:4px 15px;font-size:12px;}
+#apparel_popup #size_chart td img{}
+#apparel_popup #size_chart label{left:5px;position:relative;font-weight:bold;text-transform:uppercase;}
+#apparel_popup #size_chart #lengthLabel{bottom:5px;}
+#apparel_popup #size_chart td { color: #666666;}
+#apparel_popup #size_chart th { color: #515151;font-weight:bold;}

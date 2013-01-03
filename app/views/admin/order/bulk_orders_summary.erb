@@ -1,0 +1,101 @@
+<h1>Bulk orders summary</h1>
+
+<div>
+	<%= form_tag( {:action=>'bulk_orders_summary'}, {:method => "get"} ) %>
+	
+	    <div class="titleForm">MACHINE</div>
+	    <div class="boxForm">
+		<%= select_tag "machine", options_for_select(@printers, @machine) %>
+	    </div>
+
+	    <div class="titleForm"></div>
+	    <div class="boxForm">
+		<%= submit_tag "Filter" %>
+		<br />
+		<br />
+		<br />
+	    </div>
+	</form>
+</div>
+
+<div align="center">
+	<%= will_paginate @orders %>
+</div>
+
+<table border="1">
+	<tr>
+		<th><%= link_to_with_sort "Ordered on", "orders.created_on" %></th>
+		<th><%= link_to_with_sort "Seller", "orders.user_id" %></th>
+		<th><%= link_to_with_sort "Shipping date", "orders.requested_shipping_on" %></th>
+		<th><%= link_to_with_sort "ID", "orders.id" %></th>
+		<th>Machines</th>
+		<th><%= link_to_with_sort "Status", "orders.status" %></th>
+		<th>Qty Total t-shirt</th>
+		<th>Qty Total shirts with prints</th>
+		<th>Garments</th>
+		<th># Shirts printed</th>
+		<th># prints done</th>
+		<th># missed</th>
+	</tr>
+
+	<% @orders.each do |order| 
+
+		unknown_deadline = 1500000
+
+		begin
+			nb_days_remaining = order.requested_shipping_on - Date.current
+		rescue
+			nb_days_remaining = unknown_deadline
+		end
+
+		color_deadline = ""
+		background_color_deadline = ""
+
+		if nb_days_remaining <= 3
+			color_deadline = "#d79f9f"
+		elsif nb_days_remaining <= 7
+			color_deadline = "#fdff7c"
+		end
+
+	%>
+	<tr style="background-color: <%= color_deadline %>;">
+		<td><%= order.created_on %></td>
+		<td><%= order.user.username %></td>
+		<td>
+			<% if nb_days_remaining == unknown_deadline %>
+				<p style="display:inline; background-color: red; color: black;">Grrr <%= order.user.firstname %> !</p>
+			<% else %>
+				<p><b><%= order.requested_shipping_on %></b></p>
+			<% end %>
+		</td>
+		<td><%= link_to order.id, :action => "show", :id => order.id %></td>
+		<td>
+			<table>
+				<% order.printer_usernames.each do |username| %>
+					<tr>
+						<td><%= username %></td>
+					</tr>
+				<% end %>
+			</table>
+		</td>
+		<td><%= get_order_status_label(order.status) %></td>
+		<td><%= order.nb_tshirts %></td>
+		<td><%= order.nb_tshirts_with_prints %></td>
+		<td><%= order.count_received %> <%= t(:admin_order_ordered_garments_of) %> <%= order.count_garments %></td>
+		<td><%= order.nb_shirts_printed %></td>
+		<td><%= order.nb_prints_done %></td>
+		<td>
+			<% if order.nb_shirts_missed > 0 %>
+				<h1 style="color: red;"><%= order.nb_shirts_missed %></h1>
+			<% else %>
+				<%= order.nb_shirts_missed %>
+			<% end %>
+		</td>
+	</tr>
+	<% end %>
+</table>
+
+<div align="center">
+	<%= will_paginate @orders %>
+</div>
+

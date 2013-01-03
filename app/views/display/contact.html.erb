@@ -1,0 +1,122 @@
+<script type="text/javascript">
+
+  function checkContactForm()
+  {
+    var formValid = false;
+
+    $('formError').innerHTML = "";
+	$('formError2').innerHTML = "";
+
+    if ($('contact_name').value == '') {
+      $('formError').innerHTML = "<%= t(:front_office_bulk_order_fill_all_required_fields) %>";
+
+    }
+    else if (!validate_email($('contact_email').value)) {
+      $('formError').innerHTML = "<%= t(:front_office_bulk_order_fill_all_required_fields) %>";
+
+    }
+    else if ($('contact_subject').value == '') {
+      $('formError').innerHTML = "<%= t(:front_office_bulk_order_fill_all_required_fields) %>";
+
+    }
+    else if ($('contact_message').value == '') {
+      $('formError').innerHTML = "<%= t(:front_office_bulk_order_fill_all_required_fields) %>";
+
+    }
+    else{
+      formValid = true;
+    }
+
+    if ( ! formValid)
+    {
+	<%= visual_effect(:highlight, "formError", :duration => 1.0) %>
+
+    }
+
+    return formValid;
+  }
+
+</script>
+<!-- First Time Visitors -->
+<div id="left_container">
+  <%= render :partial => "/layouts/generic_boxes/left_column_infos", :locals=>{:version=>"long"} %>
+</div>
+
+<div id="right_container">
+  <div id="contactpage_container">
+    <div id="contact_container">
+      <div id="contactpage_header">
+        <%= t(:contact_us) %>
+         
+      </div>
+      <p><%= t(:contact_text) %></p>
+      <div id="contactpage_header2">
+        <span style="background-color: #FFF;padding-right:5px;border-top:4px solid #FFF;border-bottom:3px solid #FFF;border-right:5px solid #FFF;"><%= t(:tel_1) %></span>
+    </div>
+      <div id="formError" style="color:red;padding-left:10px;"></div>
+      <div id="formError2" style="color:red;padding-left:10px;"></div>
+
+      <div id="body_container">
+        <% form_tag({:action => 'contact_mail_send'}, :id => "form_contact", :method => 'post') do %>
+       <table width="70%" border="0" cellspacing="3" cellpadding="0" style="margin-left:135px">
+              <tr>
+                <td colspan="4" align="center">
+                </td>
+              </tr>
+              <tr>
+              </tr>
+              <tr>
+                <td width="18%"><%= t(:contact_us_form_01) %> <span class="tb_redstart">*</span></td>
+                <td width="34%"><label><input type="text" name="contact[name]" id="contact_name" /></label></td>
+              </tr>
+              <tr>
+                <td width="15%"><%= t(:contact_us_form_02) %> <span class="tb_redstart">*</span></td>
+                <td width="37%"><label><input type="text" name="contact[email]" id="contact_email" /></label></td>
+              </tr>
+              <tr>
+                <td><%= t(:contact_us_form_03) %></td>
+                <td><label><input type="text" name="contact[phone]" id="contact_phone" /></label></td>
+              </tr>
+              <tr>
+                <td style="width:55px"><%= t(:contact_us_form_04) %> <span class="tb_redstart">*</span></td>
+                <td><label><input type="text" name="contact[subject]" id="contact_subject" /></label></td>
+              </tr>
+              <tr>
+                <td style="width:55px"><%= t(:contact_us_form_05) %> <span class="tb_redstart">*</span></td>
+                <td><label><TEXTAREA COLS=40 ROWS=6" name="contact[message]" id="contact_message" ></TEXTAREA></label></td>
+              </tr>
+              <tr>
+                <td style="width:55px"><%= t(:contact_us_form_06) %></td>
+                <td><label><input type="text" name="contact[command_number]" id="contact_command_number"/></label></td>
+              </tr>
+              <tr></tr>
+              <tr></tr>
+              <tr></tr>
+              <tr>
+                <td class="mandatory_fields" colspan="2" class="tb_text11" align="left"><span class="tb_redstart">*</span><%= t(:front_office_bulk_order_18) %></td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  
+                </td>
+              </tr>
+            </table>
+            <div id="btn_free_quote" style="margin-left:265px">
+              <a href="#error"  title="<%= t(:contact_us_form_07) %>" onclick="if (checkContactForm()) document.getElementById('form_contact').submit();">
+                    <%= image_tag "izishirt2011/#{session[:language]}/bt-submit.jpg" %>
+              </a>
+            </div>
+        <%end%>
+      </div>
+      <div id="delimiter"></div>
+      <div id="address_and_map" style="float:left" >
+          <%=t(:contact_address)%>
+          <%= get_phone_number %><br/>
+          </div>
+       
+          <iframe  style="float:left;margin-left: 20px" width="300" height="300" frameborder="0" scrolling="no" marginheight="10" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;q=1625+Rue+chabanel+ouest+Montreal+QC+H4N+2S7,+Canada&amp;ie=UTF8&amp;hq=&amp;hnear=1625+Rue+Chabanel+Ouest,+Montr%C3%A9al,+Communaut%C3%A9-Urbaine-de-Montr%C3%A9al,+Qu%C3%A9bec+H4N+1M2,+Canada&amp;ll=45.530102,-73.659296&amp;spn=0.018038,0.025749&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small style="text-align:right"><a href="http://maps.google.com/maps?hl=en&amp;q=1625+Rue+chabanel+ouest+Montreal+QC+H4N+2S7,+Canada&amp;ie=UTF8&amp;hq=&amp;hnear=1625+Rue+Chabanel+Ouest,+Montr%C3%A9al,+Communaut%C3%A9-Urbaine-de-Montr%C3%A9al,+Qu%C3%A9bec+H4N+1M2,+Canada&amp;ll=45.530102,-73.659296&amp;spn=0.018038,0.025749&amp;z=14&amp;iwloc=A&amp;source=embed" target="_blank" style="color:#0000FF;text-align:left"><%= t(:see_map) %></a></small>
+
+        
+    </div>
+  </div>
+</div>

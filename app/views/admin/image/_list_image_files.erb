@@ -1,0 +1,33 @@
+<table cellspacing="0" cellpadding="5" border="0">
+  <tbody>
+      <tr>
+        <th><%= t(:artwork_upload_files_file_name) %></th>
+        <th><%= t(:artwork_upload_files_file_size) %></th>
+        <th><%= t(:artwork_upload_files_actions) %></th>
+      </tr>
+
+  </tbody>
+  <tbody id="listing">
+      <%
+      image_files = @image.image_files
+
+      image_files.each do |file|
+        myclass = cycle('odd','')
+        
+        %>
+  
+        <tr class="<%= myclass %>" style="background-color:white">
+          <td><%= file.file_file_name %></td>
+          <td><%= file.file_file_size / 1000 %> KB</td>
+          <td><%= link_to "Download", :controller => :image, :action => :download_image_file, :id => file.id %>
+
+            <% if with_delete %>
+              <%= link_to_remote 'Delete',  :url => { :controller => :image, :action => 'destroy_file', :id => file.id, :image_id => @image.id, :list_id => upload_files_id }, :update => "list_image_files#{upload_files_id}",:confirm => t(:admin_confirm), :title => t(:admin_delete) %>
+            <% end %>
+          </td>
+        </tr>
+        <%
+      end
+      %>
+  </tbody>
+</table>

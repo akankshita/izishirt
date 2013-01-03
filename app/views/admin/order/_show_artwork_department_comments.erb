@@ -1,0 +1,21 @@
+<%
+	# Show comments related to the artwork department only if
+	# the current user is a artwork member.
+%>
+
+<% if @user_is_artwork_member %>
+	<div class="titleForm">
+		<h3><%= t(:admin_artwork_dept_order_show_comments_artwork_department) %></h3>
+	</div>
+	
+	<div class="boxForm">
+		<div class="scrollable_comment" align="center">
+				<%= hidden_field_tag "order_artwork_department_comment[staff_id]", @connected_staff.id %>
+				<%= hidden_field_tag "order_artwork_department_comment[order_id]", @order.id %>
+				<%= hidden_field_tag "referrer", request.referrer %>
+			<p></p>
+			
+			<%#= render :partial => "/admin/order/show_table_artwork_department_comments", :locals => {:orders => [@order], :with_order_ids => false} %>
+		</div>
+	</div>
+<% end %>

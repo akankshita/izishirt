@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%=get_page_title(@image) if @meta_title.nil?-%><%= @meta_title if !@meta_title.nil? -%></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="verify-v1" content="74XVS9wjAO3w3haVIXvRKVLzNN3poCrRAxyw/qdQc8k=" />
+    <meta name="y_key" content="a379e60556b396f8" />
+    <meta http-equiv="Content-Language" content="<%= session[:language] %>" />
+    <% if !@meta_description.nil? %>
+      <meta name="description" content="<%= @meta_description%>" />
+    <%else%>
+      <% if (params[:action] == "create_tshirt" && @image && @image.category|| params[:action] == "t-shirt-personalise" && @image.category) %>
+        <meta name="description" content="<%= "Design: "+@image.name+", Category:  "+@image.category.localized_categories[0].name.to_s+",  Designer: "+@image.user.username if @image -%>. <%= t(:display_home_meta_description_flash_app) %>" />
+      <% else %>
+        <meta name="description" content="<%= t(:display_home_meta_description) %>" />
+      <% end %>
+    <%end%>
+    <% if !@meta_keywords.nil? %>
+      <meta name="keywords" content="<%= @meta_keywords %>" />
+    <% else %>
+      <meta name="keywords" content="<%= t(:display_home_meta_keywords) %>" />
+    <% end %>
+    <meta name="copyright" content="Copyright Izishirt - <%= Time.now.year %>" />
+    <meta name="author" content="www.<%=@DOMAIN_NAME%>" />
+    <meta name="Distribution" content="Global" />
+    <meta name="Rating" content="General" />
+    <meta name="Robots" content="INDEX,FOLLOW, ALL" />
+    <meta name="Revisit-after" content="1 Day" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <!--[if lt IE 7]>
+    <style type="text/css">
+    img, .png { behavior: url('/stylesheets/iepngfix_v2/iepngfix.htc'); }
+    </style>
+    <script type="text/javascript" src="/javascripts/iepngfix_tilebg.js"></script>
+    <![endif]-->
+
+    <!--[if lte IE 7]>
+<style type="text/css">
+html .jqueryslidemenu{height: 1%;} /*Holly Hack for IE7 and below*/
+html .jquerytopmenu{height: 1%;} /*Holly Hack for IE7 and below*/
+</style>
+
+<![endif]-->
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="/stylesheets/ven_ie6.css"/>
+<![endif]-->
+
+<!--[if lt IE 8]>
+<style>
+.wraptocenter span {
+    display: inline-block;
+    height: 100%;
+}
+</style><![endif]-->
+
+		<%= stylesheet_link_tag "myizishirt2011.css" %>
+		<%= stylesheet_link_tag "jScrollPane.css" %>
+		<%= stylesheet_link_tag "flick/jquery-ui-1.7.2.custom.css" %>
+		<%= stylesheet_link_tag "fancybox/jquery.fancybox-1.3.1.css" %>
+
+
+		<%= javascript_include_tag "prototype.js" %>
+
+
+		<%= javascript_include_tag "effects.js" %>
+		<%= javascript_include_tag "jquery-1.4.2.min.js" %>
+		<%= javascript_include_tag "jquery.fancybox-1.3.1.pack.js" %>
+		<%= javascript_include_tag "jquery-ui-1.8.2.custom.min.js" %>
+		<%= javascript_include_tag "jqueryslidemenu.js" %>
+		<%= javascript_include_tag "application2009.js" %>
+
+		<%= javascript_include_tag "jquery.mousewheel.js" %>
+		<%= javascript_include_tag "jquery.em.js" %>
+		<%= javascript_include_tag "jScrollPane-1.2.3.min.js" %>
+		<%= javascript_include_tag "izishirt_2011.js" %>
+		<%= javascript_include_tag "myizishirt.js" %>
+
+		<%= javascript_include_tag "preview2.js" %>
+		<%= javascript_include_tag "jquery.accordion.js" %>
+		<%= javascript_include_tag "jscolor.js" %>
+    
+    
+<%#= stylesheet_link_tag 'layout' %>
+
+<%#= javascript_include_tag "eye.js" %>
+  <%#= javascript_include_tag "utils.js" %>
+<%#= javascript_include_tag "layout.js?ver=1.0.2" %>
+
+    <script type="text/javascript">
+
+
+      $j(document).ready(function() {
+
+        $j("a.modalbox").fancybox();
+        $j("a.login_modalbox").fancybox(      { 'autoDimensions' : false, 'width' : 295, 'height' : 260});
+        $j("a.password_modalbox").fancybox(   { 'autoDimensions' : false, 'width' : 295, 'height' : 260});
+        $j("a.choose_size_modalbox").fancybox({ 'autoDimensions' : false, 'width' : 255, 'height' : 230});
+        $j("a.add_cart_modalbox").fancybox(   { 'autoDimensions' : false, 'width' : 220, 'height' : 238});
+        $j("a.comment_modalbox").fancybox(    { 'autoDimensions' : false, 'width' : 250, 'height' : 50});
+        $j("a.hosted_by_modalbox").fancybox(  { 'autoDimensions' : false, 'width' : 191, 'height' : 164});
+        $j("a.animation_modalbox").fancybox(  { 'autoDimensions' : false, 'width' : 622, 'height' : 311});
+        $j("a.payment_modalbox").fancybox(    { 'autoDimensions' : false, 'width' : 330, 'height' : 266});
+        $j("a.avatar_modalbox").fancybox(     { 'autoDimensions' : false, 'width' : 310, 'height' : 270});
+        $j("a.marketplace_modalbox").fancybox({ 'autoDimensions' : false, 'width' : 410, 'height' : 330});
+        $j("a.delete_account_modalbox").fancybox({ 'autoDimensions' : false, 'width' : 300, 'height' : 270});
+
+
+        <% if params[:lightbox]  == "login"%>
+            $j('#modalbox_login').click();
+        <% end %>
+
+<%#*$("a#inline").fancybox({%>
+<%#*'hideOnContentClick': true%>
+<%#*});%>
+
+  });
+    </script>
+
+<%= render :partial=>"/layouts/common_header" %>
+
+
+
+
+
+  </head>
+
+  <body>
+    <div id="container">
+      <%= render :partial=>"/layouts/header_2010" %>
+      <div class="clear"></div>
+      <div id="page_container">
+        <%= yield %>
+      </div>
+    </div>
+    <div  class="clear"></div>
+    <!-- FOOTER-->
+      <%= render :partial=> "/layouts/footer_2010" %>
+    <!-- FOOTER-->
+        <!-- EO Container Div -->
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-1994599-4");
+        pageTracker._trackPageview();
+      } catch(err) {}
+        </script>
+
+  </body>
+</html>

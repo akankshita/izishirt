@@ -1,0 +1,20 @@
+<% 
+
+	colors = {"Rush" => ["rush", Order.rush_color],
+		"+15 days" => ["15_days", Order.old_15_days_color],
+		"+7 days" => ["7_days", Order.old_7_days_color],
+		}
+%>
+
+<table>
+	<tr>
+		<% colors.each do |label, infos_color| 
+			id = infos_color[0]
+			color = infos_color[1]
+		%>
+			<td style="background-color: #<%= color %>;">
+				<%= link_to label, :controller => "order", :action => "list", :id => id %>
+			</td>
+		<% end %>
+	</tr>
+</table>

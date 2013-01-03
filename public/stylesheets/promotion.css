@@ -1,0 +1,111 @@
+#main-left {
+	float:left;
+}
+
+#create-tshirt {
+	
+}
+
+#create-tshirt-open-store-seperator {
+	display: block;
+}
+
+#open-store {
+		display: block;
+}
+
+#promotion {
+	float:left;
+	background-image: url(/images/promotion/promotion.png);
+	display: block;
+	width: 505px;
+	height: 510px;
+	margin-left: 15px;
+	position:relative;
+}
+
+.fr#promotion {
+	background-image: url(/images/promotion/promotion_fr.png);
+	
+
+}
+#promotion .men {
+	position:relative;
+	width: 240px;
+	height: 400px;
+	float: left;
+	margin-right: 25px;
+	text-align: center;
+}
+
+
+#promotion .women {
+	position:relative;
+	width: 240px;
+	height: 400px;
+	float: left;
+	text-align: center;
+}
+
+#promotion .shirts{
+	top: 113px;
+	position: relative;
+}
+
+#main-section {
+		position:relative;
+		height: 500px;
+		width: 1000px;
+}
+
+#promotion .colors {
+	position:relative;
+	top: 113px;
+	margin: auto;
+}
+
+#promotion .color {
+	margin: 1px;
+	padding: 0px;
+	border: none;
+}
+
+#promotion .color:hover {
+	border: solid black 1px;
+	margin: 0px;
+}
+
+#promotion  .hilite {
+	border: solid black 1px;
+	margin: 0px;
+}
+
+#promotion .size {
+	position: absolute; 
+	top: 375px; 
+	left: 10px; 
+	width: 80px; 
+	font-size: 1em;
+}
+#promotion .quantity {
+	position: absolute; 
+	top: 424px; 
+	left: 10px; 
+	width: 80px; 
+	font-size: 1m;
+}
+
+#promotion .order {
+	position: absolute; 
+	top: 475px; 
+	left: 10px; 
+}
+
+#promotion .price {
+	position: absolute; 
+	top: 475px; 
+	left: 160px; 
+	font-size: 1.5em;
+	color: white;
+	font-weight: bold;
+}

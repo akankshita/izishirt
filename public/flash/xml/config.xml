@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+
+<config>
+
+<!--***********************************************************************************************************************************************-->
+<!--START config -->
+<!--***********************************************************************************************************************************************-->
+
+<!-- ************************************************************************* -->
+
+	
+<!--//Movie data, make sure these values are correct-->
+<!--<value valType="String" valName="initialScene">SplashScreen</value>-->
+<value valType="String" valName="initialScene">mainApplication</value>
+
+<!-- URLS AND IMAGE LOADING -->
+
+<value valType="String" valName="initialDesignsCategory">0</value>
+<value valType="String" valName="checkoutPath"><![CDATA[http://www.google.com]]></value>
+
+
+<!-- path for pixel and vecto artwork-->
+<value valType="String" valName="artworksPath"><![CDATA[datastorage/images/]]></value><!-- note this is for vecto pixel and user uploaded pixel paths-->
+<value valType="String" valName="modelsPath"><![CDATA[datastorage/models_/]]></value>
+<value valType="String" valName="productsPath"><![CDATA[datastorage/products_/]]></value>
+<value valType="String" valName="userUploadDesignPath"><![CDATA[datastorage/userUploadedImage/]]></value>
+
+<!-- path for color swatches-->
+<value valType="String" valName="modelsColorPath"><![CDATA[datastorage/modelColors/]]></value>
+<value valType="String" valName="printColorPath"><![CDATA[datastorage/printColors/]]></value>
+
+
+<!-- ********************************** start image upload vars *************************************-->
+<!-- path for ruby on rails image upload app. I'll send sessionVar + sessionLanguage as a query string-->
+<value valType="String" valName="uploadImagePath"><![CDATA[http://www.google.com]]></value>
+
+<!-- path to check if image has been uploaded. I'll send sessionVar as a query string,
+
+You need to return either:
+1. <imageUpload/> - which means Flash will just keep asking 
+2. <imageUpload><response>cancel</response></imageUpload>
+3. <imageUpload><response id='imageId' defaultzoom='100' minzoom='50' maxzoom='150' printtype='1'>newImage</response></imageUpload>
+
+-->
+<value valType="String" valName="checkForUploadedImage"><![CDATA[http://www.google.com]]></value>
+
+<!-- amount in seconds that flash waits between calls and responses to/from the server to see if an image is uploaded.-->
+<value valType="Number" valName="checkFrequency">1</value>
+
+<!-- Name for category that is created in the designs Tab when a user uploads a design-->
+<value valType="String" valName="UserUploadDesignCategory"><![CDATA[Uploaded Designs]]></value>
+
+<!-- ********************************** end image upload vars *************************************-->
+
+<!--These buttons are on top left of the application-->
+<value valType="String" valName="infoButton1"><![CDATA[http://www.google.com]]></value>
+<value valType="String" valName="infoButton2"><![CDATA[http://www.google.com]]></value>
+<value valType="String" valName="infoButton3"><![CDATA[http://www.google.com]]></value>
+
+<!-- Advertising jpg and link top-->
+<value valType="String" valName="advertLink"><![CDATA[]]></value>
+<value valType="String" valName="advertJpegLink"><![CDATA[]]></value>
+<value valType="Number" valName="advertJpegLink_xPos">190</value>
+<value valType="Number" valName="advertJpegLink_yPos">11</value>
+
+
+
+
+
+<!-- Debug settings-->
+<value valType="Boolean" valName="ShowModProdsProperties">0</value>
+<value valType="Boolean" valName="ShowDesignsProperties">0</value>
+<value valType="Boolean" valName="ShowInterfaceProperties">0</value>
+
+
+
+<!-- delay before showing components after theme has been applied. This is necessary and needs to be tested to the best delay
+as some components are highly complex, require user processor time and may cause a flicker of the original color before changing to theme color-->
+<value valType="Number" valName="ThemeDelayTime">.1</value>
+
+<!-- control used in the Text Editor-->
+<value valType="Number" valName="minimumFontSize">6</value>
+<value valType="Number" valName="maximumFontSize">200</value>
+<value valType="Number" valName="defaultFontSize">12</value>
+
+<!-- control used in the Design Editor-->
+<value valType="Number" valName="minimumDesignScale">25</value>
+<value valType="Number" valName="maximumDesignScale">300</value>
+
+
+<!-- control used in the Shop Cart-->
+<value valType="Number" valName="minimumQuantity">1</value>
+<value valType="Number" valName="maximumQuantity">1000</value>
+	
+
+
+
+<!--***********************************************************************************************************************************************-->
+<!--END config -->
+<!--***********************************************************************************************************************************************-->
+
+
+</config>
+
+
+
+
+
+

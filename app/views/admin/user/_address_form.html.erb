@@ -1,0 +1,38 @@
+<% form.fields_for :printing_address do |address_form| %>
+<%= address_form.hidden_field 'address_type', :value => "3" %>
+<table>
+	<tr><td><h1>Printer Address</h1></td></tr>
+	<tr>
+      <td><label for="user_ship_from">Ship From</label></td>
+      <td><%= form.text_field 'ship_from'  %></td>
+    </tr>
+	<tr>
+  		<td><label for="country_id">Country</label></td>
+  		<td><%= address_form.select 'country_id', Country.all.map{|p|[p.name,p.id]}, {} %></td>
+	</tr>	
+	<tr>
+  		<td><label for="province_id">Province</label></td>
+  		<td><%= address_form.select 'province_id', Province.all.map{|p|[p.name,p.id]}, {} %></td>
+	</tr>
+	<tr>
+  		<td><label for="name">Name</label></td>
+  		<td><%= address_form.text_field 'name' %></td>
+	</tr>
+	<tr>
+  		<td><label for="address1">Address line 1</label></td>
+  		<td><%= address_form.text_field 'address1' %></td>
+	</tr>
+	<tr>
+  		<td><label for="address2">Address line 2</label></td>
+  		<td><%= address_form.text_field 'address2' %></td>
+	</tr>
+	<tr>
+  		<td><label for="zip">Postal Code</label></td>
+  		<td><%= address_form.text_field 'zip' %></td>
+	</tr>
+	<tr>
+  		<td><label for="town">City</label></td>
+  		<td><%= address_form.text_field 'town' %></td>
+	</tr>
+</table>
+<% end %>

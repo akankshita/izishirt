@@ -1,0 +1,115 @@
+
+
+<!--[form:user]-->
+  <div id="formError" class="errorMessage">
+    <% if flash[:error] %>
+      <%=flash[:error]%>
+    <% end %>
+  </div>
+<div id="form_fields">
+  <div class="left"> 
+    <div class="one_field">
+      <label>
+        <%= t(:myizishirt_login_view_form_firstname) %> <span style="color:red">*</span>
+      </label>
+    </div>
+    <div>
+      <%= text_field 'user', 'firstname', "tabindex" => 1  %>
+    </div>
+    <div class="one_field">
+      <label>
+        <%= t(:myizishirt_login_view_form_lastname) %> <span style="color:red">*</span>
+      </label>
+    </div>
+    <div>
+      <%= text_field 'user', 'lastname', "tabindex" => 2  %>
+    </div>
+
+    <div class="one_field">
+      <label>
+        <%= t(:myizishirt_login_view_form_mail) %> <span style="color:red">*</span>
+      </label>
+    </div>
+    <div>
+      <%= text_field 'user', 'email', "tabindex" => 3  %>
+    </div>
+
+    <% if with_shop %>
+      <div class="one_field">
+        <label>
+          <%= t(:open_shop_phone_number) %>
+        </label>
+      </div>
+      <div>
+        <%= text_field 'store', 'phone_number', "tabindex" => 4  %>
+      </div>
+
+      <div class="one_field">
+        <label>
+          Facebook
+        </label>
+      </div>
+      <div>
+        <%= text_field 'store', 'facebook', "tabindex" => 5  %>
+      </div>
+    <% end %>
+    
+  </div>
+  <div class="right">
+    <div class="one_field">
+      <label>
+        <%= t(:myizishirt_login_view_form_username) %> <span style="color:red">*</span>
+      </label>
+    </div>
+    <div>
+      <%= text_field 'user', 'username', "tabindex" => 6  %>
+    </div>
+    <div class="one_field">
+      <label class="darkGray">
+        <%= t(:myizishirt_login_view_form_password) %> <span style="color:red">*</span>
+      </label>
+    </div>
+    <div>
+      <%= password_field 'user', 'password', "tabindex" => 7  %>
+    </div>
+    <div class="one_field">
+      <label class="darkGray">
+      <%= t(:myizishirt_login_view_form_confirm_pass) %> <span style="color:red">*</span>
+      </label>
+    </div>
+    <div>
+      <%= password_field "user", "password_confirmation", "tabindex" => 8%>
+    </div>
+
+    <% if with_shop %>
+      <div class="one_field">
+        <label>
+        Website
+        </label>
+      </div>
+      <div>
+        <%= text_field "store", "website", "tabindex" => 9%>
+      </div>
+
+      <div class="one_field">
+        <label>
+        Blog
+        </label>
+      </div>
+      <div>
+        <%= text_field "store", "blog", "tabindex" => 10%>
+      </div>
+    <% end %>
+  </div>
+
+  
+  
+</div>
+  <div class="clear"></div>
+
+  <div class="center">
+    <%= check_box 'user', 'wants_newsletter', :checked  => "checked", "tabindex" => 11  %> <%= t(:myizishirt_login_view_form_wants_newsletter) %>
+  </div>
+  <%= hidden_field 'user', 'language_id', :value => session[:language_id] %>
+
+<!--[eoform:user]-->

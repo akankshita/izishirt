@@ -1,0 +1,221 @@
+<h1>Sellers Summary</h1>
+
+<%= dhtml_calendar_includes %>
+
+<div>
+	<%= form_tag( {:action => 'sellers_summary'}, {:id=>'search_form', :method => "get"} ) %>
+	
+    <div class="titleForm"><label><%= t(:admin_statistics_date_start) %>: </label></div>
+    <div class="boxForm">
+      <%= calendar_box 'search', 'start',
+        { :class => 'date',
+          :field_title => 'Start',
+          :form_name => 'search_form',
+          :button_title => 'Show calendar',
+	:value => params[:search][:start].strftime("%Y-%m-%d") },
+          { :firstDay => 1,
+            :range => [2000, 2020],
+            :step => 1,
+            :showOthers => true,
+            :cache => true }
+      %>
+    </div>
+
+	<div class="titleForm"></div>
+	<div class="boxForm"><%= submit_tag t(:admin_statistics_search) %></div>
+
+
+  </form>
+</div>
+
+<%
+
+	def progress(percentage)
+		percentage = percentage * 100.0
+
+		part = (percentage / 10.0).to_i
+
+		if part > 10
+			part = 10
+		end
+
+		parts = "<p style='display: inline; font-size: 20px;'>#{percentage.round(2)} %</p><br /><p style='font-size: 12px; display: inline; color: green;'>"
+
+		(1..part).each do |i|
+			parts += "+"
+		end
+	
+		parts += "</p><p style='font-size: 12px; display: inline; color: red;'>"
+
+		if part < 10
+			((part + 1)..10).each do |i|
+				parts += "_"
+			end
+		end
+
+		parts += "</p>"
+
+
+		parts += ""
+	
+		return parts
+	end
+
+	def cnt_nb_work_days(d1, d2)
+
+		n = 0
+
+		(d1..d2).each do |d|
+			if d.wday == 0 || d.wday == 6
+				next
+			end
+
+			n += 1
+		end
+
+		return n
+	end
+	
+%>
+
+	<div class="titleForm"></div>
+	<div class="boxForm">
+		<table border="1">
+			<tr>
+				<th></th>
+
+				<% @sellers.each do |seller| %>
+					<th>
+						<%= seller.username %>
+					</th>
+				<% end %>
+			</tr>
+			<tr>
+				<td>
+					<%= @start_date %>
+				</td>
+
+				
+
+				<% @sellers.each do |seller| 
+					sales = AccountingStat.offline_sales_of(@start_date, @start_date, seller)
+				%>
+					<td><%= sales %></td>
+				<% end %>
+			</tr>
+
+			<tr style="background-color: #d0d0d0;">
+				<td>
+					$ week
+				</td>
+
+				<% @sellers.each do |seller| 
+					sales = AccountingStat.offline_sales_of(@begin_week, @end_week, seller)
+				%>
+					<td><%= sales.round(2) %> $</td>
+				<% end %>
+			</tr>
+
+			<tr style="background-color: #d0d0d0;">
+				<td>
+					$ Remaining for the week
+				</td>
+
+				<% @sellers.each do |seller| 
+					sales = AccountingStat.offline_sales_of(@begin_week, @end_week, seller)
+					target_per_day = PrinterThreshold.th_nb_prints(User.find_by_username("izishirt").id, seller.id)
+
+					nb_days = cnt_nb_work_days(@begin_week, @end_week)
+					target = target_per_day.to_f * nb_days.to_f
+
+					remaining = target - sales
+
+					if remaining < 0.0
+						remaining = 0.0
+					end
+				%>
+					<td><%= remaining.round(2) %> $ / <%= target.round(2) %> $</td>
+				<% end %>
+			</tr>
+
+			<tr style="background-color: #d0d0d0;">
+				<td>
+					% week
+				</td>
+
+				
+
+				<% @sellers.each do |seller| 
+					sales = AccountingStat.offline_sales_of(@begin_week, @end_week, seller)
+					target_per_day = PrinterThreshold.th_nb_prints(User.find_by_username("izishirt").id, seller.id)
+					
+					nb_days = cnt_nb_work_days(@begin_week, @end_week)
+					target = target_per_day.to_f * nb_days.to_f
+					
+					prog = sales / target
+
+				%>
+					<td><%= progress(prog) %></td>
+				<% end %>
+			</tr>
+
+			<tr style="background-color: #c2ecff;">
+				<td>
+					$ month
+				</td>
+
+				<% @sellers.each do |seller| 
+					sales_month = AccountingStat.offline_sales_of(@begin_month, @end_month, seller)
+				%>
+					<td><%= sales_month.round(2) %> $</td>
+				<% end %>
+			</tr>
+
+			<tr style="background-color: #c2ecff;">
+				<td>
+					$ Remaining for the month
+				</td>
+
+				<% @sellers.each do |seller| 
+					sales_month = AccountingStat.offline_sales_of(@begin_month, @end_month, seller)
+					target_per_day = PrinterThreshold.th_nb_prints(User.find_by_username("izishirt").id, seller.id)
+
+					nb_days = cnt_nb_work_days(@begin_month, @end_month)
+
+					target = target_per_day.to_f * nb_days.to_f
+
+					remaining = target - sales_month
+
+					if remaining < 0.0
+						remaining = 0.0
+					end
+				%>
+					<td><%= remaining.round(2) %> $ / <%= target.round(2) %> $</td>
+				<% end %>
+			</tr>
+
+
+			<tr style="background-color: #c2ecff;">
+				<td>
+					% month
+				</td>
+
+				
+
+				<% @sellers.each do |seller| 
+					sales_month = AccountingStat.offline_sales_of(@begin_month, @end_month, seller)
+					target_per_day = PrinterThreshold.th_nb_prints(User.find_by_username("izishirt").id, seller.id)
+					
+					target_month = cnt_nb_work_days(@begin_month, @end_month).to_f * target_per_day
+					
+					prog_month = sales_month / target_month
+
+				%>
+					<td><%= progress(prog_month) %></td>
+				<% end %>
+			</tr>
+
+
+		</table>
+	</div>
+

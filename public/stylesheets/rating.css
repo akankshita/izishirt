@@ -1,0 +1,98 @@
+	/*             styles for the star rater                */	
+	.star-rating{
+		list-style:none;
+		margin: 0px 0 0 25px ;
+		padding:0px;
+		width: 91px;
+		height: 18px;
+		position: relative;
+		overflow:hidden;
+		background: url(../images/starrating.gif) top left repeat-x;	
+	}
+	.u_rate .star-rating {background: url(../images/starrating.gif) top left repeat-x;	}
+	
+	.star-rating li{
+		padding:0px;
+		margin:0px;
+		width:18px;
+		height:18px;
+		/*\*/
+		float: left;
+		/* */
+	}
+	.star-rating li a{
+		display:block;
+		width:18px;
+		height: 18px;
+		line-height:18px;		
+		text-decoration: none;
+		text-indent: -9000px;
+		z-index: 20;
+		position: absolute;
+		padding: 0px;
+		overflow:hidden;
+	}
+	.star-rating li a:hover{
+		background: url(../images/starrating.gif) left bottom;
+		z-index: 2;
+		left: 0px;
+		border:none;
+	}
+	.u_rate .star-rating li a:hover {background: url(../images/starrating.gif) left bottom;	}
+	
+	
+	.star-rating a.one-star{
+		left: 0px;
+	}
+	.star-rating a.one-star:hover{
+		width:18px;
+	}
+	.star-rating a.two-stars{
+		left:18px;
+	}
+	.star-rating a.two-stars:hover{
+		width: 36px;
+	}
+	.star-rating a.three-stars{
+		left: 36px;
+	}
+	.star-rating a.three-stars:hover{
+		width: 54px;
+	}
+	.star-rating a.four-stars{
+		left: 54px;
+	}	
+	.star-rating a.four-stars:hover{
+		width: 72px;
+	}
+	.star-rating a.five-stars{
+		left: 72px;
+	}
+	.star-rating a.five-stars:hover{
+		width: 90px;
+	}
+	.star-rating li.current-rating{
+		background: url(alt_star.gif) left center;
+		position: absolute;
+		height: 18px;
+		display: block;
+		text-indent: -9000px;
+		z-index: 1;
+	}
+	
+	/* remove halo effect in firefox   */
+	a:active{
+		outline: none;
+	}		
+
+
+
+
+
+
+
+
+
+
+
+

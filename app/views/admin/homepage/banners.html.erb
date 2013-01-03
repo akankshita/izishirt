@@ -1,0 +1,167 @@
+<script src="/javascripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="/javascripts/homepage.js" type="text/javascript"></script>
+<script src="/javascripts/dragsort.js" type="text/javascript"></script>
+
+<h1><%=t(:homepage_banners) %></h1>
+<div class="home_banner" id="banners_lang">
+	<li onMouseOver="changeLang();" onMouseOut="hideLang();">
+        <center>
+          <a href="#" title="<%=t(:flag_alt, :country=>session[:country_long])%>">
+            <%
+            country = @alt_country.downcase
+            file_exists = FileTest.exists?("./public/images/izishirt2011/flags/#{country}.png")
+            if file_exists
+            %>
+              <img src="/images/izishirt2011/flags/<%= @alt_country.downcase %>.png" alt="<%=t(:flag_alt, :country=>session[:country_long])%>" width="10" height="7" hspace="2" align="absmiddle"/>
+            <% else %>
+              <img src="/images/flags/<%= @alt_country.downcase %>.gif" alt="<%=t(:flag_alt, :country=>session[:country_long])%>" width="10" height="7" hspace="2" align="absmiddle"/>
+            <% end %>
+            <%= session[:country_long] %> <%= t(:lang) if !['us','fr'].include?(@alt_country.downcase) %>
+            <img src="/images/izishirt2011/arrow-top-menu.gif" width="10" height="5" />
+          </a>
+        </center>
+        <ul id="lang_ul">
+          <li>
+            <% link_to (params_hash("fr","CA"), :title=>"Canada #{t(:flag_alt2)}") do %>
+              <%= image_tag('/images/izishirt2011/flags/ca.png', :alt=>"Canada #{t(:flag_alt2)}") %> Canada Français
+            <% end %>
+          </li>
+          <li>
+            <% link_to (params_hash(nil,"CA"), :title=>"Canada #{t(:flag_alt2)}") do %>
+              <%= image_tag('/images/izishirt2011/flags/ca.png', :alt=>"Canada #{t(:flag_alt2)}") %> Canada English
+            <% end %>
+          </li>
+          <li>
+            <% link_to(params_hash("us","US"), :title=>"United States #{t(:flag_alt2)}") do %>
+              <%= image_tag('/images/izishirt2011/flags/us.png', :alt=>"United States #{t(:flag_alt2)}") %> United States
+            <% end %>
+          </li>
+          <li>
+            <% link_to(params_hash("france","FR"), :title=>"France #{t(:flag_alt2)}") do %>
+              <%= image_tag('/images/izishirt2011/flags/fr.png', :alt=>"France #{t(:flag_alt2)}") %> France
+            <% end %>
+          </li>
+          <li>
+            <% link_to(params_hash("uk","GB"), :title=>"United Kingdom #{t(:flag_alt2)}") do %>
+              <%= image_tag('/images/flags/gb.gif', :alt=>"United Kingdom #{t(:flag_alt2)}") %> United Kingdom
+            <% end %>
+          </li>
+          <li>
+            <% link_to(params_hash("australia","AU"), :title=>"Australia #{t(:flag_alt2)}") do %>
+              <%= image_tag('/images/izishirt2011/flags/au.gif', :alt=>"Australia #{t(:flag_alt2)}") %> Australia
+            <% end %>
+          </li>
+          <li>
+            <% link_to(params_hash("fr-eu","EU"), :title=>"Europe #{t(:flag_alt2)}") do %>
+              <%= image_tag('/images/izishirt2011/flags/eu.png', :alt=>"Europe #{t(:flag_alt2)}") %> Europe Français
+            <% end %>
+          </li>
+          <li>
+            <% link_to(params_hash("eu","EU"), :title=>"Europe #{t(:flag_alt2)}") do %>
+              <%= image_tag('/images/izishirt2011/flags/eu.png', :alt=>"Europe #{t(:flag_alt2)}") %> Europe English
+            <% end %>
+          </li>
+        </ul>
+	</li>
+</div>
+
+<div class="home_banner" id="banners_order">
+	<h2><%=t(:banners_order) %></h2>
+	
+	<ul class="banners_order">
+	<%= @banners_order.map{|hb|
+		"<li class=\"banner_#{hb.index}\">Banner #{hb.index}</li>"
+	}%>
+	</ul>
+	
+	<input type="button" onclick="save_order();" value="<%= t(:button_save_order) %>" />
+	<div id="order_notice" style="display: none;color: green;"><%=t(:order_updated) %></div>
+	<script type="text/javascript">
+		$(".banners_order").dragsort();
+	</script>
+</div>
+
+<div class="home_banner" id="banners_menu">
+	<ul>
+		<li id="banner_1"><%= t(:banner)%> 1</li>
+		<li id="banner_2"><%= t(:banner)%> 2</li>
+		<li id="banner_3"><%= t(:banner)%> 3</li>
+		<li id="banner_4"><%= t(:banner)%> 4</li>
+		<li id="banner_5"><%= t(:right_banner)%></li>
+	</ul>
+</div>
+
+<div class="home_banner" id="banners_left">
+	<% 1.upto(4) do |index| %>
+		<% index == 1 ? display_ok = "display: inline;" : display_ok = "display: none;" %>
+		<div id="banner_<%= index %>" style="<%=display_ok %>">
+		<h2><%=t(:left_banner) %>(567*204)</h2><h3><%=t(:banner) %> <%= index %></h3>
+		<%find_banner = HomepageBanner.find(:all, :conditions=>["position=? AND homepage_banners.index=?", "left", index], :order=>"homepage_banners.index ASC")%>
+		<% if (find_banner != nil && find_banner.size > 0)
+			current_index = find_banner.first.index
+			current_position = find_banner.first.position
+			find_banner.first.all_en == 0 ? current_all_en = "" : current_all_en = "checked=\"yes\""
+		 	find_banner.first.all_fr == 0 ? current_all_fr = "" : current_all_fr = "checked=\"yes\""
+			find_banner.first.display == 0 ? display = "" : display = "checked=\"yes\""
+            path_lang_static = path_lang(session[:language_id], session[:country]).gsub("-", "_")
+            if path_lang_static == nil
+              path_lang_static = path_lang(session[:language_id], session[:country])
+            end
+			current_txt_lang = find_banner.first["text_"+path_lang_static]
+			current_link = find_banner.first["link_"+path_lang_static]
+		else
+			current_index = index
+			current_position = "left"
+			current_lang = session[:language_id]
+			current_country = session[:country]
+			current_all_en = "checked=\"yes\""
+			current_all_fr = "checked=\"yes\""
+			display = "checked=\"yes\""
+			current_txt_lang = ""
+			current_link = ""
+		end
+		current_path_img = "/images/homepage/banners/#{path_lang(session[:language_id],session[:country])}/#{current_position}_#{current_index}.jpg"
+		%>
+		<% form_tag({:controller=>"/admin/homepage", :action=>"preview_image"}, :multipart => true, :id=>"form_banners") do %>
+			<h4><%=t(:update_banner) %></h4>
+			<%=t(:text_link)%> <input type="text" name="banner[text_lang]" value="<%=current_txt_lang%>" />
+			<br /><br />
+			<%=t(:path_link)%> <input type="text" name="banner[link]" value="<%=current_link%>" />
+			<br /><br />
+			<input type="checkbox" name="banner[display]" <%=display%> /><%=t(:display_homepage)%>&nbsp;<br/><br/>	
+			<h4><%= t(:upload_banner)%></h4>
+			<input type="checkbox" name="banner[all_en]" disabled="disabled"<%#=current_all_en%> /><%= t(:for_all_en)%>&nbsp;
+			<input type="checkbox" name="banner[all_fr]" disabled="disabled"<%#=current_all_fr%> /><%= t(:for_all_fr)%>&nbsp;<br/><br/>
+			<%= file_field "banner", "file", :size=>20 %>
+			<input id="banner_index" type="hidden" name="banner[index]" value="<%=current_index%>">
+			<input id="banner_position" type="hidden" name="banner[position]" value="<%=current_position%>">
+			<input id="banner_lang" type="hidden" name="banner[lang]" value="<%=session[:language_id] %>">
+			<input id="banner_country" type="hidden" name="banner[country]" value="<%=session[:country] %>"><br/><br/>
+			<input id="banner_preview" type="submit" value="<%=t(:button_preview) %>"><br/><br/>
+		<%end%>
+		<div id="banner_<%=current_index%>_img" class="banner_img"><img alt="Left banner" src="<%=current_path_img%>" width="567" height="204"></div>
+		</div>
+	<% end %>
+</div>
+
+<div class="home_banner" id="banner_right" style="display: none;">
+	<h2><%=t(:right_banner) %>(336*204)</h2>	
+	<% form_tag({:controller=>"/admin/homepage", :action=>"preview_image"}, :multipart => true, :id=>"form_banners") do %>
+		<h4><%= t(:update_banner)%></h4>
+		<%= t(:text_link)%> <input type="text" name="banner[text_lang]" value="<%=@banner_right_txt_lang%>" />
+		<br /><br />
+		<%= t(:path_link)%> <input type="text" name="banner[link]" value="<%=@banner_right_link%>" />
+		<br /><br />
+		<h4><%= t(:upload_banner)%></h4>
+		<input type="checkbox" name="banner[all_en]" disabled="disabled" <%#=@banner_right_all_en%> /><%= t(:for_all_en)%>&nbsp;
+		<input type="checkbox" name="banner[all_fr]" disabled="disabled"<%#=@banner_right_all_fr%> /><%= t(:for_all_fr)%>&nbsp;<br/><br/>
+		<%= file_field "banner", "file", :size=>20 %>
+		<input id="banner_index" type="hidden" name="banner[display]" value="on">
+		<input id="banner_index" type="hidden" name="banner[index]" value="<%=@banner_right_index%>">
+		<input id="banner_position" type="hidden" name="banner[position]" value="<%=@banner_right_position%>">
+		<input id="banner_lang" type="hidden" name="banner[lang]" value="<%=session[:language_id] %>">
+		<input id="banner_country" type="hidden" name="banner[country]" value="<%=session[:country] %>"><br/><br/>
+		<input id="banner_preview" type="submit" value="<%=t(:button_preview) %>"><br/><br/>
+	<%end%>
+	<div id="banner_0_img" class="banner_img"><img alt="Right banner" src="<%=@banner_path_img%>" width="336" height="204"></div>
+</div>

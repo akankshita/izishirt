@@ -1,0 +1,39 @@
+<b>**BATCH FOLLOW UP**</b><br />
+<b>Warning: THIS IS NOT A NEW ORDER.</b><br /><br /><br />
+
+<table border="1">
+    <tr>
+
+	    <th>PO Number</th>
+	    <th>Add. comment</th>
+	    <th><%= I18n.t(:admin_garments_ordered_generate_list_apparel_name, :locale => Language.find(2).shortname) %></th>
+	    <th><%= I18n.t(:admin_garments_ordered_generate_list_apparel_color, :locale => Language.find(2).shortname) %></th>
+	    <th><%= I18n.t(:admin_garments_ordered_generate_list_apparel_size, :locale => Language.find(2).shortname) %></th>
+	    <th><%= I18n.t(:admin_garments_ordered_generate_list_quantity, :locale => Language.find(2).shortname) %></th>
+	    <th>Received</th>
+    </tr>
+
+		<%
+
+		@products.each do |product|
+
+		%>
+
+		    <tr>
+			    <td><%= "#{product.order_garment_listing.po_number}" %></td>
+			    <td><%= ModelSpecification.order_garment_comment_of(product.model_id, product.color_id) %></td>
+			    <td><%= product.model.local_name(Language.find(@lang).id) %></td>
+			    <td><%= product.color.local_name(Language.find(@lang).id) %></td>
+			    <td><%= product.model_size.local_name(Language.find(@lang).id) %></td>
+			    <td><%= product.quantity %></td>
+			    <td><%= product.nb_received %></td>
+		    </tr>
+	    <% end %>
+</table>
+
+    <p><br /></p>
+
+<br />
+If Stock is missing please advise us by email (production.izishirt@gmail.com) or phone (1 514 286 2446)
+
+Thank you for confirming receipt.

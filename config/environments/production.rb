@@ -1,0 +1,57 @@
+# Settings specified here will take precedence over those in config/environment.rb
+#ActionController::CgiRequest::DEFAULT_SESSION_OPTIONS.update( :session_domain => '.izishirt.ca')
+
+# The production environment is meant for finished, "live" apps.
+# Code is not reloaded between requests
+config.cache_classes = false
+
+# Use a different logger for distributed setups
+# config.logger = SyslogLogger.new
+
+# Full error reports are disabled and caching is turned on
+config.action_controller.consider_all_requests_local = true
+config.action_controller.perform_caching             = true
+
+# Enable serving of images, stylesheets, and javascripts from an asset server
+# config.action_controller.asset_host                  = "http://assets.example.com"
+
+# Disable delivery errors, bad email addresses will be ignored
+# config.action_mailer.raise_delivery_errors = false
+
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.delivery_method = :sendmail
+config.action_mailer.default_charset = "utf-8"
+
+#config.action_controller.session[:domain] = '.izishirt.ca'
+config.middleware.use "SetCookieDomain", ".izishirt.com"
+
+
+BULK_PICTURES_PATH = ":rails_root/public/izishirtfiles/bulk/:attachment/:id/:style/:filename"
+BULK_PICTURES_URL = "/izishirtfiles/bulk/:attachment/:id/:style/:filename"
+
+CATEGORY_PICTURES_PATH = ":rails_root/public/izishirtfiles/category/:attachment/:id/:style/:filename"
+CATEGORY_PICTURES_URL = "/izishirtfiles/category/:attachment/:id/:style/:filename"
+
+#URL_ROOT = "http://www.izishirt.ca"
+#URL_SESSIONS = ".izishirt.ca"
+#SECURE_URL_ROOT = "https://www.izishirt.ca"
+URL_ROOT = "http://www.izishirt.ca"
+#URL_SESSIONS = ".izishirt.ca"
+SECURE_URL_ROOT = "https://www.izishirt.ca"
+FACEBOOK_URL_ROOT = "http://apps.facebook.com/pages/IziShirt/223576667655075"
+RAILS_DEFAULT_LOGGER.level = Logger::ERROR if defined? RAILS_DEFAULT_LOGGER
+
+ config.log_level = :debug
+# RAILS_DEFAULT_LOGGER.level = Logger::DEBUG if defined? RAILS_DEFAULT_LOGGER
+
+config.after_initialize do
+  ActiveMerchant::Billing::PaypalGateway.pem_file = File.read(RAILS_ROOT + '/config/cert_key_pem.txt')
+end
+$PAYPAL_LOGIN = 'payments_api1.izishirt.ca'
+$PAYPAL_PASSWORD = '7LY8WLC38K2GU567'
+
+LCL_MERCHANT_ID = "052402373600019"
+LCL_PATHFILE = "#{Rails.root}/lib/lcl/production/pathfile"
+
+HASH_DOMAINS_COUNTRIES = {"Portugal" => "izishirt.ca.pt", "Brasil" => "izishirt.ca.br", "Canada"=>"izishirt.ca", "USA"=>"izishirt.us", "France"=>"izishirt.fr", "United Kingdom"=>"izishirt.co.uk", "Belgique"=>"izishirt.be", "Suisse"=>"izishirt.ch", "Australia"=>"izishirt.ca.au", "México"=>"izishirt.mx", "Deutschland"=>"izishirt.de", "Österreich" => "izishirt.at"}
+HASH_DOMAINS_ABBR_COUNTRIES = {"PT" => "izishirt.ca.pt", "BR" => "izishirt.ca.br", "CA"=>"izishirt.ca", "US"=>"izishirt.us", "FR"=>"izishirt.fr", "GB"=>"izishirt.co.uk", "BE"=>"izishirt.be", "CH"=>"izishirt.ch", "AU"=>"izishirt.ca.au", "ES"=>"izishirt.es", "MX"=>"izishirt.mx", "DE"=>"izishirt.de", "AT" => "izishirt.at"}

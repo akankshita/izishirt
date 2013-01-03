@@ -1,0 +1,25 @@
+
+<%= spinner_tag %>
+<div class="adminsearch" style="width:350px;">
+<% form_remote_tag :url => {:action => :search, :id=>hc_id}, :update =>"img_result_#{hc_id}" do %>
+	<%= text_field_tag('search', params[:search], :class => 'input fleft') %>
+  <label class="fleft">Active?</label>
+  <%= check_box("image", "active", {:class => 'fleft', :checked => "checked"}, "1", "0") %>
+  <select id="search_field" name="search_field" class="fleft">
+  	<option value="id">Design ID</option>
+  	<option value="username">Username</option>
+    <option value="tag_name">Tag Name</option>
+    <option value="name">Design Name</option>
+    <option value="created_on">Created On</option>
+    <option value="staff">Staff Picks</option>
+  </select>
+	<%= image_submit_tag 'ico-search.gif', :class => 'button fleft' %>
+<% end %>
+</div>
+
+<br /><br />
+
+<div id="img_result_<%=hc_id%>">
+  
+</div>
+

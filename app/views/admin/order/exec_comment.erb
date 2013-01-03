@@ -1,0 +1,7 @@
+  <%= render :partial => "/admin/order/show_comments_comment_type", :locals => {:comment_type => @comment_type, :comments => @comments} %>
+
+	<script language="javascript">
+		document.getElementById("comment_title_<%= @comment_type.str_id %>").innerHTML = "<%= @comment_type.local_name(session[:language_id]) %> (<%= @all_comments.length %>)";
+	</script>
+
+

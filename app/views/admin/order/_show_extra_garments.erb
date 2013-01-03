@@ -1,0 +1,159 @@
+<% extra_garments = @order.extra_ordered_products() %>
+
+<script language="javascript">
+  var display_extra_garments = "none";
+
+  function show_hide_extra_garments()
+  {
+    display_extra_garments = (display_extra_garments == "none") ? "block" : "none";
+
+    if (display_extra_garments == "block")
+    {
+      Effect.SlideDown('box_extra_garments_list',{duration:1.0}); return false;
+    }
+    else
+    {
+      Effect.SlideUp('box_extra_garments_list',{duration:1.0}); return false;
+    }
+  }
+</script>
+
+<a name="extra_garments"></a>
+<div class="titleForm"><a href="#extra_garments" onclick="return show_hide_extra_garments();"><%= t(:admin_order_show_show_hide_extra_garments) %></a></div>
+<div class="boxForm" style="display:none" id="box_extra_garments_list">
+
+  <table border="1">
+    <tr>
+      <th><%= t(:admin_ordered_garments_list_name) %></th>
+      <th><%= t(:admin_ordered_garments_list_size) %></th>
+      <th><%= t(:admin_ordered_garments_list_quantity) %></th>
+      <th><%= t(:admin_ordered_garments_list_total_price) %></th>
+      <th><%= t(:admin_ordered_garments_list_date_added) %></th>
+	  <th><%= t(:admin_ordered_garments_list_product_id) %></th>
+
+      <% if with_reason %>
+        <th><%= t(:admin_ordered_garments_list_reason) %></th>
+      <% end %>
+
+      <% if with_actions %>
+        <th><%= t(:admin_ordered_garments_list_actions) %></th>
+      <% end %>
+    </tr>
+
+
+    <% 
+		extra_garments.each do |extra_garment|
+			model_spec = ModelSpecification.find_by_model_id_and_color_id(extra_garment.model_id, extra_garment.color_id) 
+			begin
+              prod = OrderedProduct.find(extra_garment.ordered_product_id)
+            rescue
+            end
+	%>
+      <tr>
+        <td>
+        	<%= extra_garment.name(session[:language_id]) %> (<%= extra_garment.id %>)<br />
+			
+			<table>
+				<tr>
+					<td align="center">
+						
+					</td>
+					<td align="center">
+						
+					</td>					
+				</tr>
+				<tr>
+					<td>
+						<% if model_spec && extra_garment %>
+							<img src="<%= File.join("/izishirtfiles/models/", extra_garment.model_id.to_s, model_spec.img_front) %>" width="150" height="150">
+						<% else %>
+							N/A
+						<% end %>
+					</td>
+					<td>
+						<% if model_spec && extra_garment %>
+							<img src="<%= File.join("/izishirtfiles/models/", extra_garment.model_id.to_s, model_spec.img_back) %>" width="150" height="150">
+						<% else %>
+							N/A
+						<% end %>
+					</td>
+				</tr>
+			</table>
+			
+			<p align="center"><big><%= t(:admin_order_detail_with_product_specification) %> <%= extra_garment.ordered_product_id %></big></p>
+		</td>
+        <td><%= extra_garment.model_size.local_name(I18n.locale) %></td>
+        <td><%= extra_garment.quantity %></td>
+        <td><%= number_to_currency_custom(extra_garment.price * extra_garment.quantity) %></td>
+        <td><%= extra_garment.created_on %></td>
+		<td><%= extra_garment.ordered_product_id %></td>
+
+        <% if with_reason %>
+          <td>
+              <%= extra_garment.reason_to_add_extra_garment[0..40] if extra_garment.reason_to_add_extra_garment %>
+          </td>
+        <% end %>
+
+        <% if with_actions %>
+          <td>
+              <%= link_to t(:admin_ordered_garments_list_action_show), {:controller => :ordered_garments, :action => :show_extra_garment, :id => extra_garment.id, :operation => "edit"} %>
+
+              <% if ! extra_garment.garments_ordered %>
+                <%= link_to t(:admin_ordered_garments_list_action_edit), {:controller => :ordered_garments, :action => :edit_extra_garment, :id => extra_garment.id, :operation => "edit"} %>
+                <%= link_to t(:admin_ordered_garments_list_action_delete), {:controller => :ordered_garments, :action => :delete_extra_garment, :id => extra_garment.id}, {:confirm => t(:admin_confirm)} %>
+              <% end %>
+
+              <p id="garments_ordered_qty_not_received_<%= extra_garment.id %>">
+                  <% if extra_garment.garments_ordered && @user_is_production_manager && ! extra_garment.reordered? %>
+                    <%= select_tag "ordered_product_#{extra_garment.id}_qty_not_received", options_for_select([["# not received", 0]] | (1..extra_garment.quantity).map{|q| [q, q]}) %><br />
+                  <% end %>
+              </p>
+              <p id="garments_ordered_modifier_<%= extra_garment.id %>">
+                <% if extra_garment.garments_ordered && @user_is_production_manager && ! extra_garment.reordered? %>
+                  <a href="javascript:reorder('<%= extra_garment.id %>','<%= extra_garment.garments_ordered %>','false', $('ordered_product_<%= extra_garment.id %>_qty_not_received').value)">Set to unordered</a>
+                <% end %>
+              </p>
+
+              <p style="background-color: <%= extra_garment.garments_state_color %>;">
+                <% if extra_garment.garment_listing %>
+                  <%= link_to "Garment state: #{extra_garment.garments_state_str}", :controller => "ordered_garments", :action => "print_order_garment_listing", :id => extra_garment.garment_listing.id %>
+                <% else %>
+                  Garment state: <%= extra_garment.garments_state_str %>
+                <% end %>
+              </p>
+
+		<% if extra_garment.garment_listing != extra_garment.garment_listing(@izishirt_stock_supplier.id) && ! extra_garment.garment_listing(@izishirt_stock_supplier.id).nil? %>
+  
+			Garment (<%= extra_garment.garment_listing_product(@izishirt_stock_supplier.id).quantity %>): 
+						<%= @izishirt_stock_supplier.name %>
+			<p style="background-color: <%= extra_garment.garments_state_color(@izishirt_stock_supplier.id) %>;">
+			  <% if extra_garment.garment_listing(@izishirt_stock_supplier.id) %>
+			    <%= link_to "Garment state: #{extra_garment.garments_state_str(@izishirt_stock_supplier.id)}", :controller => "ordered_garments", :action => "print_order_garment_listing", :id => extra_garment.garment_listing(@izishirt_stock_supplier.id).id %>
+			  <% else %>
+			    Garment state: <%= extra_garment.garments_state_str(@izishirt_stock_supplier.id) %>
+			  <% end %>
+			</p>
+		<% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+  <% if with_actions %>
+    <p></p><p></p>
+
+    <%= link_to t(:admin_add), {:controller => :ordered_garments, :action => 'add_extra_garment', :id => @order.id, :operation => "add" }, {:class => 'textLink', :title => t(:admin_add) } %>
+
+    <p>
+      <hr />
+    </p>
+  <% end %>
+</div>
+
+<script language="javascript">
+	// show extra garments if there is any:
+	<% if extra_garments.length > 0 %>
+		show_hide_extra_garments();
+	<% end %>
+</script>

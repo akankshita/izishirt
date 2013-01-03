@@ -1,0 +1,26 @@
+<div id="pp_edit_avatar" style="width: 280px; height: 240px; padding: 15px;">
+      <p><%= t(:new_avatar) %></p>
+
+		<%= flash[:error] %>
+
+<% form_tag({:controller => '/myizishirt/profile', :action => 'update'}, {:multipart=>true, :name => 'avatarForm', :id => "avatarForm" }) do %>
+      <center><%= t(:msg_image) %></center><br/>
+
+	  <p>
+       <%= hidden_field_tag "user_avatar_only", 0 %>
+       <%= image_tag("working.gif",
+                        :align => 'middle',
+                        :border=> 0,
+                        :style=>"display: none;" ) %>
+
+      <input id="user_preview_image" name="user_preview_image" type="file" onchange="$('user_avatar_only').value = 1;" />
+	  </p>
+      	<div id="btn_edit">
+			<input class="submit_avatar" type="submit" value="<%= t(:save) %>">
+      	</div>
+<% end %>
+    </div>
+<script language="Javascript">
+	$j("#fancybox-outer").css("height", "70%");
+	$j("#fancybox-inner").css("height", "70%");
+</script>

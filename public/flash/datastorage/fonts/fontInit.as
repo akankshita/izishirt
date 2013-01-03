@@ -1,0 +1,1 @@
+_parent._parent.e_textLoaded(this.txt);

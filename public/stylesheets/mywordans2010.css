@@ -1,0 +1,859 @@
+@charset "utf-8";
+
+
+/*
+ MY IZISHIRT 2010
+ */
+
+body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333;}
+img {border:0;}
+a {color:#2870b9}
+.clear {clear:both;}
+
+#container { background-color:#fff; width:915px; margin:0 auto; }
+
+
+
+
+/*Left Container*/
+#left_container { float:left; width:200px; }
+
+#uDash {border:1px solid #ccc; padding:10px 10px 10px 10px}
+#uDash h3 {text-transform:uppercase; font-size:13px; margin:0; padding:0 }
+#uDash hr {margin:15px 0; color:#ccc}
+#uDash a {text-decoration:none}
+#uDash a:hover {text-decoration:underline}
+#uDash .uProfile h1 {font-size:15px; margin:0; padding:0}
+
+#uDash .uPic {border:1px solid #ccc; width:100px; overflow:hidden; margin:10px auto 0 auto;}
+
+#uDash .uPic a {position:absolute; display:block; padding:4px 10px; font-size:10px; font-weight:bold; background:#666; color:#fff; right:0; top:0; filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;}
+#uDash .uPic a:hover {filter:alpha(opacity=100);-moz-opacity:1;-khtml-opacity: 1;opacity: 1; text-decoration:none;}
+#uDash .uPic #editAvatar {float: right; font-weight: bold; position: relative;}
+#uDash .uPic #imgAvatar {display: block; opacity: 1; filter: alpha(opacity=100); padding: 0; position: static; background: none;height:100px;width:100px;}
+#uDash .uMenu {font-size:13px; font-weight:bold; margin:10px 0px 0px;}
+#uDash .uMenu .separator{height:1px;border-top:1px solid #ccc;margin:5px 0px;}
+#uDash .uMenu h3 {text-transform:none}
+#uDash .uMenu a{display:block; margin-top:2px; padding:2px 0px 2px 10px;margin-left:2px;margin-left:-5px;}
+#uDash .uMenu .active{background-color:#eaeaea;}
+#uDash .uMenu .disabled{color:#999;}
+
+#uDash .btnGreen {text-align:right; margin-top:10px; float:right;}
+#uDash .btnGreen a:hover{ background: #00cc00;}
+#uDash .btnGreen a { padding:5px 10px; background: #66cc66;  color:#fff; font-size:10px; font-weight: bold;  text-align:center;  text-decoration:none; text-transform:uppercase; display:block; float:left; margin-left:0 }
+
+#myizishirt .uEarnings {float:left;max-width:145px;min-width:131px;}
+#myizishirt .uEarnings p {background:url(/images/boutiques_2010/ven/bgr_stripes.gif) repeat; padding: 4px 5px 4px 5px; font-size:35px; color:#009900; text-align:center; margin:0px 0 10px;max-width:145px;min-width:131px;}
+.uEarnings a {display:block; padding-left:20px; margin-bottom:5px; font-weight:bold; line-height:22px}
+.uEarnings a.earn1 {background:url(/images/boutiques_2010/ven/ico_earn1.gif) no-repeat left}
+.uEarnings a.earn2 {background:url(/images/boutiques_2010/ven/ico_earn1.gif) no-repeat left}
+.uEarnings a.earn3 {background:url(/images/boutiques_2010/ven/ico_earn2.gif) no-repeat left}
+
+#myizishirt .table_visits{float:right;margin-top:-5px;}
+
+#fb_not_connected {text-align:center;}
+#fb_connected, #fb_not_connected {background-color: #e9f2f9;padding:6px;margin-bottom:4px;display:none;}
+#fb_connected label, #fb_not_connected label {color:#0C366C;font-size:14px;display:block;margin-top:4px;}
+#fb_not_connected .fb_button {margin: 10px 0 5px 0;}
+#fb_connected a {font-size:12px;display:block;margin-top:8px;}
+#fb_profile {background-color: #e9f2f9;padding:8px;float:left;}
+
+#myizishirt .uStats{padding:0px 10px 11px;}
+#myizishirt .uStats table {margin-left:4px;}
+#myizishirt .uStats th {width:20px; color:#009900}
+#myizishirt .uStats td,
+#myizishirt .uStats th {padding:5px 0; border-bottom:1px solid #ccc}
+#myizishirt .uStats td {font-weight:bold}
+#myizishirt .uStats td a{font-size:10px; display:block; font-weight:normal}
+
+/*Right Container*/
+
+#right_container {float:right; width:700px; }
+.alert { padding:15px 10px 15px 40px; margin-bottom:5px}
+.alert a {font-size:11px;}
+.aInfo{background: #f9fdc6;}
+.aGreen{background:#e5ffe5 url(/images/boutiques_2010/ven/ico_alert_green.gif) no-repeat 10px 10px;}
+.aDelete{background:#f9f9e4 url(/images/boutiques_2010/ven/ico_alert_delete.gif) no-repeat 10px 10px;}
+.aDelete img {margin:5px 5px 0 0; border:1px solid #ccc }
+.aDelete a {font-size: 12px;}
+.aBlue {background:#e4f2fa url(/images/boutiques_2010/ven/ico_alert_blue.gif) no-repeat 10px 10px;}
+.aBlue a {font-weight:bold; color:#0066cc; font-size:12px}
+#right_container .tshirts_categories .aBlue { margin:10px}
+
+/*reset Pages*/
+#myizishirt h1, #myizishirt h2, #myizishirt h3, #myizishirt p, #myizishirt img,
+#mydesigns h1, #mydesigns h2, #mydesigns h3, #mydesigns p, #mydesigns img,
+#mynodesigns h1, #mynodesigns h2, #mynodesigns h3, #mynodesigns p, #mynodesigns img,
+#mynosales h1, #mynosales h2, #mynosales h3, #mynosales p, #mynosales img,
+#editaccount h1, #editaccount h2, #editaccount h3, #editaccount p, #editaccount img
+#myUpld h1, #myUpld h2, #myUpld h3, #myUpld p, #myUpld img,
+#myUpldPreview h1, #myUpldPreview h2, #myUpldPreview h3, #myUpldPreview p, #myUpldPreview img,
+#paymenthistory h1, #paymenthistory h2, #paymenthistory h3, #paymenthistory p, #paymenthistory img,
+#mysell h1, #mysell h2, #mysell h3, #mysell p, #mysell img,
+#myearnings h1, #myearnings h2, #myearnings h3, #myearnings p, #myearnings img,
+#myproducts h1, #myproducts h2, #myproducts h3, #myproducts p, #myproducts img,
+#catmanager h1, #catmanager h2, #catmanager h3, #catmanager p, #catmanager img,
+#myshop2 h1, #myshop2 h2, #myshop2 h3, #myshop2 p, #myshop2 img,
+#editshop h1, #editshop h2, #editshop h3,  #editshop h4, #editshop p, #editshop img,
+#promotesell h1, #promotesell h2, #promotesell h3,  #promotesell h4, #promotesell p, #promotesell img
+{margin:0; padding:0; border: 0;outline: 0;font-size: 100%; vertical-align: baseline;background: transparent;}
+
+/*My Izishirt*/
+#myizishirt .tshirts_categories,
+#mydesigns .tshirts_categories,
+#mynodesigns .tshirts_categories,
+#mynosales .tshirts_categories,
+#mysell .tshirts_categories{ margin:10px 0 5px 0; border:1px solid #D9D9D9;}
+#myizishirt .special_categories{width:343px;float:left;margin-top:0px !important;margin-bottom:20px !important;}
+#myizishirt .special_categories .design_box{width:105px !important;height:120px !important;}
+#myizishirt .special_categories .design_box .designs{width:95px !important;height:95px !important;}
+#myizishirt .special_categories .btnGreen{margin:10px 10px;}
+
+#myizishirt .tshirts_categories h1,
+#myizishirt  h1.titleText,
+#mydesigns .tshirts_categories h1,
+#mynodesigns .tshirts_categories h1,
+#mynosales .tshirts_categories h1,
+#mydesigns h1.titleTextm,
+#mynodesigns h1.titleText,
+#editaccount h1.titleText,
+#paymenthistory h1.titleText,
+#myearnings h1.titleText,
+#mysell h1,
+#myproducts h1,
+#catmanager h1,
+#myshop2 h1,
+#editshop .mycustomlayout h1{/* background-color: #CCCCCC; color: #666666; height: 18px;padding: 5px 0 0 5px;font-size:12px;font-weight: 700;line-height: 15px;*/background:#fff url(/images/boutiques_2010/ven/bgr_gb.gif) repeat-x left bottom;  line-height:24px; padding:0px 5px 0 10px; color:#333; margin:0 0 10px 0; font-size:13px; }
+#myizishirt  h1.titleText,
+#editaccount h1.titleText,
+#paymenthistory h1.titleText,
+#myearnings h1.titleText,
+#mysell h1{border:1px solid #d9d9d9; border-width:1px 1px 0 1px}
+#myizishirt .tshirts_categories h1 a { color:#3366cc;/*color: #666666;*/ font-size: 10px; text-decoration:none; float:right; font-size:11px; font-weight:bold;padding-right: 10px;}
+/*#myizishirt .tshirts_categories h1 a:hover{color: #0066CC;text-decoration: underline;}*/
+#myizishirt .tshirts_categories h1 span,
+#mysell h1 span{float:right; font-size:11px}
+#myizishirt .tshirts_categories h1 span strong {padding:0 5px}
+
+#myizishirt .tshirts_categories .design_box {float:left; width:125px; margin:0px 3px 10px 5px; height: 130px;}
+#myizishirt .tshirts_categories .design_box p { clear:both; text-align:center; padding:5px 0; margin:0;}
+#myizishirt .tshirts_categories .design_box .designs { float:left; width:115px; height:100px; margin:5px 5px 0 5px;border:1px solid #D9D9D9; text-align:center; overflow:hidden}
+#myizishirt .tshirts_categories .picture_begin{margin:0px 10px;}
+#myizishirt .tshirts_categories .picture_begin a{text-decoration:none;border:0;}
+
+#myizishirt .tshirts_categories .marketingtools {padding:0px 0px 0px 10px}
+#myizishirt .tshirts_categories .mark_box {float:left; margin:0px 10px 0 0px; width: 100px;}
+#myizishirt .tshirts_categories .mark_box a {display:block; border:1px solid #ccc; margin:7px 0 3px 0 }
+#myizishirt .tshirts_categories .mark_box p { font-size:10px}
+#myizishirt .tshirts_categories .mark_box span{ display:block; font-weight:bold; font-size:13px; }
+
+#myizishirt .increase_sales{margin:5px 10px 0px;}
+
+#preview{ position:absolute; border:0; background:#999; padding:1px; display:none; color:#fff;z-index:100000;}
+
+
+#right_container .btnGreen {text-align:right; }
+#right_container .btnGreen a:hover{ background: #06c506;}
+#right_container .btnGreen a { padding:5px 10px; background: #009900;  color:#fff; font-size:10px; font-weight: bold;  text-align:center;  text-decoration:none; text-transform:uppercase; display:block; float:right }
+
+/* To center the images*/
+.wraptocenter { display: table-cell; text-align: center; vertical-align: middle; width: 115px; height: 100px;}
+.wraptocenter * { vertical-align: middle;}
+.wraptocenter a { display: table-cell; width: 115px; height:100px; text-align: center; vertical-align: middle;}
+.wraptocenter img {	vertical-align: middle;}
+.wraptocenter p strong {vertical-align:baseline;}
+
+/* My designs*/
+#mydesigns  h1.titleText{border:1px solid #d9d9d9; border-width:1px 1px 0 1px}
+#mydesigns .tshirts_categories h1 a { color:#3366cc; text-decoration:none; float:right; font-size:11px; font-weight:bold;}
+#mydesigns .tshirts_categories h1 span {float:right; font-size:11px}
+#mydesigns .tshirts_categories h1 span strong {padding:0 5px}
+
+#mydesigns .mydesign_box {width:300px; float:left; margin:20px 15px}
+#mydesigns .mydesign_box h2 {text-transform:uppercase}
+#mydesigns .mydesign_box h2 input {float:left; margin:0 10px 20px 0}
+#mydesigns .mydesign_box h2 span {display:block; font-weight:bold; padding-top:3px; text-transform:none}
+#mydesigns .mydesign_box h2 span.approved {color:#009900; }
+#mydesigns .mydesign_box h2 span.pending {color:#ff9900}
+#mydesigns .mydesign_box h2 span.declined {color:#cc0000}
+#mydesigns .mydesign_box .designs img {margin-bottom:5px;background-image:url('/images/izishirt2011/checkerboard.jpg');}
+#mydesigns .mydesign_box .designs {text-align:left; float:left; width:110px; height:100px; margin:5px 0px 0 0px; }
+#mydesigns .mydesign_box .designs  img {border:1px solid #D9D9D9;}
+#mydesigns .mydesign_box .designs p {font-weight:bold; }
+#mydesigns .mydesign_box .designs p strong {color:#000; color:#009900}
+
+#mydesigns .mydesign_box .mydesOpt {float:left; width:140px; margin:5px 0 0 10px; }
+#mydesigns .mydesign_box .mydesOpt a {display:block; text-decoration:none; padding-left:22px; line-height:18px; color:#3082ba; margin-bottom:3px; font-size:11px }
+#mydesigns .mydesign_box .mydesOpt a:hover {text-decoration:underline}
+#mydesigns .mydesign_box .mydesOpt a img {vertical-align:top}
+#mydesigns .mydesign_box .mydesOpt a.private {background:url(/images/boutiques_2010/ven/ico_des_sell.gif) no-repeat}
+#mydesigns .mydesign_box .mydesOpt a.sell_izishirt {background:url(/images/boutiques_2010/ven/sellOnIzishirt.png) no-repeat}
+#mydesigns .mydesign_box .mydesOpt a.create {background:url(/images/boutiques_2010/ven/ico_create.gif) no-repeat}
+#mydesigns .mydesign_box .mydesOpt a.editdesign {background:url(/images/boutiques_2010/ven/ico_edit.gif) no-repeat}
+#mydesigns .mydesign_box .mydesOpt a.dlddes {background:url(/images/boutiques_2010/ven/ico_dlddes.gif) no-repeat}
+#mydesigns .mydesign_box .mydesOpt a.delete {background:url(/images/boutiques_2010/ven/ico_delete.gif) no-repeat}
+
+
+#mynodesigns .nodesings {width:460px; margin:30px auto;}
+#mynodesigns .nodesings ul {margin:10px 20px 20px 0;padding:0;}
+#mynodesigns .nodesings li {list-style-type:none;background:url(/images/boutiques_2010/ven/ico_arrowGreen.gif) no-repeat left; line-height:20px; margin-bottom:10px; font-weight:bold; padding-left:10px}
+
+#mynodesigns .nodesings .btnGreen a  {margin:0 auto; float:none; width:200px}
+
+#mynosales .nosales {width:460px; margin:15px auto;}
+#mynosales .nosales ul {margin:10px 20px 20px 0;padding:0;}
+#mynosales #expl {margin:25px 35px 10px 15px;padding:0;}
+#mynosales .nosales li {list-style-type:none;background:url(/images/boutiques_2010/ven/ico_arrowGreen.gif) no-repeat left; line-height:20px; margin-bottom:10px; font-weight:bold; padding-left:10px}
+
+#mynosales .nosales .btnGreen a  {margin:0 auto; float:none; width:200px}
+
+
+/* Upload Designs*/
+#myUpld,
+#myUpldPreview {border:1px solid #D9D9D9; padding:15px; margin-bottom:10px }
+#myUpld h1,
+#myUpldPreview h1{font-size:15px; margin-bottom:5px; text-transform:uppercase; margin-top:0 }
+#myUpld .upldFiles {float:left; width: 350px; margin-right:10px}
+#myUpld .upldFiles ol {margin:20px 0 30px 20px}
+#myUpld .upldFiles ol li {list-style: decimal; margin-bottom:10px; }
+#myUpld .upldFiles ol li input {font-size:11px; }
+#myUpld .upldFiles p,
+#myUpldPreview .upldPreviewData p.check{margin-bottom:10px; line-height:16px; clear:both}
+#myUpld .upldFiles p input,
+#myUpldPreview .upldPreviewData p.check input{float:left; margin:0 8px 8px 0; padding:0}
+#myUpld .upldFiles .btnGreen a {float:left; margin:10px 0; font-weight:bold; font-size:12px}
+
+#myUpld .upldNote {float:left; padding:15px 20px 10px 20px; background:#f2f2f2; width:230px}
+#myUpld .upldNote h2 {color:#009900; margin-bottom:20px}
+#myUpld .upldNote p {line-height:17px; margin-bottom:10px}
+#myUpld .upldNote p.small {font-size:11px; line-height:14px}
+
+#myUpldPreview .upldPreview {float:left; width:270px; }
+#myUpldPreview .upldPreview img {background-image:url('/images/izishirt2011/checkerboard.jpg');}
+#myUpldPreview .upldPreviewData input {border:1px solid #999}
+#myUpldPreview .upldPreviewData {width:350px; float:left; padding-top:20px}
+#myUpldPreview .upldPreviewData label {display:block; margin-bottom:3px}
+#myUpldPreview .upldPreviewData input {margin:0px 0 15px 0}
+#myUpldPreview .upldPreviewData .inline {margin-bottom:10px}
+#myUpldPreview .upldPreviewData .inline p {float:left; width:140px}
+#myUpldPreview .upldPreviewData .inline select {width:100px}
+
+
+/* Edit Account */
+#editaccount h1.titleText,
+#paymenthistory h1.titleText,
+#myearnings h1.titleText{margin:0; }
+.info_earning{margin:15px 0px !important; color:#444!important;font-style:italic !important;font-weight:bold !important; font-size:13px !important;}
+#editaccount .editaccount,
+#paymenthistory .paymenthistory,
+#myearnings .myearnings{border:1px solid #D9D9D9; padding:0px 15px 15px 15px}
+#editaccount .editaccount h2 {border-bottom:1px solid #d9d9d9; padding-bottom:3px; margin-bottom:10px; margin-top:15px; font-size:13px; clear:both; }
+#editaccount .editaccount input {border:1px solid #ccc; margin-right:10px; margin-bottom:10px }
+#editaccount .editaccount .personalInfo {}
+#editaccount .editaccount .personalInfo .usrPic {float:left;  width: 250px; margin-right:10px; text-align:center }
+#editaccount .editaccount .personalInfo .usrPic img {border:1px solid #ccc}
+#editaccount .editaccount .personalInfo .usrData {width:350px; float:left}
+#editaccount .editaccount .personalInfo .usrData .inline p {float:left; }
+#editaccount .editaccount .personalInfo .usrData label {display:block; margin-bottom:3px; font-weight:bold; color:#535353}
+
+#editaccount .editaccount .usrPass,
+#editaccount .editaccount .usrShop{width:360px; margin:0 auto; }
+
+#editaccount .editaccount .usrShop {text-align:center; position:relative; left:-35px  }
+#editaccount .editaccount .usrShop p {margin-bottom:10px; }
+#editaccount .editaccount .usrShop p input {margin:0}
+
+#editaccount .editaccount .formInfo label {display:block; margin-bottom:3px;  color:#535353}
+#editaccount .editaccount .formInfo p {float:left}
+#editaccount .editaccount .usrDelete {padding-left:10px}
+#editaccount .editaccount .usrDelete a {display:block; float:left; background:url(/images/boutiques_2010/ven/ico_delete.gif) no-repeat; padding-left:20px; color:#990000; line-height:18px; margin-top:10px; font-weight:bold; text-decoration:none}
+
+#editaccount .editaccount .btnGreen a{width:115px; margin:10px auto; float:none; font-size:14px; font-weight:bold}
+
+#deletemyaccount {width:644px; border:1px solid #D9D9D9; padding:10px 15px; margin:10px 0;}
+#deletemyaccount h1 { font-size:13px; padding:10px 0; border-bottom:1px solid #D9D9D9;}
+#deletemyaccount p { padding:10px; }
+#deletemyaccount a {background:url(/images/boutiques_2010/ven/ico_delete.gif) no-repeat; padding-left:20px; color:#990000; line-height:18px; margin-top:10px; font-weight:bold; text-decoration:none}
+#deletemyaccount a:hover {font-size:12px; color:#C00; text-decoration:underline;}
+
+/* payment history */
+#paymenthistory .paymenthistory {padding-top:15px}
+#paymenthistory .paymenthistory .totalearn {font-weight:bold; margin:10px 0 20px 0}
+#paymenthistory .paymenthistory .totalearn th {width:90px; color:#009900; font-size:14px}
+#paymenthistory .paymenthistory .totalearn img {vertical-align:middle}
+
+#paymenthistory .paymenthistory .phistory th{border-bottom:1px solid #ccc; border-top:1px solid #999; padding:8px 5px 3px 20px; text-align:left}
+#paymenthistory .paymenthistory .phistory tr.even {background:#f0f7fd}
+#paymenthistory .paymenthistory .phistory td {padding:6px 3px 6px 20px; border-bottom:1px solid #ccc; font-size:12px}
+#paymenthistory .paymenthistory .phistory td.price {width:90px; text-align:center}
+#paymenthistory .paymenthistory .phistory th.price {width:90px; text-align:center}
+
+/* my earnings */
+#myearnings .myearnings {padding-top:15px; }
+#myearnings .myearnings h2 {font-size:13px; margin-bottom:10px}
+#myearnings .myearnings  table {margin-left:15px; margin-right:10px; margin-bottom:15px; width:95% }
+#myearnings .myearnings .totalearn {font-weight:bold; }
+#myearnings .myearnings .totalearn th,
+#myearnings .myearnings .totalearn td {background:#e5ffe5; padding:5px }
+#myearnings .myearnings .totalearn th {width:90px; text-align:right; color:#009900; font-size:14px}
+#myearnings .myearnings .totalearn img {vertical-align:middle}
+
+#myearnings .myearnings .phistory td {padding:6px 3px 6px 10px; border-bottom:1px solid #ccc; font-size:12px}
+#myearnings .myearnings .phistory th{width:20px; text-align:center; border-bottom:1px solid #ccc;}
+#myearnings .myearnings .phistory td.price {text-align:right}
+#myearnings .myearnings .phistory td a {display:block; font-size:11px; text-decoration:none }
+#myearnings .myearnings .phistory td.total {color:#c60; font-weight:bold; font-size:14px}
+#myearnings .myearnings .phistory tr:last-child td,
+#myearnings .myearnings .phistory tr:last-child th{border-bottom:0}
+
+/* my sell details */
+#mysell .tshirts_categories {margin-top:0}
+#mysell  h1{border:1px solid #d9d9d9; border-width:0px}
+#mysell .mydesign_box {float:left; margin:0px 0 20px 21px; width:110px; height: 200px; }
+#mysell .mydesign_box h2 {text-overflow: ellipsis; white-space: nowrap; overflow: hidden;width:100px}
+#mysell .mydesign_box .designs {text-align:left;  width:110px; height:100px; margin:8px 0px 0 0px; }
+#mysell .mydesign_box .designs img { margin-bottom:3px}
+#mysell .mydesign_box .designs p { font-size: 11px; margin-top:3px }
+#mysell .mydesign_box .designs p strong {color:#000; color:#009900}
+
+/* my products  */
+#myproducts .myproducts {margin-top:0; border:1px solid #d9d9d9}
+#myproducts .myproducts .pbox input,
+#catmanager .catmanager .catcontent input,
+#myshop2 .myshop2 .shopcontent .shopoptions input { border:1px solid #D9D9D9; }
+#myproducts .myproducts .pbox {padding-bottom:10px; margin:10px; border-bottom:1px solid #d9d9d9; }
+#myproducts .myproducts .prod_box_head {margin:0 10px 10px 10px; color:#666}
+#myproducts .myproducts .prod_box_head h2 {width:100px; float:left; padding-top:2px}
+#myproducts .myproducts .prod_box_head .head_options {float:left; }
+#myproducts .myproducts .prod_box_head .head_options p {margin-bottom:8px; clear:both}
+#myproducts .myproducts .prod_box_head .head_options p a {display:block; margin-left:84px; font-weight:bold; text-decoration:none; font-size:11px}
+#myproducts .myproducts .prod_box_head .head_options p a.btnSearch {display:inline-block; background:#666; padding:2px 7px; text-transform:uppercase; color:#fff; margin:0}
+#myproducts .myproducts .prod_box_head .head_options p a.btnSearch:hover {background:#009900}
+#myproducts .myproducts .prod_box_head .head_options p label {display:inline-block; width:80px}
+#myproducts .myproducts .prod_box_head .head_options input,
+#myproducts .myproducts .prod_box_head .head_options select {width:150px}
+
+#myproducts .myproducts .prod_box {font-size:12px}
+#myproducts .myproducts .prod_box h2 span {display:block; font-size:11px; font-weight:normal; padding-top:3px; text-transform:none}
+#myproducts .myproducts .prod_box .designs {text-align:left; float:left; width:130px; margin:5px 0px 0 10px; }
+#myproducts .myproducts .prod_box .designs  img {border:1px solid #D9D9D9; margin:3px 0}
+#myproducts .myproducts .prod_box .designs p {font-weight:bold;  }
+#myproducts .myproducts .prod_box p strong {color:#000; color:#009900}
+#myproducts .myproducts .prod_box .mydesOpt {float:left; position:relative; margin-left:3px; width:510px;color:#666; font-size:11px;padding-bottom:20px; margin-bottom:10px }
+#myproducts .myproducts .prod_box .mydesOpt span.social {position:absolute; right:95px; top:-20px; text-align:right}
+#myproducts .myproducts .prod_box .mydesOpt input {width:330px; padding:3px 2px; }
+#myproducts .myproducts .prod_box .mydesOpt input,
+#myproducts .myproducts .prod_box .mydesOpt select {}
+#myproducts .myproducts .prod_box .mydesOpt th input {width:25px; padding:1px; font-size:11px}
+#myproducts .myproducts .prod_box .mydesOpt table {float:left; margin-top:5px}
+#myproducts .myproducts .prod_box .mydesOpt table td { padding-right:5px;}
+#myproducts .myproducts .prod_box .mydesOpt table td,
+#myproducts .myproducts .prod_box .mydesOpt table th {padding-bottom:5px}
+#myproducts .myproducts .prod_box .mydesOpt table strong {color:#000}
+#myproducts .myproducts .prod_box .mydesOpt .green {color:#009900}
+#myproducts .myproducts .prod_box .mydesOpt p {clear:both; margin-bottom:10px}
+#myproducts .myproducts .prod_box .mydesOpt label {display:inline-block; float:left; width:80px; line-height:24px}
+#myproducts .myproducts .prod_box .mydesOpt .boxActions {position:absolute; background:#f5f5f5; width:170px; padding:5px 10px 5px 15px; bottom:0; right:0px}
+#myproducts .myproducts .prod_box .mydesOpt .boxActions a {display:block; text-decoration:none; color:#0066cc; font-size:11px; padding-left:23px; line-height:23px}
+#myproducts .myproducts .prod_box .mydesOpt .boxActions a.add_on_marketplace {background:url(/images/boutiques_2010/ven/sellOnIzishirt.png) no-repeat left}
+#myproducts .myproducts .prod_box .mydesOpt .boxActions a.edit_your_marketplace {background:url(/images/boutiques_2010/ven/icon-editmarketplace.png) no-repeat left}
+#myproducts .myproducts .prod_box .mydesOpt .boxActions a.edit {background:url(/images/boutiques_2010/ven/ico_edit_g.gif) no-repeat left}
+#myproducts .myproducts .prod_box .mydesOpt .boxActions a.fav {background:url(/images/boutiques_2010/ven/ico_fav_g.gif) no-repeat left}
+#myproducts .myproducts .prod_box .mydesOpt .boxActions a.cart {background:url(/images/boutiques_2010/ven/ico_cart_g.gif) no-repeat left}
+#myproducts .myproducts .prod_box .mydesOpt .boxActions a.delete {background:url(/images/boutiques_2010/ven/ico_delete_g.gif) no-repeat left}
+#myproducts .myproducts .prod_box .btnGreen a {font-weight:bold; font-size:12px; }
+
+#myproducts_info {margin-bottom:5px;}
+#myproducts_info h1 {margin-top:0;}
+#myproducts_info ul.tabmenu,
+#myproducts_info ul.tabmenu li{margin:0; padding:0; }
+#myproducts_info ul.tabmenu li {display:inline; list-style:none}
+#myproducts_info ul.tabmenu li a{display:block; float:left; background:#88bbee; font-size:14px; font-weight:bold; text-align:center; line-height:23px; color:#fff; margin-right:3px; text-decoration:none}
+#myproducts_info ul.tabmenu li a { width:19%;}
+#myproducts_info ul.tabmenu li.active a,
+#myproducts_info ul.tabmenu li a:hover{background:#0066cc}
+
+#myproducts_bulk_actions {padding: 20px 40px; width:300px;text-align:center;}
+#myproducts_bulk_actions .btnGreen {text-align:center; }
+#myproducts_bulk_actions .btnGreen a:hover{ background: #06c506;}
+#myproducts_bulk_actions .btnGreen a { margin:20px 95px 0;width:90px;padding:5px 10px; background: #009900;  color:#fff; font-size:10px; font-weight: bold;  text-align:center;  text-decoration:none; text-transform:uppercase; display:block;}
+#myproducts_bulk_actions .btnRed {text-align:center; }
+#myproducts_bulk_actions .btnRed a:hover{ background: #cc0000;}
+#myproducts_bulk_actions .btnRed a { margin:20px 95px 0;width:90px;padding:5px 10px; background: #cc0000;  color:#fff; font-size:10px; font-weight: bold;  text-align:center;  text-decoration:none; text-transform:uppercase; display:block;}
+
+/* sort my products  */
+#sort_myproducts #sortable, 
+#sort_myproducts #all_sortable { list-style-type: none; margin: 0; padding: 0; }
+#sort_myproducts #sortable li, 
+#sort_myproducts #all_sortable li { margin: 5px 10px 5px 10px; padding: 1px; float: left; width: 100px; height: 100px; font-size: 4em; text-align: center; }
+#sort_myproducts #sort_wrapper {border: 1px solid #DDDDDD; margin: 10px 0; padding:10px 15px;}
+#sort_myproducts #products {clear:both;overflow:hidden;width:500px;height:680px;padding:10px 65px;}
+#sort_myproducts h1 {margin-top:0;}
+
+#sort_myproducts ul.tabmenu,
+#sort_myproducts ul.tabmenu li{margin:0; padding:0; }
+#sort_myproducts ul.tabmenu li {display:inline; list-style:none}
+#sort_myproducts ul.tabmenu li a{display:block; float:left; background:#88bbee; font-size:14px; font-weight:bold; text-align:center; line-height:23px; color:#fff; margin-right:3px; text-decoration:none}
+#sort_myproducts ul.tabmenu li a { width:19%;}
+#sort_myproducts ul.tabmenu li.active a,
+#sort_myproducts ul.tabmenu li a:hover{background:#0066cc}
+#sort_myproducts #page_label {float:left; font-weight:bold; color:#666666;padding-right:4px;}
+#sort_myproducts .pagination { border-bottom: 1px solid #DDDDDD;padding-bottom:5px;}
+#sort_myproducts .pagination .next_page {display:none;}
+#sort_myproducts .pagination .prev_page {display:none;}
+#sort_myproducts .pagination a {background-color:#99ccff;padding:2px 4px; color:#ffffff;font-weight:bold;text-decoration:none}
+#sort_myproducts .pagination .current {background-color:#0066CC;padding:2px 4px;color:#ffffff;font-weight:bold;}
+#sort_myproducts .drag {clear:both; padding-top:20px;}
+#sort_myproducts .drag h1{float:left;margin-top:6px;margin-right:6px;}
+#sort_myproducts .drag img{float:left;}
+#sort_myproducts #other_products {overflow-x:scroll;overflow-y:hidden;height:130px;background-color:#dad9d9;float:left;width:590px;}
+#sort_myproducts .scroller {float:left;width:20px;background-color:#dad9d9;padding:40px 10px 0 10px;height:90px;}
+
+/* Marketplace page in myizishirt */
+#mymarketplace_info {margin-bottom:5px;}
+#mymarketplace_info h1 {margin-top:0;}
+#mymarketplace_info ul.tabmenu,
+#mymarketplace_info ul.tabmenu li{margin:0; padding:0; }
+#mymarketplace_info ul.tabmenu li {display:inline; list-style:none}
+#mymarketplace_info ul.tabmenu li a{display:block; float:left; background:#88bbee; font-size:14px; font-weight:bold; text-align:center; line-height:23px; color:#fff; margin-right:3px; text-decoration:none}
+#mymarketplace_info ul.tabmenu li a { width:35%;}
+#mymarketplace_info ul.tabmenu li.active a,
+#mymarketplace_info ul.tabmenu li a:hover{background:#0066cc}
+
+#mymarketplace_izishirt {border:1px solid #ccc;padding:0 15px;}
+#mymarketplace_izishirt label.blue{color:#06C; font-weight:bold;}
+#mymarketplace_izishirt h3 {margin-bottom:5px;}
+#mymarketplace_izishirt p {color: #666; font-size: 13px;margin-top:0;}
+#mymarketplace_izishirt #filter {border-top: 1px solid #ccc;margin-top:30px;}
+#mymarketplace_izishirt #filter h3 {margin-bottom:0px;}
+#mymarketplace_izishirt #filter p.small {font-size:11px;color:#333;margin-bottom:15px;}
+#mymarketplace_izishirt #filter p.exclude {font-weight:bold;font-size:12px;}
+#mymarketplace_izishirt #filter div.cat {float:left;width:160px;margin-bottom:10px;}
+#mymarketplace_izishirt #filter div.cat label {color: #666; font-weight:bold;}
+#mymarketplace_izishirt #filter #save {background-color:#009900;width:120px;text-align:center;margin:30px 260px;}
+#mymarketplace_izishirt #filter #save a {line-height:20px; color: #FFF; font-weight:bold; font-size: 14px; text-decoration:none; padding: 2px 10px;}
+
+#mymarketplace {border:1px solid #ccc;padding:0 15px 20px;}
+#mymarketplace label.blue{color:#06C; font-weight:bold;}
+#mymarketplace h3 {margin-bottom:5px;}
+#mymarketplace p {color: #666; font-size: 13px;margin-top:0;}
+#mymarketplace #product {width:160px; float:left; text-align:center;}
+#mymarketplace #product label {display:block}
+#mymarketplace #product a {display:block;color:#06C; text-decoration:none;}
+
+/* category manager  */
+#catmanager {border:1px solid #d9d9d9}
+#catmanager .catmanager {padding:5px 10px 10px 10px}
+#catmanager .catmanager p {margin:10px 0}
+#catmanager .catmanager .catcontent {width:540px; margin:15px auto; font-weight:bold}
+#catmanager .catmanager .catcontent label {display:block}
+#catmanager .catmanager .catcontent p input {margin:3px 0 0 10px}
+#catmanager .catmanager .catcontent strong {color:#009900}
+#catmanager .catmanager .catcontent a.edit {background:url(/images/boutiques_2010/ven/ico_editcat.gif) no-repeat left ; padding-left:23px; display:inline-block; line-height:24px; text-decoration:none; color:#000}
+#catmanager .catmanager .catcontent .listcats table {width:350px; margin:0 auto}
+#catmanager .catmanager .catcontent .listcats table input {width:130px}
+#catmanager .catmanager .catcontent .listcats img {vertical-align:middle; margin-right:20px}
+#catmanager .catmanager .catcontent .listcats a {background:#999; font-size:11px; color:#fff; font-weight:bold; padding:0 4px; line-height:16px}
+#catmanager .catmanager .catcontent .listcats a.delete {margin:0; padding:0; background:none}
+
+#catmanager .catmanager .btnGreen {margin:15px auto; float:none; width:120px;}
+#catmanager .catmanager .btnGreen a {font-weight:bold; font-size:12px; float:none;}
+
+/* my shop2  */
+#myshop2 {border:1px solid #d9d9d9}
+#myshop2 .myshop2 {padding:5px 10px 10px 10px}
+#myshop2 .myshop2 img {float:left}
+#myshop2 .myshop2 .shopcontent {float:left; width:380px; position:relative}
+#myshop2 .myshop2 .shopcontent .shophead {background:#ccc; padding:5px 10px; font-size:12px}
+#myshop2 .myshop2 .shopcontent .shophead h3 {text-transform:uppercase; font-size:14px;}
+#myshop2 .myshop2 .shopcontent .shophead img{position:absolute; right:10px; top:12px}
+#myshop2 .myshop2 .shopcontent .btnGreen { margin:15px 0}
+#myshop2 .myshop2 .shopcontent .btnGreen a {font-weight:bold; font-size:14px; padding-left:20px; padding-right:20px}
+#myshop2 .myshop2 .shopcontent .total {font-size:22px; margin-top:10px; font-weight:bold; text-align:right}
+#myshop2 .myshop2 .shopcontent .security {text-align:right}
+#myshop2 .myshop2 .shopcontent .security img {clear:both; display:block; margin-top:20px; float:right}
+#myshop2 .myshop2 .shopcontent .shopoptions {margin:10px 0}
+#myshop2 .myshop2 .shopcontent .shopoptions div {float:left; }
+#myshop2 .myshop2 .shopcontent .shopoptions a {display:block; float:left; width:50px; text-align:center; text-decoration:none}
+#myshop2 .myshop2 .shopcontent .shopoptions span {display:block; text-align:center; color:#666; font-size:11px   }
+#myshop2 .myshop2 .shopcontent .shopoptions a:hover  {color:#0066cc}
+#myshop2 .myshop2 .shopcontent .shopoptions td span {display:inline; padding-left:15px; color:#000}
+#myshop2 .myshop2 .shopcontent .shopoptions td span.green {background:url(/images/boutiques_2010/ven/color_green.gif) no-repeat; }
+#myshop2 .myshop2 .shopcontent .shopoptions table {width:260px; text-align:center; margin-top:15px}
+#myshop2 .myshop2 .shopcontent .shopoptions td,
+#myshop2 .myshop2 .shopcontent .shopoptions th {font-size:11px; padding:2px 0}
+#myshop2 .myshop2 .shopcontent .shopoptions input {width:25px}
+#myshop2 .myshop2 .shopcontent .shopoptions input,
+#myshop2 .myshop2 .shopcontent .shopoptions select {font-size:10px}
+
+/* Pagination */
+#myizishirt .tshirts_categories .pagination,
+#mydesigns .tshirts_categories .pagination,
+#mysell .tshirts_categories .pagination,
+#myproducts .pagination,
+#editshop .mycustomlayout .pagination{ background:#eeecec repeat-x; padding:4px 0; margin: 10px 0 0 0; color:#333; clear:both }
+#myizishirt .tshirts_categories .pagination .pagination_numbers,
+#mydesigns .tshirts_categories .pagination .pagination_numbers,
+#mysell .tshirts_categories .pagination .pagination_numbers,
+#myproducts .pagination .pagination_numbers{ float:left; width:560px;}
+#myizishirt .tshirts_categories .pagination .pagination_numbers p,
+#mydesigns .tshirts_categories .pagination .pagination_numbers p,
+#mysell .tshirts_categories .pagination .pagination_numbers p,
+#myproducts .pagination .pagination_numbers p,
+#editshop .mycustomlayout .pagination .pagination_numbers p{ text-align:center; line-height:18px; word-spacing:2px;font-weight:bold;}
+#editshop .mycustomlayout .pagination .pagination_numbers div{ text-align:center; line-height:18px; word-spacing:2px;font-weight:bold;}
+
+#myizishirt .tshirts_categories .pagination .pagination_numbers p a,
+#mydesigns .tshirts_categories .pagination .pagination_numbers p a,
+#mysell .tshirts_categories .pagination .pagination_numbers p a,
+#myproducts .pagination .pagination_numbers p a,
+#editshop .mycustomlayout .pagination .pagination_numbers p a { color:#3366cc; text-decoration:none;}
+#editshop .mycustomlayout .pagination .pagination_numbers div a { color:#3366cc; text-decoration:none;}
+#myizishirt .tshirts_categories .pagination .pagination_numbers p a:hover,
+#mydesigns .tshirts_categories .pagination .pagination_numbers p a:hover,
+#mysell .tshirts_categories .pagination .pagination_numbers p a:hover,
+#myproducts .pagination .pagination_numbers p a:hover,
+#editshop .mycustomlayout .pagination .pagination_numbers p a:hover{ font-weight:bold; text-decoration:underline;}
+#editshop .mycustomlayout .pagination .pagination_numbers div a:hover{ font-weight:bold; text-decoration:underline;}
+#myizishirt .tshirts_categories .pagination .pagination_dropdown,
+#mydesigns .tshirts_categories .pagination .pagination_dropdown,
+#mysell .tshirts_categories .pagination .pagination_dropdown,
+#myproducts .pagination .pagination_dropdown,
+#editshop .mycustomlayout .pagination .pagination_dropdown{float:right; width:100px; margin:0 0 0 10px; font-size:11px; padding:0; text-align:right;}
+
+#myizishirt .tshirts_categories .pagination .pagination_dropdown select,
+#mydesigns .tshirts_categories .pagination .pagination_dropdown select,
+#mysell .tshirts_categories .pagination .pagination_dropdown select,
+#myproducts .pagination .pagination_dropdown select{border:1px solid #D9D9D9; padding:0; margin:0; color:#666; font-size:11px;}
+
+#myizishirt .tshirts_categories .pagination .pagination_numbers div,
+#mydesigns .tshirts_categories .pagination .pagination_numbers div,
+#mysell .tshirts_categories .pagination .pagination_numbers div,
+#myproducts .pagination .pagination_numbers div{ text-align:center; display:inline; line-height:18px; word-spacing:2px;}
+#myizishirt .tshirts_categories .pagination .pagination_numbers div a,
+#mydesigns .tshirts_categories .pagination .pagination_numbers div a,
+#mysell .tshirts_categories .pagination .pagination_numbers div a,
+#myproducts .pagination .pagination_numbers div a{ color:#3366cc; text-decoration:none;}
+#myizishirt .tshirts_categories .pagination .pagination_numbers div a:hover,
+#mydesigns .tshirts_categories .pagination .pagination_numbers div a:hover,
+#mysell .tshirts_categories .pagination .pagination_numbers div a:hover,
+#myproducts .pagination .pagination_numbers div a:hover{ font-weight:bold; text-decoration:underline;}
+
+
+
+/* Fixed stuff */
+
+.clearfix:after {content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+.clearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+.clearfix {height: 1%;}
+.clearfix {display: block;}
+
+/***** **************  ***/
+/***** Block of PopUps ***/
+/***** **************  ***/
+#pp_request_payment { padding:15px; width:300px}
+#pp_request_payment h1 { font-size:14px; font-weight:bold; margin:0; padding:0; color:#444;}
+#pp_request_payment p { font-size:12px; }
+#pp_request_payment .input_text { width:140px; border:1px solid #999; font-size:12px; color:#444;}
+#pp_request_payment .csstext_area { width:290px; height:90px; border:1px solid #999; font-size:12px; color:#444;}
+#pp_request_payment #btn_request_payment { width:170px; margin:10px auto; padding:5px 0 0 0; text-align:center; height:25px; display: block;}
+#pp_request_payment #btn_request_payment a:hover{ background-color: #06c506;}
+#pp_request_payment #btn_request_payment .button_request_payment { padding:5px 10px; background-color: #009900; border-top:1px ridge #7ad84b; border-left:1px ridge #7ad84b; border-bottom:1px ridge #017c01; border-right:1px ridge #017c01; color:#fff; font-size:13px; font-weight: bold;  text-align:center; font-family:Arial, Helvetica, sans-serif; text-decoration:none; display: block;}
+
+#pp_delete_izishirt_account { padding:15px; width:270px; height:240px}
+#pp_delete_izishirt_account p { font-size:14px; font-weight:bold; text-align:center; }
+#pp_delete_izishirt_account #btn_cancel { float:left; width:120px; margin:10px 5px; padding:5px 0 0 0; text-align:center; height:25px; display: block;}
+#pp_delete_izishirt_account #btn_cancel a:hover{ background-color: #06c506;}
+#pp_delete_izishirt_account #btn_cancel .button_cancel { padding:5px 10px; background-color: #009900; color:#fff; font-size:13px; font-weight: bold; text-align:center; font-family:Arial, Helvetica, sans-serif; text-decoration:none; display: block;}
+#pp_delete_izishirt_account #btn_delete { float:left; width:120px; margin:10px; padding:5px 0 0 0; text-align:center; height:25px; display: block;}
+#pp_delete_izishirt_account #btn_delete a:hover{ background-color: #e50606;}
+#pp_delete_izishirt_account #btn_delete .button_delete { padding:5px 10px; background-color: #990000; color:#fff; font-size:13px; font-weight: bold; text-align:center; font-family:Arial, Helvetica, sans-serif; text-decoration:none; display: block;}
+
+#pp_sell_designs_izishirt { padding:15px; width:330px; height:330px;}
+#pp_sell_designs_izishirt h1 {font-size:14px; font-weight:bold; margin:0; padding:5px 0;}
+#pp_sell_designs_izishirt p { font-size:12px; text-align:justify;}
+#pp_sell_designs_izishirt p a { text-decoration:none; color:#2f82d5; font-size:12px;}
+#pp_sell_designs_izishirt p a:hover { text-decoration:underline; color:#2f82d5; font-size:12px;}
+#pp_sell_designs_izishirt #make_design_public { float:left; width:180px; margin:0 60px; padding:5px 0 0 0; text-align:center; height:25px; display: block;}
+#pp_sell_designs_izishirt #make_design_public a:hover{ background-color: #06c506;}
+#pp_sell_designs_izishirt #make_design_public .button_public { padding:5px 10px; background-color: #009900; color:#fff; font-size:13px; font-weight: bold; text-align:center; font-family:Arial, Helvetica, sans-serif; text-decoration:none; display: block;}
+
+#pp_edit_avatar { padding:15px; width:270px; height:200px}
+#pp_edit_avatar p { font-size:14px; font-weight:bold; text-align:center; }
+#pp_edit_avatar #btn_edit{ float: left; width: 120px; height: 50px; margin: 0 80px; }
+#pp_edit_avatar #btn_edit input.submit_avatar{
+	color:#fff; font-size:13px; font-weight: bold; font-family:Arial, Helvetica, sans-serif; font-size: 13px; text-align:center;
+	float:left; width:120px; margin:10px 5px; padding:5px 0 10px 0; height:29px; display: block;
+	background-color: #06c506; text-decoration: none; border: 0px; cursor: pointer;
+}
+
+/***** *******************  ***/
+/*** End of Block of PopUps ***/
+/***** *******************  ***/
+
+/*** HELP CENTER ***/
+#help_center { float:left; width:695px;}
+#help_center h1 { margin:0; padding:0 10px; font-size:22px; color:#444;}
+#help_center_box { float:left; width:640px; border:1px solid #D9D9D9; margin:10px 0 20px 10px; padding:20px;}
+#hc_category { width:640px;}
+#hc_category p {font-size:16px; font-weight:bold; color:#444;}
+#questions_help { width:695px; }
+#questions_help div.selected .title_help { font-weight: bold; }
+#questions_help div div { padding: 5px 15px; width:600px;}
+#questions_help div.title_help {padding: 10px; cursor: pointer; font-size:13px; font-weight:bold; color:#3366cc;}
+#questions_help div.selected { border-bottom: none;}
+
+/* EDIT MY SHOP  */
+
+	/* shop info  */
+#tshirts_marketplace ul.tabmenu li a { width:19%;}
+#editshop h1,
+#promotesell h1{font-size:21px; margin-bottom:5px}
+#editshop ul.tabmenu,
+#tshirts_marketplace ul.tabmenu,
+#editshop ul.tabmenu li,
+#tshirts_marketplace ul.tabmenu li,
+#promotesell ul.tabmenu,
+#promotesell ul.tabmenu li{margin:0; padding:0; }
+#editshop ul.tabmenu li,
+#tshirts_marketplace ul.tabmenu li,
+#promotesell ul.tabmenu li {display:inline; list-style:none}
+#editshop ul.tabmenu li a,
+#tshirts_marketplace ul.tabmenu li a,
+#promotesell ul.tabmenu li a{display:block; float:left; background:#88bbee; font-size:14px; font-weight:bold; text-align:center; line-height:23px; color:#fff; margin-right:3px; text-decoration:none}
+#editshop ul.tabmenu li a { width:24%;}
+#promotesell ul.tabmenu li a { width:19%;}
+#editshop ul.tabmenu li.active a,
+#tshirts_marketplace ul.tabmenu li.active a,
+#editshop ul.tabmenu li a:hover,
+#tshirts_marketplace ul.tabmenu li a:hover,
+#promotesell ul.tabmenu li.active a,
+#promotesell ul.tabmenu li a:hover{background:#0066cc}
+
+#editshop .tabcontent,
+#promotesell .tabcontent{border:1px solid #d9d9d9; padding:20px; margin-top:5px}
+#editshop .tabcontent h2,
+#promotesell .tabcontent h2{font-size:24px; border-bottom:1px solid #d9d9d9; margin-bottom:10px; padding-bottom:5px}
+#promotesell .tabcontent #social{float: left;background: none;height: 24px;width: 600px;margin: 0 25px;}
+#promotesell .tabcontent #social #img{float: left;padding: 5px 0;height: 14px;}
+#promotesell .tabcontent #social #text{float: left; padding: 5px 7px;height: 14px;}
+#promotesell .tabcontent #social a{background: none;margin: 0 0 10px;height: 24px;color: #333;text-decoration: none;cursor: pointer;}
+#promotesell .tabcontent #social a #img{float: left;padding: 5px 0;height: 14px;}
+#promotesell .tabcontent #social a #text{float: left; padding: 5px 7px;height: 14px;}
+#promotesell .tabcontent #social a #text:hover{color: #2870B9;text-decoration: underline;}
+#promotesell .tabcontent #clear {width: 600px;height: 20px;float: left;}
+#promotesell .cont ul li a{color: #333;text-decoration: none;}
+#promotesell .cont ul li a:hover{color: #2870B9;text-decoration: underline;}
+#promotesell .fbapp{padding-top: 20px;float:left;}
+#promotesell .fbapp h2{font-size:24px; border-bottom:1px solid #d9d9d9; margin-bottom:10px; padding-bottom:5px}
+#promotesell .fbapp .size_fix{height: 45px;}
+#promotesell .fbapp .no_icon{background: none;margin:20px; font-size:13px; padding: 0 100px;}
+#promotesell .cont #feed_xml{margin-bottom: 25px; height: 30px;}
+#promotesell .cont #feed_xml #left{width: 280px;float: left;padding: 6px 0;}
+#promotesell .cont #feed_xml #right{border: solid 1px #cccccc;float: left;text-align: center;padding: 5px 10px;}
+#promotesell .cont #list_xml{margin-top: 15px;}
+#promotesell .cont #list_xml p{margin-left: 45px;padding-bottom: 10px;}
+#promotesell .cont #list_xml p .blue{color: #0066cc;font-size: 12px;font-weight: bold;}
+#promotesell .cont .bold{float: left;font-weight: bold;font-size: 13px;margin-bottom: 10px;}
+
+#editshop .shopinfo .cont {width:400px; padding:15px 30px; margin:0 auto; background:#fafafa}
+#editshop .shopinfo .cont p {margin-bottom:20px}
+#editshop .shopinfo .cont label {display:block; font-weight:bold; margin-bottom:3px; padding-left:2px }
+#editshop .shopinfo .cont input,
+#editshop .shopinfo .cont textarea {border:1px solid #d9d9d9; margin:0 2px; padding:1px 2px; width:100%; font-family:Arial, Helvetica, sans-serif; font-size:11px }
+#editshop .shopinfo .cont textarea {overflow:auto; height:50px}
+#editshop .shopinfo .cont input.wdurl {width:150px}
+#editshop .shopinfo .btnGreen a  {margin:0 auto; float:none; width:100px}
+
+	/* custom layout  */
+
+#editshop .customlayout img {margin-left:10px; float:right}
+#editshop .customlayout h3 {font-size:17px; margin-bottom:20px; }
+#editshop .customlayout p {font-size:13px; line-height:16px}
+#editshop .customlayout .btnGreen{margin:20px 0 20px 50px; width:200px; }
+#editshop .customlayout .btnGreen a {float:none; font-size:14px; width:150px}
+
+#editshop .mycustomlayout {padding:0 !important}
+#editshop .mycustomlayout .cont {padding:10px 15px 20px 15px}
+#editshop .mycustomlayout .btnGreen {text-align:left; }
+#editshop .mycustomlayout .btnGreen a {float:left; font-weight:bold; font-size:11px}
+#editshop .mycustomlayout .modtheme {margin:15px 10px 5px 0; float:left; width:135px; padding:0 0px 0 15px}
+#editshop .mycustomlayout .modtheme h3 {font-size:13px; margin-bottom:5px}
+#editshop .mycustomlayout .modtheme p {margin-bottom:3px;}
+#editshop .mycustomlayout .modtheme p input {margin:0; padding:0; width:17px}
+#editshop .mycustomlayout .modtheme p a {display:block;}
+#editshop .mycustomlayout .modtheme a {padding-left:21px;  line-height:20px; text-decoration:none}
+#editshop .mycustomlayout .modtheme .editheme a{background:url(/images/boutiques_2010/ven/ico_edit_shop.gif) no-repeat left; color:#0066ff}
+#editshop .mycustomlayout .modtheme .delete a {background:url(/images/boutiques_2010/ven/ico_delete.gif) no-repeat left; color:red; }
+
+#editshop .mycustomlayout .pagination .pagination_numbers{ margin:0 auto }
+
+
+#editshop .shoptheme {padding:20px 30px}
+#editshop .shoptheme .theme {width:150px; float:left; margin:0 50px 20px 0}
+#editshop .shoptheme .theme p {font-weight:bold;}
+#editshop .shoptheme .theme img {margin:5px 0}
+#editshop .shoptheme .btnGreen,
+#editshop .customtshirt .btnGreen {margin:0 auto; width:130px; }
+#editshop .shoptheme .btnGreen a,
+#editshop .customtshirt .btnGreen  a{float:none; font-size:13px; }
+
+#editshop .customtshirt h4 {font-weight:bold; font-size:13px}
+#editshop .customtshirt .bigimg {float:right}
+#editshop .customtshirt h4 a {font-weight:normal}
+#editshop .customtshirt table.colorz {margin:10px 0 20px 0}
+#editshop .customtshirt table.colorz td {padding:3px 0}
+#editshop .customtshirt table.textz {margin:10px 0 20px 0}
+#editshop .customtshirt table.textz td,
+#editshop .customtshirt table.textz th {padding:5px 0; }
+#editshop .customtshirt table.textz th {background:#fafafa; text-align:left; padding-left:10px}
+#editshop .customtshirt table.textz input {border:1px solid #d9d9d9;}
+#editshop .customtshirt table.imgs {margin:10px 0 20px 0}
+#editshop .customtshirt table.imgs td,
+#editshop .customtshirt table.imgs th {padding:5px 0; }
+#editshop .customtshirt table.imgs th {background:#fafafa; text-align:left; padding-left:10px}
+#editshop #flash_activation_info {padding-bottom:10px; margin: 10px 0 20px 0; font-size: 11px; border-bottom: 1px solid #D9D9D9;}
+#editshop .customize_flash_header {color:#333; font-size:16px; font-weight:bold;}
+#editshop .blue_link {display: block; width: 166px; height: 14px; background-color: #399bff; color:#ffffff; text-decoration:none; padding:6px;}
+.animationSaveGreen {text-align:center; width:180px; margin-left:200px; }
+.animationSaveGreen a:hover{ background: #06c506;}
+.animationSaveGreen a { padding:5px 10px; background: #009900;  color:#fff; font-size:10px; font-weight: bold;  text-align:center;  text-decoration:none; text-transform:uppercase; display:block;}
+
+	/* personalize the banner  */
+#editshop #banner_form #edit_banner #title_pers_banner {color: #cc0000; font-style: italic;}
+#editshop #banner_form #edit_banner #link_revert_banner{color: #3366cc; text-decoration: underline; cursor: pointer;}
+#editshop #banner_form #edit_banner #bold_upload_banner{font-weight: bold;}
+
+/* PROMOTE SELL */
+#promotesell .tabcontent h2 span {font-size:14px;color:#000000;}
+#promotesell .credit h3 {font-size:16px; margin-bottom:10px}
+#promotesell .credit .my_url {width:300px; padding: 6px; margin: 0 6px 12px 12px; background-color: #ffa; border:1px solid #ccc;font-weight:bold;color:#0066cc;}
+#promotesell .credit .my_url_label {width:300px; padding:6px;margin: 12px 6px 2px 6px;}
+#promotesell .socialnet h3 {font-size:16px; margin-bottom:10px}
+#promotesell .socialnet p,
+#promotesell .minishops .aGreen,
+#promotesell .shopseo .aGreen {background:url(/images/boutiques_2010/ven/ico_arrowGreen.gif) no-repeat left; padding-left:10px; margin:7px 0}
+#promotesell .socialnet ul {margin:20px 0 20px 20px; padding:0}
+#promotesell .socialnet ul li {margin:0 0 8px 0; padding:0 0 0 22px; list-style:none; line-height:16px}
+#promotesell .socialnet ul li.fb {background:url(/images/boutiques_2010/ven/social/fb16.gif) no-repeat left}
+#promotesell .socialnet ul li.flick {background:url(/images/boutiques_2010/ven/social/flick16.gif) no-repeat left}
+#promotesell .socialnet ul li.twitt {background:url(/images/boutiques_2010/ven/social/twitt16.gif) no-repeat left}
+#promotesell .socialnet ul li.rss {background:url(/images/boutiques_2010/ven/social/rss_16.png) no-repeat left}
+#promotesell .socialnet ul li.mysp {background:url(/images/boutiques_2010/ven/social/myspace16.gif) no-repeat left}
+#promotesell .socialnet ul li.buzz {background:url(/images/boutiques_2010/ven/social/buzz16.gif) no-repeat left}
+#promotesell .socialnet ul li.blogz {background:url(/images/boutiques_2010/ven/social/blogz16.gif) no-repeat left}
+#promotesell .socialnet ul li.emailz {background:url(/images/boutiques_2010/ven/social/emailz16.gif) no-repeat left}
+
+#promotesell .tshirtapp p {margin-bottom:10px; font-size:13px}
+#promotesell .tshirtapp textarea {border:1px solid #d9d9d9; padding:2px; font-family:Arial, Helvetica, sans-serif; font-size:11px; width:500px; margin:15px 0; overflow:auto}
+#promotesell .tshirtapp p img {margin:0 10px}
+#promotesell .tshirtapp .btnGreen {margin:0 auto; width:300px; }
+#promotesell .tshirtapp .btnGreen a {float:none; font-size:13px; text-transform:none }
+
+#promotesell .fbapp p {margin-bottom:10px; font-size:13px; background:url(/images/boutiques_2010/ven/ico_fb.jpg) no-repeat left top; padding-left:50px}
+#promotesell .fbapp ul {margin:20px 0 20px 10px; padding:0; _margin:20px 0 20px 0px;}
+#promotesell .fbapp ul li {margin:0; padding:0; list-style:none; display:block; float:left; margin-right:13px}
+#promotesell .fbapp ul li span {display:block; font-size:11px}
+#promotesell .fbapp ul li img {border:1px solid #d9d9d9}
+#promotesell .fbapp .btnGreen {margin:0 auto; width:300px; }
+#promotesell .fbapp .btnGreen a {float:none; font-size:13px; text-transform:none }
+
+#promotesell .minishops p {margin-bottom:10px; font-size:13px;}
+#promotesell .minishops .examples {float:left; background:#fbfbfb; padding:5px; width:400px; margin-top:15px }
+#promotesell .minishops .examples textarea {border:1px solid #d9d9d9; padding:2px; font-family:Arial, Helvetica, sans-serif; overflow:auto; font-size:11px; width:95%; height:50px; margin-bottom:15px}
+#promotesell .minishops .vex {float:right}
+#promotesell .minishops .examples label,
+#promotesell .minishops .vex label{display:block; font-size:11px}
+#promotesell .minishops span {width:400px; font-size:11px; display:block; margin-bottom:10px}
+#promotesell .minishops h2 span {display:inline}
+
+#promotesell .shopseo .aGreen {font-weight:bold; margin-bottom:15px}
+#promotesell .shopseo .aGreen a {text-decoration:none; font-weight:normal}
+#promotesell .shopseo .aGreen img {vertical-align:middle}
+#promotesell .shopseo .grey {background:#ededed; padding:15px; margin-top:15px}
+#promotesell .shopseo .grey p {margin-bottom:8px; font-size:13px}
+#promotesell .shopseo .grey input,
+#promotesell .shopseo .grey textarea {border:1px solid #d9d9d9; margin:0 2px; padding:1px 2px; width:80%; font-family:Arial, Helvetica, sans-serif; font-size:11px }
+#promotesell .shopseo .grey textarea {height:60px; overflow:auto}
+#promotesell .shopseo .btnGreen {margin:10px auto; width:100px; }
+#promotesell .shopseo .btnGreen a {float:none; font-size:13px; text-transform:none }
+
+#promotesell h1{font-size:21px; margin-bottom:5px}
+#promotesell ul.tabmenu,
+#promotesell ul.tabmenu li{margin:0; padding:0; }
+#promotesell ul.tabmenu li {display:inline; list-style:none}
+#promotesell ul.tabmenu li a{display:block; float:left; background:#88bbee; font-size:14px; font-weight:bold; text-align:center; line-height:23px; color:#fff; margin-right:3px; text-decoration:none}
+#promotesell ul.tabmenu li a { width:19%;}
+#promotesell ul.tabmenu li.active a,
+#promotesell ul.tabmenu li a:hover{background:#0066cc}
+#promotesell .tabcontent{border:1px solid #d9d9d9; padding:20px; margin-top:5px}
+#promotesell .tabcontent h2{font-size:24px; border-bottom:1px solid #d9d9d9; margin-bottom:10px; padding-bottom:5px}
+#promotesell #tab1{float: left;}
+
+#add_marketplace {
+float:left;
+width:695px;
+}
+
+#add_to_marketplace { float:left; width:695px;}
+#add_to_marketplace h1 { margin:0; padding:0 10px; font-size:22px; color:#444;}
+#add_to_marketplace_box { float:left; width:640px; border:1px solid #D9D9D9; margin:10px 0 20px 10px; padding:20px;}
+
+.titleForm {
+clear:both;
+float:left;
+padding-right:8px;
+padding-top:10px;
+text-align:left;
+width:80px;
+}
+
+.boxForm {
+float:left;
+padding-left:5px;
+padding-top:10px;
+width:130px;
+}
+
+.delete_from_marketplace {
+background:transparent url(/images/boutiques_2010/ven/ico_delete_g.gif) no-repeat scroll left center;
+padding-left: 20px;
+}
+
+#comments_container{}
+#comments_container h1{font-size:21px;margin:15px 0px;font-weight:bold; padding:0;}
+#comments_container .right_container{}
+#comments_container #switch_comments{margin:5px 0px;}
+#comments_container #switch_comments #allow{font-weight:bold;font-size:13px;}
+#comments_container #switch_comments #checkbox{}
+#comments_container #switch_comments #submit_switch{font-size:9px;}
+#comments_container #explain_text{padding:15px 0px;border-bottom:1px solid #ccc}
+#comments_container #right_container #search_section{margin:15px 5px;}
+#comments_container #right_container #search_section #input_search{width:150px;display:block;float:left;margin-right:10px;}
+#comments_container #right_container #search_section #submit_search{display:block;float:left;}
+#comments_container #right_container #main_section{width:685px;}
+#comments_container #right_container #main_section #shop_comments{width:330px;border:1px solid #aaa;float:left;}
+#comments_container #right_container #main_section #product_comments{width:330px;border:1px solid #aaa;float:left;margin-right:20px;}
+#comments_container #right_container #main_section .comments_header{font-weight:bold;background-color:#ccc;padding:5px 10px; font-size:13px;}
+#comments_container #right_container #main_section .one_comment{padding:10px 15px;}
+#comments_container #right_container #main_section .line0{background-color:#fff;}
+#comments_container #right_container #main_section .line1{background-color:#eeeded;}
+#comments_container #right_container #main_section .one_comment .one_comment_header{font-size:11px;}
+#comments_container #right_container #main_section .one_comment .one_comment_header .delete_link{background:transparent url(/images/boutiques_2010/ven/minix2.png) no-repeat scroll left center;padding-left:17px;text-decoration:none;color:#cc0000;display:block;float:right;}
+#comments_container #right_container #main_section .one_comment .one_comment_header .delete_link:hover{}
+#comments_container #right_container #main_section .one_comment .one_comment_section{margin:10px 0px;}
+#comments_container #right_container #main_section .one_comment .one_comment_section img{display:block;float:left;margin-right:10px;border:1px solid #ccc;}
+#comments_container #right_container #main_section .one_comment .one_comment_section .comment_content{float:right;text-align:left;width:220px;overflow:hidden;}
+#comments_container #right_container #main_section .one_comment .reply_button {float:right;}
+#comments_container #right_container #main_section .one_comment .reply_button a{display:block;height:16px;background-color:#6699ff;padding:2px 15px;color:#fff;text-decoration:none;font-weight:bold;}
+#comments_container #right_container #main_section .one_comment .reply_button a:hover{color:#fff;}
+#comments_container #right_container #main_section .paginate_comments{font-weight:bold;padding:10px 7px;}
+#comments_container #right_container #main_section .paginate_comments .pagination{float:left;width:260px;text-align:center;}
+#comments_container #right_container #main_section .paginate_comments .pagination a{}
+#comments_container #right_container #main_section .paginate_comments .pagination a:hover{}
+#comments_container #right_container #main_section .paginate_comments .select_amount{display:block;float:right;}
+
+
+

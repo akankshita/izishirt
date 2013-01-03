@@ -1,0 +1,18 @@
+<% form_for :country, @country, :url => { :action => "update_country" , :id => @country} do |f| %>
+
+  <div class="titleForm"><label>Tax %</label></div>
+  <div class="boxForm">
+    <%= f.text_field :tax %>
+  </div>
+  <%Language.all.each do |language|%>
+    <div class="titleForm"><label>Abbreviation (<%=language.name.capitalize%>)</label></div>
+    <div class="boxForm">
+      <%= text_field_tag "localized_countries[#{language.id}][tax_abreviation]",
+            @country.localized_countries.find_by_language_id(language.id).tax_abreviation
+      %>
+    </div>
+  <%end%>
+  <div class="titleForm">
+    <%= submit_tag 'Save' %>
+  </div>
+<% end %>

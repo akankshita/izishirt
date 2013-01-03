@@ -1,0 +1,160 @@
+<p><%= error_messages_for 'coupon' %></p>
+
+<!--[form:coupon]-->
+<div class="titleForm"><label for="coupon_code"><%= t(:admin_coupon_form_coupon_code) %></label></div>
+<div class="boxForm"><%= text_field 'coupon', 'code', :class => 'box' %></div>
+
+<div class="titleForm"><label for="coupon_code"><%= t(:admin_coupon_form_coupon_comment) %></label></div>
+<div class="boxForm"><%= text_area_tag 'coupon[comment]', @coupon.comment, :class => 'box' %></div>
+
+<% if @coupon.coupon_reason_type %>
+	<div class="titleForm"><%= "Reason" %></div>
+	<div class="boxForm">
+		<%= @coupon.coupon_reason_type.str_id %>
+
+		<% 
+		order_id = @coupon.order_id_origin
+		%>
+
+		<% if order_id > 0 %>
+			<%= link_to order_id, :controller => "order", :action => "show", :id => order_id %>
+		<% end %>
+	</div>
+<% end %>
+
+<div class="titleForm"><label for="coupon_percent_off"><%= t(:admin_coupon_form_percent_off) %></label></div>
+<div class="boxForm"><%= text_field 'coupon', 'percent_off', :class => 'box' %></div>
+
+<div class="titleForm"><label for="coupon_currency_off"><%= t(:admin_coupon_form_currency_off) %></label></div>
+<div class="boxForm"><%= text_field 'coupon', 'currency_off', :class => 'box' %></div>
+
+<% if @coupon.gift %>
+  <div class="titleForm"><label for="coupon_currency_off">Original gift amount</label></div>
+  <div class="boxForm"><label><%= Gift.find_by_coupon_id(@coupon.id).amount %></label></div>
+<% end %>
+
+<div class="titleForm"><label for="coupon_total_allowed"><%= t(:admin_coupon_form_total_allowed) %></label></div>
+<div class="boxForm"><%= text_field 'coupon', 'total_allowed', :class => 'box' %></div>
+
+<div class="titleForm"><label><%= t(:admin_coupon_form_total_used) %></label></div>
+<div class="boxForm"><%= @coupon.total_given %></div>
+
+<%
+orders = Order.find(:all, :conditions => ["orders.coupon_code = '#{@coupon.code}' AND confirmed = 1 AND status NOT IN (#{SHIPPING_TYPE_CANCELED})"], 
+		:order => "orders.id DESC", :limit => 50)
+%>
+
+<% if orders.length > 0 %>
+	<div class="titleForm">Used on</div>
+	<div class="boxForm">
+
+
+		<table border="1">
+			<tr>
+				<th>ORDER ID</th>
+			</tr>
+		
+			<% orders.each do |order| %>
+				<tr>
+					<td>
+						<%= link_to order.id, :controller => "/admin/order", :action => "show", :id => order.id %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+
+	</div>
+<% end %>
+
+<div class="titleForm"><label for="coupon_start_date"><%= t(:admin_coupon_form_start_date) %></label></div>
+<div class="boxForm"><%= datetime_select 'coupon', 'start_date', :class => 'box' %></div>
+
+<div class="titleForm"><label for="coupon_end_date"><%= t(:admin_coupon_form_end_date) %></label></div>
+<div class="boxForm"><%= datetime_select 'coupon', 'end_date', :class => 'box' %></div>
+
+<div class="titleForm"><label for="coupon_no_shipping">Don't Charge Shipping</label></div>
+<div class="boxForm"><%= check_box 'coupon', 'no_shipping', {}, 'true', 'false'  %></div>
+
+<div class="titleForm">Apply to boutique products</div>
+<div class="boxForm"><%= check_box 'coupon', 'apply_to_boutique_products', {}, 'true', 'false'  %></div>
+
+<div class="titleForm">Also apply to shipping and taxes</div>
+<div class="boxForm"><%= check_box 'coupon', 'also_apply_to_shipping', {}, 'true', 'false'  %></div>
+
+<div class="titleForm"><label for="coupon_standard_shipping_free"><%= t(:admin_coupon_code_standard_shipping_free_only) %></label></div>
+<div class="boxForm"><%= check_box 'coupon', 'standard_shipping_free', {}, 'true', 'false'  %></div>
+
+<div class="titleForm"><label for="coupon_is_vip">VIP ?</label></div>
+<div class="boxForm"><%= check_box 'coupon', 'is_vip', {}, 'true', 'false'  %></div>
+
+<div class="titleForm"><label for="coupon_active"><%= t(:admin_coupon_form_active) %></label></div>
+<div class="boxForm"><%= check_box 'coupon', 'active', {}, 'true', 'false'  %></div>
+
+<div class="titleForm"></div>
+<div class="boxForm">
+	After <%= text_field_tag "coupon[after_n_qty_perc]", @coupon.after_n_qty_perc %> shirts 
+	get rebate <%= text_field_tag "coupon[after_n_qty_perc_value]", @coupon.after_n_qty_perc_value %> %
+</div>
+
+<div class="titleForm"></div>
+<div class="boxForm">
+	After <%= text_field_tag "coupon[after_n_qty_dollar]", @coupon.after_n_qty_dollar %> shirts
+	get rebate <%= text_field_tag "coupon[after_n_qty_dollar_value]", @coupon.after_n_qty_dollar_value %> $
+</div>
+
+<div class="titleForm"></div>
+<div class="boxForm">
+	After <%= text_field_tag "coupon[after_n_dollars_perc]", @coupon.after_n_dollars_perc %> $ 
+	get rebate <%= text_field_tag "coupon[after_n_dollars_perc_value]", @coupon.after_n_dollars_perc_value %> %
+</div>
+
+<div class="titleForm"></div>
+<div class="boxForm">
+	After <%= text_field_tag "coupon[after_n_dollars_dollar]", @coupon.after_n_dollars_dollar %> $
+	get rebate <%= text_field_tag "coupon[after_n_dollars_dollar_value]", @coupon.after_n_dollars_dollar_value %> $
+</div>
+
+<!-- Coupon Models -->
+<div class="titleForm">Models( none selected implies all )</div>
+<div class="boxForm">
+
+	<script type="text/javascript">
+		function changeModelCategory(model_cat)
+		{
+			<% ["custom", "blank", "store"].each do |model_category| %>
+
+				var box = document.getElementById("model_box_<%= model_category %>");
+
+				if (model_cat == "<%= model_category %>")
+				{
+					box.style.display = 'block';
+				}
+				else
+				{
+					box.style.display = 'none';
+				}
+			<% end %>
+		}
+	</script>
+
+	<%= select_tag "model_category", options_for_select([["Custom", "custom"], ["Blank", "blank"], ["Store", "store"]]), :onchange => "changeModelCategory(this.value);" %>
+
+	<% ["custom", "blank", "store"].each do |model_category| 
+
+		models = Model.find_all_by_model_category(model_category)
+
+		%>
+		<div id="model_box_<%= model_category %>" style="display: <%= (model_category == "custom") ? "block" : "none" %>">
+		  <% models.each do |model| %>
+		    <p style="margin:0;padding:0;">
+		    <input type="checkbox" id="model_<%= model.id%>" name="model[<%= model.id %>]" <%= "checked='checked'" if @coupon.models.find_all_by_id(model.id) != [] %> />
+		    <%= model.local_name(session[:language_id]) %>
+		    </p>
+		  <% end %>
+		</div>
+	<% end %>
+</div>
+<!-- End Coupon Models -->
+
+<!--[eoform:coupon]-->
+

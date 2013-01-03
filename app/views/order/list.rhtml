@@ -1,0 +1,9 @@
+<%= javascript_include_tag "preview2.js" %>
+<div id="myorders_container">
+  <div id="title"><%=t(:my_orders)%></div>
+
+    <%= render :partial => 'order', :locals => {:order => @order} %>
+
+
+
+</div>

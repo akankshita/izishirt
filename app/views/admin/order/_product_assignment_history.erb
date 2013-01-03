@@ -1,0 +1,23 @@
+<% 
+
+products = prod.recursive_ordered_products
+
+%>
+
+<table>
+	<tr>
+		<th>By</th>
+		<th>Received</th>
+		<th>On</th>
+	</tr>
+
+	<% products.each do |product| %>
+		<% product.order_garment_listing_products.each do |garment_prod| %>
+			<tr>
+				<td><%= garment_prod.processor_username %></td>
+				<td><%= garment_prod.nb_received %></td>
+				<td><%= garment_prod.processed_at %></td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>

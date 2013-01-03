@@ -1,0 +1,218 @@
+<script type="text/javascript">
+  function switchActive(id){
+    $('switchActiveLink'+id).onclick = "return false;";
+    if ($('switchActiveLink'+id).hasClassName('active')){
+      Effect.SlideUp('garmentSection'+id, {
+        beforeStart: function(effect){
+          id = $(effect.element).id.charAt($(effect.element).id.length - 1);
+          Event.stopObserving($('switchActiveLink'+id),'click');
+        },
+        afterFinish: function(effect){
+          id = $(effect.element).id.charAt($(effect.element).id.length - 1);
+
+          Event.observe($('switchActiveLink'+id),'click',function(){
+            id = this.id.charAt(this.id.length - 1);
+            switchActive(id);
+          });
+        }
+      });
+      $('switchActiveLink'+id).addClassName('inactive');
+      $('switchActiveLink'+id).removeClassName('active');
+
+    }
+    else{
+      Effect.SlideDown('garmentSection'+id, {
+        beforeStart: function(effect){
+          id = $(effect.element).id.charAt($(effect.element).id.length - 1);
+          Event.stopObserving($('switchActiveLink'+id),'click');
+        },
+        afterFinish: function(effect){
+          id = $(effect.element).id.charAt($(effect.element).id.length - 1);
+
+          Event.observe($('switchActiveLink'+id),'click',function(){
+            id = this.id.charAt(this.id.length - 1);
+            switchActive(id);
+          });
+        }
+      });
+      $('switchActiveLink'+id).addClassName('active');
+      $('switchActiveLink'+id).removeClassName('inactive');
+    }
+
+  }
+  window.onload = function(){
+    $('nbGarments').value = '<%=@nb_garments + 1%>';
+  };
+
+  function addGarment(){
+    id = parseInt($('nbGarments').value);
+    if (id > 9){
+      $('formError').innerHTML = "<%=t(:you_cant_have_more_than_garments)%>";
+    }
+    else{
+<%#*if ($('switchActiveLink'+(id-1)).hasClassName('active')){%>
+<%#*switchActive(id-1);%>
+
+<%#*}%>
+
+      $('garmentRoller'+id).appear();
+      $('nbGarments').value = id+1;
+      switchActive(id);
+
+    }
+  }
+
+  function changeNbPrints(element){
+    id = parseInt(element.id.charAt(element.id.length-1));
+    i=1;
+    value = element.value;
+
+
+    for(;i <= value; i++){
+      $('print_'+id+'_'+i).appear();
+    }
+    for (; i <= 4; i++){
+      $('print_'+id+'_'+i).fade();
+    }
+  }
+
+</script>
+
+
+
+<div class="bulkContentSection">
+  <a name="products"></a>
+  <div class="bulkContentTitle">
+    <%= t(:products).mb_chars.upcase %>
+  </div>
+
+  <div id="garmentSection" class="bulkMidPadContent">
+    <%=t(:bulk_orders_products_explanation)%>
+    <div style="margin-top:15px;"></div>
+    <input type="hidden" id="nbGarments" name="nbGarments" style="display:none" value="<%= @nb_garments + 1 %>"/>
+    <%  i = 0 %>
+    <% b.fields_for :bulk_orders_garments do |g| %>
+      <%  i = i+1 %>
+
+      <div id="garmentRoller<%=i.to_s%>" class="garmentRoller" style="<%= i<=@nb_garments ? '' : 'display:none;' %>">
+        <% link_to "#current", :class=>"#{i==1 ? 'active' : 'inactive'}", :id=>"switchActiveLink#{i.to_s}", :onclick=>"javascript:switchActive('#{i.to_s}');" do %>
+          <%= t(:garment).mb_chars.upcase %> <%= i.to_s %>
+        <% end %>
+      </div>
+      <div id="garmentSection<%=i.to_s%>" class="bulkContentFormSection garmentContent" style="<%= i==1 ? '' : 'display:none;' %>">
+        <div style="height:20px"></div>
+        <div class="garmentForm">
+          <div class="bulkFormPart">
+            <div class="field left">
+              <label class="inputLabel"><%= t(:quantity) %></label>
+              <%= g.text_field :quantity, :class=>"shortTextField" %>
+            </div>
+            <div class="field right">
+              <label class="inputLabel"><%=t(:garment_model)%></label>
+              <%= g.select :model_id, @models_select, {:include_blank=>t(:unknown)} %>
+            </div>
+            <div class="clear"></div>
+            <div class="bulkList">
+              <ul>
+                <li><%=t(:not_sure_what_model_to_choose)%></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="bulkFormPart">
+            <div class="leftColumn">
+              <div class="field left">
+                <label class="inputLabel"><%= t(:garment_brand) %></label>
+                <%= g.select :category_id, @brands_select, {:include_blank=>t(:unknown)} %>
+              </div>
+              <div class="field left">
+                <label class="inputLabel"><%= t(:garment_type) %></label>
+                <%= g.select :model_type_id, @model_types_select, {:include_blank=>t(:unknown)} %>
+              </div>
+              <div class="field left">
+                <label class="inputLabel"><%= t(:garment_color) %></label>
+                <%= g.select :color_id, @colors_select, {:include_blank=>t(:unknown)} %>
+              </div>
+            </div>
+            <div class="rightColumn">
+              <label class="inputLabel"><%= t(:garment_comments) %></label>
+              <%= g.text_area :comments, :class=>"smallTextArea" %>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="clear"></div>
+
+
+          <% nb_prints = @bulk_order.bulk_orders_garments[i-1].nb_prints %>
+          <div class="clear field left">
+            <%= g.select :nb_prints, [1,2,3,4], {:selected=>nb_prints}, :class=>"nbPrintsSelect", :onchange=>"changeNbPrints(this);", :id=>"nb_prints_#{i}" %> <%= t(:print_for_garment) %>
+
+          </div>
+          <div class="clear"></div>
+
+          <% j = 0 %>
+          <% g.fields_for :bulk_orders_garments_prints do |p| %>
+            <% j = j + 1 %>
+            <div id="print_<%=i.to_s%>_<%=j.to_s%>" class="bulkFormPart" style="<%= j<=nb_prints ? '' : 'display:none;' %>">
+              <div class="field left">
+                <label class="inputLabel"><%=t(:colors_in_print)%></label>
+                <%= p.select :print_type_id, @print_types_select, {:include_blank=>t(:unknown)} %>
+              </div>
+              <div class="field right">
+                <label class="inputLabel"><%=t(:approx_print_size)%></label>
+                <div>
+                  <%= p.text_field :width, :size=>3, :class=>"sizeInput" %> x
+                  <%= p.text_field :height, :size=>3, :class=>"sizeInput" %>
+                  <%= p.select :unit_id, @units_select, {}, :class=>"unitSelect" %>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <div style="margin-top:5px;">
+                <% p.fields_for :bulk_orders_garments_prints_image do |im| %>
+                  <%= im.file_field :image, :class=>"browseFile" %>
+                <% end %>
+              </div>
+              <% if @bulk_order.bulk_orders_garments[i-1].bulk_orders_garments_prints[j-1].bulk_orders_garments_prints_image_id %>
+                <div class="centered center" style="margin-top:5px;">
+                  <%= image_tag BulkOrdersGarmentsPrintsImage.find(@bulk_order.bulk_orders_garments[i-1].bulk_orders_garments_prints[j-1].bulk_orders_garments_prints_image_id).image.url(:thumb) %>
+                </div>
+              <% end %>
+              <div class="clear"></div>
+            </div>
+
+          <% end %>
+          <div>
+            <%= t(:print_comments) %>
+            <%= g.text_area :print_comments %>
+          </div>
+          <div class="clear"></div>
+          <div class="bulkList" style="margin-bottom:15px;">
+            <ul>
+              <li><%=t(:not_sure_what_you_need)%></li>
+            </ul>
+          </div>
+
+          <div class="clear"></div>
+          <div style="height:20px"></div>
+        </div>
+
+      </div>
+
+    <% end %>
+  </div>
+
+
+  <div class="bulkSeparator"></div>
+  <div id="formError" class="formError"></div>
+  <div class="centered bulkButtonSection">
+    <div class="longBlueButton bulkButton">
+      <%= link_to t(:add_another_garment).mb_chars.upcase, "#current", :class=>"", :onclick=>"javascript:addGarment();" %>
+    </div>
+    <div class="greenButtonLarge bulkButton">
+      <%= link_to t(:ask_quote).mb_chars.upcase, "javascript:if($('bulkForm').onsubmit()){$('bulkForm').submit();}", :class=>"" %>
+    </div>
+  </div>
+
+
+</div>

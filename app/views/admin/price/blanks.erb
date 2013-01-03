@@ -1,0 +1,16 @@
+<h1>Blanks prices</h1>
+
+<div class="titleForm">Model</div>
+<div class="boxForm">
+	<%= select_tag "model_id", options_for_select([["Select", 0]] | @models.map{ |m| [m.local_name(session[:language_id]), m.id] }),
+		:onchange => remote_function(:update => 'blank_prices', :url => {:action => :refresh_blank_prices}, :with => "'model_id=' + $('model_id').value") %>
+</div>
+
+<div class="titleForm">Prices</div>
+<div class="boxForm" id="blank_prices">
+	<%= render :partial => "refresh_blank_prices" %>
+</div>
+
+<script type="text/javascript">
+	$("model_id").value = <%= @model_id %>;
+</script>

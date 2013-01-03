@@ -1,0 +1,446 @@
+<table cellspacing="0" cellpadding="3" border="1" width="100%" align="center">
+  <tr>
+    <td width="120"><%= t(:admin_order_show_id) %></td>
+    <td><%= @order.id %></td>
+    <td width="100"><%= t(:admin_order_show_created_on) %></td>
+    <td><%= @order.created_at %></td>
+  </tr>
+  <tr>
+    <td><%= t(:admin_order_show_status) %></td>
+    <td><%= get_order_status_label(@order.status) %></td>
+    <td><%= t(:admin_order_show_language) %></td>
+    <td><%= Language.find(@order.language_id).name %></td>
+  </tr>
+
+  <tr>
+    <td>Tracking Number</td>
+    <td><%= (@order.tracking_number && @order.tracking_number != "") ? @order.tracking_number : "N/A" %></td>
+    <td>Rush Order</td>
+    <td><%=(@order.rush_order) ? "<font color='red'>YES</font>" : "NO" %></td>
+  </tr>
+  <tr>
+    <td><%= t(:admin_order_show_user) %></td>
+    <td><%= User.find(@order.user_id).username %></td>
+    <td><%= t(:admin_order_show_total_price) %></td>
+    <td><%= number_to_currency_custom(@order.total_price, {:currency => @order.currency.label}) %></td>
+  </tr>
+  <tr>
+    <td>Shipping type</td>
+    <td><%= @shipping_type %></td>
+    <td>Signature Required</td>
+    <td><%=(@order.signature_required) ? "YES" : "NO" %></td>
+  </tr>
+
+  <% if @order.user.username == "izishirt" %>
+    <tr>
+      <td>Custom client email</td>
+      <td><%= @order.custom_client_email %></td>
+      <td></td>
+      <td></td>
+    </tr>
+  <% end %>
+
+  <% if @order.bulk_order? %>
+    <tr>
+      <td>Invoice Number</td>
+      <td><%= @order.invoice_num %></td>
+      <td>Requested Production Date</td>
+      <td><%= @order.requested_production_on%></td>
+    </tr>
+    <tr>
+      <td>Sales Price</td>
+      <td><%= @order.sales_price %></td>
+      <td>Requested Shipping Date</td>
+      <td><%= @order.requested_shipping_on%></td>
+    </tr>
+    <tr>
+      <td>Production Cost</td>
+      <td><%="Garment: $#{@order.garment_cost} Print: $#{@order.print_cost} Shipping: $#{@order.shipping_cost}"%></td>
+      <td>Requested Due Date</td>
+      <td><%= @order.requested_deadline%></td>
+    </tr>
+    <tr>
+      <td>Prints File</td>
+      <td><%= @order.prints_file_name ? link_to("Download", @order.prints.url, :target => '_blank') : "none" %></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  <%end%>
+  <tr><td colspan=4>&nbsp;</td></tr>
+  <tr>
+  <td valign="top" class="label"><%= t(:admin_order_show_shipping_address) %> :</td>
+  <td class="values" colspan="3" style="color: <%= Order.shipping_color(@order) %>"><strong style="font-size: larger"><%= @order.user.firstname + " " + @order.user.lastname%></strong><br />
+    <%= @adr.address1%><%= @adr.address2 %><br/>
+    <%= @adr.town %>, <%= @adr.province.nil? ? @adr.province_name : @adr.province.name %><br/>
+    <%= @adr.country.nil? ? @adr.country_name : @adr.country.name %><br />
+    <strong style="font-size: larger"><%= @adr.zip %></strong><br />
+    <br />
+    <%= @adr.phone %><br/>
+    <br />
+  </td>
+  <% if !@bill_adr.nil? %>
+    <tr>
+      <td valign="top"><%= t(:admin_order_show_billing_address) %></td>
+      <td colspan="3">
+        <%= @bill_adr.name%><br />
+        <%= @bill_adr.address1%><%= @bill_adr.address2 %><br/>
+        <%= @bill_adr.town %><br/>
+        <% if !@bill_adr.province.nil? && !@bill_adr.country.nil? %>
+          <%= @bill_adr.zip %> <%= @bill_adr.province.name %> <%= @bill_adr.country.name %><br/>
+        <% else %>
+          <%= @bill_adr.zip %> <%= @bill_adr.province_name %> <%= @bill_adr.country_name %><br/>
+        <% end %>
+        <%= @bill_adr.phone %><br/>
+      </td>
+    </tr>
+  <% end %>
+  <tr>
+
+  <% for comment in @Comments %>
+    <tr>
+      <td><%= comment.username %></td>
+      <td colspan="3"><font size='-1'>(<%= comment.date_time %>)</font> <%= h(comment.comment) %> - <br /></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+<table cellspacing="0" cellpadding="3" border="1" width="100%" align="center">
+  <tr>
+    <td width="275">Original Price(Before Discount)</td>
+    <td><%=number_to_currency_custom(@order.original_price, {:currency => @order.currency.label})%></td>
+  </tr>
+  <tr>
+    <td>Coupon Code Discount</td>
+    <td><%=number_to_currency_custom(@order.coupon_discount, {:currency => @order.currency.label})%></td>
+  </tr>
+  <tr>
+    <td>User Credit used</td>
+    <td><%=number_to_currency_custom(@order.user_credit, {:currency => @order.currency.label})%></td>
+  </tr>
+  <tr>
+    <td>Subtotal(After Discount)</td>
+    <td><%=number_to_currency_custom(@order.subtotal, {:currency => @order.currency.label})%></td>
+  </tr>
+  <tr>
+    <td>Shipping</td>
+    <td><%=number_to_currency_custom(@order.total_shipping, {:currency => @order.currency.label})%></td>
+  </tr>
+  <tr>
+    <td>Taxes</td>
+    <td><%=number_to_currency_custom(@order.total_taxes, {:currency => @order.currency.label})%></td>
+  </tr>
+  <tr>
+    <td>Total</td>
+    <td><%=number_to_currency_custom(@order.total_price, {:currency => @order.currency.label})%></td>
+  </tr>
+</table>
+<p></p>
+<p></p>
+
+<%= render :partial => "print_ordered_products_pagination" %>
+
+<br/>
+<% ordered_zone_index = -1 %>
+
+<% for prod in @ordered_products
+
+
+
+	prod_for_print = prod
+
+	if prod.is_extra_garment
+		prod_for_print = OrderedProduct.find(prod.ordered_product_id)
+	end
+
+	begin
+		model_spec = ModelSpecification.find_by_model_id_and_color_id(prod.model_id, prod.color_id)
+	rescue
+		model_spec = nil
+	end 
+
+	if ! prod_for_print.active
+		next
+	end
+%>
+
+
+  <div class="titleForm">
+    <br />
+    <br />
+    <br />
+    <label>
+      Quantity: <%=prod.quantity%><br />
+      Price: <%= number_to_currency_custom((prod.price+prod.commission)*prod.quantity, {:currency => @order.currency.label}) %> <br />
+
+
+	      Size: <%=prod.model_size.local_name(I18n.locale) %><br />
+	      Model: <%= Model.exists?(prod.model_id) && (prod.model_other.nil? || prod.model_other == "" || prod.model_other == "Other") ? prod.model.localized_models[0].name : prod.model_other %><br />
+	      Model Color: <%= prod.color_name(session[:language_id]) %><br />
+
+
+    </label>
+  </div>
+  <div class="boxForm"><hr></div>
+
+  <% zones = ['front', 'back', 'left', 'right'] %>
+
+  <table cellspacing="0" cellpadding="3" border="1" width="100%">
+    <tr><td>Background color (for custom skins only) : #<%= prod.model_background_color %></td></tr>
+    <% prod_for_print.ordered_zones.length.times { |z| %>
+      <% zone = prod_for_print.ordered_zones[z] %>
+
+      <tr>
+        <td width="20%" style="text-align:center;">
+		
+		  <% if prod.is_extra_garment %>
+		  	<big><%= t(:admin_order_detail_with_product_specification) %> <%= prod_for_print.id %></big><br /><br />
+		  <% else %>
+		  	<%= t(:admin_order_detail_product_id) %> <%= prod_for_print.id %>
+		  <% end %>
+		
+          <% if zone and zone.contains_artwork_or_text() %>
+            <% ordered_zone_index += 1 %>
+            <p><b><%= ordered_product_zone_id_from_products(@order.ordered_products, zone) %></b></p>
+          <% end %>
+		  
+		  <% if prod.is_extra_garment %>
+		  	<% if zone.zone_type == 1 %>
+				<% if model_spec && prod %>
+					<img src="<%= File.join("/izishirtfiles/models/", prod.model_id.to_s, model_spec.img_front) %>" width="150" height="150"><br />
+				<% else %>
+					N/A
+				<% end %>
+			<% elsif zone.zone_type == 2 %>
+				<% if model_spec && prod %>
+					<img src="<%= File.join("/izishirtfiles/models/", prod.model_id.to_s, model_spec.img_back) %>" width="150" height="150"><br />
+				<% else %>
+					N/A
+				<% end %>
+			<% end %>
+		  <% else %>
+		  	<img src="/izishirtfiles/<%=  path_ordered_product(prod_for_print.created_on) %>/<%= prod_for_print.checksum.to_s%>/<%= prod_for_print.checksum.to_s%>-<%= zones[prod_for_print.ordered_zones[z].zone_type-1] %>.jpg" />
+            <% if prod.model.model_category == 'custom_case' %>
+              <img src="/izishirtfiles/<%=  path_ordered_product(prod_for_print.created_on) %>/<%= prod_for_print.checksum.to_s%>/<%= prod_for_print.checksum.to_s%>-<%= zones[prod_for_print.ordered_zones[z].zone_type-1] %>_supplier.jpg" />
+            <% end %>
+		  <% end %>
+		  
+          <label><%= zones[prod_for_print.ordered_zones[z].zone_type-1] %></label>
+		  
+		  <% if prod.is_extra_garment %>
+		  	<p align="center"><big><%= t(:admin_order_detail_with_product_specification) %> <%= prod_for_print.id %></big></p>
+		  <% end %>
+		  
+        </td>
+        <td valign="top" align="left">&nbsp;
+
+          <% if zone and @order.bulk_order? %>
+            <table cellpadding="0" cellspacing="5" border="0">
+              <tr>
+                <td colspan="2"><b>Print Details</b></td>
+              </tr>
+              <tr>
+                <td width="150">Print Width</td>
+                <td><%= zone.print_width %></td>
+              </tr>
+              <tr>
+                <td width="150">Print Length</td>
+                <td><%= zone.print_length %></td>
+              </tr>
+              <tr>
+                <td width="150">Number Of Colors</td>
+                <td><%= zone.print_num_colors %></td>
+              </tr>
+            </table>
+          <%end%>
+          <% if zone and zone.contains_image %>
+			<% zone.ordered_zone_artworks.each do |artwork| 
+					if ! artwork.image
+						next
+					end
+			%>
+	            <table cellpadding="0" cellspacing="5" border="0">
+	              <tr>
+	                <td colspan="2"><b>Image</b></td>
+	
+	              </tr>
+	              <tr>
+	                <td width="100">image ID</td>
+	                <td><%= artwork.image_id %>
+	                </td>
+	              </tr>
+
+	              <tr>
+	                <td>h - reflection</td>
+	                <td><%= (artwork.artwork_hreflection) ? artwork.artwork_hreflection : "none" %>&nbsp;</td>
+	              </tr>
+	              <tr>
+	                <td>v - reflexion</td>
+	                <td><%= (artwork.artwork_vreflection) ? artwork.artwork_vreflection : "none" %>&nbsp;</td>
+	              </tr>
+	              <tr>
+	                <td>rotation</td>
+	                <td><%= artwork.artwork_rotation %>&nbsp;</td>
+	              </tr>
+	              <tr>
+	                <td>x</td>
+	                <td><%= artwork.artwork_x %>&nbsp;</td>
+	              </tr>
+	              <tr>
+	                <td>y</td>
+	                <td><%= artwork.artwork_y %>&nbsp;</td>
+	              </tr>
+	              <tr>
+	                <td>zoom</td>
+	                <td><%= artwork.artwork_zoom %>&nbsp;</td>
+	              </tr>
+	
+
+	              <tr>
+	                <td>Artwork Files</td>
+	                <td>
+	                  <%= link_to t(:admin_order_print_view_original), artwork.image.orig_image.url() if artwork.image.orig_image? %> &nbsp;&nbsp;&nbsp;
+	                  <br /><br />
+	                
+	                </td>
+	              </tr>
+	
+	            </table>	            
+	          <% end %>
+          <% end %>
+
+          <% if zone and zone.contains_uploaded_image %>
+          	<% zone.ordered_zone_artworks.each do |artwork| 
+          		if ! artwork.uploaded_image
+          			next
+          		end	
+          	%>
+	            <table cellpadding="0" cellspacing="5" border="0">
+	              <tr>
+	                <td colspan="2"><b>Image</b></td>
+	              </tr>
+	              <tr>
+	                <td width="100" valign="top"><a href='#' onclick="javascript:window.open('<%= UploadedImage.uploaded_image_by_timestamp(artwork.uploaded_image_id).orig_image.url %>'); void(0);">Download</a></td>
+	                <td>
+	
+	                </td>
+	              </tr>
+				  <tr>
+	                <td>h - reflection</td>
+	                <td><%= (artwork.artwork_hreflection) ? artwork.artwork_hreflection : "none" %>&nbsp;</td>
+	              </tr>
+	              <tr>
+	                <td>v - reflexion</td>
+	                <td><%= (artwork.artwork_vreflection) ? artwork.artwork_vreflection : "none" %>&nbsp;</td>
+	              </tr>
+	              <tr>
+	                <td>rotation</td>
+	                <td><%= artwork.artwork_rotation %>&nbsp;</td>
+	              </tr>
+	              <tr>
+	                <td>x</td>
+	                <td><%= artwork.artwork_x %>&nbsp;</td>
+	              </tr>
+	              <tr>
+	                <td>y</td>
+	                <td><%= artwork.artwork_y %>&nbsp;</td>
+	              </tr>
+	              <tr>
+	                <td>zoom</td>
+	                <td><%= artwork.artwork_zoom %>&nbsp;</td>
+	              </tr>
+	            </table>
+	          <% end %>
+          <% end %>
+
+          <% if zone and zone.ordered_txt_lines != [] %>
+            <table cellpadding="0" cellspacing="5" border="0">
+              <tr>
+                <td colspan="2"><b>Texte</b></td>
+              </tr>
+              <tr>
+                <td width="100">Print Type</td>
+		<%
+		begin
+			tech = Technology.find(zone.line_printtype)
+		rescue
+			tech = nil
+		end
+		%>
+                <td><%= tech.id if tech %>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>h - reflection</td>
+                <td><%= zone.line_hreflection %>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>v - reflexion</td>
+                <td><%= zone.line_vreflection %>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>rotation</td>
+                <td><%= zone.line_rotation %>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>x</td>
+                <td><%= zone.line_x %>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>y</td>
+                <td><%= zone.line_y %>&nbsp;</td>
+              </tr>
+            </table>
+            <% for line in zone.ordered_txt_lines do %>
+                <% begin
+               	  if line.cmyk_color
+               	  	text_color = "#"+line.color_code
+               	  	cmyk = line.cmyk_color.sub(/^/,"C=").sub("-"," M=").sub("-"," Y=").sub("-", " K=")
+               	  	text_font = Font.find_by_flash_id(line.font).name
+               	  else
+                    text_color = line.color.nil? ? "none" : Color.find(line.color_id).localized_colors[session[:language_id].to_i-1].name
+                    text_font = Font.find_by_flash_id(line.font).name
+                    cmyk = nil
+                  end
+                rescue
+                  text_color = "none"
+                  text_font = 'none'
+                end
+              %>
+                <table cellpadding="0" cellspacing="5" border="0">
+                  <tr>
+                    <td><b>Line <%= line.line_position%>: <%= line.content %></b></td>
+                  </tr>
+                  <tr>
+                  <td><b>Color: </b><%= text_color %> /
+                  	<% if cmyk %>
+                  		<b>CMYK: </b><%=cmyk%> /
+                  	<% end %>
+                    <b>Italic: </b><%= line.italic %> /
+                    <b>Bold: </b><%= line.bold %> /
+                    <b>Underlined: </b><%= line.underlined%> /
+                    <b>Align: </b><%= line.align %> /
+                    <b>Size: </b><%= line.size %> /
+                    <b>Font: </b><%= text_font %>
+                  </td>
+                </table>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% } %>
+    </table>
+
+
+
+
+  <% end %>
+
+  <p></p>
+  <p></p>
+
+  <%= render :partial => "print_ordered_products_pagination" %>
+
+  <p></p>
+
+  <p><%= t(:admin_order_nb_tshirts) %>: <%= @nb_tshirts %></p>
+  <p><%= t(:admin_order_nb_artworks) %>: <%= @nb_artworks %></p>

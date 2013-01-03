@@ -1,0 +1,10 @@
+<script language="javascript">
+    function popitup(url) {
+	newwindow=window.open(url,'_blank');
+	if (window.focus) {newwindow.focus()}
+	return false;
+    }
+
+    popitup("/display/shop1/<%= @popup_image_id %>");
+
+</script>

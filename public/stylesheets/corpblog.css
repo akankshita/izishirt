@@ -1,0 +1,208 @@
+html {overflow-x: auto; overflow-y: scroll; height: 100%;  }
+body {		padding: 0;	margin-top:20px}
+form {	border: 0;	margin: 0;	padding: 0;}
+
+#holder {margin:5px auto auto auto;  padding:12px; width:882px; position:relative; }
+
+/* Page Shadows */
+.shadowtop {position:absolute; top:-8px; left:0; background:url(../images/corpblog/sw-tbgr.png) repeat-x; height:8px; width:100%; }
+.shadowtop .swtl,
+.shadowtop .swtr { width:8px; height:8px;position:absolute; top:0; }
+.shadowtop .swtl {background:url(../images/corpblog/sw-tl.png) no-repeat; left:-8px}
+.shadowtop .swtr {background:url(../images/corpblog/sw-tr.png) no-repeat; right:-8px; }
+
+#holder .swmleft,
+#holder .swmright {position:absolute; top:0px;  height:100%; width:8px;}
+#holder .swmleft {background:url(../images/corpblog/sw-ml.png) repeat-y; left:-8px; }
+#holder .swmright {background:url(../images/corpblog/sw-mr.png) repeat-y;  right:-8px; }
+
+.shadowbtm .swbl,
+.shadowbtm .swbr { position:absolute; height:8px; width:8px }
+.shadowbtm {position:absolute; bottom:-8px; left:0; background:url(../images/corpblog/sw-bbgr.png) repeat-x; height:8px; width:100%; }
+.shadowbtm .swbl {background:url(../images/corpblog/sw-bl.png) no-repeat; left:-8px;  }
+.shadowbtm .swbr {background:url(../images/corpblog/sw-br.png) no-repeat; right:-8px; }
+
+
+/* Top part */
+.top { margin:0 0 1px 0; padding:0; height:29px; z-index:20}
+.top a {line-height:29px; color:white; text-decoration:none}
+.top a:hover {text-decoration:underline}
+.top #wlogo {background: url(../images/corpblog/top-sign.png) no-repeat; display:block; width:70px; height:29px; text-decoration:none; float:left; margin-right:5px}
+.top .fright .dlang {margin-right:10px; background:none; padding-left:25px; display:block}
+.top .fright a {margin-right:10px; background: url(../images/corpblog/top-cart.png) no-repeat; padding-left:25px; display:block}
+.header { margin:0 0 10px 0; padding:0; position:relative; }
+
+/* Left part */
+
+#left {float:left; width:214px; margin-right:10px }
+#left .userinfo { height:100%}
+#left .userinfo .fav {background: url(/images/corpblog/ico-fav.png) no-repeat;}
+#left .userinfo .email {background: url(/images/corpblog/ico-mail.png) no-repeat;}
+#left .userinfo .facebook {background: url(/images/corpblog/facebook.gif) no-repeat;}
+#left .userinfo .delicious {background: url(/images/corpblog/delicious.gif) no-repeat;}
+#left .userinfo .diggit {background: url(/images/corpblog/diggit.gif) no-repeat;}
+#left .userinfo img{ padding:1px;  margin-bottom:3px}
+#left .userinfo p {margin:0; padding:0; line-height:20px;  font-weight:bold;}
+#left .userinfo .name {overflow:hidden; font-size:12px }
+#left .userinfo a { padding-left:20px; text-decoration:none; line-height:16px ; display:block; font-weight:bold; margin-top:4px}
+
+#left .categories {padding:10px 10px 10px 20px ; }
+#left .categories h1 {font-size:13px; margin:0px 0 10px 0; padding:0; line-height:20px}
+#left .categories a {display:block;  text-decoration:none; line-height:17px; padding-left:20px}
+#left .categories a:hover,
+#left .categories .active {background: url(../images/corpblog/arrow.gif) no-repeat 5px ;}
+
+#left .userinfo .content { padding:10px 10px 9px 10px; }
+#left .userinfo .sb {border-top:1px dotted #9d9c95; padding-top:5px; margin-top:5px}
+#left .userinfo .sb  img {margin:0; padding:0; border:0}
+#left .userinfo .sb a {float:left; margin:0 7px 0 0; border:1px solid #eeebdc; padding:0 }
+#left .userinfo .sb a:hover {border:1px solid #9d9c95}
+
+.lmodule {margin-top:6px; height:100%}
+.lmodule .content {padding:6px; overflow:hidden}
+.lmodule .mylinks p {margin:0 0 10px 0; padding:0}
+.lmodule .mylinks a{display:block; text-decoration:none; font-weight:bold}
+.lmodule .mylinks a:hover {text-decoration:underline}
+
+.lmodule h1 {margin:0; padding:0; position:relative; }
+.lmodule h1 span{ display:block; }
+.lmodule .rLeft,
+.lmodule .rRight {position:absolute; top:0;} 
+.lmodule .rLeft { left:0; }
+.lmodule .rRight { right:0}
+
+.lmodule .myblog p {margin:0 0 8px 0; padding:1px 0 0 0 }
+.lmodule .myblog a {font-size:11px; font-weight:bold; text-decoration:none}
+.lmodule .myblog a:hover {text-decoration:underline}
+.lmodule .myblog span {display:block; padding-left:12px; margin-top:3px}
+.lmodule .myblog .more {text-align:right; margin:0; padding:0}
+
+.flickr img {border:0 !important}
+
+/* Center part */
+
+#center {float:left; width:658px; }
+
+.mainmenu {	padding: 0px; margin-bottom:10px }
+
+.breadcrumb {font-size:13px;   padding:0 0 10px 0; font-weight:bold; }
+
+.container {}
+
+.cmodule .heading { position:relative; background:transparent}
+.cmodule .heading .rLeft,
+.cmodule .heading .rRight { position:absolute; top:0; }
+.cmodule .rLeft {left:0 }
+.cmodule .rRight {right:0 }
+.cmodule .heading span {display:block; }
+
+
+.cmodule {margin-bottom:10px}
+.cmodule  em {display:block; width:20px; height:34px; margin-right:5px;  float:left}
+.featprod .heading em {background: url(/images/corpblog/ico-star.png) no-repeat; }
+.otherprod .heading em {background: url(/images/corpblog/ico-otherdesigns.png) no-repeat;  }
+.myshop .heading em {background: url(/images/corpblog/ico-myshop.png) no-repeat;  }
+.cmodule .content {padding:10px}
+
+.featprod .bigimg {margin-right:8px; float:left}
+
+.featprod .content h1,
+.featprod .content h2 {margin:0; padding:0}
+.featprod .content .fleft {width:280px; }
+
+.variation {margin:50px 0 10px 0}
+.variation a {position:relative; display:block; float: left; margin-right:2px; padding:1px; text-align:center; font-size:10px; text-decoration:none}
+* html .variation a {margin-right:1px}
+.variation a img {  margin-bottom:1px; display:block }
+.variation a:hover img{}
+.variation em {position: absolute; width:9px; height:9px; top:4px; right:-2px; background:url(../images/corpblog/ico-zoom.png) no-repeat}
+
+.sizez {padding:6px; border:1px solid #c6c5bc; background:white; margin-bottom:10px}
+.sizez td {padding-left:5px}
+.sizez .price {font-weight:bold}
+.sizez select,
+.sizez input {font-size:11px; margin:0}
+.sizez input {text-align:right}
+
+
+.otherprod .content,
+.myshop .content {padding:10px}
+.otherprod .content .imglist,
+.myshop .content .imglist {padding-left:60px}
+.otherprod .content .oprod,
+.myshop .content .oprod {width:164px; float:left; margin:0 16px 16px 0}
+.otherprod .content .oprod p {font-weight:bold; margin:0; padding:0; line-height:20px; text-align:right }
+.myshop .content .oprod p {font-weight:bold; margin:0; padding:0; line-height:20px; text-align:center }
+
+.cmodule .dbpage_content  h2 {font-size:15px}
+.cmodule .dbpage_content  h3 {font-size:13px}
+
+.pnav {text-align:center; line-height:20px; }
+.pnav a {}
+.pnav a:hover {text-decoration:none}
+
+.btn {margin-top:3px}
+#footer { margin-top:10px;  position:relative;  }
+#footer .content {text-align:center;}
+#footer a {padding:0 10px; text-decoration:none; line-height:27px; }
+#footer a:hover {text-decoration:underline}
+
+
+/* paging */
+
+/* paging new */
+.paging { text-align:center; font-family:Verdana, Arial, Helvetica, sans-serif}
+.paging  { line-height:24px; font-size:12px; font-weight:bold}
+.paging a { margin:0px; padding:1px 5px; text-decoration:none; }
+
+/* popup */
+
+.popup {  text-align:center}
+.popup h5 {font-size:17px; padding:5px; }
+.popup h5 span {background: url(../images/corpblog/top-cart.png) no-repeat 0 -5px; padding-left:25px;}
+.popup p {margin:10px 0 }
+.popup a {padding:4px 15px; }
+.ok_button {padding:2px 5px; }
+.popup a,
+.ok_button { margin-bottom:10px; text-transform:uppercase;  font-size:10px; font-weight:bold; text-decoration:none; cursor:pointer; font-family:Tahoma, Arial, Helvetica, sans-serif}
+
+
+/* Fixed stuff */
+
+#cmodule1 .r4tl,
+#cmodule1 .r4tr {display:block}
+#cmodule1 .content {border-width:1px 1px 1px 1px; }
+#cmodule1 .content h4 {font-family:Georgia, "Times New Roman", Times, serif; font-size:24px; font-weight:normal; margin:0; padding:0}
+#cmodule1 .content ul {margin-top:0; padding-top:0;margin-bottom:0; padding-bottom:0}
+#cmodule1 .content li {list-style: none ; background:url(../images/corpblog/plus.gif) no-repeat 0px 5px; padding-left:12px; line-height:16px }
+#cmodule1 .content p { margin:7px 0; padding:0}
+
+#cmodule1 .wlogo_big {position:absolute; width:37px; height:33px; top:10px; right:15px; background:url(../images/corpblog/wlogo-big.png) no-repeat}
+
+div.dist {  height: 2px;  font-size: 1px;  clear: both;  visibility: hidden;}
+.nohgh {height: 0;	font-size: 1px;	line-height: 0;	visibility: hidden;}
+.clear { clear: both }
+.rel {position:relative}
+.pad10 {padding:10px}
+.pad5 {padding:5px}
+.abs {position:absolute}
+.rel {position:relative}
+.fleft {float:left}
+.fright {float:right}
+.dnone {display:none}
+.mr10 {margin-right:10px}
+.ml10 {margin-left:5px}
+
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+.clearfix {height: 1%;}
+.clearfix {display: block;}

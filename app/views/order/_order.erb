@@ -1,0 +1,61 @@
+<div class="one_order">
+  <div class="one_order_title"><%= t(:order_id) + " : #{order.id}"%></div>
+  <div class="one_order_content">
+    <div class="description">
+      <div class="first_column">
+        <p class="first_desc">
+          <%= t(:created_on_my_orders) %>: <%=order.created_on.strftime '%m/%d/%y'%><br/>
+          <%=t(:total_quantity_my_orders)%>: <%=order.ordered_products.sum(:quantity)%>
+        </p>
+        <p class="second_desc">
+          <p class="column_title"><%=t(:myizishirt_order_status)%>:</p>
+          <span class="green"><%= get_order_status_label(order.status.to_i) %></span>
+          <br/><%=get_shipping_name(order.shipping_type)%>
+	<br />
+	
+	<% if order.tracking_number != "" && order.tracking_number %>
+		<br />
+		<b><span class="green"><%= t(:myorder_tracking_number) %></span></b><br />
+		<%= t(:myorder_tracking_shipped) %> <a href="http://www.ups.com/" target="_blank">UPS</a>.<br />
+		<%= t(:myorder_tracking_your_tracking_number) %> <b><%= order.tracking_number %></b>
+	<% end %>
+        </p>
+
+      </div>
+      <% if order.billing %>
+        <div class="second_column">
+          <p class="column_title"><%=t(:address_header)%>:</p>
+          <%=order.billing.name + "<br/>" if order.billing.name%>
+          <%=order.billing.address1 + "<br/>" if order.billing.address1%>
+          <%=order.billing.address2 + "<br/>" if order.billing.address2 && order.billing.address2.length > 0%>
+          <%=order.billing.get_country%>, <%=order.billing.get_province%><br/>
+          <%=order.billing.zip + "<br/>" if order.billing.zip%>
+          <%=order.billing.phone + "<br/>" if order.billing.phone%>
+        </div>
+      <% end %>
+      <% if order.shipping %>
+        <div class="third_column">
+          <p class="column_title"><%=t(:address_shippingheader)%>:</p>
+          <%=order.shipping.name + "<br/>" if order.shipping.name%>
+          <%=order.shipping.address1 + "<br/>" if order.shipping.address1%>
+          <%=order.shipping.address2 + "<br/>" if order.shipping.address2 && order.shipping.address2.length > 0%>
+          <%=order.shipping.get_country%>, <%=order.shipping.get_province%><br/>
+          <%=order.shipping.zip + "<br/>" if order.shipping.zip%>
+          <%=order.shipping.phone + "<br/>" if order.shipping.phone%>
+        </div>
+        <div class="clear"></div>
+      <% end %>
+    </div>
+    <% order.ordered_products.each do |product| %>
+      <%= render :partial => 'product', :locals => {:product => product} %>
+    <% end %>
+    <div class="clear"></div>
+
+    <div class="total_price">
+      <%= t(:total_my_orders) %> <%= order.currency.label %>
+      <span class="green"><%=number_to_currency_custom(order.total_price*currency_rate(order.currency.label), :currency => order.currency.label)%></span>
+    </div>
+  </div>
+
+
+</div>

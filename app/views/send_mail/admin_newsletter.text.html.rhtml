@@ -1,0 +1,16 @@
+<div style="text-align:center;margin-bottom:10px;">
+<% 
+	local = @language.id == 1 ? 'fr' : 'en'
+	lang = @language.id == 1 ? 'fr' : nil 
+%>
+
+  <%= link_to I18n.t(:newsletter_online_version, :locale=>local), URL_ROOT+url_for(:controller=>:newsletters, :id=>@newsletter.id, :lang=>lang, :country => @country.id, :language_id => @language.id) %>
+
+</div>
+
+
+<%= @newsletter.localized_newsletters.find_by_language_id_and_country_id(@language.id, @country.id).content.sub("{{firstname}}", @name) %>
+
+<div style="width:710px;">
+  <br><a style="font-size: 10px" href="<%= "#{URL_ROOT}/unsubscribe?e=#{@email}"%>"><%= @language.id == 1 ? "Se désabonner" : "unsubscribe" %></a>
+</div>

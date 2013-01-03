@@ -1,0 +1,45 @@
+<div id="menubar"><div id="nav">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="nav_corners"><i class="nav_left"></i></td>
+        <td class="bgr-navmenu">
+        <table border="0" cellspacing="0" cellpadding="0" align="center" id="mainlevel">
+            <tr>
+              <% @top_menu.each do |item| %>
+                <td>
+                  <% if !item[:url].match("/blog/") %>
+                    <%=  link_to item[:text], {:controller=>item[:url]}, :class=>display_active_top_menu(item[:url]) %>
+                  <% else %>
+                    <!-- Special case, link to the blog -->
+                    <%=  link_to item[:text], item[:url], :class=>display_active_top_menu(item[:url]), :target=>"_blank" %>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          </table></td>
+        <td class="nav_corners" ><i class="nav_right"></i></td>
+      </tr>
+    </table>
+  </div>
+  
+  <% if @bottom_menu != [] %>
+  <div id="subnav">
+    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+      <tr>
+        <td class="subnav_corners"><i class="subnav_left"></i></td>
+        <td class="subnav_content"><table border="0" cellspacing="0" cellpadding="0" align="center" class="submenu">
+            <tr>
+              <% @bottom_menu.each do |item| %>
+                <td>
+                  <%=  link_to item[:text], {:controller=>item[:url]}, :class=>display_active_bottom_menu(item[:url]) %>
+                </td>
+              <% end %>
+            </tr>
+          </table></td>
+        <td class="subnav_corners"><i class="subnav_right"></i></td>
+      </tr>
+    </table>
+  </div>
+  <a id="0" href="#"></a>
+  <% end %>
+</div>

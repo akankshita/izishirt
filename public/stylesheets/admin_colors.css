@@ -1,0 +1,115 @@
+@charset "utf-8";
+/* CSS Document */
+
+body { background:white; font-size:11px; font-family:Tahoma, Arial, Helvetica, sans-serif; color:#686868}
+input[type="text"],
+input[type="password"] {border:1px solid #c4c8cc}
+
+
+#header { background: url(../images/admin/logo-admin.gif) no-repeat center bottom;  height:119px; }
+#logo {	position: absolute;	top: 2px;	left: 325px;	display: block;	width:350px;	height: 110px;}
+.adminholder {background: url(../images/admin/bgr-adminholder.gif) repeat-x top; 	padding-top:5px}
+
+/* Colors Groups  */
+
+.sidemodule h1,
+.admintable h1,
+.sidebar_admin h2,
+.sidebar_admin .adminmenu .submenu a,
+.adminsearch .input,
+.admintable td,
+.admintable a,
+#categories li,
+#faqs li,
+.listing-submenu a,
+.admintabs li.tab_active a,
+.topForms,
+.bottomForms,
+.boxForm .boxList,
+.boxForm .box,
+.adminform h3,
+.adminform   {color:#7C8943; }
+
+
+.sidebar_admin .adminmenu a,
+.tableheader,
+.tableheader .rbtm,
+.admintable th  {background:#d0cbb6;}
+
+/* Left  */
+
+
+.sidemodule a {color:#87c6e4; }
+html>body .sidemodule a:hover span {background:#64b7e1 ; color:white; }
+.sidemodule a:hover { background: #F2F6F8 url(../images/admin/arrow-sidemenu.gif) no-repeat  left; padding-left:7px}
+
+.sidebar_admin { background: #f1f1f1 url(../images/admin/bgr-sidebar_admin.png) repeat-x }
+.sidebar_admin .rbtm {  background: #f1f1f1; border-bottom: 1px solid #d9d6d6; }
+.sidebar_admin span {background: url(../images/admin/ico-administrator.gif) no-repeat right; padding-right:30px}
+
+.sidebar_admin .adminmenu {font-family:Tahoma, Arial, Helvetica, sans-serif; }
+.sidebar_admin .adminmenu a { color:white; }
+.sidebar_admin .adminmenu a:hover,
+.sidebar_admin .adminmenu .mactive {background:#7C8943 !important;}
+.sidebar_admin .adminmenu .submenu {background:#fafafa; border:1px solid #acbb6b; border-width:0 1px 0 1px}
+.sidebar_admin .adminmenu .submenu a { background: #fafafa; border-top:1px solid #ebebeb; }
+.sidebar_admin .adminmenu .submenu a:hover {background:#ebebeb !important ; border-top:1px solid #ccc; }
+
+/* Center Part */
+
+.adminsearch .button {background:#ACBB6B url(../images/admin/icoSearch.png) no-repeat;   }
+.adminsearch .button:hover {background:#7C8943 url(../images/admin/icoSearch.png) no-repeat;}
+.adminsearch .input { border:1px solid #D5DAC2; font-family:Tahoma, Arial, Helvetica, sans-serif;   background:#f2f3ec }
+
+.tableheader { }
+.tableheader .rbtm { border-bottom: 1px solid #d9d6d6; }
+
+.admintable td,
+.admintable a,
+#categories li,
+#faqs li { background-color: transparent;}
+
+.admintable a:hover {color:black;}
+.admintable .odd {background:#eeecec !important;}
+.admintable .odd td {background:#eeecec !important}
+.admintable th { border-top:1px solid #ababab; color:white; border-bottom:5px solid white}
+.admintable th a { color:white; }
+.admintable h1 { border-bottom:1px dotted #ccc;}
+
+
+a.icoEdit {background: url(../images/admin/icoEdit.png) no-repeat center;}
+a.icoDelete {background: url(../images/admin/icoDelete.png) no-repeat center;}
+a.icoSearch {background: url(../images/admin/icoSearch.png) no-repeat center;}
+a.icoEdit,
+a.icoDelete,
+a.icoSearch   {background-color:#999999; }
+a.icoEdit:hover,
+a.icoDelete:hover,
+a.icoSearch:hover    {background-color:#7C8943; }
+
+a.textLink,
+a.textLink:hover { font:bold 10px/26px Tahoma, Arial, Helvetica, sans-serif  ; color:white; padding-top:4px; padding-bottom:4px }
+a.textLink {background-color:#ACBB6B;border:3px double white;  text-transform:uppercase }
+a.textLink:hover {background-color:#7C8943;}
+
+
+.addedituser input[type="text"],
+.addedituser input[type="password"],
+.addedituser .ddbox select {  border:1px solid #A7A6AA;  }
+
+.admintabs li a{color:#a4a4a4; }
+.admintabs li a:hover{text-decoration: underline;color: #696969;}
+.admintabs li.tab_active a{ font-weight:bold; text-transform:uppercase;
+ background: #fff url(../images/admin/arrow_activetab.gif) no-repeat 10px; border-bottom-color: white; border: 1px solid #CCCCCC; border-width:1px 1px 0 1px; padding-left:20px}
+.admintabs li.tab_active a:hover{ text-decoration: none;}
+.localized_tab_content { border: 1px solid #CCCCCC;  background: #f1efef;}
+
+/*EDIT PAGE*/
+
+.adminform{  font-family:Tahoma; }
+.adminform h3 {   border-bottom:2px solid #7C8943; }
+.boxForm .box{ border:1px solid #A7A6AA;  }
+.boxForm .boxList{  border:1px solid #7C8943;   }
+.linesUnder{ border:1px solid #7C8943;}
+
+

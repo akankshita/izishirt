@@ -1,0 +1,36 @@
+<b>Problem with order PO number:</b> <%= @listing.po_number %><br /><br /><br />
+
+<%if @printer.id == User.find_by_username("izishirt").id %>
+  <b>Ship From:</b> <%= @listing.apparel_supplier.name %><br /><br />
+  <b>Ship To:</b>
+  <table>
+    <tr><td><b>Name: </b></td><td>Kencia</td></tr>
+    <tr><td><b>Address 1:</b> </td><td>Izishirt</td></tr>
+    <tr><td><b>Address 2:</b> </td><td>5605 avenue de Gaspé, Suite 504</td></tr>
+    <tr><td><b>City:</b> </td><td>Montreal</td></tr>
+    <tr><td><b>Province:</b> </td><td>QC</td></tr>
+    <tr><td><b>Postal Code:</b> </td><td>H2T 2A4</td></tr>
+    <tr><td><b>Country:</b> </td><td>Canada</td></tr>
+  </table>
+<% else%>
+  <b>Ship From:</b> <%= @listing.apparel_supplier.name %> <br /><br />
+  <b>Ship To:</b>
+  <table>
+    <tr><td><b>Name: </b></td><td><%=@printer.printing_address.name%></td></tr>
+    <tr><td><b>Address 1:</b> </td><td><%=@printer.printing_address.address1%></td></tr>
+    <tr><td><b>Address 2:</b> </td><td><%=@printer.printing_address.address2%></td></tr>
+    <tr><td><b>City:</b> </td><td><%=@printer.printing_address.town%></td></tr>
+    <tr><td><b>Province:</b> </td><td><%=@printer.printing_address.province.name%></td></tr>
+    <tr><td><b>Postal Code:</b> </td><td><%=@printer.printing_address.zip%></td></tr>
+    <tr><td><b>Country:</b> </td><td><%=@printer.printing_address.country.name%></td></tr>
+  </table>
+<% end%>
+<br /><br />
+
+<%= nl2br(@message) %>
+
+<br />
+<br />
+If Stock is missing please advise us by email (production.izishirt@gmail.com) or phone (1 514 286 6446)
+
+Thank you for confirming receipt.

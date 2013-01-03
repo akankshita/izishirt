@@ -1,0 +1,20 @@
+<h1><%= t(:admin_price_toptitle) %>Price</h1>
+	
+	
+	<!-- Form Profile ----------->
+	<% form_tag :action => 'update_price' do %>
+	  
+		<% for i in 0...@price.size do %>
+      <% if !['XL','XXL','XXXL'].include?(@price[i].name) %>
+        <div class="titleForm" style="width:160px;"><label for="price"><%= @price[i].pt_name + " " + @price[i].name  + "  for " + @price[i].t_name %></label></div>
+        <div class="boxForm"><input type="texte" name="price[label_<%= @price[i].id %>]" size="10" maxlength="10" value="<%= @price[i].price %>"> </div>
+      <% end %>
+		<% end %>
+	
+	<div class="dist"></div><br><div class="dist"></div>
+	<div class="titleForm"></div>
+		<%= link_to  t(:admin_reset), "javascript:document.forms[0].reset();", {:class => 'textLink', :title =>  t(:admin_reset)}%>
+		<%= link_to t(:admin_save), "javascript:document.forms[0].submit();", {:class => 'textLink', :title =>t(:admin_save) }%>
+		
+	<% end %>			
+	<!-- End form profiel ------->

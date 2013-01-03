@@ -1,0 +1,13 @@
+<div id="header" style="margin: 0; padding: 0; width: 100%;">
+
+  <% if cookies["last_banner"]  %>
+    <%= link_to image_tag(@lub), "http://#{@url_lub}"%>
+  <% else %>
+    <% if @alt_country.downcase == "ca" && session[:language] == "en"  %>
+              <%= image_tag "izishirt2011/fr/logo.jpg", :width=>189, :height=>77, :alt=>"#{t(:alt_logo)}" %>
+            <%else%>
+              <%= image_tag "izishirt2011/#{session[:language]}/logo.jpg", :width=>189, :height=>77, :alt=>"#{t(:alt_logo)}" %>
+            <%end%>
+    <%#= link_to image_tag("izishirt2011/logo.jpg"), {:controller=>:display, :action=>:izishirt_2011, :protocol=>"http://",:only_path=>false}%>
+  <% end %>
+</div>

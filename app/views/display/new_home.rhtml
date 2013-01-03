@@ -1,0 +1,203 @@
+<script language="JavaScript">
+  //Rotate the christmas banners
+  var last_img = "christmas3";
+  var current_img = "christmas1";
+  var next_img = "christmas2";
+  var tmp;
+
+  Event.observe(window, 'load', function() {
+      //var fade=setInterval("rotate_banner()",10000);
+  });
+
+  function rotate_banner(){
+      $(last_img).style.zIndex=97;
+      $(current_img).style.zIndex=99;
+      $(next_img).style.zIndex=98; 
+      $(next_img).style.display='block'; 
+      new Effect.Fade(current_img, {duration:5.0, from:1.0, to:0.0});
+      tmp = last_img;
+      last_img = current_img;
+      current_img = next_img;
+      next_img = tmp;
+  }
+</script> 
+
+<!--<div class="" style="top: 235px; left: 790px; position:absolute;"><strong style="color:#FFF">Top 10 Designs</strong></div>
+<div style="top: 535px; left: 790px; position:absolute"><strong style="color:#FFF">Featured Designer</strong></div>
+<div style="top: 535px; left: 324px; position:absolute"><strong style="color:#FFF">What's New!</strong></div>-->
+<div class="pageholder" style="padding-top:0px;">    
+  <div style="text-align:right;"><script type="text/javascript" src="http://w.sharethis.com/widget/?tabs=web%2Cpost%2Cemail&amp;charset=utf-8&amp;style=rotate&amp;publisher=783f7760-58d6-4b42-b3d3-bf364711bd9c"></script></div>
+<div class="crnliteblue flashbgr" style="left: 9px;" > <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+    <div class="flashcontent">
+      <%= link_to "<img src=\"/images/flashcontent_#{session[:language]}.jpg\" alt=\"\" border=\"0\" />", {:controller=>t(:display_home_create_tshirts)} %>
+      <%= link_to '&nbsp;', {:controller=>t(:display_home_create_tshirts)}, :title=>t(:display_home_see_more1), :class=>"flashcontent-btn-#{session[:language_id]}" %>
+    </div>
+    <div class="clear nohgh">&nbsp;</div>
+  </div>
+</div>
+
+<div class="pageholder" >
+  <div style="background-image: url('/images/new_page_bg.gif'); background-repeat: no-repeat; height: 595px; background-position: -35px -9px; background-repeat: no-repeat;width:935px; ">
+  <div  class="" style="width: 410px; height: 270px; top: 10px; left:20px; float: left; position: relative">
+    <h1 style="margin: 3px 3px 3px 3px; font-size: 12px"><%= t(:izishirt_new_home_title1) -%></h1>
+    <br />
+    <p style="margin-top: 0px; padding-left: 8px;" class="new_home_text"><%= t(:izishirt_new_home_p1) -%>
+    <br />
+    <div class="roundedcornr_box_751593" style="width: 200px">
+   <div class="roundedcornr_top_751593"><div></div></div>
+      <div class="roundedcornr_content_751593">
+        <%= link_to "<strong>#{t(:izishirt_new_home_button1)}</strong>", {:controller=>t(:menu_customize_url)}, :title=>t(:display_home_see_more1), :class=>"new_home new_home_white", :id=>"" %>
+      </div>
+   <div class="roundedcornr_bottom_751593"><div></div></div>
+</div>
+    </p><br />
+    
+    <h1  style="top: -20px ;margin: -10px 3px 0 0; font-size: 12px"><%= t(:izishirt_new_home_title2) -%></h1>
+    <br />
+    <p  style="margin-top: -10px; padding-left: 8px;" class="new_home_text"><%= t(:izishirt_new_home_p2) -%>
+    <br />
+        <div class="roundedcornr_box_751593" style="width: 190px">
+   <div class="roundedcornr_top_751593"><div></div></div>
+      <div class="roundedcornr_content_751593">
+         <%= link_to "<strong>#{t(:izishirt_new_home_button2)}</strong>", {:controller=>"/display/create_shop_step1"}, :class=>"new_home new_home_white", :rel=>"nofollow" %>
+      </div>
+   <div class="roundedcornr_bottom_751593"><div></div></div>
+</div>
+    </p>
+    
+  </div>
+  
+  <div class="" style="top: 40px; left: 75px; width: 440px; height: 250px; float: left; position: relative; margin 0px; padding:0px">
+    <div style="position: absolute; top: -29px; left: 0px"><strong style="color:#FFF"><%= link_to t(:izishirt_new_home_title3), t(:menu_boutique_url), :style=>'color:#FFF;text-decoration:none' -%></strong></div>
+    <% @top_10_designs.each { |td| %>
+      <div style="text-align: center; float:left; margin-bottom: 0px;">
+        <%= link_to "<div style=\"padding: 5px; margin: 10px 3px 5px 3px; border: 1px solid rgb(220,220,220); height:65px;width:65px;\" class='small_thumbs'>
+            <img class='thumb_65' src=\"#{td.orig_image.url("100")}\"/> </div>",
+          {:controller=> "/display/shop1/" + td.id.to_s}, :class=>"new_home new_home_white", :rel=>"nofollow" %>
+
+          <%= link_to truncate(td.name, :length => 15, :omission => '...'), {:controller=>t(:menu_customize_url)+"/"+td.id.to_s}, :class=>"new_home", :style=>"padding-left: 5px;" %>
+      </div>
+    <% } %>
+    <div class="clearfix"></div>
+  </div>
+  <div style="clear:both;"></div>
+  
+  <div class="ie6hack" style="border: 0px solid  rgb(240,240,240); margin: 0px; padding: 0px;left: 20px; width: 450px; height: 270px; float: left; position: relative">
+    <div style="top: 0px; left: 3px"><strong style="color:#FFF"><%= link_to t(:izishirt_new_home_title4), t(:menu_boutique_url), :style=>'color:#FFF;text-decoration:none'-%></strong></div>
+    <% @new_designs.each { |td| %>
+      <div style="text-align: center; float:left; margin-bottom: 10px">
+        <%= link_to "<div style=\"padding: 5px; margin: 10px 3px 5px 3px; border: 1px solid rgb(220,220,220);width:65px;height:65px;\" class='small_thumbs'>
+            <img class='thumb_65' src=\"#{td.orig_image.url("100")}\" />
+          </div>", {:controller=>t(:menu_customize_url)+"/"+td.id.to_s} %>
+
+          <%= link_to truncate(td.name, :length => 15, :omission => '...'), {:controller=>"/display/shop1/" + td.id.to_s}, :class=>"new_home", :style=>"padding-left: 5px;" %>
+      </div>
+    <% } %>
+  </div>
+  
+
+  <div class="ie6hack" style="left: 40px;width: 450px; height: 270px; float: left; position: relative">
+    <!-- Commented out christmas banners in case we need them next year -->
+    <!--div style="position: absolute; top: -25px;"><strong style="color:#FFF"><%= t(:izishirt_new_home_christmas_title) -%></strong></div>
+    <a href='<%= @URL_ROOT %>/create-custom-t-shirt'>
+      <div style="position: relative;width: 420px;">
+        <%= image_tag("christmas1_#{session[:language]}.jpg", {:alt => "Christmas", :width => '420px', :id => 'christmas1', :style => 'position:absolute;left:0;top:0;z-index:99;'}) %>
+        <%= image_tag("christmas2_#{session[:language]}.jpg", {:alt => "Christmas", :width => '420px', :id => 'christmas2', :style => 'position:absolute;left:0;top:0;z-index:98;'}) %>
+        <%= image_tag("christmas3_#{session[:language]}.jpg", {:alt => "Christmas", :width => '420px', :id => 'christmas3', :style => 'position:absolute;left:0;top:0;z-index:97;'}) %>
+      </div>
+    </a-->
+    <div style="top: 0px;"><strong style="color:#FFF"><%= link_to t(:designers_featured_designer), t(:menu_izishirt_designers_url), :style=>'color:#FFF;text-decoration:none'  -%></strong></div>
+    <div style="width: 420px">
+      <table cellspacing=0 cellpadding=0 style="margin-left: 5px">
+      <tr>
+        <td width="130">
+          <strong style="font-size:14px"><%= @featured_designer.username.capitalize -%></strong><br /><br />
+          <img src="/images/ico-fa_home.gif" />
+          <%= link_to "View my designs", @featured_designer.create_my_url + "/my/designs", :class=>"new_home"%>
+<br />
+          <img src="/images/ico-fadesign.gif" /> <%= link_to "View my Shop", @featured_designer.create_my_url, :class=>"new_home"%></td>
+        <td>
+          <a href="<%= @featured_designer.create_my_url -%>"><div style="padding: 5px; margin: 10px 5px 5px 5px; border: 1px solid rgb(220,220,220); float:left;" class='small_thumbs'>
+            	<% if @featured_designer.profile.picture.nil? || @featured_designer.profile.picture.empty? %>
+					<img src="/izishirtfiles/user_profile/avatar.png" height='92' width='92' alt="<%= @featured_designer.username -%>" border="0" class="" />
+				<% else %>
+					<img src="/izishirtfiles/user_profile/<%= @featured_designer.profile.picture %>" height='92' width='92' alt="<%= @featured_designer.username -%>" border="0" class="" />
+				<% end %>
+          </div></a>
+        </td>
+        <td>
+          <%= link_to "<div style=\"padding: 5px; margin: 5px 5px 10px 5px;float: left; border: 1px solid rgb(220,220,220);width:65px;height:65px;\" class='small_thumbs'>
+            <img class='thumb_65' src=\"#{@featured_designs[0].orig_image.url("100")}\" /></div>", {:controller=>t(:menu_customize_url)+"/"+@featured_designs[0].id.to_s} %>
+        </td>
+        <td>
+          <%= link_to "<div style=\"padding: 5px; margin: 5px 5px 10px 5px;float: left; border: 1px solid rgb(220,220,220);width:65px;height:65px;\" class='small_thumbs'>
+            <img class='thumb_65' src=\"#{@featured_designs[1].orig_image.url("100")}\" /></div>", {:controller=>t(:menu_customize_url)+"/"+@featured_designs[1].id.to_s} %>
+        </td>
+      </tr>
+      </table>
+
+    </div>
+    
+    <div style="width: 420px">
+      <table cellspacing=0 cellpadding=0 style="margin-left: 5px">
+      <tr>
+        <td width="130">
+          <strong style="font-size:14px"><%= @featured_designer2.username.capitalize -%></strong><br /><br />          
+          <img src="/images/ico-fa_home.gif" /> <a class="new_home" href="<%= @featured_designer2.create_my_url -%>/my/designs"><%=  -%>View my designs</a><br />
+          <img src="/images/ico-fadesign.gif" /> <a class="new_home" href="<%= @featured_designer2.create_my_url -%>"><%=  -%>View my Shop</a></td>
+        <td>
+            <a href="<%= @featured_designer2.create_my_url -%>"><div style="padding: 5px; margin: 10px 5px 5px 5px; border: 1px solid rgb(220,220,220); float:left;" class='small_thumbs'>
+	            <% if @featured_designer2.profile.picture.nil? || @featured_designer2.profile.picture.empty? %>
+					<img src="/izishirtfiles/user_profile/avatar.png" height='92' width='92' alt="<%= @featured_designer2.username -%>" border="0" class="" />
+				<% else %>
+					<img src="/izishirtfiles/user_profile/<%= @featured_designer2.profile.picture %>" height='92' width='92' alt="<%= @featured_designer2.username -%>" border="0" class="" />
+				<% end %>
+            </div></a>
+        </td>
+        <td>
+          <%= link_to "<div style=\"padding: 5px; margin: 5px 5px 10px 5px; float: left; border: 1px solid rgb(220,220,220)\" class='small_thumbs'>
+            <img height=\"65\" width=\"65\" src=\"#{@featured_designs[0].orig_image.url("100")}\" /></div>",
+          {:controller=>t(:menu_customize_url)+"/"+@featured_designs2[0].id.to_s}, :class=>"new_home new_home_white", :rel=>"nofollow" %>
+        </td>
+        <% if @featured_designs2[1] %>
+        <td>
+          <%= link_to "<div style=\"padding: 5px; margin: 5px 5px 10px 5px; float: left; border: 1px solid rgb(220,220,220)\" class='small_thumbs'>
+            <img height=\"65\" width=\"65\" src=\"#{@featured_designs[1].orig_image.url("100")}\" /></div>",
+          {:controller=>t(:menu_customize_url)+"/"+@featured_designs2[1].id.to_s}, :class=>"new_home new_home_white", :rel=>"nofollow" %>
+        </td>
+        <% end %>
+      </tr>
+      </table>
+    </div>
+    <div class="content clearfix"></div>
+  </div>
+</div>
+<!-- commented out gift certificates until full functionality is finished -->
+<!--div style="margin-left:10px">
+  <%= link_to image_tag("gifts_#{session[:language]}.jpg", {:alt => ""}), "#{SECURE_URL_ROOT}/checkout/gifts" %>
+</div-->
+<div class="rcsbgrdark tendances tendancesIP" style="width: 100%; overflow: visible; margin-left: 10px">
+  <i class="rstl"></i>
+  <i class="rstr"></i>
+  <i class="rsbr"></i>
+  <i class="rsbl"></i>
+  <div style="width: 800px;display: block; margin-left:auto; margin-right:auto">
+    <% cat_item = 0 
+       list_size =(@categories.size.to_f / 6.0).ceil -%>
+    
+    <% @categories.each { |c| -%>
+      <%= "<ul style='float: left; margin:0px; padding:8px 0px 8px 25px;' title='Tee Shirt Categories'>" if cat_item % list_size == 0 %>
+        <li style="list-style-type: none;">
+          <%= link_to c.local_name(session[:language_id]).capitalize + " T-shirts", {:controller=>"/display/result/#{c.id}"}, :class=>"new_home" %>
+        </li>
+      <% cat_item += 1 %>
+        <%= "</ul>" if cat_item % list_size == 0 %>
+     <% } -%>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+</div>
+</div>
+
+
+<div class="content clearfix"></div>

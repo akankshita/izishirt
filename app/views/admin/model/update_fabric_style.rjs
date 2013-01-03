@@ -1,0 +1,4 @@
+params[:style].each do |id,value|
+  page.replace_html "style_#{id}", text_field_tag("style_#{id}", value)
+  page.visual_effect :highlight, "style_#{id}", :duration => 2
+end

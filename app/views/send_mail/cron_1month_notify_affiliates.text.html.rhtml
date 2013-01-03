@@ -1,0 +1,33 @@
+<p><%= I18n.t(:send_mail_affiliate_money_1, :locale => Language.find(@user.language_id).shortname) %> <%= @user.firstname + " " + @user.lastname%>,</p>
+
+<p><%= I18n.t(:send_mail_affiliate_money_2, :locale => Language.find(@user.language_id).shortname) %> <span style="color:#008000"><%= number_to_currency_custom(@amount_owed) %></span><br /><br />
+<%= I18n.t(:send_mail_affiliate_money_3, :locale => Language.find(@user.language_id).shortname) %> <a href="http://www.izishirt.ca/myizishirt/earning">http://www.izishirt.ca/myizishirt/earning</a> <%= I18n.t(:send_mail_affiliate_money_4, :locale => Language.find(@user.language_id).shortname) %></p>
+
+<p><%= I18n.t(:send_mail_affiliate_money_5, :locale => Language.find(@user.language_id).shortname) %><br />
+<%= I18n.t(:send_mail_affiliate_money_paypal_signup, :locale => Language.find(@user.language_id).shortname) %> <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_registration-run">https://www.paypal.com/cgi-bin/webscr?cmd=_registration-run</a><br />
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_registration-run"><img style="border-width: 0px" src="http://www.paypal.com/en_US/i/logo/paypal_logo.gif" alt="Paypal Registration" /></a>
+</p>
+
+<p><%= I18n.t(:send_mail_affiliate_money_6, :locale => Language.find(@user.language_id).shortname) %></p>
+
+<p><%= I18n.t(:send_mail_affiliate_money_7, :locale => Language.find(@user.language_id).shortname) %></p>
+<code style="padding:7px;border: 1px dotted blue">&lt;a href="http://<%= @user.username %>.izishirt.ca/"&gt;<%= @user.username.capitalize %> Custom T-shirts&lt;/a&gt;</code></p>
+<br />
+
+<p><%= I18n.t(:send_mail_affiliate_money_8, :locale => Language.find(@user.language_id).shortname) %></p>
+
+<p><%= I18n.t(:send_mail_affiliate_money_9, :locale => Language.find(@user.language_id).shortname) %></p>
+
+<p><%= I18n.t(:send_mail_affiliate_money_10, :locale => Language.find(@user.language_id).shortname) %></p>
+<code style="padding:7px;border: 1px dotted blue">&lt;script language="javascript" src="http://<%= @user.username %>izishirt.izishirt.ca/my/blog_panel?limit=3"&gt;&lt;/script&gt;</code>
+
+<p><%= I18n.t(:send_mail_affiliate_money_11, :locale => Language.find(@user.language_id).shortname) %></p>
+<code style="padding:7px;border: 1px dotted blue">&lt;iframe src='http://izishirt.izishirt.ca/my/iframe_flash_shop' width='660' height='520' frameborder='0' scrolling='no'&gt;&lt;/iframe&gt;</code>
+<br /><br />
+<p><%= I18n.t(:send_mail_affiliate_money_12, :locale => Language.find(@user.language_id).shortname) %><br />
+<a href="http://www.izishirt.ca/myizishirt/promote">http://www.izishirt.ca/myizishirt/promote</a></p>
+
+<p><%= I18n.t(:send_mail_affiliate_money_13, :locale => Language.find(@user.language_id).shortname) %> <a href="mailto:<%= I18n.t(:contact_us_email_boutiques, :locale => Language.find(@user.language_id).shortname) %>"><%= I18n.t(:contact_us_email_boutiques, :locale => Language.find(@user.language_id).shortname) %></a><p>
+
+<p><%= I18n.t(:send_mail_affiliate_money_14, :locale => Language.find(@user.language_id).shortname) %><br /><%= I18n.t(:send_mail_affiliate_money_15, :locale => Language.find(@user.language_id).shortname) %></p>
+<a href="http://www.izishirt.ca"><img style="border-width: 0px" src="http://www.izishirt.ca/images/email_sig.jpeg" alt="izishirt.ca" /></a>

@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Izishirt Administration Center: <%= controller.action_name %></title>
+    <%= stylesheet_link_tag 'admin' %>
+    <!--[if lt IE 7]>
+<%= stylesheet_link_tag 'ie6_fix_admin' %>
+    <![endif]-->
+    <%= javascript_include_tag 'ckeditor.js' %>
+    <%= javascript_include_tag 'ckeditor_sample.js' %>
+    <%= javascript_include_tag 'colorpicker.js', 'izishirt.js', 'styleswitch.js', :defaults  %>
+    <%= javascript_include_tag "jquery-1.4.2.min.js" %>
+    <%= javascript_include_tag 'admin.js' %>
+    
+    
+
+    <link href="/stylesheets/blue.css" rel="stylesheet" title="none" type="text/css" />
+    <link rel="alternate stylesheet" type="text/css" media="screen" title="orange-theme" href="/stylesheets/orange.css" />
+    <link rel="alternate stylesheet" type="text/css" media="screen" title="red-theme" href="/stylesheets/red.css" />
+    <link rel="alternate stylesheet" type="text/css" media="screen" title="green-theme" href="/stylesheets/green.css" />
+
+  </head>
+  <body onload="javascript:applyStyleSheet();">
+    <!-- header -->
+<!-- 
+<div class="top">
+  <div id="header">
+    <a href="/admin/home" title="Izishirt" id="logo"></a>
+  </div>
+</div>
+-->
+
+    <!-- admin menu -->
+    <div class="adminholder">
+      <div class="innerholder clearfix" >
+        <div id="left">
+          <div class="leftbar">
+
+
+            <div id="skin" align="center">
+
+            </div>
+
+
+
+            <div class="sidebar_admin crndark">
+              <div class="rtl"></div>
+              <div class="rtr"></div>
+              <h2><span>Admin</span></h2>
+
+              <div class="sidemodule">
+                <div class="adminmenu">
+			    <a href="/admin/home">Home</a>
+
+
+			  <a href="/admin/order/list/"><%= t(:admin_menu_orders) %></a>
+				  <div class="submenu" style="display:<%= if_controller("admin/order", 'block', 'none') %>">
+				    <a href="/admin/order/list/<%= SHIPPING_TYPE_TO_CHECK %>"><%= t(:admin_menu_orders_to_check) %></a>
+				    <a href="/admin/order/list/10"><%= t(:admin_menu_orders_awaiting_payment) %></a>
+				    <a href="/admin/order/list/0"><%= t(:admin_menu_orders_pending) %></a>
+				    <a href="/admin/order/list/4"><%= t(:admin_menu_orders_awaiting_stock) %></a>
+				    <a href="/admin/order/list/11"><%= t(:admin_menu_orders_awaiting_artworks) %></a>
+				    <a href="/admin/order/list/<%= SHIPPING_TYPE_MOCK_UP %>"><%= t(:admin_menu_orders_mock_up) %></a>
+
+				    <a href="/admin/order/list/3"><%= t(:admin_menu_orders_batching) %></a>
+				    <a href="/admin/order/list/1"><%= t(:admin_menu_orders_processing) %></a>
+				    <a href="/admin/order/list/<%= SHIPPING_TYPE_PACKAGING %>"><%= t(:admin_menu_orders_packaging) %></a>
+				    <a href="/admin/order/list/<%= SHIPPING_TYPE_PARTIALLY_SHIPPED %>"><%= t(:admin_menu_orders_partially_shipped) %></a>
+				    <a href="/admin/order/list/2"><%= t(:admin_menu_orders_completed) %></a>
+				    <a href="/admin/order/list/<%= SHIPPING_TYPE_CANCELED %>"><%= t(:admin_menu_orders_canceled) %></a>
+				    <a href="/admin/order/list/<%= SHIPPING_TYPE_CANCELED_COUPON %>"><%= t(:admin_menu_orders_canceled_coupon) %></a>
+				    <a href="/admin/order/list/<%= SHIPPING_TYPE_ON_HOLD %>"><%= t(:admin_menu_orders_on_hold) %></a>
+				    <a href="/admin/order/list/<%= SHIPPING_TYPE_BACK_ORDER %>"><%= t(:admin_menu_orders_back_order) %></a>
+				    <a href="/admin/order/list/<%= SHIPPING_TYPE_ARTWORK_ON_HOLD %>"><%= t(:admin_menu_orders_artwork_on_hold) %></a>
+				    <a href="/admin/order/list/<%= SHIPPING_TYPE_PRINTED %>"><%= t(:admin_menu_orders_printed) %></a>
+				</div>
+
+           <% if session[:user_id] == 70 %>
+
+
+           <% if User.verify_administrator(session[:user_id])  %>
+				  <a href="/admin/price/models"><%= t(:admin_menu_prices) %></a>
+				  <div class="submenu" id="admin_price" style="display:<%= if_controller('admin/price', 'block', 'none') %>">
+				    <a href="/admin/price/models">Model Prices</a>
+				    <a href="/admin/price/discounts">Bulk Discounts</a>
+				  </div>
+			<% end %>
+
+
+			  <a href="/admin/image/list/1"><%= t(:admin_menu_image) %></a>
+				  <div class="submenu" style="display:<%= if_controller("admin/image", 'block', 'none') %>">
+				    <a href="/admin/image/new"><%= t(:admin_add) %></a>
+				</div>
+
+			    <a href="/admin/color/list/3"><%= t(:admin_menu_color) %></a>
+
+			  <a href="/admin/category/list/2"><%= t(:admin_menu_category) %></a>
+				  <div class="submenu" style="display:<%= if_controller("admin/category", 'block', 'none') %>">
+				    <a href="/admin/category/list/2"><%= t(:admin_menu_category_model) %></a>
+				    <a href="/admin/category/list/3"><%= t(:admin_menu_category_image) %></a>
+				    <a href="/admin/category/list/4">Brands</a>
+				</div>
+
+			  <a href="/admin/user/list"><%= t(:admin_menu_user) %></a>
+				  <div class="submenu" style="display:<%= if_controller("admin/user", 'block', 'none') %>">
+				    <a href="/admin/user/list/1"><%= t(:admin_menu_user_regular) %></a>
+				    <a href="/admin/user/list/2"><%= t(:admin_menu_user_vendor) %></a>
+				    <a href="/admin/user/list/3"><%= t(:admin_menu_user_staff) %></a>
+				    <a href="/admin/user/list/4"><%= t(:admin_menu_user_admin) %></a>
+				</div>
+
+			  <a href="/admin/model/list">Models</a>
+				  <div class="submenu" style="display:<%= if_controller("admin/model", 'block', 'none') %>">
+				    <a href="/admin/model/default_model_sizes">Default Model Sizes</a>
+				</div>
+
+
+                <% if User.verify_administrator(session[:user_id]) %>
+			    <a href="/admin/homepage/website_banners">Homepage</a>
+				  <div class="submenu" style="display:<%= if_controller("admin/homepage", 'block', 'none') %>">
+					<!--
+				      <a href="/admin/homepage/">Banners</a>
+					-->
+				      <a href="/admin/homepage/website_banners">Website Banners</a>
+				      <!--<a href="/admin/homepage/categories">Categories</a>-->
+                                      <a href="/admin/homepage/homepage_images">Homepage Images</a>
+				</div>
+
+
+
+			  <% end %>
+                      <% end %>
+
+                </div>
+
+              </div>
+              <div class="clear nohgh">&nbsp;</div>
+              <div class="rbtm">
+                <div class="rbr"></div>
+                <div class="rbl"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="innerContent" >
+          <div class="admintable">
+		
+
+
+            <p style="color: green">
+		<%= flash[:notice] %></p>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

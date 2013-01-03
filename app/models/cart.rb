@@ -1,0 +1,1090 @@
+#Extends cartbase to get function defined in add_country_tax lib
+class Cart < CartBase
+  attr_reader :items, :currency
+  attr_accessor :guest_email, :guest_wants_newsletter, :currency, :rebate, :user_credit, 
+                :left_over_credit_for_shipping, :final_credit_balance, :code, :billingaddress, :shippingaddress, 
+                :sameaddress, :shipping_type, :order_id, :custom_email_client, :bulk_order_id, :comments, 
+                :pickup_address, :country
+  
+  def initialize
+    @items = []
+    @rebate = 0.0
+    @user_credit = 0.0
+    @left_over_credit_for_shipping = 0.0
+    @final_credit_balance = 0.0
+    @shipping_type=SHIPPING_BASIC
+    @comments = ""
+    @guest_email = ""
+    @guest_wants_newsletter = true
+    @sameaddress = "true"
+  end
+
+	def empty?
+		begin
+			return @items.length == 0
+		rescue
+		end
+
+		return true
+	end
+  
+  def get_country
+    billingaddress ? @billingaddress.country.shortname : @country
+  end
+
+  def get_country_shipping
+    @shippingaddress ? @shippingaddress.country.shortname : @country
+  end
+
+  def get_province
+	begin
+	    @shippingaddress ? @shippingaddress.province.code : @province
+	rescue
+		return ""
+	end
+  end
+
+  def get_town_shipping
+	begin
+	    return @shippingaddress ? @shippingaddress.town : ""
+	rescue
+		return ""
+	end
+  end
+
+  def get_pickup_store
+	begin
+		return PickUpStore.find(@pickup_address)
+	rescue
+	end
+
+	return nil
+  end
+
+  def get_zip_shipping
+	begin
+	    return @shippingaddress ? @shippingaddress.zip : ""
+	rescue
+		return ""
+	end
+  end
+
+  def get_address1_shipping
+	begin
+	    return @shippingaddress ? @shippingaddress.address1 : ""
+	rescue
+		return ""
+	end
+  end
+
+  def get_address2_shipping
+	begin
+	    return @shippingaddress ? @shippingaddress.address2 : ""
+	rescue
+		return ""
+	end
+  end
+  
+  def get_currency
+
+	if ! @billingaddress || ! @billingaddress.country
+		return "CAD"
+	end
+	
+    return "EUR" if @billingaddress.country.is_europe && @billingaddress.country.shortname != "GB"
+
+    case @billingaddress.country.shortname
+      when 'CA' 
+        return 'CAD'
+      when 'AU' 
+        return 'AUD'
+      when 'US' 
+        return 'USD'
+      when 'EU'
+        return 'EUR'
+      when 'MX'
+        return 'MXN'
+      when 'ES'
+        return 'EUR'
+      when 'BR'
+        return 'BRL'
+      # when 'RE'
+      #  return 'EUR'
+      # when 'GP'
+      #  return 'EUR'
+      # when 'MQ'
+      #  return 'EUR'
+      # when 'GY'
+      #  return 'EUR'
+      when 'GB'
+        return 'GBP'
+      when 'FR'
+        return 'EUR'
+      when 'BE'
+        return 'EUR'
+      when 'CH'
+        return 'CHF'
+      when 'IN'
+        return 'USD'
+      else 
+        return 'CAD'
+    end
+  end
+
+  def contains_item_with_promo(promo_type)
+    @items.each do |item|
+      return true if item.product.promo_type == promo_type
+    end
+    return false
+  end
+
+  def find_by_checksum(checksum)
+    @items.each do |item|
+      return item.product if item.product.checksum == checksum
+    end
+    return nil 
+  end
+  
+  def delete_by_checksum(checksum)
+    @items = @items.reject {|item| item.product.checksum == checksum}
+  end
+
+  def verify_products()
+    @items.each do |item|
+
+      removed = false
+
+      begin
+        p = Product.find(item.product.product_id)
+
+        removed = p && p.product_removed
+      rescue
+      end
+
+      if removed
+        @items = self.delete_by_checksum(item.product.checksum)
+      end
+    end
+  end
+
+  def is_24_hours_order()
+	@items.each do |item|
+
+#		if item.product.coupon
+#			next
+#		end
+
+		begin
+			if ! item.product.model.is_express_shipping
+				return false
+			end
+		rescue
+			return false
+		end
+	end
+
+	return true
+end
+
+  def contains_waldecals?()
+    return false
+	@items.each do |item|
+
+
+		begin
+			
+			cat_stickers = Category.find(:first, :conditions => ["EXISTS(SELECT * FROM localized_categories l WHERE l.name = 'Wall Decals' AND l.category_id = categories.id)"])
+			cat_ids_stickers = cat_stickers.sub_categories.map{ |c| c.id } | [cat_stickers.id]
+
+			if item.product.model.model_category == "store" && cat_ids_stickers.include?(item.product.model.product_category_id)
+				return true
+			end
+		rescue
+		end
+	end
+
+	return false
+end
+
+  def custom_shirts_order?()
+	@items.each do |item|
+
+#		if item.product.coupon
+#			next
+#		end
+
+		# begin
+
+			Rails.logger.error("ASDFASDFASDF #{item.product.nb_prints_per_shirt}")
+			
+			if item.product.nb_prints_per_shirt > 0
+				return true
+			end
+		# rescue
+		# end
+	end
+
+	return false
+end
+
+	def contains_slow_walldecals?()
+    return false
+		@items.each do |item|
+
+			
+
+			begin
+				
+				cat_stickers = Category.find(:first, :conditions => ["EXISTS(SELECT * FROM localized_categories l WHERE l.name = 'Wall Decals' AND l.category_id = categories.id)"])
+				cat_ids_stickers = cat_stickers.sub_categories.map{ |c| c.id } | [cat_stickers.id]
+
+				if item.product.model.model_category == "store" && cat_ids_stickers.include?(item.product.model.product_category_id) && ! item.product.model.fast_shipping
+					return true
+				end
+			rescue
+			end
+		end
+
+		return false
+	end
+
+  
+  # Add an item to the cart or increment quantity if needed.
+  def add_product(product, qty = 1, blank = false)
+
+    current_item = @items.find {|item| item.product == product}
+    if current_item
+      current_item.increment_quantity
+    else
+      @items << CartItem.new(self, product, qty, blank)
+    end
+  end
+
+  def total_qty
+    qty = 0
+    @items.each {|item| qty += item.quantity}
+    qty
+  end
+
+  def total_qty_for_rebate
+    return 0 if affiliate_without_discounts
+    qty = 0
+    @items.each {|item|
+
+	is_custom = true
+	
+	begin
+		is_custom = (item.blank == false && item.product.model.model_category.match("custom"))
+	rescue
+		is_custom = true
+	end
+
+	if is_custom
+	      qty += item.quantity 
+	end
+    }
+    qty
+  end
+  
+  def printed_qty
+    qty = 0
+    @items.select{|item| item.blank == false  }.each {|item| qty += item.quantity}
+    qty
+  end
+
+  def cheapest_custom_product_price
+    min = @items[0].product.price
+    for item in @items
+      next if item.blank == true
+      if item.product.price < min
+        min = item.product.price
+      end
+    end
+    return min
+  end
+  
+  def blank_qty
+    qty = 0
+    @items.select{|item| item.blank == true  }.each {|item| qty += item.quantity}
+    qty
+  end
+
+	def blank_order?
+		@items.each do |item|
+			begin
+				if item.product.model.model_category == "store"
+					return false
+				end
+			rescue
+			end
+
+			if item.product.contains_prints
+				return false
+			end
+		end
+
+		return true
+	end
+
+	def coupon_order?
+    return false
+#		@items.each do |item|
+#			if ! item.product.coupon
+#				return false
+#			end
+#		end
+#
+#		return true
+	end
+    
+
+  def printed_subtotal(add_tax=true)
+    result = 0.0
+    @items.each {|item| result += item.total_price(add_tax)*currency_rate if item.blank == false}
+    result
+  end
+
+  def blank_subtotal(add_tax=true)
+    result = 0.0
+    @items.each {|item| result += item.total_price(add_tax)*currency_rate if item.blank == true}
+    result
+  end
+  
+  #returns items in cart with same model as item past in
+  def similar_items(checksum)
+    model_id = find_by_checksum(checksum).model.id
+    similar = []
+    @items.each{ |item| similar << item if item.product.model.id == model_id }
+    return similar
+  end
+
+  def model_quantity_hash
+    #Get model quantities as a hash
+    #hash will be model_id => {:qty => qty, :price => price}
+    model_quantities = {}
+    @items.each{ |item| 
+
+	if item.product.coupon
+		next
+	end
+
+      model_quantity = { 
+        item.product.model.id => {:qty => item.quantity, :price => item.total_price(false)*currency_rate} 
+      }
+      model_quantities.update(model_quantity) { |key, old, new| 
+        {:qty => old[:qty]+new[:qty], :price => old[:price]+new[:price] } 
+      }
+    }
+    return model_quantities
+    #EO Get model quantity hash
+  end
+
+  def calc_rebate(percent_minus=0)  #quantity_rebate
+    return 0 if affiliate_without_discounts
+    current_total = 0
+    
+    if ApplicationSetting.use_per_model_discount?
+      model_quantity_hash.each do |model_id, value|
+        percent_off = BulkDiscount.percentage_by_qty(value[:qty], model_id)
+        percent_off = percent_off - percent_minus > 0 ? percent_off - percent_minus : 0
+        current_total += value[:price] * percent_off
+      end
+    else
+      percent_off = BulkDiscount.percentage_by_qty(total_qty_for_rebate)
+      percent_off = percent_off - percent_minus > 0 ? percent_off - percent_minus : 0
+      current_total += printed_subtotal(false) * percent_off
+    end
+
+    return current_total
+  end  
+
+  def contains_shop2_items?
+
+    begin
+      @items.each do |item|
+        if item.is_shop2_item?
+          return true
+        end
+      end
+    rescue
+    end
+
+    return false
+  end
+  
+  def total_discount_items
+
+    begin
+	tot_discount=0
+      @items.each do |item|
+        
+		
+		######################
+	  @modelinfos  = Model.find(item.product.model.id)
+	  
+	if @modelinfos.nodiscount== true
+		item.discount_value=0
+	else
+	
+		@bulk_discount_req = BulkDiscount.find(:last, :conditions => ["is_default = ? and start <= ?", true, item.quantity], :order => :start)
+		
+		if @bulk_discount_req.nil?
+        @bulk_discount =0
+		else 
+		@bulk_discount =@bulk_discount_req.percentage / 100.0
+		end
+		
+		item.discount_value=@bulk_discount
+		
+	end
+	######################
+		tot_discount_item = item.total_price*item.discount_value
+		tot_discount = tot_discount.to_f + tot_discount_item.to_f
+      end
+    rescue
+    end
+
+    return tot_discount
+  end
+
+	def grand_total_rebate
+		return subtotal_rebate + shipping_rebate(shipping)
+	end
+
+  def _total_rebate
+    rebate = 0.0
+    percent_minus = 0
+
+    if contains_shop2_items? && ! can_by_pass_shop2_stuff_check?
+      percent_minus = 0.15
+    end
+
+    if percent_minus > 0 || calc_rebate > @rebate
+      rebate += (calc_rebate(percent_minus) > printed_subtotal(false)) ? printed_subtotal(false) : calc_rebate(percent_minus)
+
+      if the_coupon && the_coupon.currency_off > 0
+        rebate += (the_coupon.currency_off > subtotal(true)) ? subtotal(true) : the_coupon.currency_off
+      end
+    else
+      rebate += (@rebate > subtotal(true)) ? subtotal(true) : @rebate
+    end
+    
+    rebate += @user_credit
+    @left_over_credit_for_shipping = rebate > subtotal(true) ? rebate - subtotal(true) : 0
+    rebate = subtotal(true) if rebate > subtotal(true)
+    return rebate
+  end
+  
+  def total_rebate(with_limitation = true)
+
+	price1 = 0.0
+
+	if the_coupon
+
+		c = the_coupon
+
+		# should sometimes considerates shipping.... TODO
+
+    cheapest_price = cheapest_custom_product_price
+		if c.after_n_qty_perc > 0 && qty_for_qty_rebate >= c.after_n_qty_perc
+			price1 = cheapest_price * (c.after_n_qty_perc_value.to_f / 100.0)
+		elsif c.after_n_qty_dollar > 0 && qty_for_qty_rebate >= c.after_n_qty_dollar
+			# price1 = [subtotal, c.after_n_qty_dollar_value].min
+      price1 = c.after_n_qty_dollar_value
+      price1 = cheapest_price if c.after_n_qty_dollar_value > cheapest_price
+      Rails.logger.error("cheap : #{cheapest_price}, c.after_n_qty_dollar_value: #{c.after_n_qty_dollar_value}")
+
+
+		elsif c.after_n_dollars_perc > 0 && printed_subtotal(false) >= c.after_n_dollars_perc
+			price1 = printed_subtotal(false) * (c.after_n_dollars_perc_value.to_f / 100.0)
+		elsif c.after_n_dollars_dollar > 0 && printed_subtotal(false) >= c.after_n_dollars_dollar
+			# price1 = [subtotal, c.after_n_dollars_dollar_value].min
+			tmp_price1 = [c.after_n_dollars_dollar_value]
+
+			if with_limitation
+				tmp_price1 << printed_subtotal(false)
+			end
+
+			price1 = tmp_price1.min
+		end
+	end
+
+	price2 = _total_rebate
+
+
+  price3 = 0
+  if apply_coupon_to_entire_price && the_coupon.currency_off > 0
+			curr_off = the_coupon.currency_off
+
+			if curr_off > subtotal(true)
+				price3 = subtotal(true)
+			else
+				price3 = curr_off
+			end
+	end
+    price4 = total_discount_items
+	return [price1, price2, price3, price4].max
+  end
+
+	def _subtotal_rebate
+
+		if apply_coupon_to_entire_price && the_coupon.currency_off > 0
+			curr_off = the_coupon.currency_off
+			
+			if curr_off > subtotal(true)
+				return subtotal(true)
+			else
+				return curr_off
+			end		
+
+		end
+		
+		return total_rebate
+	end
+
+	def qty_for_qty_rebate
+		# todo : check the damn models.
+
+		c = the_coupon
+
+		if c && c.models.length == 0
+			return printed_qty
+		else
+
+			qty = 0
+
+			@items.each do |item|
+        next if item.blank == true || item.product.coupon
+				c.models.each do |m|
+					if m.id == item.product.model.id
+						qty += item.product.quantity
+					end
+				end
+			end
+
+			return qty
+		end
+	end
+
+	def subtotal_rebate
+		price = _subtotal_rebate
+
+		return price
+	end
+
+	# SUBTOTAL WITH REBATE........
+  def total
+    (subtotal(true) - subtotal_rebate <= 0) ? 0 : subtotal(true) - subtotal_rebate
+  end
+  
+  def taxes
+    begin
+      tax = @billingaddress.province.taxe
+	  tax_tvp = @billingaddress.province.taxe
+    rescue
+      tax = 0.0
+	  tax_tvp = 0.0
+    end
+
+	p_ship = shipping
+
+    (total + (p_ship - shipping_rebate(p_ship))) * tax / 100
+  end
+  
+  def taxes_canada
+    taxes_cart = Array.new
+	#taxes_val = Array.new {}
+	p_ship = shipping
+	#taxes_cart[0]=["no taxes",0.0]
+	#taxes_val[1]=0.0
+	if  @billingaddress.country.id !=1
+	
+		taxes_cart[0]=["No taxe", 0.0]
+		return taxes_cart
+	
+	end
+	if @billingaddress.province.id==4 ||  @billingaddress.province.id==11 ||  @billingaddress.province.id==12 ||  @billingaddress.province.id==13
+	
+		val= (total + (p_ship - shipping_rebate(p_ship))) * @billingaddress.country.tax.to_f
+		taxes_cart[0]=["TPS",val]
+		return taxes_cart
+		
+	end
+	if  @billingaddress.province.id==2 ||  @billingaddress.province.id==7 ||  @billingaddress.province.id==10 ||  @billingaddress.province.id==8 ||  @billingaddress.province.id==5
+	
+		val= (total + (p_ship - shipping_rebate(p_ship))) * @billingaddress.province.taxe.to_f / 100
+		taxes_cart[0]=["TVH", val]
+		return taxes_cart
+		
+	end
+	if  @billingaddress.province.id==6
+	
+		val1= (total + (p_ship - shipping_rebate(p_ship))) * @billingaddress.country.tax.to_f
+		taxes_cart[0]=["TPS",val1]
+		val2= (total + (p_ship - shipping_rebate(p_ship))) * @billingaddress.province.taxe.to_f / 100
+		taxes_cart[1]=["TVD",val2]
+		return taxes_cart
+		
+	end
+	if @billingaddress.province.id==3
+	
+		val1= (total + (p_ship - shipping_rebate(p_ship))) * @billingaddress.country.tax.to_f
+		taxes_cart[0]=["TPS", val1]
+		val2= (total + (p_ship - shipping_rebate(p_ship))) * @billingaddress.province.taxe.to_f / 100
+		taxes_cart[1]=["TVP", val2]
+		return taxes_cart
+		
+	end
+	if @billingaddress.province.id==9
+	
+		val1= (total + (p_ship - shipping_rebate(p_ship))) * @billingaddress.country.tax.to_f
+		taxes_cart[0]=["TPS", val1]
+		val2= (total + (p_ship - shipping_rebate(p_ship)) + val1.to_f) * @billingaddress.province.taxe.to_f / 100
+		taxes_cart[1]=["TVP", val2]
+		return taxes_cart
+		
+	end
+	if @billingaddress.province.id.to_i == 1
+	
+		val1= (total + (p_ship - shipping_rebate(p_ship))) * @billingaddress.country.tax.to_f
+		taxes_cart[0]=["TPS",val1]
+		val2= (total + (p_ship - shipping_rebate(p_ship)) + val1.to_f) * @billingaddress.province.taxe / 100
+		taxes_cart[1]=["TVQ",val2]
+		return taxes_cart
+		
+	end
+	 
+		taxes_cart[0]=["No taxe", 0.0]
+		return taxes_cart
+		
+  end
+
+
+  def country_taxes
+    begin
+      tmp_country = @country == "EU" ? "fr" : @country
+      tax = @billingaddress ? @billingaddress.country.tax : Country.find_by_shortname(tmp_country).tax
+      return (total + shipping) * tax
+    rescue
+      return 0
+    end
+  end
+
+  def tax_abreviation(lang)
+    tmp_country = @country == "EU" ? "fr" : @country
+    @billingaddress ? @billingaddress.country.local_tax_abreviation(lang) : Country.find_by_shortname(tmp_country).local_tax_abreviation(lang)
+  end
+  
+#  def get_shipping_price(type=@shipping_type)
+#  	type.to_i == SHIPPING_BASIC && total > MIN_MONEY_FOR_FREE_SHIPPING  && (country == "US" || country == "CA") ? 0.0 : SHIPPING_PRICES[type.to_i][order_country].to_f
+#  end
+  
+  def get_shipping_price_with_country(country, type=@shipping_type)
+    return 0.0 if [SHIPPING_BASIC, SHIPPING_PICKUP].include?(type.to_i) && printed_subtotal(false) > MIN_MONEY_FOR_FREE_SHIPPING && (country.to_s == "US" || country.to_s == "CA" || country.to_s == "FR")
+    if type.to_i == SHIPPING_EXPRESS && total*0.3 > SHIPPING_PRICES[type.to_i][country].to_f
+      return total*0.3
+    elsif type.to_i == SHIPPING_RUSH_PICKUP && total*0.2 > SHIPPING_PRICES[type.to_i][country].to_f
+      return total*0.2
+    end
+    return SHIPPING_PRICES[type.to_i][country].to_f
+  end
+	
+  def set_shipping_type(ship_type)
+    @shipping_type = ship_type
+  end
+
+	def shipping_rebate(shipping_price)
+
+		if apply_coupon_to_entire_price
+			# ok use the coupon also for the damnnnnnnnn shipping.
+
+      curr_to_use = 0
+			curr_off = total_rebate(false)
+
+      if the_coupon && the_coupon.currency_off > 0
+            curr_off = the_coupon.currency_off
+
+            if curr_off > subtotal(true)
+              curr_to_use = curr_off - subtotal(true)
+            else
+              curr_to_use = 0
+            end
+      elsif curr_off > subtotal
+				curr_to_use = curr_off - subtotal
+			else
+				curr_to_use = 0.0
+			end
+
+			if curr_to_use < 0
+				curr_to_use = 0.0
+			end
+
+			if curr_to_use > shipping_price 
+				return shipping_price
+			else
+				return curr_to_use
+			end
+    elsif @left_over_credit_for_shipping > 0
+      if @left_over_credit_for_shipping > shipping_price 
+        ship_rebate = shipping_price
+        @final_credit_balance = @left_over_credit_for_shipping - shipping_price
+      else
+        ship_rebate = @left_over_credit_for_shipping
+        @final_credit_balance = 0
+      end
+      return ship_rebate
+		end
+
+		return 0.0
+	end
+
+	def calculate_ups_price(type, country, province_code, zip)
+
+		# "01", "UPS Express",
+		# "02", "UPS ExpeditedSM Shipments",
+		# "07", "UPS Worldwide ExpressSM",
+		# "08", "UPS Worldwide ExpeditedSM",
+		# "11", "UPS Standard",
+		# "12", "UPS Three-Day Select",
+		# "13", "UPS Saver SM",
+		# "14", "UPS Express Early A.M. SM",
+		# "54", "UPS Worldwide Express PlusSM",
+		# "65", "UPS Saver"
+
+		zip = zip.gsub(" ", "")
+
+		service_code = ""
+
+		if country == "CA"
+			if type == SHIPPING_BASIC
+				service_code = "11"
+			elsif type == SHIPPING_EXPRESS
+				service_code = "01"
+			end
+		elsif country == "US"
+			if type == SHIPPING_BASIC
+				service_code = "11"
+			elsif type == SHIPPING_EXPRESS
+				service_code = "07"
+			end
+		else
+			if type == SHIPPING_BASIC
+				service_code = "08"
+			elsif type == SHIPPING_EXPRESS
+				service_code = "07"
+			end
+		end
+
+		begin
+			ups = UpsShipConfirmRequest.new("17 asdf", "", "tititoto", zip, country, province_code, "mr tshirt", "1234567891", service_code, 1, total_qty.to_f * 0.5, "02", 15000)
+
+			# initialize(ship_to_address_line_1, ship_to_address_line_2, ship_to_city, ship_to_postal_code, ship_to_country_code, 
+			# 	ship_to_province_code, ship_to_name, phone_number, service_code, nb_packages, package_weight, packaging_type_code, order_id)
+
+			ups.execute
+
+			c = ups.total_cost + ups.total_cost*0.25
+
+			if ! c
+				return - 1.0
+			end
+
+			return c
+		rescue Exception => e
+			Rails.logger.error("ERRORRRRRRRRRRRRRRRRRRRRR -> #{e}")
+			return - 1.0
+		end
+		
+	end
+
+	def blank_extra_shipping(orig_country, qty)
+		qty_to_mult = qty
+
+		if orig_country == "CA"
+			paliers = [{:min => 25, :max => 1000000, :multiplier => 0.4}, {:min => 15, :max => 24, :multiplier => 1},
+				{:min => 5, :max => 14, :multiplier => 1.5}, {:min => 0, :max => 4, :multiplier => 2}]
+		else
+			paliers = [{:min => 25, :max => 1000000, :multiplier => 0.8}, {:min => 15, :max => 24, :multiplier => 2},
+				{:min => 5, :max => 14, :multiplier => 3}, {:min => 0, :max => 4, :multiplier => 4}]      
+		end
+
+		extra = 0.0
+
+		paliers.each do |palier|
+			if qty_to_mult >= palier[:min] && qty_to_mult <= palier[:max]
+				if palier[:min] > 0
+					nb_dans_palier = qty_to_mult - (palier[:min] - 1)
+				else
+					nb_dans_palier = qty_to_mult - (palier[:min])
+				end
+
+				cur_extra = nb_dans_palier.to_f * palier[:multiplier]
+				extra += cur_extra * currency_rate
+
+				qty_to_mult -= nb_dans_palier
+			end
+		end
+
+		return extra
+	end
+	  
+
+  def _shipping(type=@shipping_type, country = get_country_shipping, province_code = get_province, town = get_town_shipping, zip = get_zip_shipping, address1 = get_address1_shipping, address2 = get_address2_shipping, pickup_store = nil)
+
+	# tres beau.
+	if (pickup_store && pickup_store.address && (pickup_store.address.town.downcase.strip == "montreal" || pickup_store.address.town.downcase.strip == "montréal")) && type == SHIPPING_PICKUP
+		return 0.0
+	end
+
+	if coupon_order?
+		return 0.0
+	end
+
+	# UPS
+
+	# if blank_order? && (type == SHIPPING_BASIC || type == SHIPPING_EXPRESS)
+	#	p = calculate_ups_price(type, country, province_code, zip)
+	#
+	#	order_price = subtotal(true)
+	#
+	#
+	#	if order_price >= 100.00
+	#		p *= 1.5
+	#	else
+	#		p *= 2.0
+	#	end
+#
+#		return p - shipping_rebate(p)
+#	end
+
+
+	orig_country = country
+
+    if country.nil?
+      country = order_country
+    elsif country == "CA"
+      country = :CA
+    elsif country == "US"
+      country = :US
+    elsif country == "FR"
+      country = :FR
+    else
+      country = :INTL
+    end
+    return 0.0 if code == "bulk" || free_shipping
+
+    if type.to_i == SHIPPING_BASIC && free_standard_shipping
+	return 0.0
+    end
+
+	begin
+		country_obj = Country.find_by_shortname(orig_country)
+	rescue Exception
+		country_obj = nil
+	end
+
+  if country == :INTL && ((country_obj && country_obj.is_europe) || country_obj.shortname == "CH")
+    country = :EU
+  end
+
+
+	if (orig_country != "CA" && orig_country != "US" && (country_obj && ! country_obj.is_europe) && country_obj.shortname != "CH") || province_code == "HI"
+		p = 35.00 * currency_rate
+	else
+	    p = get_shipping_price_with_country(country,type) * currency_rate
+	end
+
+	#if blank_order? && (type == SHIPPING_BASIC || type == SHIPPING_EXPRESS)
+	#	extra = blank_extra_shipping(orig_country, total_qty)
+		
+		#p += extra
+	#end
+
+	if custom_shirts_order? && [SHIPPING_BASIC, SHIPPING_EXPRESS].include?(type) && p > 0
+		p = ((total_qty-1) * 1.0) * currency_rate + p
+	elsif p == 0 && custom_shirts_order? && [SHIPPING_BASIC, SHIPPING_EXPRESS].include?(type) && total_qty >= 3
+		p = blank_extra_shipping(orig_country, blank_qty)
+	end
+	return p - shipping_rebate(p)
+  end
+
+  def us_order?
+    begin
+      us = Country.find_by_shortname("US").name.downcase
+      country = shippingaddress.country ? shippingaddress.country.name.downcase : shippingaddress.country_name.downcase
+      country == us
+    rescue
+      return false
+    end
+  end
+
+  def shipping(type=@shipping_type, country = get_country_shipping, province_code = get_province, town = get_town_shipping, zip = get_zip_shipping, address1 = get_address1_shipping, address2 = get_address2_shipping, pickup_store = get_pickup_store)
+
+	main_cost = _shipping(type, country, province_code, town, zip, address1, address2, pickup_store)
+
+	return main_cost
+  end
+
+  def ca_order?
+    begin
+      ca = Country.find_by_shortname("CA").name.downcase
+      country = shippingaddress.country ? shippingaddress.country.name.downcase : shippingaddress.country_name.downcase
+      country == ca
+    rescue
+      return false
+    end
+  end
+
+  def fr_order?
+    begin
+      fr = Country.find_by_shortname("FR").name.downcase
+      country = shippingaddress.country ? shippingaddress.country.name.downcase : shippingaddress.country_name.downcase
+      country == fr
+    rescue
+      return false
+    end
+  end
+
+  def us_order?
+    begin
+      us = Country.find_by_shortname("US").name.downcase
+      country = shippingaddress.country ? shippingaddress.country.name.downcase : shippingaddress.country_name.downcase
+      country == us
+    rescue
+      return false
+    end
+  end
+  
+  def grandtotal
+
+	p_ship = shipping
+
+	return total + taxes + (p_ship - shipping_rebate(p_ship))
+  end
+
+  def self.calc_discount(qty,model_id)
+    return (BulkDiscount.percentage_by_qty(qty, model_id)*100).round
+  end
+
+  def affiliate_without_discounts
+    @items.each do |item|
+      return true if !item.product.apply_discounts?
+    end
+    return false
+  end
+
+  def get_next_discount_infos
+    return nil # Discounts are now model based so this may not work so well
+    return nil if affiliate_without_discounts
+    for i in 0..QUANTITY_REBATE_DIVIDERS.length-1 do
+      if QUANTITY_REBATE_DIVIDERS[i][:quantity] > total_qty
+        next_percent = QUANTITY_REBATE_DIVIDERS[i][:percent]
+        tshirt_countdown = QUANTITY_REBATE_DIVIDERS[i][:quantity] - total_qty
+        break
+      end
+    end
+    return next_percent,tshirt_countdown
+  end
+  
+  def apply_coupon_to_entire_price
+    return false
+    Coupon.exists?(:code => code) && Coupon.find_by_code(code).also_apply_to_shipping
+  end
+
+  def the_coupon
+    return false
+    #Coupon.exists?(:code => code) && Coupon.find_by_code(code)
+  end
+
+  def can_by_pass_shop2_stuff_check?
+    return false
+    Coupon.exists?(:code => code) && Coupon.find_by_code(code).apply_to_boutique_products
+  end
+
+
+  def has_regular_items
+
+    for i in items
+      if i.product.promo_type.length == 0
+        return true
+      end
+    end
+    return false
+  end
+
+	# WITHOUT REBATE.
+  def subtotal(add_tax=true)
+    result = 0.0
+    @items.each {|item| result += item.total_price(add_tax)*currency_rate} 
+    #@items.each {|item| result = item.price} 
+    result
+  end
+  
+  ########
+  private
+  ########
+  
+  def calc_shipping_multiplier()
+    ret=1
+    if(total_qty >= 40)
+      ret = (total_qty/ 40)
+      if(total_qty % 40)
+        ret = ret+1;
+      end
+    end	
+    return ret
+  end
+
+  def order_country
+    if ca_order?
+      :CA
+    elsif us_order?
+      :US
+    elsif fr_order?
+      :FR
+    else
+      :INTL
+    end
+  end
+
+  def currency_rate
+    begin
+      if ["EUR","USD", "GBP", "CAD", "AUD"].include?(@currency)
+        #rate = CurrencyExchange.currency_exchange(100,"CAD",@currency)/100.00
+        #People in Europe are going to pay more
+        1.0
+      elsif @currency == "CHF"
+        1.0
+      elsif @currency == "MXN"
+        12
+      elsif @currency == "BRL"
+        1.8
+      else
+        CurrencyExchange.currency_exchange(100,"CAD",@currency)/100.00
+      end
+    rescue
+      1.0
+    end
+  end
+
+
+
+  def free_shipping
+    return false
+    Coupon.exists?(:code => code) && Coupon.find_by_code(code).no_shipping && printed_qty > 0
+  end
+
+
+  def free_standard_shipping
+    return false
+    Coupon.exists?(:code => code) && Coupon.find_by_code(code).standard_shipping_free && printed_qty > 0
+  end
+
+
+  def free_taxes
+    return false
+    Coupon.exists?(:code => code) && Coupon.find_by_code(code).no_taxes
+  end
+  
+
+end

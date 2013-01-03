@@ -1,0 +1,15 @@
+
+if @bulk_discount  == 0
+  bulk_link = t(:get_a_discount)
+else
+  bulk_link = "<span class='greenLink'>" + t(:bulk_discount) + ": " + @bulk_discount.to_s + "%" + "</span>"
+end
+
+page.replace_html "bulk_discount", bulk_link
+page.replace_html "total", "#{number_to_currency_custom(@total_price)}"
+page.replace "in_stock", hidden_field_tag( "in_stock" , @in_stock.to_s)
+if @in_stock
+  page.hide "stock"
+else
+  page.show "stock"
+end

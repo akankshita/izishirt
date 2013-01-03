@@ -1,0 +1,18 @@
+<div id="page">
+  <h1>Image Search</h1>
+
+  <!--
+  <div class="adminsearch">
+  <% form_remote_tag :url => {:action => 'keyword_search'} do %>
+      <%= text_field_tag('keyword_search', params[:search], :class => 'input') %>
+      <%= image_submit_tag 'ico-search.gif', :class => 'button' %>
+  <% end %>
+  </div>
+  -->
+
+  <%= render :partial => "/admin/image/image_search", :locals => {:action => 'keyword_search', :action_type => nil, :category_id => nil, :country_ids => nil, :language_ids => nil, :update => "search_screen", :with_design_category => true} %>
+
+  <div id="search_screen">
+    <%= render :partial => "search_actions" %>
+  </div>
+</div>

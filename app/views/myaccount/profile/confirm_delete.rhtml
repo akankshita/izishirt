@@ -1,0 +1,29 @@
+<script type="text/javascript">
+  cbb.init();
+  Custom.init();
+  $j(document).ready(function(){
+    new AjaxUpload('browse', {
+      //action: '/myizishirt/profile/save_image/',
+      name: 'user_preview',
+      autoSubmit: true,
+      onSubmit: function(file, extension) {$('loading').show()},
+      onComplete: function(file, response) {
+        $('loading').hide();
+        $('user_preview').src = "/izishirtfiles/user_profile/<%=@user.id%>_profile."+file.split('.')[1]+"?"+Math.random()*100;
+      }
+    });
+  });
+</script>
+<div class="relative">
+  <label class="account_title"><%=t(:delete_my_account_box_title).upcase%></label>
+
+  <%= form_tag({:action => 'delete_confirm'}, {:id => 'delete_confirm' }) %>
+
+  <p></p>
+  <p align="center"><%= t(:delete_my_account_confirm) %></p>
+
+    <div class="longBlueButton">
+      <%= link_to t(:ok_btn), "javascript:$('delete_confirm').submit();" %>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,109 @@
+<script type="text/javascript">
+  cbb.init();
+</script>
+
+<div class="relative">
+
+  <%= link_to image_tag("/images/izishirt2009/loginClose.png"),
+      "#", :class => 'lbAction prodInfoClose', :rel => 'deactivate'%>
+  <label class="prodId">ID: <%=@product.id%></label>
+  <% if @show_product %>
+  <div class="preview">
+    <%= image_tag("/izishirtfiles/#{path_ordered_product(@product.created_on)}/#{@product.checksum}/#{@product.checksum}-front.jpg")%>
+    <%= image_tag("/izishirtfiles/#{path_ordered_product(@product.created_on)}/#{@product.checksum}/#{@product.checksum}-back.jpg")%>
+  </div>
+  <div class="title">
+    <img src="/images/izishirt2009/rightArrow.png" alt=">>" />
+    <label><%=t(:info)%></label>
+  </div>
+  <div class="info">
+    <div> 
+      <label><span class="bold"><%=t(:product_name)%>: </span></label>
+      <label><%=@product_name%></label>
+    </div>
+    <div> 
+      <label><span class="bold"><%=t(:ordered_on)%>: </span></label>
+      <label><%=@product.order.created_on.strftime("%d/%m/%y") %></label>
+    </div>
+    <div>
+      <label><span class="bold"><%=t(:quantity)%>: </span><%=@product.quantity%></label>
+      <label><span class="bold"><%=t(:size)%>: </span><%=@product.size.name%></label>
+      <label><span class="bold"><%=t(:color)%>: </span><%=@product.color.local_name(session[:language_id])%></label>
+      <label><span class="bold"><%=t(:model)%>: </span><%=@product.model.local_name(session[:language_id])%></label>
+    </div>
+    <% @product.ordered_zones.each do |zone| %>
+      <% zone.ordered_zone_artworks.each do |artwork| %>
+        <% if artwork.image %>
+          <div class="clear">
+            <label><span class="bold"><%=t(:design_id)%>: </span> <%=artwork.image.id%></label>
+            <label><span class="bold"><%=t(:design_name)%>: </span> <%=artwork.image.name%></label>
+            <label><span class="bold"><%=t(:print_location)%>: </span> <%=zone.zone_type == 1 ? "Front" : "Back"%></label>
+          </div>
+        <% elsif artwork.uploaded_image_id %>
+          <div class="clear">
+            <label><span class="bold"><%=t(:design_id)%>: </span> <%=t(:user_uploaded)%></label>
+            <label><span class="bold"><%=t(:design_name)%>: </span> <%=t(:none)%></label>
+            <label><span class="bold"><%=t(:print_location)%>: </span> <%=zone.zone_type == 1 ? t(:front) : t(:back_of_shirt)%></label>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <% else %>
+  <div class="horiz_space_20"></div>
+  <% end %>
+  <div class="title">
+    <img src="/images/izishirt2009/rightArrow.png" alt=">>" />
+    <label><%=t(:myizishirt_order_status)%></label>
+  </div>
+  <div class="status">
+    <label><%=@order_status_text%></label>
+    <div class="TextBox <%=@status_color%>">
+      <p><%=@order_status_explanation%></p>
+    </div>
+  </div>
+  <div class="title">
+    <img src="/images/izishirt2009/rightArrow.png" alt=">>" />
+    <label><%=t(:questions_about_your_order)%></label>
+  </div>
+  <div class="questions">
+    <div>
+      <label class="bold large">Canada</label>
+      <label class="red bold large">1 514 286 2446</label>
+    </div>
+    <div class="horiz_space_8"></div>
+    <div>
+      <label class="normal"><%=t(:if_you_are_calling_from_another_country)%> :</label>
+    </div>
+    <div>
+      <select>
+        <option>Canada 1 514 286 2446</option>
+      </select>
+    </div>
+    <div class="horiz_space_8"></div>
+    <div>
+      <label class="normal"><%=t(:your_country_is_not_listed_above)%>:</label>
+    </div>
+    <div class="horiz_space_8"></div>
+    <div class="grayBack">
+      <label class="normal width110 left"><%=t(:americas)%>:</label>
+      <label class="normal left">+1 305 749 2696</label>
+      <div class="clearfix_reg"></div>
+    </div>
+    <div>
+      <label class="normal width110 left"><%=t(:europe)%>:</label>
+      <label class="normal left">+44 203 355 6302</label>
+      <div class="clearfix_reg"></div>
+    </div>
+    <div class="grayBack">
+      <label class="normal width110 left"><%=t(:asia_and_pacific)%>:</label>
+      <label class="normal left">+852 367 89942</label>
+      <div class="clearfix_reg"></div>
+    </div>
+    <div class="horiz_space_8"></div>
+    <div>
+      <label class="bold large"><%=t(:or_email_us_at)%> </label>
+      <a href="mailto:contact@izishirt.com" class="redLink bold ">contact@izishirt.com</a>
+    </div>
+  </div>
+</div>

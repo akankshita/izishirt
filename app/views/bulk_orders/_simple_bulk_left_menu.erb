@@ -1,0 +1,29 @@
+<!-- Left Category List and Search -->
+<div class="redBox">
+  <div class="left redBoxLeft noPad noMarg noBord"></div>
+  <div class="left redBoxHeader noPad noMarg noBord leftBoxBulkHeader">
+      <label><%=t(:quality_guaranteed).mb_chars.upcase%></label>
+  </div>
+  <div class="left redBoxRight noPad noMarg noBord"></div>
+  
+  <div class="clear noPad noMarg boxContent leftBulkBox">
+    <div class="bulkContentTitle red"><h1><%=t(:be_your_brand).mb_chars.upcase%></h1></div>
+    <%=t(:be_your_brand_explanation)%>
+    <%=image_tag "izishirt2009/leftBulk1.jpg"%>
+
+    <% unless @confirmation %>
+      <div class="bulkContentTitle red marginTop28"><h1><%=t(:digital_printing).mb_chars.upcase%></h1></div>
+      <%=t(:digital_printing_explanation)%>
+      <div class="bulkContentTitle red marginTop28"><%=t(:products).mb_chars.upcase%></div>
+      <%=t(:products_explanation)%>
+      <%=image_tag "izishirt2009/leftBulk2.jpg", :class=>"bottomBulkLeftImg"%>
+    <% else %>
+
+    <% end %>
+  </div>
+  <div class="clear"></div>
+  <div class="left boxBottomLeft"></div>
+  <div class="left boxBottomMiddle leftBoxBottomBulk"></div>
+  <div class="left boxBottomRight"></div>
+</div>
+<!-- EO Category list and search -->

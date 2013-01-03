@@ -1,0 +1,28 @@
+
+<% form_tag({:action => "bulk_update"}, :id => "image_form") do %>
+<%= hidden_field_tag "find_condition", @search_criteria %>
+  <div class="listing-submenu">
+      <select id="apply_action" onchange="javascript:image_action()">
+        <option value="0">Apply Action</option>
+        <option value="set_to_active">Set Selected to Active</option>
+        <option value="set_to_inactive">Set Selected to Inactive</option>
+        <option value="make_private">Make private</option>
+	<option value="decline_for_copyright_infringement">Decline for copyright infringement</option>
+        <option value="decline_for_quality">Decline for quality</option>
+        <option value="remove_from_staff_pick">Remove from staff pick</option>
+      </select>
+      <select id="image_category" onchange="javascript:move_category();">
+        <option value="0">Move selected to</option>
+        <% for category in @categories %>
+          <%= display_category_select(category,3) %>
+        <% end %>
+      </select>
+      <a href="javascript:all()">All</a> |
+      <a href="javascript:none()">None</a>
+  </div>
+  <div id='listing'>
+    <%= render :partial => '/admin/image/keyword_listing'  %>
+
+  </div>
+  <div style="clear:both"></div>
+<% end %>

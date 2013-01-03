@@ -1,0 +1,107 @@
+<h1>Top search</h1>
+
+<script type="text/javascript">
+	function toggle_me(country_id, language_id)
+	{
+
+
+		<% 
+		@country_langs.each do |country_shortname, langs_id| 
+
+			country = Country.find_by_shortname(country_shortname)
+
+			langs_id.each do |lang_id|
+
+				language = Language.find(lang_id)
+
+		 %>
+				if (country_id == <%= country.id %> && language_id == <%= language.id %>)
+				{
+					document.getElementById("tabs_<%= country.id %>_<%= language.id %>").setAttribute("class", "tab_active");
+					document.getElementById("div_localized_<%= country.id %>_<%= language.id %>").style.display = "block";
+				}
+				else
+				{
+					document.getElementById("tabs_<%= country.id %>_<%= language.id %>").setAttribute("class", "tab_inactive");
+					document.getElementById("div_localized_<%= country.id %>_<%= language.id %>").style.display = "none";
+				}
+			<% end %>
+		<% end %>
+	}
+</script>
+
+<div>
+	<ul class="admintabs" style="display:block; width: 1100px;">
+	<% 
+
+	first_found = false
+
+	@country_langs.each do |country_shortname, langs_id| 
+
+		country = Country.find_by_shortname(country_shortname)
+
+		langs_id.each do |lang_id|
+
+			language = Language.find(lang_id)
+
+			%>
+			<li class="tab_<%= ((! first_found) ? "active" : "inactive") %>" id="tabs_<%= country.id %>_<%= language.id %>">
+				<a onclick="toggle_me(<%= country.id %>, <%= language.id %>); return false;" href="#">
+					<%= country.name %>-<%= language.name %>
+				</a>
+			</li>
+
+			<% 
+				if ! first_found
+					first_found = true
+				end 
+
+		end
+
+			%>
+		
+	<% end %>
+		
+	</ul>
+
+</div>
+
+<% i=0; 
+
+@country_langs.each do |country_shortname, langs_id| 
+
+	country = Country.find_by_shortname(country_shortname)
+
+	langs_id.each do |lang_id|
+
+		language = Language.find(lang_id)
+
+	%>
+	<% 
+
+		i += 1 
+
+	%>
+		<div id="div_localized_<%= country.id %>_<%= language.id %>" class="localized_tab_content clearfix" style="display:<%= (i==1) ? 'block' : 'none' %>; clear:both; width: 1100px;">
+
+			<% form_remote_tag(:update => "keywords_#{country.id}_#{language.id}", :url => {:action => 'add_top_search', :country_id => country.id, :language_id => language.id}) do %>
+
+				<div class="titleForm">
+					<label>Insert Top Search</label>
+				</div>
+				<div class="boxForm">
+					<%= select_tag "#{country.id}_#{language.id}[search_type_id]", options_for_select(@search_type_options) %> 
+					<%= text_field_tag "#{country.id}_#{language.id}[keyword]" %> 
+					<%= submit_tag "OK" %>
+				</div>
+			<% end %>
+
+			<div class="titleForm">
+				Keywords
+			</div>
+			<div class="boxForm" id="keywords_<%= country.id %>_<%= language.id %>">
+				<%= render :partial => "top_search_keywords", :locals => {:country => country, :language => language} %>
+			</div>
+		</div>
+	<% end %>
+<% end %>

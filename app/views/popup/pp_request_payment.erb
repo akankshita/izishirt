@@ -1,0 +1,52 @@
+<div id="pp_request_payment" style="width:300px; height: 236px; ">
+
+  <script language="javascript">
+
+    
+
+    function requestPayMe()
+    {
+      var email = $("email_payment").value;
+
+      if (email == "" || ! validate_email(email))
+      {
+        $("error_payment").innerHTML = "<%= t(:my_izishirt_2011_request_payment_error_mail) %>";
+
+        return false;
+      }
+
+      new Ajax.Request("/myizishirt/earning/pay_me?email=" + email,
+						{asynchronous:true, evalScripts:true, parameters:Form.serialize($("request_payment_form")), onComplete: function(request) {  }});
+
+      $j("#show_popup_step_2_payment").click();
+
+      return true;
+    }
+
+    $j(document).ready(function() {
+        $j("a.modalbox").fancybox({'autoDimensions' : false, 'width' : 330, 'height' : 266});
+      });
+  </script>
+
+  <form id="request_payment_form">
+
+    <h1><%=t(:request_payment)%></h1>
+
+    <p style="color:red;" id="error_payment">
+      &nbsp;
+    </p>
+
+    <p><%=t(:request_payment_text1)%></p>
+    <p>
+      <img src="/images/izishirt2011/paypal.jpg" width="65" align="absmiddle" height="18" alt="PayPal" />
+    </p>
+    <p><%=t(:paypal_email)%> 
+      <input id="email_payment" name="email" type="text" class="input_text" />
+    </p>
+    <div id="btn_request_payment">
+        <%= link_to "#{t(:request_payment)}!", {:controller => "/popup/pp_request_payment_step_2"}, :class => "button_request_payment", :onclick => "requestPayMe(); return false;" %>
+      <%= link_to "#{t(:request_payment)}!", {:controller => "/popup/pp_request_payment_step_2"}, :class => "modalbox", :style => "display:none;", :id => "show_popup_step_2_payment" %>
+    </div>
+  </form>
+</div>
+

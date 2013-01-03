@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= t(:manage_menu_title) %></title>
+    <link rel="stylesheet" href="/stylesheets/manage.css" type="text/css" />
+
+    <%= stylesheet_link_tag "izishirt2011.css" %>
+    <%= stylesheet_link_tag "jScrollPane.css" %>
+    <%= stylesheet_link_tag "flick/jquery-ui-1.7.2.custom.css" %>
+
+
+    <%= javascript_include_tag "prototype.js" %>
+    <%= javascript_include_tag "effects.js" %>
+    <%= javascript_include_tag "jquery-1.4.2.min.js" %>
+    <%= javascript_include_tag "jquery.fancybox-1.3.1.pack.js" %>
+    <%= javascript_include_tag "jquery-ui-1.7.2.custom.min.js" %>
+    <%= javascript_include_tag "jqueryslidemenu.js" %>
+
+    <%= javascript_include_tag "jquery.mousewheel.js" %>
+    <%= javascript_include_tag "jquery.em.js" %>
+    <%= javascript_include_tag "jScrollPane-1.2.3.min.js" %>
+    <%= javascript_include_tag "application2009.js" %>
+    <%= javascript_include_tag "izishirt_2011.js" %>
+
+    <%= stylesheet_link_tag "fancybox/jquery.fancybox-1.3.1.css" %>
+
+	<%= javascript_include_tag "jquery.accordion.js" %>
+  </head>
+  <body style="">
+    <div id="container">
+
+      <div class="centered">
+        <br />
+        <br />
+
+	<% if @manager.user_level.name == "Affiliate Manager" || @manager.username == "izishirt" || @artwork_member %>
+		<%= link_to t(:manage_menu_boutique), :action => "index" %> | <%= link_to t(:manage_menu_payments), :action => "payments" %> | 
+	<% end %>
+
+	<%= link_to t(:manage_menu_stats), :action => "stats" %>
+      </div>
+
+      <% if flash[:info] || flash[:error] %>
+        <span style="color:green">
+        <% if flash[:info] %>
+          <p><%= flash[:info] %></p>
+        <% end %>
+      </span>
+
+      <span style="color:red">
+        <% if flash[:error] %>
+          <p><%= flash[:error] %></p>
+        <% end %>
+      </span>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

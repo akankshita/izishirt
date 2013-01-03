@@ -1,0 +1,62 @@
+<p>Report of: <b><%= @shift.fullname %></b> (<%= @shift.username %>)<p>
+<p>Start time: <b><%= @shift.created_at %></b><p>
+<p>End time: <b><%= @shift.finished_at %></b><p>
+<p>Duration: <b><%= @shift.duration %> hours</b><p>
+<h2>Week: <%= @shift.user.shift_hours_done_week.round(2) %> hours</h2>
+
+
+<% if @shift.description && @shift.description != "" %>
+
+	<p><br /><b>Additional description: </b><br /><br />
+		<%= @shift.description.gsub("\n", "<br />") %>
+	<br /><br />
+	</p>
+<% end %>
+
+<% 
+
+history_shipping = @shift.shipped_infos
+
+nb_orders = 0
+nb_products = 0
+
+%>
+
+<% if history_shipping.length > 0 %>
+	<h3>Orders shipped</h3>
+
+	<table border="1">
+		<tr>
+			<th>Order</th>
+			<th>Products</th>
+		</tr>
+
+		<% history_shipping.each do |history| 
+			nb_orders += 1
+			nb_products += history.total_items
+		%>
+	
+			<tr>
+				<td><%= link_to("#{history.order.id}", :host => "www.izishirt.ca", :controller => "/admin/order", :action => "show", :id => history.order.id) %></td>
+				<td><%= history.total_items %></td>
+			</tr>
+		<% end %>
+
+		<tr>
+			<td>------</td>
+			<td>------</td>
+		</tr>
+
+		<tr>
+			<td><%= nb_orders %> orders</td>
+			<td><%= nb_products %> products</td>
+		</tr>
+
+	</table>
+<% end %>
+
+<p>
+<br />
+</p>
+
+Izishirt.com

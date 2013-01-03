@@ -1,0 +1,33 @@
+<br />
+<input type="hidden" name="search_term" value="<%= @search_term%>" />
+<input type="hidden" name="page" value="<%= params[:page] ? params[:page] : 1 %>" />
+<% for image in @images	%>
+  <div class="keyword_img_wrapper" id="wrapper_<%=image.id%>" 
+      onclick="javascript:image_toggle($('image_<%=image.id%>'))" 
+      onmouseover="javascript:image_over($('wrapper_<%=image.id%>'))" 
+      onmouseout="javascript:image_out($('wrapper_<%=image.id%>'))" >
+    <div class="keyword_checkbox_wrapper">
+    	<%= image.id%><br />
+      <input type="checkbox" id="image_<%= image.id%>" name="image[<%= image.id %>]"/>
+    </div>
+    <img src="<%= "#{@URL_ROOT}#{image.orig_image.url("png")}" %>" class="keyword_img" />
+    <div class="keyword_img_desc">
+      <p>Active: <%= image.active ? "Yes" : "No" %></p>
+      <p>Approved: <%= image.pending_approval == DESIGN_VALIDATION_STATE_APPROVED_ID ? "Yes" : "No" %></p>
+      <p>Sorting: <%= image.sorting_rate %></p>
+      <p>Date: <%= (image.created_on) ? image.created_on.to_date : "" %></p>
+    </div>
+    <div style="clear:both">
+      <p>Name: <%= truncate(image.name,25,"...") if image.name %></p>
+      <p>Category: <%= truncate(image.category.local_name(session[:language_id]),20,"...") if image.category %></p>
+    </div>
+  </div>
+<% end %>
+<br />
+<table cellspacing="0" cellpading="0" width="100%" style="padding-top:10px;">
+  <tr>
+    <td align="left">
+      <%= will_paginate(@images, :params => {:action => "keyword_search", :find_condition => @search_criteria}) %>
+    </td>
+  </tr>
+</table>

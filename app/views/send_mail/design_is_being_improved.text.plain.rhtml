@@ -1,0 +1,16 @@
+
+<%= I18n.t(:send_mail_design_validation_content1, :locale => Language.find(@user.language_id).shortname) %> <%= @image.user.firstname %>, <%= I18n.t(:send_mail_design_validation_content2, :locale => Language.find(@user.language_id).shortname) %> <%= @image.name %> <%= I18n.t(:send_mail_design_validation_content3, :locale => Language.find(@user.language_id).shortname) %>
+
+<%= I18n.t(:send_mail_design_is_being_improved_1, :locale => Language.find(@user.language_id).shortname) %>
+
+
+<% if @image.coment_admin != "" %>
+  <%= I18n.t(:send_mail_design_validation_content4, :locale => Language.find(@user.language_id).shortname) %>
+  <%= @image.coment_admin %>
+<% end %>
+
+
+
+	<%=I18n.t(:send_mail_content_izishirt_team, :locale => Language.find(@user.language_id).shortname)%>
+	IZISHIRT.com
+	<%=I18n.t(:contact_us_email_designs, :locale => Language.find(@user.language_id).shortname)%>

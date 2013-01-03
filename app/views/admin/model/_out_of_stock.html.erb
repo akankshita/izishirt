@@ -1,0 +1,57 @@
+<%= dhtml_calendar_includes %>
+
+<fieldset>
+  <legend>Out Of Stock</legend>
+  <table width="100%" border="0" cellspacing="3" cellpadding="0">
+    <tr>
+      <th width="130">Color</th>
+      <th width="130">Size</th>
+	  <th width="130">Expected date</th>
+      <th></th>
+    </tr>
+  </table>
+  <div style="height:200px;overflow-y:scroll;">
+    <table width="100%" border="0" cellspacing="3" cellpadding="0">
+      <% @mymodel.sorted_out_of_stocks(I18n.locale, session[:language_id]).each do |out_of_stock|%>
+        <tr>
+          <td width="130"><%= out_of_stock.color.local_name(session[:language_id]) %></td>
+          <td width="130"><%= out_of_stock.model_size.local_name(I18n.locale) %></td>
+		  <td width="130"><%= out_of_stock.expected_date %></td>
+          <td><%=link_to "Set to In Stock", :action => 'destroy_out_of_stock', :id => out_of_stock.id%></td>
+        </tr>    
+      <% end %>
+    </table>
+  </div>
+  <table width="100%" border="0" cellspacing="3" cellpadding="0">
+    <% form_for :out_of_stock, @out_of_stock, :url => { :action => "create_out_of_stock" }, :html => {:id => "out_of_stock_form"} do |f| %>
+      <%= f.hidden_field "model_id", :value => @mymodel.id %>
+      <tr valign="top">
+        <td width="150">
+          <%= f.select "color_id", @available_colors, {:multiple => true}, { :multiple => true }%>
+        </td>
+        <td width="150">
+          <%= select "out_of_stock", "model_size_id", @available_sizes,{}, {:multiple => true, :style => "width:150px;"}%>
+        </td>
+		<td width="170">
+			<%= calendar_box 'search', 'start',
+        { :class => 'date',
+          :field_title => 'Start',
+          :form_name => 'out_of_stock_form',
+          :button_title => 'Show calendar' },
+          { :firstDay => 1,
+            :range => [2000, 2020],
+            :step => 1,
+            :showOthers => true,
+            :cache => true }
+      	%>
+		</td>
+        <td>
+          <input type="submit" value="Add Out Of Stock" />
+        </td>
+      </tr>    
+    <% end %>
+  </table>
+  <div class="titleForm">&nbsp;</div>
+  <div class="boxForm">
+  </div>
+</fieldset>

@@ -1,0 +1,2 @@
+page.replace "image_#{@homepage_image.id}", image_tag(@homepage_image.image.orig_image.url("100"))
+page << "$j('.image_field_#{@homepage_image.id}').attr('value', '#{@homepage_image.image.id}');"

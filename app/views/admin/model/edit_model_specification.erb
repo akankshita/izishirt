@@ -1,0 +1,3 @@
+<%= render :partial => "preview_images" %>
+
+<%= render :partial => "box_model_specification", :locals => { :id => @model_specification.id, :action => "update_model_specification", :redirect => "/admin/model/edit_model_specification/#{params[:id]}"} %>

@@ -1,0 +1,71 @@
+<script type="text/javascript" src="/flash/swfobject.js"></script>
+<script type="text/javascript">
+<% if params[:onsite]!='true' %>
+    $j(document).ready( function () {
+      $j('#right_box_info').scrollFollow( {
+
+        offset: 60,
+        container: 'shopping_cart'
+
+      } );
+    } );
+<%end%>
+
+  function deleteCartItem(itemCheckSum){
+    if(confirm('<%= t(:confirm_delete_product, :locale => @checkout_locale) %>')){
+      new Ajax.Request('<%=url_for(:action=>:delete_cart_item)%>'+'/'+itemCheckSum + '?onsite=<%= params[:onsite] %>&store_id=<%= params[:store_id] %>',
+      {asynchronous:true, evalScripts:true});
+    }
+  }
+</script>
+
+<div id="products">
+  <% @cart.items.each_with_index do |item,index| %>
+    <%= render :partial => 'cartitem', :locals=>{:index=>index, :item=>item} %>
+  <% end %>
+
+  <% if params[:action] == "show_cart" %>
+    <script>
+      function CheckLen(elmt){
+        if(elmt.value.length > 299){
+          elmt.value = elmt.value.substring(0,299);
+        }
+        if(elmt.value.length >= 299){
+          $j('#text_length_error').show();
+        }
+        else{
+          $j('#text_length_error').hide();
+        }
+      }
+    </script>
+
+
+    <div id="comments_step1">
+      <% form_tag({:action=>:to_step_two},
+        :id=>'comments_form') do %>
+        <%= hidden_field_tag "url", @next_step_url %>
+        <label><%=t(:comments_concerning_your_order, :locale => @checkout_locale)%>
+          <span id="text_length_error" style="color:red;display:none;padding-left:10px;">
+            <%= t(:checkout_comments_max_char, :locale => @checkout_locale) %>
+          </span>
+          <br />
+          <textarea name="comments" id="comment_product" cols="70" rows="5" maxlength="300" onkeypress="CheckLen(this);"><%=@cart.comments%></textarea>
+        </label>
+
+      <% end %>
+      <div id="keep_shopping">
+        <%= link_to("<&nbsp;" + t(:keep_shopping, :locale => @checkout_locale), @continue_link) %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<!-- END OF PRODUCT LISTING -->
+
+<!-- Right Container -->
+<% if params[:onsite] != 'true'%>
+  <%= render :partial => "right_container" %>
+<% else %>
+  <%= render :partial => "onsite_checkout_totals" %>
+<% end %>

@@ -1,0 +1,7 @@
+<%= I18n.t(:send_mail_reject_preview_1, :locale => Language.find(@user.language_id).shortname)%><br />
+<br />
+<%= I18n.t(:send_mail_reject_preview_2, :locale => Language.find(@user.language_id).shortname)%><br />
+<img src="<%=URL_ROOT%>/images/rejected_preview_before.png" />
+<br />
+<%= I18n.t(:send_mail_reject_preview_3, :locale => Language.find(@user.language_id).shortname)%><br />
+<img src="<%=URL_ROOT%>/images/rejected_preview_after.png" />

@@ -1,0 +1,117 @@
+<script type="text/javascript">
+  function hideIcon(){
+    $j("#ajaxIcon").css("visibility", "hidden");
+  }
+
+  function showIcon(){
+    $j("#ajaxIcon").css("visibility", "visible");
+  }
+
+  $j(document).ready(function(){
+    $j(".lnk_forgot_pass").click(function(){
+      $j("#forgot_password").slideToggle("slow");
+      $j(this).toggleClass("active"); return false;
+    });
+  });
+</script>
+
+<%= render :partial => 'checkout2/steps'%>
+
+<div id="header_legend">
+  <div id="title_step"><%= t(:billing_and_shipping_information, :locale => @checkout_locale) %></div>
+
+</div>
+<div class="clear"></div>
+<!-- Client Container -->
+<div id="billing_shipping">
+
+
+  <div id="have_account">
+    <% form_tag({:action => :choose_login, 
+                 :type => "login", 
+                 :onsite => params[:onsite], 
+                 :iframe => params[:iframe],
+                 :flash_iframe => params[:flash_iframe],
+                 :store_id => params[:store_id]}, 
+                 :id => "login_form") do %>
+    <div id="have_account_header">
+      <p><%=t(:already_have_an_account, :locale => @checkout_locale)%>?</p>
+    </div>
+    <div id="have_account_content">
+      <% if flash[:error] %>
+        <div style="padding-left:10px;"><span class="errorMessage"><%= flash[:error] %></span></div>
+      <% end %>
+      <p ><span class="label"><%=t(:myizishirt_login_view_login_username, :locale => @checkout_locale)%></span> <input type="text" name="username" id="username" /></p>
+      <div class="clear"></div>
+      <p ><span class="label"><%=t(:myizishirt_login_view_login_password, :locale => @checkout_locale)%></span> <input type="password" name="password" id="pass_account" /></p>
+      <div class="clear"></div>
+
+      <p><a href="#" class="lnk_forgot_pass"><%=t(:forgot_your_password, :locale => @checkout_locale)%></a></p>
+      <div class="clear"></div>
+      <div id="btn_billing">
+        <a href="#current" onclick="javascript:$j('#login_form').submit();"  title="Login >"><% image_tag  "/izishirt2011/#{session[:language]}/bt_login.jpg" %> </a>
+      </div>
+    <% end %>
+      </div>
+    <div class="clear"></div>
+    <div id="forgot_password">
+      <% form_remote_tag(:update => 'message',
+        :url => {:action => 'lostpass_submit', :onsite=>params[:onsite], :store_id=>params[:store_id]},
+        :loading=>"showIcon();", :success=>"hideIcon();",
+        :html => {:id => 'lost_form'}) do %>
+        <p class="title14_billing"><%=t(:forgot_your_password, :locale => @checkout_locale)%></p>
+        <img src="/images/izishirt2009/line.jpg" width="245" height="3" />
+        <p class="title11"><%=t(:forgot_your_password_sentence, :locale => @checkout_locale)%></p>
+        <p class="title13">
+          <span class="left">
+          <%= t(:myizishirt_login_view_form_mail, :locale => @checkout_locale) %> <%= text_field_tag :email, params[:email], :id=>"email", :class=>"email_text_box" %>
+          <%= submit_tag t(:submit, :locale => @checkout_locale), :id => "btn_submit_lost_password" %>
+          </span>
+          <span id="ajaxIcon" style="visibility:hidden">
+            <%= image_tag "izishirt2009/loading.gif", :height=>16, :width=>16 %>
+          </span>
+          <div class="clear"></div>
+        </p>
+        <div id="message" style="padding-left:10px;padding-right:10px;visibility:visible;display:block;" class="title13">
+        </div>
+        <p class="title13"><strong><%=t(:or, :locale => @checkout_locale)%></strong></p>
+        <p class="title11"><%=t(:proceed_checkout_as_guest, :locale => @checkout_locale)%></p>
+        <p>
+        <%= link_to t(:continue_as_guest_user, :locale => @checkout_locale) + " >",
+          {:action => :choose_login, 
+            :type => "guest", 
+            :onsite => params[:onsite], 
+            :iframe => params[:iframe],
+            :flash_iframe => params[:flash_iframe],
+            :store_id => params[:store_id]},
+          :class=>"lnk_guest_user" %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="new_customer">
+    <div id="new_customer_header">
+    <p><%=t(:new_customer, :locale => @checkout_locale)%></p>
+  </div>
+     <div id="new_customer_content">
+    <p><%=t(:new_customer_sentence, :locale => @checkout_locale)%></p>
+    <div id="btn_guest_user">
+      <%= link_to  (image_tag "izishirt2011/#{session[:language]}/bt_continue.jpg", :alt=>t(:address_next)),
+        {:action => :choose_login, 
+          :type=>"guest",
+          :onsite => params[:onsite], 
+          :iframe => params[:iframe],
+          :flash_iframe => params[:flash_iframe],
+          :store_id => params[:store_id]},
+        :id=>"continue",
+        :title=>"#{t(:continue)}"%>
+    </div>
+     </div>
+  </div>
+  <div id="return_step1">
+    <%= link_to("<&nbsp;" + t(:return_to_shopping_cart, :locale => @checkout_locale),
+                {:action => :show_cart, :onsite => params[:onsite], :flash_iframe => params[:flash_iframe],
+                  :iframe => params[:iframe], :store_id => params[:store_id]}) %>
+  </div>
+</div>

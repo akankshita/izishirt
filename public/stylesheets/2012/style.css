@@ -1,0 +1,704 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+    font-family: 'swis721_cn_btroman';
+    src: url('../fonts/tt0009m_-webfont.eot');
+    src: url('../fonts/tt0009m_-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/tt0009m_-webfont.woff') format('woff'),
+         url('../fonts/tt0009m_-webfont.ttf') format('truetype'),
+         url('../fonts/tt0009m_-webfont.svg#swis721_cn_btroman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'newsgoth_cn_btregular';
+    src: url('../fonts/tt0375m_-webfont.eot');
+    src: url('../fonts/tt0375m_-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/tt0375m_-webfont.woff') format('woff'),
+         url('../fonts/tt0375m_-webfont.ttf') format('truetype'),
+         url('../fonts/tt0375m_-webfont.svg#newsgoth_cn_btregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'colaborate-regularregular';
+    src: url('../fonts/colabreg-webfont.eot');
+    src: url('../fonts/colabreg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/colabreg-webfont.woff') format('woff'),
+         url('../fonts/colabreg-webfont.ttf') format('truetype'),
+         url('../fonts/colabreg-webfont.svg#colaborate-regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('../fonts/opensans-regular-webfont.eot');
+    src: url('../fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-regular-webfont.woff') format('woff'),
+         url('../fonts/opensans-regular-webfont.ttf') format('truetype'),
+         url('../fonts/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'pt_sansregular';
+    src: url('../fonts/pts55f-webfont.eot');
+    src: url('../fonts/pts55f-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/pts55f-webfont.woff') format('woff'),
+         url('../fonts/pts55f-webfont.ttf') format('truetype'),
+         url('../fonts/pts55f-webfont.svg#pt_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'droid_sansregular';
+    src: url('../fonts/droidsans-webfont.eot');
+    src: url('../fonts/droidsans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/droidsans-webfont.woff') format('woff'),
+         url('../fonts/droidsans-webfont.ttf') format('truetype'),
+         url('../fonts/droidsans-webfont.svg#droid_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'colaboratelightregular';
+    src: url('../fonts/colablig-webfont.eot');
+    src: url('../fonts/colablig-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/colablig-webfont.woff') format('woff'),
+         url('../fonts/colablig-webfont.ttf') format('truetype'),
+         url('../fonts/colablig-webfont.svg#colaboratelightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'colaborate-thinregular';
+    src: url('../fonts/colabthi-webfont.eot');
+    src: url('../fonts/colabthi-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/colabthi-webfont.woff') format('woff'),
+         url('../fonts/colabthi-webfont.ttf') format('truetype'),
+         url('../fonts/colabthi-webfont.svg#colaborate-thinregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'swis721_btroman';
+    src: url('../fonts/tt0003m_-webfont.eot');
+    src: url('../fonts/tt0003m_-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/tt0003m_-webfont.woff') format('woff'),
+         url('../fonts/tt0003m_-webfont.ttf') format('truetype'),
+         url('../fonts/tt0003m_-webfont.svg#swis721_btroman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'newsgoth_btbold';
+    src: url('../fonts/tt0049m_-webfont.eot');
+    src: url('../fonts/tt0049m_-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/tt0049m_-webfont.woff') format('woff'),
+         url('../fonts/tt0049m_-webfont.ttf') format('truetype'),
+         url('../fonts/tt0049m_-webfont.svg#newsgoth_btbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body{margin:0; padding:0; font-size:16px;  color:#5c5c5c; background-color:#f3f2f2;}
+.clear:after{content:"."; display:block; height:0; clear:both; visibility:hidden; line-height:0;}
+.clear{display:block; clear:both;}
+a{outline:none; text-decoration:none;}
+
+.fl_left{float:left;}
+.fl_right{float:right;}
+
+img{margin:0; padding:0; border:none; line-height:normal; vertical-align:middle;}
+
+
+/*----------------------------------------------HTML 5 Overrides-------------------------------------*/
+
+
+address, article, aside, figcaption, figure, footer, header, hgroup, nav, section{display:block; margin:0; padding:0;}
+
+/* ----------------------------------------------Wrapper-------------------------------------*/
+
+
+#header, #container_new, #footer{display:block; width:1017px; margin:0 auto;}
+nav ul{margin:0; padding:0; list-style:none;}
+
+h1, h2, h3, h4, h5, h6{margin:0; padding:0; font-size:16px; font-weight:bold; font-style:normal; line-height:normal; }
+
+#topbgcolor{background:#000; height:24px; display:block;}
+#header{padding:9px 0;}
+#header #logo{width:328px; height:102px; float:left;}
+#header #headerrightpart{width:508px;  float:right;}
+#header #headerrightpart #shoping{ background:url(/../../images/izishirt2012/shopintcart.png) no-repeat; height:26px; padding-left:35px;   font-family:Arial, Helvetica, sans-serif; color:#f83612; size:16px; font-weight:bold; line-height:26px;} 
+
+#header #headerrightpart #call{width:508px;  float:right;  margin:7px 0px;}
+#header #headerrightpart #call h1{color:#2c2c2c; font-family: 'swis721_cn_btroman'; font-size:24px; float:left; font-weight:normal;	}
+
+ul#login{ margin:0px; margin-top: 7px; padding:0px; float:right; }
+ul#login li{ font-size:15px; font-family:'swis721_btroman'; color:#1b1b1b; list-style:none; float:left; border-right:1px solid #666;}
+ul#login li a{ font-size:15px; font-family:'swis721_btroman'; color:#1b1b1b; padding:0px 10px; }
+ul#login li a:hover{ font-size:15px; font-family:'swis721_btroman'; color:#999999; }
+ul#login li:last-child{border:none; font-size:15px;  font-family:'swis721_btroman'; color:#1b1b1b;}
+
+
+
+
+nav {
+	text-align:center;
+	display:block;
+	width:1017px; margin:auto;
+	height:57px;
+		background:url(/../../images/izishirt2012/nav_bg.png) repeat-x;
+}
+
+nav ul {
+	padding:0px;
+	list-style-type:none;
+
+	display:inline;
+}
+
+nav li {
+	list-style-type:none;
+	display:inline;
+	line-height:57px;
+	font-family: 'newsgoth_btbold';
+	float:left;
+	height:57px;
+	
+
+	background:url(/../../images/izishirt2012/menu_line.png) no-repeat right top; 
+}
+nav li:last-child {
+	list-style-type:none;
+	display:inline;
+	padding:0px 3px;	line-height:57px;
+	font-family: 'newsgoth_btbold';
+	float:left;
+	height:57px;
+	background:none; 
+}
+
+nav a:link, nav a:visited {
+	font-size:19px;
+margin:0px 13px;
+font-weight:none;
+
+	font-family: 'newsgoth_btbold';
+	color:#FFF;
+	  background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#8A8787));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+
+nav li:hover{
+background:url(/../../images/izishirt2012/nav_bg_hover.png) repeat-x;
+
+}
+
+
+.banner{width:1017px; margin:auto;}
+#wrapper_new{background:url(/../../images/izishirt2012/bg.jpg) repeat; border-bottom:#c4c4c4 solid 1px;}
+.middilepart{height:334px; background:url(/../../images/izishirt2012/dotesbg.png) repeat; border-bottom:#999 solid 1px;}
+.container{width:1017px; margin:auto; display:block;}
+.step1{width:238px; margin:0px 8px; float:left; font-family: 'colaborate-thinregular'; padding-top:9px;}
+.step1 h2{ text-align:center;font-family: 'colaborate-thinregular'; color:#393939; font-size:28px; }
+.step1 p{ line-height:20px; text-align:center;font-family: 'colaboratelightregular'; color:#5c5c5c; margin-top:10px; font-size:16px;}
+.img{text-align:center; }
+
+#leftpart{
+	float:left;
+	width:220px;
+	background:url(/../../images/izishirt2012/leftbg.png) repeat-y right top;
+	text-align:left;
+	padding-top:44px;
+}
+
+#leftpart h3{
+	font-size:23px;
+color:#0b0b0b;	
+font-family: 'swis721_cn_btroman';
+}
+
+#leftpart ul {
+	padding:0px;
+	list-style:none;
+	border-top:1px solid #e7e2d7;
+	margin:14px 0px;
+}
+
+#leftpart li {
+height:30px;
+list-style:none;
+display:block;
+background:url(/../../images/izishirt2012/dotes_down.png) repeat-x bottom;
+}
+
+
+#leftpart li a:link, #leftpart li a:visited {
+	float:left;
+	width:99%;
+	color:#6d7374;
+	font-size:15px;
+	padding-left:20px;
+	background:url(/../../images/izishirt2012/leftarrow.png) no-repeat  left; 
+	padding-bottom:5px; 
+	padding-top:5px;
+	font-family: 'droid_sansregular';
+	
+
+}
+#leftpart li a:hover {
+	float:left;
+	width:99%;
+	color:#999999;
+	font-size:15px;
+	padding-left:20px;
+	background:url(/../../images/izishirt2012/leftarrow.png) no-repeat left #ececec; 
+	padding-bottom:5px; 
+	padding-top:5px;
+	font-family: 'droid_sansregular';
+	
+
+
+}
+
+#rightpart{ 	float:right;
+	width:75%;
+	padding-top:44px;
+	text-align:left;}
+	
+#rightpart h2{ 	
+text-align:left;
+font-family: 'swis721_cn_btroman'; font-size:33px; color:#0b0b0b;letter-spacing:-2px
+
+
+}
+
+#rightpart h2 span{ 	
+text-align:left;
+font-family: 'swis721_cn_btroman'; font-size:29px; color:#771bac; letter-spacing:-2px;
+}
+
+ul.galleryimage {margin:0px; padding:0px; width:100%; height:177px;}
+ul.galleryimage li{ list-style:none; float:left; margin:0px 15px 15px 0px ; background:#FFF; border:#e8e7e7 solid 1px; padding:2px;}
+.viewall{color:#000; font-size:13px; text-align:right; float:right; width:96%; border:none !important; background:none !important;}
+
+
+
+footer{background:#000; display:block; background:url(/../../images/izishirt2012/footerebg.png) repeat-x; height:393px; width:100%;}
+footer .footer{ padding-top:37px; width:1017px; margin:auto;}
+footer .footer .footerdiv{ width:197px; margin-right:25px;  float:left; border-top:#424242 solid 4px;}
+footer .footer .footerdiv h4{ font-family: 'pt_sansregular'; font-size:18px; color:#FFF; font-weight:normal; padding:8px 0px;}
+footer .footer .footerdivtext{ width:166px; margin-right:25px;  float:left; border-top:#424242 solid 4px;}
+footer .footer .footerdivtext h4{ font-family: 'pt_sansregular'; font-size:19px; color:#FFF; font-weight:normal; padding:8px 0px;}
+ul.footertext{margin:0px; padding:0px; }
+ul.footertext li{ list-style:none; font-size:14px; color:#ababab; }
+ul.footertext li a{font-family: 'droid_sansregular'; font-size:14px; color:#ababab; text-decoration:none; line-height:21px; background:url(/../../images/izishirt2012/bullets.png) no-repeat left; padding-left:15px;}
+ul.footertext li a:hover{font-family: 'droid_sansregular'; font-size:14px; color:#999999; text-decoration:none; line-height:21px;}
+
+
+ul.footericon{margin:0px; padding:0px; }
+ul.footericon li{ list-style:none; font-size:14px; color:#ababab; }
+ul.footericon li a{ font-family: 'droid_sansregular'; font-size:14px; color:#ababab; text-decoration:none; line-height:21px; margin-left:10px;}
+ul.footericon li a:hover{ font-family: 'droid_sansregular'; font-size:14px; color:#999999; text-decoration:none; line-height:21px; margin-left:10px;}
+
+ul.flags{ padding-top: 7px;
+padding-left: 7px; background:url(/../../images/izishirt2012/transparent.png) repeat; width:176px; height:77px; }
+ul.flags li{ list-style:none; line-height:20px; font-size:14px; color:#ababab; float:left; }
+ul.flags li a{ font-family: 'droid_sansregular'; font-size:12px; padding-left: 7px;
+padding-right: 9px; color:#707070; text-decoration:none; line-height:15px; font-family: 'open_sansregular';}
+ul.flags li a:hover{ font-family: 'droid_sansregular'; font-size:12px; padding-left: 7px;
+padding-right: 9px; color:#CCCCCC; text-decoration:none; line-height:15px; font-family: 'open_sansregular';}
+
+
+ul#card{margin-top:17px; padding:0px; }
+ul#card li{ list-style:none; float:left; margin-right:2px;}
+
+.ptext {font-family: 'droid_sansregular'; font-size:13px; color:#acacac; line-height:18px;}
+.footersearch{   background:#454545; margin-top:33px;}
+.inputext{width:153px; background:#505050; border:#343333 solid 1px; margin:3px; height:22px; }
+input:focus { outline:none;}
+.footertext1{font-size:13px; color:#8f8f8f; margin-top: 20px;  font-family: 'open_sansregular'; text-align:center;}	
+.footertext1 a{font-size:13px; color:#b12424;  font-family: 'open_sansregular'; text-align:center;}	
+.footertext1 a:hover{font-size:13px; color:#CCCCCC;  font-family: 'open_sansregular'; text-align:center;}	
+
+ul#footermenu{margin-top:39px; text-align:center;}
+ul#footermenu li{  display:inline; list-style:none; line-height:22px;  }
+ul#footermenu li a{list-style:none;  font-size:13px; text-align:center; padding:0px 8px; color:#a5a5a5; font-family: 'open_sansregular'; background:url(/../../images/izishirt2012/border-right.png) no-repeat right;}
+ul#footermenu li a:hover{list-style:none; color:#FFFFFF; font-size:13px; text-align:center; padding:0px 8px;  font-family: 'open_sansregular';  background:url(/../../images/izishirt2012/border-right.png) no-repeat right;}
+
+.borderright{background:none !important;}
+
+.imageOverlayer3{
+
+	cursor:pointer;
+	display:block;
+
+	
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	-ms-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+
+}
+
+
+.imageOverlayer3:hover{
+	
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+
+.imageOverlayer2{
+	display:block;
+	cursor:pointer;
+	
+	-webkit-transition: opacity 0.2s linear;
+	-moz-transition: opacity 0.2s linear;
+	-o-transition: opacity 0.2s linear;
+	transition: opacity 0.2s linear;
+
+}
+
+.imageOverlayer2:hover{
+	opacity:0.5;
+	filter:alpha(opacity=0.5);
+
+}
+.innercontainer{width:995px; margin:auto; background:#FFF; margin-top:9px; padding:29px 12px 0px 12px;}
+.tshirtdesign{height:381px; display:block; }
+#resizeimage{width:396px; float:left;}
+#tabmenuright{width:575px; float:right; }
+
+/*----------------------------------------------tab menu start-------------------------------------*/
+.tab-box { 
+  border-bottom: 1px solid #DDD;
+  padding-bottom:5px;
+background:#37b4ce;
+padding-top:5px;
+}
+.tab-box a {
+  color:#191919;
+  padding: 6px 15px;
+  background:url(/../../images/izishirt2012/tabbg.png) repeat-x;
+  text-decoration:none;
+  font-size:17px;
+  background-color: #eee;
+  font-family: 'colaborate-regularregular';
+}
+.tab-box a.activeLink { 
+background:url(/../../images/izishirt2012/tabmenubg_hover.png) repeat-x;
+color:#7c7c7c; 
+  border-bottom: 0; 
+  padding: 6px 15px;
+}
+.tabcontent { border: 1px solid #ddd; border-top: 0; }
+.hide { display: none;}
+
+/*----------------------------------------------tab menu end-------------------------------------*/
+.scrollbg{ display:block; height:275px; background:#f5f5f5; overflow-y:scroll;}
+.tabmenusearch{ width:190px; border:#d2d2d2 solid 1px; height:26px; font-family: 'pt_sansregular'; font-size:14px; color:#000000; line-height:31px; padding-left:5px;}
+.searchbg{ display:block; padding:10px 8px;}
+.realative{position:relative;}
+.absulete{position:absolute; right: 2px;
+top: 9px;}
+
+.selectbg{width:185px;  }
+
+.innercontainermiddile{  display:block;}
+.innercontainermiddile .innerleftpart{ width:70%; background:url(/../../images/izishirt2012/innerdotes.png) repeat-y right top;  float:left;}
+.innercontainermiddile .innerrightpart{ width:27%; padding:7px; background:#f5f5f5; border:#e1e1e1 solid 1px; float:right;}
+.tshirtsize{background:#f6f6f7; border:#e4e4e4 solid 1px; padding:5px; float:left;}
+.tshirtsize strong{float:left; color:#000; font-family: 'open_sansregular'; font-size:15px; margin-left:5px;}
+.sizebox{width:48px; float:left; text-align:center; padding-right:10px; color:#000; font-family: 'open_sansregular'; font-size:12px; }
+.sizediv{width:48px; height:12px; background:#fff; border:#c2c2c1 solid 1px; float:left; margin-top:5px;}
+
+
+
+#stepbg{background:url(/../../images/izishirt2012/stepbg.png) repeat-x bottom; margin-top:17px; width:91%;}
+
+h4 {font-family: 'newsgoth_cn_btregular'; font-size:23px; color:#000;}
+ul#imglist{margin:0px; padding:0px; margin-top:15px; }
+ul#imglist li{ list-style:none; margin-right:33px; padding:1px; -moz-box-shadow: 0px 1px 6px #9f9f9f;
+-webkit-box-shadow:0px 1px 6px #9f9f9f;
+display:block;
+margin-bottom:28px;
+border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;
+box-shadow: 0px 1px 6px #9f9f9f; float:left;}
+
+.bestpricebox{background:url(/../../images/izishirt2012/bluebg.png) repeat-x ; height:92px; border:#dfdfdf solid 1px;}
+.bestpricebox h2{font-family: 'newsgoth_cn_btregular'; padding-top:10px; font-size:27px; text-align:center; color:#2b6282; padding-bottom:5px;}
+.bestpricebox h3{font-family: 'open_sansregular';   font-size:22px; text-align:center; color:#666666;}
+
+ul.discount {margin:0px; padding:16px 0px  0px 0px; }
+ul.discount li{ list-style:none; font-family:Arial, Helvetica, sans-serif; padding-bottom:9px; font-size:16px; color:#676767; }
+
+.linebg{background:url(/../../images/izishirt2012/line.png) repeat-y }
+.redtext{font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#b21d28; text-align:center;}
+#rightbg{background:#FFF; border:#c7c7c7 solid 1px; padding:8px;}
+#rightbg h4{ color:#000; font-family:Arial, Helvetica, sans-serif; font-size:16px; padding-bottom:5px;}
+#rightbg .emaitxt{ color:#535758; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-family: 'pt_sansregular'; }
+#rightbg .emaitxt a{ color:#d26a05; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-family: 'pt_sansregular'; }
+.text1 a { font-family:Arial, Helvetica, sans-serif;  font-size:12px; color:#336b88; }
+
+.innerrightpart h6 { font-family:Arial, Helvetica, sans-serif; font-size:25px; font-weight:normal; color:#FFF; background:#519ac2; margin:10px 0px; padding-left:5px; }
+
+.searchinputbox {border:#c9c9c9 solid 1px; line-height:26px; height:26px; color:#666; width: 175px;
+margin-right: 10px;}
+.searchbtn { background:#56a0c8; cursor:pointer; border:#c2c2c2 solid 1px; color:#fff; height:30px; text-align:center;}
+.searchbtn:hover { background:#999999; border:#c2c2c2 solid 1px; color:#fff; height:30px; text-align:center;}
+
+ul.categories{margin:0px; padding:0px; }
+ul.categories li{ list-style:none;}
+ul.categories li a{ font-family: 'droid_sansregular'; color:#807e7e; font-size:13px; line-height:25px; background:url(/../../images/izishirt2012/bulets.png) no-repeat left center ; padding-left:20px;}
+
+ul.categories li a:hover{ font-family: 'droid_sansregular'; color:#333333; font-size:13px; line-height:25px; background:url(/../../images/izishirt2012/bulets.png) no-repeat left center ; padding-left:20px;}
+.bordernone{border:none;}
+.doller {font-size:25px; text-align:right; font-family:Arial, Helvetica, sans-serif; color:#000;}
+
+
+
+
+
+@charset "utf-8";
+/* CSS Document */
+
+#menu, #menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#menu {
+	width: 1013px;
+	margin: auto;
+	border: 1px solid #222;
+	background-color: #111;
+	background: #5b5b5b; /* Old browsers */
+background: -moz-linear-gradient(top, #5b5b5b 0%, #3e3e3e 22%, #1c1c1c 50%, #000000 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5b5b5b), color-stop(22%,#3e3e3e), color-stop(50%,#1c1c1c), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #5b5b5b 0%,#3e3e3e 22%,#1c1c1c 50%,#000000 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #5b5b5b 0%,#3e3e3e 22%,#1c1c1c 50%,#000000 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #5b5b5b 0%,#3e3e3e 22%,#1c1c1c 50%,#000000 100%); /* IE10+ */
+background: linear-gradient(to bottom, #5b5b5b 0%,#3e3e3e 22%,#1c1c1c 50%,#000000 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5b5b5b', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+	box-shadow: 0 1px 1px #777;
+}
+
+#menu:before,
+#menu:after {
+	content: "";
+	display: table;
+}
+
+#menu:after {
+	clear: both;
+}
+
+#menu {
+	zoom:1;
+}
+
+#menu li {
+	float: left;
+	border-right: 1px solid #222;
+	box-shadow: 1px 0 0 #444;
+	position: relative;
+	
+}
+
+#menu li:last-child {
+	float: left;
+	border-right: none;
+	box-shadow:none;
+	position: relative;
+	
+}
+#menu li:hover {
+	background: #727272; /* Old browsers */
+background: -moz-linear-gradient(top, #727272 0%, #202020 87%, #050505 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#727272), color-stop(87%,#202020), color-stop(100%,#050505)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #727272 0%,#202020 87%,#050505 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #727272 0%,#202020 87%,#050505 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #727272 0%,#202020 87%,#050505 100%); /* IE10+ */
+background: linear-gradient(to bottom, #727272 0%,#202020 87%,#050505 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#727272', endColorstr='#050505',GradientType=0 ); /* IE6-9 */
+	
+}
+#menu a {
+	float: left;
+	padding: 12px 12px;
+	color: #999;
+	font: bold 19px 'newsgoth_btbold';
+	text-decoration: none;
+	text-shadow: 0 1px 0 #000;
+	font-weight:normal;
+}
+/*#menu a:last-child {
+
+	padding: 12px 12px 12px 13px;
+
+}
+*/
+#menu li:hover > a {
+	color: #fafafa;
+}
+
+*html #menu li a:hover { /* IE6 only */
+	color: #fafafa;
+}
+
+#menu ul {
+	margin: 20px 0 0 0;
+	_margin: 0; /*IE6 only*/
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	top: 38px;
+	left: 0;
+	z-index: 1;    
+	background: #444;	
+	background: linear-gradient(#444, #111);
+	box-shadow: 0 -1px 0 rgba(255,255,255,.3);	
+	border-radius: 3px;
+	transition: all .2s ease-in-out;  
+}
+
+#menu li:hover > ul {
+	opacity: 1;
+	visibility: visible;
+	margin: 0;
+}
+
+#menu ul ul {
+	top: 0;
+	left: 150px;
+	margin: 0 0 0 20px;
+	_margin: 0; /*IE6 only*/
+	box-shadow: -1px 0 0 rgba(255,255,255,.3);		
+}
+
+#menu ul li {
+	float: none;
+	display: block;
+	border: 0;
+	_line-height: 0; /*IE6 only*/
+	box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+}
+
+#menu ul li:last-child {   
+	box-shadow: none;    
+}
+
+#menu ul a {    
+	padding: 10px;
+	_height: 10px; /*IE6 only*/
+	display: block;
+	white-space: nowrap;
+	float: none;
+	text-transform: none;
+}
+
+#menu ul a:hover {
+	background-color: #0186ba;
+	background-image: linear-gradient(#04acec, #0186ba);
+}
+
+#menu ul li:first-child > a {
+	border-radius: 3px 3px 0 0;
+}
+
+#menu ul li:first-child > a:after {
+	content: '';
+	position: absolute;
+	left: 40px;
+	top: -6px;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-bottom: 6px solid #444;
+}
+
+#menu ul ul li:first-child a:after {
+	left: -6px;
+	top: 50%;
+	margin-top: -6px;
+	border-left: 0;	
+	border-bottom: 6px solid transparent;
+	border-top: 6px solid transparent;
+	border-right: 6px solid #3b3b3b;
+}
+
+#menu ul li:first-child a:hover:after {
+	border-bottom-color: #04acec; 
+}
+
+#menu ul ul li:first-child a:hover:after {
+	border-right-color: #0299d3; 
+	border-bottom-color: transparent; 	
+}
+
+#menu ul li:last-child > a {
+	border-radius: 0 0 3px 3px;
+}
+.texttab{display: block;
+height: 275px;
+background:#eaeaea;
+padding:10px;
+}
+
+.texttab h3{
+font-family: 'colaborate-regularregular';
+font-size:18px; color:#000;
+font-weight:normal;
+
+}
+.formpadding{padding-top:8px;}
+.inputtextbg{color:#666 ; border:#999 solid 1px; width:244px;}
+.slectbox{border:#666 solid 1px; padding:1px; overflow:hidden; background:url(../images/dd_arrow.gif) no-repeat #fff; }
+
+#mainselection select { border:0; color:#EEE; background:transparent;
+font-size:20px; font-weight:bold; padding:2px 10px; width:178px;
+*width:150px; *background:#58B14C; -webkit-appearance: none;  }
+
+#mainselection { overflow:hidden; width:150px;
+
+background:url(../images/dd_arrow.gif) no-repeat scroll   #58B14C; }
+.alingtext{font-size:12px; font-family:Arial, Helvetica, sans-serif;}
+.graybox{ padding: 0px 5px 0px 5px;
+background: #E8E7E7;
+border: #CCC solid 1px;
+float: left;
+margin-top: 0px;}
+.graybox #leftarrow{ float:left; margin-right:3px;}
+.graybox #rightarrow{ float:right;}
+.graybox1 {background: #E8E7E7;
+border: #CCC solid 1px;
+float:left;
+padding:0px 5px;
+}
+.graybox1 #arrowup{ height:5px;}
+.graybox1 #arrowdown{ }
+.rotate{width:20px;  float:left;}
+
+
+
+.active:active  {outline:inset; } 

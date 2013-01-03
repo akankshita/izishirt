@@ -1,0 +1,60 @@
+<%= @msg %>
+      
+<div class="pageholder">
+  <div class="checkout_confirmation" id="checkout-container">
+    <h3><%= t(:confirmation_title) %></h3>
+    <p class="confirm_address"><b>Izishirt &bull; Custom design apparel &bull; cr&eacute;ateur de tendances</b><br />
+      3945 St Denis<br />
+      Montr&eacute;al QC, H2W 2M4<br />
+      CANADA</p>
+    <div class="table_confirm">
+      <h5> <%= t(:confirmation_purchase_statement) %>
+      </h5>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th><%= t(:confirmation_customer_name) %></th>
+          <td><%= @customer.firstname + " " + @customer.lastname %></td>
+        </tr>
+        <tr>
+          <th><%= t(:confirmation_purchase) %></th>
+          <td><%= t(:gifts_certificate) %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="table_confirm">
+      <h5><%= t(:payment_infoheader) %></h5>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th><%= t(:payment_total) %></th>
+          <td><%= number_to_currency_custom(@gift.amount) %></td>
+        </tr>
+        <tr>
+          <th><%= t(:address_cardholder) %></th>
+          <td><%= @cardholder_name %></td>
+        </tr>
+        <tr>
+          <th><%= t(:payment_cardnumber) %></th>
+          <td><%= @result_card_number %></td>
+        </tr>
+        <tr>
+          <th><%= t(:confirmation_number) %></th>
+          <td><%= @authorization_number %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="table_confirm">
+      <h5><%= t(:confirmation_order_info) %></h5>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th><%= t(:confirmation_customer_name) %></th>
+          <td><%= @customer.firstname + " " + @customer.lastname %></td>
+        </tr>
+        <tr>
+          <th><%= t(:confirmation_date) %>:</th>
+          <td> <%= Time.now.to_s %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+

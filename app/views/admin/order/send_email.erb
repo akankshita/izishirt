@@ -1,0 +1,63 @@
+<script type="text/javascript">
+  function checkFields(){
+    if(!$('order_email_title').present() || !$('order_email_body').present()){
+      $('error').innerHTML = "<%= t(:please_fill_all_the_fields) %>";
+      return false;
+    }
+    return true;
+  }
+</script>
+
+<h1><%= t(:checkout_address_custom_email_client_send_email_to) %> <%= @order.email_client %></h1>
+
+<span id="error" class="red">
+  <% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+  <% end %>
+</span>
+
+<% 
+  templates = templates_send_order_email(Language.find(@order.language_id).shortname)
+  from_emails = templates_emails()
+%>
+
+<script language="javascript">
+  function populate_template(template_id)
+  {
+    <% templates.each do |cur_template_id, cur_template| %>
+        if (template_id == '<%= cur_template_id %>')
+        {
+          document.getElementById('order_email_title').value = "<%= cur_template[:subject] %>";
+          document.getElementById('order_email_body').value = "<%= cur_template[:body] %>";
+        }
+    <% end %>
+  }
+</script>
+
+<div class="titleForm"></div>
+<div class="boxForm">Warning: an automatic signature (at the end) and introduction (at the beginning) will be added to the body. The order ID is also added in the subject.</div>
+
+<% form_for :order_email, :url=>{:action=>:exec_send_mail}, :html=>{:onsubmit=>"javascript:return checkFields();"} do |q| %>
+
+  
+
+  <div class="titleForm"><%= t(:admin_order_send_email_template) %></div>
+  <div class="boxForm"><%= select_tag "order_email[template]", options_for_select([["No template", "no_template"]] | templates.map{ |template, body| ["#{body[:subject]}", "#{template}"] }), {:onchange => "populate_template(this.value);"} %></div>
+
+  <div class="titleForm"><%= t(:admin_order_send_email_from_email) %></div>
+  <div class="boxForm"><%= select_tag "order_email[from_email]", options_for_select(from_emails.map{ |email| [email, email] }), {:onchange => "populate_template(this.value);"} %></div>
+
+  <div class="titleForm"><%= q.label :title, t(:checkout_address_custom_email_client_send_email_subject) %></div>
+  <div class="boxForm"><%= q.text_field :title, :size=>65  %></div>
+  <div class="titleForm"><%= q.label :body, t(:checkout_address_custom_email_client_send_email_body)%></div>
+  <div class="boxForm"><%= q.text_area :body, :class=>"smallTextArea", :cols=>70 %></div>
+  <div class="titleForm"><%= q.label :body, t(:checkout_address_custom_email_client_put_order_to_artwork_required_problem)%></div>
+  <div class="boxForm"><%= q.check_box :artwork_required_problem %></div>
+  <%= q.hidden_field :order_id, :value => @order.id %>
+
+  <div class="titleForm"><label>
+  </label></div>
+  <div class="boxForm">
+    <%= submit_tag t(:checkout_address_custom_email_client_send_email_sent_email) %>
+  </div>
+<% end %>

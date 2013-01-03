@@ -1,0 +1,76 @@
+<div id="shipping_type_header">
+<p><strong><%=t(:shipping_options, :locale => @checkout_locale)%></strong></p>
+</div>
+<div id="shipping_type_content">
+<div class="left">
+
+  <% @christmas = true %>
+
+
+  <%= radio_button("shipping",
+    "type",
+    SHIPPING_BASIC,
+    {:name => 'radio_shipping',
+      :id => "shipping_radio_#{SHIPPING_BASIC}",
+      :checked => (@cart.shipping_type.to_i==SHIPPING_BASIC || @cart.shipping_type.nil?) ? 'checked' : ''})%>
+  <div class="text_radio">
+    <span class="text12"><strong><%=t(:shipping_basic, :locale => @checkout_locale)%>:</strong> </span>
+    <span class="text11">
+
+      <%
+      ship_cost = @cart.shipping(SHIPPING_BASIC, @country, @province, params[:town], params[:zip], params[:address1], params[:address2])
+    %>
+
+      <% if ship_cost >= 0.0 %>
+        <%= ship_cost > 0 ? number_to_currency_custom(ship_cost - @cart.shipping_rebate(ship_cost)) : t(:shipping_no_cost, :locale => @checkout_locale) %>
+      <% end %>
+    </span>
+    <br />
+    <span>
+     
+    </span>
+  </div>
+  <div class="clear"></div><br />
+
+  <!-- XPress Shipping -->
+  <% if (@country=="CA" || (@country=="US" && @province != "HI")) %>
+    <%= radio_button("shipping",
+      "type",
+      SHIPPING_EXPRESS,
+      {:name => 'radio_shipping',
+        :id => "shipping_radio_#{SHIPPING_EXPRESS}",
+        :checked => @cart.shipping_type.to_i==SHIPPING_EXPRESS ? 'checked' : ''}) %>
+    <div class="text_radio">
+      <span class="text12"><strong><%=t(:shipping_xpress, :locale => @checkout_locale)%>:</strong> </span>
+      <span class="text11">
+
+        <%
+        ship_cost = @cart.shipping(SHIPPING_EXPRESS, @country, @province, params[:town], params[:zip], params[:address1], params[:address2])
+      %>
+
+        <% if ship_cost >= 0.0 %>
+          <%= number_to_currency_custom(ship_cost - @cart.shipping_rebate(ship_cost)) %>
+        <% end %>
+      </span><br />
+      <span>
+
+        <% if @christmas %>
+          <%= get_christmas_shipping_rush_delays(@country, @province, @cart.is_24_hours_order) %>
+        <% else %>
+
+          <% if @cart.is_24_hours_order && (session[:country] == "CA" || session[:country] == "US") %>
+            <%=t(:shipping_xpress_detail_ca_special_24, :locale => @checkout_locale)%>
+          <% else %>
+            <%=t(:shipping_xpress_detail_ca, :locale => @checkout_locale)%>
+          <% end %>
+        <% end %>
+      </span><br /><br />
+    </div><div class="clear"></div>
+  <% end %>
+  <!-- EO XPress SHipping -->
+
+
+</div>
+
+
+</div>

@@ -1,0 +1,61 @@
+<b>Warning: THIS IS NOT A NEW ORDER.</b><br /><br />
+<b>**FOLLOW UP** of PO number:</b> <%= @listing.po_number %><br /><br /><br />
+
+<% if @listing.apparel_supplier.pick_up && @printer.id == User.find_by_username("izishirt").id %>
+  <b>Pick up order, do not ship.</b>
+<% else %>
+    <b>Ship From:</b> <%= @listing.apparel_supplier.name %> <br /><br />
+    <b>Ship To:</b>
+
+    <% if @apparel_supplier.shipping_comment && @apparel_supplier.shipping_comment != "" %>
+	<p><strong><%= @apparel_supplier.shipping_comment %></strong></p>
+    <% end %>
+
+    <table>
+      <tr><td><b>Name: </b></td><td><%=@printer.printing_address.name%></td></tr>
+      <tr><td><b>Address 1:</b> </td><td><%=@printer.printing_address.address1%></td></tr>
+      <tr><td><b>Address 2:</b> </td><td><%=@printer.printing_address.address2%></td></tr>
+      <tr><td><b>City:</b> </td><td><%=@printer.printing_address.town%></td></tr>
+      <tr><td><b>Province:</b> </td><td><%=@printer.printing_address.province.name%></td></tr>
+      <tr><td><b>Postal Code:</b> </td><td><%=@printer.printing_address.zip%></td></tr>
+      <tr><td><b>Country:</b> </td><td><%=@printer.printing_address.country.name%></td></tr>
+    </table>
+<% end %>
+
+
+<br /><br />
+
+
+    <table border="1">
+            <tr>
+                    <th><%= I18n.t(:admin_garments_ordered_generate_list_apparel_id, :locale => Language.find(@lang).shortname) %></th>
+                    <th>Add. comment</th>
+                    <th><%= I18n.t(:admin_garments_ordered_generate_list_apparel_name, :locale => Language.find(@lang).shortname) %></th>
+                    <th><%= I18n.t(:admin_garments_ordered_generate_list_apparel_color, :locale => Language.find(@lang).shortname) %></th>
+                    <th><%= I18n.t(:admin_garments_ordered_generate_list_apparel_size, :locale => Language.find(@lang).shortname) %></th>
+                    <th><%= I18n.t(:admin_garments_ordered_generate_list_quantity, :locale => Language.find(@lang).shortname) %></th>
+            </tr>
+
+			<%
+
+			@garment_products.each do |product|
+
+			%>
+
+			    <tr>
+				    <td><%= "#{@listing.apparel_supplier.acronym}.#{product.order_id}" %></td>
+				    <td><%= ModelSpecification.order_garment_comment_of(product.model_id, product.color_id) %></td>
+				    <td><%= product.model.local_name(Language.find(@lang).id) %></td>
+				    <td><%= product.color.local_name(Language.find(@lang).id) %></td>
+				    <td><%= product.model_size.local_name(Language.find(@lang).id) %></td>
+				    <td><%= product.quantity %></td>
+			    </tr>
+		    <% end %>
+    </table>
+
+    <p><br /></p>
+
+<br />
+If Stock is missing please advise us by email (production.izishirt@gmail.com) or phone (1 514 286 2446)
+
+Thank you for confirming receipt.

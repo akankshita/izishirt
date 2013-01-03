@@ -1,0 +1,19 @@
+<div class="adminsearch" style="width:350px;">
+<% form_remote_tag :url => {:action => action, :action_type => action_type, :category_id => category_id, :country_ids => country_ids, :language_ids => language_ids}, :update => update do %>
+	<%= text_field_tag('search', params[:search], :class => 'input fleft') %>
+  <label class="fleft">Active?</label>
+  <%= check_box("image", "active", {:class => 'fleft', :checked => "checked"}, "1", "0") %>
+  <select id="search_field" name="search_field" class="fleft">
+  	<option value="id">Design ID</option>
+  	<option value="username">Username</option>
+    <option value="name">Design Name</option>
+
+    <% if with_design_category %>
+      <option value="category">Design Category</option>
+    <% end %>
+    
+    <option value="created_on">Created On</option>
+  </select>
+	<%= image_submit_tag 'ico-search.gif', :class => 'button fleft' %>
+<% end %>
+</div>

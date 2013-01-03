@@ -1,0 +1,40 @@
+<div id="reason_image_declined<%= box_id %>" style="display:<%= initial_display %>;">
+  <script language="javascript">
+    function image_decline_reason_changed<%= box_id %>()
+    {
+      image_decline_reason = document.getElementById("image_design_image_decline_reason_id<%= box_id %>");
+
+    <%
+      localized_decline_reasons = LocalizedDesignImageDeclineReason.find_all_by_language_id(language_id)
+
+      localized_decline_reasons.each do |localized_reason| %>
+          if (image_decline_reason.value == <%= localized_reason.design_image_decline_reason_id %>)
+          {
+            decline_reason_description = document.getElementById("image_decline_reason<%= box_id %>");
+            decline_reason_description.value = "<%= localized_reason.template %>";
+          }
+      <% end %>
+
+    }
+  </script>
+
+  
+    <div class="<%= no_field_class ? "" : "titleForm" %>"><label for="image"><%= t(:admin_image_form_decline_reason) %></label></div>
+
+    <div class="<%= no_field_class ? "" : "boxForm" %>">
+      <% select_decline_reason_id = (image.design_image_decline_reason_id && image.design_image_decline_reason_id > 1) ? image.design_image_decline_reason_id : DesignImageDeclineReason.find_by_str_id("quality").id %>
+
+      <%= select_tag("image[design_image_decline_reason_id#{box_id}]", options_for_select(@image_decline_reasons, select_decline_reason_id), :onchange => "image_decline_reason_changed#{box_id}();", :id => "image_design_image_decline_reason_id#{box_id}") %>
+    </div>
+
+    <div class="<%= no_field_class ? "" : "titleForm" %>"><label for="image"><%= t(:admin_image_form_decline_reason_description) %></label></div>
+
+    <div class="<%= no_field_class ? "" : "boxForm" %>">
+      <%= text_area( "image", "decline_reason#{box_id}", :cols => 50, :rows => 1, :value => image.decline_reason, :id => "image_decline_reason#{box_id}" ) %>
+    </div>
+    
+</div>
+
+<script language="javascript">
+  image_decline_reason_changed<%= box_id %>();
+</script>

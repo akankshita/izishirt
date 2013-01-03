@@ -1,0 +1,44 @@
+<%= render :partial => 'checkout2/steps'%>
+
+<div id="header_legend">
+  <div id="title_step"><%= t(:shopping_cart_information, :locale => @checkout_locale) %></div>
+<br/>
+  <div id="keep_shopping">
+    <%= link_to("<&nbsp;" + t(:keep_shopping, :locale => @checkout_locale), @continue_link) %>
+  </div>
+  <% if params[:onsite] && params[:onsite] == "true" && @cart.items.length > 0%>
+    <div id="btn_free_quote" class="right" style="margin-top:0">
+      <%= link_to(t(:continue, :locale => @checkout_locale)+"&nbsp;"+image_tag("izishirt2009/tiny_arrow.png",:width=>5, :height=>10),
+                  "#current", 
+                  :onclick=>"javascript:$j('#comments_form').submit();", 
+                  :class=>"button_free_quote", 
+                  :title=>t(:continue, :locale => @checkout_locale)) %>
+    </div>
+  <% end %>
+</div>
+<%
+
+
+if session[:country] && session[:country] == "FR"
+		session[:currency] = "EUR"
+		unit = "&euro;"
+		else
+			if  session[:country] && session[:country] =="CA"
+			session[:currency] = "CAD"
+			unit = "$"
+			else
+			session[:currency] = "USD"
+			unit = "$"
+			end
+		end
+
+
+%>
+
+<!-- items sections -->
+<div id="shopping_cart">
+
+
+  <%= render :partial=>'cart' %>
+</div>
+<div class="clear"></div>

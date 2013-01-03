@@ -1,0 +1,73 @@
+<p>Report of: <b><%= @shift.fullname %></b> (<%= @shift.username %>)</p>
+<p>Start time: <b><%= @shift.created_at %></b></p>
+<p>End time: <b><%= @shift.finished_at %></b></p>
+<p>Duration: <b><%= @shift.duration %> hours</b></p>
+<h2>Week: <%= @shift.user.shift_hours_done_week.round(2) %> hours</h2>
+
+
+<% if @shift.description && @shift.description != "" %>
+
+	<p><br /><b>Additional description: </b><br /><br />
+		<%= @shift.description.gsub("\n", "<br />") %>
+	<br /><br />
+	</p>
+<% end %>
+
+<% 
+
+stats = @shift.artwork_statistics
+
+nb_orders = 0
+total_files_problem = 0
+total_files_done = 0
+total_files_sent = 0
+
+%>
+
+<% if stats.length > 0 
+%>
+	<h3>Artworks</h3>
+
+	<table border="1">
+		<tr>
+			<th>Order</th>
+			<th># files problem</th>
+			<th># files done</th>
+			<th># files sent</th>
+		</tr>
+
+		<% stats.each do |order_id, infos| 
+			nb_orders += 1
+			total_files_problem += infos[:files_problem].length
+			total_files_done += infos[:files_done].length
+			total_files_sent += infos[:files_sent].length
+		%>
+			<tr>
+				<td><%= link_to("#{order_id}", :host => "www.izishirt.ca", :controller => "/admin/order", :action => "show", :id => order_id) %></td>
+				<td style="color: <%= "red" if infos[:files_problem].length > 0 %>;"><%= infos[:files_problem].length %></td>
+				<td style="color: <%= "green" if infos[:files_done].length > 0 %>;"><b><%= infos[:files_done].length %></b></td>
+				<td style="color: <%= "green" if infos[:files_sent].length > 0 %>;"><b><%= infos[:files_sent].length %></b></td>
+			</tr>
+		<% end %>
+
+		<tr>
+			<td>------</td>
+			<td>------</td>
+			<td>------</td>
+			<td>------</td>
+		</tr>
+
+		<tr>
+			<td><%= nb_orders %> orders</td>
+			<td style="color: <%= "red" if total_files_problem > 0 %>;"><b><%= total_files_problem %></b></td>
+			<td style="color: <%= "green" if total_files_done > 0 %>;"><b><%= total_files_done %></b></td>
+			<td style="color: <%= "green" if total_files_sent > 0 %>;"><b><%= total_files_sent %></b></td>
+		</tr>
+	</table>
+<% end %>
+
+<p>
+<br />
+</p>
+
+Izishirt.com

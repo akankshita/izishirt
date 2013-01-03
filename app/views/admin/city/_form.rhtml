@@ -1,0 +1,74 @@
+<%= error_messages_for 'city' %>
+<!--[form:category]-->
+<div>
+	
+    <div class="titleForm"></div>
+
+    <div class="titleForm"><label for="name">Name in French</label></div>
+    <div class="boxForm">
+      <input class="box" type="text" id="name" name="name" value="<%= @city.name %>" />
+    </div>
+	
+	<div class="titleForm"><label for="name_en">Name in English</label></div>
+    <div class="boxForm">
+      <input class="box" type="text" id="name_en" name="name_en" value="<%= @city.name_en %>" />
+    </div>
+    
+	<br /><br />
+	<div class="titleForm"><label for="url">URL</label></div>
+	<div class="boxForm">
+	  <input class="box" type="text" id="url" name="url" value="<%= @city.url %>" />
+	</div>
+		
+	<br /><br />
+
+<div class="titleForm"><label for="province_id">Province</label></div>
+<div class="boxForm">
+							<select class="box" id="province_id" name="province_id">  
+							<% for province in @provinces %>
+							<option value="<%= province.id %>" <% if province.id.to_i == @city.province_id.to_i %> SELECTED<% end %> ><%= province.name %></option>
+							<% end  %> </select></div>
+
+							
+	<div style="clear:both;"></div>
+	<div class="boxForm" style="width:260px !important;"><label for="title_fr">Page title Canada FR</label><br />
+	  <input class="box" style="width:250px !important;" type="text" id="title_fr" name="title_fr" value="<%= @city.title_fr %>" />
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="keywords_fr">Page keywords Canada FR</label><br />
+		<textarea cols="30" rows="8" id="keywords_fr" name="keywords_fr"><%= @city.keywords_fr %></textarea>
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="metadesc_fr">Page meta description Canada FR</label><br />
+	  <textarea cols="30" rows="8" id="metadesc_fr" name="metadesc_fr"><%= @city.metadesc_fr %></textarea>
+	</div>
+	
+	<div style="clear:both;"></div>
+	<div class="boxForm" style="width:260px !important;"><label for="title_en">Page title Canada EN</label><br />
+	  <input class="box" style="width:250px !important;" type="text" id="title_en" name="title_en" value="<%= @city.title_en %>" />
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="keywords_en">Page keywords Canada EN</label><br />
+		<textarea cols="30" rows="8" id="keywords_en" name="keywords_en"><%= @city.keywords_en %></textarea>
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="metadesc_en">Page meta description Canada EN</label><br />
+	  <textarea cols="30" rows="8" id="metadesc_en" name="metadesc_en"><%= @city.metadesc_en %></textarea>
+	</div>
+	
+	<div style="clear:both;"></div>
+	<div class="boxForm" style="width:260px !important;"><label for="title_us">Page title USA</label><br />
+	  <input class="box" style="width:250px !important;" type="text" id="title_us" name="title_us" value="<%= @city.title_us %>" />
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="keywords_us">Page keywords USA</label><br />
+		<textarea cols="30" rows="8" id="keywords_us" name="keywords_us"><%= @city.keywords_us %></textarea>
+	</div>
+	
+	<div class="boxForm" style="width:280px !important;"><label for="metadesc_us">Page meta description USA</label><br />
+	  <textarea cols="30" rows="8" id="metadesc_us" name="metadesc_us"><%= @city.metadesc_us %></textarea>
+	</div>
+							
+<!--[eoform:city]-->
+
+  </div>

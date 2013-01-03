@@ -1,0 +1,43 @@
+/*
+    anythingSlider v1.2
+    
+    By Chris Coyier: http://css-tricks.com
+    with major improvements by Doug Neiner: http://pixelgraphics.us/
+    based on work by Remy Sharp: http://jqueryfordesigners.com/
+*/
+#page-wrap{float: left;width: 567px;}
+
+.anythingSlider                         { width: 909px; height: 246px; position: relative; margin: 0 auto 15px; float: left;overflow:hidden;}
+.anythingSlider .wrapper                { width: 909px; overflow: auto; height: 246px; position: absolute; top: 0; left: 0; float: left;overflow:hidden;}
+
+                                       /* Width below is max for Opera */
+.anythingSlider .wrapper ul             { width: 32700px; list-style: none; position: absolute; top: 0; left: 0; background: #eee; margin: 0; padding-left: 0;}
+.anythingSlider .wrapper ul li #banner_button{    bottom: 11px;
+    margin: 0 auto;
+    position: absolute;
+    right: 35%;
+    text-align: right;
+    width: 557px;}
+.anythingSlider .wrapper ul li #banner_button a{display:block;float:right;color: #fff;background:url(/images/izishirt2011/backbuttonbanner.png) no-repeat;padding: 5px 23px;height:22px;line-height:22px;cursor: pointer;font-family: Arial;text-decoration:none;font-size:15px;font-weight:bold;width:195px;}
+.anythingSlider .wrapper ul li #banner_button a:hover{}
+.anythingSlider ul li                   { display: block; float: left; padding: 0; height: 246px; width: 909px; margin: 0; position: relative;background-color: #fff;}
+.anythingSlider .arrow                  { display: block; height: 200px; width: 67px; background: url(../images/arrows.png) no-repeat 0 0; text-indent: -9999px; position: absolute; top: 65px; cursor: pointer; }
+.anythingSlider .forward                { background-position: 0 0; right: -20px; }
+.anythingSlider .back                   { background-position: -67px 0; left: -20px; }
+.anythingSlider .forward:hover          { background-position: 0 -200px; }
+.anythingSlider .back:hover             { background-position: -67px -200px; }
+
+#thumbNav                               { position: relative;  height: 14px; text-align: left; padding-left: 10px;top: 182px ;width: auto;float: left;}
+#thumbNav a                             { float:left;display: block; padding: 0; width: 13px; height: 13px; border: solid 1px #999; margin: 0 10px 0 0;  text-align: center; background-color: #fff; color: #fff; font-size: 4px;}
+#thumbNav a:hover                       { background-color: #0066ff; border: solid 1px #0066ff;color: #0066ff;}
+#thumbNav a.cur                         { background: #0066ff; border: solid 1px #fff;color: #0066ff;}
+
+#start-stop                             { background-color: none; background-image: url("/images/izishirt2011/play.png");position: relative; top: 182px; width: 10px;height: 16px;display: block;float: left;border: 0;color: #fff;}
+#start-stop.playing                     { background-color: none; background-image: url("/images/izishirt2011/pause.png");position: relative; top: 184px;width:8px;height: 13px;display: block;float: left;border: 0;color: #fff;}
+#start-stop:hover{border: 0;color: #fff;}
+
+/*
+  Prevents
+*/
+.anythingSlider .wrapper ul ul          { position: static; margin: 0; background: none; overflow: visible; width: auto; border: 0; }
+.anythingSlider .wrapper ul ul li       { float: none; height: auto; width: auto; background: none; }

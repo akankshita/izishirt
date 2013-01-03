@@ -1,0 +1,141 @@
+/** IE6 is a hunk of crap!!! don't ask me why this is needed **/
+
+.crnTL, .crnTR, .crnBR, .crnBL,
+.rstl, .rstr, .rsbr, .rsbl,
+.crnBbTL, .crnBbTR, .crnBbBR, .crnBbBL,
+.rtl, .rtr, .rbr, .rbl,
+#subnav .subnav_left,
+#subnav .subnav_right,
+.mydesigns .mdesigns_list .starred { background-image: none !important }
+
+#subnav .subnav_left { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/submenu-left1.png'); }
+#subnav .subnav_right { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/submenu-right1.png');}
+.mydesigns .mdesigns_list .starred{ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/star.png');}
+* html .article_view .article_spec .neznam {  float:none}
+
+/* Large Corners */
+
+.rtl {	left: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/rtl.png');}
+.rtr {	right: 0;	top: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/rtr.png')}
+.rbr {	right: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/rbr.png')}
+.rbl {	left: 0;	bottom: 0;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/rbl.png')}
+
+/* Small Corners - light border*/
+.rcsbgrdark .rstl {	left: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/sm_dark_wh_rtl.png')}
+.rcsbgrdark .rstr {	right: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/sm_dark_wh_rtr.png')}
+.rcsbgrdark .rsbr {	right: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/sm_dark_wh_rbr.png')}
+.rcsbgrdark .rsbl {	left: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/sm_dark_wh_rbl.png')}
+
+.crnlite .rstl {	left: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crns-tl-wbgr.png')}
+.crnlite .rstr {	right: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crns-tr-wbgr.png')}
+.crnlite .rsbr {	right: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crns-br-wbgr.png')}
+.crnlite .rsbl {	left: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crns-bl-wbgr.png')}
+
+.crnliteblue .rstl {	left: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_tl_blue.png')}
+.crnliteblue .rstr {	right: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_tr_blue.png')}
+.crnliteblue .rsbr {	right: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_br_blue.png')}
+.crnliteblue .rsbl {	left: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_bl_blue.png')}
+
+.rcsgbgr .rstl {	left: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/sm_dark_gr_rtl.png')}
+.rcsgbgr .rstr {	right: -1px;	top: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/sm_dark_gr_rtr.png')}
+.rcsgbgr .rsbr {	right: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/sm_dark_gr_rbr.png')}
+.rcsgbgr .rsbl {	left: -1px;	bottom: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/sm_dark_gr_rbl.png')}
+
+
+/* rounded corners */
+.crnTL { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_tl_gr.png') }
+.crnTR { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_tr_gr.png') }
+.crnBR { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_br_gr.png') }
+.crnBL { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_bl_gr.png') }
+
+/* Corners - blue corners - blue background 5px */
+
+.crnBbTL { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_tl_blue-bbgr1.png'); top: -1px;	left: -1px; }
+.crnBbTR { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_tr_blue-bbgr1.png'); top: -1px;	right: -1px; }
+.crnBbBR { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_br_blue-bbgr1.png');	bottom: -1px;	right: -1px; }
+.crnBbBL { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_bl_blue-bbgr1.png');	bottom: -1px;	left: -1px; }
+
+
+
+.thumbsFP .ovr .crnBbTL,
+.thumbsRate .ovr .crnBbTL,
+.thumbsUsr .ovr .crnBbTL {top: -1px;	left: -1px;	 filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_tl_blue-bbgr1ovr.png');}
+.thumbsFP .ovr .crnBbTR,
+.thumbsRate .ovr .crnBbTR,
+.thumbsUsr .ovr .crnBbTR  {	top: -1px;	right: -1px;	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_tr_blue-bbgr1ovr.png');}
+.thumbsFP .ovr .crnBbBR,
+.thumbsRate .ovr .crnBbBR,
+.thumbsUsr .ovr .crnBbBR {bottom: -1px;	right: -1px;filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_br_blue-bbgr1ovr.png');	}
+.thumbsFP .ovr .crnBbBL,
+.thumbsRate .ovr .crnBbBL,
+.thumbsUsr .ovr .crnBbBL {	bottom: -1px;	left: -1px; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/crn/crn_bl_blue-bbgr1ovr.png');	}
+
+
+* html .myacc_con_left a span,
+* html .myacc_img_fld a span,
+* html .myacc_img a span,
+* html .myacc3_save span { padding:0px 6px 0px 0px; margin-left:5px}
+
+* html .myacc_con_left a span,
+* html .myacc_img_fld a span,
+* html .myacc_img a span,
+* html a.myacc3_save span {padding-bottom:3px}
+
+* html .thumbsUsr { margin-right:2px}
+
+* html .thumbsFP,
+* html .thumbsFP span { margin:3px 6px 3px 0px;  padding:0}
+.whatshot_links {float:right; margin-right:3px}
+
+* html .login_c {_height:120px}
+
+* html .brix .brixcontent { margin:10px 10px 0px 130px; height:125px; overflow:hidden;width:450px; }
+* html .services {padding-top:1px; height:120px }
+.services .servcontent {padding:5px}
+.whatshot .content {padding:0px 0 5px 25px}
+
+.fpforum,
+.fpblog { border-left:1px solid #c4c4c5; }
+
+.fplogin {margin-left:70px}
+
+.dbpage {}
+
+.lostpassbgr {_height:300px; padding-left:230px;}
+.login1  {background:#f0f0f0; _height:120px}
+
+.uploaddesign td b,
+.uploaddesign h3 {border-bottom:1px solid #bdbdbd}
+
+/* Buttons */
+.buton  {background-image:none !important}
+
+/*
+.btnReg input  { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/btn/bgr_reg_btn.png'); }
+.btnReg .rLeft  {  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/btn/bgr_reg_left.png');}
+.btnReg .rRight { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/btn/bgr_reg_right.png'); }
+
+.btnReg:hover input,
+.btnReg.ovr input { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/btn/bgr_reg_btn_ovr.png'); }
+
+*/
+.btnReg.ovr .rLeft {filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/btn/bgr_reg_left.png');}
+.btnReg.ovr .rRight {filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/btn/bgr_reg_right.png');}
+
+#tabbz {
+    margin-top:-13px;
+    display:block;
+    position:absolute;
+    top:0px;
+}
+
+.grayBack { background-color:transparent; color:white;}
+
+
+div#mydesigns.myizishirt-right .mydesign .image{
+    margin-right:7px;
+}
+div#mydesigns.myizishirt-right .mydesign .sold {
+    margin-right:7px;
+    padding-right:0px;
+}

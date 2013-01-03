@@ -1,0 +1,29 @@
+<h1>Out of stock models</h1>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <th>Model</th>
+    <th>Color</th>
+    <th>Size</th>
+	<th><%= t(:admin_out_of_stock_list_expected_date) %></th>
+    <th>&nbsp;</th>
+    <th><input type="checkbox" id="all" onclick="javascript:toggle_all()"/></th>
+  </tr>
+  
+  <tbody id='listing'>
+    <%= render :partial => 'out_of_stock_listing' %>
+  </tbody>
+</table>
+
+<br />
+
+<table cellspacing="0" cellpading="0" width="100%">
+	<tr>
+		<td align="left" width="50%">
+			<%= will_paginate @out_of_stocks %> 
+		</td>
+		<td align="right" width="50%">
+      <%= link_to "Set to in stock", "javascript:$('out_of_stock_form').submit();", {:class => 'textLink', :title => "Set to in stock" } %>
+		</td>
+	</tr>
+</table>

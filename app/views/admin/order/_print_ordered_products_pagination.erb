@@ -1,0 +1,19 @@
+<% if @ordered_products && @ordered_products.length > 0 %>
+
+  <div class="titleForm"><label> </label></div>
+  <div class="boxForm" align="center">
+<!--
+    <b><%= t(:admin_order_show_products) %></b> 
+-->
+	<%= will_paginate @ordered_products, :locals => {:search_order => ""} %>
+
+	<% if params[:page].to_i > 1 && params[:action] != "print" %>
+		<%= submit_tag t(:orders_save_go_to_previous), :name => "save_goto_previous" %>
+	<% end %>
+
+	<% if params[:page].to_i < @ordered_products.total_pages && params[:action] != "print"%>
+		<%= submit_tag t(:orders_save_go_to_next) , :name => "save_goto_next" %>
+	<% end %>
+  </div>
+
+<% end %>

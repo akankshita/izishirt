@@ -1,0 +1,20 @@
+<% contains_non_promo_items = true %>
+<%
+   begin
+     if @cart.has_regular_items
+       contains_non_promo_items = true
+     else
+       contains_non_promo_items = false
+     end
+   rescue
+     if @cart.items.length > 0
+       contains_non_promo_items = true
+     end
+   end
+   
+   %>
+<%  if contains_non_promo_items == false %>
+  <%= render(:partial => 'empty_cart') if params[:action] != "show_brief_cart"  %>
+<% else %>
+  <%= render(:partial => 'cart_with_items') %>
+<% end %>

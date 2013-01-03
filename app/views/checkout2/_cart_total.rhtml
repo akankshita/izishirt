@@ -1,0 +1,29 @@
+
+<% if @coupon_applied == 'true' %>
+  <span style="color:#009E00;font-size:10px;"><%= t(:applied_coupon, :locale => @checkout_locale) %></span>
+<% elsif @coupon_invalid_shop2 == 'true' %>
+  <span style="color:#cc0000;font-size:10px;"><%= t(:wrong_coupon_shop2, :locale => @checkout_locale) %></span>
+<% elsif @coupon_applied == 'false' %>
+  <span style="color:#cc0000;font-size:10px;"><%= t(:wrong_coupon, :locale => @checkout_locale) %></span>
+<% end %>
+<div id="list_prices">
+
+<% if @cart.total_rebate > 0 %>
+  <span class="text15"><%=t(:your_current_sub_total, :locale => @checkout_locale)%></span><span class="text13"><%=number_to_currency_custom(@cart.subtotal)%></span>
+  <div class="clear"></div>
+  <span class="text15"><%= t(:discount, :locale => @checkout_locale) %></span><span class="text132 orange">-<%= number_to_currency_custom(@cart.total_rebate) %></span>
+  <div class="clear"></div>
+<% end %>
+<% if session[:currency] == "CHF" %>
+  <style>
+    .text15{font-size:12px !important;}
+    #sub_total_price{font-size:18px !important;margin-top:3px !important;}
+  </style>
+<% end %>
+  <div id="total"><span class="text15"><%=t(:sub_total, :locale => @checkout_locale)%></span></div>
+
+  <span id="sub_total_price" class="text22blue"><%=number_to_currency_custom(@cart.total)%></span>
+
+  
+  
+</div>

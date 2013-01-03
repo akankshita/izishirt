@@ -1,0 +1,6 @@
+<%= "#{@gift.sender}#{I18n.t(:send_mail_gift_content_1, :locale => Language.find(@user.language_id).shortname)}" %><br />
+<%= "#{I18n.t(:send_mail_gift_code, :locale => Language.find(@user.language_id).shortname)} #{@coupon.code}" %><br />
+<%= "#{I18n.t(:send_mail_gift_amount, :locale => Language.find(@user.language_id).shortname)} #{@gift.amount}" %><br />
+<%= I18n.t(:send_mail_gift_content_2, :locale => Language.find(@user.language_id).shortname) %><br />
+<%= I18n.t(:send_mail_gift_signature_1, :locale => Language.find(@user.language_id).shortname) %><br />
+<%= I18n.t(:send_mail_gift_signature_2, :locale => Language.find(@user.language_id).shortname) %><br />

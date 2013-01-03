@@ -1,0 +1,11 @@
+page.replace_html "usave_price", number_to_currency_custom(@base_price)
+page.replace_html "qty", "Qty : #{params[:qty]}"
+page.replace_html "retail", "#{t(:retail_price)} : #{number_to_currency_custom(@our_price)}"
+page.replace_html "bulk_discount", "#{t(:bulk_discount)} : #{@bulk_discount}%"
+page.replace_html "total", "TOTAL : #{number_to_currency_custom(@total_price)}"
+page.replace "in_stock", hidden_field_tag("in_stock" , @in_stock.to_s)  
+if @in_stock
+  page.hide "stock"
+else
+  page.show "stock"
+end

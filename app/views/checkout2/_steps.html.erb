@@ -1,0 +1,37 @@
+<div id="steps">
+  <div id="step1">
+    <% link_to({:controller => :checkout2, 
+               :action => :show_cart,
+               :onsite => params[:onsite], 
+               :iframe => params[:iframe],
+               :flash_iframe => params[:flash_iframe],
+               :store_id => params[:store_id]}) do %>
+      <%= "<span class='current'>" if @step == 1%>
+      1. <%= t(:shopping_cart_information, :locale => @checkout_locale) %>
+      <%= "</span>" if @step == 1%>
+    <% end %>
+  </div>
+  <div id="step2">
+    <% if (@step==3) and @cart.items.length > 0 %>
+      <% link_to({:controller=>:checkout2, 
+                 :action=>:address,
+                 :onsite => params[:onsite], 
+                 :iframe => params[:iframe],
+                 :flash_iframe => params[:flash_iframe],
+                 :store_id => params[:store_id]}) do %>
+        2. <%= t(:billing_and_shipping_information, :locale => @checkout_locale) %>
+      <% end %>
+    <% else %>
+      <%= "<span class='current'>" if @step == 2%>
+      2. <%= t(:billing_and_shipping_information, :locale => @checkout_locale) %>
+      <%= "</span>" if @step == 2%>
+    <% end %>
+  </div>
+
+  <div id="step3">
+    <%= "<span class='current'>" if @step == 3%>
+    3. <%= t(:payment_methods, :locale => @checkout_locale) %>
+    <%= "</span>" if @step == 3%>
+  </div>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,13 @@
+<p><%=I18n.t(:send_mail_lost_pass_content_1, :locale => Language.find(@user.language_id).shortname)%></p>
+<p><%=I18n.t(:send_mail_lost_pass_your_username, :locale => Language.find(@user.language_id).shortname)%><%= @user.username %><br />
+	<b><%=I18n.t(:send_mail_lost_pass_content_2, :locale => Language.find(@user.language_id).shortname)%></b><%= @pass %>
+</p>
+<p><%=I18n.t(:send_mail_lost_pass_content_3, :locale => Language.find(@user.language_id).shortname)%></p>
+<p><%=I18n.t(:send_mail_lost_pass_content_4, :locale => Language.find(@user.language_id).shortname)%></p>
+
+<br />
+<br />
+
+<%=I18n.t(:send_mail_content_izishirt_team, :locale => Language.find(@user.language_id).shortname)%><br/>
+<a href="http://www.izishirt.ca">IZISHIRT.com</a><br/>
+<a href="mailto:contact@izishirt.com">contact@izishirt.com</a><br/>

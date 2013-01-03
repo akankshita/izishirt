@@ -1,0 +1,31 @@
+<% if params[:controller] != "checkout2"%>
+  <div id="header_share">
+    <div id="social">
+      <%= link_to image_tag("izishirt2009/facebook.png", :alt=>"Facebook"),
+        "http://www.facebook.com/sharer.php?u=#{request.url}&t=#{@meta_title}", 
+        :target=>"_blank" 
+      %>
+      
+      <%= link_to image_tag("izishirt2009/twitter.png", :alt=>"Twitter"),
+        "http://twitter.com/home?status=#{request.url}", 
+        :target=>"_blank" 
+      %>
+      
+      <%= link_to image_tag("izishirt2009/delicious.png", :alt=>"Delicious"),
+        "http://del.icio.us/post?url=#{request.url}&title=#{@meta_title}", 
+        :target=>"_blank" 
+      %>
+
+      <%= link_to image_tag("izishirt2009/digg.png", :alt=>"Digg"),
+        "http://digg.com/submit?phase=2&url=#{request.url}&title=#{@meta_title}", 
+        :target=>"_blank" 
+      %>
+      
+      <%= link_to image_tag("izishirt2009/stumble.png", :alt=>"StumbleUpon"),
+        "http://www.stumbleupon.com/submit?url=#{request.url}&title=#{@meta_title}", 
+        :target=>"_blank" 
+      %>
+    </div>
+    <iframe id="facebook_ilike" src="http://www.facebook.com/plugins/like.php?href=<%=CGI.escape(request.url)%>&amp;layout=button_count&amp;show_faces=false&amp;width=110&amp;action=like&amp;font=arial&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:80px; height:25px"></iframe>
+  </div>
+<% end %>

@@ -1,0 +1,224 @@
+<% if @order.nil? %>
+	<h1><%= t(:admin_order_assign_printer_process_no_order_without_printer) %></h1>
+<% else %>
+	<h1><%= t(:admin_order_assign_printer_process_title) %> (<%= link_to t(:admin_order_assign_printer_process_order) + " ID ##{@order.id}", :action => "show", :id => @order.id %>)</h1>
+
+        <% if @order.bulk_order? %>
+          <div class="titleForm"></div>
+          <div class="boxForm"><h2 style="background-color: yellow"><%= t(:admin_order_printer_assignment_proccess) %></h2></div>
+        <% end %>
+        
+	<% main_selected_printer = 0 %>
+
+	<% form_tag ({:action => 'save_printer_assignment', :id => @order.id}, {:multipart=>true }) do %>
+	
+		<div class="titleForm"><label><%= t(:admin_order_assign_printer_process_checkout_comment) %></label></div>
+		<div class="boxForm"><%= @order.checkout_comment %></div>
+		
+		<div class="titleForm"><label><%= t(:admin_order_assign_printer_process_created_on) %></label></div>
+		<div class="boxForm"><%= @order.created_on %></div>
+		
+		<div class="titleForm"><label><%= t(:admin_order_assign_printer_process_shipping_address) %></label></div>
+		<div class="boxForm"> <%= @order.shipping.town %>, <%= @order.province_str %> <br /> <%= @order.country_str %><br />
+		</div>
+		
+		<div class="titleForm"><label><%= t(:admin_order_assign_printer_process_shipping_type) %></label></div>
+		<div class="boxForm"><%= SHIPPING_FULL_NAMES[@order.shipping_type] %></div>
+
+		<div class="titleForm">Main Order printer</div>
+		<div class="boxForm">
+			<%= select_tag 'order[printer]', options_for_select(@printers) %>
+			<%= hidden_field "custom", "action" %>
+		</div>
+		
+		<% 
+		
+		ordered_zone_index = 0 
+		
+		for prod in @order.ordered_products%>
+		
+		                <% if prod.is_extra_garment || prod.model.nil?
+		                    next
+		                   end
+		                %>
+		
+				  <div class="titleForm"><label> </label></div>
+				  <div class="boxForm"><hr/></div>
+		                  
+				  <div class="titleForm"><label><%= t(:admin_orders_show_product_id) %>:</label></div>
+				  <div class="boxForm">
+		                    <%= prod.id %>
+		                  </div>
+
+                                  <div class="titleForm"><label><%= t(:admin_order_in_stock_at_izishirt) %>:</label></div>
+				  <div class="boxForm">
+		                    <%= check_box_tag "ordered_product_#{prod.id}[in_izishirt_stock]", 'true', false %>
+		                  </div>
+						  
+		                  <div class="titleForm"><label>Active:</label></div>
+				  <div class="boxForm">
+		                    <%= prod.active %>
+		                  </div>
+
+				<div class="titleForm">Product printer</div>
+				<div class="boxForm">
+
+					<% 
+					selected_printer = 0
+
+					if prod.color && prod.color.local_name(2).downcase == "white"
+						selected_printer = User.find_by_username("izishirtbrother").id
+					else
+						selected_printer = User.find_by_username("izishirtkornit").id
+					end
+
+					main_selected_printer = selected_printer
+					%>
+
+					<%= select_tag "ordered_product_#{prod.id}[printer]", options_for_select(@printers, selected_printer) %>
+				</div>
+		  
+		
+				  <div class="titleForm"><label>Description:</label></div>
+				  <div class="boxForm">
+					  <table cellspacing="0" cellpadding="3" border="0" width="100%">
+		                <tr>
+		                  <td>
+		                      <span id="<%= "#{prod.id}_#{prod.quantity}" %>"><%= prod.quantity %></span>
+		                  </td>
+                                  
+		                  <td>
+       
+		                      <span id="<%= "#{prod.id}_#{prod.model.id}" %>">
+		                        <% if prod.model_other != nil && prod.model_other != "" && prod.model_other != "Other" %>
+		                          <%= prod.model_other %>
+		                        <% elsif prod.model %>
+								
+									<%
+									if ! prod.model_in_stock
+										%>
+										<p style="color:#D50000;font-size:20px;"><%= t(:admin_order_assign_printer_process_out_of_stock) %></p>
+										<%
+									end
+									%>
+								
+		                          <%= prod.model.local_name(session[:language_id]) %>
+		                        <% end %>
+		                      </span>
+		                  </td>
+		                  <td>
+		                      <span name="<%=prod.id%>" id="<%= "#{prod.id}_#{prod.color.id}" %>">
+							  	<%= prod.color_name(session[:language_id]) %>
+		                      </span>
+		                  </td>
+		                  <td>
+		                      <span id="<%= "#{prod.id}_#{prod.model_size.id}" %>">
+		                        <%= prod.model_size.local_name(I18n.locale) %>
+		                      </span>
+		                  </td>
+		                  <td>
+		                  </td>
+		                </tr>
+		                <tr>
+		                  <td colspan="4">
+		
+							</td>
+		                </tr>
+		              </table>
+		
+		              <% zones = ['front', 'back', 'left', 'right'] %>
+		              <table cellspacing="0" cellpadding="3" border="0" width="75%">
+		              <% zones.each_index do |zone_type| %>
+		
+		                  <% 
+		                    basepath = 'public'
+		                    webpath = "/izishirtfiles/#{path_ordered_product(prod.created_on)}/#{prod.checksum.to_s }/#{prod.checksum.to_s}-#{zones[zone_type]}.jpg"
+		                  %>
+		                  <% if File.exist?(basepath+webpath) %>
+		                    
+		                    <%zone=prod.ordered_zones.find_by_zone_type(zone_type+1)%>
+		                    <td style="text-align:center;" valign="top">
+		
+		                      <% if zone && zone.contains_artwork_or_text() %>
+		                        <% ordered_zone_index += 1 %>
+		                        <p><b><%= ordered_product_zone_id(ordered_zone_index) %></b></p>
+		
+		                      <%
+		                        else
+		                          %>
+		                        <p><b><font color="white">|</font></b></p>
+		                          <%
+		                        end
+		                      %>
+		
+		                      <%= image_tag(webpath, :size => '250x250') %><br />
+		                      <label><%=zones[zone_type]%></label><br />
+							  
+							  
+								
+		                      <p></p>
+		
+		                      <% 
+		                      if zone && zone.contains_uploaded_image && ! zone.contains_image # Uploaded image
+		                      %>
+                                        <% 
+                                        
+                                        cur_image = 0
+
+                                        zone.ordered_zone_artworks.each do |artwork|
+                                          cur_image += 1
+                                          if ! artwork.uploaded_image
+                                            next
+                                          end
+                                        %>
+                                          <a href='#' onclick="javascript:window.open('<%= UploadedImage.uploaded_image_by_timestamp(artwork.uploaded_image_id).orig_image.url %>'); void(0);">Download design <%= cur_image %></a><br />
+                                        <% end %>
+							  
+		                        <%= render :partial => "/admin/order/update_rejected_artwork", :locals => {:ordered_zone_index => ordered_zone_index, :ordered_zone => zone, :language_id => @order.language_id} %>
+		
+		                      <%
+		                      elsif zone && zone.contains_image # Public image
+
+                                        cur_image = 0
+
+                                        zone.ordered_zone_artworks.each do |artwork|
+                                          cur_image += 1
+                                        %>
+
+                                          <% if artwork && artwork.image %>
+                                            <%= link_to image_tag("/images/small_izishirt.png"), :controller => :image, :action => "edit", :id => artwork.image.id, :tab_to_open => "tab_files" %> <%= link_to t(:admin_order_link_modify_artwork) + " #{cur_image}", :controller => :image, :action => "edit", :id => artwork.image.id, :tab_to_open => "tab_files" %>
+                                          <% end %>
+
+                                        <% end %>
+
+		                        <%
+		                      end
+		                      %>
+		                    </td>
+		                  <% end %>
+		              <%end%>
+		              </table>
+		              
+				  </div> 
+				<% end %> 
+				
+		<!--
+		<div class="titleForm"><label>Add an internal comment</label></div>
+		<div class="boxForm">
+			<%=text_area "new_comment", "comment_1", "cols" => 58, "rows" => 5 %>
+			<%= hidden_field_tag "comment_type_1", "administrator_internal" %>
+			<%= hidden_field_tag "nb_comments", "1" %>
+		</div>
+		-->
+		
+		
+		<div class="titleForm"><label></label></div>
+		
+		<div class="boxForm">
+			<%= submit_tag t(:admin_order_assign_printer_process_skip), :onclick => "document.getElementById('custom_action').value='skip';" %>
+			<%= submit_tag ((@order.contains_out_of_stock) ? t(:admin_order_assign_printer_process_save_put_in_back_order_and_go_t0_next) : t(:admin_order_assign_printer_process_save_and_go_t0_next)) %>
+		</div>
+		
+	<% end %>
+
+<% end %>

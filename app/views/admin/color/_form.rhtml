@@ -1,0 +1,34 @@
+<%= error_messages_for 'color' %>
+<div id='colorpicker201' class='colorpicker201'></div>
+
+<!--[form:color]-->
+
+<div>
+<ul class="admintabs" style="display:block;">
+<%= display_localization_tabs(@color.localized_colors) %>
+</ul>
+<% for i in 0...@color.localized_colors.size %>
+	<div id="div_localized_<%= @color.localized_colors[i].language.id %>" class="localized_tab_content clearfix" style="display:<%= (i==0) ? 'block' : 'none' %>; clear:both;">
+		<div class="titleForm"><label for="color_name"><%= t(:admin_color_form_color_name) %></label></div>
+		<div class="boxForm"><input class="box" type="text" id="localized_name_<%= @color.localized_colors[i].language.id%>" name="localized_name_<%= @color.localized_colors[i].language.id%>" value="<%=@color.localized_colors[i].name %>" /></div>
+	</div>
+<% end %>
+</div>
+
+
+
+<div class="titleForm"><label for="preview_image"><%= t(:admin_color_form_preview_image) %></label></div>
+<div class="boxForm">
+		<%= '<img src="/izishirtfiles/colors/'+@color.preview_image+'" width="20" height="20"> '  unless @color.preview_image.empty? || @color.preview_image.nil? %>
+    
+	  <%= file_field 'color', 'uploaded_image', :class=>'box'  %>
+    
+</div>
+
+<div class="titleForm"><label for="color_type_id"><%= t(:admin_color_form_color_type) %></label></div>
+<div class="boxForm"><%= select 'color', 'color_type_id', @type, {}, :class=>'box'  %></div>
+
+
+
+<div class="titleForm"><label for="color_active"><%= t(:admin_color_form_active) %></label></div>
+<div class="boxForm"><%= check_box 'color', 'active', {}, 'true', 'false' %></div>

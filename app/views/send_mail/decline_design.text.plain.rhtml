@@ -1,0 +1,36 @@
+<p><%= "#{I18n.t(:send_mail_decline_salutation, :locale => Language.find(@user.language_id).shortname)} #{@user.username}," %></p>
+<p>
+  <%= I18n.t(:send_mail_decline_content_1, :locale => Language.find(@user.language_id).shortname) %><% if @image_name && @image_id %> (<%= @image_name %> ID <%= @image_id  %>) <% end %>.<br />
+
+  <% if @order_id %>
+  	<%= I18n.t(:send_mail_decline_artwork_order_id, :locale => Language.find(@user.language_id).shortname) %><%= @order_id %><br />
+  <% end %>
+
+  <% if @image_link %>
+    <p>
+      <a href="<%= (URL_ROOT + @image_link) %>"><img src="<%= (URL_ROOT + @image_link) %>" alt="" /></a><br />
+      <a href="<%= (URL_ROOT + @image_link) %>"><%= (URL_ROOT + @image_link) %></a>
+    </p>
+  <% end %>
+  <br />
+  <%= I18n.t(:send_mail_decline_reason, :locale => Language.find(@user.language_id).shortname) %> <%= @reason_title %><br />
+
+  <% if @reason_description != "" %>
+    <br />
+    <%= I18n.t(:send_mail_decline_reason_details, :locale => Language.find(@user.language_id).shortname) %><br />
+    <%= @reason_description %><br />
+  <% end %>
+
+</p>
+<p><%= I18n.t(:send_mail_decline_content_3, :locale => Language.find(@user.language_id).shortname) %></p>
+<ul>
+  <li><%= I18n.t(:send_mail_decline_content_4, :locale => Language.find(@user.language_id).shortname) %></li>
+  <li><%= I18n.t(:send_mail_decline_content_5, :locale => Language.find(@user.language_id).shortname) %></li>
+  <li><%= I18n.t(:send_mail_decline_content_6, :locale => Language.find(@user.language_id).shortname) %></li>
+</ul>
+<p><%= I18n.t(:send_mail_decline_content_7, :locale => Language.find(@user.language_id).shortname) %></p>
+<p>
+  <%= I18n.t(:send_mail_decline_signature_1, :locale => Language.find(@user.language_id).shortname) %><br />
+  <%= I18n.t(:send_mail_decline_signature_2, :locale => Language.find(@user.language_id).shortname) %><br />
+  <%= I18n.t(:send_mail_decline_signature_3, :locale => Language.find(@user.language_id).shortname) %>
+</p>

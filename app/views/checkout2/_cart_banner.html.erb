@@ -1,0 +1,30 @@
+<div class="horiz_space_30"></div>
+<div class="cart_banner">
+  <div class="left">
+    <%= image_tag "izishirt2009/bigRedArrow.png" %>
+  </div>
+  <div class="left cart_banner_padding">
+    <label class="block banner_title"><%= t(:cart_checkout_problem)%></label>
+    <label class="block blue banner_title_blue cart_banner_padding"><%= t(:cart_checkout_human)%></label>
+    <div class="cart_banner_padding">
+      <%=image_tag "izishirt2009/service.png", :class => 'left' %>
+      <div class="left">
+        <div>
+          <%= image_tag "izishirt2009/rightArrow.png", :class => "left cart_banner_padding" %>
+          <label class="block left banner_text cart_banner_padding"><%= get_phone_number %></label>
+          <div class="clear"></div>
+        </div>
+        <div>
+          <%= image_tag "izishirt2009/rightArrow.png", :class => "left cart_banner_padding" %>
+          <label class="block left banner_text cart_banner_padding">
+            <%= link_to "contact@izishirt.com","mailto:contact@izishirt.com"%>
+          </label>
+          <div class="clear"></div>
+        </div>
+        <label class="block banner_text cart_banner_padding"><%=t(:cart_checkout_hours)%></label>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

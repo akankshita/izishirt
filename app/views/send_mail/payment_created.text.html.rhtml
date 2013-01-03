@@ -1,0 +1,24 @@
+<p><%= I18n.t(:send_mail_payment_created_1, :locale => Language.find(@user.language_id).shortname) %> <%= @user.firstname + " " + @user.lastname%>,</p>
+
+<p><%= I18n.t(:send_mail_payment_created_2, :locale => Language.find(@user.language_id).shortname) %></p>
+
+<p><%= I18n.t(:send_mail_payment_created_3, :locale => Language.find(@user.language_id).shortname) %> <span style="color:#008000"><%= number_to_currency_custom(@amount, {:currency=>@currency, :language=>@language}) %></span> <%= I18n.t(:send_mail_payment_created_4, :locale => Language.find(@user.language_id).shortname) %><br />
+<%= "Paypal Transaction: #{ @paypal_txn_id }" if @paypal_txn_id != '' %></p>
+
+<p><%= I18n.t(:send_mail_payment_created_5, :locale => Language.find(@user.language_id).shortname) %></p>
+ 
+<p><%= I18n.t(:send_mail_payment_created_6, :locale => Language.find(@user.language_id).shortname) %>  <a href="http://www.izishirt.ca/myizishirt/promote">http://www.izishirt.ca/myizishirt/promote</a><br />
+<%= I18n.t(:send_mail_payment_created_7, :locale => Language.find(@user.language_id).shortname) %></p>
+
+<p><%= I18n.t(:send_mail_payment_created_8, :locale => Language.find(@user.language_id).shortname) %></p>
+
+<p><%= I18n.t(:send_mail_payment_created_9, :locale => Language.find(@user.language_id).shortname) %>,<br /><%= I18n.t(:send_mail_payment_created_10, :locale => Language.find(@user.language_id).shortname) %><p>
+<br />
+<%= I18n.t(:sendmail_social_networks, :locale => Language.find(@user.language_id).shortname) %><br />
+Twitter: <a href="http://twitter.com/izishirt">http://twitter.com/izishirt</a><br />
+Facebook: <a href="http://facebook.com/pages/IziShirt/223576667655075">http://facebook.com/pages/IziShirt/223576667655075</a><br />
+Blog: <a href="http://www.izishirtblog.com/">http://www.izishirtblog.com/</a>
+<br />
+<a href="http://www.izishirt.ca"><img style="border-width: 0px" src="http://www.izishirt.ca/images/email_sig.jpeg" alt="izishirt.ca" /></a>
+
+ 

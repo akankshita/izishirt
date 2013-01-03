@@ -1,0 +1,34 @@
+<br /><br />
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+    <th>Orders</th>
+    <th>Front Items</th>
+    <th>Back Items</th>
+    <th>Total</th>
+  </tr>
+  <tr>
+    <td><%=@orders.size%></td>
+    <td><%=@front%></td>
+    <td><%=@back%></td>
+    <td><%=@total%></td>
+  </tr>
+</table>
+<br /><br />
+<a href="#" onclick="javascript:$('details').style.display='block';">Details</a>
+<br /><br />
+<div id="details" style="display:none" >
+  <table width='100%' border="0" cellpadding="3">
+    <tr>
+      <th>Order</th>
+      <th>Created On</th>
+      <th>Ordered Products</th>
+      <th>Front Items</th>
+      <th>Back Items</th>
+      <th>Total</th>
+    </tr>
+    
+    <tbody id='listing'>
+      <%= render :partial => 'zone_listing' %>
+    </tbody>
+  </table>
+</div> 

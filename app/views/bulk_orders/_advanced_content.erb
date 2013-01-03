@@ -1,0 +1,32 @@
+
+
+<% form_for @bulk_order, :url=>{:controller=>:bulk_orders, :action=>:summarize}, :html => { :id=>"bulkForm", :multipart => true, :onsubmit=>"return checkBulkForm();" }  do |b| %>
+  <%= render :partial => "form", :locals=>{:b=>b} %>
+  <%= render :partial => "advanced_end_form", :locals=>{:b=>b} %>
+
+
+
+
+  <%# b.fields_for :bulk_orders_garments do |g| %>
+  <%#= g.text_field :quantity %>
+  <%#= g.select :model_id, @models_select %>
+  <%#= g.select :category_id, @brands_select %>
+  <%#= g.select :model_type_id, @model_types_select %>
+  <%#= g.select :color_id, @colors_select %>
+  <%#= g.text_area :comments %>
+
+  <%# g.fields_for :bulk_orders_garments_prints do |p| %>
+  <%#= p.select :print_type_id, @print_types_select %>
+  <%#= p.text_field :width %>
+  <%#= p.text_field :height %>
+  <%#= p.select :unit_id, @units_select %>
+  <%#= p.file_field :picture %>
+  <%# end %>
+
+  <%#= g.text_area :print_comments %>
+
+  <%# end %>
+
+
+
+<% end %>

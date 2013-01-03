@@ -1,0 +1,10 @@
+<% for order in @orders %>
+  <tr class="<%= cycle('odd','') %>">
+    <td><%= link_to order.id, {:controller => 'admin/order', :action => :show, :id => order.id} %></td>
+    <td><%= order.created_on.strftime("%d/%m/%y") %></td>
+    <td><%= order.ordered_products.size %></td>
+    <td><%= order.front_items %></td>
+    <td><%= order.back_items %></td>
+    <td><%= order.total %></td>
+  </tr>
+<% end %>

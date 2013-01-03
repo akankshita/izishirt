@@ -1,0 +1,126 @@
+<div class="clear"></div>
+<footer>
+
+<div class="footer">
+<div class="footerdivtext">
+	<h4><%= t(:services) %></h4>
+	
+	<ul class="footertext">
+        <li><a href="<%= @canonical_begin_url %>/local/custom-tshirt-printing">Local </a></li>
+        <li><%= link_to(t(:order_tracking), {:controller=>"/order"})%></li>
+        <li><%= link_to t(:footer_shipping_text),{:controller=>t(:footer_shipping_url),:protocol=>"http://",:only_path=>false}, :title=>t(:footer_shipping_title) %></li>
+        <li><%= link_to t(:footer_terms_text),
+              {:controller=>t(:footer_terms_url),:protocol=>"http://",:only_path=>false}, :title=>t(:footer_terms_title),
+              :rel=>"nofollow" %>
+		</li>
+        <li>
+		<%= link_to t(:footer_privacy_text),
+              {:controller=>t(:footer_privacy_url), :protocol=>"http://",:only_path=>false}, :title=>t(:footer_privacy_title),
+              :rel=>"nofollow" %>
+		</li>
+        <li>
+		<%= link_to t(:footer_refund_text),
+              {:controller=>t(:footer_refund_url), :protocol=>"http://",:only_path=>false}, :title=>t(:footer_refund_title),
+              :rel=>"nofollow" %>
+		</li>
+        <li><a href="http://www.annuaireduteeshirt.com" title="boutiques de t-shirt" target="_blank">Annuaire du tee shirt</a></li>
+        <li><%= link_to t(:footer_sitemap_text), {:controller => '/display',:action =>  'sitemap_html'}, :title=>t(:footer_sitemap_title)%></li>
+    </ul>
+	
+</div>
+
+<div class="footerdivtext">
+	<h4>Community</h4>
+	
+	<ul class="footericon">
+        <li><img src="/../images/izishirt2012/facebook.png" width="14" height="14" alt=""><a href="http://www.facebook.com/pages/IziShirt/223576667655075" target="_blank">Facebook</a></li>
+        <li><img src="/../images/izishirt2012/twiter.png" width="14" height="14" alt=""><a href="http://twitter.com/izishirt" target="_blank">Twitter</a></li>
+        <li><img src="/../images/izishirt2012/flick.png" width="14" height="14" alt=""><a href="http://www.flickr.com/photos/izishirt/" target="_blank">Flickr</a></li>
+        <li><img src="/../images/izishirt2012/googleplus.png" width="14" height="14" alt=""><a href="#" target="_blank">Google +
+</a></li>
+        <li><img src="/../images/izishirt2012/youtube.png" width="14" height="14" alt=""><a href="#" target="_blank">Youtube</a></li>
+        <li><img src="/../images/izishirt2012/pinter.png" width="15" height="15" alt=""><a href="#" target="_blank">Pinterest</a></li>
+    </ul>
+	
+</div>
+
+
+<div class="footerdiv">
+	<h4>Currencies</h4>
+	
+	<ul class="flags">
+        <li><img src="/../images/izishirt2012/flag1.png" width="16" height="11" alt=""><a href="#">CAD </a></li>
+        <li><img src="/../images/izishirt2012/flag2.png" width="16" height="11" alt=""><a href="#">EUR</a></li>
+        <li><img src="/../images/izishirt2012/flag3.png" width="16" height="11" alt=""><a href="#">USD</a></li>
+        <li><img src="/../images/izishirt2012/flag4.png" width="16" height="11" alt=""><a href="#">GBP</a></li>
+        <li><img src="/../images/izishirt2012/flag5.png" width="16" height="11" alt=""><a href="#">CHF</a></li>
+        <li><img src="/../images/izishirt2012/flag6.png" width="16" height="11" alt=""><a href="#">AUD</a></li>
+        <li><img src="/../images/izishirt2012/flag7.png" width="16" height="11" alt=""><a href="#">NZD</a></li>
+        <li><img src="/../images/izishirt2012/flag8.png" width="16" height="11" alt=""><a href="#">MXN</a></li>
+	   <li><img src="/../images/izishirt2012/flag9.png" width="16" height="11" alt=""><a href="#">BRL</a></li>
+    </ul>
+	
+	<ul id="card">
+	<li><a href="#"><img src="/../images/izishirt2012/card1.png" width="47" height="28" alt=""></a></li>
+	<li><a href="#"><img src="/../images/izishirt2012/card2.png" width="47" height="28" alt=""></a></li>
+	<li><a href="#"><img src="/../images/izishirt2012/card3.png" width="47" height="28" alt=""></a></li>
+	<li><a href="#"><img src="/../images/izishirt2012/card4.png" width="47" height="28" alt=""></a></li>
+	</ul>
+	
+</div>
+
+
+
+
+<div class="footerdiv">
+	<h4>Discount Coupon Codes!</h4>
+	<p class="ptext">Enter your email address to receive our online newsletter with promotions and discount codes from izishirt.com</p>
+	
+	<div class="footersearch">
+	<input name="" type="text" class="inputext">
+	<a href="#"><img src="/../images/izishirt2012/img_search.png" width="30" height="28" alt=""></a>	</div>
+	
+	
+</div>
+
+
+<div class="footerdivtext">
+	<h4>Location</h4>
+	<figure><img src="/../images/izishirt2012/map.png" width="156" height="154"></figure>
+	
+</div>
+
+
+
+<div class="clear"></div>
+
+<p class="footertext1">Customize and design your own <a href="#">t-shirts online</a>get your <a href="#">t shirt printing</a> done for cheap with Wordans. We are the top tees design and printing company. Any type of logo, design, or image you want to have printed can be done online with our <a href="#">custom tees design tool.</a>Use it now and <a href="#">make your own t-shirt.</a></p>
+
+<ul id="footermenu">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Affiliation</a></li>
+	<li><a href="#">FAQs</a></li>
+	<li><a href="#">Contact-Us </a></li>
+	<li><a href="#">Shipping Info</a></li>
+	<li><a href="#">Terms &amp; Conditions </a></li>
+	<li><a href="#">Privacy Policy</a></li>
+	<li><a href="#">Contest Rules</a></li>
+	<li><a href="#">Site Map</a></li>
+	<li><a href="#">T-Shirt Shops</a></li>
+	<li><a href="#">Montréal</a></li>
+	<li><a href="#">Vancouver</a></li>
+	<li><a href="#">Toronto</a></li>
+	<li><a href="#">Ottawa</a></li>
+	<li><a href="#">Québec </a></li>
+	<li><a href="#">Winnipeg</a></li>
+	<li><a href="#">Halifax</a></li>
+	<li><a href="#">Ontario</a></li>
+	<li><a href="#">Edmonton</a></li>
+	<li><a href="#" class="borderright">Calgary</a></li>
+
+</ul>
+
+
+</div>
+
+</footer>

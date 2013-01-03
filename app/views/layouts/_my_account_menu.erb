@@ -1,0 +1,39 @@
+<li class="top_li">
+  <%if session[:user_id] && (session[:affiliate] || session[:user_id] == 70)%>
+  <%= link_to(t(:my_account), {:controller=>"/myizishirt/profile"}) %>
+  <ul>
+    <li><%= link_to(t(:manage_my_shop), {:controller=>"/myizishirt/profile"})%></li>
+    <li><%= link_to(t(:add_designs), {:controller=>"/myizishirt/design", :action => "upload"})%></li>
+    <li><%= link_to(t(:add_products), {:controller=>"/myizishirt/products", :action => "flash_app"})%></li>
+    <li><%= link_to(t(:myizishirt_profile_home_earnings), {:controller=>"/myizishirt/earning"})%></li>
+    <li><%= link_to(t(:myizishirt_profile_home_orders), {:controller=>"/myizishirt/orders"})%></li>
+  </ul>
+  <% elsif session[:user_id] %>
+
+	<% 
+		begin
+			user = User.find(session[:user_id])
+		rescue
+			user = nil
+		end
+	%>
+
+	<% if user && user.user_level.name == "Regular User" %>
+		  <%= link_to(t(:my_account), {:controller=>"/myaccount"}) %>
+	<% else %>
+		  <%= link_to(t(:my_account), {:controller=>"/myizishirt/orders"}) %>
+	<% end %>
+  <ul>
+    <li><%= link_to(t(:my_account_settings), {:controller=>"/myaccount"})%></li>
+    <li><%= link_to(t(:myizishirt_profile_home_orders), {:controller=>"/myizishirt/orders"})%></li>
+    <li><%= link_to(t(:open_a_free_shop), {:controller=>"/open_shop"})%></li>
+  </ul>
+  <% else %>
+  <%= link_to(t(:my_account), {:controller=>"/myizishirt/login", :action=>:new}) %>
+  <ul>
+    <li><%= link_to(t(:register_menu), {:controller=>"/myizishirt/login", :action=>:new}) %></li>
+    <li><%= link_to(t(:open_a_free_shop), {:controller=>"/open_shop"})%></li>
+    <li><%= link_to(t(:myizishirt_profile_home_orders), {:controller=>"/order"})%></li>
+  </ul>
+  <% end %>
+</li>

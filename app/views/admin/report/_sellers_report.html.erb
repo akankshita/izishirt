@@ -1,0 +1,50 @@
+<br /><br />
+<table width="100%" border="0" cellpadding="3">
+  <tr>
+  	<th>Nb T-shirts with prints</th>
+	<th>Nb T-shirts without print</th>
+    <th>Sub-Total</th>
+    <th>Taxes</th>
+    <th>Shipping</th>
+    <th>Grand-Total</th>
+  </tr>
+  <tr>
+  	<td><%= @nb_products_with_print %></td>
+	<td><%= @nb_products_without_print %></td>
+    <td><%= display_money_hash(@sub_total) %></td>
+    <td><%= display_money_hash(@tax_total) %></td>
+    <td><%= display_money_hash(@ship_total) %></td>
+    <td><%= display_money_hash(@grand_total) %></td>
+  </tr>
+</table>
+<br /><br />
+<a href="#" onclick="javascript:$('details').style.display='block';">Details</a>
+<br /><br />
+<div id="details" style="display:none" >
+  <table width='100%' border="0" cellpadding="3">
+    <tr>
+      <th>Order</th>
+      <th>Created On</th>
+      <th>Month</th>
+      <th>Total Price</th>
+      <th>Shipping </th>
+      <th>Tax </th>
+      <th>Label</th>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Authcode</th>
+      <th>Code</th>
+      <th>Country</th>
+      <th>Address</th>
+      <th>Town</th>
+      <th>Zip</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+    </tr>
+
+    <tbody id='listing'>
+      <%= render :partial => 'profit_listing' %>
+    </tbody>
+  </table>
+</div>

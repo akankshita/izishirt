@@ -1,0 +1,50 @@
+<% if params[:section] != 'affiliate' %>
+<div class="pageholder">
+  <div class="breadcrumb"> 
+    <%= link_to "&raquo; " + t(:menu_home), {:controller=>"/"} %>
+    &#8250; <%= t(:display_home_inscription) %></div>
+  <div class="logincontent lcfirst">
+    <div class="crnlite login2"> <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+      <div class="login_c">
+<% else %>
+    <div class="crnlite login2"> <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+      <div class="login_c" style="width:600px;">
+<% end %>
+        <h3><%= @intro_title %></h3>
+        <p><%= @intro_text %></p>
+      </div>
+      <div class="clear nohgh">&nbsp;</div>
+    </div>
+    <br />
+    <div class="crnlite login" style="width:430px"> <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+      <div class="login_c">
+        <h3><%= t(:myizishirt_login_view_login_login) %></h3>
+        <%= form_tag %>
+        <label for="name"><%= t(:myizishirt_login_view_login_username) %></label>
+        <%= text_field_tag :username, params[:username] %>
+        <label for="password"><%= t(:myizishirt_login_view_login_password) %></label>
+        <%= password_field_tag :password, params[:password] %> <br />
+        <br />
+        <div class="buton btnReg" onmouseover="this.className='buton btnReg ovr'" onmouseout="this.className='buton btnReg'"><i class="rLeft"></i><%= submit_tag "Login" %><i class="rRight"></i></div>
+        <div class="forpass"><%= link_to t(:myizishirt_login_view_login_new_user), :action => 'new' %><br />
+          <%= link_to t(:myizishirt_login_view_login_lost_pass), :action => 'lostpass' %> </div>
+        </form>
+      </div>
+      <div class="clear nohgh">&nbsp;</div>
+    </div>
+    <%= form_tag :action => "new" %>
+    <div class="crnlite login" style="float:right; margin-right:5px"> <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+      <div class="login_c">
+        <h3><%= t(:myizishirt_login_view_login_become_member) %></h3>
+        <label><%= t(:myizishirt_login_view_login_enter_mail) %></label>
+        <%= text_field 'user', 'email' , :class=>'fleft mr10' %>
+        <div class="buton btnReg" onmouseover="this.className='buton btnReg ovr'" onmouseout="this.className='buton btnReg'"><i class="rLeft"></i><%= submit_tag t(:myizishirt_login_view_login_inscription) %><i class="rRight"></i></div>
+      </div>
+      <div class="clear nohgh">&nbsp;</div>
+    </div>
+<% if params[:section] != 'affiliate' %>
+  </div>
+</div>
+<% end %>
+<br />
+<br />

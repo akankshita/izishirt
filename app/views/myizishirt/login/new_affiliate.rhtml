@@ -1,0 +1,15 @@
+<div class="pageholder iframe">
+  <div class="rcsbgrdark login_main"> <i class="rstl"></i><i class="rstr"></i><i class="rsbr"></i><i class="rsbl"></i>
+    <div class="login_c">
+      <% form_tag :action => 'create' do %>
+      <%= render :partial => 'form' %>
+      <div class="btnSignup" align="center"><%= submit_tag "Ok", "tabindex" => 8  %><br />
+        <br />
+        <input type="hidden" name="section" value="affiliate" />
+        <input type="hidden" name="store" value="<%= params[:store] %>" />
+        <%= link_to t(:myizishirt_myshop_back), :action => 'index', :section => 'affiliate', :store => params[:store] %> </div>
+      <% end %>
+    </div>
+    <div class="clear nohgh">&nbsp;</div>
+  </div>
+</div>

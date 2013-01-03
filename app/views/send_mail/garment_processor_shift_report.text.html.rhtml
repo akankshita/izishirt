@@ -1,0 +1,76 @@
+<p>Report of: <b><%= @shift.fullname %></b> (<%= @shift.username %>)<p>
+<p>Start time: <b><%= @shift.created_at %></b><p>
+<p>End time: <b><%= @shift.finished_at %></b><p>
+<p>Duration: <b><%= @shift.duration %> hours</b><p>
+<h2>Week: <%= @shift.user.shift_hours_done_week.round(2) %> hours</h2>
+
+<% if @shift.description && @shift.description != "" %>
+
+	<p><br /><b>Additional description: </b><br /><br />
+		<%= @shift.description.gsub("\n", "<br />") %>
+	<br /><br />
+	</p>
+<% end %>
+
+<% 
+
+stats = @shift.garment_processor_statistics
+
+nb_po_numbers = 0
+total_garment_products = 0
+
+%>
+
+<% if stats.length > 0 %>
+	<h3>Garments Processed</h3>
+
+	<table border="1">
+		<tr>
+			<th>Time</th>
+			<th>Po number</th>
+			<th>Garment</th>
+			<th>Quantity Received</th>
+		</tr>
+
+		<% stats.each do |po_number, infos| 
+			nb_po_numbers += 1
+		%>
+	
+			<% infos[:garment_products].each do |garment_product| %>
+				<tr>
+					<td><%= garment_product.processed_at %></td>
+					<td><%= link_to("#{po_number}", :host => "www.izishirt.ca", :controller => "/admin/ordered_garments", :action => "print_order_garment_listing", :id => garment_product.order_garment_listing.id) %></td>
+					<td><%= garment_product.model.local_name(2) %>, <%= garment_product.color.local_name(2) %>, <%= garment_product.model_size.local_name %></td>
+					<td>
+						<%= garment_product.nb_received %>
+						<%
+						total_garment_products += garment_product.nb_received 
+						%>
+					</td>
+				</tr>
+			<% end %>
+		<% end %>
+
+		<tr>
+			<td>--</td>
+			<td>------</td>
+			<td>--</td>
+			<td>------</td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><%= nb_po_numbers %> PO numbers</td>
+			<td></td>
+			<td><%= total_garment_products %> shirts received</td>
+		</tr>
+
+	</table>
+
+<% end %>
+
+<p>
+<br />
+</p>
+
+Izishirt.com
