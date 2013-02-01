@@ -1,8 +1,11 @@
 class DisplayController < FilterDisplayController
   require 'RMagick'
-  require 'rubygems'
-  require 'open-uri'
-  require 'rexml/document'
+ # require 'rubygems'
+ # require 'open-uri'
+ # require 'rexml/document'
+  require 'json'
+  require 'net/http'
+  require 'crack'
 
   #caches_action :izishirt_2011, :expires_in => 24.hours, :cache_path => Proc.new { |controller| {:lang => controller.params[:lang], :p => controller.params[:p]} }, :layout => false
 
@@ -726,8 +729,76 @@ class DisplayController < FilterDisplayController
 	  return @path
 #render :text => @path.inspect and return false
 	end
-  def create_tshirt
+	def fxml_json(link)
 
+	  s = Net::HTTP.get_response(URI.parse(link)).body
+	  str = Hash.from_xml(s).to_json
+	  jstr = Crack::JSON.parse(str)
+	  return jstr
+	end
+	def image_details
+	  id = params['id']
+	  link = 'http://www.izishirt.ca/create/models/'+id+'.fxml'
+	  s = Net::HTTP.get_response(URI.parse(link)).body
+	  str = Hash.from_xml(s).to_json
+	  render :text =>str
+	end
+  def create_tshirt
+	#render :text =>@designs.inspect and return false
+	categories = fxml_json('http://www.izishirt.ca/create/categories.fxml')
+	#categories = fxml_json('http://localhost:3000/create/categories.fxml')
+	#render :text => categories.inspect and return false
+	@allcategories = categories["categories"]
+	allimages = fxml_json('http://www.izishirt.ca/create/designs.fxml')
+	@designs = allimages["designs"]
+
+#render :text =>@designs.inspect and return false
+    
+@all_product  = Model.find(:all,:conditions=>["active =? and category_id = ?",1,10])
+#render :text => @all_product.inspect and return false
+#Todays work#
+ order = (params[:order]) ? params[:order] : 'active Asc, id Asc' 
+    
+    @users = User.find_all_by_is_vip(true).map{|u|[u.username, u.id]}
+
+	begin
+		@user_id = params[:model][:user_id].to_i
+
+		if @user_id == 0
+			@user_id = nil
+		end
+	rescue
+		@user_id = nil
+	end
+	
+    conditions = (@user_id) ? "user_id = #{@user_id}" : "user_id IS NULL"
+
+	begin
+		@model_category = params[:model][:model_category]
+	rescue
+		@model_category = nil
+	end
+
+	if ! @model_category || @model_category == ""
+		@model_category = "custom"
+	end
+
+	conditions += " AND models.model_category = '#{@model_category}' "
+	conditions += " AND models.active = 1 "
+	#conditions += " AND models.category_id = 10 "
+    @models = Model.all :conditions => conditions, 
+              :order => order
+#render :text => @models[0].id.inspect and return false 
+#  last_model_id = 
+  link = 'http://www.izishirt.ca/create/models/'+ "#{@models[0].id}"+'.fxml'
+  s = Net::HTTP.get_response(URI.parse(link)).body
+  str = Hash.from_xml(s).to_json
+  @jstr = Crack::JSON.parse(str)
+  
+  #var img = data.model.image;
+
+  
+#render :text => @jstr['model']["model_specifications"].inspect and return false 
 
     if params[:format] == "swf"
       redirect_to "/bin/Izishirt6.swf", :status=>:moved_permanently
@@ -806,6 +877,45 @@ class DisplayController < FilterDisplayController
 
   end
 
+  def product_image
+	#render :text => 'in'.inspect and return false
+	order = (params[:order]) ? params[:order] : 'active desc, id desc' 
+	@users = User.find_all_by_is_vip(true).map{|u|[u.username, u.id]}
+
+	begin
+		@user_id = params[:model][:user_id].to_i
+
+		if @user_id == 0
+			@user_id = nil
+		end
+	rescue
+		@user_id = nil
+	end
+	
+    conditions = (@user_id) ? "user_id = #{@user_id}" : "user_id IS NULL"
+
+	begin
+		@model_category = params[:model][:model_category]
+	rescue
+		@model_category = nil
+	end
+
+	if ! @model_category || @model_category == ""
+		@model_category = "custom"
+	end
+
+	conditions += " AND models.model_category = '#{@model_category}' "
+	conditions += " AND models.active = 1 "
+	if params["id"]
+	  conditions += " AND models.category_id = #{params["id"]} "
+	end
+	
+
+    @models = Model.all :conditions => conditions, 
+              :order => order
+	render :partial => "chng_prdct", :locals => {:models => @models}
+  end
+
 
   def generate_menu_left
     begin
@@ -838,7 +948,7 @@ class DisplayController < FilterDisplayController
 
   ####Description of a design
   def design
-	render :text => 'in' and return false
+	#render :text => 'in' and return false
     if (@design)
       @design.name == "" ? @design.name = t(:no_name) : @design.name
 #      @tab_tags = FastTagImage.find_all_by_image_id(@design.id, :conditions=>["fast_tags.name != ?", ""], :include=>[:fast_tag])

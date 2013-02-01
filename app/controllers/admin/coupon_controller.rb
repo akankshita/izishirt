@@ -1,6 +1,6 @@
 class Admin::CouponController < Administration 
   layout 'admin/admin'
-  before_filter :check_can_access
+  #before_filter :check_can_access
 
   def check_can_access
     if ! @can_access_coupon_codes

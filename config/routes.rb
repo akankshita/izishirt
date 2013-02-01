@@ -273,6 +273,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'production/order/update_tracking/:id/:track', :controller => "production/order", :action => 'update_tracking'
   map.connect 'admin/top_design/edit/:country/:lang', :controller => 'admin/top_design', :action => 'edit'
   map.connect 'admin/top_design/replace/:top_design/:image', :controller => 'admin/top_design', :action => 'replace'
+  map.connect 'admin/coupon', :controller => "admin/coupon", :action => 'index'
 
   
   map.connect 'admin/city', :controller => "admin/city", :action => 'list'

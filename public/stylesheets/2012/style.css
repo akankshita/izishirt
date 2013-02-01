@@ -1,4 +1,4 @@
-@charset "utf-8";
+ @charset "utf-8";
 /* CSS Document */
 @font-face {
     font-family: 'swis721_cn_btroman';
@@ -386,7 +386,7 @@ ul#footermenu li a:hover{list-style:none; color:#FFFFFF; font-size:13px; text-al
 }
 .innercontainer{width:995px; margin:auto; background:#FFF; margin-top:9px; padding:29px 12px 0px 12px;}
 .tshirtdesign{height:381px; display:block; }
-#resizeimage{width:396px; float:left;}
+#resizeimage{width:374px; float:left;}
 #tabmenuright{width:575px; float:right; }
 
 /*----------------------------------------------tab menu start-------------------------------------*/
@@ -427,9 +427,9 @@ top: 9px;}
 .innercontainermiddile{  display:block;}
 .innercontainermiddile .innerleftpart{ width:70%; background:url(/../../images/izishirt2012/innerdotes.png) repeat-y right top;  float:left;}
 .innercontainermiddile .innerrightpart{ width:27%; padding:7px; background:#f5f5f5; border:#e1e1e1 solid 1px; float:right;}
-.tshirtsize{background:#f6f6f7; border:#e4e4e4 solid 1px; padding:5px; float:left;}
+.tshirtsize{background:#f6f6f7; border:#e4e4e4 solid 1px; padding:5px;   float: right; margin-right: 22px;}
 .tshirtsize strong{float:left; color:#000; font-family: 'open_sansregular'; font-size:15px; margin-left:5px;}
-.sizebox{width:48px; float:left; text-align:center; padding-right:10px; color:#000; font-family: 'open_sansregular'; font-size:12px; }
+.sizebox{width:78px; float:left; text-align:center; padding-right:10px; color:#000; font-family: 'open_sansregular'; font-size:12px; }
 .sizediv{width:48px; height:12px; background:#fff; border:#c2c2c1 solid 1px; float:left; margin-top:5px;}
 
 
@@ -446,7 +446,7 @@ border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;
 box-shadow: 0px 1px 6px #9f9f9f; float:left;}
 
 .bestpricebox{background:url(/../../images/izishirt2012/bluebg.png) repeat-x ; height:92px; border:#dfdfdf solid 1px;}
-.bestpricebox h2{font-family: 'newsgoth_cn_btregular'; padding-top:10px; font-size:27px; text-align:center; color:#2b6282; padding-bottom:5px;}
+.bestpricebox h2{font-family: 'newsgoth_cn_btregular'; padding-top:10px; font-size:22px; text-align:center; color:#2b6282; padding-bottom:5px;}
 .bestpricebox h3{font-family: 'open_sansregular';   font-size:22px; text-align:center; color:#666666;}
 
 ul.discount {margin:0px; padding:16px 0px  0px 0px; }
@@ -701,4 +701,13 @@ padding:0px 5px;
 
 
 
-.active:active  {outline:inset; } 
+.active:active  {outline:inset; }
+.imgbox{ border: #ccc solid 1px; margin-right:3px;}
+img{cursor: pointer;}
+.img_preview_front{border: #ccc solid 1px; margin-right:3px;}
+.img_preview_back{border: #ccc solid 1px; margin-right:3px;}
+.header_box {float:left; padding:0px 0 0 0; width:20px; width:50px;}
+.input {width:48px;  border: double #cccccc 1px;}
+.image {padding:0 0 0 0;}
+.image_1 {padding:0px 0 0 0;}
+.image_input { float:left; width:20px; }

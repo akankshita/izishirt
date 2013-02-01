@@ -11,16 +11,18 @@ RAILS_GEM_VERSION = '2.3.14' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 require 'lib/custom_logger.rb'
-# require 'money' 
-require "active_merchant"
-require 'active_merchant/billing/integrations/action_view_helper'
+#require 'money' 
+#require "active_merchant"
+#require 'active_merchant/billing/integrations/action_view_helper'
 #require "lib/moneris/mpgapi4r.rb"
 #require 'pdfkit'
 
-# ActionView::Base.send(:include, ActiveMerchant::Billing::Integrations::ActionViewHelper) 
+ #ActionView::Base.send(:include, ActiveMerchant::Billing::Integrations::ActionViewHelper) 
 
 Rails::Initializer.run do |config|
   config.gem "restfulx"
+  config.gem "crack"
+#  config.gem 'activemerchant' 
   #config.gem "twitter_oauth"
   #config.gem "smurf"
 
@@ -46,6 +48,7 @@ Rails::Initializer.run do |config|
 
   # Use the database for sessions instead of the file system
   # (create the session table with 'rake db:sessions:create')
+ # config.action_controller.session_store = :active_record_store
   config.action_controller.session_store = :active_record_store
   config.action_controller.session = {
      :key => "_izishirt_session_id",

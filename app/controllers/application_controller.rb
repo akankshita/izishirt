@@ -327,6 +327,7 @@ end
       session[:currency] = "CAD"
       session[:language] = 'en'
       session[:language_id] = 2
+      session[:user_id] = 70
       @alt_country = 'CA'
       session[:country] = 'CA'
       session[:country_long] = "Canada"

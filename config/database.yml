@@ -34,9 +34,16 @@ staging:
   database: izishirt_staging
   username: izishirt
   password: wrdnsAd!&
-  
+
 production:
   adapter: mysql
-  database: izishirt
-  username: izishirt
-  password: iz!sh3rt!
+  database: izishirt_development
+  username: root
+  password: root
+  host: localhost
+ 
+#production:
+ # adapter: mysql
+  #database: izishirt
+  #username: izishirt
+  #password: iz!sh3rt!

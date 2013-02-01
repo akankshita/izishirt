@@ -7,7 +7,7 @@
 	  .resize{left: 44px;position: absolute;top: 44px;cursor:pointer;}
 	  .inner{border: 1px solid black; width:62%;height:90%;margin:auto;}
 	  .default { background-image: url("/../../images/izishirt2012/tshirt/white.png"); background-repeat: no-repeat;}
-	  .item { width: 346px; height: 356px; border: 1px solid #000; vertical-align: middle; margin: 20px; float:left ;}
+	  .item { width: 100%; height: 356px; border: 1px solid #000; vertical-align: middle;  float:left ;}
 	  .red { background-image: url("/../../images/izishirt2012/tshirt/red.png");background-repeat: no-repeat;}
 	  .blue { background-image: url("/../../images/izishirt2012/tshirt/blue.png");background-repeat: no-repeat;}
 	  .orange { background-image: url("/../../images/izishirt2012/tshirt/orange.png");background-repeat: no-repeat;}
@@ -15,7 +15,7 @@
 	  .green { background-image: url("/../../images/izishirt2012/tshirt/green.png");background-repeat: no-repeat;}
 	  .pink { background-image: url("/../../images/izishirt2012/tshirt/pink.png");background-repeat: no-repeat;}
 	  .yellow { background-image: url("/../../images/izishirt2012/tshirt/yellow.png");background-repeat: no-repeat;}
-	  .image { width: 100px;height: 100px; display:block; position: relative;}
+	  .image { width: 100px; display:block; position: relative;}
 	 /* #text {width:500px;height:20px;display:block;color:white;font-weight:bolder;text-align:center}*/
 	  .form {margin-top:10px;float:left;}
 	  #container {width:960px;margin:0 auto;padding-top:25px;}	  
@@ -60,7 +60,7 @@ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 -moz-background-clip: padding;
 background-clip: padding-box;
 }
-.canvas-container{ margin: 20px 15% !important; width: auto !important;  }
+.canvas-container{ margin:55px 0px 8px 28% !important; width: auto !important;  }
 </style>
  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <%#= javascript_include_tag "2012/bootstrap-colorpicker.js"%>
@@ -68,9 +68,12 @@ background-clip: padding-box;
 <div class="innercontainer">
 	<div class="tshirtdesign">
 <div id="resizeimage">
-  <div id="canvas" class="item default">
-	  <canvas height="269" width="200" style="border:1px solid #000000;" id="myCanvas"></canvas>
-	    	<span><label>Tshirt Color</label>
+  <div id="canvas" class="item " style="background-image:url('/../../images/izishirt2012/tshirt/white.png'); background-repeat: no-repeat;    background-position: center center; position: relative;">
+	 <div id="load" style="left: 41%; position: absolute; top: 45%;"></div>
+	   <input type="hidden" name="model_id" id="mid" value="<%=@models[0]['id']%>">
+	   <input type="hidden" name="sprice" id="sprice" value="<%=@jstr['model']['price']%>">
+	  <canvas height="259px" width="160px" style="border:1px solid #000000;" id="myCanvas"> </canvas>
+	    	<!--span><label>Tshirt Color</label>
 	  	  <select id="d_color" name="d_color" onchange="bchngimg();">
 			<option  value="red">Red</option>
 			<option value="blue">Blue</option>
@@ -79,9 +82,17 @@ background-clip: padding-box;
 			<option value="green">Green</option>
 			<option value="pink">Pink</option>
 			<option value="yellow">Yellow</option>
-		  </select>
+		  </select-->
 	</span>
   <input type="button" name="delete" id="delete" value="Delete"/><input type="button" name="clear" id="clear" value="Clear All"/>
+  <div style="float: right; text-align: right; width: 100px;" id="pre_img">
+	  <%@jstr['model']["model_specifications"].each do |mspec|%>
+			<%if @jstr['model']['default_color_id'] == mspec["color"]['id'] %>
+				  <img class="img_preview_front" src="<%=mspec["thumb_front"]%>" id="<%=mspec["color"]["id"]%>">
+				  <img class="img_preview_back" src="<%=mspec["thumb_back"]%>" id="<%=mspec["color"]["id"]%>"> 
+			<%end%>
+	  <%end%>
+  </div>
   </div>
   <!--img src="/../../images/izishirt2012/imgresize.png" width="377" height="375" alt=""-->
 </div>
@@ -94,8 +105,19 @@ background-clip: padding-box;
   </div>
   
   <div class="tabcontent paddingAll" id="cont-1-1"> 
-   <div class="scrollbg"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
-	<tr>
+   <div class="scrollbg" id ="product-img">
+	  <div  id ="product-img">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<%@models.each_slice(6) do |@amodels|%>
+			<tr>
+			<% for mymodel in @amodels %>
+				  <td><li class="imageOverlayer2"><%= image_tag '/izishirtfiles/models/' + mymodel.id.to_s + '/preview.jpg', :size => '45x45' ,:id=>mymodel.id,:class=>"aka"%></li></td>
+			<% end %>
+			</tr>
+			<%end%>
+	<!--tr>
+
+
 		<td><img src="/../../images/izishirt2012/tshirt_1.png" width="79" height="83"></td>
 		<td><img src="/../../images/izishirt2012/tshirt_2.png" width="83" height="83" alt=""></td>
 		<td><img src="/../../images/izishirt2012/tshirt_3.png" width="74" height="83" alt=""></td>
@@ -120,9 +142,10 @@ background-clip: padding-box;
 			<td><img src="/../../images/izishirt2012/tshirt_4.png" width="82" height="83" alt=""></td>
 			<td><img src="/../../images/izishirt2012/tshirt_2.png" width="83" height="83"></td>
 			<td><img src="/../../images/izishirt2012/tshirt_1.png" width="79" height="83" alt=""></td>
-		</tr>
+		</tr-->
 	
-		</table>
+	  </table>
+	  </div>
 </div>
 
   </div>
@@ -130,14 +153,22 @@ background-clip: padding-box;
   <div class="tabcontent paddingAll hide" id="cont-2-1">
 	<div class="scrollbg">
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-		<tr>
+	  <%@designs.each_slice(6) do |@adesigns|%>
+			<tr>
+				  <% for design in @adesigns %>
+	  				  <td><li class="imageOverlayer2"><%= image_tag "#{design['thumbnail']}" ,:id=>"#{design['id']}",:class=>"myimg"%></li></td>
+				  <% end %>
+			</tr>
+	  <%end%>
+
+		<!--tr>
 			<td><img src="/../../images/izishirt2012/img/apple.png" width="79" height="83" class="myimg"></td>
 			<td><img src="/../../images/izishirt2012/img/pogo.png" width="83" height="83" alt="" class="myimg"></td>
 			<td><img src="/../../images/izishirt2012/img/smile.png" width="74" height="83" alt="" class="myimg"></td>
 			<td><img src="/../../images/izishirt2012/img/doll.png" width="79" height="83" class="myimg"></td>
 			<td><img src="/../../images/izishirt2012/img/emoji.png" width="83" height="83" alt="" class="myimg"></td>
 			<td><img src="/../../images/izishirt2012/img/toons.png" width="74" height="83" alt="" class="myimg"></td>			
-		</tr>
+		</tr-->
 	  </table>
 	</div>
     
@@ -215,7 +246,18 @@ background-clip: padding-box;
 	<tr>
 		<td class="realative" width="33%"><input name="" type="text" class="tabmenusearch" placeholder="Search for designs">
 			<div class="absulete"><a href="#"><img src="/../../images/izishirt2012/searchimg.png" width="27" height="28" alt=""></a></div></td>
-		<td width="33%" style="padding-left:28px;"><select name="" class="selectbg" style="height:28px; line-height:24px;" ><option>All Products</option><option>All Products</option></select></td>
+		<td width="33%" style="padding-left:28px;">
+			<select name="" class="selectbg" style="height:28px; line-height:24px;" id ="product" >
+				  <option value="">All Products</option>
+				  <%@allcategories.each do |alcategory|%>
+				  
+				 <%if alcategory['is_parent_category'] == 'true' and alcategory['sub_categories'].length == 0%>
+				  <option value="<%=alcategory['id']%>"><%=alcategory['name']%></option>
+				  <%end%>
+				  <!--option>All Products</option-->
+				  <%end%>
+			</select>
+		</td>
 		<td width="33%" align="right"><a href="#"><img src="/../../images/izishirt2012/btn_upload.png" width="129" height="47" alt=""></a></td>
 	</tr>
 </table>
@@ -235,21 +277,103 @@ background-clip: padding-box;
 <div class="innerleftpart"><img src="/../../images/izishirt2012/img13.png" width="473" height="23" alt=""><br>
 <br>
 <table width="91%" border="0" cellspacing="0" cellpadding="0">
-	<tr>
-		<td><img src="/../../images/izishirt2012/color.png" width="535" height="60" alt=""></td>
-		<td class="doller"><strong>$j99</strong></td>
-	</tr>
+	  <tr>
+			<td>
+				  <div id="gallery" class="ad-gallery">
+						<div class="ad-nav">
+							<div class="ad-thumbs">
+							  <ul class="ad-thumb-list" style="width: 124px;">
+									<%@jstr['model']['model_specifications'].each do |sp_mpdel|%>
+										  <li >
+											<a href="#" onclick='img_prev("<%=sp_mpdel['color']['id']%>")'; class="pcolor">
+											  <img class="imgbox"  src="<%=sp_mpdel['color']['image']%>" id="<%=sp_mpdel['color']['id']%>">
+											</a>
+										  </li>
+									<%end%>
+									<!--li>
+										<a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										  <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										 <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										  <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										  <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										  <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										  <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										  <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										<a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										  <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										 <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										  <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										  <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										  <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										  <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li>
+									<li>
+										  <a href="#" ><img src="http://www.izishirt.ca/izishirtfiles/colors/107.jpg" /></a>  
+									</li-->
+
+							  </ul>
+							</div>
+						</div>
+				  </div>
+			<!--img src="/../../images/izishirt2012/color.png" width="535" height="60" alt=""-->
+			</td>
+			<td class="doller"><strong>$<span id="price"><%=@jstr['model']['price']%></span></strong></td>
+	  </tr>
 	<tr>
 		<td>
 		<div class="tshirtsize">
 		<strong>Size :&nbsp;</strong>
-		<div class="sizebox"><input name="" type="text" class="sizediv">S</div>
+		<div class="sizebox">
+		<div id="size">
+			<select name="pssize"  style="width: 80px;" id ="psize" >
+				  <%@jstr['model']['model_specifications'][0]['sizes'].each do |prdct_size|%>
+						<option value="<%=prdct_size['extra_cost']%>"><%=prdct_size['name']%></option>
+				  <%end%>
+			</select>
+		</div>
+		</div>
+		<!--div class="sizebox"><input name="" type="text" class="sizediv">S</div>
 		<div class="sizebox"><input name="" type="text" class="sizediv">M</div>
 		<div class="sizebox"><input name="" type="text" class="sizediv">L</div>
 		<div class="sizebox"><input name="" type="text" class="sizediv">XL</div>
-		<div class="sizebox"><input name="" type="text" class="sizediv">XXL</div>
+		<div class="sizebox"><input name="" type="text" class="sizediv">XXL</div-->
 		<strong>Quantity :&nbsp;</strong>
-		<div class="sizebox"><input name="" type="text" class="sizediv"></div>
+			<div class="header_box">
+				  <input name="quantity" type="text" class="input" value="1" id ="quantity"/>
+			</div>
+			<div class="image_input">
+			<div class="image"><a href="JavaScript:void(0);"><img src="/../../images/izishirt2012/batten.jpg" border="none" id="upimg"/></a></div>
+			<div class="image_1"><a href="JavaScript:void(0);"><img src="/../../images/izishirt2012/batten_1.jpg" border="none" id="downimg"/></a></div>
+			</div>
+		<!--div class="sizebox"><input name="" type="text" class="sizediv"></div-->
 		</div>
 		
 		
@@ -276,7 +400,6 @@ background-clip: padding-box;
 
 <h4>POPULAR T-SHIRT DESIGNS</h4>
 <ul id="imglist">
-
 <li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
 <li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
 <li class="imageOverlayer2"><img src="/../../images/izishirt2012/design1.png" width="133" height="133" alt="" class="imageHover2"></li>
@@ -503,5 +626,153 @@ function change_fontSize(txt){
   }
   
 }
+$j(document).ready(function(e) {
+	  $('#canvas').css({ 'background-image' : 'url("<%=@jstr["model"]["image"]%>")' });
+	  $j("#product").change(function(){
+			$("#product-img").html('<div id="product-img"><img src="/../../images/izishirt2012/loading.gif"></div>');
+			//alert('in');
+			 //$j("#product-img").html(data);
+		$j.get("display/product_image?id="+$("#product").val(), 
+			  function(data){ $("#product-img").html(data); } );
+	  });
+	  
+	//  $j(".aka").click(function(){
+		//	id = $(this).attr('id');
+			//alert($(this).attr('id'));
+			//ima = 'http://www.izishirt.ca/izishirtfiles/models/180/20-front.jpg';
+			// $("#canvas").css("background-image", "url("+ima+")")  
+			//$("#product-img").html('<div id="product-img"><img src="/../../images/izishirt2012/loading.gif"></div>');
+			//alert('in');
+			// $j("#product-img").html(data);
+	/*	$j.get("display/image_details?id="+$(this).attr('id'), 
+			 function(data){
+						var response = '"'+ data+'"';//{"model":{"image":"http://www.izishirt.ca/izishirtfiles/models/180/20-front.jpg","thumbnail":"http://www.izishirt.ca/izishirtfiles/models/180/preview.jpg","model_category":"custom","minimum_sale_price":"0","id":180,"desc":"9.4oz 50% Cotton / 50% polyester preshrunk jersey knit dry blend moisture wicking fabric. Three woodtone buttons on a clean fi nished placket. Contoured welt collar and cuffs. Double stitched seams. Quarter turned body. \n","show_sizes":"true","model_zones":[{"top_left_y":80,"top_left_x":100,"id":602,"model_id":180,"zone_type":1,"max_lines":5,"bottom_right_y":270,"bottom_right_x":240,"max_images":2},{"top_left_y":80,"top_left_x":100,"id":603,"model_id":180,"zone_type":2,"max_lines":5,"bottom_right_y":270,"bottom_right_x":240,"max_images":2}],"default_zone":"1","pricefr":9.99,"price":9.99,"info":null,"default_color_id":20,"bulk_discount":"10_5|20_10|30_15|40_20|50_25","warning_text":null,"model_name":"Gildan 8800 - Jersey Polo","category_id":27,"model_specifications":[{"img_left":"http://www.izishirt.ca/izishirtfiles/models/180/","supplier_generation_picture_url":null,"thumb_back":"http://www.izishirt.ca/izishirtfiles/models/180/20-back-preview.jpg","id":4416,"thumb_left":"http://www.izishirt.ca/izishirtfiles/models/180/20-left-preview.jpg","img_right":"http://www.izishirt.ca/izishirtfiles/models/180/","sizes":[{"extra_cost":0.0,"id":1414,"type":"ModelSize","name":"S","model_id":180},{"extra_cost":0.0,"id":1415,"type":"ModelSize","name":"M","model_id":180},{"extra_cost":0.0,"id":1416,"type":"ModelSize","name":"L","model_id":180},{"extra_cost":0.0,"id":1417,"type":"ModelSize","name":"XL","model_id":180},{"extra_cost":0.0,"id":2585,"type":"ModelSize","name":"S","model_id":180},{"extra_cost":0.0,"id":17759,"type":"ModelSize","name":"XS","model_id":180},{"extra_cost":0.0,"id":17760,"type":"ModelSize","name":"S","model_id":180},{"extra_cost":0.0,"id":17761,"type":"ModelSize","name":"M","model_id":180},{"extra_cost":0.0,"id":17762,"type":"ModelSize","name":"XXXL","model_id":180},{"extra_cost":0.0,"id":17763,"type":"ModelSize","name":"XL","model_id":180},{"extra_cost":5.0,"id":17764,"type":"ModelSize","name":"XXL","model_id":180},{"extra_cost":0.0,"id":17765,"type":"ModelSize","name":null,"model_id":180},{"extra_cost":0.0,"id":17766,"type":"ModelSize","name":"One Size","model_id":180},{"extra_cost":0.0,"id":17767,"type":"ModelSize","name":"2T","model_id":180},{"extra_cost":0.0,"id":17768,"type":"ModelSize","name":"L/XL","model_id":180},{"extra_cost":0.0,"id":17769,"type":"ModelSize","name":"S/M","model_id":180}],"model_id":180,"img_back":"http://www.izishirt.ca/izishirtfiles/models/180/20-back.jpg","img_front":"http://www.izishirt.ca/izishirtfiles/models/180/20-front.jpg","color":{"image":"http://www.izishirt.ca/izishirtfiles/colors/20.jpg","id":20,"name":"Black"},"thumb_right":"http://www.izishirt.ca/izishirtfiles/models/180/20-right-preview.jpg","color_id":20,"mask_generation_picture_url":null,"mask_picture_url":null,"thumb_front":"http://www.izishirt.ca/izishirtfiles/models/180/20-front-preview.jpg","model_prices":[{"id":23342,"identifier":"one_design_price","price":4.0},{"id":23343,"identifier":"two_design_price","price":4.0},{"id":23344,"identifier":"text_price","price":4.0},{"id":23345,"identifier":"one_design_text_price","price":4.0},{"id":23346,"identifier":"two_design_text_price","price":4.0},{"id":23347,"identifier":"design_stretch_price","price":0.0},{"id":23348,"identifier":"text_stretch_price","price":0.0}]},{"img_left":"http://www.izishirt.ca/izishirtfiles/models/180/","supplier_generation_picture_url":null,"thumb_back":"http://www.izishirt.ca/izishirtfiles/models/180/23-back-preview.jpg","id":4417,"thumb_left":"http://www.izishirt.ca/izishirtfiles/models/180/23-left-preview.jpg","img_right":"http://www.izishirt.ca/izishirtfiles/models/180/","sizes":[{"extra_cost":0.0,"id":1414,"type":"ModelSize","name":"S","model_id":180},{"extra_cost":0.0,"id":1415,"type":"ModelSize","name":"M","model_id":180},{"extra_cost":0.0,"id":1416,"type":"ModelSize","name":"L","model_id":180},{"extra_cost":0.0,"id":1417,"type":"ModelSize","name":"XL","model_id":180},{"extra_cost":0.0,"id":2585,"type":"ModelSize","name":"S","model_id":180},{"extra_cost":0.0,"id":17759,"type":"ModelSize","name":"XS","model_id":180},{"extra_cost":0.0,"id":17760,"type":"ModelSize","name":"S","model_id":180},{"extra_cost":0.0,"id":17761,"type":"ModelSize","name":"M","model_id":180},{"extra_cost":0.0,"id":17762,"type":"ModelSize","name":"XXXL","model_id":180},{"extra_cost":0.0,"id":17763,"type":"ModelSize","name":"XL","model_id":180},{"extra_cost":5.0,"id":17764,"type":"ModelSize","name":"XXL","model_id":180},{"extra_cost":0.0,"id":17765,"type":"ModelSize","name":null,"model_id":180},{"extra_cost":0.0,"id":17766,"type":"ModelSize","name":"One Size","model_id":180},{"extra_cost":0.0,"id":17767,"type":"ModelSize","name":"2T","model_id":180},{"extra_cost":0.0,"id":17768,"type":"ModelSize","name":"L/XL","model_id":180},{"extra_cost":0.0,"id":17769,"type":"ModelSize","name":"S/M","model_id":180}],"model_id":180,"img_back":"http://www.izishirt.ca/izishirtfiles/models/180/23-back.jpg","img_front":"http://www.izishirt.ca/izishirtfiles/models/180/23-front.jpg","color":{"image":"http://www.izishirt.ca/izishirtfiles/colors/23.jpg","id":23,"name":"White"},"thumb_right":"http://www.izishirt.ca/izishirtfiles/models/180/23-right-preview.jpg","color_id":23,"mask_generation_picture_url":null,"mask_picture_url":null,"thumb_front":"http://www.izishirt.ca/izishirtfiles/models/180/23-front-preview.jpg","model_prices":[{"id":23349,"identifier":"one_design_price","price":4.0},{"id":23350,"identifier":"two_design_price","price":4.0},{"id":23351,"identifier":"text_price","price":4.0},{"id":23352,"identifier":"one_design_text_price","price":4.0},{"id":23353,"identifier":"two_design_text_price","price":4.0},{"id":23354,"identifier":"design_stretch_price","price":0.0},{"id":23355,"identifier":"text_stretch_price","price":0.0}]},{"img_left":"http://www.izishirt.ca/izishirtfiles/models/180/","supplier_generation_picture_url":null,"thumb_back":"http://www.izishirt.ca/izishirtfiles/models/180/106-back-preview.jpg","id":4418,"thumb_left":"http://www.izishirt.ca/izishirtfiles/models/180/106-left-preview.jpg","img_right":"http://www.izishirt.ca/izishirtfiles/models/180/","sizes":[{"extra_cost":0.0,"id":1414,"type":"ModelSize","name":"S","model_id":180},{"extra_cost":0.0,"id":1415,"type":"ModelSize","name":"M","model_id":180},{"extra_cost":0.0,"id":1416,"type":"ModelSize","name":"L","model_id":180},{"extra_cost":0.0,"id":1417,"type":"ModelSize","name":"XL","model_id":180},{"extra_cost":0.0,"id":2585,"type":"ModelSize","name":"S","model_id":180},{"extra_cost":0.0,"id":17759,"type":"ModelSize","name":"XS","model_id":180},{"extra_cost":0.0,"id":17760,"type":"ModelSize","name":"S","model_id":180},{"extra_cost":0.0,"id":17761,"type":"ModelSize","name":"M","model_id":180},{"extra_cost":0.0,"id":17762,"type":"ModelSize","name":"XXXL","model_id":180},{"extra_cost":0.0,"id":17763,"type":"ModelSize","name":"XL","model_id":180},{"extra_cost":5.0,"id":17764,"type":"ModelSize","name":"XXL","model_id":180},{"extra_cost":0.0,"id":17765,"type":"ModelSize","name":null,"model_id":180},{"extra_cost":0.0,"id":17766,"type":"ModelSize","name":"One Size","model_id":180},{"extra_cost":0.0,"id":17767,"type":"ModelSize","name":"2T","model_id":180},{"extra_cost":0.0,"id":17768,"type":"ModelSize","name":"L/XL","model_id":180},{"extra_cost":0.0,"id":17769,"type":"ModelSize","name":"S/M","model_id":180}],"model_id":180,"img_back":"http://www.izishirt.ca/izishirtfiles/models/180/106-back.jpg","img_front":"http://www.izishirt.ca/izishirtfiles/models/180/106-front.jpg","color":{"image":"http://www.izishirt.ca/izishirtfiles/colors/106.jpg","id":106,"name":"Sport Grey"},"thumb_right":"http://www.izishirt.ca/izishirtfiles/models/180/106-right-preview.jpg","color_id":106,"mask_generation_picture_url":null,"mask_picture_url":null,"thumb_front":"http://www.izishirt.ca/izishirtfiles/models/180/106-front-preview.jpg","model_prices":[{"id":23356,"identifier":"one_design_price","price":4.0},{"id":23357,"identifier":"two_design_price","price":4.0},{"id":23358,"identifier":"text_price","price":4.0},{"id":23359,"identifier":"one_design_text_price","price":4.0},{"id":23360,"identifier":"two_design_text_price","price":4.0},{"id":23361,"identifier":"design_stretch_price","price":0.0},{"id":23362,"identifier":"text_stretch_price","price":0.0}]}],"designs_per_zone":"2"}};
+						alert(response.model.image);
+				  } );
+	  });*/
+	
+	$('.aka').click(function () {
+	  $.getScript("javascripts/2012/jquery.dd.min.js")
+	  	$j("select").msDropdown();
+   var id = $(this).attr('id');
+   $("#mid").val(id);
+   $('#canvas').css({ 'background-image' : 'url()' });
+   $("#load").html('<img src="/../../images/izishirt2012/loading.gif">');
+  // var query = 'id='+
+    $.ajax({
+        url: 'display/image_details',
+        type: "POST",
+        data: {'id':$(this).attr('id')},
+        dataType: 'json',
+        success: function (data) {
+            //alert(data.model.model_specifications[0].color.id);
+		    $("#load").html('');
+			$('#canvas').css({ 'background-image' : 'url('+data.model.image+')' });
+			var color_img = "";
+			for(i=0;i<data.model.model_specifications.length;i++)  {
+				  // color_img += data.model.model_specifications[i].color.image;
+				  color_img += '<li ><a href="#" onclick=img_prev("'+data.model.model_specifications[i].color.id+'"); class="pcolor"><img class="imgbox"  src="'+data.model.model_specifications[i].color.image+'" id="'+data.model.model_specifications[i].color.id+'"></a></li>';
+			}
+			//alert(color_img);
+			//$("#product_color").html(color_img);
+			$(".ad-thumb-list").html(color_img);
+			
+			var mid = $('#mid').val();
+			var img = data.model.image;
+			var nimg = data.model.image.split('/');
+			var last_img = nimg[nimg.length-1];
+			var another_img = last_img.split('-');
+			var cid = another_img[0];//data.model.model_specifications[0].color.id;
+			var img_preview_front ='http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+cid+'-front-preview.jpg';
+			var img_preview_back = 'http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+cid+'-back-preview.jpg';
+			var img_preview = '<img class="img_preview_front" src="'+img_preview_front+'" id="'+cid+'"><img class="img_preview_back" src="'+img_preview_back+'" id="'+cid+'">';
+			$('#pre_img').html(img_preview);
+			$('#price').html(data.model.price);
+			$('#sprice').val(data.model.price);
+			$('#quantity').val('1');	
+			var opt = "";
+			for(i=0;i<data.model.model_specifications[0].sizes.length;i++)  {
+			  opt += '<option value="'+data.model.model_specifications[0].sizes[i].extra_cost+'">'+data.model.model_specifications[0].sizes[i].name+'</option>'
+			}
+			var sizeopt_box = '<select name="pssize"  style="width: 80px;" id ="psize" >'+opt+'</select>';
+			$("#size").html(sizeopt_box);
+			$j('.ad-gallery').adGallery();
+			$("select").msDropdown();
+			//$("#canvas").css({'background-image':'"url("'+data+')"});
+        }
+    });
+});
 
+	
+	$('.pcolor').live('click',function () {
+//	  alert('in');
+	  var mid = $('#mid').val();
+	  var id = $(this).attr('id');
+	  var img = 'http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+id+'-front.jpg';
+	  var img_preview_front ='http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+id+'-front-preview.jpg'
+	  var img_preview_back = 'http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+id+'-back-preview.jpg'
+	  //var img_front ='http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+id+'-front.jpg'
+	 // var img_back = 'http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+id+'-front.jpg'
+	  var img_preview = '<img class="img_preview_front" src="'+img_preview_front+'" id="'+id+'"><img class="img_preview_back" src="'+img_preview_back+'" id="'+id+'">';
+	  alert(img_preview );
+	  $('#canvas').css({ 'background-image' : 'url('+img+')' });
+	  $('#pre_img').html(img_preview);
+	});
+	
+	$('.img_preview_front').live('click',function () {
+	  var mid = $('#mid').val();
+	  var id = $(this).attr('id');
+	  var img ='http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+id+'-front.jpg'
+	  $('#canvas').css({ 'background-image' : 'url('+img+')' });
+	});
+	$('.img_preview_back').live('click',function () {
+	  var mid = $('#mid').val();
+	  var id = $(this).attr('id');
+	  var img ='http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+id+'-back.jpg'
+	  $('#canvas').css({ 'background-image' : 'url('+img+')' });
+	});
+	$('#upimg').live('click',function () {
+	  var qval = $('#quantity').val();
+	  var price = $('#sprice').val();
+	  var newval = parseInt(qval)+1;
+	  $('#quantity').val(newval);
+	  $('#price').html(newval*price);
+	});
+	$('#downimg').live('click',function () {
+	  var qval = $('#quantity').val();
+	  var price = $('#sprice').val();
+	  var newval = parseInt(qval)-1;
+	  if (qval > 1) {
+		$('#quantity').val(newval);	
+	  $('#price').html(newval*price);
+	  }
+	  
+	});
+	$('#psize').live('change',function () {
+	  var qval = $('#quantity').val();
+	  var price = $('#sprice').val();
+	  var recentval = $(this).val();
+	  var allprice = parseFloat(price)+parseFloat(recentval);
+	  $('#price').html(allprice*qval);
+	});
+	
+	
+	  $j('.ad-gallery').adGallery();
+	  $j('.ad-thumb-list').style("");
+});
+
+function img_prev(id){
+	  var mid = $('#mid').val();
+	//  var id = $(this).attr('id');
+	  var img = 'http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+id+'-front.jpg';
+	  var img_preview_front ='http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+id+'-front-preview.jpg'
+	  var img_preview_back = 'http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+id+'-back-preview.jpg'
+	  //var img_front ='http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+id+'-front.jpg'
+	 // var img_back = 'http://www.izishirt.ca/izishirtfiles/models/'+mid+'/'+id+'-front.jpg'
+	  var img_preview = '<img class="img_preview_front" src="'+img_preview_front+'" id="'+id+'"><img class="img_preview_back" src="'+img_preview_back+'" id="'+id+'">';
+	 // alert(img_preview );
+	  $('#canvas').css({ 'background-image' : 'url('+img+')' });
+	  $('#pre_img').html(img_preview);
+	  
+}
 </script>

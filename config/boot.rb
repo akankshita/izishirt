@@ -80,7 +80,7 @@ module Rails
 	end
       end
 
-      def load_rubygems
+    def load_rubygems
 	require 'rubygems'
 	min_version = '1.3.1'
 	unless rubygems_version >= min_version

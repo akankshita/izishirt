@@ -47,15 +47,15 @@ RAILS_DEFAULT_LOGGER.level = Logger::DEBUG if defined? RAILS_DEFAULT_LOGGER
 #URL_SESSIONS = "http://www.izishirtdev.com"#
 URL_SESSIONS = "http://localhost:3000/"
 config.after_initialize do
-  ActiveMerchant::Billing::Base.gateway_mode = :test
-  ActiveMerchant::Billing::PaypalGateway.pem_file = File.read(RAILS_ROOT + '/config/cert_key_pem_dev.txt')
+#  ActiveMerchant::Billing::Base.gateway_mode = :test
+#  ActiveMerchant::Billing::PaypalGateway.pem_file = File.read(RAILS_ROOT + '/config/cert_key_pem_dev.txt')
 end
 $PAYPAL_LOGIN = 'support_api1.izishirt.ca'
 $PAYPAL_PASSWORD = 'MFKMEMNNXDN4JBCF'
 
 LCL_MERCHANT_ID = "014295303911111"
 
-ActiveMerchant::Billing::Base.mode = :test
+#ActiveMerchant::Billing::Base.mode = :test
 LCL_PATHFILE = "#{Rails.root}/lib/lcl/test/pathfile"
 
 HASH_DOMAINS_COUNTRIES = {"Canada"=>"izishirtdev.com", "USA"=>"izishirtdev.us"}

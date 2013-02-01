@@ -1,0 +1,15 @@
+<div id="product-img">
+   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <%if @models.length > 0%>
+      <%@models.each_slice(6) do |@amodels|%>
+         <tr>
+            <% for mymodel in @amodels %>
+               <td><li class="imageOverlayer2"><%= image_tag '/izishirtfiles/models/' + mymodel.id.to_s + '/preview.jpg', :size => '45x45',:class=>"aka" %></li></td>
+             <% end %>
+         </tr>
+      <%end%>
+      <%else%>
+        <tr>No product Found</tr>
+      <%end%>
+   </table>
+</div>

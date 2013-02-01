@@ -79,7 +79,7 @@
 
            <% if session[:user_id] == 70 %>
 
-
+			<a href="/admin/coupon">Coupon</a>
            <% if User.verify_administrator(session[:user_id])  %>
 				  <a href="/admin/price/models"><%= t(:admin_menu_prices) %></a>
 				  <div class="submenu" id="admin_price" style="display:<%= if_controller('admin/price', 'block', 'none') %>">
